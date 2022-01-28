@@ -1,11 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
+import Home from './modules/home/Home';
+import Dashboard from './modules/dashboard/dashboard';
 
 function App() {
   return (
     <div className="App">
+      <Home />
+      <Dashboard />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
