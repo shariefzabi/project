@@ -1,0 +1,87 @@
+
+  
+ 
+  
+  .logout {
+    margin: 10.125vw;
+    /* margin-right: 11.938vh; */
+  }
+  
+  #login_page {
+    font-size: 0.5rem;
+    background-color: #E3F3FF;
+  }
+  
+  aside {
+    margin-top: 13.375rem;
+    height: 4.625rem;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 2.25rem;
+    line-height: 1rem;
+    background-color: #E3F3FF;
+    color: #2078BF;
+    box-shadow: 0rem 1.875rem 2.5rem #E3F3FF;
+  }
+  
+  .box {
+    background: #FFFFFF;
+    box-shadow: 0rem 1.875rem 2.5rem #E3F3FF;
+    border-radius: 0.625rem;
+  }
+  .box h3 {
+    text-align: center;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    color: #2078BF;
+    margin-top: 3.125rem;
+    margin-bottom: 1.5rem;
+  }
+  .box p {
+    text-align: center;
+    color: #838383;
+    font-size: 1.125rem;
+    line-height: 2.187rem;
+    margin: 0;
+  }
+  .box section form label {
+    color: #838383;
+    font-size: 1.125rem;
+    margin-top: 2.938rem;
+    margin-bottom: 1.625rem;
+  }
+  .box section form label span {
+    color: red;
+  }
+  .box section form .row {
+    border: 1.5px solid #E0E0E0;
+    border-radius: 0.313rem;
+    padding: 0.1rem 0rem;
+  }
+  .box section form .row i {
+    color: #2078BF;
+    float: right;
+    padding: 0.5rem 0.5rem;
+    font-size: 1rem;
+  }
+  .box section form button {
+    width: 12.25em;
+    height: 3.125em;
+    display: block;
+    margin: auto;
+  }
+  .box section form button a {
+    text-decoration: none;
+    color: white;
+  }
+  .box section form input {
+    border: none;
+    outline: none;
+    font-size: 1.125rem;
+    width: 100%;
+    height: 2.3em;
+  }

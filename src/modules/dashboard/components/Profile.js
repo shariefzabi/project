@@ -1,7 +1,7 @@
 
 import './profile.css'
 
-export default function Profile(){
+export default function Profile() {
     return (<section className="profileSection">
         <header>
             <div className="headingText">
@@ -17,11 +17,11 @@ export default function Profile(){
 
 
                     <form>
-                       
-                            <p> Fields with <span className="text-danger">*</span> are required</p>
 
-                            <button className="btn btn-success btn-float-right " id="resetButton" type="button" onclick="resetPasswordToggler()">Reset Password</button>
-                         
+                        <p> Fields with <span className="text-danger">*</span> are required</p>
+
+                        <button className="btn btn-success btn-float-right " id="resetButton" type="button" onclick="resetPasswordToggler()">Reset Password</button>
+
                         <label className="col-md-12" for="name">Name<span className="text-danger">*</span></label>
                         <div className="row">
                             <div className="col-md-11 col-sm-11 col-10">
@@ -94,7 +94,7 @@ export default function Profile(){
 
 
                 </section>
-        
+
 
             </main>
         </div>
@@ -155,7 +155,7 @@ export default function Profile(){
 
 
                 </section>
-               
+
             </main>
 
         </div>
