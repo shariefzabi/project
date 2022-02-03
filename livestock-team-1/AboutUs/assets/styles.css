@@ -1,0 +1,320 @@
+@font-face {
+    font-family: ubuntu;
+    src: url("./Fonts/Ubuntu/Ubuntu-Regular.ttf");
+  }
+
+body{
+    font-family: ubuntu;  
+    /*width: 93.75rem;*/
+
+}
+
+.heading{
+    background-color: #2078BF;
+    height: 7.5rem;
+}
+.active{
+    text-decoration: underline solid white;
+}
+.nav-item{
+    margin-left: 2.93rem;
+}
+.dropdown-menu{
+    padding: 0rem;
+    margin: 0rem;
+}
+.dropdown-item:hover{
+    background-color: #2078BF;
+}
+.buynow{
+    border: 0.134rem solid #00C3FF;
+    border-radius: 0.3125rem;
+    height: 3.75rem;
+    width:11.063rem;
+    margin-right: 2.625rem;
+    margin-left: 2.625rem;
+}
+.login{
+    height: 3.75rem;
+    width:11.063rem;
+    margin-right: 6.55rem;
+    background-color:#06864D;
+}
+.di{
+    background-color: #2078BF;
+}
+#navbarSupportedContent{
+    padding-top: 1rem;
+    padding-right: 1rem;
+}
+
+.aboutus{
+    background-image: url("./img/Rectangle.png"); 
+    width: 93.75rem;
+    height: 38.75rem;
+}
+h1{
+   font-weight:700;
+   font-size:3.5rem;
+   color: #ffffff;
+   line-height:4.875rem;
+   padding-top: 16.4375rem;
+   padding-left:39.562rem;
+   padding-bottom: 0rem;
+}
+.aboutus-content{
+    font-weight: 400;
+    font-size: 1.6875rem;
+    line-height:4.875rem;
+    color:#ffffff;
+    padding-left:40.875rem;
+    margin-top:1.312rem
+}
+.who-we-are{
+    background-color: #2078BF;
+    width:46.312rem;
+    height:47.25rem;
+    margin-top:15.5rem;
+    margin-left: 5.606rem;
+    border-radius: 0.625rem;
+    left:8.6875rem;
+}
+.subtitle{
+    font-weight: 700;
+    font-size: 2.25rem;
+}
+.theory-y{
+    padding-left:4.937rem;
+    margin:0rem;
+    padding-top:6.0293rem;
+}
+.checkboard-b{
+    width:45.944rem;
+    height:52.937rem;
+    left:43.625rem;
+    padding-right:9.180rem;
+    position: absolute;
+    z-index:-1;
+    margin-top:9.8125rem;
+}
+
+
+.logo{
+    position:absolute;
+    flex-wrap: wrap;
+    gap:2.785rem;
+}
+.logo div{
+    width: 3.424rem;
+    height: 3.622rem;
+    padding-right: 4.6943rem;
+    padding-top:5.93rem;
+}
+figcaption{
+    font-size:0.5rem;
+    font-weight:5;
+    width:2.128rem;
+    height:0.66rem;
+    opacity: 0.5;
+    text-align: center;
+}
+
+.logo2{
+    position:absolute;
+    flex-wrap: wrap;
+    gap:2.785rem;
+}
+.logo2 div{
+    width: 3.424rem;
+    height: 3.622rem;
+    padding-right: 4.6943rem;
+    margin-top:12rem;
+}
+
+
+.family{
+   margin-left:8.6875rem;
+   margin-top:16.312rem;
+}
+.family-head{
+    font-size:2.375rem;
+    font-weight: 700;
+    color: #2078BF;
+    padding-bottom:3.562rem;
+    padding-top:10.188rem;
+}
+.family-text{
+    background-color: #2078BF ;
+    width:75.875rem;
+    color: white;
+    text-align: center;
+}
+
+.section-c{
+    background-color:#2078BF ;
+     margin: 0rem;
+     margin-top:6.937rem;
+     width: 100%;
+}
+
+.latestnews{
+    font-weight:400 ;
+    font-size:1rem;
+    margin-bottom: 0%;
+    margin-left:10.625rem;
+    margin-top:5.812rem;
+}
+.newsletter{
+    font-weight:400;
+    font-size:3rem;
+    margin:0;
+    margin-left:15.625rem;
+}
+.search{
+    margin-top:7.5rem;
+}
+.theory-h{
+    width:16.125rem;
+    height:2.1875rem;
+    font-size:1.6875rem;
+    font-weight:43.75rem;
+}
+.searchbar{
+    height:4.24rem;
+    width:45.745rem;
+    padding:0rem,0rem !important;
+}
+.searchbar button{
+    background: #06864D;
+    padding:0rem,0rem !important;
+    height:3.75rem;
+    width:10rem;
+}
+.searchinput{
+    height:3.75rem;
+    width:22.745rem;
+    border-radius: 0.3125rem;
+    padding-left:1.6912rem;
+}
+
+ .chessboard{
+    height: 26.513rem;
+    width: 29.67rem;
+    border-radius:0.625rem;
+    position: absolute;
+    
+    left: 13.205rem;
+    margin-top:19.314rem;
+}
+.bluerectangle{
+    width: 22.812rem;
+    height: 35.43rem;
+    border-radius: 0.3125rem;
+    position: relative; 
+    left: 8.31%;
+    margin-right: 50.937rem;
+    top: 14.875rem;
+    bottom: 57.42%;
+}
+.discript {
+            color: #838383;
+            position: absolute;
+            left: 44.875rem;
+            right: 12.25rem;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 1.125rem;
+            line-height: 2.185rem;
+            padding-left: 5.687rem;
+            padding-top:18.375rem;
+        }
+
+        .features {
+            position: absolute;
+            left: 44.919rem;
+            right: 25.955rem;
+            padding-top: 12.125rem;
+
+            font-style: normal;
+            font-weight: bold;
+            font-size: 2.25rem;
+            line-height: 4.875rem;
+            color: #2078BF;
+            padding-left: 7.687rem;
+
+        }
+
+        .bulletsremove li {
+            list-style-type: none;
+        }
+
+        .brochure {
+            width: 17.625rem;
+            height: 3.75rem;
+            margin-top: 1rem;
+            right: 23.562rem;
+        }
+
+
+
+
+
+
+
+        
+        .footer {
+            background-color:#2078BF;
+            display: flex;
+            justify-content: space-between;
+            box-sizing: border-box;
+        }
+        .img-section{
+            background-image: url('./img/Illustration.png');
+            /* background-size: fixed; */
+            background-blend-mode: lighten;
+            background-repeat: no-repeat;
+        }
+        
+        .content {
+             color: #fff;
+             font-size: 1rem;
+             font-weight: 400;
+             line-height: .8;
+        }
+        .head{
+            font-size:1.375rem;
+            font-weight:400;
+        }
+        .footer-2{
+            background-color: #2078BF;
+            width:100%;
+        }
+        .container{
+            padding: 40px;
+          }
+          .paragraph{
+            padding-top: 3.8125rem;
+            line-height: 2.18rem;
+          }
+          .faq{
+              padding-left: 9.593rem;
+          }
+          .privacy{
+              padding:0px 35px 0px 10px ;
+          }
+          li{
+            list-style-type: none;
+            font-weight: 400;
+            line-height: 1.375rem;
+            font-size: 0.875rem;
+            letter-spacing: 0.00625rem;
+            padding-bottom: 0.58rem;
+          }
+          .in-li{
+              opacity: 0.8;
+          }
+        
+          .footer-list{
+            gap: 1.66rem;
+            padding-left: 0px;
+          }
