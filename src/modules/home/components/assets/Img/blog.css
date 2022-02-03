@@ -1,0 +1,34 @@
+
+    
+    h1{
+    color:#2078bf;
+    padding-left:8.625rem;
+    font-size:2.25rem;
+    padding-top:6.093rem;
+    font-weight:43.75rem;
+}
+.theory-a{
+    font-size:1.125rem;
+    font-weight:43.75rem;
+    color:#2078bf;
+    line-height:2rem;
+    padding:0;
+    margin:0;
+}
+.theory-b{
+    font-size:0.875rem;
+    font-weight:25rem;
+    line-height:1.15rem;
+    color:#838383;
+    padding:0;
+    margin:0;
+}
+.card-img-top{
+    width:17.198rem;
+    height:10.24rem;
+  }
+.row-cols-md-4{
+    padding-top:4.812rem;
+    padding-left:8.737rem;
+    padding-right: 6.824rem;
+}
