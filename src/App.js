@@ -1,13 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
 import Home from './modules/home/Home';
-import Dashboard from './modules/dashboard/dashboard';
-
+// import Dashboard from './modules/dashboard/dashboard';
+import LandingPage from './modules/home/components/LandingPage';
 function App() {
   return (
     <div className="App">
-      <Home />
-      <Dashboard />
+      {/* <Home /> */}
+      <LandingPage/>
+      {/* <Dashboard /> */}
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
 
@@ -26,5 +27,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
