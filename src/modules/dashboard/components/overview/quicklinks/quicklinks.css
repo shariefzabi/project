@@ -1,0 +1,95 @@
+.quicklinks, .orderSection, .invoiceSection, .paymentsSection, .trackOrderSection, .statisticsSection {
+    margin: 0;
+    padding: 0;
+    margin-left: 9.75rem;
+    margin-right: 11.2475rem;
+    margin-top: 6.5625rem;
+    box-sizing: border-box;
+    /* padding-right: 11.375rem; */
+  }
+  .quicklinks .headingText h2, .orderSection .headingText h2, .invoiceSection .headingText h2, .paymentsSection .headingText h2, .trackOrderSection .headingText h2, .statisticsSection .headingText h2 {
+    color: #2078BF;
+    font-weight: bolder;
+    margin: 0;
+    font-size: 2.25rem;
+    line-height: 1rem;
+  }
+  .quicklinks header, .orderSection header, .invoiceSection header, .paymentsSection header, .trackOrderSection header, .statisticsSection header {
+    margin-bottom: 2.9375rem;
+    height: 2.8125rem;
+  }
+  .quicklinks .edit-toggler, .orderSection .edit-toggler, .invoiceSection .edit-toggler, .paymentsSection .edit-toggler, .trackOrderSection .edit-toggler, .statisticsSection .edit-toggler {
+    float: right;
+    margin: 0;
+  }
+  .quicklinks .edit-toggler svg, .orderSection .edit-toggler svg, .invoiceSection .edit-toggler svg, .paymentsSection .edit-toggler svg, .trackOrderSection .edit-toggler svg, .statisticsSection .edit-toggler svg {
+    text-align: end;
+  }
+  
+  .quicklinks {
+    margin-top: 6.125rem;
+  }
+  .quicklinks .quicklinksCards {
+    box-sizing: border-box;
+  }
+  .quicklinks .quicklinksCards .card {
+    width: 13.563rem;
+    height: 12rem;
+    margin: auto;
+    background: #FFFFFF;
+    box-shadow: 0rem 1.875rem 2.5rem #E3F3FF;
+    border-color: #fff;
+    border-radius: 0.624rem;
+  }
+  .quicklinks .quicklinksCards .card img {
+    width: 4.908rem;
+    height: 4.971rem;
+    margin: auto;
+    margin-top: 2.188rem;
+  }
+  .quicklinks .quicklinksCards .card .card-title {
+    font-weight: bold;
+    font-size: 1.125rem;
+    line-height: 1.313rem;
+    letter-spacing: 0.025rem;
+    color: #838383;
+  }
+  .quicklinks .quicklinksCards .card .card:hover {
+    background: #2078BF;
+  }
+
+  
+.dropdown .dropdown-menu {
+    padding: 0;
+    margin: 0;
+    border: 1px solid #E0E0E0;
+  }
+  .dropdown .dropdown-item {
+    font-weight: thin;
+    margin: 0;
+  }
+  .dropdown .dropdown-menu:before {
+    position: absolute;
+    top: -7px;
+    left: 9px;
+    display: inline-block;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #ccc;
+    border-left: 7px solid transparent;
+    border-bottom-color: rgba(0, 0, 0, 0.2);
+    content: "";
+  }
+  .dropdown .dropdown-menu:after {
+    position: absolute;
+    top: -6px;
+    left: 10px;
+    display: inline-block;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid #ffffff;
+    border-left: 6px solid transparent;
+    content: "";
+  }
+  .dropdown .dropdown-item:hover {
+    color: #fff;
+    background-color: #2078BF;
+  }

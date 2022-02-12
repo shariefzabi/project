@@ -1,0 +1,109 @@
+
+
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+ .notifications svg {
+  width: 1.573rem;
+  height: 1.54rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  font-family: "Ubuntu", sans-serif;
+  font-style: normal;
+  background-color: #F5FBFF;
+  overflow-x: hidden;
+}
+
+.mainHeader .navbar {
+  position: fixed;
+  background-color: #2078BF;
+  height: 7.5rem;
+  padding: 0;
+  margin: 0;
+  z-index: 9999;
+  padding-left: 45.375rem;
+  width: 100%;
+}
+
+.searchBar .searchInput {
+  padding-left: 2.375rem;
+  background-color: #2078BF;
+  color: #fff;
+  border: 0.0625rem solid #00C3FF;
+  border-radius: 0.3125rem;
+  width: 22.0625rem;
+  height: 2.688rem;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 0.8125rem;
+  line-height: 0.9375rem;
+  letter-spacing: 0.00625rem;
+  opacity: 0.5;
+}
+.searchBar .searchIcon {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.688rem;
+  font-size: 1.5rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+  color: #fff;
+}
+.searchBar input::placeholder {
+  color: #fff;
+  font-style: italic;
+}
+
+.container-fluid {
+  margin: 0;
+  padding: 0;
+  margin-right: 11.2475rem;
+  margin-left: 3.76rem;
+}
+
+.notifications {
+  width: 2rem;
+  margin-right: 2.2rem;
+}
+.dropdown .dropdown-menu {
+  padding: 0;
+  margin: 0;
+  border: 1px solid #E0E0E0;
+}
+.dropdown .dropdown-item {
+  font-weight: thin;
+  margin: 0;
+}
+.dropdown .dropdown-menu:before {
+  position: absolute;
+  top: -7px;
+  left: 9px;
+  display: inline-block;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid #ccc;
+  border-left: 7px solid transparent;
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+  content: "";
+}
+.dropdown .dropdown-menu:after {
+  position: absolute;
+  top: -6px;
+  left: 10px;
+  display: inline-block;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid #ffffff;
+  border-left: 6px solid transparent;
+  content: "";
+}
+.dropdown .dropdown-item:hover {
+  color: #fff;
+  background-color: #2078BF;
+}

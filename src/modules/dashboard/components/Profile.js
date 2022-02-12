@@ -3,6 +3,7 @@ import './profile.css'
 
 export default function Profile() {
     return (<section className="profileSection">
+        
         <header>
             <div className="headingText">
                 <h2>Profile</h2>
