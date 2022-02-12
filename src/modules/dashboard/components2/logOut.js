@@ -7,14 +7,12 @@ export default function LogOut() {
 
         <section id="login_page">
             <div className="logout">
-
                 <section>
                     <aside>
                         <div className="p-0">
                             <h2>Log out</h2>
                         </div>
                     </aside>
-
                     <main className="row box">
                         <section className="col-md-1 col-sm-1 col-1"></section>
 
