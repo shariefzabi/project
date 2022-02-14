@@ -9,7 +9,7 @@ import Sidebar from './components/sidebar/sidebar';
 import Quicklinks from './components/overview/quicklinks/quicklinks';
 import TrackOrder from './components/overview/trackOrderSection/trackOrder';
 import Profile from './components/profile/Profile';
-
+import Footer from './components/footer/footer';
 
 
 function Dashboard() {
@@ -24,7 +24,7 @@ function Dashboard() {
         <Quicklinks></Quicklinks>
         <Profile></Profile>
         <TrackOrder></TrackOrder>
-
+        <Footer></Footer>
     </div>);
 }
 

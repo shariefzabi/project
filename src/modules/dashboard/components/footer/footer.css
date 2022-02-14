@@ -1,0 +1,265 @@
+footer {
+    position: relative;
+    background-color: #2078BF;
+    width: 100%;
+    margin-top: 6.4375rem;
+    z-index: 999;
+  }
+  
+  .part1 {
+    font-family: "Ubuntu";
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  .para {
+    font-size: 1rem;
+    line-height: 1.5625rem;
+    padding-right: 7%;
+  }
+  
+  .quicklink h3 {
+    font-size: 1.375rem;
+    font-weight: lighter;
+    font-style: normal;
+    line-height: 1.5rem;
+  }
+  .quicklink a, .quicklink p {
+    font-size: 0.875rem;
+    font-weight: lighter;
+    line-height: 1.5rem;
+  }
+  
+  .bg-bubble {
+    /* background-image: url("../images/path.svg"); */
+    background-size: 2rem 2rem cover;
+    background-repeat: no-repeat;
+  }
+  
+  .end p {
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.0937rem;
+  }
+  .end .terms {
+    font-family: "Karla";
+    font-size: 0.625rem;
+    letter-spacing: 0.0937rem;
+  }
+  
+  .app {
+    padding-right: 0rem;
+  }
+  .app a {
+    border-radius: 0.5rem;
+    width: 5.435rem;
+    height: 1.86rem;
+    background-color: #212121;
+    color: #bababa;
+    padding-right: 0.5rem;
+  }
+  .app a i {
+    font-size: 0.879rem;
+  }
+  .app a p {
+    font-size: 0.37rem;
+  }
+  .app a .text {
+    font-size: 0.55rem;
+  }
+  
+  .address {
+    padding-left: 2.5rem;
+  }
+  
+  .footerEnd .logo {
+    width: 1.151rem;
+    height: 1.151rem;
+    margin-right: 0.668rem;
+  }
+  
+
+
+@media (max-width: 576px) {
+    footer .top-part {
+      padding-top: 5%;
+    }
+  
+    article {
+      font-size: 0.8rem;
+      margin: 0 auto;
+      text-align: center;
+    }
+  
+    .quicklink {
+      margin-top: 5%;
+      text-align: center;
+    }
+    .quicklink h3 {
+      font-size: 1rem;
+    }
+    .quicklink a, .quicklink p {
+      font-size: 0.8rem;
+    }
+    .quicklink .d-flex {
+      justify-content: center;
+    }
+  
+    .bg-bubble {
+      background-position: center;
+    }
+  
+    .end p {
+      text-align: center;
+      margin-top: 3%;
+      margin-bottom: 0;
+    }
+    .end .terms {
+      justify-content: center;
+    }
+    .end .icons {
+      justify-content: center;
+    }
+  }
+  @media (min-width: 577px) and (max-width: 768px) {
+    footer .top-part {
+      padding-top: 5%;
+      padding-left: 7%;
+    }
+  
+    article {
+      font-size: 1.1rem;
+      margin: 0 auto;
+      text-align: center;
+    }
+  
+    .quicklink {
+      margin-top: 5%;
+      text-align: center;
+    }
+    .quicklink h3 {
+      font-size: 1.3rem;
+    }
+    .quicklink a, .quicklink p {
+      font-size: 1.1rem;
+      margin-bottom: 5%;
+    }
+    .quicklink .d-flex {
+      justify-content: center;
+    }
+  
+    .bg-bubble {
+      background-position: center;
+    }
+  
+    .end p {
+      text-align: center;
+      margin-top: 3%;
+      margin-bottom: 0;
+    }
+    .end .terms {
+      font-size: 0.5rem;
+      padding-top: 2%;
+      justify-content: center;
+    }
+    .end .icons {
+      justify-content: center;
+    }
+  }
+  @media (min-width: 769px) and (max-width: 992px) {
+    footer .top-part {
+      padding-top: 5%;
+    }
+  
+    article {
+      font-size: 1.1rem;
+      margin: 0 auto;
+      text-align: center;
+    }
+  
+    .quicklink {
+      margin-top: 5%;
+      text-align: center;
+    }
+    .quicklink h3 {
+      font-size: 1.375rem;
+    }
+    .quicklink a, .quicklink p {
+      font-size: 1.1rem;
+      margin-bottom: 3%;
+    }
+    .quicklink li {
+      margin-bottom: 2%;
+    }
+    .quicklink .d-flex {
+      justify-content: center;
+    }
+  
+    .bg-bubble {
+      background-position: center;
+    }
+  
+    .end p {
+      text-align: center;
+      margin-top: 3%;
+      margin-bottom: 0;
+    }
+    .end .terms {
+      font-size: 0.5rem;
+      padding-top: 2%;
+      justify-content: center;
+    }
+    .end .icons {
+      justify-content: center;
+    }
+  }
+  @media (min-width: 993px) and (max-width: 1200px) {
+    footer .top-part {
+      padding-top: 5%;
+      margin-left: 4%;
+    }
+  
+    .para {
+      font-size: 1rem;
+      margin: 0 auto;
+      padding-right: 0;
+    }
+  
+    .quicklink h3 {
+      font-size: 1.375rem;
+    }
+    .quicklink a, .quicklink p {
+      font-size: 0.875rem;
+      margin-bottom: 3%;
+    }
+    .quicklink li {
+      margin-bottom: 2%;
+    }
+  
+    .bg-bubble {
+      background-position: center;
+    }
+  
+    .end {
+      margin-top: 3%;
+    }
+    .end .terms {
+      padding: 0;
+      margin-left: 10%;
+    }
+    .end .icons {
+      padding-right: 0;
+      padding-left: 25%;
+    }
+  }
+  @media (min-width: 1201px) and (max-width: 1920px) {
+    .end .terms {
+      padding: 0;
+      padding-left: 5%;
+      margin-left: 10%;
+    }
+    .end .icons {
+      padding-right: 0;
+      padding-left: 25%;
+    }
+  }
