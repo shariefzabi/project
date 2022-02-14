@@ -13,8 +13,8 @@ export default function Quicklinks() {
                         <div className="dropdown col">
                             <a className="edit-toggler text-secondary" type="button" id="dropdownMenuButton1"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-                                    className="bi bi-three-dots" viewBox="0 0 16 16">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                    className="bi bi-three-dots edit-dropdown" viewBox="0 0 16 16">
                                     <path
                                         d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
                                 </svg>
@@ -25,11 +25,11 @@ export default function Quicklinks() {
                             </ul>
                         </div>
                     </header>
-                    <main className="quicklinksCards row row-cols-1 row-cols-sm-2 row-cols-md-4 g-5rem">
+                    <main className="quicklinksCards row row-cols-2 row-cols-sm-2 row-cols-md-4 g-5rem">
                         <div className="col">
                             <div className="card">
-                               
-                                <img src={require("./images/orders.png")} className="card-img-top" alt="..."  />
+
+                                <img src={require("./images/orders.png")} className="card-img-top" alt="..." />
                                 <div className="card-body">
                                     <h5 className="card-title text-center">Orders</h5>
                                 </div>
@@ -45,7 +45,7 @@ export default function Quicklinks() {
                         </div>
                         <div className="col">
                             <div className="card">
-                                <img  src={require("./images/payments.png")}  className="card-img-top" alt="..." />
+                                <img src={require("./images/payments.png")} className="card-img-top" alt="..." />
                                 <div className="card-body">
                                     <h5 className="card-title text-center">Payments</h5>
                                 </div>
@@ -53,7 +53,7 @@ export default function Quicklinks() {
                         </div>
                         <div className="col">
                             <div className="card">
-                                <img  src={require("./images/trackorder.png")}  className="card-img-top" alt="..." />
+                                <img src={require("./images/trackorder.png")} className="card-img-top" alt="..." />
                                 <div className="card-body">
                                     <h5 className="card-title text-center">Track Orders</h5>
                                 </div>
