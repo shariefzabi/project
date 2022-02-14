@@ -13,8 +13,8 @@ function Dashboard() {
     return (<div className='dashboard'>
         <Header></Header>
         <Sidebar></Sidebar>
-        <Footer></Footer>
         <Overview></Overview>
+        <Footer></Footer>
     </div>);
 }
 
