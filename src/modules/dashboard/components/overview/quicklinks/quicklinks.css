@@ -1,28 +1,31 @@
-.quicklinks, .orderSection, .invoiceSection, .paymentsSection, .trackOrderSection, .statisticsSection {
+#mainContent{
+  background-color: #F5FBFF;
+}
+
+.quicklinks {
     margin: 0;
     padding: 0;
-    margin-left: 9.75rem;
-    margin-right: 11.2475rem;
+    margin-left: 11vw;
+    margin-right: 12.13vw;
     margin-top: 6.5625rem;
     box-sizing: border-box;
-    /* padding-right: 11.375rem; */
   }
-  .quicklinks .headingText h2, .orderSection .headingText h2, .invoiceSection .headingText h2, .paymentsSection .headingText h2, .trackOrderSection .headingText h2, .statisticsSection .headingText h2 {
+  .quicklinks .headingText h2{
     color: #2078BF;
     font-weight: bolder;
     margin: 0;
     font-size: 2.25rem;
     line-height: 1rem;
   }
-  .quicklinks header, .orderSection header, .invoiceSection header, .paymentsSection header, .trackOrderSection header, .statisticsSection header {
+  .quicklinks header{
     margin-bottom: 2.9375rem;
     height: 2.8125rem;
   }
-  .quicklinks .edit-toggler, .orderSection .edit-toggler, .invoiceSection .edit-toggler, .paymentsSection .edit-toggler, .trackOrderSection .edit-toggler, .statisticsSection .edit-toggler {
+  .quicklinks .edit-toggler{
     float: right;
     margin: 0;
   }
-  .quicklinks .edit-toggler svg, .orderSection .edit-toggler svg, .invoiceSection .edit-toggler svg, .paymentsSection .edit-toggler svg, .trackOrderSection .edit-toggler svg, .statisticsSection .edit-toggler svg {
+  .quicklinks .edit-toggler svg {
     text-align: end;
   }
   
@@ -93,3 +96,140 @@
     color: #fff;
     background-color: #2078BF;
   }
+
+  .edit-dropdown{
+    width:  30px;
+    height: 30px;
+  }
+
+
+  @media (max-width: 576px) {
+    .quicklinks{
+      margin-top: 2.5rem;
+    }
+    .quicklinks .headingText h2{
+      font-size: 1.5rem;
+    }
+    .quicklinks header {
+      margin-bottom: 0;
+    }
+    .edit-dropdown{
+      width:  20px;
+      height: 20px;
+    }
+    .quicklinks .quicklinksCards .card {
+      width: 7rem;
+      height: 7rem;
+      margin-bottom: 1rem;
+    }
+    .quicklinks .quicklinksCards .card img {
+      width: 2.5rem;
+      height: 2.5rem;
+      /* margin: auto; */
+      margin-top: 1rem;
+    }
+    .quicklinks .quicklinksCards .card .card-title {
+      font-size: 0.8rem;
+    }
+    .dropdown .dropdown-menu:before {
+      top: -7px;
+      left: 140px;
+    }
+    .dropdown .dropdown-menu:after {
+      top: -6px;
+      left: 141px;
+    }
+  }
+  
+  @media (min-width: 577px) and (max-width: 768px) {
+    .quicklinks{
+      margin-top: 4.5rem;
+    }
+    .quicklinks .headingText h2{
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    .quicklinks header {
+      margin-bottom: 1.5rem;
+    }
+    .edit-dropdown{
+      width:  25px;
+      height: 25px;
+    }
+    .quicklinks .quicklinksCards .card {
+      width: 10rem;
+      height: 10rem;
+      margin-bottom: 2rem;
+    }
+    .quicklinks .quicklinksCards .card img {
+      width: 3.5rem;
+      height: 3.5rem;
+      /* margin: auto; */
+      margin-top: 1.4rem;
+    }
+    .quicklinks .quicklinksCards .card .card-title {
+      font-size: 1rem;
+    }
+    .dropdown .dropdown-menu:before {
+      top: -7px;
+      left: 140px;
+    }
+    .dropdown .dropdown-menu:after {
+      top: -6px;
+      left: 141px;
+    }
+  }
+  @media (min-width: 769px) and (max-width: 992px) {
+    .quicklinks{
+      margin-top: 4.5rem;
+    }
+    .quicklinks .headingText h2{
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    .quicklinks header {
+      margin-bottom: 1.5rem;
+    }
+    .edit-dropdown{
+      width:  25px;
+      height: 25px;
+    }
+    .quicklinks .quicklinksCards .card {
+      width: 8.4rem;
+      height: 9rem;
+      margin-bottom: 1.5rem;
+    }
+    .quicklinks .quicklinksCards .card img {
+      width: 3.5rem;
+      height: 3.5rem;
+      /* margin: auto; */
+      margin-top: 2rem;
+    }
+    .quicklinks .quicklinksCards .card .card-title {
+      font-size: 1rem;
+    }
+    .dropdown .dropdown-menu:before {
+      top: -7px;
+      left: 140px;
+    }
+    .dropdown .dropdown-menu:after {
+      top: -6px;
+      left: 141px;
+    }
+  }
+  @media (min-width: 993px) and (max-width: 1200px) {
+    .quicklinks .quicklinksCards .card {
+      width: 11rem;
+      height: 10rem;
+      margin-bottom: 1.5rem;
+    }
+    .quicklinks .quicklinksCards .card img {
+      width: 4.5rem;
+      height: 4.5rem;
+      margin-top: 2rem;
+    }
+    .quicklinks .quicklinksCards .card .card-title {
+      font-size: 1rem;
+    }
+  }
+  
