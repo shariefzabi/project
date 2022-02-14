@@ -1,9 +1,16 @@
 .trackOrder{
     margin: 10.125vw !important;
+    margin: 0;
+    padding: 0;
+    /* margin-left: 11vw;
+    margin-right: 12.13vw;
+    margin-top: 6.5625rem; */
+    box-sizing: border-box;
 }
 #trackOrder{
     font-size: 0.5rem;
-    background-color: #E3F3FF;
+    background-color: #F5FBFF;
+    margin-left: 4.375vw;
 }
 aside {
     margin-top: 5.375rem;
@@ -13,48 +20,10 @@ aside {
     font-weight: bold;
     font-size: 2.25rem;
     line-height: 1rem;
-    background-color: #E3F3FF;
+    /* background-color: #E3F3FF; */
     color: #2078BF;
-    box-shadow: 0rem 1.875rem 2.5rem #E3F3FF;
+    /* box-shadow: 0rem 1.875rem 2.5rem #E3F3FF; */
   }
-
-
-#mainContent {
-  margin-left: 4.375rem;
-  padding-top: 7.5rem;
-}
-.end p {
-  font-size: 0.625rem;
-  text-transform: uppercase;
-  letter-spacing: 0.0937rem;
-}
-.end .terms {
-  font-family: "Karla";
-  font-size: 0.625rem;
-  letter-spacing: 0.0937rem;
-}
-
-.app {
-  padding-right: 0rem;
-}
-.app a {
-  border-radius: 0.5rem;
-  width: 5.435rem;
-  height: 1.86rem;
-  background-color: #212121;
-  color: #bababa;
-  padding-right: 0.5rem;
-}
-.app a i {
-  font-size: 0.879rem;
-}
-.app a p {
-  font-size: 0.37rem;
-}
-.app a .text {
-  font-size: 0.55rem;
-}
-
 .address {
   padding-left: 2.5rem;
 }
@@ -65,28 +34,18 @@ aside {
   margin-right: 0.668rem;
 }
 
-k
+
 
 .trackOrderSection {
   margin: 0;
-  padding: 0;
-  margin-left: 9.75rem;
+  padding: 0;margin-top: 6.5625rem;
+  box-sizing: border-box;  
+  /* margin-left: 9.75rem;
   margin-right: 11.2475rem;
-  margin-top: 6.5625rem;
-  box-sizing: border-box;
-  /* padding-right: 11.375rem; */
-}
-.trackOrderSection .headingText h2 {
-  color: #2078BF;
-  font-weight: bolder;
-  margin: 0;
-  font-size: 2.25rem;
-  line-height: 1rem;
-}
-.trackOrderSection header {
-  margin-bottom: 2.9375rem;
-  height: 2.8125rem;
-}
+  padding-right: 11.375rem; */
+
+} 
+
 
 .track h3 {
   padding: 10vh 10vw 8vh 1vw;
@@ -128,8 +87,8 @@ k
   background-color: #06864d;
 }
 .btn-trackSearch{
-  border-bottom-left-radius: 0px;
-  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px !important;
+  border-top-left-radius: 0px !important;
 }
 .track {
   background: #FFFFFF;

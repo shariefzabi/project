@@ -3,7 +3,6 @@ export default function Quicklinks() {
     return (
         <div>
             <main id="mainContent">
-
                 <section className="quicklinks">
                     <header className="row">
                         <div className="headingText col">
