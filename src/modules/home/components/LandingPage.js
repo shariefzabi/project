@@ -26,10 +26,13 @@ export default class LandingPage extends React.Component {
                                                 data-bs-toggle="dropdown" aria-expanded="false">
                                                 Be a Partner
                                             </a>
-                                            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                <li><a className="dropdown-item " href="#">Be An Agent</a></li>
-                                                <li><a className="dropdown-item " href="#">Butchery & Abarttoir</a></li>
-                                            </ul>
+                                
+                                                <ul className="dropdown-menu dropdown-menu-lg-start"  aria-labelledby="navbarDropdown">
+                                                    <span class="triangle-up" ></span>
+                                                    <li><a className="dropdown-item " href="#">Be An Agent</a></li>
+                                                    <li><a className="dropdown-item " href="#">Butchery & Abarttoir</a></li>
+                                                </ul>
+                                           
                                         </li>
                                         <li className="nav-item">
                                             <a className="nav-link active text-white" href="./ourblog/index.html" target="blank">Blog</a>
@@ -107,6 +110,11 @@ export default class LandingPage extends React.Component {
 
                     <section>
                         <div className="container-fluid d-flex section-c">
+                        <img className="animal goat-left" src={require("./assets/animals/ram.png")} alt="animal"/>
+                        <img className="animal goat-mid" src={require("./assets/animals/ram.png")} alt="animal"/>
+                        <img className="animal goat-right" src={require("./assets/animals/ram.png")} alt="animal"/>
+                        <img className="animal cow-right" src={require("./assets/animals/cow.png")} alt="animal"/>
+                        <img className="animal cow-left" src={require("./assets/animals/cow.png")} alt="animal"/>
 
                             <article>
                                 <div className=" theroy-z">
@@ -194,8 +202,8 @@ export default class LandingPage extends React.Component {
                             </section>
                             <section className="part-c">
                                 <header className="head-part">Be a Partner</header>
-                                <div className="Be-a-partner row row-cols-1 row-cols-lg-2  row-cols-sm-1">
-                                    <div className="agent-checkbox ">
+                                <div className="d-flex Be-a-partner row ">
+                                    <div className="agent-checkbox col-6">
                                         <img className="Be-a-partner-image" src={require("./assets/Img/checker.png")} alt="#" />
                                         <p className="become"><strong>Become an Agent</strong></p>
                                         <p className="partner">A Livestock247.com agent must be a qualified veterinary professional certified by
@@ -205,7 +213,7 @@ export default class LandingPage extends React.Component {
                                         </p>
                                         <button type="button" className="discover">Discover</button>
                                     </div>
-                                    <div className="butcherry-checkbox">
+                                    <div className="butcherry-checkbox col-6">
                                         <img className="Be-a-partner-image" src={require("./assets/Img/checker.png")} alt="#" />
                                         <p className="become"><strong>Butchery/Abattoir</strong></p>
                                         <p className="partner">A Livestock247.com agent must be a qualified veterinary professional certified by
@@ -558,11 +566,12 @@ export default class LandingPage extends React.Component {
                                         <li>TERMS & CONDITIONS</li>
                                     </ul>
                                 </div>
-                                <div className="col-2 text-end">
-                                    <i className="fa fa-facebook"></i>
-                                    <i className="fa fa-google"></i>
-                                    <i className="fa fa-twitter"></i>
-                                    <i className="fa fa-instagram"></i>
+                                <div className="col-2 text-end footer-social-icons">
+                                <img src={require("./assets/Icons/fb.png")} alt="fb"/>
+                                <img src={require("./assets/Icons/google.png")} alt="google"/>
+                                <img src={require("./assets/Icons/instagram.png")} alt="instagram"/>
+                                <img src={require("./assets/Icons/twitter.png")} alt="twitter"/>
+                            
                                 </div>
                             </div>
                         </div>

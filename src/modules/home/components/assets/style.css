@@ -20,7 +20,7 @@ body{
     background-color: #2078BF;
     color:white;
 }
-.buynow{
+/* .buynow{
     border: 0.134rem solid #00C3FF;
     border-radius: 0.3125rem;
     height: 3.75rem;
@@ -32,7 +32,7 @@ body{
     height: 3.75rem;
     max-width:11.063rem;
     margin-right: 6.55rem;
-}
+} */
 .di{
     background-color: #2078BF;
 }
@@ -147,6 +147,7 @@ body{
     background-color:#2078BF ;
     margin: 0rem;
     padding: 0;
+    position: relative;
 }
 .latestletter{
     margin-left:12.625rem;
@@ -256,7 +257,7 @@ body{
     max-width:11.06rem;
 }
 .head-part{
-    font-weight:43.75rem ;
+    font-weight:bold;
     font-size: 2.25rem;
     line-height: 4.875rem;
     max-width :14.43rem;
@@ -360,6 +361,9 @@ margin-top:50px;
 .nav-item{
     margin-left: 2.93rem;
 }
+.nav-link{
+    font-size: 16px;
+}
 .dropdown-menu{
     padding: 0rem;
     margin: 0rem;
@@ -368,12 +372,40 @@ margin-top:50px;
     background-color: #2078BF;
 }
 .buynow{
-    border: 0.134rem solid #00C3FF;
-    border-radius: 0.3125rem;
+    border: 0.134rem solid #00C3FF!important;
+    border-radius: 0.3125rem!important;
     height: 3.75rem;
     width:11.063rem;
     margin-right: 2.625rem;
     margin-left: 2.625rem;
+}
+.triangle-up {
+	width: 0;
+	height: 0;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-bottom: 11px solid #fff;
+    position: absolute;
+    top : -11px;
+    left: 93px;
+    
+}
+ul{
+    padding-left: 0px!important;
+}
+.heading .dropdown-menu{
+    border-radius: 00.3125rem;
+    font-family: sans-serif;
+    padding: 0px;
+    
+}
+.heading .dropdown-menu .dropdown-item{
+    color: #838383!important;
+    padding-left: 5px;
+}
+.heading .dropdown-menu .dropdown-item:hover{
+    background-color: #2078BF;
+    color: #fff!important;
 }
 .login{
     height: 3.75rem;
@@ -585,7 +617,7 @@ margin-top:50px;
     width:11.06rem;
 }
 /* team-2-css */
-.head-part{
+/* .head-part{
     font-weight:bold ;
     font-size: 2.25rem;
     line-height: 4.875rem;
@@ -595,14 +627,13 @@ margin-top:50px;
     color:#2078BF;
     top:4454px;
     left:186.71px;  
-}
+} */
  .part-c{
     padding-top: 10.062rem;
  }
 .Be-a-partner{
-    margin-top :4.07rem;
-    margin-left:11.67rem;
-    display: flex;
+    margin-top :4.07rem!important;
+    margin-left:11.67rem!important;
 }
 .Be-a-partner-image{
     width:33.75rem;
@@ -804,7 +835,7 @@ h1{
     line-height: 1.375rem;
     font-size: 0.875rem;
     letter-spacing: 0.00625rem;
-    padding-bottom: 0.58rem;
+    /* padding-bottom: 0.58rem; */
   }
   .in-li{
       opacity: 0.8;
@@ -964,6 +995,34 @@ margin-left:8.981875rem;
 
 }
 
-
-
+.footer-social-icons img{
+    padding: 10px;
+}
+.goat-left{
+    width: 140px;
+    height: 140px;
+    position: absolute;
+    top: 71.93%;
+    left:0%;
+}
+.goat-mid{
+    width: 140px;
+    height: 140px;
+    position: absolute;
+    top: 1%;
+    left:0%;
+}
+.goat-right{
+    width: 140px;
+    height: 140px;
+    position: absolute;
+    top: 10.93%;
+    left:0%;
+}
+.cow-left{
+    position: absolute;
+}
+.cow-right{
+    position: absolute;
+}
 
