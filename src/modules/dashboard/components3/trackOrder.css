@@ -1,5 +1,5 @@
 .trackOrder{
-    margin: 10.125vw;
+    margin: 10.125vw !important;
 }
 #trackOrder{
     font-size: 0.5rem;
@@ -89,7 +89,7 @@ k
 }
 
 .track h3 {
-  padding: 14vh 10vw 8vh 1vw;
+  padding: 10vh 10vw 8vh 1vw;
   font-family: Ubuntu;
   font-style: normal;
   font-weight: bold;
@@ -106,7 +106,7 @@ k
 }
 
 .livestock h3 {
-  padding: 5rem 2rem 1.75rem 0rem;
+  padding: 10vh 3vw 8vh 1vw;
   font-family: Ubuntu;
   font-style: normal;
   font-weight: bold;
@@ -127,7 +127,10 @@ k
   border-radius: 0.0625rem solid #FFFFFF;
   background-color: #06864d;
 }
-
+.btn-trackSearch{
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+}
 .track {
   background: #FFFFFF;
   /* box-shadow: 0rem 1.875rem 2.5rem #E3F3FF; */
