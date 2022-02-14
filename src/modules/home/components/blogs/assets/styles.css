@@ -1,0 +1,397 @@
+@font-face {
+    font-family: ubuntu;
+    src: url("./Fonts/Ubuntu/Ubuntu-Regular.ttf");
+  }
+
+body{
+    font-family: ubuntu;  
+    width: 100%;
+    background-color: #F5FBFF;
+    overflow-x:hidden;
+}
+
+.heading{
+    background-color: #2078BF;
+    height: 7.5rem;
+}
+.active{
+    text-decoration: underline solid white;
+}
+.nav-item{
+    margin-left: 2.93rem;
+}
+.dropdown-menu{
+    padding: 0rem;
+    margin: 0rem;
+}
+.dropdown-item:hover{
+    background-color: #2078BF;
+}
+.buynow{
+    border: 0.134rem solid #00C3FF !important;
+    border-radius: 0.3125rem;
+    height: 3.75rem;
+    width:11.063rem;
+    margin-right: 2.625rem;
+    margin-left: 2.625rem;
+}
+.login{
+    height: 3.75rem;
+    width:11.063rem;
+    margin-right: 6.55rem;
+    background-color:#06864D !important;
+}
+.di{
+    background-color: #2078BF;
+}
+#navbarSupportedContent{
+    padding-top: 1rem;
+    padding-right: 1rem;
+}
+
+.blog{
+    background-image: url("./img/Rectangle.png"); 
+    width: 100%;
+    background-size:cover;
+    height: 38.75rem;
+}
+h1{
+   font-weight:700;
+   font-size:3.5rem;
+   color: #ffffff;
+   line-height:4.875rem;
+   padding-top: 16.4375rem;
+   /* padding-left:39.562rem; */
+   padding-bottom: 0rem;
+}
+.aboutus-content{
+    font-weight: 400;
+    font-size: 1.6875rem;
+    line-height:4.875rem;
+    color:#ffffff;
+    /* padding-left:40.875rem; */
+    margin-top:1.312rem
+}
+
+.section-c{
+    background-color:#2078BF ;
+     margin: 0rem;
+     margin-top:6.937rem;
+     
+}
+.main_box{
+    
+    margin:auto;
+    margin-top: 69.88px;
+    width:80.32%;
+}
+.left_box , .right_box{
+    width: 49%;
+}
+.first_box{
+    background-color:  #2078BF;
+    width: 100%;
+    height: 17.85rem;
+    margin-bottom: 1.1825rem;
+    border-radius: 0.625rem;
+}
+.second_box , .third_box{
+    width: 49%;
+    height: 30rem;
+    background-color: #2078BF;
+    margin-bottom: 1.1825rem;
+    border-radius: 0.625rem;
+}
+.info{
+    padding-top: 2.82rem;
+    padding-left: 2.56rem;
+    color: white;
+    font-weight: 700;
+    font-size: 1.75rem;
+    width: 60%;
+    line-height: 2.5rem;
+}
+.img_box{
+    background-image: url("./img/Rectangle\ 2.1.png");
+    background-color: none;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.info_ver{
+    padding-top: 2.82rem;
+    padding-left: 1.54rem;
+    color: white;
+    font-weight: 700;
+    font-size: 1.75rem;
+    width:15.36rem ;
+}
+.arrow_img{
+    margin-top: 12.375rem;
+    margin-left: 12.66rem;
+    cursor: pointer;
+}
+.img_hor{
+    width: 100%;
+    height: 17.85rem;
+    margin-bottom: 1.1825rem;
+    border-radius: 0.625rem;
+    background-image: url("./img/Rectangle\ 3.png");
+    background-size: cover;
+}
+
+.theroy-z{
+    margin-left:12.625rem;
+    margin-top:5.812rem;
+}
+.latestnews{
+    font-weight:400 ;
+    font-size:1rem;
+    margin-bottom: 0%;
+}
+.newsletter{
+    font-weight:400;
+    font-size:3rem;
+    /* margin:0; */
+}
+.search{
+    margin-top:7.5rem;
+}
+
+.searchbar{
+    height:4.24rem;
+    width:45.745rem;
+    padding:0rem,0rem !important;
+}
+.searchbar button{
+    background: #06864D;
+    padding:0rem,0rem !important;
+    height:3.75rem;
+    width:10rem;
+}
+.searchinput{
+    height:3.75rem;
+    width:22.745rem;
+    border-radius: 0.3125rem;
+    padding-left:1.6912rem;
+}
+.txt{
+    color:#2078BF;
+    padding-top: 6.19625rem;
+}
+.blog-content{
+    background-color: #F5FBFF;
+}
+
+.footer {
+    background-color:#2078BF;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    position: relative;
+}
+.img-section{
+    background-image: url('./img/Illustration.png');
+    background-repeat: no-repeat;
+}
+
+.content {
+     color: #fff;
+     font-size: 1rem;
+     font-weight: 400;
+     line-height: .8;
+}
+.head{
+    font-size:1.375rem;
+    font-weight:400;
+}
+.footer-2{
+    background-color: #2078BF;
+    width: 100%;
+}
+.container{
+    padding: 40px;
+  }
+  .paragraph{
+    padding-top: 3.8125rem;
+    line-height: 2.18rem;
+  }
+  .faq{
+      padding-left: 9.593rem;
+  }
+  .privacy{
+      padding:0px 35px 0px 10px ;
+  }
+  li{
+    list-style-type: none;
+    font-weight: 400;
+    line-height: 1.375rem;
+    font-size: 0.875rem;
+    letter-spacing: 0.00625rem;
+    padding-bottom: 0.58rem;
+  }
+  .in-li{
+      opacity: 0.8;
+  }
+
+  .footer-list{
+    gap: 1.66rem;
+    padding-left: 0px;
+  }
+  .chessboard{
+    height: 26.513rem;
+    width: 29.67rem;
+    border-radius:0.625rem;
+    position: absolute;
+    
+    left: 13.205rem;
+    margin-top:19.314rem;
+}
+.bluerectangle{
+    width: 22.812rem;
+    height: 35.43rem;
+    border-radius: 0.3125rem;
+    position: relative; 
+    left: 8.31%;
+    margin-right: 50.937rem;
+    top: 14.875rem;
+    bottom: 57.42%;
+}
+.discript {
+            color: #838383;
+            position: absolute;
+            left: 44.875rem;
+            right: 12.25rem;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 1.125rem;
+            line-height: 2.185rem;
+            padding-left: 5.687rem;
+            padding-top:18.375rem;
+        }
+
+.features {
+    position: absolute;
+    left: 44.919rem;
+    right: 25.955rem;
+    padding-top: 12.125rem;
+
+    font-style: normal;
+    font-weight: bold;
+    font-size: 2.25rem;
+    line-height: 4.875rem;
+    color: #2078BF;
+    padding-left: 7.687rem;
+
+}
+
+.bulletsremove li {
+    list-style-type: none;
+}
+
+.brochure {
+    width: 17.625rem;
+    height: 3.75rem;
+    margin-top: 1rem;
+    right: 23.562rem;
+}
+.bg{
+    background-color: #2078BF;
+}
+.tbl{
+    margin-left: 9.25rem;
+    margin-right: 7.3341rem;
+    color: white;
+    text-transform: capitalize;
+}
+.col-6{
+padding: 0rem;
+}
+.row-a{
+    padding-right: 1.209rem;
+}
+    
+.box-a{
+    height: 17.85rem;
+    padding: 0px !important;
+    padding-right: 1.209rem;
+
+}
+.box-b{
+    height: 28.6931rem;
+    padding: 0px !important;
+
+}
+.box-c{
+    height: 28.6931rem;
+    padding: 0px;
+    background-image: url('./img/Rectangletbl.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+footer{
+    color: white;
+    background-color: #2078BF;
+    width: 100%;
+}
+
+.mobile{
+  left: 50.868rem;
+  position: absolute;
+  z-index: 1;
+
+} 
+.benefits{
+ width: 20.3125rem;
+ margin-left: 25.75rem;
+ padding-top: 8.6875rem;
+}
+
+.footer-pattern{
+    position: absolute;
+    /* bottom: 0px; */
+    top: 0px;
+}
+.images-footer{
+    z-index: 1;
+    position: absolute;
+}
+.mob{
+    height: 150px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
