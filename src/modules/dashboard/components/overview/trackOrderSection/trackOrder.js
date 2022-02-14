@@ -25,9 +25,9 @@ export default function TrackOrder() {
                             </ul>
                         </div>
                     </aside>
-                    <main class="row track ">
+                    <main class="row track_bg ">
                         <section class="col-lg-1 col-md-1 col-sm-0 col-0"></section>
-                        <section class="col-lg-10 col-md-10 row">
+                        <section class="col-lg-10 col-md-10 col-sm-12 col-12 track_pd row">
                             <div class="col-md-6 col-sm-6 col-12 track p-0">
                                 <h3>Easily Track Livestock
                                     With Their Chip Number</h3>

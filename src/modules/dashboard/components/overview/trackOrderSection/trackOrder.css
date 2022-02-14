@@ -24,15 +24,9 @@ aside {
     color: #2078BF;
     /* box-shadow: 0rem 1.875rem 2.5rem #E3F3FF; */
   }
-.address {
-  padding-left: 2.5rem;
-}
 
-.footerEnd .logo {
-  width: 1.151rem;
-  height: 1.151rem;
-  margin-right: 0.668rem;
-}
+
+
 
 
 
@@ -48,7 +42,7 @@ aside {
 
 
 .track h3 {
-  padding: 10vh 10vw 8vh 1vw;
+  padding: 10vh 10vw 4vh 1vw;
   font-family: Ubuntu;
   font-style: normal;
   font-weight: bold;
@@ -58,10 +52,13 @@ aside {
   margin: 0;
 }
 .track p {
-  padding: 0vh 0vw 0vh 1vw;
+  padding: 0vh 3vw 0vh 1vw;
   color: #838383;
   font-size: 0.875rem;
   line-height: 2.187rem;
+}
+.track_pd{
+  margin-bottom: 10vh;
 }
 
 .livestock h3 {
@@ -91,10 +88,16 @@ aside {
   border-top-left-radius: 0px !important;
 }
 .track {
-  background: #FFFFFF;
+  
   /* box-shadow: 0rem 1.875rem 2.5rem #E3F3FF; */
   border-radius: 0.625rem;
   box-sizing: border-box;
+}
+.track_bg{
+  background: #FFFFFF;
+  border-radius: 0.625rem;
+  box-sizing: border-box;
+  box-shadow: 0rem 1.875rem 2.5rem #E3F3FF ;
 }
 .search{
     margin-bottom: 5vh;
