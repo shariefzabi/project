@@ -118,6 +118,7 @@ export default function Sidebar() {
                     <div>
                         <ul className="menupage">
                             <li><a>Overview</a></li>
+                            <li><a>My Profile</a></li>
                             <li><a>Orders</a></li>
                             <li><a>Invoice</a></li>
                             <li><a>Payments</a></li>
