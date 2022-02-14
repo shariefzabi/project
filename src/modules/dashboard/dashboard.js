@@ -9,6 +9,7 @@ import Sidebar from './components/sidebar/sidebar';
 import Quicklinks from './components/overview/quicklinks/quicklinks';
 import TrackOrder from './components/overview/trackOrderSection/trackOrder';
 import Profile from './components/profile/Profile';
+import Statistics from './components/overview/statisticsSection/statistics';
 
 
 
@@ -24,6 +25,7 @@ function Dashboard() {
         <Quicklinks></Quicklinks>
         <Profile></Profile>
         <TrackOrder></TrackOrder>
+        <Statistics></Statistics>
 
     </div>);
 }
