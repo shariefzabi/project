@@ -1,11 +1,14 @@
 .logout {
-    margin: 10.125vw;
+    margin: 10.125vw !important;
+    margin: 0;
+    padding: 0;
     /* margin-right: 11.938vh; */
   }
   
   #login_page {
     font-size: 0.5rem;
-    background-color: #E3F3FF;
+    background-color: #F5FBFF;
+    margin-left: 4.375vw;
   }
   
   aside {
@@ -16,7 +19,7 @@
     font-weight: bold;
     font-size: 2.25rem;
     line-height: 1rem;
-    background-color: #E3F3FF;
+    /* background-color: #E3F3FF; */
     color: #2078BF;
     box-shadow: 0rem 1.875rem 2.5rem #E3F3FF;
   }
@@ -25,6 +28,8 @@
     background: #FFFFFF;
     box-shadow: 0rem 1.875rem 2.5rem #E3F3FF;
     border-radius: 0.625rem;
+    margin-right:0 !important;
+    margin-left:0 !important;
   }
   .box h3 {
     text-align: center;
