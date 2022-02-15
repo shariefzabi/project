@@ -1,0 +1,151 @@
+#mainContent {
+    margin-left: 4.375rem;
+    padding-top: 7.5rem;
+  }
+  
+  .payments-section {
+    margin: 0;
+    padding: 0;
+    margin-left: 11vw;
+    margin-right: 12.13vw;
+    margin-top: 5rem;
+    box-sizing: border-box;
+  }
+  
+  .payments-section .paymentsText h2 {
+    color: #2078BF;
+    font-weight: bolder;
+    font-size: 2.25rem;
+    line-height: 1rem;
+  }
+  
+  .payments-section header {
+    height: 3vw;
+  }
+  
+  .rowheader th {
+    margin: 3.25rem 0rem;
+    line-height: 1rem;
+    text-align: none;
+    color: #838383;
+    font-style: normal;
+    font-weight: bold;
+    font-family: Ubuntu;
+  }
+  
+  .tabcol {
+    height: 66.22vw;
+    background-color: #FFFFFF;
+    box-shadow: 0rem 1.875rem 2.5rem #E3F3FF;
+    border: radius 0.625rem;
+    width: 100%;
+  }
+  
+  td {
+    padding-right: 0vw 4.601vw 0vw 5vw;
+    font-size: 0.875rem;
+  }
+  
+  .container {
+    margin-top: 5%;
+  }
+  
+  th {
+    padding: 3.467vw 0vw 0vw 4.601vw;
+    text-align: none;
+  }
+  
+  .btn {
+    width: 11.737vw;
+    font-size: 1.058vw;
+    padding: 3%;
+    text-align: center;
+    margin-top: 6%;
+  }
+  
+  tbody:before {
+    line-height: 0.5rem;
+    content: "‌";
+    display: block;
+  }
+  
+  tbody {
+    line-height: 1rem;
+    margin-bottom: 2.4vw;
+    text-align: center;
+    color: #838383;
+    font-size: 0.933vw;
+    font-weight: normal;
+  }
+  
+  @media (min-width: 0px) and (max-width: 576px) {
+    #mainContent {
+      margin-left: 0;
+    }
+  
+    .payments-section {
+      margin: 0;
+    }
+    .payments-section .tabcol td {
+      font-size: 0.5rem;
+      padding-left: 1%;
+      text-align: center;
+    }
+    .payments-section th {
+      text-align: center;
+      padding-left: 0%;
+    }
+    .payments-section .container {
+      margin-top: 4%;
+    }
+    .payments-section .paymentsText h2 {
+      font-size: 1rem;
+      padding-left: 10%;
+    }
+    .payments-section .rowheader {
+      font-size: 0.6rem;
+    }
+    .payments-section .btn {
+      font-size: 0.5rem;
+      padding: 0%;
+    }
+  }
+  @media (min-width: 577px) and (max-width: 768px) {
+    .payments-section {
+      margin: 0;
+    }
+    .payments-section .btn {
+      font-size: 0.7rem;
+      padding: 0%;
+    }
+    .payments-section .paymentsText h2 {
+      padding-left: 10%;
+      font-size: 1.5rem;
+    }
+    .payments-section .container {
+      margin-top: 3%;
+    }
+    .payments-section td {
+      padding: 0;
+      font-size: 0.7rem;
+    }
+    .payments-section th {
+      text-align: center;
+      padding-left: 0%;
+    }
+    .payments-section .rowheader {
+      font-size: 0.7rem;
+    }
+  }
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .payments-section {
+      margin-top: 4%;
+    }
+  
+    .btn {
+      font-size: 0.8rem;
+    }
+  }
+  
+  
+  
