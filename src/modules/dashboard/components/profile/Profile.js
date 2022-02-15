@@ -2,7 +2,14 @@
 import './profile.css'
 
 export default function Profile() {
-    return (<section className="profileSection">
+
+    return (
+    <div>
+          <main id="mainContent">
+    
+    
+    <section className="profileSection">
+        
         
         <header>
             <div className="headingText">
@@ -11,22 +18,20 @@ export default function Profile() {
         </header>
 
         <div className="formContainer container-fluid " id='profileBlock'>
-            <main className="row box">
-                <section className="col-md-1 col-sm-1 col-1"></section>
-
-                <section className="col-md-10 col-sm-10 col-10 row">
+            <main className="row box col-sm-12">
+                <section className="col-md-12 col-sm-12  row">
 
 
                     <form>
-
+                        <div className='profile' >
                         <p> Fields with <span className="text-danger">*</span> are required</p>
-
+                       
                         <button className="btn btn-success btn-float-right " id="resetButton" type="button" onclick="resetPasswordToggler()">Reset Password</button>
-
+                          </div>
                         <label className="col-md-12" for="name">Name<span className="text-danger">*</span></label>
                         <div className="row">
                             <div className="col-md-11 col-sm-11 col-10">
-                                <input type="text" id="name" name="name" className="inputBox " placeholder="Enter your name" />
+                                <input type="text" id="name" name="name" className="inputBox " placeholder="Enter Name"/>
                             </div>
                             <div className="col-md-1 col-sm-1 col-1 pt-1">
                                 <i className="far fa-user"></i>
@@ -37,7 +42,7 @@ export default function Profile() {
                         <label for="phone">Phone<span className="text-danger">*</span></label>
                         <div className="row">
                             <div className="col-md-11 col-sm-11 col-10">
-                                <input type="text" id="phone" name="phone" className="inputBox " placeholder="Enter your Phone number" />
+                                <input type="text" id="phone" name="phone" className="inputBox " placeholder="Enter Number"/>
                             </div>
                             <div className="col-md-1 col-sm-1 col-1 pt-1">
                                 <i className='fa fa-mobile-phone'></i>
@@ -48,7 +53,7 @@ export default function Profile() {
                         <label for="email">Email<span className="text-danger">*</span></label>
                         <div className="row">
                             <div className="col-md-11 col-sm-11 col-10">
-                                <input type="email" id="email" name="email" className="inputBox " placeholder="Enter your Email address" />
+                                <input type="email" id="email" name="email" className="inputBox " placeholder="Enter Email"/>
                             </div>
                             <div className="col-md-1 col-sm-1 col-1 pt-1">
                                 <i className='fa fa-envelope-o'></i>
@@ -59,7 +64,7 @@ export default function Profile() {
                         <label for="location">Location<span className="text-danger">*</span></label>
                         <div className="row">
                             <div className="col-md-11 col-sm-11 col-10">
-                                <input type="text" id="location" name="location" className="inputBox " placeholder="Enter your Location" />
+                                <input type="text" id="location" name="location" className="inputBox " placeholder="Enter Location"/>
                             </div>
                             <div className="col-md-1 col-sm-1 col-1 pt-1">
                                 <i className="fa fa-map-marker"></i>
@@ -70,7 +75,7 @@ export default function Profile() {
                         <label for="zipCode">Zipcode<span className="text-danger">*</span></label>
                         <div className="row">
                             <div className="col-md-11 col-sm-11 col-10">
-                                <input type="number" id="zipCode" name="zipCode" className="inputBox " placeholder="Enter your Zipcode" />
+                                <input type="number" id="zipCode" name="zipCode" className="inputBox " placeholder="Enter Zipcode"/>
                             </div>
                             <div className="col-md-1 col-sm-1 col-1 pt-1">
                                 <i className="fa fa-map-marker"></i>
@@ -82,7 +87,7 @@ export default function Profile() {
                         <div className="row">
                             <div className="col-md-11 col-sm-11 col-10">
                                 <input type="text" id="address" name="address" className="inputBox "
-                                    placeholder="Enter your Delivery address" />
+                                    placeholder="Enter Address"/>
                             </div>
                             <div className="col-md-1 col-sm-1 col-1 pt-1">
                                 <i className=" fas fa-dolly-flatbed"></i>
@@ -103,7 +108,6 @@ export default function Profile() {
         <div className="formContainer container-fluid form-control d-none" id="resetBlock">
             <main className="row box">
 
-                <section className="col-md-1 col-sm-1 col-1"></section>
 
                 <section className="col-md-10 col-sm-10 col-10 row">
                     <div className='resetpage'><h3>Reset Password</h3></div>
@@ -117,7 +121,7 @@ export default function Profile() {
                             <label for="name">Old Password<span className="text-danger">*</span></label>
                             <div className="row">
                                 <div className="col-md-11 col-sm-11 col-10">
-                                    <input type="text" id="name" name="name" className="inputBox" placeholder="Enter your name" />
+                                    <input type="text" id="name" name="name" className="inputBox" placeholder="Enter your name"/>
                                 </div>
                                 <div className="col-md-1 col-sm-1 col-1 pt-1">
                                     <font-awesome-icon icon="fa-thin fa-lock-keyhole"></font-awesome-icon>
@@ -129,7 +133,7 @@ export default function Profile() {
                             <label for="phone">Password<span className="text-danger">*</span></label>
                             <div className="row">
                                 <div className="col-md-11 col-sm-11 col-10">
-                                    <input type="password" id="phone" name="phone" className="inputBox" placeholder="Enter New Password" />
+                                    <input type="password" id="phone" name="phone" className="inputBox" placeholder="Enter New Password"/>
                                 </div>
                                 <div className="col-md-1 col-sm-1 col-1 pt-1">
                                     <i className="fa fa-lock"></i>
@@ -161,6 +165,8 @@ export default function Profile() {
 
         </div>
     </section>
+    </main>
+    </div>
 
 
     )
