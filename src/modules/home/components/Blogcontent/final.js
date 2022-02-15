@@ -1,13 +1,13 @@
 import React from "react";
 
-import "./assets/styles.css";
+import "./assets/index.css";
 import Image from "./image";
 import Middle from "./middle";
 import Form from "./form";
 
 
 
-class Final extends React.Component{
+class Finalblog extends React.Component{
   render(){
       return(
           <div>
@@ -19,4 +19,4 @@ class Final extends React.Component{
   }
 }
 
-export default Final;
+export default Finalblog;
