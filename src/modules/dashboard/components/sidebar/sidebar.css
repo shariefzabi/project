@@ -118,4 +118,7 @@
     .sidebar {
       margin-top: 6rem;
     }
+    #mainContent{
+      padding-top: 6rem;
+    }
   }

@@ -7,7 +7,7 @@ export default function Header() {
             <header className="mainHeader">
 
                 <nav className="navbar navbar-expand-lg navbar-expand-sm row align-items-center justify-content-end">
-                    <div className="col-auto me-auto">
+                    <div className="col-auto ms-auto">
                         <form className="d-flex form-group searchBar">
                             <span className="fa fa-search form-control-feedback searchIcon"></span>
                             <input type="text" className="form-control searchInput" placeholder="e.g.. orders" />
@@ -17,7 +17,7 @@ export default function Header() {
                         <div className="collapse navbar-collapse d-sm-none" id="navbarSupportedContent">
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li className="nav-item notifications">
-                                 
+
                                     <a type="button" className="position-relative text-white">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                             className="bi bi-bell" viewBox="0 0 16 16">
@@ -31,7 +31,7 @@ export default function Header() {
                                     </a>
                                 </li>
                                 <li className="nav-item dropdown">
-                                   
+
                                     <a className="btn text-white dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                         data-bs-toggle="dropdown" aria-expanded="false">
                                         Ramon Ridw...

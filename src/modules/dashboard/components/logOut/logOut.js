@@ -1,7 +1,6 @@
 import React from 'react'
 import './logOut.css'
 
-
 export default function LogOut() {
     return (
 

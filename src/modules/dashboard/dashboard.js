@@ -6,20 +6,22 @@ import Sidebar from './components/sidebar/sidebar';
 import Footer from './components/footer/footer';
 import Overview from './components/overview/overview';
 import LogOut from './components/logOut/logOut';
-import Statistics from './components/overview/statisticsSection/statistics';
+
+
 
 
 
 
 function Dashboard() {
-    return (<div className='dashboard'>
+    return (
+      <div className="dashboard">
         <Header></Header>
         <Sidebar></Sidebar>
         <Overview></Overview>
-        <Statistics></Statistics>
+        <LogOut></LogOut>
         <Footer></Footer>
-        {/* <LogOut></LogOut> */}
-    </div>);
+      </div>
+    );
 }
 
 export default Dashboard;
