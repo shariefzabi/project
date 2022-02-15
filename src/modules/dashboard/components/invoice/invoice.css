@@ -1,0 +1,150 @@
+.invoiceSection {
+    margin: 6.562rem 12.13vw 0rem 11vw;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .invoiceSection .headingText h2 {
+    color: #2078BF;
+    font-weight: bolder;
+    margin: 0;
+    font-size: 2.25rem;
+    line-height: 1rem;
+  }
+  .invoiceSection header {
+    height: 2.8125rem;
+  }
+  
+  .invoice-body {
+    background-color: #FFFFFF;
+    box-shadow: 0rem 1.875rem 2.5rem #E3F3FF;
+    border-radius: 10px;
+    margin: auto;
+    height: 50.125rem;
+  }
+  
+  .invoice-heading, .head h3 {
+    line-height: 1rem;
+    margin-left: 4.6vw;
+    padding-top: 2.25rem;
+    font-weight: bold;
+    color: #838383;
+    font-size: 1.125rem;
+  }
+  
+  .head h3 {
+    margin-top: 1.375rem;
+    padding: 0rem;
+  }
+  .head h3 i {
+    font-size: 0.875rem;
+    font-weight: normal;
+  }
+  
+  .first-line:after {
+    content: "\a";
+    white-space: pre;
+  }
+  
+  .hr-line {
+    border-bottom: 2px solid #E0E0E0;
+  }
+  
+  .invoice-id {
+    line-height: 1rem;
+    margin-left: 4.6vw;
+    color: #838383;
+    font-size: 0.875rem;
+  }
+  
+  .table {
+    margin-left: 4.6vw;
+    font-size: 0.8rem;
+  }
+  .table table, .table th, .table td {
+    border: 1px solid #E0E0E0;
+    text-align: center;
+    padding: 0.66vw;
+    color: #838383;
+  }
+  
+  .Brow td {
+    padding: 1.33vw;
+  }
+  
+  .inv-vr {
+    border-left: 2px solid #E0E0E0;
+    height: 6.812rem;
+    margin: 2rem 0rem 0rem 2.7rem;
+  }
+  
+  .inv-bd-lp {
+    font-size: 0.875rem;
+    color: #838383;
+    margin: 2rem 0rem 2.163rem;
+  }
+  .inv-bd-lp p {
+    margin-bottom: 1.365rem;
+  }
+  
+  @media (min-width: 577px) and (max-width: 768px) {
+    .invoiceSection, .id-no, .invoice-id, .head i, .inv-bd-lp {
+      font-size: 0.625rem;
+    }
+  
+    .table table, th, td {
+      /* text-align: center; */
+      padding: 0.1vw;
+      font-size: 0.625rem;
+    }
+  
+    .Brow td {
+      padding: 2vw 0.1vw;
+    }
+  
+    .invoice-heading, .head h3 {
+      font-size: 0.803rem;
+    }
+  
+    .invoice-body {
+      height: 43rem;
+    }
+  }
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .table table, th, td {
+      /* text-align: center; */
+      padding: 0.1vw;
+      font-size: 0.8rem;
+    }
+  
+    .Brow td {
+      padding: 2vw 0.1vw;
+    }
+  }
+  @media (max-width: 576px) {
+    .invoiceSection, .id-no, .invoice-id, .head i, .inv-bd-lp {
+      font-size: 0.6rem;
+    }
+  
+    .table table, th, td {
+      /* text-align: center; */
+      padding: 0.07vw;
+      font-size: 0.6rem;
+    }
+  
+    .Brow td {
+      padding: 1vw 0.07vw;
+    }
+  
+    .invoice-heading, .head h3 {
+      font-size: 0.7rem;
+    }
+  
+    .dbl, .inv-vr {
+      display: none;
+    }
+  
+    .inv-bd-lp {
+      margin-right: 1rem;
+    }
+  }
+  
