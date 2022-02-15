@@ -380,14 +380,14 @@ margin-top:50px;
     margin-left: 2.625rem;
 }
 .triangle-up {
-	width: 0;
-	height: 0;
+	/* width: 0; */
+	/* height: 0; */
 	border-left: 8px solid transparent;
 	border-right: 8px solid transparent;
 	border-bottom: 11px solid #fff;
     position: absolute;
     top : -11px;
-    left: 93px;
+    left: 94px;
     
 }
 ul{
@@ -1000,24 +1000,27 @@ margin-left:8.981875rem;
 }
 .goat-left{
     width: 140px;
-    height: 140px;
+    height: 121.53px;
     position: absolute;
     top: 71.93%;
     left:0%;
 }
 .goat-mid{
-    width: 140px;
-    height: 140px;
+    width: 112.78px;
+    height: 97.9px;
     position: absolute;
     top: 1%;
-    left:0%;
+    left:74%;
+    transform: rotate(172.01deg);
 }
 .goat-right{
-    width: 140px;
-    height: 140px;
+   
+    width: 109px;
+    height: 94.62px;
     position: absolute;
-    top: 10.93%;
-    left:0%;
+    top: 78.93%;
+    left: 49%;
+    transform: rotate(-20.35deg);
 }
 .cow-left{
     position: absolute;
