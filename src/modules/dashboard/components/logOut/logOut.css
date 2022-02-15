@@ -25,6 +25,8 @@
     background: #FFFFFF;
     box-shadow: 0rem 1.875rem 2.5rem #E3F3FF;
     border-radius: 0.625rem;
+    margin-right:0 !important;
+    margin-left:0 !important;
   }
   .box h3 {
     text-align: center;

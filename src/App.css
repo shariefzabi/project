@@ -4,13 +4,15 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+/* 
 body, html {
   font-family: "Ubuntu", sans-serif;
   font-style: normal;
   background-color: #F5FBFF;
   overflow-x: hidden;
-}
+} */
+
+
 /* .App {
   text-align: center;
 } */
