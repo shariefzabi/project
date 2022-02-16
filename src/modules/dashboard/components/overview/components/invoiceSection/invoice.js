@@ -2,11 +2,26 @@ import "./invoice.css"
 export default function Invoice() {
     return (
         <div>
-            <main id="mainContent">
+            <main id="sectionContent">
                 <section className="invoiceSection">
-                    <header>
-                        <div className="headingText">
+                    <header className="row">
+                        <div className="headingText col">
                             <h2>Invoice</h2>
+                        </div>
+
+                        <div className="dropdown col">
+                            <a className="edit-toggler text-secondary" type="button" id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                    className="bi bi-three-dots edit-dropdown" viewBox="0 0 16 16">
+                                    <path
+                                        d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+                                </svg>
+                            </a>
+                            <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a className="dropdown-item" href="#">Edit</a></li>
+                                <li><a className="dropdown-item" href="#">Remove</a></li>
+                            </ul>
                         </div>
                     </header>
                     <main className="invoice-body">
@@ -79,10 +94,6 @@ export default function Invoice() {
                             </div>
                             <hr className="hr-line" />
                             <p className="invoice-id">ID - 900085000597636<span >&#x25BE;</span></p>
-                            <hr className="hr-line" />
-                            <p className="invoice-id">ID - 900085000597636<span>&#x25BE;</span></p>
-                            <hr className="hr-line" />
-                            <p className="invoice-id">ID - 900085000597636<span>&#x25BE;</span></p>
                             <hr className="hr-line" />
                             <p className="invoice-id">ID - 900085000597636<span>&#x25BE;</span></p>
                         </div>
