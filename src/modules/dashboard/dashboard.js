@@ -4,10 +4,11 @@ import './dashboard.css';
 import Header from './components/header/Header';
 import Sidebar from './components/sidebar/sidebar';
 import Footer from './components/footer/footer';
-// import Overview from './components/overview/overview';
+import Overview from './components/overview/overview';
 // import LogOut from './components/logOut/logOut';
-//import Invoice from './components/invoice/invoice';
-import Payments from './components/payments/payments';
+// import TrackOrder from './components/trackOrder/trackOrder';
+// import Invoice from './components/invoice/invoice';
+// import Payments from './components/payments/payments';
 
 
 
@@ -19,10 +20,11 @@ function Dashboard() {
       <div className="dashboard">
         <Header></Header>
         <Sidebar></Sidebar>
-        {/* <Overview></Overview> */}
-        {/* <Invoice></Invoice> */}
-         {/* <LogOut></LogOut> */}
-        <Payments></Payments>
+        <Overview></Overview> 
+        {/* <TrackOrder></TrackOrder>  */}
+          {/* <Invoice></Invoice> */}
+          {/* <LogOut></LogOut>         */}
+         {/* <Payments></Payments> */}
        <Footer></Footer>
         
       </div>

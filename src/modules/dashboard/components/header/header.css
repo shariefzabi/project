@@ -1,5 +1,6 @@
 .mainHeader .navbar {
   position: fixed;
+  top:0; /*spandana*/
   background-color: #2078BF;
   height: 7.5rem;
   padding: 0;

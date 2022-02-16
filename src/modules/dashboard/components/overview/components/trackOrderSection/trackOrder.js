@@ -10,7 +10,7 @@ export default function TrackOrder() {
                         <div className="col-lg-11 col-md-11 col-sm-11 col-11 p-0">
                             <h2>Track Order</h2>
                         </div>
-                        <div className="dropdown col-lg-1 col-md-1 col-sm-1 col-1 col">
+                        <div className="dropdown col-lg-1 col-md-1 col-sm-1 col-1 col p-0 ps-3">
                             <a className="edit-toggler text-secondary" type="button" id="dropdownMenuButton1"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
