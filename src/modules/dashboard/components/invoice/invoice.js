@@ -12,7 +12,7 @@ export default function Invoice() {
                     <main className="invoice-body">
                         <h3 className="invoice-heading">Product Details</h3>
                         <hr className="hr-line" />
-                        <p className="invoice-id">ID - 900085000597636<span style="padding-left: 45.71vw;">&#x25BE;</span></p>
+                        <p className="invoice-id">ID - 900085000597636<span>&#x25BE;</span></p>
                         <hr className="hr-line" />
                         <div className="table">
                             <table>
@@ -70,7 +70,7 @@ export default function Invoice() {
                                     <p>Account Number:</p>
                                     <p>Account Name:</p>
                                 </div>
-                                <div className="col-1 inv-vr p-0" style="width:3rem;"></div>
+                                <div className="col-1 inv-vr p-0"></div>
                                 <div className="col-5  col-sm-3 inv-bd-lp text-start p-0">
                                     <p>First Bank</p>
                                     <p>6004568392</p>
@@ -78,13 +78,13 @@ export default function Invoice() {
                                 </div>
                             </div>
                             <hr className="hr-line" />
-                            <p className="invoice-id">ID - 900085000597636<span style="padding-left: 45.71vw;">&#x25BE;</span></p>
+                            <p className="invoice-id">ID - 900085000597636<span >&#x25BE;</span></p>
                             <hr className="hr-line" />
-                            <p className="invoice-id">ID - 900085000597636<span style="padding-left: 45.71vw;">&#x25BE;</span></p>
+                            <p className="invoice-id">ID - 900085000597636<span>&#x25BE;</span></p>
                             <hr className="hr-line" />
-                            <p className="invoice-id">ID - 900085000597636<span style="padding-left: 45.71vw;">&#x25BE;</span></p>
+                            <p className="invoice-id">ID - 900085000597636<span>&#x25BE;</span></p>
                             <hr className="hr-line" />
-                            <p className="invoice-id">ID - 900085000597636<span style="padding-left: 45.71vw;">&#x25BE;</span></p>
+                            <p className="invoice-id">ID - 900085000597636<span>&#x25BE;</span></p>
                         </div>
                     </main>
                 </section>
