@@ -1,13 +1,14 @@
 import React from 'react';
 
 import './dashboard.css';
-import Header from './components/header/Header';
+//import Header from './components/header/Header';
 import Sidebar from './components/sidebar/sidebar';
-import Footer from './components/footer/footer';
-// import Overview from './components/overview/overview';
+//import Footer from './components/footer/footer';
+//  import Overview from './components/overview/overview';
 // import LogOut from './components/logOut/logOut';
 //import Invoice from './components/invoice/invoice';
-import Payments from './components/payments/payments';
+//import Payments from './components/payments/payments';
+import Orders from './components/orders/orders';
 
 
 
@@ -17,13 +18,15 @@ import Payments from './components/payments/payments';
 function Dashboard() {
     return (
       <div className="dashboard">
-        <Header></Header>
+        {/* <Header></Header> */}
         <Sidebar></Sidebar>
-        {/* <Overview></Overview> */}
+         {/* <Overview></Overview>  */}
         {/* <Invoice></Invoice> */}
          {/* <LogOut></LogOut> */}
-        <Payments></Payments>
-       <Footer></Footer>
+        {/* <Payments></Payments> */}
+        {/* <Orders></Orders> */}
+        {/* <Footer></Footer>  */}
+        
         
       </div>
     );
