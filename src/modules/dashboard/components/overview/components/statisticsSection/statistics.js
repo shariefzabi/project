@@ -9,10 +9,10 @@ export default function Statistics() {
                 <div className="statistics">
                     <section class="statSection">
                         <aside className="row">
-                            <div className="col-lg-11 col-md-11 col-sm-11 col-11 p-0">
+                            <div className="col-lg-11 col-md-11 col-sm-11 col-10 p-0">
                                 <h2>Statistics</h2>
                             </div>
-                            <div className="dropdown col-lg-1 col-md-1 col-sm-1 col-1 col">
+                            <div className="dropdown col-lg-1 col-md-1 col-sm-1 col-1 ps-3 pt-2 col">
                                 <a className="edit-toggler text-secondary" type="button" id="dropdownMenuButton1"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"

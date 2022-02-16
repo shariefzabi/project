@@ -10,7 +10,7 @@ export default function TrackOrder() {
                         <div className="col-lg-11 col-md-11 col-sm-11 col-11 p-0">
                             <h2>Track Order</h2>
                         </div>
-                        <div className="dropdown col-lg-1 col-md-1 col-sm-1 col-1 col p-0 ps-3">
+                        <div className="dropdown col-lg-1 col-md-1 col-sm-1 col-1 col p-0 ps-3 pt-2">
                             <a className="edit-toggler text-secondary" type="button" id="dropdownMenuButton1"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
@@ -26,9 +26,9 @@ export default function TrackOrder() {
                         </div>
                     </aside>
                     <main class="row track ">
-                        <section class="col-lg-1 col-md-1 col-sm-0 col-0"></section>
-                        <section class="col-lg-10 col-md-10 row">
-                            <div class="col-md-6 col-sm-6 col-12 track p-0">
+                        {/* <section class="col-lg-1 col-md-1 col-sm-0 col-0"></section> */}
+                        <section class="row " id="rack">
+                            <div class="col-md-6 col-sm-6 col-12 rack ">
                                 <h3>Easily Track Livestock
                                     With Their Chip Number</h3>
                                 <p>
@@ -47,8 +47,8 @@ export default function TrackOrder() {
                                 </section>
                             </div>
                         </section>
-                        <section class="col-lg-1 col-md-1 col-sm-0 col-0">
-                        </section>
+                        {/* <section class="col-lg-1 col-md-1 col-sm-0 col-0">
+                        </section> */}
                     </main>
                 </section>
             </div>

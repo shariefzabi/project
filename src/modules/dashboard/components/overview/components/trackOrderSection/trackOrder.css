@@ -1,5 +1,5 @@
 .trackOrder{
-    margin: 5vh 14.125vw 5vh 14.125vw !important;
+  margin: 5vh 14.125vw 5vh 13.7vw  !important;
     /* margin-left:2vw; */
     margin: 0;
     padding: 0;
@@ -50,12 +50,12 @@ aside {
 
 
 .track h3 {
-  padding: 10vh 10vw 8vh 1vw;
+  padding: 5vh 6vw 3vh 1vw;
   font-family: Ubuntu;
   font-style: normal;
   font-weight: bold;
-  font-size: 1.125rem;
-  line-height: 1.813rem;
+  font-size: 1.125em;
+  line-height: 1.813em;
   color: #2078BF;
   margin: 0;
 }
@@ -65,9 +65,11 @@ aside {
   font-size: 0.875rem;
   line-height: 2.187rem;
 }
-
+.livestock{
+  padding-left:2rem !important;
+}
 .livestock h3 {
-  padding: 10vh 3vw 8vh 1vw;
+  padding: 10vh 3vw 5vh 1vw !important;
   font-family: Ubuntu;
   font-style: normal;
   font-weight: bold;
@@ -97,6 +99,14 @@ aside {
   /* box-shadow: 0rem 1.875rem 2.5rem #E3F3FF; */
   border-radius: 0.625rem;
   box-sizing: border-box;
+  
+}
+.rack{
+  padding-right: 2rem !important;
+}
+#rack{
+  padding-left: 4vw;
+  padding-right: 4vw;
 }
 .search{
     margin-bottom: 5vh;
