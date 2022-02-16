@@ -24,7 +24,7 @@
     margin-top: 6.5625rem;
     box-sizing: border-box;
   }
-  .order-section .ordersText h2{
+  .order-section .headingText h2{
     color: #2078BF;
     font-weight: bolder;
     margin: 0;
@@ -113,19 +113,33 @@
     font-weight: bold;
     font-family: Ubuntu;
   }
-  
+  .rowheaderstatus{
+    padding:0%;
+  }
   .hr-line {
     border: 2px solid #E0E0E0;
     /* padding-top:3.867vw; */
   }
   
   @media (min-width: 0px) and (max-width: 576px) {
-    .order-section {
-      margin: 0;
+    /* .order-section {
+      margin:4%;
+    } */
+    .order-section{
+      margin-top: 2.5rem;
     }
-  
+    .order-section .headingText h2{
+      font-size: 1.5rem;
+    }
+      .order-section header {
+      margin-bottom: 0;
+    }
     #mainContent {
       margin-left: 0;
+    }
+    .rowheaderstatus{
+      padding-left:5%;
+      margin-left:0.5rem;
     }
   
     .tabcol td {
@@ -143,11 +157,17 @@
     .rowheader {
       font-size: 0.6rem;
     }
-  
-     span .button {
-      font-size: 0.4rem;
+    td p span{
+      font-size: 0.6rem;
       padding: 0%;
-      width:2%;
+      margin:0%;
+      line-height: 1rem;
+    }
+     .button1 {
+      font-size: 0.5rem;
+      padding: 0%;
+      width:75%;
+      margin:0%;
     }
   
     .wish {
@@ -155,17 +175,25 @@
     }
   }
   @media (min-width: 577px) and (max-width: 768px) {
-    .order-section {
+    /* .order-section {
       margin: 0;
+    } */
+    .order-section{
+      margin-top: 4.5rem;
     }
+    .order-section .headingText h2{
+      font-size: 2rem;
+    }
+      .order-section header {
+      margin-bottom: 1.5rem;
+    }
+  
+    
     .order-section .btn {
       font-size: 0.7rem;
       padding: 0%;
     }
-    .order-section .ordersText h2 {
-      padding-left: 10%;
-      font-size: 1.5rem;
-    }
+    
     .order-section .container {
       margin-top: 3%;
     }
@@ -192,6 +220,15 @@
   }
   
   @media (min-width: 769px) and (max-width: 992px) {
+    .order-section{
+      margin-top: 4.5rem;
+    }
+    .order-section .headingText h2{
+      font-size: 2rem;
+    }
+      .order-section header {
+      margin-bottom: 1.5rem;
+    }
     .wish {
       font-size: 0.8rem;
     }

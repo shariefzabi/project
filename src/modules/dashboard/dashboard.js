@@ -24,7 +24,7 @@ function Dashboard() {
         {/* <Invoice></Invoice> */}
          {/* <LogOut></LogOut> */}
         {/* <Payments></Payments> */}
-        {/* <Orders></Orders> */}
+         <Orders></Orders>
         {/* <Footer></Footer>  */}
         
         
