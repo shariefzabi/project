@@ -2,6 +2,13 @@
 import './profile.css'
 
 export default function Profile() {
+    function resetPasswordToggler() {
+        var profileBlock=document.getElementById('profileBlock')
+        profileBlock.style.display = "none"
+        var resetBlock=document.getElementById('resetBlock')
+        resetBlock.style.display = "block"
+
+    }
 
     return (
     <div>
@@ -26,7 +33,7 @@ export default function Profile() {
                         <div className='profile' >
                         <p> Fields with <span className="text-danger">*</span> are required</p>
                        
-                        <button className="btn btn-success btn-float-right " id="resetButton" type="button" onclick="resetPasswordToggler()">Reset Password</button>
+                        <button className="btn btn-success btn-float-right " id="resetButton" type="button" onClick={resetPasswordToggler}>Reset Password</button>
                           </div>
                         <label className="col-md-12" for="name">Name<span className="text-danger">*</span></label>
                         <div className="row">
@@ -105,7 +112,7 @@ export default function Profile() {
             </main>
         </div>
 
-        <div className="formContainer container-fluid form-control d-none" id="resetBlock">
+        <div className="formContainer container-fluid form-control " id="resetBlock">
             <main className="row box">
 
 

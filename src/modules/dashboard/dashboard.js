@@ -7,6 +7,7 @@ import Footer from './components/footer/footer';
 // import Overview from './components/overview/overview';
 // import LogOut from './components/logOut/logOut';
 import Invoice from './components/invoice/invoice';
+import Profile from './components/profile/Profile';
 // import Payments from './components/payments/payments';
 
 
@@ -19,6 +20,7 @@ function Dashboard() {
       <div className="dashboard">
         <Header></Header>
         <Sidebar></Sidebar>
+        <Profile></Profile>
         {/* <Overview></Overview>
         
          {/* <LogOut></LogOut> */}

@@ -107,6 +107,9 @@ form input {
   font-size: 24px;
   line-height: 16px;
 }
+#resetBlock{
+  display: none;
+}
 
 @media (max-width: 576px) {
   .profileSection{
