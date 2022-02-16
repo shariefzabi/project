@@ -1,22 +1,21 @@
 import React from "react";
 import arrow from "./assets/img/Icon (1).png";
-import "./assets/styles.css";
 
 class Blogtable extends React.Component {
     render() {
         return (
             <div>
-                <section className="blog">
-                    <h1 className="text-center">Blog</h1>
-                    <p className="aboutus-content text-center">Home/Blog</p>
+                <section className="blog text-center">
+                    <h1 >Blog</h1>
+                    <span className="aboutus-content ">Home/Blog</span>
                 </section>
                 <section class="blog-content">
                     <article class="text-center txt">The latest and best articles selected by our editorial choice</article>
                 </section>
                 <section className="text-center">
-                    <div className="d-lg-flex justify-content-between main_box ">
+                    <div className="d-lg-flex justify-content-between main_box  ">
                         <div className="left_box">
-                            <div className="first_box md-2"><p className="info">ONLINE PLATFORM TO BRIDGE IN LIVESTOCK.....</p></div>
+                            <div className="first_box md-2 "><p className="info">ONLINE PLATFORM TO BRIDGE IN LIVESTOCK.....</p></div>
                             <div className="d-lg-flex justify-content-between two_box">
                                 <div className="second_box"><p className="info_ver">WHY DO ROASTERS
                                     CROW ALL DAY?</p> </div>
