@@ -1,11 +1,9 @@
 body{
     overflow-x:hidden;
     /* max-width:93.75rem; */
-    background-color: #F5FBFF;
+    background-color: #F5FBFF!important;
     font-family: ubuntu;  
 }
-
-
 .active{
     text-decoration: underline solid white;
 }
@@ -20,19 +18,7 @@ body{
     background-color: #2078BF;
     color:white;
 }
-/* .buynow{
-    border: 0.134rem solid #00C3FF;
-    border-radius: 0.3125rem;
-    height: 3.75rem;
-    max-width:11.063rem;
-    margin-right: 2.625rem;
-    margin-left: 2.625rem;
-}
-.login{
-    height: 3.75rem;
-    max-width:11.063rem;
-    margin-right: 6.55rem;
-} */
+
 .di{
     background-color: #2078BF;
 }
@@ -69,13 +55,6 @@ body{
 .text{
     margin-bottom: 0rem;
 }
-.buynow2{
-    border: 0.134rem solid white;
-    border-radius: 0.3125rem;
-    margin-left: 1.625rem;
-    height: 3.75rem;
-    max-width:11.063rem;
-}
 .learnmore{
     height: 3.75rem;
     max-width:11.063rem;
@@ -90,96 +69,11 @@ body{
      margin-top: 13.5625rem !important;
 }
 
-.section-b{
-    background-color: #2078BF;
-    max-width:47.0856rem;
-    height:48.841rem;
-    margin-top:6.25rem;
-    margin-left: 5.606rem;
-    border-radius: 0.625rem;
-    margin-bottom:6.875rem;
-
-}
-.theory-y{
-    padding-left:4.937rem;
-    margin:0rem;
-    padding-top:6.0293rem;
-}
-.theory-c{
-    max-width:41rem;
-    height:11rem;
-    font-weight: 43.75rem;
-    font-size:2.25rem;
-    margin-bottom:3rem;
-}
-.theory-d{
-    max-width:31.05rem;
-    height:6.56rem;
-    font-size:1.125rem;
-    font-weight:25rem;
-    margin-bottom:2.25rem;
-}
-.theroy-e{
-    max-width:29.687rem;
-    height:10.375rem;
-    font-weight: 43.75rem;
-    font-size:1.125rem;
-    margin-bottom:15.8125rem;
-    
-}
-.learnmore-b{
-    height: 3.75rem;
-    max-width:11.063rem;
-    background-color: #06864D;
-    margin-top:3.8125rem;
-}
-.checkboard-b{
-    max-width:42.36rem;
-    height:36rem;
-    margin-top:12.5rem;
-    margin-bottom:12.5rem ;
-    padding-right:6.436rem;
-    position: absolute;
-    left:44rem;
-}
-.section-c{
-    height:22.847rem;
-    background-color:#2078BF ;
-    margin: 0rem;
-    padding: 0;
-    position: relative;
-}
 .latestletter{
     margin-left:12.625rem;
     margin-top: 5.625rem;
 }
-.theory-f{
-    max-width:33.81rem;
-    line-height: 3.625rem;
-    /* height:6.75rem; */
-    font-size:2.25rem;
-    font-weight: bold;
-    margin-top:4.5625rem;
-}
-.theory-g{
-    max-width:32.81rem;
-    margin-top:0.875rem;
-    /* height:6.3125rem; */
-    font-size:1.125rem;
-    font-weight: 25rem;
-    /* padding-top:1.875rem; */
-    line-height:2.1875rem;
-}
-.search{
-    margin-top:7.5rem;
-    margin-left:9.125rem;
-}
-.theory-h{
-    max-width:16.125rem;
-    height:2.1875rem;
-    font-size:1.6875rem;
-    font-weight:43.75rem;
-}
+
 .searchbar{
     height:4.24rem;
     max-width:22.745rem;
@@ -191,148 +85,14 @@ body{
     height:4.24rem;
     max-width:6.759rem;
 }
-.searchinput{
-    height:4.24rem;
-    max-width:22.745rem;
-    border-radius: 0.3125rem;
-}
-.about-us-bluerectangle{
-    padding-left: 12.37rem;
-    padding-top: 8.25rem;
-}
-.about-us-bluerectangle .chessboard{
-    padding-top: 7.65rem;
-    padding-left: 7.79rem;
-}
-.about-us article{
-    
-    padding-top: 10.09rem;
-    margin-left: 4.88rem;
-    max-width: 33.68rem;
-    
-}
-.about-us h2{
-    color: #2078BF;
-    font-weight: 700;
-    padding-left: 2rem;
-
-}
-.about-us .description{
-    color: #838383;
-    font-size: 1.12rem;
-    list-style-type: none;
-    font-size: 1.125rem;
-    line-height:169.23%; 
-    /* padding-left: 1rem; */
-    
-}
-.about-us .description .top-part{
-    padding-top: 3.56rem;
-    list-style-type: none;
-}
-.about-us .description .bottom-part{
-    padding-top: 1.7rem;
-    list-style-type: none;
-}
-.about-us-menu{
-    padding: 2.93rem 0 0 1rem;
-}
-.about-us-menu figure{
-    font-size: 0.7rem;
-    width: 6rem;
-    color: #838383;
-    text-align: center;
-}
-.about-us .btn{
-    width: 11.06rem;
-    height: 3.75rem;
-    font-size: 1.375rem;
-    margin-left: 2rem;
-    margin-top: 3.58rem; 
-}
-.logo-shift{
-    padding-right:6.25rem ;
-}
-.button-discover{
-    max-width:11.06rem;
-}
-.head-part{
-    font-weight:bold;
-    font-size: 2.25rem;
-    line-height: 4.875rem;
-    max-width :14.43rem;
-    height :2.5rem;
-    margin-left:11.66rem;
-    color:#2078BF;
-    top:4454px;
-    left:186.71px;  
-}
 
 /*ending of be a partner*/
 
 
 
-.heading-primary{
-font-family: Ubuntu;
-font-style: normal;
-font-weight: bold;
-font-size: 36px;
-line-height: 68px;
-color :#2078BF;
-margin-top:50px;
 
-}
 
-.clients .card{
-    width: 570px;
-    /* height : 160px; */
-    border-radius:10px;
 
-}
-.clients .carousel-description{
-    color:#838383;
-    font-weight:400px;
-    font-size:14px;
-    line-height: 20px;
-    font-family: ubuntu;
-    width:264px;
-    
-}
-.clients .carousel-radio{
-    width:35px;
-    height:35px;
-    left: 180.96px;
-}
-.clients .carousel-label{
-    /* Width :83px; */
-    /* Height : 16px; */
-    top: calc(50% - 16px/2 + 2436.27px);
-    font-family: Ubuntu;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 16px;
-    letter-spacing: 0.4px;
-    color: #06864D;
-}
-.clients .carousel-end{
-    /* position: absolute; */
-    /* height: 16px; */
-    /* left: 25.07%;
-    right: 63.13%; */
-    top: calc(50% - 16px/2 + 2436px);
-
-    font-family: Ubuntu;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 16px;
-  
-    letter-spacing: 0.4px;
-  
-    color: #838383;
-}
-/*satisfied clients end*/
 
 
 
@@ -347,14 +107,6 @@ margin-top:50px;
     background-color: #2078BF;
     height: 7.5rem;
 }
-/* body{
-    font-family: ubuntu;  
-    
-
-    overflow-x: hidden; 
-    max-width: 100%;
-
-} */
 .active{
     text-decoration: underline solid white;
 }
@@ -387,11 +139,14 @@ margin-top:50px;
 	border-bottom: 11px solid #fff;
     position: absolute;
     top : -11px;
-    left: 94px;
+    left: 99px;
     
 }
 ul{
     padding-left: 0px!important;
+}
+.nav-item ul li{
+    padding: 0;
 }
 .heading .dropdown-menu{
     border-radius: 00.3125rem;
@@ -444,8 +199,8 @@ ul{
     margin-bottom: 0rem;
 }
 .buynow2{
-    border: 0.134rem solid white;
-    border-radius: 0.3125rem;
+    border: 0.134rem solid white!important;
+    border-radius: 0.3125rem!important;
     margin-left: 1.625rem;
     height: 3.75rem;
     width:11.063rem;
@@ -471,171 +226,227 @@ ul{
 .head{
     background-color: #e5e5e5;
 }
-.section-b{
+
+/* Start of Sell LiveStock */
+
+.sell-livestock{
     background-color: #2078BF;
-    width:47.0856rem;
+    width:47.06rem;
     height:48.841rem;
     margin-top:6.25rem;
     margin-left: 5.606rem;
     border-radius: 0.625rem;
     margin-bottom:6.875rem;
-
 }
-.theory-y{
+.sell-livestock article{
     padding-left:4.937rem;
     margin:0rem;
     padding-top:6.0293rem;
 }
-.theory-c{
+.sell-livestock .heading{
     width:41rem;
     height:11rem;
-    font-weight: 43.75rem;
-    font-size:2.25rem;
     margin-bottom:3rem;
 }
-.theory-d{
+.sell-livestock .heading li{
+    font-weight: 700;
+    font-size:2.25rem;
+    padding-bottom: 35px;
+}
+.sell-livestock .description {
     width:31.05rem;
     height:6.56rem;
-    font-size:1.125rem;
-    font-weight:25rem;
     margin-bottom:2.25rem;
 }
-.theroy-e{
+.sell-livestock .description li{
+    font-size:1.125rem;
+    font-weight:400;
+}
+.sell-livestock .questions{
     width:29.687rem;
     height:10.375rem;
-    font-weight: 43.75rem;
-    font-size:1.125rem;
-    margin-bottom:15.8125rem;
-    
 }
-.learnmore-b{
+.sell-livestock .questions li{
+    font-size: 1.125rem!important;
+    font-weight: 700;
+    padding-bottom: 20px;
+
+} 
+.sell-livestock button{
     height: 3.75rem;
     width:11.063rem;
     background-color: #06864D;
-    margin-top:3.8125rem;
 }
-.checkboard-b{
+.sell-livestock .chessboard{
     width:42.36rem;
     height:36rem;
-    margin-top:12.5rem;
-    margin-bottom:12.5rem ;
+    margin-top:6.67rem;
     padding-right:6.436rem;
     position: absolute;
-    left:44rem;
+    left:46rem;
 }
-.section-c{
+/* End of Sell LiveStock */
+
+/* Start of Track LiveStock */
+.track-livestock{
     height:22.847rem;
-    background-color:#2078BF ;
-    margin: 0rem;
-    padding: 0;
+    background-color:#2078BF;
+    position: relative;
 }
-.theroy-z{
+.track-livestock article{
     margin-left:12.625rem;
 }
-
-
-.theory-h{
+.track-livestock .heading{
+    max-width:27.81rem;
+    line-height: 3.625rem;
+    font-size:2.25rem;
+    font-weight: bold;
+    margin-top:4.5625rem;
+}
+.track-livestock .description{
+    max-width:31.81rem;
+    margin-top:0.875rem;
+    font-size:1.125rem;
+    line-height:2.1875rem;
+}
+.track-livestock .search-livestock{
+    margin-top:7.5rem;
+    margin-left:9rem;
+}
+.track-livestock .searchbar-heading{
     width:16.125rem;
     height:2.1875rem;
     font-size:1.6875rem;
     font-weight:43.75rem;
 }
-
-
-.bg-part{
-    background-color: #e5e5e5;
-}
-.about-head{
-    position: absolute;
-    left: 44.919rem;
-    right: 25.955rem;
-    top: 157.062rem;
-
-    font-style: normal;
-    font-weight: bold;
-    font-size: 2.25rem;
-    line-height: 4.875rem;
-    color: #2078BF;
-    padding-left: 2.5rem;
-}
- .logo p{
-    color: #838383;
-    font-size: 0.634rem;
- }
-/* .chessboard{
-    height: 42.915rem;
-    width: 29.663rem;
-    border-radius:0.625rem;
-    position: absolute;
-    
-    left: 7.794rem;
-    right: 56.291rem;
-    top: 162.875rem;
-} */
-.bluerectangle{
-    width: 29.663rem;
-    height: 33.35rem;
+.track-livestock input{
+    height:4.25rem;
+    width:22.745rem;
     border-radius: 0.3125rem;
-    position: relative; 
-    /*z-index: -1;*/
+    padding-left: 21.92px;
     
-    left: 8.31%;
-    right: 60.04%;
-    top: 33.7%;
-    bottom: 57.42%;
 }
-.logo div{
-    width: 3.424rem;
-    height: 3.622rem;
-    padding-right: 6.25rem;
-    padding-top:5.93rem;
+.track-livestock input::placeholder{
+    color:  #D7D7D7;
 }
-.logo{
-    top: 178.55rem;
+.goat-left{
+    width: 140px;
+    height: 121.53px;
     position: absolute;
-    flex-wrap:wrap;
-    left:47.9656rem;
-    margin-right:5.625rem ;
+    top: 71.93%;
+    left:0%;
+}
+.goat-right{
+    width: 112.78px;
+    height: 97.9px;
+    position: absolute;
+    top: -6%;
+    left:74%;
+    transform: rotate(172.01deg);
+}
+.goat-mid{
+   
+    width: 109px;
+    height: 94.62px;
+    position: absolute;
+    top: 78.93%;
+    left: 49%;
+    transform: rotate(-20.35deg);
+}
+.cow-left{
+    position: absolute;
+    left: -60px;
+    top: -74px;
+    transform: rotate(247deg);
+}
+.cow-mid{
+    position: absolute;
+    top: -54px;
+    left: 656.55px;
+}
+.cow-right{
+    position: absolute;
+    right: -20px;
+    top: 264px;
+    transform: rotate(194deg);
 }
 
-.logo p{
-    font-size: 0.62rem;
+/* End of Track LiveStock */
+
+/* Start of About Us */
+.about-us-bluerectangle{
+    padding-left: 12.37rem;
+    padding-top: 8.25rem;
+}
+.about-us-bluerectangle .chessboard{
+    padding-top: 7.65rem;
+    padding-left: 7.79rem;
+}
+.about-us article{
+    
+    padding-top: 10.09rem;
+    margin-left: 4.88rem;
+    max-width: 33.68rem;
+    
+}
+.about-us h2{
+    color: #2078BF;
+    font-weight: 700;
+    padding-left: 2rem;
+
+}
+.about-us .description{
+    color: #838383;
+    font-size: 1.12rem;
+    list-style-type: none;
+    font-size: 1.125rem;
+    line-height:169.23%; 
+    padding-left: 2rem;
+    
+}
+.about-us .description .top-part{
+    padding-top: 3.56rem;
+    list-style-type: none;
+}
+.about-us .description .bottom-part{
+    padding-top: 1.7rem;
+    list-style-type: none;
+}
+.about-us-menu{
+    padding: 2.93rem 0 0 1rem;
+}
+.about-us-menu figure{
+    font-size: 0.7rem;
+    width: 6rem;
+    color: #838383;
     text-align: center;
 }
-.logo-button{
-    position: absolute;
-    left: 47.981rem;
-    right: 38.893rem;
-    top: 195.937rem;
-    bottom: 280.75rem;
-    padding-top:5rem;
+.about-us .btn{
+    width: 11.06rem;
+    height: 3.75rem;
+    font-size: 1.375rem;
+    margin-left: 2rem;
+    margin-top: 3.58rem; 
 }
-.logo-shift{
-    padding-right:6.25rem ;
-}
-.button-discover{
-    width:11.06rem;
-}
-/* team-2-css */
-/* .head-part{
-    font-weight:bold ;
-    font-size: 2.25rem;
-    line-height: 4.875rem;
-    width :14.43rem;
-    height :2.5rem;
-    margin-left:11.66rem;
-    color:#2078BF;
-    top:4454px;
-    left:186.71px;  
-} */
- .part-c{
+/* End of About Us */
+
+/* Start of Be a Partner */
+
+.be-a-partner{
+    margin-top :4.07rem;
     padding-top: 10.062rem;
- }
-.Be-a-partner{
-    margin-top :4.07rem!important;
-    margin-left:11.67rem!important;
+    width: 1137px;
+    margin:auto;
 }
-.Be-a-partner-image{
+.be-a-partner header{
+        font-weight:bold;
+        font-size: 2.25rem;
+        max-width :14.43rem;
+        height :2.5rem;
+        color:#2078BF;
+        margin-bottom: 65.25px;
+}
+.be-a-partner-image{
     width:33.75rem;
     height: 33.75rem;
     top: 222.453rem;
@@ -643,18 +454,10 @@ ul{
     right: 48.322rem;
     
 }
-.agent-checkbox{
-    
-    display:inline;
+.be-a-partner .agent-checkbox{
     padding-right :3.58rem;
-    
 }
-.butcherry-checkbox{
-    
-    display:inline;
-
-} 
-.become{
+.be-a-partner .content-heading{
     color :#2078BF;
     width:16.78rem;
     height: 3.75rem;
@@ -662,10 +465,8 @@ ul{
     line-height: 4.87rem;
     font-weight :43.75rem;
     margin-top:3.16rem;
-    
-
 }
-.partner{
+.be-a-partner .content{
     width:32.56rem;
     height: 6.06rem;
     font-weight: 43.75rem;
@@ -675,27 +476,29 @@ ul{
 
 
 }
-.discover{
+.be-a-partner button{
     width:11.062rem;
     height:3.75rem;
     background-color:#06864d;
     margin-top:2.187rem;
     color:white;
     border-radius: 0.312rem;
-
 }
+
+/* End of Be a Partner */
+
+/* Landing Page Video Start */
 .landingpage-video{
     margin-top:6.625rem;
-    max-width:100%;
     height: 27.3437rem;
     background-color: #2078BF;
     opacity: 69.67%;
 }
 .play-button{
-    padding: 10.5rem 0rem;
-    display: block;
-    margin:auto;
+    cursor: pointer;
 }
+/* Landing Page Video End */
+
 .section-d{
     height:62.125rem;
 }
@@ -740,13 +543,6 @@ h1{
     height:10.1875rem;
   }
 
-/* .row-cols-md-4{
-    padding-top:4.812rem;
-    padding-left:8.737rem;
-    padding-right: 6.824rem;
-    
-    margin-bottom:9.0675rem;
-} */
 .row-cols-lg-4{
     padding-top:4.812rem;
     padding-left:8.737rem;
@@ -765,6 +561,69 @@ h1{
       
 }
 
+/* our partners start */
+
+.our-partners{
+    margin-left:8.981875rem;
+}
+.our-partners h2, .clients h2{
+        font-family: Ubuntu;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 36px;
+        line-height: 68px;
+        color :#2078BF;
+        
+}
+.our-partners .head-part ,.clients .head-part{
+    margin:30px 0px;
+}
+.our-partners .arrows, .clients .arrows{
+    margin-right: 100px;
+}
+.clients{
+    margin-left:8.981875rem;
+    margin-top:140px;
+}
+
+.clients .card{
+    width: 570px;
+    border-radius:10px;
+    justify-content: space-between;
+
+}
+.clients .carousel-description{
+    font-weight:400px;
+    font-size:14px;
+    line-height: 20px;
+    font-family: ubuntu;
+    width:264px;
+    
+}
+.clients .carousel-radio{
+    width:35px;
+    height:35px;
+    left: 180.96px;
+}
+.clients .client-details{
+    top: calc(50% - 16px/2 + 2436.27px);
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.4px;
+}
+.clients label{
+    color: #06864D;
+}
+.clients p{
+    color: #838383;
+}
+/*satisfied clients / our partners end*/
+
+
+
 .latestnews{
     font-weight:400 ;
     font-size:1rem;
@@ -775,12 +634,6 @@ h1{
     font-size:3rem;
     /* margin:0; */
 }
-.theory-h{
-    width:16.125rem;
-    height:2.1875rem;
-    font-size:1.6875rem;
-    font-weight:43.75rem;
-}
 .txt{
     color:#2078BF;
     padding-top: 6.19625rem;
@@ -789,13 +642,6 @@ h1{
     background-color: #F5FBFF;
 }
 
-/* .footer {
-    background-color:#2078BF;
-    display: flex;
-    justify-content: space-between;
-    box-sizing: border-box;
-    position: relative;
-} */
 .img-section{
     /* background: url('./Img/Illustration.png'); */
     background-repeat: no-repeat;
@@ -811,18 +657,11 @@ h1{
     font-size:1.375rem;
     font-weight:400;
 }
-.footer-2{
-    background-color: #2078BF;
-    width: 100%;
-}
 .container{
         padding-right: 40px;
   
   }
-  .paragraph{
-    padding-top: 3.8125rem;
-    line-height: 2.18rem;
-  }
+
   .faq{
       padding-left: 9.593rem;
   }
@@ -929,63 +768,81 @@ padding: 0rem;
     background-size: cover;
 }
 
+/* Footer start */
 
-.benefits{
- width: 20.3125rem;
- margin-left: 25.75rem;
- padding-top: 8.6875rem;
-}
-footer{
+.landing-footer{
     color: white;
     background-color: #2078BF;
-    background-image: url("./Img/Illustration.svg");
+    background-image: url("./Img/Illustration.svg") ;
+    background-repeat: no-repeat;
     width: 100%;
-    position: relative; /*H*/
+    position: relative;
     margin-top: 15rem;
 } 
-.footer-pattern{
-    position: absolute;
-    top: 0px;
+.landing-footer .app-benefits{
+ width: 19rem;
+ margin-left: 25rem;
+ padding-top: 8.6875rem;
+ font-family: Ubuntu;
 }
-.images-footer{
+.landing-footer .app-benefits h3{
+    /* font-size: 40px; */
+    font-weight: 400;
+}
+.landing-footer .mobile{
+    left: 50.868rem;
+    top:-8rem;
+    position: absolute;
     z-index: 1;
-    position: absolute;
-}
-
-.bulletsremove li {
-    list-style-type: none;
-}
-.bg{
-    background-color: #2078BF;
-}
-
-.mobile{
-  left: 50.868rem;
-  top:-8rem;
-  position: absolute;
-  z-index: 1;
-
-} 
-footer .subscribe-block{
-    margin-top: 17rem;
+  }
+.landing-footer .subscribe-block{
+    margin-top: 12rem;
     padding-left: 13rem;
     margin-bottom: 8rem;
     gap: 10rem;
     align-items: center;
 }
-footer .subscribe-block form{
-    width: 546px;
+.landing-footer .subscribe-block form{
+    width: 540px;
+    height: 60px;
 }
-footer form button{
+.landing-footer .subscribe-block form button{
     width: 171px;
 }
-
-
-.benefits{
- width: 20.3125rem;
- margin-left: 25.75rem;
- padding-top: 8.6875rem;
+.landing-footer .footer-mid aside{
+    margin-top: 3.8125rem;
+    margin-left: 141px;
+    width: 345px;
+  }
+.landing-footer .footer-mid .navigator{
+    margin-left: 205px;
+    margin-right: 136px;
 }
+.landing-footer .footer-mid .contacts .address{
+    margin-left: 40px;
+    max-width: 226px;
+}
+.landing-footer .footer-mid h3{
+    font-weight: 400;
+    font-size: 22px;
+    margin-bottom: 32px;
+}
+.landing-footer .social-icons img{
+    padding: 10px;
+}
+.landing-footer .bottom-line{
+    margin: 0 156px;
+}
+.landing-footer .bottom-line ul{
+    gap: 42px;
+}
+.landing-footer .links-part{
+    background-image: url("./Img/shape.svg");
+    background-repeat: no-repeat;
+    background-position:right;
+}
+
+
 
 .section-e{
 margin-left:8.981875rem;
@@ -995,37 +852,5 @@ margin-left:8.981875rem;
 
 }
 
-.footer-social-icons img{
-    padding: 10px;
-}
-.goat-left{
-    width: 140px;
-    height: 121.53px;
-    position: absolute;
-    top: 71.93%;
-    left:0%;
-}
-.goat-mid{
-    width: 112.78px;
-    height: 97.9px;
-    position: absolute;
-    top: 1%;
-    left:74%;
-    transform: rotate(172.01deg);
-}
-.goat-right{
-   
-    width: 109px;
-    height: 94.62px;
-    position: absolute;
-    top: 78.93%;
-    left: 49%;
-    transform: rotate(-20.35deg);
-}
-.cow-left{
-    position: absolute;
-}
-.cow-right{
-    position: absolute;
-}
+
 

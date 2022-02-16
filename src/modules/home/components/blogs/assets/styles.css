@@ -233,7 +233,7 @@ h1{
     gap: 1.66rem;
     padding-left: 0px;
   }
-  .chessboard{
+  /* .chessboard{
     height: 26.513rem;
     width: 29.67rem;
     border-radius:0.625rem;
@@ -241,7 +241,7 @@ h1{
     
     left: 13.205rem;
     margin-top:19.314rem;
-}
+} */
 .bluerectangle{
     width: 22.812rem;
     height: 35.43rem;
