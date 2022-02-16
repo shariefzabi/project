@@ -1,129 +1,54 @@
-body{
-    overflow-x:hidden;
-    /* max-width:93.75rem; */
-    background-color: #F5FBFF!important;
-    font-family: ubuntu;  
-}
-.active{
-    text-decoration: underline solid white;
-}
-.nav-item{
-    margin-left: 2.93rem;
-}
-.dropdown-menu{
-    padding: 0rem;
-    margin: 0rem;
-}
-.dropdown-item:hover{
-    background-color: #2078BF;
-    color:white;
-}
-
-.di{
-    background-color: #2078BF;
-}
-#navbarSupportedContent{
-    padding-top: 1rem;
-    padding-right: 1rem;
-}
-.section1{
-    background-color: #003966;
-    margin:0;
-    padding-right:9.606rem;
-    /* padding-top:12.75rem; */
-    height:53.75rem;
-}
-.theory-x{
-    padding-left:7.625rem !important;
-    padding-right: 6.205625rem !important;
-    padding-top:12.75rem;
-    margin:0rem;
-}
-.theorya{
-    font-size:3.5rem;
-    font-weight: 43.75rem;
-    max-width:38.56rem;
-    height:14.625rem;
-    /*padding-bottom:2.6875rem;*/
-}
-.theoryb{
-    font-size:1.25rem;
-    font-weight:25rem;
-    margin-top: 2.6875rem;
-    padding-top:2.6875rem;
-}
-.text{
-    margin-bottom: 0rem;
-}
-.learnmore{
-    height: 3.75rem;
-    max-width:11.063rem;
-    background-color: #06864D;
-}
-.buttons{
-    margin-top: 3.6875rem;
-}
-.checkboard{
-     max-width:31rem;
-     height:26.375rem;
-     margin-top: 13.5625rem !important;
-}
-
-.latestletter{
-    margin-left:12.625rem;
-    margin-top: 5.625rem;
-}
-
-.searchbar{
-    height:4.24rem;
-    max-width:22.745rem;
-    padding:0rem,0rem !important;
-}
-.searchbar button{
-    background: #06864D;
-    padding:0rem,0rem !important;
-    height:4.24rem;
-    max-width:6.759rem;
-}
-
-/*ending of be a partner*/
-
-
-
-
-
-
-
-
-
-
-
-
 @font-face {
     font-family: ubuntu;
     src: url("./Fonts/Ubuntu/Ubuntu-Regular.ttf");
   }
-  .heading{
-    background-color: #2078BF;
-    height: 7.5rem;
+body{
+    overflow-x:hidden;
+    background-color: #F5FBFF!important;
+    font-family: ubuntu;  
 }
-.active{
+ul {
+    list-style-type:none;
+    padding-left: 0px!important;
+}
+
+/* Header Part Start */
+
+.landingpage-header{
+    background-color: #2078BF;
+}
+.landingpage-header .active{
     text-decoration: underline solid white;
 }
-.nav-item{
+.landingpage-header .nav-item{
     margin-left: 2.93rem;
 }
-.nav-link{
+.landingpage-header .nav-link{
     font-size: 16px;
 }
-.dropdown-menu{
+.landingpage-header .dropdown-menu{
     padding: 0rem;
     margin: 0rem;
+    border-radius: 00.3125rem;
+    font-family: sans-serif;
 }
-.dropdown-item:hover{
+.landingpage-header .triangle-up {
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-bottom: 11px solid #fff;
+    position: absolute;
+    top : -11px;
+    left: 93px;
+}
+.landingpage-header .dropdown-menu .dropdown-item{
+    color: #838383!important;
+    padding-left: 5px;
+}
+.landingpage-header .dropdown-menu .dropdown-item:hover{
     background-color: #2078BF;
+    color: #fff!important;
 }
-.buynow{
+.landingpage-header .buynow{
     border: 0.134rem solid #00C3FF!important;
     border-radius: 0.3125rem!important;
     height: 3.75rem;
@@ -131,101 +56,55 @@ body{
     margin-right: 2.625rem;
     margin-left: 2.625rem;
 }
-.triangle-up {
-	/* width: 0; */
-	/* height: 0; */
-	border-left: 8px solid transparent;
-	border-right: 8px solid transparent;
-	border-bottom: 11px solid #fff;
-    position: absolute;
-    top : -11px;
-    left: 99px;
-    
-}
-ul{
-    padding-left: 0px!important;
-}
-.nav-item ul li{
-    padding: 0;
-}
-.heading .dropdown-menu{
-    border-radius: 00.3125rem;
-    font-family: sans-serif;
-    padding: 0px;
-    
-}
-.heading .dropdown-menu .dropdown-item{
-    color: #838383!important;
-    padding-left: 5px;
-}
-.heading .dropdown-menu .dropdown-item:hover{
-    background-color: #2078BF;
-    color: #fff!important;
-}
-.login{
+.landingpage-header .login{
     height: 3.75rem;
     width:11.063rem;
     margin-right: 6.55rem;
 }
-.di{
-    background-color: #2078BF;
-}
-#navbarSupportedContent{
+.landingpage-header .collapse{
     padding-top: 1rem;
     padding-right: 1rem;
 }
-.section1{
+/* Header Part End */
+
+
+/* Order your livestock Start */
+
+.order-livestock{
     background-color: #003966;
-    margin:0;
     padding-right:9.606rem;
-    /* padding-top:12.75rem; */
     height:53.75rem;
 }
-
-.theorya{
-    font-size:3.5rem;
-    font-weight: 43.75rem;
-    width:38.56rem;
-    height:14.625rem;
-    /*padding-bottom:2.6875rem;*/
+.order-livestock article{
+    margin:12.75rem 6.205625rem 0 7.625rem;
+    max-width:38.56rem;
 }
-.theoryb{
-    font-size:1.25rem;
-    font-weight:25rem;
-    margin-top: 2.6875rem;
-    padding-top:2.6875rem;
+.order-livestock .heading{
+    font-size:56px;
+    font-family: Ubuntu;
 }
-.text{
-    margin-bottom: 0rem;
+.order-livestock .features{
+    margin-bottom: 3.6875rem;
 }
-.buynow2{
-    border: 0.134rem solid white!important;
-    border-radius: 0.3125rem!important;
+.order-livestock .learnmore-btn{
+    height: 3.75rem;
+    width:11.063rem;
+}
+.order-livestock .buynow-btn{
+    border: 0.134rem solid white;
+    border-radius: 0.3125rem;
     margin-left: 1.625rem;
     height: 3.75rem;
     width:11.063rem;
 }
-.learnmore{
-    height: 3.75rem;
-    width:11.063rem;
-    background-color: #06864D;
-}
-.buttons{
-    margin-top: 3.6875rem;
-}
-.checkboard{
-     width:31rem;
+.order-livestock .checkboard{
+     max-width:31rem;
      height:26.375rem;
-     margin-top: 2rem;
+     margin-top: 13.5625rem;
 }
-@font-face {
-    font-family: ubuntu-light;
-    src: url("./Fonts/Ubuntu/Ubuntu-Light.ttf");
-}
+/* Order your livestock End */
 
-.head{
-    background-color: #e5e5e5;
-}
+
 
 /* Start of Sell LiveStock */
 
@@ -499,11 +378,13 @@ ul{
 }
 /* Landing Page Video End */
 
+
+/* Our Blog Start */
 .section-d{
     height:62.125rem;
 }
 
-h1{
+.section-d h1{
     color:#2078bf;
     padding-left:8.625rem;
     font-size:2.25rem;
@@ -561,8 +442,11 @@ h1{
       
 }
 
-/* our partners start */
+/* Our Blog End */
 
+
+
+/* our partners start */
 .our-partners{
     margin-left:8.981875rem;
 }
@@ -581,6 +465,10 @@ h1{
 .our-partners .arrows, .clients .arrows{
     margin-right: 100px;
 }
+/* our partners end */
+
+
+/*satisfied clients start*/
 .clients{
     margin-left:8.981875rem;
     margin-top:140px;
@@ -620,153 +508,9 @@ h1{
 .clients p{
     color: #838383;
 }
-/*satisfied clients / our partners end*/
+/*satisfied clients end*/
 
 
-
-.latestnews{
-    font-weight:400 ;
-    font-size:1rem;
-    margin-bottom: 0%;
-}
-.newsletter{
-    font-weight:400;
-    font-size:3rem;
-    /* margin:0; */
-}
-.txt{
-    color:#2078BF;
-    padding-top: 6.19625rem;
-}
-.blog-content{
-    background-color: #F5FBFF;
-}
-
-.img-section{
-    /* background: url('./Img/Illustration.png'); */
-    background-repeat: no-repeat;
-}
-
-.content {
-     color: #fff;
-     font-size: 1rem;
-     font-weight: 400;
-     line-height: .8;
-}
-.head{
-    font-size:1.375rem;
-    font-weight:400;
-}
-.container{
-        padding-right: 40px;
-  
-  }
-
-  .faq{
-      padding-left: 9.593rem;
-  }
-  .privacy{
-      padding:0px 35px 0px 10px ;
-  }
-  li{
-    list-style-type: none;
-    font-weight: 400;
-    line-height: 1.375rem;
-    font-size: 0.875rem;
-    letter-spacing: 0.00625rem;
-    /* padding-bottom: 0.58rem; */
-  }
-  .in-li{
-      opacity: 0.8;
-  }
-
-  .footer-list{
-    gap: 1.66rem;
-    padding-left: 0px;
-  }
-  
-.bluerectangle{
-    width: 22.812rem;
-    height: 35.43rem;
-    border-radius: 0.3125rem;
-    position: relative; 
-    left: 8.31%;
-    margin-right: 50.937rem;
-    top: 14.875rem;
-    bottom: 57.42%;
-}
-.discript {
-            color: #838383;
-            position: absolute;
-            left: 44.875rem;
-            right: 12.25rem;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 1.125rem;
-            line-height: 2.185rem;
-            padding-left: 5.687rem;
-            padding-top:18.375rem;
-        }
-
-.features {
-    position: absolute;
-    left: 44.919rem;
-    right: 25.955rem;
-    padding-top: 12.125rem;
-
-    font-style: normal;
-    font-weight: bold;
-    font-size: 2.25rem;
-    line-height: 4.875rem;
-    color: #2078BF;
-    padding-left: 7.687rem;
-
-}
-
-.bulletsremove li {
-    list-style-type: none;
-}
-
-.brochure {
-    width: 17.625rem;
-    height: 3.75rem;
-    margin-top: 1rem;
-    right: 23.562rem;
-}
-.bg{
-    background-color: #2078BF;
-}
-.tbl{
-    margin-left: 9.25rem;
-    margin-right: 7.3341rem;
-    color: white;
-    text-transform: capitalize;
-}
-.col-6{
-padding: 0rem;
-}
-.row-a{
-    padding-right: 1.209rem;
-}
-    
-.box-a{
-    height: 17.85rem;
-    padding: 0px !important;
-    padding-right: 1.209rem;
-
-}
-.box-b{
-    height: 28.6931rem;
-    padding: 0px !important;
-
-}
-.box-c{
-    height: 28.6931rem;
-    padding: 0px;
-    /* background: url('./img/Rectangletbl.png'); */
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 
 /* Footer start */
 
@@ -786,7 +530,6 @@ padding: 0rem;
  font-family: Ubuntu;
 }
 .landing-footer .app-benefits h3{
-    /* font-size: 40px; */
     font-weight: 400;
 }
 .landing-footer .mobile{
@@ -796,11 +539,15 @@ padding: 0rem;
     z-index: 1;
   }
 .landing-footer .subscribe-block{
-    margin-top: 12rem;
-    padding-left: 13rem;
+    margin-top: 13.5rem;
+    padding-left: 12rem;
     margin-bottom: 8rem;
     gap: 10rem;
     align-items: center;
+}
+.landing-footer .heading h2{
+    font-size: 48px;
+    font-family: Ubuntu;
 }
 .landing-footer .subscribe-block form{
     width: 540px;
@@ -841,16 +588,7 @@ padding: 0rem;
     background-repeat: no-repeat;
     background-position:right;
 }
-
-
-
-.section-e{
-margin-left:8.981875rem;
-}
-.card-a{
-    height:auto !important;
-
-}
+/* Footer End */
 
 
 

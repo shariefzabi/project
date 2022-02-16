@@ -4,7 +4,7 @@ export default class LandingPage extends React.Component {
     render() {
         return (
             <>
-                <header className="heading">
+                <header className="landingpage-header">
                     <div className="d-flex flex-row-reverse bd-highlight">
                         <nav className="navbar navbar-expand-lg navbar-light">
                             <div className="container-fluid">
@@ -16,10 +16,10 @@ export default class LandingPage extends React.Component {
                                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                         <li className="nav-item">
-                                            <a className="nav-link  text-white" aria-current="page" href="#">Home</a>
+                                            <a className="nav-link active  text-white" aria-current="page" href="#">Home</a>
                                         </li>
                                         <li className="nav-item">
-                                            <a className="nav-link active text-white" href="./AboutUs/index.html" target="blank">About Us</a>
+                                            <a className="nav-link text-white" href="./AboutUs/index.html" target="blank">About Us</a>
                                         </li>
                                         <li className="nav-item dropdown">
                                             <a className="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
@@ -35,7 +35,7 @@ export default class LandingPage extends React.Component {
 
                                         </li>
                                         <li className="nav-item">
-                                            <a className="nav-link active text-white" href="./ourblog/index.html" target="blank">Blog</a>
+                                            <a className="nav-link text-white" href="./ourblog/index.html" target="blank">Blog</a>
                                         </li>
                                     </ul>
                                     <form className="d-flex">
@@ -47,32 +47,28 @@ export default class LandingPage extends React.Component {
                         </nav>
                     </div>
                 </header>
+
                 <main>
-                    <section>
-                        <div className="container-fluid d-flex section1">
-                            <article>
-                                <div className="container theory-x">
-                                    <div className="theorya text-white">
-                                        <p>Order your <span style={{ color: "#2078BF" }}><strong>Livestock</strong></span></p>
-                                        <p>and Get Them Delivered</p>
-                                        <p> at your Doorstep</p>
-                                    </div>
-                                    <div className="theoryb text-white">
-                                        <p className="text"><em>-Buy Fit-for-Slaughter and Traceable Livestock.</em></p>
-                                        <p className="text"><em>-Get it Processed at a Livestock247.com Certified Butchery /
-                                            Abattoir.</em></p>
-                                        <p className="text"><em> -We Deliver to your address of choice.</em></p>
-                                    </div>
-                                    <div className="buttons">
-                                        <button className="btn btn-success learnmore">Learn More</button>
-                                        <button className="btn text-white buynow2">Buy Now</button>
-                                    </div>
-                                </div>
-                            </article>
-                            <aside>
-                                <img className="checkboard" src={require("./assets/Img/Base.png")} alt="checkboard" />
-                            </aside>
-                        </div>
+                    <section className="container-fluid d-flex order-livestock">
+                        <article>
+
+                            <p className="heading text-white">Order your
+                                <span style={{ color: "#2078BF" }}> Livestock </span>
+                                and Get Them Delivered at your Doorstep
+                            </p>
+                            <ul className="text-white features">
+                                <li><em>-Buy Fit-for-Slaughter and Traceable Livestock.</em></li>
+                                <li><em>-Get it Processed at a Livestock247.com Certified Butchery / Abattoir.</em></li>
+                                <li><em> -We Deliver to your address of choice.</em></li>
+                            </ul>
+                            <div className="buttons">
+                                <button className="btn btn-success learnmore-btn">Learn More</button>
+                                <button className="btn text-white buynow-btn">Buy Now</button>
+                            </div>
+                        </article>
+                        <aside>
+                            <img className="checkboard" src={require("./assets/Img/Base.png")} alt="checkboard" />
+                        </aside>
                     </section>
 
                     <section>
@@ -278,7 +274,6 @@ export default class LandingPage extends React.Component {
                                 </div>
                             </div>
                         </div>
-
                     </section>
 
                     <section className="our-partners">
@@ -470,9 +465,9 @@ export default class LandingPage extends React.Component {
                         </div>
                     </section>
                     <section className="d-flex subscribe-block">
-                        <div className="news text-white">
-                            <p className="latestnews pt-3">Get our latest news</p>
-                            <p className="newsletter">Newsletter</p>
+                        <div className="heading text-white">
+                            <p className="m-0">Get our latest news</p>
+                            <h2 >Newsletter</h2>
                         </div>
                         <form className="d-flex">
                             <input className="form-control" type="text" placeholder="Email Address" name="search" size="25" />
