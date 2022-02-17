@@ -1,0 +1,138 @@
+@font-face{
+    font-family: ubuntu;
+    src:url(./asset/Ubuntu/Ubuntu-Regular.ttf)
+
+}
+@font-face{
+    font-family: Karla;
+    src: url(./asset/Karla/Karla-VariableFont_wght.ttf);
+}
+header{
+    width: 100%;
+    height: 7.5rem;
+    background-color: #2078BF; 
+    font-family: Ubuntu;
+}
+.menu_content{
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: #ffffff;
+}
+.menu_content:active{
+    text-decoration: underline;
+}
+.home{
+    margin-top: 3.22rem;
+    margin-right: 4.67%; 
+}
+a:hover{
+    color: white !important;
+}
+.dropdown-item:hover{
+   background-color: #2078BF!important;
+}
+.dropdown-menu.show{
+    margin-top: 10px !important;
+    padding: 0%;
+}
+.buy_button , .log_button{
+    width: 10.93rem;
+    height: 3.625rem;
+    color: #ffffff;
+    border-radius: 5px;
+    margin-top: 2rem;
+    border: 2px solid #00c3ff;
+}
+.buy_button {
+    background-color: #2078BF;
+    margin-right: 2.8%;
+}
+.log_button{
+    background-color: #06864D;
+    border: none;
+}
+.menu_btn{
+    margin-right: 5.8%;
+}
+.inverted_tri{
+    width: 1.125rem;
+    height: 11.2p;
+}
+.big_bar{
+    width: 100%;
+}
+.small_bar{
+    display: none;
+}
+
+.triangle-up{
+border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-bottom: 11px solid #fff;
+    position: absolute;
+    top : -11px;
+    left: 85px;
+}
+
+
+@media(max-width:990px){
+    .big_bar{
+        display: none !important;
+    }
+    .small_bar{
+        display: block;
+        margin-left: 90%;
+        padding-top: 1rem;
+    }
+    header{
+        width: 100%;
+        height: 3.8125rem;
+        background-color: #2078BF; 
+    }
+    .bar_img{
+        width: 0.687rem;
+        height: 0.5rem;
+    }
+    .small_menu{
+        background-color: #2078BF;
+    }
+    .close{
+        width: 1.375rem;
+        height: 1.512rem;
+        margin-top: 2.5rem;
+        margin-left: 85%;
+    }
+    .menu_content_small{
+        text-decoration: none;
+        font-weight: 400;
+        font-size: 1.375rem;
+        line-height: 1.5rem;
+        color: #ffffff;
+        display: block;
+        margin-top: 3.187rem;
+    }
+    .sub{
+        font-size: 0.8125rem;
+        margin-top: 1.125rem;
+    }
+    .buy_button , .log_button{
+        border-radius: 5px;
+        margin-top: 2.25rem;
+        margin-right: 0%;
+    }
+    .menu_bottom{
+        margin-top: 9.9375rem;
+    }
+    .menu_faqs{
+        font-family: karla;
+        font-weight: 400;
+        font-size: 0.625rem;
+        margin: 0px;
+        color: #ffffff;
+        text-transform: uppercase;
+        letter-spacing: 0.093rem;
+    }
+    
+}
