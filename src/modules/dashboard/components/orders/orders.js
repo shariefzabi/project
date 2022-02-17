@@ -28,84 +28,84 @@ export default function Orders() {
                                         <span className="second-line">20/19/2019</span></td>
                                     <td>Bunaji</td>
                                     <td>Out of Stock</td>
-                                    <td ><p className="button1 btn btn-primary"><span>Awaiting Payment</span></p></td>
+                                    <td ><button className=' button1 btn btn-primary'>Awaiting Payment</button></td>
                                 </tr>
                                 <tr>
                                     <td> <span className="first-line">ID - 900085000597636</span>
                                         <span className="second-line">20/19/2019</span></td>
                                     <td>Bunaji</td>
                                     <td>Out of Stock</td>
-                                    <td><p className="button1 btn btn-danger"><span>Cancelled Order</span></p></td>
+                                    <td><button className=' button1 btn btn-danger'>Cancelled Order</button></td>
                                 </tr>
                                 <tr>
                                     <td> <span className="first-line">ID - 900085000597636</span>
                                         <span className="second-line">20/19/2019</span></td>
                                     <td>Bunaji</td>
                                     <td>Out of Stock</td>
-                                    <td><p className="button1 btn btn-primary"><span>Received  Order</span></p></td>
+                                    <td><button className=' button1 btn btn-primary'>Received Order</button></td>
                                 </tr>
                                 <tr>
                                     <td> <span className="first-line">ID - 900085000597636</span>
                                         <span className="second-line">20/19/2019</span></td>
                                     <td>Bunaji</td>
                                     <td>Out of Stock</td>
-                                    <td><p className="button1 btn btn-primary"><span>Received Order</span></p></td>
+                                    <td><button className=' button1 btn btn-primary'>Received Order</button></td>
                                 </tr>
                                 <tr>
                                     <td> <span className="first-line">ID - 900085000597636</span>
                                         <span className="second-line">20/19/2019</span></td>
                                     <td>Bunaji</td>
                                     <td>Out of Stock</td>
-                                    <td><p className="button1 btn btn-danger"><span>Cancelled Order</span></p></td>
+                                    <td><button className=' button1 btn btn-danger'>Cancelled Order</button></td>
                                 </tr>
                                 <tr>
                                     <td> <span className="first-line">ID - 900085000597636</span>
                                         <span className="second-line">20/19/2019</span></td>
                                     <td>Bunaji</td>
                                     <td>Out of Stock</td>
-                                    <td><p className="button1 btn btn-primary"><span>Awaiting Payment</span></p></td>
+                                    <td><button className=' button1 btn btn-primary'>Awaiting Payment</button></td>
                                 </tr>
                                 <tr>
                                     <td> <span className="first-line">ID - 900085000597636</span>
                                         <span className="second-line">20/19/2019</span></td>
                                     <td>Bunaji</td>
                                     <td>Out of Stock</td>
-                                    <td><p className="button1 btn btn-danger"><span>Cancelled Order</span></p></td>
+                                    <td><button className=' button1 btn btn-danger'>Cancelled Order</button></td>
                                 </tr>
                                 <tr>
                                     <td> <span className="first-line">ID - 900085000597636</span>
                                         <span className="second-line">20/19/2019</span></td>
                                     <td>Bunaji</td>
                                     <td>Out of Stock</td>
-                                    <td><p className="button1 btn btn-primary"><span>Received Order</span></p></td>
+                                    <td><button className=' button1 btn btn-primary'>Received Order</button></td>
                                 </tr>
                                 <tr>
                                     <td> <span className="first-line">ID - 900085000597636</span>
                                         <span className="second-line">20/19/2019</span></td>
                                     <td>Bunaji</td>
                                     <td>Out of Stock</td>
-                                    <td><p className="button1 btn btn-primary"><span>Received Order</span></p></td>
+                                    <td><button className=' button1 btn btn-primary'>Received Order</button></td>
                                 </tr>
                                 <tr>
                                     <td> <span className="first-line">ID - 900085000597636</span>
                                         <span className="second-line">20/19/2019</span></td>
                                     <td>Bunaji</td>
                                     <td>Out of Stock</td>
-                                    <td><p className="button1 btn btn-danger"><span>Cancelled Order</span>Cancelled Order</p></td>
+                                    <td><button className=' button1 btn btn-danger'>Cancelled Order</button></td>
                                 </tr>
                                 <tr className="line hr-line"></tr>
                                 <tr>
                                     <td ><span className="wish">Wishlists</span></td>
                                     <td></td>
                                     <td></td>
-                                    <td ><span className="orderrowheading">&#x1D14F</span></td>
+                                    <td ><span className="orderrowheading">&#x1D14F;</span></td>
                                 </tr>
                                 <tr>
                                     <td> <span className="first-line">ID - 900085000597636</span>
                                         <span className="second-line">20/19/2019</span></td>
                                     <td>Bunaji</td>
                                     <td>Out of Stock</td>
-                                    <td><p className="button1 btn btn-primary"><span>Awaiting Payment</span></p></td>
+                                    <td><button className=' button1 btn btn-primary'>Awaiting Payment</button></td>
                                 </tr>
 
                             </tbody>
