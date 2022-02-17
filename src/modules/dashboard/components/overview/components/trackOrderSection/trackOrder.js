@@ -47,7 +47,7 @@ export default function TrackOrder() {
           </header>
           <main class="row track ">
             {/* <section class="col-lg-1 col-md-1 col-sm-0 col-0"></section> */}
-            <section class="row row-cols-1 row-cols-sm-2" id="rack">
+            <section class="row row-cols-1 row-cols-sm-1 row-cols-md-2" id="rack">
               <div class="col rack ">
                 <h3>Easily Track Livestock With Their Chip Number</h3>
                 <p>
@@ -60,10 +60,9 @@ export default function TrackOrder() {
                 <h3>Track your livestock</h3>
                 <section class="row search">
                   <input
-                    placeholder="Input your chip number here"
-                    class="col-lg-10 col-md-10 col-sm-10 col-9"
+                    placeholder="Input your chip number here" class="col-8 search_input"
                   />
-                  <button class="btn btn-success btn-trackSearch col-lg-2 col-md-2 col-sm-2 col-2">
+                  <button class="btn btn-success btn-trackSearch col-2">
                     <span class="fa fa-search form-control-feedback searchIcon"></span>
                   </button>
                 </section>
