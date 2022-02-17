@@ -7,7 +7,7 @@ import "./style.css"
 class Menu extends React.Component {
     render() {
         return (
-            <header className="d-lg-flex justify-content-end">
+            <header className="landingpage-header d-lg-flex justify-content-end">
                 <div className="small_bar">
                     <img className="bar_img" data-bs-toggle="modal" data-bs-target="#staticBackdrop" src={bar} />
                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
