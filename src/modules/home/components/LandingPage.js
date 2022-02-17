@@ -1,10 +1,11 @@
 import React from "react";
 import "./assets/style.css";
+import Menu from "./menubar/menu";
 export default class LandingPage extends React.Component {
     render() {
         return (
             <>
-                <header className="landingpage-header">
+                {/* <header className="landingpage-header">
                     <div className="d-flex flex-row-reverse bd-highlight">
                         <nav className="navbar navbar-expand-lg navbar-light">
                             <div className="container-fluid">
@@ -46,20 +47,23 @@ export default class LandingPage extends React.Component {
                             </div>
                         </nav>
                     </div>
-                </header>
+                </header> */}
+
+                <Menu/>
+
 
                 <main>
-                    <section className="container-fluid d-flex order-livestock">
+                    <section className="d-flex order-livestock">
                         <article>
 
                             <p className="heading text-white">Order your
-                                <span style={{ color: "#2078BF" }}> Livestock </span>
+                                <span className="livestock-title"> Livestock </span>
                                 and Get Them Delivered at your Doorstep
                             </p>
                             <ul className="text-white features">
-                                <li><em>-Buy Fit-for-Slaughter and Traceable Livestock.</em></li>
-                                <li><em>-Get it Processed at a Livestock247.com Certified Butchery / Abattoir.</em></li>
-                                <li><em> -We Deliver to your address of choice.</em></li>
+                                <li><em> Buy Fit-for-Slaughter and Traceable Livestock.</em></li>
+                                <li><em> Get it Processed at a Livestock247.com Certified Butchery / Abattoir.</em></li>
+                                <li><em> We Deliver to your address of choice.</em></li>
                             </ul>
                             <div className="buttons">
                                 <button className="btn btn-success learnmore-btn">Learn More</button>

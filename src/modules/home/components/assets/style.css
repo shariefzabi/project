@@ -23,6 +23,11 @@ ul {
 .landingpage-header .nav-item{
     margin-left: 2.93rem;
 }
+.landingpage-header .nav-item::after{
+    text-decoration: underline solid white;
+
+}
+
 .landingpage-header .nav-link{
     font-size: 16px;
 }
@@ -65,6 +70,13 @@ ul {
     padding-top: 1rem;
     padding-right: 1rem;
 }
+
+
+
+
+
+
+
 /* Header Part End */
 
 
@@ -72,35 +84,75 @@ ul {
 
 .order-livestock{
     background-color: #003966;
-    padding-right:9.606rem;
-    height:53.75rem;
+    /* height:53.75rem; */
 }
 .order-livestock article{
-    margin:12.75rem 6.205625rem 0 7.625rem;
-    max-width:38.56rem;
+    margin:12rem 5rem 7rem 7.625rem;
+    width:38.56rem;
 }
 .order-livestock .heading{
     font-size:56px;
     font-family: Ubuntu;
+    padding-right: 30px;
+}
+.order-livestock .livestock-title{
+    color: #2078BF;
+    font-weight: 700;
 }
 .order-livestock .features{
     margin-bottom: 3.6875rem;
 }
-.order-livestock .learnmore-btn{
+.order-livestock button{
     height: 3.75rem;
     width:11.063rem;
+    border-radius: 0.3125rem;
 }
+
 .order-livestock .buynow-btn{
     border: 0.134rem solid white;
-    border-radius: 0.3125rem;
     margin-left: 1.625rem;
-    height: 3.75rem;
-    width:11.063rem;
 }
 .order-livestock .checkboard{
      max-width:31rem;
      height:26.375rem;
      margin-top: 13.5625rem;
+}
+@media (min-width:375px)and (max-width:480px){
+    .order-livestock{
+        padding: 0;
+    }
+    .order-livestock .heading{
+        font-size:20px;
+        /* font-weight: 700; */
+    }
+    .order-livestock article{
+        margin: 0px 40px;
+        padding: 50px 0px;
+        max-width:250px;
+    }
+    .order-livestock .features{
+        margin-bottom: 19px;
+        font-size: 8px;
+        max-width: 190px;
+        list-style-type: "-";
+        line-height: 12.8px;
+    }
+    .order-livestock .features li{
+        padding-left: 3px;
+    }
+    .order-livestock button{
+        width:88px;
+        height: 30px;
+        font-size: 10px;
+        border-radius: 0.3125rem;
+    }
+    .order-livestock .buynow-btn{
+        border: 1px solid white;
+        margin-left: 9.5px;
+    }
+    .order-livestock aside{
+        display: none;
+    }
 }
 /* Order your livestock End */
 
