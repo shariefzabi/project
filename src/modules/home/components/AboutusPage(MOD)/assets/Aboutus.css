@@ -1,0 +1,652 @@
+@font-face {
+    font-family: ubuntu;
+    src: url("./Fonts/Ubuntu/Ubuntu-Regular.ttf");
+  }
+@font-face {
+    font-family: karla;
+    src: url("Fonts/karla/Karla-Medium.ttf");
+  }
+  header{
+    width: 100%;
+    height: 7.5rem;
+    background-color: #2078BF; 
+    font-family: Ubuntu;
+}
+.menu_content{
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: #ffffff;
+}
+.menu_content:active{
+    text-decoration: underline;
+}
+.home{
+    margin-top: 3.22rem;
+    margin-right: 4.67%; 
+}
+a:hover{
+    color: white !important;
+}
+.dropdown-menu.show{
+    margin-top: 10px !important;
+    padding: 0%;
+}
+.buy_button , .log_button{
+    width: 10.93rem;
+    height: 3.625rem;
+    color: #ffffff;
+    border-radius: 5px;
+    margin-top: 2rem;
+    border: 2px solid #00c3ff;
+}
+.buy_button {
+    background-color: #2078BF;
+    margin-right: 2.8%;
+}
+.log_button{
+    background-color: #06864D;
+    border: none;
+}
+.menu_btn{
+    margin-right: 5.8%;
+}
+.inverted_tri{
+    width: 1.125rem;
+    height: 11.2p;
+}
+.big_bar{
+    width: 100%;
+}
+.small_bar{
+    display: none;
+}
+
+.triangle-up{
+border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-bottom: 11px solid #fff;
+    position: absolute;
+    top : -11px;
+    left: 85px;
+}
+
+
+@media(max-width:990px){
+    .big_bar{
+        display: none !important;
+    }
+    .small_bar{
+        display: block;
+        margin-left: 90%;
+        padding-top: 1rem;
+    }
+    header{
+        width: 100%;
+        height: 3.8125rem;
+        background-color: #2078BF; 
+    }
+    .bar_img{
+        width: 0.687rem;
+        height: 0.5rem;
+    }
+    .small_menu{
+        background-color: #2078BF;
+    }
+    .close{
+        width: 1.375rem;
+        height: 1.512rem;
+        margin-top: 2.5rem;
+        margin-left: 85%;
+    }
+    .menu_content_small{
+        text-decoration: none;
+        font-weight: 400;
+        font-size: 1.375rem;
+        line-height: 1.5rem;
+        color: #ffffff;
+        display: block;
+        margin-top: 3.187rem;
+    }
+    .sub{
+        font-size: 0.8125rem;
+        margin-top: 1.125rem;
+    }
+    .buy_button , .log_button{
+        border-radius: 5px;
+        margin-top: 2.25rem;
+        margin-right: 0%;
+    }
+    .menu_bottom{
+        margin-top: 9.9375rem;
+    }
+    .menu_faqs{
+        font-family: karla;
+        font-weight: 400;
+        font-size: 0.625rem;
+        margin: 0px;
+        color: #ffffff;
+        text-transform: uppercase;
+        letter-spacing: 0.093rem;
+    }
+    
+}
+body{
+    font-family: ubuntu;  
+    width: 93.75rem;
+    max-width:100%;
+    overflow-x:hidden;
+    background-color:#F5FBFF !important;
+
+}
+
+.heading{
+    background-color: #2078BF;
+    height: 7.5rem;
+}
+.active{
+    text-decoration: underline solid white;
+}
+.nav-item{
+    margin-left: 2.93rem;
+}
+.dropdown-menu{
+    padding: 0rem;
+    margin: 0rem;
+}
+.dropdown-item:hover{
+   background-color: #2078BF!important;
+}
+.buynow{
+    border: 0.134rem solid #00C3FF;
+    border-radius: 0.3125rem;
+    height: 3.75rem;
+    width:11.063rem;
+    margin-right: 2.625rem;
+    margin-left: 2.625rem;
+}
+.login{
+    height: 3.75rem;
+    width:11.063rem;
+    margin-right: 6.55rem;
+    background-color:#06864D;
+}
+.di{
+    background-color: #2078BF;
+}
+#navbarSupportedContent{
+    padding-top: 1rem;
+    padding-right: 1rem;
+}
+
+.aboutus{
+    background-image: url("./img/Rectangle.png"); 
+    width: 93.75rem;
+    height: 38.75rem;
+    text-align: center;
+}
+.aboutus h1{
+   font-weight:700;
+   font-size:3.5rem;
+   color: #ffffff;
+   line-height:4.875rem;
+      padding-top: 16.4375rem;
+  /* padding-left: 41.562rem; */
+   padding-bottom: 0rem;
+}
+.aboutus-content{
+    font-weight: 400;
+    font-size: 1.6875rem;
+    line-height:4.875rem;
+    color:#ffffff;
+    /* padding-left:40.875rem; */
+    margin-top:1.312rem
+}
+.who-we-are{
+    background-color: #2078BF;
+    width:46.312rem;
+    height:47.25rem;
+    margin-top:15.5rem;
+    margin-left: 5.606rem;
+    border-radius: 0.625rem;
+    left:8.6875rem;
+}
+.subtitle{
+    font-weight: 700;
+    font-size: 2.25rem;
+}
+.theory-y{
+    padding-left:6.937rem;
+    margin:0rem;
+    padding-top:6.0293rem;
+    padding-right: 12%;
+}
+.livestock247{
+    padding-left:0rem;
+}
+.checkboard-b{
+    width:45.944rem;
+    height:52.937rem;
+    left:43.625rem;
+    padding-right:9.180rem;
+    position: absolute;
+    z-index:-1;
+    margin-top:9.8125rem;
+}
+.responcive_img{
+display:none;
+}
+.blue_container_responcive{
+    display: none;
+}
+@media(max-width :380px) and (min-width :300px){
+    
+    .body{
+        max-width: 376px;
+        overflow-x: hidden;
+    }
+    .who-we-are{
+    /* background-color: #2078BF; */
+    width:80% !important;
+    padding:0px !important;
+    /* height:47.25rem;
+    margin-top:15.5rem;
+    
+    border-radius: 0.625rem;
+    left:8.6875rem; */
+    margin-left: 0rem;
+    margin:auto;
+    background-color:#F5FBFF;
+    height: auto;
+}
+.theory-y{
+    padding:0px;
+    text-align: center;
+
+}
+.theory{
+    
+
+    color:#2078bf !important;
+
+}
+.subtitle{
+    font-size:1rem;
+      color:#2078bf !important;
+
+}
+.livestock247 .li{
+    font-size: 0.625rem !important;
+      padding-left: 2.5rem !important;
+    padding-right: 2.5rem !important;
+    margin-bottom: 0rem;
+            
+          }
+.divider{
+    padding-top:2rem !important;
+}
+.logo img{
+   width: 22.68px;
+    height: 23.94px;
+}
+.logo2 img{
+    width: 22.68px;
+    height: 23.94px;
+}
+.logo div{
+    width: 0rem !important;
+    height: 0rem !important;
+    padding-right: 1rem !important;
+    padding-top:2.93rem !important;
+
+}
+.logo2 div{
+    width: 0rem !important;
+    height: 0rem !important;
+    padding-right: 1rem !important;
+    padding-top:2.93rem !important;
+    margin-top:5rem !important;
+
+}
+.logo div figcaption ,.logo2 div figcaption{
+    color:#838383
+}
+
+.aboutus-content{
+    font-size:7px !important;
+    margin-top:0rem;
+    position: absolute;
+    left: 44.5%;
+    top: 8rem;
+    
+} 
+.aboutus h1{
+    font-size: 20px;
+    padding-top:2.5rem;
+    height: 89px !important;
+}
+.aboutus{
+
+    background-image: url("./img/responcive_checker_image.png") !important;
+    background-size: auto;
+    background-repeat: no-repeat;
+    width:auto;
+    height: auto;
+}
+.aboutus-paragraph{
+    height: 7rem;
+}
+.responcive_img{
+    padding: 0px;
+    left: 16.8%;
+    top: 37.83rem;
+    display: block;
+    border-radius: 5%;
+    /* width: 141px; */
+    height: 8.125rem;
+    width: 12.165rem;
+    z-index: 1;
+}
+
+.real_img{
+    display: none;
+}
+.blue_container_responcive{
+  padding: 0px;
+    display: block;
+    top: 36.43rem;
+   left: 31.8%;
+    
+    border-radius: 5%;
+   z-index:-1;
+
+    width:10.375rem;
+    height: 4.875rem;
+
+    
+}
+.chessboard{
+    margin-top:0px !important;
+    top: 124rem;
+    display:none;
+}
+
+.figcaption-1{
+padding-left: 0rem !important;
+padding-right:1rem;
+
+}
+figcaption{
+    padding-left:0rem !important;
+    padding-right: 1rem;
+}
+.bluerectangle{
+    position: absolute !important;
+    top: 119rem !important;
+    display:none;
+}
+.features{
+    padding-left: 0rem !important;
+    padding-top: 0rem !important;
+    top: 53.5rem;
+    left: 8rem !important;
+    font-size: 1rem !important;
+}
+.discript{
+    right: 0rem !important;
+    left: 0rem !important;
+    padding-left: 0 !important;
+    font-size: 10px !important;
+    top: 61rem;
+}
+  .brochure{
+      font-size: 0.75rem !important;
+    width: 10.4375rem !important;
+    height: 2.75rem !important;
+
+  }
+    }
+        
+    
+
+
+.logo{
+    position:absolute;
+    flex-wrap: wrap;
+    gap:2.785rem;
+}
+.logo div{
+    width: 3.424rem;
+    height: 3.622rem;
+    padding-right: 4.6943rem;
+    padding-top:5.93rem;
+}
+figcaption{
+    font-size:0.5rem;
+    font-weight:5;
+    width:2.128rem;
+    height:0.66rem;
+    /* opacity: 0.5; */
+    text-align: center;
+    padding-left:1rem;
+}
+.figcaption-1{
+    padding-left:1.5rem;
+}
+
+.logo2{
+    position:absolute;
+    flex-wrap: wrap;
+    gap:2.785rem;
+}
+.logo2 div{
+    width: 3.424rem;
+    height: 3.622rem;
+    padding-right: 4.6943rem;
+    margin-top:12rem;
+}
+
+
+.family{
+   margin-left:8.6875rem;
+   margin-top:16.312rem;
+}
+.family-head{
+    font-size:2.375rem;
+    font-weight: 700;
+    color: #2078BF;
+    padding-bottom:3.562rem;
+    padding-top:10.188rem;
+}
+.family-text{
+    background-color: #2078BF ;
+    width:75.875rem;
+    color: white;
+    text-align: center;
+}
+
+.section-c{
+    background-color:#2078BF ;
+     margin: 0rem;
+     margin-top:6.937rem;
+     width: 100%;
+}
+
+.latestnews{
+    font-weight:400 ;
+    font-size:1rem;
+    margin-bottom: 0%;
+    margin-left:10.625rem;
+    margin-top:5.812rem;
+}
+.newsletter{
+    font-weight:400;
+    font-size:3rem;
+    margin:0;
+    margin-left:15.625rem;
+}
+.search{
+    margin-top:7.5rem;
+}
+.theory-h{
+    width:16.125rem;
+    height:2.1875rem;
+    font-size:1.6875rem;
+    font-weight:43.75rem;
+}
+.searchbar{
+    height:4.24rem;
+    width:45.745rem;
+    padding:0rem,0rem !important;
+}
+.searchbar button{
+    background: #06864D;
+    padding:0rem,0rem !important;
+    height:3.75rem;
+    width:10rem;
+}
+.searchinput{
+    height:3.75rem;
+    width:22.745rem;
+    border-radius: 0.3125rem;
+    padding-left:1.6912rem;
+}
+
+ .chessboard{
+    height: 26.513rem;
+    width: 29.67rem;
+    border-radius:0.625rem;
+    position: absolute;
+    
+    left: 13.205rem;
+    margin-top:19.314rem;
+}
+.bluerectangle{
+    width: 22.812rem;
+    height: 35.43rem;
+    border-radius: 0.3125rem;
+    position: relative; 
+    left: 8.31%;
+    margin-right: 50.937rem;
+    top: 14.875rem;
+    bottom: 57.42%;
+}
+.discript {
+            color: #838383;
+            position: absolute;
+            left: 44.875rem;
+            right: 12.25rem;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 1.125rem;
+            line-height: 2.185rem;
+            padding-left: 5.687rem;
+            padding-top:18.375rem;
+        }
+
+        .features {
+            position: absolute;
+            left: 44.919rem;
+            right: 25.955rem;
+            padding-top: 12.125rem;
+
+            font-style: normal;
+            font-weight: bold;
+            font-size: 2.25rem;
+            line-height: 4.875rem;
+            color: #2078BF;
+            padding-left: 7.687rem;
+
+        }
+
+        .bulletsremove li {
+            list-style-type: none;
+        }
+
+        .brochure {
+            width: 17.625rem;
+            height: 3.75rem;
+            margin-top: 1rem;
+            right: 23.562rem;
+            color:#00C3FF
+        }
+
+
+
+
+
+
+
+        
+        .footer {
+            background-color:#2078BF;
+            display: flex;
+            justify-content: space-between;
+            box-sizing: border-box;
+        }
+        .img-section{
+            background-image: url('./img/Illustration.png');
+            /* background-size: fixed; */
+            background-blend-mode: lighten;
+            background-repeat: no-repeat;
+        }
+        
+        .content {
+             color: #fff;
+             font-size: 1rem;
+             font-weight: 400;
+             line-height: .8;
+        }
+        .head{
+            font-size:1.375rem;
+            font-weight:400;
+        }
+        .footer-2{
+            background-color: #2078BF;
+            width:100%;
+        }
+        .container, .who-we-are{
+            padding: 40px;
+          }
+          .paragraph{
+            padding-top: 3.8125rem;
+            line-height: 2.18rem;
+          }
+          .faq{
+              font-family: karla;
+              padding-left: 16.593rem !important;
+          }
+          .privacy{
+              padding:0px 35px 0px 10px ;
+          }
+          .livestock247 .li{
+            
+            font-weight: 400;
+            line-height: 1.375rem;
+            font-size: 0.875rem;
+            letter-spacing: 0.00625rem;
+         padding: 0rem 4rem 0rem 0rem;
+          }
+          .in-li{
+              opacity: 0.8;
+          }
+        
+          .footer-list{
+            gap: 1.66rem;
+            padding-left: 0px;
+          }
+    .footer-last, .footer-last li{
+        font-family: karla !important;
+        font-size :0.625rem !important;
+        line-height: 1rem !important;
+        letter-spacing: 0.09375rem !important;
+        /* opacity :0.8; */
+
+    }
+    /* .footer-last .icons{
+        opacity: 1;
+    } */
+    .divider{
+        padding-top: 4rem;
+    }
