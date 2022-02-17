@@ -80,19 +80,6 @@
     width:  30px;
     height: 30px;
   }
-
-.address {
-  padding-left: 2.5rem;
-}
-
-.footerEnd .logo {
-  width: 1.151rem;
-  height: 1.151rem;
-  margin-right: 0.668rem;
-}
-
-
-
 /* .trackOrderSection {
   margin: 0;
   padding: 0;margin-top: 6.5625rem;
@@ -106,10 +93,10 @@
 
 .track h3 {
   padding: 5vh 6vw 3vh 1vw;
-  font-family: Ubuntu;
-  font-style: normal;
+  /* font-family: Ubuntu; */
+  /* font-style: normal; */
   font-weight: bold;
-  font-size: 1.125em;
+  font-size: 1.125rem;
   line-height: 1.813em;
   color: #2078BF;
   margin: 0;
@@ -121,12 +108,12 @@
   line-height: 2.187rem;
 }
 .livestock{
-  padding-left:2rem !important;
+  padding:0;
 }
 .livestock h3 {
-  padding: 10vh 3vw 5vh 1vw !important;
-  font-family: Ubuntu;
-  font-style: normal;
+  padding: 10vh 3vw 5vh 1vw;
+  /* font-family: Ubuntu; */
+  /* font-style: normal; */
   font-weight: bold;
   font-size: 1.125rem;
   line-height: 2.188rem;
@@ -156,15 +143,18 @@
   box-sizing: border-box;
   
 }
-.rack{
+/* .rack{
   padding-right: 2rem !important;
 }
 #rack{
   padding-left: 4vw;
   padding-right: 4vw;
-}
+} */
 .search{
     margin-bottom: 5vh;
+}
+.search_input{
+  margin-left: 1rem;
 }
 @media (max-width: 576px) {
     #sectionContent{
@@ -179,11 +169,22 @@
       .trackOrderSection header {
       margin-bottom: 0;
     }
-    #rack{
-       text-align:justify;
-    }
     .trackOrderSection {
-      font-size: 0.6rem;
+    
+    margin: 3rem 12.7vw 0rem 13.7vw;
+  }
+    .track p{
+       text-align:justify;
+       line-height: 1.3rem;
+        font-size: 0.8rem !important;
+    }
+    .track h3, .livestock h3 {
+      font-size: 0.8rem !important;
+      padding:0 !important;
+      margin:auto;
+    }
+    .track h3{
+      margin-top:1rem;
     }
   }
   
