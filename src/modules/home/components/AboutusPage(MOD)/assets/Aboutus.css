@@ -211,6 +211,7 @@ body{
     margin-left: 5.606rem;
     border-radius: 0.625rem;
     left:8.6875rem;
+    z-index: 1;
 }
 .subtitle{
     font-weight: 700;
@@ -231,7 +232,7 @@ body{
     left:43.625rem;
     padding-right:9.180rem;
     position: absolute;
-    z-index:-1;
+    /* z-index:-1; */
     margin-top:9.8125rem;
 }
 .responcive_img{
@@ -259,6 +260,7 @@ display:none;
     margin:auto;
     background-color:#F5FBFF;
     height: auto;
+    
 }
 .theory-y{
     padding:0px;

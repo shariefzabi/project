@@ -7,10 +7,11 @@
     font-family: Karla;
     src: url(./asset/Karla/Karla-VariableFont_wght.ttf);
 }
-header{
+.landingpage-header{
     width: 100%;
     height: 7.5rem;
     font-family: Ubuntu;
+    background-color: #2078bf;
 }
 .menu_content{
     text-decoration: none;

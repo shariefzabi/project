@@ -10,39 +10,8 @@ body{
     overflow-x:hidden;
 }
 
-.active{
-    text-decoration: underline solid white;
-}
-.nav-item{
-    margin-left: 2.93rem;
-}
-.dropdown-menu{
-    padding: 0rem;
-    margin: 0rem;
-}
-.dropdown-item:hover{
-    background-color: #2078BF;
-    color:white;
-}
-/* .buynow{
-    border: 0.134rem solid #00C3FF;
-    border-radius: 0.3125rem;
-    height: 3.75rem;
-    max-width:11.063rem;
-    margin-right: 2.625rem;
-    margin-left: 2.625rem;
-}
-.login{
-    height: 3.75rem;
-    max-width:11.063rem;
-    margin-right: 6.55rem;
-} */
 .di{
     background-color: #2078BF;
-}
-#navbarSupportedContent{
-    padding-top: 1rem;
-    padding-right: 1rem;
 }
 
 
