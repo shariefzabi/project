@@ -103,7 +103,7 @@ export default function Sidebar() {
                         </svg>
                     </a>
                 </div>
-                <section id="mobile-menu" className="mobile-menu">
+                <section id="mobile-menu" className="mobile-menu d-sm-none">
                     <div className="container">
                         <a type="button" className="btn-closemenu" onClick={CloseMenu}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -118,19 +118,19 @@ export default function Sidebar() {
                     <div>
                         <ul className="menupage">
                             <li><a>Overview</a></li>
-                            <li><a>My Profile</a></li>
+                            <li><a>My&nbsp;Profile</a></li>
                             <li><a>Orders</a></li>
                             <li><a>Invoice</a></li>
                             <li><a>Payments</a></li>
-                            <li><a>Track Order</a></li>
-                            <li><a>Log Out</a></li>
+                            <li><a>Track&nbsp;Order</a></li>
+                            <li><a>Log&nbsp;Out</a></li>
                             <li><a>Notifications</a></li>
                         </ul >
                     </div >
                     <footer className="terms">
                         <a className="text-light text-decoration-none" href="#">FAQ</a>
                         <a className="text-light text-decoration-none" href="#">PRIVACY</a>
-                        <a className="text-light text-decoration-none" href="#">TERMS & CONDITIONS</a>
+                        <a className="text-light text-decoration-none" href="#">TERMS&nbsp;&amp;&nbsp;CONDITIONS</a>
                     </footer>
                 </section >
             </nav >

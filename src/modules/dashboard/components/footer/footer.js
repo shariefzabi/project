@@ -71,7 +71,7 @@ export default function Footer() {
                         <div className="col-md-12 col-lg-3 col-xl-3 d-flex terms  py-xl-2">
                             <a className="text-light text-decoration-none px-4" href="#">FAQ</a>
                             <a className="text-light text-decoration-none px-4" href="#">PRIVACY</a>
-                            <a className="text-light text-decoration-none px-4" href="#">TERMS & CONDITIONS</a>
+                            <a className="text-light text-decoration-none px-4" href="#">TERMS&nbsp;&amp;&nbsp;CONDITIONS</a>
                         </div>
                         <div className="col-md-12 col-lg-4 col-xl-4 icons  py-xl-2  d-flex ">
                             <a href="#"><i className="fab fa-facebook-square text-light px-2 logo"></i></a>

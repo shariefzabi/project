@@ -8,7 +8,7 @@ export default function TrackOrder() {
         <section class="trackOrderSection">
           <header className="row">
             <div className="headingText col-8">
-              <h2>Track Order</h2>
+              <h2>Track&nbsp;Order</h2>
             </div>
 
             <div className="dropdown col-4">
