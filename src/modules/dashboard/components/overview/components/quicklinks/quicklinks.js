@@ -5,11 +5,11 @@ export default function Quicklinks() {
             <main id="mainContent">
                 <section className="quicklinks">
                     <header className="row">
-                        <div className="headingText col">
+                        <div className="headingText col-8">
                             <h2>Quicklinks</h2>
                         </div>
 
-                        <div className="dropdown col">
+                        <div className="dropdown col-4">
                             <a className="edit-toggler text-secondary" type="button" id="dropdownMenuButton1"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"

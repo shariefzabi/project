@@ -1,6 +1,6 @@
 .mainHeader .navbar {
   position: fixed;
-  top:0; /*spandana*/
+  top:0;
   background-color: #2078BF;
   height: 7.5rem;
   padding: 0;
@@ -100,10 +100,6 @@
     padding: 0;
     height: 4rem;
     margin: auto;
-    padding-top: 2.5vh;
-    padding-bottom: 2.5vh;
-    padding-left: 15vw;
-    padding-right: 15vw;
   }
 
   .searchBar {

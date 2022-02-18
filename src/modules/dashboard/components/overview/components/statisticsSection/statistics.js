@@ -8,11 +8,11 @@ export default function Statistics() {
       <main id="sectionContent">
         <section className="statSection">
           <header className="row">
-            <div className="headingText col">
+            <div className="headingText col-8">
               <h2>Statistics</h2>
             </div>
 
-            <div className="dropdown col text-end">
+            <div className="dropdown col-4">
               <a
                 className="edit-toggler text-secondary start-end"
                 type="button"

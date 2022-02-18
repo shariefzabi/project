@@ -1,41 +1,31 @@
 #sectionContent{
   margin-left: 4.375rem;
 }
-.statistics{
-  margin: 3rem 12.7vw 0rem 13.7vw ;
+  .statSection {
     margin: 0;
     padding: 0;
-    font-size:1rem !important;
-    /* margin-left: 11vw;
+    margin-left: 11vw;
     margin-right: 12.13vw;
-    margin-top: 6.5625rem; */
+    margin-top: 6.5625rem;
     box-sizing: border-box;
-     font-size: 0.5rem;
-    background-color: #F5FBFF;
-    margin-left: 4.375vw;
-    
-}
-.statSection {
-  margin: 0;
-  padding: 0;
-  margin-top: 1.5625rem;
-  box-sizing: border-box;  
-  margin: 6.56rem 12.13vw 0rem 11vw;
-
- 
   }
-
-header h2{
-   margin-top: 2.375vh !important;
-   height: 3.625rem;
-    font-family: Ubuntu;
-    font-style: normal;
-    font-weight: bold;
-    /* font-size: 2em; */
-    line-height: 1rem;
-    /* background-color: #F5FBFF; */
+  .statSection .headingText h2{
     color: #2078BF;
-    /* box-shadow: 0rem 1.875rem 2.5rem #E3F3FF; */
+    font-weight: bolder;
+    margin: 0;
+    font-size: 2.25rem;
+    line-height: 1rem;
+  }
+  .statSection header{
+    margin-bottom: 2.9375rem;
+    height: 2.8125rem;
+  }
+  .statSection .edit-toggler{
+    float: right;
+    margin: 0;
+  }
+  .statSection .edit-toggler svg {
+    text-align: end;
   }
    
 .dropdown .dropdown-menu {
@@ -77,19 +67,6 @@ header h2{
     width:  30px;
     height: 30px;
   }
-
-  header {
-    /* margin-top: 2.375vh; */
-    /* height: 3.625rem; */
-     font-family: Ubuntu;
-     font-style: normal;
-     font-weight: bold;
-     font-size: 2.25rem;
-     line-height: 1rem;
-     /* background-color: #F5FBFF; */
-     /* color: #2078BF; */
-     /* box-shadow: 0rem 1.875rem 2.5rem #E3F3FF; */
-   }
 .stat p {
   margin-top: 8vh;
   margin-bottom: 2vh;
@@ -98,32 +75,6 @@ header h2{
   font-size: 1.125rem;
   line-height: 2.187rem;
 }
-/* .livestock h3 {
-  padding: 10vh 3vw 8vh 1vw;
-  font-family: Ubuntu;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 1.125em;
-  line-height: 2.188em;
-  color: #2078BF;
-} */
-/* .livestock input {
-  color: #D7D7D7;
-  background: #FFFFFF;
-  border: 1px solid #E0E0E0;
-  box-sizing: border-box;
-  font-size: 0.875rem;
-  border-radius: 0.313rem 0 0 0.313rem;
-}
-.livestock .btn-trackSearch svg {
-  color: #06864d;
-  border-radius: 0.0625rem solid #FFFFFF;
-  background-color: #06864d;
-}
-.btn-trackSearch{
-  border-bottom-left-radius: 0px !important;
-  border-top-left-radius: 0px !important;
-} */
 .stat {
   background: #FFFFFF;
   border-radius: 0.625rem;
@@ -132,29 +83,24 @@ header h2{
   box-shadow: 0rem 1.875rem 2.5rem #E3F3FF;
  
 }
-/* .search{
-    margin-bottom: 5vh;
-} */
 img{
     margin-bottom: 10vh;
     width: 100%;
 }
 @media (max-width: 576px) {
    
-.statSection {
-  margin: 0;
-  padding: 0;
-  margin-top: 1.5625rem;
-  box-sizing: border-box;  
-  margin: 3rem 12.7vw 0rem 13.7vw;
+  #sectionContent{
+    margin: 0;
   }
-  /* margin-left: 9.75rem;
-  margin-right: 11.2475rem;
-  padding-right: 11.375rem; */
-
-header h2{
-   height: 0.625rem;
-}
+  .statSection{
+    margin-top: 2.5rem;
+  }
+  .statSection .headingText h2{
+    font-size: 1.5rem;
+  }
+    .statSection header {
+    margin-bottom: 0;
+  }
 img{
     margin-bottom: 3vh;
 }
@@ -196,6 +142,3 @@ img{
       margin-bottom: 1.5rem;
     }
   }
-  
-  
-/*# sourceMappingURL=trackOrder.css.map */

@@ -7,12 +7,12 @@ export default function Orders() {
         <div>
             <main id="ordersContent">
                 <section className="order-section">
-                <header className="row">
-                        <div className="headingText col">
+                    <header className="row">
+                        <div className="headingText col-8">
                             <h2>Orders</h2>
                         </div>
 
-                        <div className="dropdown col">
+                        <div className="dropdown col-4">
                             <a className="edit-toggler text-secondary" type="button" id="dropdownMenuButton1"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"

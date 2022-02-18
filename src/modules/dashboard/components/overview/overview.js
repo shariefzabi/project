@@ -12,15 +12,16 @@ import Payments from './components/paymentsSection/payments';
 
 
 function Overview() {
-    return (<div className='dashboard'>
-        <Quicklinks></Quicklinks>
-        <Orders></Orders>
-        <Invoice></Invoice>
-        <Payments></Payments>
-        <TrackOrder></TrackOrder>
-        <Statistics></Statistics>
-
-    </div>);
+    return (
+        <div className='overview'>
+            <Quicklinks></Quicklinks>
+            <Orders></Orders>
+            <Invoice></Invoice>
+            <Payments></Payments>
+            <TrackOrder></TrackOrder>
+            <Statistics></Statistics>
+        </div>
+    );
 }
 
 export default Overview;

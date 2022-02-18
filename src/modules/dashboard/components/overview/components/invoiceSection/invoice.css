@@ -1,7 +1,6 @@
 
 #sectionContent{
   margin-left: 4.375rem;
-  /* padding: 0; */
 }
 .invoiceSection {
     
@@ -73,7 +72,6 @@
     box-shadow: 0rem 1.875rem 2.5rem #E3F3FF;
     border-radius: 10px;
     margin: auto;
-    /* height: 50.125rem; */
     padding: auto !important;
   }
   
@@ -115,7 +113,6 @@
     font-size: 0.875rem;
   }
   .invoice-id span{
-    /* padding-left: 40vw; */
     float: right;
     padding-right: 3.33vw;
   }
@@ -186,7 +183,6 @@
     
   
     .table table, th, td {
-      /* text-align: center; */
       padding: 0.07vw;
       font-size: 0.6rem;
     }
@@ -282,21 +278,15 @@
     }
   
     .table table, th, td {
-      /* text-align: center; */
       padding: 0.1vw;
       font-size: 0.8rem;
     }
     table{
       height:100px;
     }
-  
-    /* .Brow td {
-      padding: 2vw 0.1vw;
-    } */
   }
   @media (min-width: 993px) and (max-width: 1200px) {
     .table table, th, td {
-      /* text-align: center; */
       padding: 0.1vw;
       font-size: 0.8rem;
     }

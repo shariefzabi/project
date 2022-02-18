@@ -116,6 +116,10 @@ footer {
     }
     .end .terms {
       justify-content: center;
+      font-size: 0.3rem;
+    }
+    .end .terms a{
+      font-size: 0.45rem;
     }
     .end .icons {
       justify-content: center;

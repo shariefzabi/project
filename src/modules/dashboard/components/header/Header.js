@@ -7,13 +7,13 @@ export default function Header() {
             <header className="mainHeader">
 
                 <nav className="navbar navbar-expand-lg navbar-expand-sm row align-items-center justify-content-end">
-                    <div className="col-auto ms-auto">
+                    <div className="col-auto m-auto">
                         <form className="d-flex form-group searchBar">
                             <span className="fa fa-search form-control-feedback searchIcon"></span>
                             <input type="text" className="form-control searchInput" placeholder="e.g.. orders" />
                         </form>
                     </div>
-                    <div className="container-fluid col-auto">
+                    <div className="container-fluid col-auto d-none d-sm-block">
                         <div className="collapse navbar-collapse d-sm-none" id="navbarSupportedContent">
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li className="nav-item notifications">
