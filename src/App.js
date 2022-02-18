@@ -9,6 +9,8 @@ import './App.css';
 // import Aboutus from "./modules/home/components/AboutusPage(MOD)/Aboutus"
 // import ButcheryPopup from "./modules/home/components/butchery_form/butcherypopup"
 import BeanAgentPopup from "./modules/home/components/be an agent form/form1"
+// import Butcherypopup from "./modules/home/components/form2/form2"
+// import AgentModel from "./modules/home/components/AgentModel/AgentModel1"
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
       {/* <Final></Final> */}
       {/* <ButcheryPopup></ButcheryPopup> */}
       <BeanAgentPopup></BeanAgentPopup>
+      {/* <Butcherypopup></Butcherypopup> */}
+      {/* <AgentModel></AgentModel> */}
       
     </div>
   );
