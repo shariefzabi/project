@@ -1,0 +1,108 @@
+#mainContent{
+  background-color: #F5FBFF ;
+}
+.trackOrder{
+    margin: 10.125vw !important;
+    margin: 0;
+    padding: 0;
+    /* margin-left: 11vw;
+    margin-right: 12.13vw;
+    margin-top: 6.5625rem; */
+    box-sizing: border-box;
+}
+#trackOrder{
+    font-size: 0.5rem;
+    background-color: #F5FBFF;
+    /* margin-left: 4.375vw; */
+}
+#order {
+    margin-top: 5.375rem;
+    height: 4.625rem;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 2.25rem;
+    line-height: 1rem;
+    /* background-color: #E3F3FF; */
+    color: #2078BF;
+    /* box-shadow: 0rem 1.875rem 2.5rem #E3F3FF; */
+  }
+.address {
+  padding-left: 2.5rem;
+}
+
+.footerEnd .logo {
+  width: 1.151rem;
+  height: 1.151rem;
+  margin-right: 0.668rem;
+}
+
+
+
+.trackOrderSection {
+  margin: 0;
+  padding: 0;margin-top: 6.5625rem;
+  box-sizing: border-box;  
+  /* margin-left: 9.75rem;
+  margin-right: 11.2475rem;
+  padding-right: 11.375rem; */
+
+} 
+.track{
+  margin: 2vw 0;
+}
+
+.track h3 {
+  padding: 10vh 10vw 8vh 1vw;
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.125rem;
+  line-height: 1.813rem;
+  color: #2078BF;
+  margin: 0;
+}
+.track p {
+  padding: 0vh 0vw 0vh 1vw;
+  color: #838383;
+  font-size: 0.875rem;
+  line-height: 2.187rem;
+}
+
+.livestock h3 {
+  padding: 10vh 3vw 8vh 1vw;
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.125rem;
+  line-height: 2.188rem;
+  color: #2078BF;
+}
+.livestock input {
+  color: #D7D7D7;
+  background: #FFFFFF;
+  border: 1px solid #E0E0E0;
+  box-sizing: border-box;
+  font-size: 0.875rem;
+  border-radius: 0.313rem 0 0 0.313rem;
+}
+.livestock .btn-trackSearch svg {
+  color: #06864d;
+  border-radius: 0.0625rem solid #FFFFFF;
+  background-color: #06864d;
+}
+.btn-trackSearch{
+  border-bottom-left-radius: 0px !important;
+  border-top-left-radius: 0px !important;
+}
+.track {
+  background: #FFFFFF;
+  /* box-shadow: 0rem 1.875rem 2.5rem #E3F3FF; */
+  border-radius: 0.625rem;
+  box-sizing: border-box;
+}
+.search{
+    margin-bottom: 5vh;
+}
+
+/*# sourceMappingURL=trackOrder.scss.map */
