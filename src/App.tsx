@@ -1,9 +1,11 @@
 // import logo from './logo.svg';
 import React from 'react';
 import './App.scss';
+import Dashboard from './modules/dashboard/dashboard';
+import Home from './modules/home/Home';
 // import Home from './modules/home/Home';
 // import Dashboard from './modules/dashboard/dashboard';
-import Finalblog from './modules/home/components/Blogcontent/final';
+// import Finalblog from './modules/home/components/Blogcontent/final';
 // import LandingPage from './modules/home/components/LandingPage';
 // import "./modules/home/components/blogs/assets/styles.scss";
 // import Final from "./modules/home/components/blogs/final";
@@ -16,11 +18,11 @@ import Finalblog from './modules/home/components/Blogcontent/final';
 function App() {
   return (
     <div className="App">
-      {/* <Home /> */}
+      <Home />
       {/* <LandingPage/> */}
-    {/* <Dashboard/> */}
+    <Dashboard/>
       {/* <LandingPage></LandingPage> */}
-      <Finalblog/>
+      {/* <Finalblog/> */}
       {/* <Aboutus></Aboutus> */}
       {/* <LandingPage></LandingPage> */}
       {/* <Final></Final> */}
