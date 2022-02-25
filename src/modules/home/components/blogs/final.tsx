@@ -1,0 +1,19 @@
+import React from "react";
+import Blogtable from "./blogs";
+import Menu from "../menubar/menu";
+import "./assets/styles.scss";
+import Footer from "./footer";
+
+class Final extends React.Component{
+  render(){
+      return(
+          <div>
+              <Menu></Menu>
+              <Blogtable></Blogtable>
+              <Footer></Footer>
+          </div>
+      )
+  }
+}
+
+export default Final;
