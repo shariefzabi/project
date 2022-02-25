@@ -18,17 +18,24 @@ footer {
     padding-right: 7%;
   }
   
-  .quicklink h3 {
-    font-size: 1.375rem;
-    font-weight: lighter;
-    font-style: normal;
-    line-height: 1.5rem;
-  }
-  .quicklink a, .quicklink p {
-    font-size: 0.875rem;
-    font-weight: lighter;
-    line-height: 1.5rem;
-  }
+  .quicklink{
+    h3 {
+      font-size: 1.375rem;
+      font-weight: lighter;
+      font-style: normal;
+      line-height: 1.5rem;
+    }
+   a{
+      font-size: 0.875rem;
+      font-weight: lighter;
+      line-height: 1.5rem;
+    }
+    p {
+      font-size: 0.875rem;
+      font-weight: lighter;
+      line-height: 1.5rem;
+    }
+  } 
   
   .bg-bubble {
     background-image: url("./img/path.svg");
