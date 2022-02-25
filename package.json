@@ -1,0 +1,23 @@
+{
+  "name": "livestock_repo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spandana77/PROJECT_CDB21DX067.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/spandana77/PROJECT_CDB21DX067/issues"
+  },
+  "homepage": "https://github.com/spandana77/PROJECT_CDB21DX067#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "mongodb": "^4.4.0"
+  }
+}
