@@ -1,6 +1,6 @@
 import React from 'react';
 import './dashboard.scss';
-
+import { Link } from "react-router-dom";
 
 
 
@@ -17,6 +17,7 @@ function Dashboard() {
          {/* <Payments></Payments> */}
        {/* <Footer></Footer>
          */}
+          <Link to="/">Go to Home</Link>
       </div>
     );
 }
