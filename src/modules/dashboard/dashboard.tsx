@@ -1,15 +1,13 @@
 import React from 'react';
 import './dashboard.scss';
 import { Link } from "react-router-dom";
+import Counter from '../../containers/counter';
 
-
-
-
-
-function Dashboard() {
+function Dashboard(props:any) {
     return (
       <div className="dashboard">
         <h1>Dashboard</h1>
+        <Counter></Counter>
         {/* <TrackOrder></TrackOrder>  */}
         {/* <Orders></Orders> */}
         {/* <Invoice></Invoice> */}
