@@ -28,8 +28,8 @@ const mapStateToProps = (state:any) => {
 
 const mapDispatchToProps = (dispatch:any) => {
     return {
-        onAdd: (task:any) => dispatch({ type: 'ADD',task}),
-        onSubtract: (task:any) => dispatch({ type: 'SUBTRACT',task })
+        onAdd: () => dispatch({ type: actionType.ADD}),
+        onSubtract: () => dispatch({ type: actionType.SUBTRACT })
     }
 }
 
