@@ -1,13 +1,14 @@
 import React from 'react';
 import './dashboard.scss';
 import { Link } from "react-router-dom";
-import Counter from '../../containers/counter';
+import { connect } from 'react-redux';
 
 function Dashboard(props:any) {
+  const handleAdd=()=>{props.onAdd()}
     return (
       <div className="dashboard">
-        <h1>Dashboard</h1>
-        <Counter></Counter>
+        <h1>Dashboard {props.state.counter}</h1>
+        <button onClick={handleAdd}>add</button>
         {/* <TrackOrder></TrackOrder>  */}
         {/* <Orders></Orders> */}
         {/* <Invoice></Invoice> */}
@@ -20,4 +21,16 @@ function Dashboard(props:any) {
     );
 }
 
-export default Dashboard;
+const mapStateToProps = (state:any) => {
+  return {
+      state
+  }
+}
+const mapDispatchToProps = (dispatch:any) => {
+  return {
+      onAdd: () => dispatch({ type:'ADD'}),
+      onSubtract: () => dispatch({ type: 'SUBTRACT'})
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
