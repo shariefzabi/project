@@ -2,17 +2,23 @@ import React from 'react';
 import './App.scss';
 import Dashboard from './modules/dashboard/dashboard';
 import Home from './modules/home/Home';
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='dashboard' element={<Dashboard />} />
-  
-
-      </Routes>
+      <Router>
+        <div>
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/dashboard">
+              <Dashboard />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
     </div>
   );
 }
