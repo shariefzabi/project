@@ -4,8 +4,8 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.css"
 
     class Login extends React.Component {
-        constructor() {
-            super();
+        constructor(props:any) {
+            super(props);
             this.state = {
                 username: "",
                 password: "",
