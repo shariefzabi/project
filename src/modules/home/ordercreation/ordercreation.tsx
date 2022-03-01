@@ -1,9 +1,10 @@
 import React from 'react';
 import './ordercreation.css'
-export default function CreateOrder() {
+export default function BuyNow() {
     return (
         <div>
-            <a className="btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">ordercreation</a>
+            <button className="buy_button" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Buy Now</button>
+            {/* <a className="btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">ordercreation</a> */}
 
             <div className="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog modal-xl" >
@@ -19,8 +20,7 @@ export default function CreateOrder() {
                         </div>
                         <form >
                             <div className='row'>
-                                <div className="col-md-3 ms-3" >
-
+                                <div className="col-md-3 productype-dropdown" >
                                     <div className="dropdown" >
                                         <select className="form-select" >
                                             <option selected>Type</option>

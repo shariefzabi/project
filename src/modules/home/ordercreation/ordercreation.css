@@ -1,3 +1,7 @@
+.buy_button {
+    background-color: #2078BF;
+    margin-right: 2.8%;
+}
  .popupheading{
         color: #2078BF;
         width: 555px;
@@ -44,4 +48,7 @@
     position: absolute;
     left:80%;
     top:30%;
+   }
+   .productype-dropdown{
+       margin-left: 80px !important;
    }
