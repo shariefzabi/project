@@ -5,11 +5,11 @@ import "./LocationPopUp.css";
 export default function LocationPopUp() {
   const displayHidden = () => {
     let hiddenContent = document.getElementById("hide");
-    hiddenContent.style.display = "block";
+    // hiddenContent.style.display = "block";
   };
   const hideBlock = () => {
     let hideContent = document.getElementById("hide");
-    hideContent.style.display = "none";
+    // hideContent.style.display = "none";
   };
   const addLocation = () => {
     displayHidden();

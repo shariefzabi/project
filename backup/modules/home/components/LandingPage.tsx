@@ -120,7 +120,7 @@ export default class LandingPage extends React.Component {
                             <aside className="search-livestock text-white">
                                 <p className="searchbar-heading">Track your livestock </p>
                                 <form className="d-flex">
-                                    <input type="text" placeholder="Input Your Chip Number Here" name="search" size="25" />
+                                    <input type="text" placeholder="Input Your Chip Number Here" name="search" size={25} />
                                     <img src={require("./assets/Img/Group 20.png")} />
                                 </form>
                             </aside>
@@ -284,9 +284,9 @@ export default class LandingPage extends React.Component {
                         <div className="d-flex justify-content-between head-part">
                             <h2>Our Partners</h2>
                             <aside className="arrows align-self-center">
-                                <img src={require("./assets/Img/leftarrow.png")} type="button" data-bs-target="#our-partners-carousel"
+                                <img src={require("./assets/Img/leftarrow.png")}  data-bs-target="#our-partners-carousel"
                                     data-bs-slide="prev" />
-                                <img src={require("./assets/Img/rightarrow (1).png")} type="button" data-bs-target="#our-partners-carousel"
+                                <img src={require("./assets/Img/rightarrow (1).png")} data-bs-target="#our-partners-carousel"
                                     data-bs-slide="next" />
                             </aside>
                         </div>
@@ -303,9 +303,9 @@ export default class LandingPage extends React.Component {
                         <div className="d-flex justify-content-between head-part">
                             <h2>Satisfied Clients</h2>
                             <aside className="arrows align-self-center">
-                                <img src={require("./assets/Img/leftarrow.png")} type="button" data-bs-target="#carouselExampleIndicators"
+                                <img src={require("./assets/Img/leftarrow.png")} data-bs-target="#carouselExampleIndicators"
                                     data-bs-slide="prev" />
-                                <img src={require("./assets/Img/rightarrow (1).png")} type="button" data-bs-target="#carouselExampleIndicators"
+                                <img src={require("./assets/Img/rightarrow (1).png")} data-bs-target="#carouselExampleIndicators"
                                     data-bs-slide="next" />
                             </aside>
                         </div>
@@ -440,11 +440,11 @@ export default class LandingPage extends React.Component {
                         </div>
 
                         <div className="text-center">
-                            <span href="#" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active"
+                            <span data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active"
                                 aria-current="true" aria-label="Slide 1">&#9900;</span>
-                            <span type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                            <span  data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
                                 aria-label="Slide 2">&#9900;</span>
-                            <span type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                            <span data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
                                 aria-label="Slide 3">&#9900;</span>
                         </div>
 
@@ -474,7 +474,7 @@ export default class LandingPage extends React.Component {
                             <h2 >Newsletter</h2>
                         </div>
                         <form className="d-flex">
-                            <input className="form-control" type="text" placeholder="Email Address" name="search" size="25" />
+                            <input className="form-control" type="text" placeholder="Email Address" name="search" size={25} />
                             <button className="btn btn-success p-2">Subscribe
                             </button>
                         </form>

@@ -3,7 +3,7 @@ import './App.scss';
 import Dashboard from './modules/dashboard/dashboard';
 import Home from './modules/home/Home';
 import { BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
-import NavBar from './modules/header/navbar';
+import Header from './components/header/app_header';
 import LandingPage from './modules/landing_page/LandingPage';
 import Aboutus from './modules/about_us/aboutus';
 import Blog from './modules/blog/final';
@@ -14,7 +14,7 @@ function App() {
     <div className="App">
       <Router>
         <div>
-          <NavBar/>
+          <Header/>
           <Routes>
             <Route path="/" element={<LandingPage/>}>
             </Route>

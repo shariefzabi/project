@@ -5,9 +5,14 @@ import triangle from "./asset/Triangle.png";
 import { Link } from "react-router-dom";
 // import invertedtri from "./asset/Trianglein.png"
 import "./style.scss";
+<<<<<<< Updated upstream:src/modules/header/navbar.tsx
 import Login from "../login/components/login";
 import BuyNow from "../home/ordercreation/ordercreation";
 class NavBar extends React.Component {
+=======
+import Login from "../../modules/login/components/login";
+class Header extends React.Component {
+>>>>>>> Stashed changes:src/components/header/app_header.tsx
     render() {
         return (
             <header className="landingpage-header d-lg-flex justify-content-end">
@@ -64,4 +69,4 @@ class NavBar extends React.Component {
         )
     }
 }
-export default NavBar;
+export default Header;
