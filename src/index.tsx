@@ -8,12 +8,12 @@ import { Provider } from 'react-redux';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap"
 import appReducer from './app_reducers/appReducers';
+import appStore from './app_store/app_store'
 
-const store = createStore(appReducer);
 
 ReactDOM.render(
   <React.Fragment>
-    <Provider store={store}>
+    <Provider store={appStore}>
         <App />
         </Provider>
   </React.Fragment>,document.getElementById('root'));

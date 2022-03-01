@@ -1,7 +1,4 @@
 
-import bar from "./assets/img/Group 2.png"
-import cross from "./assets/img/Group 35.png"
-import triangle from "./assets/img/Triangle.png"
 import "./assets/aboutus.scss";
 export default function Aboutus() {
     return (
