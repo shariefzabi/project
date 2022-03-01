@@ -1,0 +1,193 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+
+.popUp {
+  display: flex;
+  width: 62.27vw;
+  background-color: #fff;
+  border-radius: 0.3125rem;
+  font-family: "Ubuntu", sans-serif;
+  margin: auto;
+}
+
+.popUpContent {
+  margin: auto;
+}
+
+h3 {
+  color: #2078bf;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  font-style: normal;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 4.5rem !important;
+}
+
+article {
+  font-weight: normal;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  color: #2078bf;
+  margin-top: 1.875rem;
+}
+
+p {
+  font-weight: normal;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: gray;
+}
+
+.dropdown {
+  margin-top: 3.375rem;
+  margin-bottom: 3.375rem;
+}
+
+.dropdown .dropdown-menu {
+  padding: 0;
+  margin: 0;
+  background-color: #fff;
+  width: 22.86vw;
+  border: 1px solid #e0e0e0;
+}
+
+.dropdown-toggle::after {
+  float: right;
+  margin-top: 10px;
+}
+
+.dropdown .dropdown-toggle {
+  background-color: #fff;
+  border: 1px solid #f1f1f1;
+  box-sizing: border-box;
+  border-radius: 5px;
+  width: 22.86vw;
+  color: #838383;
+  text-align: start;
+}
+
+.dropdown .show {
+  margin-bottom: 10.125rem;
+}
+
+.dropdown .dropdown-item {
+  font-weight: thin;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  letter-spacing: 0.006rem;
+  color: #838383;
+  padding: 0.53125rem;
+}
+
+.dropdown .dropdown-item:hover {
+  color: #fff;
+  background-color: #2078bf;
+}
+
+.btn-cnt {
+  margin-bottom: 2.5rem;
+  width: 12.25rem;
+  height: 3.125rem;
+}
+
+.btn-cnt,
+.btn-add {
+  color: #fff;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: normal;
+  letter-spacing: 0.1px;
+  line-height: 1.5rem;
+  background: #06864d;
+  border: none;
+  border-radius: 5px;
+}
+
+#addLocation {
+  margin-top: 3.375rem;
+  margin-right: 1rem;
+  border: 1px solid #f1f1f1;
+}
+
+.btn-add,
+#addLocation {
+  height: 40px;
+  font-size: 1rem;
+}
+
+.hide {
+  display: none;
+}
+@media (min-width:0px) and (max-width:576px) {
+  h3{
+    margin-top: 2.187rem !important;
+    font-size: 1rem !important;
+    line-height: 1.625rem;
+  }
+  article{
+    margin-top: 0.75rem;
+    font-size:0.625rem;
+    line-height: 1rem;
+  }
+   .dropdown{
+    margin-top: 0;
+    margin-bottom: 2.25rem;
+  }
+  .dropdown .dropdown-toggle{
+    width: 11.625rem;
+    color: #838383 !important;
+    font-size: 0.5rem;
+  }
+  .dropdown-toggle::after {
+    margin-top: 5px;
+  }
+  .dropdown .dropdown-menu {
+    width: 11.625rem;
+  }
+  .dropdown .show {
+    margin-bottom: 8rem;
+  }
+  .dropdown .dropdown-item{
+    line-height: 0.87rem ;
+    font-size: 0.5rem;
+  }
+  .btn-cnt {
+    margin-bottom: 1.9375rem;
+    width: 6.625rem;
+    height: 1.87rem;
+  }
+  .btn-cnt,
+.btn-add{
+  font-size: 0.625rem;
+}
+.btn-add,
+#addLocation {
+  height: 1.5rem;
+  font-size: 0.5rem;
+}
+#addLocation{
+  margin-top: 1rem;
+  margin-right: 0.5rem;
+}
+}
+@media (min-width:577px) and (max-width:768px) {
+  .dropdown .dropdown-toggle{
+    width: 15rem;
+  }
+  .dropdown .dropdown-menu {
+    width: 15rem;
+  }
+  .dropdown{
+    margin-top: 2rem;
+  }
+  .btn-add,
+#addLocation {
+  height: 2.25rem;
+}
+#addLocation{
+  margin-right: 0.5rem;
+}
+
+}
