@@ -1,0 +1,27 @@
+.modal-title{
+    color: #2078bf;
+}
+.login-window{
+    .modal-dialog-centered{
+        width: 676px;
+    }
+    label{
+        color: #838383;
+    }
+    input::placeholder{
+        color:#dcdcdc
+    }
+    form {
+        width: 27.18rem;
+        margin: auto;
+        .login{
+            height: 3.125rem;
+        margin-right: 0;
+    }
+    a{
+        text-decoration: none;
+        color: #333333;
+    }
+    }
+    
+}
