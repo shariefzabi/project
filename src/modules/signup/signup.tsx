@@ -1,24 +1,22 @@
-import "./assets/login.scss";
+// import "./assets/login.scss";
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css"
-import Signup from "../../signup/signup";
 
-
-
-class Login extends React.Component <any, any> {
-
-    
-
+class Signup extends React.Component <any,any>{
     constructor(props:any) {
         super(props);
         this.state = {
-            username: "",
+            fullname: "",
+            email: "",            
             password: "",
+            
 
 
             // Error Messages 
-            usernameErrMsg: "",
+            fullnameErrMsg: "",
+            emailErrMsg:"",
             passwordErrMsg: "",
+
 
         }
     }
@@ -29,19 +27,13 @@ class Login extends React.Component <any, any> {
         e.preventDefault();
         console.log(this.state);
     }
-    // profileChangeHandler = (e: any) => {
-    //     if (e.target.files.length === 0) {
-    //         return;
-    //     }
-    //     let profileImg = e.target.files[0];
-    //     this.setState({ profileImg })
-    // }
-
+    
 
 
     validations = (e: any) => {
         // console.log(e.target.name);
         // console.log(e.target.value);
+        // username
 
         if (e.target.name === 'username') {
             let username = e.target.value;
@@ -68,6 +60,34 @@ class Login extends React.Component <any, any> {
                 }
             }
         }
+
+        // email
+        if (e.target.name === 'email') {
+            let email = e.target.value;
+            let emailErrMsg = '';
+            if (email == undefined || email.length === 0) {
+                emailErrMsg = "Please enter the email."
+                this.setState({ emailErrMsg })
+                e.target.classList.add("field-error")
+            } else {
+                // let nameReg = /[a-zA-Z]{5, 30}/
+                // let nameReg = /^((?![A-Z ]+$)(?![a-z ]+$)[a-zA-Z ]+){5, 30}$/
+                let emailReg = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/
+                // console.log(email);
+                // console.log(passwordReg);
+                // console.log(passwordReg.test(password));
+                if (!emailReg.test(email)) {
+                    let emailErrMsg = "Invalid Email-Id)"
+                    this.setState({ emailErrMsg })
+                    e.target.classList.add("field-error")
+                } else {
+                    emailErrMsg = ''
+                    e.target.classList.remove("field-error")
+                    this.setState({ emailErrMsg })
+                }
+            }
+        }
+        // password
 
         if (e.target.name === 'password') {
             let password = e.target.value;
@@ -98,41 +118,21 @@ class Login extends React.Component <any, any> {
     }
     render() {
         let {
-            username, password
+            username, password,email
         } = this.state;
         return (
 
-            //    <div>
-            //         <h3>Login From </h3>
-            //        <div>
-            //        
-            //                    <div className="my-3">
-            //                     <input type="text" name="username"
-            //                         value={username} placeholder="Username"
-            //                         className="form-control"
-            //                         onChange={this.changeHandler}
-            //                         onBlur={this.validations}
-            //                     ></input>
-            //                    
-            //                     </div>
-            //                 <div className="my-3">
-            //                     <input type="password" 
-            //                     ></input>
-            //                    
-            //                 </div>
-            //             </form>
-            //         </div>
-            //     </div>
-            <div className="login-window">
-                <a className=" text-decoration-none text-white" data-bs-toggle="modal"
-                    role="button" href="#exampleModalToggle">Login</a>
-                <div className="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+            
+            <div className="signup-window">
+                <a className=" text-decoration-none text-dark" data-bs-toggle="modal"
+                    role="button" href="#exampleModalToggle2">Signup</a>
+                <div className="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
                     tabIndex={-1}>
                     <div className="modal-dialog modal-dialog-centered">
                         <div className="modal-content text-black">
                             <div className="modal-body">
                                 <div className="modal-title">
-                                    <h5 id="exampleModalToggleLabel">LogIn</h5>
+                                    <h5 id="exampleModalToggleLabel2">LogIn</h5>
                                     <p>Welcome back!</p>
                                     {/* <h2 className="col-1" data-bs-dismiss="modal" aria-label="Close">X</h2> */}
                                 </div>
@@ -140,13 +140,26 @@ class Login extends React.Component <any, any> {
                                     <div className="mb-3 text-start">
                                         <label htmlFor="uname" className="form-label">Name</label>
                                         <input type="text" name="username"
-                                            value={username} 
+                                            value={username} placeholder="Username"
                                             className="form-control"
                                             onChange={this.changeHandler}
-                                            onBlur={this.validations}  id="uname" placeholder="Name" />
+                                            onBlur={this.validations}  id="uname"  />
                                         <div>
                                             <p className="text-danger">{this.state.usernameErrMsg}</p>
                                         </div>
+                                    </div>
+                                    <div className="mb-3 text-start">
+                                        <label htmlFor="email" className="form-control">Email</label>
+                                        <input type="email" name="password"
+                                            value={email} placeholder="Email"
+                                            className="form-control"
+                                            onChange={this.changeHandler}
+                                            onBlur={this.validations}  id="pwd"  />
+
+                                        <div>
+                                            <p className="text-danger">{this.state.emailErrMsg}</p>
+                                        </div>
+                                        <div className="form-text text-end"><a href="#">I Forgot My Password</a></div>
                                     </div>
                                     <div className="mb-3 text-start">
                                         <label htmlFor="pwd" className="form-label">Password</label>
@@ -154,20 +167,21 @@ class Login extends React.Component <any, any> {
                                             value={password} placeholder="Password"
                                             className="form-control"
                                             onChange={this.changeHandler}
-                                            onBlur={this.validations}  id="pwd" />
+                                            onBlur={this.validations}  id="pwd"  />
 
                                         <div>
                                             <p className="text-danger">{this.state.passwordErrMsg}</p>
                                         </div>
                                         <div className="form-text text-end"><a href="#">I Forgot My Password</a></div>
                                     </div>
+                                    
 
                                     <button type="submit" className="btn login btn-success">Login</button>
                                 </form>
                             </div>
                             <div>
                                 <p>
-                                    <span className="text-success" >Don't have an account yet ? </span><div data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"><Signup></Signup></div>
+                                    <span className="text-success" >Don't have an account yet ? </span><a data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"> Sign up</a>
                                 </p>
                             </div>
                         </div>
@@ -179,4 +193,4 @@ class Login extends React.Component <any, any> {
     }
 }
 
-export default Login;
+export default Signup;
