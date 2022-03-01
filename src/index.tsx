@@ -5,10 +5,10 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import reducer from './store/reducers';
 import "bootstrap/dist/css/bootstrap.min.css";
+import appReducer from './app_reducers/appReducers';
 
-const store = createStore(reducer);
+const store = createStore(appReducer);
 
 ReactDOM.render(
   <React.Fragment>
