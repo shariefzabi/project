@@ -2,19 +2,26 @@ import React from 'react';
 import './App.scss';
 import Dashboard from './modules/dashboard/dashboard';
 import Home from './modules/home/Home';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
+import NavBar from './modules/header/navbar';
+import LandingPage from './modules/landing_page/LandingPage';
+import Aboutus from './modules/about_us/aboutus';
+import Blog from './modules/blog/final';
 
 function App() {
   return (
     <div className="App">
       <Router>
         <div>
+          <NavBar/>
           <Routes>
-            <Route path="/" element={<Home />}>
+            <Route path="/" element={<LandingPage/>}>
             </Route>
-            <Route path="/dashboard" element={<Dashboard />}>    
+            <Route path="/aboutus" element={<Aboutus/>}>
             </Route>
-            </Routes>
+            <Route path="/blog" element={<Blog/>}>
+            </Route>
+          </Routes>
         </div>
       </Router>
     </div>
