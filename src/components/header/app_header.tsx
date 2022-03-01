@@ -3,16 +3,10 @@ import bar from "./asset/Group 2.png";
 import cross from "./asset/Group 35.png";
 import triangle from "./asset/Triangle.png";
 import { Link } from "react-router-dom";
-// import invertedtri from "./asset/Trianglein.png"
 import "./style.scss";
-<<<<<<< Updated upstream:src/modules/header/navbar.tsx
-import Login from "../login/components/login";
-import BuyNow from "../home/ordercreation/ordercreation";
-class NavBar extends React.Component {
-=======
 import Login from "../../modules/login/components/login";
+import BuyNow from "../../modules/home/ordercreation/ordercreation";
 class Header extends React.Component {
->>>>>>> Stashed changes:src/components/header/app_header.tsx
     render() {
         return (
             <header className="landingpage-header d-lg-flex justify-content-end">
@@ -60,11 +54,9 @@ class Header extends React.Component {
                         </div>
                     </div>
                     <div className="home"><Link to="/blog" className="menu_content">Blog</Link></div>
-                    <div className="menu_btn"><BuyNow></BuyNow></div>
+                    <div className="menu_btn"><BuyNow/></div>
                     <div className="menu_btn"><div className="pt-3 log_button text-center"><Login/></div></div>
-                    
                 </div>
-
             </header>
         )
     }
