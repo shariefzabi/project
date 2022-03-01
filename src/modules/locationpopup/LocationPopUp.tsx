@@ -1,6 +1,6 @@
 import React from "react";
 // import { useRef } from "react";
-import "./locationpop/LocationPopUp.css";
+import "./LocationPopUp.css";
 
 export default function LocationPopUp() {
   const displayHidden = () => {
