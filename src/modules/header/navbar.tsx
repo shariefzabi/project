@@ -5,7 +5,7 @@ import triangle from "./asset/Triangle.png";
 import { Link } from "react-router-dom";
 // import invertedtri from "./asset/Trianglein.png"
 import "./style.scss";
-import BuyNow from "../home/ordercreation/ordercreation";
+import Login from "../login/components/login";
 class NavBar extends React.Component {
     render() {
         return (
@@ -54,8 +54,9 @@ class NavBar extends React.Component {
                         </div>
                     </div>
                     <div className="home"><Link to="/blog" className="menu_content">Blog</Link></div>
-                    <div className="menu_btn"><BuyNow/></div>
-                    <div className="menu_btn"><button className=" log_button">Login</button></div>
+                    <div className="menu_btn"><button className="buy_button">Buy Now</button></div>
+                    <div className="menu_btn"><div className="pt-3 log_button text-center"><Login/></div></div>
+                    
                 </div>
 
             </header>
