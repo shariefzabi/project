@@ -52,6 +52,25 @@ const customMiddleware=(req,res,next)=>{
     next();
 }
 app.use(customMiddleware);
+//fetching details from mangoatlas
+const mclient= require("mongodb").MongoClient;
+const dbUrl="mongodb+srv://LocationData:1234567890@cluster0.hn7hc.mongodb.net/test?retryWrites=true&w=majority"
+mclient.connect(dbUrl,(err,client)=>{
+    if(err){
+        console.log("error",err)
+    }
+    else{
+        let db=client.db("test")
+        let dbcollection=db.collection("dbcollection") 
+        db.collection("locationnames").find().toArray(function(err,res){
+            if (err) throw err;
+            console.log(res);
+            client.close();
+        })
+    }
+    
+})
+
 
 
 const PORT = 5005;
