@@ -8,6 +8,7 @@ import LandingPage from './modules/landing_page/LandingPage';
 import Aboutus from './modules/about_us/aboutus';
 import Blog from './modules/blog/final';
 import Login from './modules/login/components/login';
+import Footer from './components/footer/footer';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/blog" element={<Blog/>}>
             </Route>
           </Routes>
+          <Footer/>
         </div>
       </Router>
     </div>

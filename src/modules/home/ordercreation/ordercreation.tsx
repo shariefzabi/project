@@ -3,7 +3,7 @@ import React from 'react';
 import './ordercreation.scss'
 export default function BuyNow() {
     return (
-        <div>
+        <div className='ordercreation-container'>
             <button className="buy_button" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Buy Now</button>
             {/* <a className="btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">ordercreation</a> */}
 

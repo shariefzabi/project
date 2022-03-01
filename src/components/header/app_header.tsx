@@ -3,7 +3,7 @@ import bar from "./asset/Group 2.png";
 import cross from "./asset/Group 35.png";
 import triangle from "./asset/Triangle.png";
 import { Link } from "react-router-dom";
-import "./style.scss";
+import "./app_header.scss";
 import Login from "../../modules/login/components/login";
 import BuyNow from "../../modules/home/ordercreation/ordercreation";
 class Header extends React.Component {

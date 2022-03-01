@@ -2,10 +2,10 @@
 import bar from "./assets/img/Group 2.png"
 import cross from "./assets/img/Group 35.png"
 import triangle from "./assets/img/Triangle.png"
-// import "./assets/Aboutus.scss";
+import "./assets/aboutus.scss";
 export default function Aboutus() {
     return (
-        <div className="body">
+        <div className="body aboutus-container">
             <section className="aboutus">
                 <h1>About Us</h1>
                 <div className="aboutus-paragraph">
