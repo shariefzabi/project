@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 // import DimesionalPage from './3d_page/dimensionalpage'
 import './ordercreation.scss'
 export default function BuyNow() {
@@ -17,14 +17,14 @@ export default function BuyNow() {
                             <p>Fill in the required information</p>
                         </div>
                         <div className='viewall-icon'>
-                            <img src={require("./assets/viewallproductsicon.png")} />
+                            <button><img src={require("./assets/viewallproductsicon.png")} /></button>
                         </div>
                         <form >
                             <div className='row'>
                                 <div className="col-md-3 productype-dropdown" >
                                     <div className="dropdown" >
                                         <select className="form-select" >
-                                            <option selected>Type</option>
+                                            <option selected hidden>Type</option>
                                             <option value="1">Cow</option>
                                             <option value="2">Goat</option>
                                             <option value="3">Pig</option>
@@ -35,7 +35,7 @@ export default function BuyNow() {
                                 <div className="col-md-2">
                                     <div className="dropdown" >
                                         <select className="form-select">
-                                            <option selected>Quantity</option>
+                                            <option selected hidden>Quantity</option>
                                             <option value="1">One</option>
                                             <option value="2">Two</option>
                                             <option value="3">Three</option>
@@ -46,7 +46,7 @@ export default function BuyNow() {
 
                                     <div className="dropdown">
                                         <select className="form-select" >
-                                            <option selected>Sex</option>
+                                            <option selected hidden>Sex</option>
                                             <option value="1">Male</option>
                                             <option value="2">Female</option>
 
@@ -57,7 +57,7 @@ export default function BuyNow() {
 
                                     <div className="dropdown">
                                         <select className="form-select" >
-                                            <option selected>Weight</option>
+                                            <option selected hidden>Weight</option>
                                             <option value="1">One</option>
                                             <option value="2">Two</option>
                                             <option value="3">Three</option>
@@ -68,7 +68,7 @@ export default function BuyNow() {
 
                                     <div className="dropdown">
                                         <select className="form-select">
-                                            <option selected>Breed</option>
+                                            <option selected hidden>Breed</option>
                                             <option value="1">One</option>
                                             <option value="2">Two</option>
                                             <option value="3">Three</option>
@@ -76,7 +76,7 @@ export default function BuyNow() {
 
                                     </div>
                                     <div className='cart-icon'>
-                                        <img src={require("./assets/addtocarticon.png")} />
+                                       <button><img src={require("./assets/addtocarticon.png")} /></button> 
                                     </div>
                                 </div>
                                 <div className="mb-3">

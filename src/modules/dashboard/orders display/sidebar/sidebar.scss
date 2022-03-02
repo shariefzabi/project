@@ -1,0 +1,124 @@
+.sidebar li svg{
+  width: 1.573rem;
+  height: 1.54rem;
+}
+.sidebar {
+    width: 4.375rem;
+    height: 100%;
+    z-index: 9999;
+    background-color: #fff;
+    overflow-x: hidden;
+    left: 0;
+    margin-top: 7.5rem;
+  }
+  .sidebar li a {
+    text-align: center;
+    padding-top: 2.3rem;
+  }
+  .sidebar li a:hover {
+    color: #2078BF;
+  }
+  .sidebar li .active svg {
+    color: #2078BF;
+  }
+  .sidebar li svg:hover {
+    color: #2078BF;
+  }
+  
+  .btn-togglemenu {
+    margin-top: 4rem;
+  }
+  
+  .btn-togglemenu svg {
+    width: 35px;
+    height: 35px;
+    color: #2078BF;
+  }
+  
+  .mobile-menu {
+    background-color: #2078BF;
+    font-family: Ubuntu;
+    overflow: hidden;
+    visibility: hidden;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: 9999;
+  }
+  
+  .menupage {
+    list-style-type: none;
+    text-align: center;
+    line-height: 4rem;
+    font-weight: normal;
+    font-size: 1.375rem;
+    letter-spacing: 0.009rem;
+    padding: 0;
+    margin-top: 30px;
+  }
+  
+  .menupage li a {
+    text-decoration: none;
+    color: #FFFFFF !important;
+  }
+  
+  .btn-closemenu {
+    float: right;
+    color: #FFFFFF !important;
+    margin-top: auto;
+  }
+  
+  .btn-closemenu svg {
+    width: 22px;
+    height: 24.2px;
+  }
+  
+  .terms {
+    text-align: center;
+    padding-top: 5%;
+    margin: 0;
+    color: #FFFFFF;
+  }
+  
+  .terms a {
+    padding: 0.625rem;
+    color: #FFFFFF;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: Karla;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 0.625rem;
+    line-height: 0.0625rem;
+    letter-spacing: 0.09375rem;
+  }
+  
+  #mainContent {
+    margin-left: 4.375rem;
+    padding-top: 7.5rem;
+  }
+
+  @media (max-width: 576px) {
+    #mainContent {
+      margin: 0;
+      padding-top: 4rem;
+    }
+  }
+  @media (min-width: 577px) and (max-width: 768px) {
+    .sidebar {
+      margin-top: 6rem;
+    }
+    #mainContent{
+      padding-top: 6rem;
+    }
+  }
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .sidebar {
+      margin-top: 6rem;
+    }
+    #mainContent{
+      padding-top: 6rem;
+    }
+  }
