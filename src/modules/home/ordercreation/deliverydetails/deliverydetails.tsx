@@ -5,18 +5,19 @@ export default class Deliverydetails extends React.Component {
     render(){
     return (
         <div className='deliverydetailspage'>
-            <button className="btn-primary" data-bs-toggle="modal" data-bs-target="#deliverydetailsModal" data-bs-whatever="@mdo">continue</button>
+            
 
-            <div className="modal fade" id="deliverydetailsModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div className="modal-dialog modal-xl">
+            <div className="modal fade" id="deliverydetailsModal" aria-labelledby="deliveryModalLabel" aria-hidden="true">
+                <div className="modal-dialog modal-lg">
                     <div className="modal-content">
+                        <div className="modal-body">
                         <div className="text-center popupheading">
                             <p>You are one step closer to buying your lifestock</p>
                         </div>
                         <div className="form-paragraph">
                             <p>Fill in the required information</p>
                         </div>
-                        <form>
+                        <form className='text-start'>
                             <div className="mb-3">
                                 <label htmlFor="Delivery Location" className="col-form-label">Delivery Location</label>
                                 <input type="text" className="form-control" id="Delivery Location" placeholder="Delivery Location" />
@@ -37,6 +38,7 @@ export default class Deliverydetails extends React.Component {
                             </div>
 
                         </form>
+                        </div>
                     </div>
                 </div>
             </div>
