@@ -28,19 +28,9 @@ class Login extends React.Component<any, any> {
         e.preventDefault();
         console.log(this.state);
     }
-    // profileChangeHandler = (e: any) => {
-    //     if (e.target.files.length === 0) {
-    //         return;
-    //     }
-    //     let profileImg = e.target.files[0];
-    //     this.setState({ profileImg })
-    // }
-
 
 
     validations = (e: any) => {
-        // console.log(e.target.name);
-        // console.log(e.target.value);
 
         if (e.target.name === 'username') {
             let username = e.target.value;
@@ -151,58 +141,6 @@ class Login extends React.Component<any, any> {
 
                 <a className="login-btn" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Login</a>
                 <Signup/>
-
-
-
-                {/* <a className=" text-decoration-none text-white" data-bs-toggle="modal"
-                    role="button" href="#exampleModalToggle">Login</a>
-                <div className="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
-                    tabIndex={-1}>
-                    <div className="modal-dialog modal-dialog-centered">
-                        <div className="modal-content text-black">
-                            <div className="modal-body">
-                                <div className="modal-title">
-                                    <h5 id="exampleModalToggleLabel">LogIn</h5>
-                                    <p>Welcome back!</p>
-                                </div>
-                                <form onSubmit={this.submitHandler} className="px-2 py-2 ">
-                                    <div className="mb-3 text-start">
-                                        <label htmlFor="uname" className="form-label">Name</label>
-                                        <input type="text" name="username"
-                                            value={username} 
-                                            className="form-control"
-                                            onChange={this.changeHandler}
-                                            onBlur={this.validations}  id="uname" placeholder="Name" />
-                                        <div>
-                                            <p className="text-danger">{this.state.usernameErrMsg}</p>
-                                        </div>
-                                    </div>
-                                    <div className="mb-3 text-start">
-                                        <label htmlFor="pwd" className="form-label">Password</label>
-                                        <input type="password" name="password"
-                                            value={password} placeholder="Password"
-                                            className="form-control"
-                                            onChange={this.changeHandler}
-                                            onBlur={this.validations}  id="pwd" />
-
-                                        <div>
-                                            <p className="text-danger">{this.state.passwordErrMsg}</p>
-                                        </div>
-                                        <div className="form-text text-end"><a href="#">I Forgot My Password</a></div>
-                                    </div>
-
-                                    <button type="submit" className="btn login btn-success">Login</button>
-                                </form>
-                            </div>
-                            <div>
-                                <p>
-                                    <span className="text-success" >Don't have an account yet ? </span><div data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"><Signup></Signup></div>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
-
             </div>
         )
     }

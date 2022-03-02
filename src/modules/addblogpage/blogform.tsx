@@ -25,7 +25,7 @@ class  Blogform extends React.Component{
                     
                     <div className="text-start box">
                         <label className="me-2"><b>Title<span className="text-danger">*</span>:</b></label>
-                        <input placeholder="Title" className=" form-control" value={this.state.}></input>
+                        <input placeholder="Title" className=" form-control" ></input>
                     </div>
                     <div className="box">
                         <label className="me-3 mt-3"><b>Upload Image<span className="text-danger">*</span></b></label>
