@@ -1,4 +1,4 @@
-export default function Signup() {
+export default function Signu() {
     return (<>
         <div className="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabIndex={-1}>
             <div className="modal-dialog modal-dialog-centered">
