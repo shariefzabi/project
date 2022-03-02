@@ -5,6 +5,7 @@ import triangle from "./asset/triangle.png";
 import { Link } from "react-router-dom";
 import "./app_header.scss";
 import BuyNow from "../../modules/home/ordercreation/ordercreation";
+import Login from "../../modules/login/components/login";
 class Header extends React.Component {
     render() {
         return (
@@ -54,7 +55,7 @@ class Header extends React.Component {
                     </div>
                     <div className="home"><Link to="/blog" className="menu_content">Blog</Link></div>
                     <div className="menu_btn"><BuyNow/></div>
-                    <div className="menu_btn"><div className="pt-3 log_button text-center"></div></div>
+                    <div className="menu_btn"><div className="pt-3 log_button text-center"><Login/></div></div>
                 </div>
             </header>
         )
