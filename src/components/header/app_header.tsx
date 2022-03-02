@@ -1,7 +1,7 @@
 import React from "react";
 import bar from './asset/group2.png';
 import cross from "./asset/group35.png";
-import triangle from "./asset/triangle.png";
+import triangle from "./asset/Triangle.png";
 import { Link } from "react-router-dom";
 import "./app_header.scss";
 import BuyNow from "../../modules/home/ordercreation/ordercreation";
@@ -26,6 +26,7 @@ class Header extends React.Component {
                                         <Link to="/" className="menu_content_small">Blog</Link>
                                         <button className="buy_button">Buy Now</button>
                                         <button className=" log_button">Login</button>
+
                                     </div>
                                     <div className="menu_bottom d-flex justify-content-between">
                                         <p className="menu_faqs">FAQ</p>
@@ -43,7 +44,7 @@ class Header extends React.Component {
                     <div className="home">
                         <div className="dropdown">
                             <div className="dropdown-toggle menu_content " role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                            <Link to="/" className="text-white text-decoration-none">Be a Partner</Link>
+                                <Link to="/" className="text-white text-decoration-none">Be a Partner</Link>
                             </div>
                             {/* <img className="inverted_tri" aria-labelledby="dropdownMenuLink" src={triangle}/> */}
                             <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -54,8 +55,8 @@ class Header extends React.Component {
                         </div>
                     </div>
                     <div className="home"><Link to="/blog" className="menu_content">Blog</Link></div>
-                    <div className="menu_btn"><BuyNow/></div>
-                    <div className="menu_btn"><div className="pt-3 log_button text-center"><Login/></div></div>
+                    <div className="menu_btn"><BuyNow /></div>
+                    <div className="menu_btn"><div className="pt-3 log_button text-center"><Login /></div></div>
                 </div>
             </header>
         )
