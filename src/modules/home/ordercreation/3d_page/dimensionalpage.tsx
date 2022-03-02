@@ -4,7 +4,7 @@ import Deliverydetails from "../deliverydetails/deliverydetails";
 import './dimensionalpage.scss'
 function DimesionalPage() {
     return (
-        <div>
+        <div className="dimesionalpage-form">
             <button className="Continuebutton btn btn-success" data-bs-toggle="modal" data-bs-target="#3dexampleModal" data-bs-whatever="@mdo">Continue</button>
 
             <div className="modal fade" id="3dexampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">

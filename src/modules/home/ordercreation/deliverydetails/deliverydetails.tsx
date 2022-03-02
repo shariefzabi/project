@@ -4,7 +4,7 @@ import './deliverydetails.scss'
 export default class Deliverydetails extends React.Component {
     render(){
     return (
-        <>
+        <div className='deliverydetailspage'>
             <button className="btn-primary" data-bs-toggle="modal" data-bs-target="#deliverydetailsModal" data-bs-whatever="@mdo">continue</button>
 
             <div className="modal fade" id="deliverydetailsModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -40,7 +40,7 @@ export default class Deliverydetails extends React.Component {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 }
