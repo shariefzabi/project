@@ -1,27 +1,27 @@
 import React from 'react'
-import CKEditor from "react-ckeditor-component";
+// import CKEditor from "react-ckeditor-component";
 import './editorstyle.css'
  
-class CkEditorExampleComponent extends React.Component{
+class CkEditorExampleComponent extends React.Component<any,any>{
  
-    constructor(props) {
+    constructor(props:any) {
         super(props);
          
         this.state = {
-            content: 'content',
+            content: '',
         }
  
         this.updateContent = this.updateContent.bind(this);
         this.onChange = this.onChange.bind(this);
     }
   
-    updateContent(newContent) {
+    updateContent(newContent:any) {
         this.setState({
             content: newContent
         })
     }
      
-    onChange(evt){
+    onChange(evt:any){
       var newContent = evt.editor.getData();
       this.setState({
         content: newContent
@@ -29,11 +29,11 @@ class CkEditorExampleComponent extends React.Component{
       console.log("onChange fired with event info: ", newContent);
     }
      
-    onBlur(evt){
+    onBlur(evt:any){
       console.log("onBlur event called with event info: ", evt);
     }
      
-    afterPaste(evt){
+    afterPaste(evt:any){
       console.log("afterPaste event called with event info: ", evt);
     }
  
@@ -41,7 +41,7 @@ class CkEditorExampleComponent extends React.Component{
         return(
             <div className='ckeditor'>
                 
-                <CKEditor 
+                {/* <CKEditor 
                 activeClass="p10"
                 content={this.state.content} 
                 
@@ -50,7 +50,7 @@ class CkEditorExampleComponent extends React.Component{
                     "afterPaste": this.afterPaste,
                     "change": this.onChange
                 }}
-                />
+                /> */}
             </div>
         )
     }
