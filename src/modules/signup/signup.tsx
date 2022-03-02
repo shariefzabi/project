@@ -89,7 +89,7 @@ class Signup extends React.Component <any,any>{
             } else {
                 let nameReg = /^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[A-Z])(?=.*[a-z])[a-zA-Z0-9!@#$%^&*]{6,16}$/
                 if (!nameReg.test(password)) {
-                    let passwordErrMsg = "Password should contain 4-15 characters, should contain one Upper-case and special characters(@,!,%)"
+                    let passwordErrMsg = "Password should contain 4-15 characters, contain numbers, should contain one Upper-case and special characters(@,!,%)"
                     this.setState({ passwordErrMsg })
                     e.target.classList.add("field-error")
                 } else {
@@ -139,9 +139,9 @@ class Signup extends React.Component <any,any>{
                                 </div>
                                 <form onSubmit={this.submitHandler} className="px-2 py-2 ">
                                     <div className="mb-3 text-start">
-                                        <label htmlFor="username" className="form-label">Name</label>
+                                        <label htmlFor="username" className="form-label">Full Name</label>
                                         <input type="text" name="username"
-                                            value={username} placeholder="Username"
+                                            value={username} placeholder=" Full Name"
                                             className="form-control"
                                             onChange={this.changeHandler}
                                             onBlur={this.validations}  id="username"  />
