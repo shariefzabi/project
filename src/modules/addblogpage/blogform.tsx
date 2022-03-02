@@ -1,5 +1,6 @@
 import "./style.css";
 import React from "react";
+import CkEditorExampleComponent from "./CkEditorComponent";
 
 class  Blogform extends React.Component{
     render(){
@@ -27,6 +28,7 @@ class  Blogform extends React.Component{
                         <label className="me-3 mt-3"><b>Upload Image</b></label>
                         <input type="file" id="myFile" name="filename"></input>
                     </div>
+                    <CkEditorExampleComponent></CkEditorExampleComponent>
                     <div className="mt-3 text-center">
                         <button type="button" className="btn btn-success form_button ">
                             Save
