@@ -13,16 +13,12 @@ app.get("/", function (req, res) {
     
     res.send("Welcome to Home page")
 })
-app.get("/Locations", function (req, res) {
-    let Locations =['tpt','hyd','viz']
- 
-   res.send({Locations: Locations } )
-})
+
 
 app.post("/create_Location", async (req, res)=> {
-    const {locationName}=req.body
+    const {locationDetails}=req.body
     try{
-        const myLocation=new Location({locationName});
+        const myLocation=new Location({locationDetails});
         await Location.create(myLocation);
         res.send(myLocation);
         
@@ -33,6 +29,8 @@ app.post("/create_Location", async (req, res)=> {
     }
    
 })
+
+
 
 
 mongoose.connect(URI, {
@@ -52,25 +50,6 @@ const customMiddleware=(req,res,next)=>{
     next();
 }
 app.use(customMiddleware);
-//fetching details from mangoatlas
-const mclient= require("mongodb").MongoClient;
-const dbUrl="mongodb+srv://LocationData:1234567890@cluster0.hn7hc.mongodb.net/test?retryWrites=true&w=majority"
-mclient.connect(dbUrl,(err,client)=>{
-    if(err){
-        console.log("error",err)
-    }
-    else{
-        let db=client.db("test")
-        let dbcollection=db.collection("dbcollection") 
-        db.collection("locationnames").find().toArray(function(err,res){
-            if (err) throw err;
-            console.log(res);
-            client.close();
-        })
-    }
-    
-})
-
 
 
 const PORT = 5005;
