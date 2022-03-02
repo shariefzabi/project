@@ -8,7 +8,7 @@ class CkEditorExampleComponent extends React.Component{
         super(props);
          
         this.state = {
-            content: 'content',
+            content: '',
         }
  
         this.updateContent = this.updateContent.bind(this);
