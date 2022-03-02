@@ -1,0 +1,54 @@
+.aboutus{
+    background-image: url("./img/Rectangle.png"); 
+    width: 93.75rem;
+    height: 38.75rem;
+    text-align: center;
+    margin-bottom: 5rem;
+}
+.main{
+    background-color: #E5E5E5;
+}
+.inner{
+    background-color: #ffffff;
+}
+.box{
+    width: 90%;
+    margin : auto;
+    text-align: start !important;
+}
+.aboutus h1{
+    font-weight:700;
+    font-size:3.5rem;
+    color: #ffffff;
+    line-height:4.875rem;
+       padding-top: 16.4375rem;
+   /* padding-left: 41.562rem; */
+    padding-bottom: 0rem;
+    
+ }
+ 
+/* .container{
+    margin-right:10%!important;
+    margin-left:10% !important;
+    width: 80%;
+   
+} */
+.form_button{
+    width:10rem;
+    height:3rem;
+}
+.reset{
+    width:10rem;
+    height:3rem;
+    margin-left: 50rem;
+}
+h2{
+    margin-left:1rem;
+    padding-bottom: 1rem;
+    display: inline-block;
+}
+p{
+    margin-left:1.5rem;
+    width:20rem;
+    
+}

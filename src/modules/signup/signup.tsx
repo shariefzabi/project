@@ -6,18 +6,17 @@ class Signup extends React.Component <any,any>{
     constructor(props:any) {
         super(props);
         this.state = {
-            fullname: "",
+            username: "",
             email: "",            
-            password: "",
-            
-
+            createPassword: "",
+            confirmPassword:"",
 
             // Error Messages 
-            fullnameErrMsg: "",
+            usernameErrMsg: "",
             emailErrMsg:"",
             passwordErrMsg: "",
-
-
+            confirmPasswordErrMsg:""
+            
         }
     }
     changeHandler = (e: any) => {
@@ -25,16 +24,9 @@ class Signup extends React.Component <any,any>{
     }
     submitHandler = (e: any) => {
         e.preventDefault();
-        console.log(this.state);
     }
     
-
-
     validations = (e: any) => {
-        // console.log(e.target.name);
-        // console.log(e.target.value);
-        // username
-
         if (e.target.name === 'username') {
             let username = e.target.value;
             let usernameErrMsg = '';
@@ -46,8 +38,6 @@ class Signup extends React.Component <any,any>{
                 // let nameReg = /[a-zA-Z]{5, 30}/
                 // let nameReg = /^((?![A-Z ]+$)(?![a-z ]+$)[a-zA-Z ]+){5, 30}$/
                 let nameReg = /^([a-zA-Z ]{4,15})$/
-                console.log(username);
-                console.log(nameReg);
                 console.log(nameReg.test(username));
                 if (!nameReg.test(username)) {
                     let usernameErrMsg = "Accepts Alphabets, space & Min 3 to Max 15 Char"
@@ -89,7 +79,7 @@ class Signup extends React.Component <any,any>{
         }
         // password
 
-        if (e.target.name === 'password') {
+        if (e.target.name === 'createPassword') {
             let password = e.target.value;
             let passwordErrMsg = '';
             if (password == undefined || password.length === 0) {
@@ -97,12 +87,7 @@ class Signup extends React.Component <any,any>{
                 this.setState({ passwordErrMsg })
                 e.target.classList.add("field-error")
             } else {
-                // let nameReg = /[a-zA-Z]{5, 30}/
-                // let nameReg = /^((?![A-Z ]+$)(?![a-z ]+$)[a-zA-Z ]+){5, 30}$/
-                let nameReg = /^([a-zA-Z ]{4,15}[@,!,%,#,$,&,*,?,^])$/
-                console.log(password);
-                // console.log(passwordReg);
-                // console.log(passwordReg.test(password));
+                let nameReg = /^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[A-Z])(?=.*[a-z])[a-zA-Z0-9!@#$%^&*]{6,16}$/
                 if (!nameReg.test(password)) {
                     let passwordErrMsg = "Password should contain 4-15 characters, should contain one Upper-case and special characters(@,!,%)"
                     this.setState({ passwordErrMsg })
@@ -114,76 +99,97 @@ class Signup extends React.Component <any,any>{
                 }
             }
         }
-
+        if (e.target.name === 'confirmPassword') {
+            let password = e.target.value;
+            let {createPassword} = this.state;
+            let confirmPasswordErrMsg = '';
+            if (password == undefined || password.length === 0) {
+                confirmPasswordErrMsg = "Please enter the confirm password."
+                this.setState({ confirmPasswordErrMsg })
+                e.target.classList.add("field-error")
+            } else {
+                if (password !== createPassword) {
+                    let confirmPasswordErrMsg = "Passwords did not match"
+                    this.setState({ confirmPasswordErrMsg })
+                    e.target.classList.add("field-error")
+                } else {
+                    confirmPasswordErrMsg = ''
+                    e.target.classList.remove("field-error")
+                    this.setState({ confirmPasswordErrMsg })
+                }
+            }
+        }
     }
     render() {
         let {
-            username, password,email
+            username, password,email,confirmPassword
         } = this.state;
+        console.log(this.state);
+        
         return (
-
-            
             <div className="signup-window">
-                <a className=" text-decoration-none text-dark" data-bs-toggle="modal"
-                    role="button" href="#exampleModalToggle2">Signup</a>
                 <div className="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
                     tabIndex={-1}>
                     <div className="modal-dialog modal-dialog-centered">
                         <div className="modal-content text-black">
                             <div className="modal-body">
                                 <div className="modal-title">
-                                    <h5 id="exampleModalToggleLabel2">LogIn</h5>
-                                    <p>Welcome back!</p>
-                                    {/* <h2 className="col-1" data-bs-dismiss="modal" aria-label="Close">X</h2> */}
+                                    <h5 id="exampleModalToggleLabel2">Sign Up</h5>
+                                    <p>Before we proceed further...</p>
                                 </div>
                                 <form onSubmit={this.submitHandler} className="px-2 py-2 ">
                                     <div className="mb-3 text-start">
-                                        <label htmlFor="uname" className="form-label">Name</label>
+                                        <label htmlFor="username" className="form-label">Name</label>
                                         <input type="text" name="username"
                                             value={username} placeholder="Username"
                                             className="form-control"
                                             onChange={this.changeHandler}
-                                            onBlur={this.validations}  id="uname"  />
+                                            onBlur={this.validations}  id="username"  />
                                         <div>
                                             <p className="text-danger">{this.state.usernameErrMsg}</p>
                                         </div>
                                     </div>
                                     <div className="mb-3 text-start">
-                                        <label htmlFor="email" className="form-control">Email</label>
-                                        <input type="email" name="password"
+                                        <label htmlFor="email" className="form-label" >Email</label>
+                                        <input type="email" name="email"
                                             value={email} placeholder="Email"
                                             className="form-control"
                                             onChange={this.changeHandler}
-                                            onBlur={this.validations}  id="pwd"  />
+                                            onBlur={this.validations}  id="email"  />
 
                                         <div>
                                             <p className="text-danger">{this.state.emailErrMsg}</p>
                                         </div>
-                                        <div className="form-text text-end"><a href="#">I Forgot My Password</a></div>
+                                       
                                     </div>
                                     <div className="mb-3 text-start">
-                                        <label htmlFor="pwd" className="form-label">Password</label>
-                                        <input type="password" name="password"
+                                        <label htmlFor="createpwd" className="form-label">Password</label>
+                                        <input type="password" name="createPassword"
                                             value={password} placeholder="Password"
                                             className="form-control"
                                             onChange={this.changeHandler}
-                                            onBlur={this.validations}  id="pwd"  />
+                                            onBlur={this.validations}  id="createpwd"  />
 
                                         <div>
                                             <p className="text-danger">{this.state.passwordErrMsg}</p>
                                         </div>
-                                        <div className="form-text text-end"><a href="#">I Forgot My Password</a></div>
                                     </div>
-                                    
+                                    <div className="mb-3 text-start">
+                                        <label htmlFor="confpwd" className="form-label">Confirm Password</label>
+                                        <input type="password" name="confirmPassword"
+                                            value={confirmPassword} placeholder="Confirm Password"
+                                            className="form-control"
+                                            onChange={this.changeHandler}
+                                            onBlur={this.validations}  id="confpwd"  />
 
-                                    <button type="submit" className="btn login btn-success">Login</button>
+                                        <div>
+                                            <p className="text-danger">{this.state.confirmPasswordErrMsg}</p>
+                                        </div>
+                                    </div>
+                                    <button type="submit" className="btn login btn-success">Sign Up</button>
                                 </form>
                             </div>
-                            <div>
-                                <p>
-                                    <span className="text-success" >Don't have an account yet ? </span><a data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"> Sign up</a>
-                                </p>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>

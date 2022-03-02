@@ -1,8 +1,8 @@
 import "./assets/login.scss";
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css"
-import Signup from "./signup";
-// import Signup from "../../signup/signup";
+// import Signup from "./signup";
+import Signup from "../../signup/signup";
 
 
 
