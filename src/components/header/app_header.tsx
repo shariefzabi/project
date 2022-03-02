@@ -1,7 +1,7 @@
 import React from "react";
 import bar from './asset/group2.png';
 import cross from "./asset/group35.png";
-import triangle from "./asset/Triangle.png";
+import triangle from "./asset/triangle.png";
 import { Link } from "react-router-dom";
 import "./app_header.scss";
 import BuyNow from "../../modules/home/ordercreation/ordercreation";
