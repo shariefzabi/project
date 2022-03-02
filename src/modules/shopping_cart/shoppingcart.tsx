@@ -1,9 +1,9 @@
 import './shopping_cart.css'
 import React from "react";
 import {Link} from 'react-router-dom'
-class Cart extends React.Component<any,any> {
-    constructor(props:any) {
-        super(props)
+class Cart extends React.Component {
+    constructor() {
+        super()
         this.state = {
             count: 1
         }
@@ -105,7 +105,7 @@ class Cart extends React.Component<any,any> {
                                     <td> <span className="first-line">ID - 900085000597636</span>
                                         <span className="second-line">20/19/2019</span>
                                     </td>
-                                    <td className="rectangle">{this.state.count}
+                                    <td class="rectangle">{this.state.count}
                                         <button className="fas fa-plus incre" onClick={this.clickHandler}></button></td>
                                     <td>Out of Stock</td>
                                     <td><span>Awaiting Payment</span></td>

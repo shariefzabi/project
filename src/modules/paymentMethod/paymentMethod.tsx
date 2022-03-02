@@ -5,7 +5,7 @@ export default function PaymentMethod() {
   const [payment_Method, setpayment_Method] = useState({
     payment: 'Ravepay'
   })
-  const handleChange = (event:any) => {
+  const handleChange = event => {
     const name = event.target.name;
     console.log(name);
     const value = event.target.value;
@@ -18,7 +18,7 @@ export default function PaymentMethod() {
   }
   return (
     <div >
-      <div className="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex={-1} data-bs-backdrop="static">
+      <div className="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex="-1" data-bs-backdrop="static">
         <div className="modal-dialog modal-dialog-centered ">
           <div className="modal-content">
             <div className="modal-body ">
@@ -43,7 +43,7 @@ export default function PaymentMethod() {
         </div>
       </div>
       {
-        payment_Method.payment == "Ravepay" && <div> <div className="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex={-1}>
+        payment_Method.payment == "Ravepay" && <div> <div className="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex="-1">
           <div className="modal-dialog modal-sm modal-dialog-centered">
             <div className="modal-content">
               <div className="text-center mt-3 border-bottom border-2">
@@ -69,7 +69,7 @@ export default function PaymentMethod() {
             </div>
           </div>
         </div>
-          <div className="modal fade" id="exampleModalToggle3" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabIndex={-1}>
+          <div className="modal fade" id="exampleModalToggle3" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabIndex="-1">
             <div className="modal-dialog modal-dialog-centered modal-sm ">
               <div className="modal-content">
                 <div className="modal-body text-center">
@@ -86,7 +86,7 @@ export default function PaymentMethod() {
         </div>
       }
       {
-        payment_Method.payment == "Pay_On_Delivery" && <div className="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabIndex={-1}>
+        payment_Method.payment == "Pay_On_Delivery" && <div className="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabIndex="-1">
           <div className="modal-dialog modal-dialog-centered ">
             <div className="modal-content">
               <div className="modal-body text-center">
