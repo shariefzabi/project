@@ -4,7 +4,6 @@ import cross from "./asset/group35.png";
 import triangle from "./asset/triangle.png";
 import { Link } from "react-router-dom";
 import "./app_header.scss";
-import Login from "../../modules/login/components/login";
 import BuyNow from "../../modules/home/ordercreation/ordercreation";
 class Header extends React.Component {
     render() {
@@ -24,7 +23,6 @@ class Header extends React.Component {
                                         <Link to="/" className="menu_content_small sub" >Be an Agent</Link>
                                         <Link to="/" className="menu_content_small sub" >Butchery & Abarttoir</Link>
                                         <Link to="/" className="menu_content_small">Blog</Link>
-                                        <Link to="/Addblog"><button className="buy_button">Add Blog</button></Link>
                                         <button className="buy_button">Buy Now</button>
                                         <button className=" log_button">Login</button>
                                     </div>
@@ -55,9 +53,8 @@ class Header extends React.Component {
                         </div>
                     </div>
                     <div className="home"><Link to="/blog" className="menu_content">Blog</Link></div>
-                    <Link to="/Addblog"><div className="menu_btn"><button className="buy_button">Add Blog</button></div></Link>
                     <div className="menu_btn"><BuyNow/></div>
-                    <div className="menu_btn"><div className="pt-3 log_button text-center"><Login/></div></div>
+                    <div className="menu_btn"><div className="pt-3 log_button text-center"></div></div>
                 </div>
             </header>
         )
