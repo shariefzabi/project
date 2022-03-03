@@ -136,7 +136,7 @@ class Signup extends React.Component <any,any>{
         
         return (
             <div className="signup-window">
-                <div className="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
+                <div className="modal fade signup-modal" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
                     tabIndex={-1}>
                     <div className="modal-dialog modal-dialog-centered">
                         <div className="modal-content text-black">
@@ -194,7 +194,7 @@ class Signup extends React.Component <any,any>{
                                             <p className="text-danger">{this.state.confirmPasswordErrMsg}</p>
                                         </div>
                                     </div>
-                                    <button type="submit" className="btn login btn-success">Sign Up</button>
+                                    <button type="submit" data-bs-dismiss="modal" data-bs-toggle="modal" className="btn login btn-success" role="button">Sign Up</button>
                                 </form>
                             </div>
                             

@@ -64,19 +64,19 @@ class Login extends React.Component<any, any> {
             } else {
                 // let nameReg = /[a-zA-Z]{5, 30}/
                 // let nameReg = /^((?![A-Z ]+$)(?![a-z ]+$)[a-zA-Z ]+){5, 30}$/
-                let nameReg = /^([a-zA-Z ]{4,15})$/
+                // let nameReg = /^([a-zA-Z ]{4,15})$/
                 // console.log(username);
                 // console.log(nameReg);
                 // console.log(nameReg.test(username));
-                if (!nameReg.test(username)) {
-                    let usernameErrMsg = "Accepts Alphabets, space & Min 3 to Max 15 Char"
-                    this.setState({ usernameErrMsg })
-                    e.target.classList.add("field-error")
-                } else {
+                // if (!nameReg.test(username)) {
+                    // let usernameErrMsg = "Accepts Alphabets, space & Min 3 to Max 15 Char"
+                    // this.setState({ usernameErrMsg })
+                    // e.target.classList.add("field-error")
+                // } else {
                     usernameErrMsg = ''
                     e.target.classList.remove("field-error")
                     this.setState({ usernameErrMsg })
-                }
+                // }
             }
         }
 
@@ -90,19 +90,19 @@ class Login extends React.Component<any, any> {
             } else {
                 // let nameReg = /[a-zA-Z]{5, 30}/
                 // let nameReg = /^((?![A-Z ]+$)(?![a-z ]+$)[a-zA-Z ]+){5, 30}$/
-                let nameReg = /^([a-zA-Z ]{4,15}[@,!,%,#,$,&,*,?,^])$/
+                // let nameReg = /^([a-zA-Z ]{4,15}[@,!,%,#,$,&,*,?,^])$/
                 // console.log(password);
                 // console.log(passwordReg);
                 // console.log(passwordReg.test(password));
-                if (!nameReg.test(password)) {
-                    let passwordErrMsg = "Password should contain 4-15 characters, should contain one Upper-case and special characters(@,!,%)"
-                    this.setState({ passwordErrMsg })
-                    e.target.classList.add("field-error")
-                } else {
+                // if (!nameReg.test(password)) {
+                //     let passwordErrMsg = "Password should contain 4-15 characters, should contain one Upper-case and special characters(@,!,%)"
+                //     this.setState({ passwordErrMsg })
+                //     e.target.classList.add("field-error")
+                // } else {
                     passwordErrMsg = ''
                     e.target.classList.remove("field-error")
                     this.setState({ passwordErrMsg })
-                }
+                // }
             }
         }
 
@@ -111,13 +111,14 @@ class Login extends React.Component<any, any> {
         let {
             username, password
         } = this.state;
+        
         return (
 
 
             <div className="login-window">
 
-                <div className="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex={-1}>
-                    <div className="modal-dialog modal-dialog-centered">
+                <div className="modal fade"  id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex={-1}>
+                    <div  className="modal-dialog modal-dialog-centered">
                         <div className="modal-content">
                         <div className="modal-body">
                                 <div className="modal-title">
@@ -161,13 +162,13 @@ class Login extends React.Component<any, any> {
                             </div>
                             
                             <div className="text-success"><span>Don't have an account ?</span>
-                                    <a className="text-decoration-none" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Sign up</a>
+                                    <a className="text-decoration-none" data-bs-target="#exampleModalToggle2" data-bs-dismiss="modal" data-bs-toggle="modal">Sign up</a>
                                 </div>
                         </div>
                     </div>
                 </div>
 
-                <a className="login-btn" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Login</a>
+                <a className="login-btn" data-bs-dismiss="modal" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Login</a>
                 <Signup/>
             </div>
         )
