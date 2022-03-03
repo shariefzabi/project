@@ -74,7 +74,9 @@ app.get("/", function (req, res) {
 
 
 
+
 // card_details from team 3
+
 const Card = require('./paymentMethoddetails/carddetails.cjs');
 app.get("/carddetails/:id", async (req, res) => {
     try {
@@ -87,20 +89,53 @@ app.get("/carddetails/:id", async (req, res) => {
         res.send('Error' + err)
     }
 })
+
 app.post("/carddetails", async (req, res) => {
     const { cardDetails } = req.body
     try {
         const myCard = new Card({ cardDetails });
         await Card.create(myCard);
         res.send(myCard);
-
     }
     catch (err) {
         res.send({ message: err })
 
     }
+})
+
+// invoice
+app.post('/invoicedetails', async (req, res) => {
+    let tokens = [];
+    let token;
+    token = Math.round(Math.random() * 10000000000000);
+    let token1 = { "token": token }
+    console.log("token1", token1);
+    if (!tokens.includes(token)) {
+        console.log(tokens);
+    } else {
+        tokens.push(token);
+    }
+    console.log("token", token);
+    // try {
+    //     const invoice = new uniqueInvoiceID({ token1 });
+    //     await uniqueInvoiceID.create(invoice);
+    //     res.send(invoice);
+    // }
+    // catch (err) {
+    //     res.send({ message: err })
+    // }
+
+    const uniqueInvoiceID = new mongoose.Schema({}, { strict: false })
+    const TestCollection = mongoose.model('invoicedetails', uniqueInvoiceID)
+    // let body = req.body;
+    const testCollectionData = new TestCollection({ token1 })
+    await testCollectionData.save()
+    return res.send({ status: "success", token, message: "Data Saved Successfully" })
 
 })
+
+// end card_details from team 3
+
 
 
 //location product details code (team 4) .....starting
