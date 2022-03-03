@@ -18,12 +18,28 @@ mongoClient.connect(dburl, function (err, client) {
         console.log("err while connecting db");
     }
     else {
-        db = client.db("livestocklogin");
-        userCollection = db.collection("user");
+        db = client.db("test");
+        // team -3 fetching cost of product
+        locationdetails = db.collection("locationdetails");
+        locationdetails.findOne({}, function (err, result) {
+            if (err)
+                console.log(err);
+            else {
+                if ("locationDetails" in result) {
+                    console.log("product details are available");
+                    let price = result.locationDetails.cattleMarket.price;
+                    console.log(price)
+                }
+                else
+                    console.log("product details are not available");
+            }
+        });
+
 
 
         console.log("connected to db");
     }
+
 });
 
 app.use(bodyParser.urlencoded({
@@ -140,49 +156,15 @@ app.post('/invoicedetails', async (req, res) => {
 
 //location product details code (team 4) .....starting
 
-const Location = require('./locationPoductDetails/lpd-new.cjs');
+const locationRoutes = require('./locationPoductDetails/location_router.cjs')
+app.use(locationRoutes)
 
-
-app.post("/createLocationProducts", async (req, res) => {
-    const { locationDetails } = req.body
-    try {
-        const myLocation = new Location({ locationDetails });
-        await Location.create(myLocation);
-        res.send(myLocation);
-    }
-    catch (err) {
-        res.send({ message: err })
-        console.log(err)
-
-    }
-})
-
-app.get('/locationProductDetails', async (req, res) => {
-    try {
-        Location.find().exec(function (err, result) {
-            res.send(result)
-        })
-    }
-    catch (err) {
-        res.send({ message: err })
-    }
-})
-
-
-
-mongoose.connect(dburl, {
-
-    useNewUrlParser: true,
-
-    useUnifiedTopology: true
-
-}, err => {
+mongoose.connect(dburl, { useNewUrlParser: true, useUnifiedTopology: true }, err => {
     if (err) throw err;
     console.log('Connected to MongoDB!!!')
 });
 
 //location product details code (team 4) .....ending
-
 
 app.listen(PORT, function (err, res) {
     if (err) throw err;
