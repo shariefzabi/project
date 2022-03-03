@@ -1,11 +1,11 @@
 const express = require('express');
 const mongoose = require("mongoose");
-const Location = require('./model/location');
-require("dotenv").config();
+const Card = require('./carddetails.cjs');
+
 
 const app = express();
 
-const URI = process.env.DB_CONNECTION_STRING
+const URI = "mongodb://LocationData:1234567890@cluster0-shard-00-00.hn7hc.mongodb.net:27017,cluster0-shard-00-01.hn7hc.mongodb.net:27017,cluster0-shard-00-02.hn7hc.mongodb.net:27017/test?ssl=true&replicaSet=atlas-g18s7s-shard-0&authSource=admin&retryWrites=true&w=majority"
 
 app.use(express.json());
 
@@ -19,18 +19,18 @@ app.get("/carddetails/:id", async (req, res) => {
 
         let { params } = req
         console.log(params.id)
-        const locations = await Location.findOne({ id: params.id })
+        const locations = await Card.findOne({ "cardDetails.CVV": params.id })
         res.json(locations)
     } catch (err) {
         res.send('Error' + err)
     }
 })
 app.post("/carddetails", async (req, res) => {
-    const { carddetails } = req.body
+    const { cardDetails } = req.body
     try {
-        const myLocation = new Location({ carddetails });
-        await Location.create(myLocation);
-        res.send(myLocation);
+        const myCard = new Card({ cardDetails });
+        await Card.create(myCard);
+        res.send(myCard);
 
     }
     catch (err) {
@@ -61,7 +61,7 @@ const customMiddleware = (req, res, next) => {
 }
 app.use(customMiddleware);
 const mclient = require("mongodb").MongoClient;
-const dbUrl = "mongodb+srv://shariff_zabi:Zabi2000@cluster0.pfkv2.mongodb.net/livestockdb?retryWrites=true&w=majority"
+const dbUrl = "mongodb://LocationData:1234567890@cluster0-shard-00-00.hn7hc.mongodb.net:27017,cluster0-shard-00-01.hn7hc.mongodb.net:27017,cluster0-shard-00-02.hn7hc.mongodb.net:27017/test?ssl=true&replicaSet=atlas-g18s7s-shard-0&authSource=admin&retryWrites=true&w=majority"
 mclient.connect(dbUrl, (err, client) => {
     if (err) {
         console.log("error", err)
