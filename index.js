@@ -22,26 +22,16 @@ mongoClient.connect(dburl, function (err, client) {
         // team -3 fetching cost of product
         locationdetails = db.collection("locationdetails");
         userCollection = db.collection("user");
-        locationdetails.findOne({}, function (err, result) {
-            if (err)
-                console.log(err);
-            else {
-                if ("locationDetails" in result) {
-                    console.log("product details are available");
-                    let price = result.locationDetails.cattleMarket.price;
-                    console.log(price)
-                }
-                else
-                    console.log("product details are not available");
-            }
-        });
 
-
+        app.set("locationdetails", locationdetails)
 
         console.log("connected to db");
     }
 
 });
+
+let productCost = require('./paymentMethoddetails/cardDetailsApi.js');
+app.use('/product', productCost)
 
 app.use(bodyParser.urlencoded({
     extended: false
@@ -174,8 +164,8 @@ mongoose.connect(dburl, { useNewUrlParser: true, useUnifiedTopology: true }, err
 
 
 // team 7
-const Blog =require('./Blogs/schema.cjs');
-const Comments =require('./Blogs/comschema.cjs')
+const Blog = require('./Blogs/schema.cjs');
+const Comments = require('./Blogs/comschema.cjs')
 
 app.get("/comments/:id", async (req, res) => {
     try {
@@ -200,7 +190,7 @@ app.get("/blogs/:id", async (req, res) => {
     }
 })
 
-app.get("/comments",async (req,res)=>{
+app.get("/comments", async (req, res) => {
     try {
         const data = await Comments.find({})
         res.json(data)
@@ -209,7 +199,7 @@ app.get("/comments",async (req,res)=>{
     }
 })
 
-app.get("/blogs",async (req,res)=>{
+app.get("/blogs", async (req, res) => {
     try {
         const data = await Blog.find({})
         res.json(data)
@@ -222,7 +212,7 @@ app.get("/blogs",async (req,res)=>{
 app.post("/addblogs", async (req, res) => {
     const { blogs } = req.body
     try {
-        
+
         const myBlog = new Blog({ blogs });
         await Blog.create(myBlog);
         res.send(myBlog);
@@ -237,8 +227,8 @@ app.post("/addblogs", async (req, res) => {
 app.post("/addcomment", async (req, res) => {
     const { comment } = req.body
     try {
-        
-        const mycom = new Comments({comment });
+
+        const mycom = new Comments({ comment });
         await Comments.create(mycom);
         res.send(mycom);
     }
