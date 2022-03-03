@@ -18,12 +18,27 @@ mongoClient.connect(dburl, function (err, client) {
         console.log("err while connecting db");
     }
     else {
-        db = client.db("livestocklogin");
-        userCollection = db.collection("user");
+        db = client.db("test");
+        locationdetails = db.collection("locationdetails");
+        locationdetails.findOne({}, function (err, result) {
+            if (err)
+                console.log(err);
+            else {
+                if ("locationDetails" in result) {
+                    console.log("product details are available");
+                    let price = result.locationDetails.cattleMarket.price;
+                    console.log(price)
+                }
+                else
+                    console.log("product details are not available");
+            }
+        });
+
 
 
         console.log("connected to db");
     }
+
 });
 
 app.use(bodyParser.urlencoded({
