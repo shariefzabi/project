@@ -20,6 +20,8 @@ export default function BuyNow() {
         console.log(name); 
         console.log(value);
          if (name === "Type") { 
+             console.log(value);
+             
              if (value === "") {
                 setTypeerrmsg("please select the type*") 
         } else {
@@ -85,7 +87,7 @@ export default function BuyNow() {
                                 <div className='row'>
                                     <div className="col-md-3 productype-dropdown" >
                                         <div className="dropdown" >
-                                        <select name = "Type" value ={type} onChange = {(event) => Validate(event)} className="form-select" >
+                                        <select name = "Type" value ={type} onChange = {(event) => Validate(event)} onBlur = {(event) => Validate(event)} className="form-select" >
                                             <option selected hidden value="">Type</option>
                                             <option value="Cow">Cow</option>
                                             <option value="Goat">Goat</option>
@@ -96,7 +98,7 @@ export default function BuyNow() {
                                     </div>
                                     <div className="col-md-2">
                                         <div className="dropdown" >
-                                        <select  name = "Quantity" value ={quantity} onChange = {(event) => Validate(event)}  className="form-select" >
+                                        <select  name = "Quantity" value ={quantity} onChange = {(event) => Validate(event)} onBlur = {(event) => Validate(event)} className="form-select" >
                                             <option selected hidden  value="">Quantity</option>
                                             <option value="1">One</option>
                                             <option value="2">Two</option>
@@ -108,7 +110,7 @@ export default function BuyNow() {
                                     <div className="col-md-1">
 
                                         <div className="dropdown">
-                                        <select name = "Sex" value = {sex} onChange = {(event) => Validate(event)} className="form-select" >
+                                        <select name = "Sex" value = {sex} onChange = {(event) => Validate(event)} onBlur = {(event) => Validate(event)} className="form-select" >
                                             <option selected hidden value="">Sex</option>
                                             <option value="1">Male</option>
                                             <option value="2">Female</option>
@@ -119,7 +121,7 @@ export default function BuyNow() {
                                     <div className="col-md-2">
 
                                         <div className="dropdown">
-                                        <select name = "Weight" value ={weight} onChange = {(event) => Validate(event)}  className="form-select" >
+                                        <select name = "Weight" value ={weight} onChange = {(event) => Validate(event)} onBlur = {(event) => Validate(event)} className="form-select" >
                                             <option selected hidden value="">Weight</option>
                                             <option value="1">One</option>
                                             <option value="2">Two</option>
@@ -131,7 +133,7 @@ export default function BuyNow() {
                                     <div className="col-md-2">
 
                                         <div className="dropdown">
-                                        <select name = "Breed" value ={breed} onChange = {(event) => Validate(event)} className="form-select">
+                                        <select name = "Breed" value ={breed} onChange = {(event) => Validate(event)} onBlur = {(event) => Validate(event)} className="form-select">
                                             <option selected hidden value="">Breed</option>
                                             <option value="1">One</option>
                                             <option value="2">Two</option>

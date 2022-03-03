@@ -6,9 +6,9 @@ const appReducer =(state=appInitialstate,action:any)=>{
     switch(action.type){
         case 'ADD':
             return{...state,counter:state.counter+1}
-            case 'SUBTRACT':
+        case 'SUBTRACT':
                 return{...state,counter:state.counter-1}
-            default:
+        default:
                 return state
     }
 }
