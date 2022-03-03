@@ -213,6 +213,22 @@ app.get("/blogs",async (req,res)=>{
     }
 })
 
+
+app.post("/addblogs", async (req, res) => {
+    const { blogs } = req.body
+    try {
+        
+        const myBlog = new Blog({ blogs });
+        await Blog.create(myBlog);
+        res.send(myBlog);
+    }
+    catch (err) {
+        res.send({ message: err })
+
+    }
+
+})
+
 //team 7 end
 app.listen(PORT, function (err, res) {
     if (err) throw err;
