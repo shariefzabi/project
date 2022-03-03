@@ -74,7 +74,33 @@ app.get("/", function (req, res) {
 
 
 
+// card_details from team 3
+const Card = require('./paymentMethoddetails/carddetails.cjs');
+app.get("/carddetails/:id", async (req, res) => {
+    try {
 
+        let { params } = req
+        console.log(params.id)
+        const locations = await Card.findOne({ "cardDetails.CVV": params.id })
+        res.json(locations)
+    } catch (err) {
+        res.send('Error' + err)
+    }
+})
+app.post("/carddetails", async (req, res) => {
+    const { cardDetails } = req.body
+    try {
+        const myCard = new Card({ cardDetails });
+        await Card.create(myCard);
+        res.send(myCard);
+
+    }
+    catch (err) {
+        res.send({ message: err })
+
+    }
+
+})
 
 
 //location product details code (team 4) .....starting
