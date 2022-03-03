@@ -79,35 +79,9 @@ app.get("/", function (req, res) {
 
 //location product details code (team 4) .....starting
 
-const Location = require('./locationPoductDetails/lpd-new.cjs');
+const locationRoutes=require('./locationPoductDetails/location_router.cjs')
 
-
-app.post("/createLocationProducts", async (req, res) => {
-    const { locationDetails } = req.body
-    try {
-        const myLocation = new Location({ locationDetails });
-        await Location.create(myLocation);
-        res.send(myLocation);
-    }
-    catch (err) {
-        res.send({ message: err })
-        console.log(err)
-
-    }
-})
-
-app.get('/locationProductDetails', async (req, res) => {
-    try {
-        Location.find().exec(function (err, result) {
-            res.send(result)
-        })
-    }
-    catch (err) {
-        res.send({ message: err })
-    }
-})
-
-
+app.use(locationRoutes)
 
 mongoose.connect(dburl, {
 
