@@ -106,22 +106,14 @@ app.post("/carddetails", async (req, res) => {
 //location product details code (team 4) .....starting
 
 const locationRoutes=require('./locationPoductDetails/location_router.cjs')
-
 app.use(locationRoutes)
 
-mongoose.connect(dburl, {
-
-    useNewUrlParser: true,
-
-    useUnifiedTopology: true
-
-}, err => {
+mongoose.connect(dburl, {useNewUrlParser: true,useUnifiedTopology: true}, err => {
     if (err) throw err;
     console.log('Connected to MongoDB!!!')
 });
 
 //location product details code (team 4) .....ending
-
 
 app.listen(PORT, function (err, res) {
     if (err) throw err;
