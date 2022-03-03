@@ -21,6 +21,7 @@ mongoClient.connect(dburl, function (err, client) {
         db = client.db("test");
         // team -3 fetching cost of product
         locationdetails = db.collection("locationdetails");
+        userCollection = db.collection("user");
         locationdetails.findOne({}, function (err, result) {
             if (err)
                 console.log(err);
