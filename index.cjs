@@ -194,6 +194,16 @@ app.get("/blogs/:id", async (req, res) => {
         res.send('Error' + err)
     }
 })
+
+app.get("/comments",async (req,res)=>{
+    try {
+        const data = await Comments.find({})
+        res.json(data)
+    } catch (err) {
+        res.send('Error' + err)
+    }
+})
+
 //team 7 end
 app.listen(PORT, function (err, res) {
     if (err) throw err;
