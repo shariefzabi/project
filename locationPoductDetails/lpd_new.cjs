@@ -10,22 +10,22 @@ const cattleMarketSchema = new mongoose.Schema({
     source: { type: String },
     certification: { type: String }
 });
-const sheepMarketSchema = new mongoose.Schema({
-    animalId: { type: String },
-    productCode: { type: String },
-    availability: { type: String },
-    price: { type: String },
-    weight: { type: String },
-    breed: { type: String },
-    source: { type: String },
-    certification: { type: String }
+const sheepMarketSchema  = new mongoose.Schema({
+    animalId:{type:String},
+    productCode:{type: String},
+    availability:{type:String},
+    price:{type:String},
+    weight:{type:String},
+    breed:{type:String},
+    source:{type:String},
+    certification:{type:String}
 })
 const locationSchema = new mongoose.Schema(
     {
-        locationName: { type: String },
-        cattleMarkets: [cattleMarketSchema],
+        locationName:{type:String},
+        cattleMarkets: [cattleMarketSchema] ,
         sheepMarkets: [sheepMarketSchema]
     }
 );
-const Location = mongoose.model("locationData", locationSchema);
+const Location = mongoose.model("locationDB", locationSchema);
 module.exports = Location
