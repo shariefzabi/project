@@ -19,6 +19,7 @@ mongoClient.connect(dburl, function (err, client) {
     }
     else {
         db = client.db("test");
+        // team -3 fetching cost of product
         locationdetails = db.collection("locationdetails");
         locationdetails.findOne({}, function (err, result) {
             if (err)
@@ -120,10 +121,10 @@ app.post("/carddetails", async (req, res) => {
 
 //location product details code (team 4) .....starting
 
-const locationRoutes=require('./locationPoductDetails/location_router.cjs')
+const locationRoutes = require('./locationPoductDetails/location_router.cjs')
 app.use(locationRoutes)
 
-mongoose.connect(dburl, {useNewUrlParser: true,useUnifiedTopology: true}, err => {
+mongoose.connect(dburl, { useNewUrlParser: true, useUnifiedTopology: true }, err => {
     if (err) throw err;
     console.log('Connected to MongoDB!!!')
 });
