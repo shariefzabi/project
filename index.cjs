@@ -1,10 +1,13 @@
 const express = require('express');
+const mongoose=require("mongoose");
 const bodyParser = require("body-parser")
-
 const app = express();
+
 const PORT = 3005;
 var mongoClient = require("mongodb").MongoClient;
-var dburl = "mongodb+srv://LocationData:1234567890@cluster0.hn7hc.mongodb.net/test?retryWrites=true&w=majority";
+var dburl =  "mongodb://LocationData:1234567890@cluster0-shard-00-00.hn7hc.mongodb.net:27017,cluster0-shard-00-01.hn7hc.mongodb.net:27017,cluster0-shard-00-02.hn7hc.mongodb.net:27017/test?ssl=true&replicaSet=atlas-g18s7s-shard-0&authSource=admin&retryWrites=true&w=majority";
+
+
 
 
 let db;
@@ -28,6 +31,7 @@ app.use(bodyParser.urlencoded({
     extended:false
 }))
 app.use(bodyParser.json())
+
 app.post("/user",function(req,res){
     const {username,password}=req.body
 const user= {};
@@ -67,19 +71,60 @@ app.get("/", function (req, res) {
 })
 
 
-app.use(express.json());
-app.get("/", function (req, res) {
-    res.send("data recieved");
-
-});
-app.post("/", function (req, res) {
-    var body = req.body;
-    console.log(body)
-});
 
 
-app.listen(PORT, function (err, res) {
-    if (err) throw err;
-    console.log(`Application is started successfully and running on : ${PORT}...`);
+
+
+
+
+
+//location product details code (team 4) .....starting
+
+const Location  = require('./locationPoductDetails/locationProductDetailsSchema.cjs');
+
+
+app.post("/createLocationProducts", async (req, res)=> {
+    const {locationDetails}=req.body
+    try{
+        const myLocation=new Location({locationDetails});
+        await Location.create(myLocation);
+        res.send(myLocation);  
+    }
+    catch(err){
+        res.send({message : err})
+        console.log(err)
+
+    } 
 })
 
+app.get('/locationProductDetails', async (req,res)=>{
+    try{
+         Location.find().exec(function (err,result){  
+            res.send(result)
+        }) 
+    }
+    catch(err){
+        res.send({message : err})
+    } 
+})
+
+
+
+mongoose.connect(dburl, {
+
+    useNewUrlParser: true, 
+    
+    useUnifiedTopology: true 
+    
+    }, err => {
+    if(err) throw err;
+    console.log('Connected to MongoDB!!!')
+    });
+
+  //location product details code (team 4) .....ending
+
+
+    app.listen(PORT, function (err, res) {
+        if (err) throw err;
+        console.log(`Application is started successfully and running on : ${PORT}...`);
+    })
