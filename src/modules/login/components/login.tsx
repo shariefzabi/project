@@ -1,9 +1,11 @@
 import "./assets/login.scss";
 import React from "react";
+import { connect } from 'react-redux';
 import "bootstrap/dist/css/bootstrap.css"
 // import Signup from "./signup";
-import Signup from "../../signup/signup";
-
+import Signup from "./signup";
+import mapStateToProps from "../state/stateMap";
+import mapDispatchToProps from "../state/actions";
 
 
 class Login extends React.Component<any, any> {
@@ -18,6 +20,7 @@ class Login extends React.Component<any, any> {
             // Error Messages 
             usernameErrMsg: "",
             passwordErrMsg: "",
+            userError:""
 
         }
     }
@@ -26,7 +29,26 @@ class Login extends React.Component<any, any> {
     }
     submitHandler = (e: any) => {
         e.preventDefault();
-        console.log(this.state);
+        console.log(e.target);
+        
+        // console.log("login:",this.props);
+        let users = this.props.users;
+        let {username,password,userError}=this.state;
+        let found = false;
+        for(let i=0;i<users.length;i++){
+            if (users[i].username===username && users[i].createPassword===password){
+                console.log("User details found!!!");
+                console.log(("Login Success!!!"));
+                userError = "";
+                found = true;
+                break;
+            }
+        }
+        if (!found)
+        userError = "User not found";
+        this.setState({userError});
+
+        
     }
 
 
@@ -43,9 +65,9 @@ class Login extends React.Component<any, any> {
                 // let nameReg = /[a-zA-Z]{5, 30}/
                 // let nameReg = /^((?![A-Z ]+$)(?![a-z ]+$)[a-zA-Z ]+){5, 30}$/
                 let nameReg = /^([a-zA-Z ]{4,15})$/
-                console.log(username);
-                console.log(nameReg);
-                console.log(nameReg.test(username));
+                // console.log(username);
+                // console.log(nameReg);
+                // console.log(nameReg.test(username));
                 if (!nameReg.test(username)) {
                     let usernameErrMsg = "Accepts Alphabets, space & Min 3 to Max 15 Char"
                     this.setState({ usernameErrMsg })
@@ -69,7 +91,7 @@ class Login extends React.Component<any, any> {
                 // let nameReg = /[a-zA-Z]{5, 30}/
                 // let nameReg = /^((?![A-Z ]+$)(?![a-z ]+$)[a-zA-Z ]+){5, 30}$/
                 let nameReg = /^([a-zA-Z ]{4,15}[@,!,%,#,$,&,*,?,^])$/
-                console.log(password);
+                // console.log(password);
                 // console.log(passwordReg);
                 // console.log(passwordReg.test(password));
                 if (!nameReg.test(password)) {
@@ -102,6 +124,12 @@ class Login extends React.Component<any, any> {
                                     <h5 id="exampleModalToggleLabel">LogIn</h5>
                                     <p>Welcome back!</p>
                                 </div>
+                                {
+                                    this.state.userError && 
+                                    <div>
+                                        <p className="text-danger">{this.state.userError}</p>
+                                    </div>
+                                }
                                 <form onSubmit={this.submitHandler} className="px-2 py-2 ">
                                     <div className="mb-3 text-start">
                                         <label htmlFor="uname" className="form-label">Name</label>
@@ -146,4 +174,4 @@ class Login extends React.Component<any, any> {
     }
 }
 
-export default Login;
+export default connect(mapStateToProps,mapDispatchToProps)(Login);
