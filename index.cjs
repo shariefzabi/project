@@ -166,6 +166,25 @@ mongoose.connect(dburl, { useNewUrlParser: true, useUnifiedTopology: true }, err
 
 //location product details code (team 4) .....ending
 
+
+
+// team 7
+const Blog =require('./Blogs/schema.cjs');
+const Comments =require('./Blogs/comschema.cjs')
+
+app.get("/comments/:id", async (req, res) => {
+    try {
+
+        let { params } = req
+        // console.log(params.id)
+        const data = await Comments.find({ "comment.blog_id": params.id })
+        res.json(data)
+    } catch (err) {
+        res.send('Error' + err)
+    }
+})
+
+//team 7 end
 app.listen(PORT, function (err, res) {
     if (err) throw err;
     console.log(`Application is started successfully and running on : ${PORT}...`);
