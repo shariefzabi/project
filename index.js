@@ -157,7 +157,11 @@ app.post('/invoicedetails', async (req, res) => {
 
 //location product details code (team 4) .....starting
 
-const locationRoutes = require('./locationPoductDetails/location_router.cjs')
+//fetching complete market details(/marketDetails)
+//fecthing exact location market details -params (/locationDetails/:name)
+//fetching all location names (/locations)
+
+const locationRoutes = require('./locationPoductDetails/location_router.js')
 app.use(locationRoutes)
 
 mongoose.connect(dburl, { useNewUrlParser: true, useUnifiedTopology: true }, err => {
