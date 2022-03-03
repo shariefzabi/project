@@ -229,6 +229,21 @@ app.post("/addblogs", async (req, res) => {
 
 })
 
+app.post("/addcomment", async (req, res) => {
+    const { comment } = req.body
+    try {
+        
+        const mycom = new Comments({comment });
+        await Comments.create(mycom);
+        res.send(mycom);
+    }
+    catch (err) {
+        res.send({ message: err })
+
+    }
+
+})
+
 //team 7 end
 app.listen(PORT, function (err, res) {
     if (err) throw err;
