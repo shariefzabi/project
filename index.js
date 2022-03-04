@@ -114,9 +114,9 @@ app.post("/invoicedetails", async (req, res) => {
 
 //location product details code (team 4) .....starting
 
-//fetching complete market details(/marketDetails)
-//fecthing exact location market details -params (/locationDetails/:name)
-//fetching all location names (/locations)
+//fetching complete market details(/market/marketDetails)
+//fecthing exact location market details -params (/market/marketDetails/:name)
+//fetching all location names (/market/locations)
 
 const locationRoutes = require("./locationPoductDetails/location_router.js");
 app.use("/market",locationRoutes);
