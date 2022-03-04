@@ -1,7 +1,10 @@
 import React,{useState} from "react";
 import './deliverydetails.scss'
+import mapDispatchToProps from "../../ordercreationstate/ordercreationactions";
+import mapStateToProps from "../../ordercreationstate/orderstateMap";
+import { connect } from "react-redux";
 
-export default class Deliverydetails extends React.Component<any,any>{
+class Deliverydetails extends React.Component<any,any>{
     constructor(props:any){
         super(props);
         this.state={
@@ -17,6 +20,11 @@ export default class Deliverydetails extends React.Component<any,any>{
      changeHandler = (e:any) => {
         this.setState({ [e.target.name]: e.target.value })
         // console.log(e.target.value);
+    }
+    submitHandler =(e:any,deliveryDetails:any)=>{
+        console.log("props in createorder",this.props);
+        console.log("delivery details",deliveryDetails); 
+        this.props.createOrder(deliveryDetails);
     }
     validations = (e: any) => {
             let name=e.target.name;
@@ -58,7 +66,8 @@ export default class Deliverydetails extends React.Component<any,any>{
 
     }
 render(){
-    return (
+    let {deliveryloc,deliveryperiod,deliverymode}=this.state;
+    return (   
         <div className='deliverydetailspage'>
             <div className="modal fade" id="deliverydetailsModal" aria-labelledby="deliveryModalLabel" aria-hidden="true">
                 <div className="modal-dialog modal-lg">
@@ -70,7 +79,7 @@ render(){
                         <div className="form-paragraph">
                             <p>Fill in the required information</p>
                         </div>
-                        <form className='text-start'>
+                        <form className='text-start' >
                             <div className="mb-3">
                                 <label htmlFor="Delivery Location" className="col-form-label">Delivery Location</label>
                                 <input type="text" className="form-control" id="Delivery Location" placeholder="Delivery Location" name="deliveryloc" onChange={this.changeHandler}
@@ -84,15 +93,16 @@ render(){
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="Agent" className="col-form-label select-label">Delivery Mode</label>
+
                                 <select className="form-select" name="deliverymode" value={this.state.deliverymode} aria-label="Default select example" onBlur={this.validations} onChange={(e)=>{this.changeHandler(e);this.validations(e)}}>
-                                    <option hidden value="">Delivery Mode</option>
+                                    <option  hidden value="">Delivery Mode</option>
                                     <option value="One">One</option>
                                     <option value="Two">Two</option>
                                 </select>
                                 <p className="text-danger err">{this.state.deliverymodeErr}</p>
                             </div>
                             <div className="mb-3 text-center">
-                                <button type="button" className="btn btn-success continuebutton">Continue</button>
+                                <button type="button" className="btn btn-success continuebutton" onClick={(e)=>this.submitHandler(e,{deliveryloc,deliveryperiod,deliverymode})}>Continue</button>
                             </div>
 
                         </form>
@@ -104,3 +114,4 @@ render(){
     )
 }
 }
+export default connect(mapStateToProps,mapDispatchToProps)(Deliverydetails);
