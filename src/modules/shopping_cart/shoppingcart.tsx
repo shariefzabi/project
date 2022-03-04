@@ -72,10 +72,10 @@ class Cart extends React.Component<any,any>{
                     <section className='container'>
                         <div >
                             <ul className="cart_nav">
-                            <Link to='/aboutus'><li className="cart_link">Home <span>/</span></li></Link>
-                            <Link to='/aboutus'><li className="cart_link"> Lagos <span>/</span></li></Link>
-                            <Link to='/aboutus'><li className="cart_link"> Cattle Market  <span>/</span></li></Link>
-                            <Link to='/aboutus'><li className="cart_link">Cart</li></Link>
+                            <Link to='/home'><li className="cart_link">Home <span>/</span></li></Link>
+                            <Link to='/'><li className="cart_link"> Lagos <span>/</span></li></Link>
+                            <Link to='/'><li className="cart_link"> Cattle Market  <span>/</span></li></Link>
+                            <Link to='/'><li className="cart_link">Cart</li></Link>
                                
                                 <br />
                             </ul>
