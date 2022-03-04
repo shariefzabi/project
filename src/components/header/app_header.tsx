@@ -117,7 +117,7 @@ class Header extends React.Component {
             <BuyNow />
           </div>
           <div className="menu_btn">
-            <div className="pt-3 log_button text-center">
+            <div className="text-center">
               <Login />
             </div>
           </div>

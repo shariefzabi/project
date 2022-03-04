@@ -20,7 +20,9 @@ class Login extends React.Component<any, any> {
             // Error Messages 
             usernameErrMsg: "",
             passwordErrMsg: "",
-            userError:""
+            userError:"",
+            //Signup
+            displaySignup:false
 
         }
     }
@@ -62,21 +64,9 @@ class Login extends React.Component<any, any> {
                 this.setState({ usernameErrMsg })
                 e.target.classList.add("field-error")
             } else {
-                // let nameReg = /[a-zA-Z]{5, 30}/
-                // let nameReg = /^((?![A-Z ]+$)(?![a-z ]+$)[a-zA-Z ]+){5, 30}$/
-                // let nameReg = /^([a-zA-Z ]{4,15})$/
-                // console.log(username);
-                // console.log(nameReg);
-                // console.log(nameReg.test(username));
-                // if (!nameReg.test(username)) {
-                    // let usernameErrMsg = "Accepts Alphabets, space & Min 3 to Max 15 Char"
-                    // this.setState({ usernameErrMsg })
-                    // e.target.classList.add("field-error")
-                // } else {
                     usernameErrMsg = ''
                     e.target.classList.remove("field-error")
                     this.setState({ usernameErrMsg })
-                // }
             }
         }
 
@@ -109,18 +99,17 @@ class Login extends React.Component<any, any> {
     }
     render() {
         let {
-            username, password
+            username, password,displaySignup
         } = this.state;
         
         return (
-
-
             <div className="login-window">
-
                 <div className="modal fade"  id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex={-1}>
                     <div  className="modal-dialog modal-dialog-centered">
                         <div className="modal-content">
-                        <div className="modal-body">
+                        {
+                            !displaySignup &&
+                            <div className="modal-body">
                                 <div className="modal-title">
                                     <h5 id="exampleModalToggleLabel">LogIn</h5>
                                     <p>Welcome back!</p>
@@ -154,22 +143,29 @@ class Login extends React.Component<any, any> {
                                         <div>
                                             <p className="text-danger">{this.state.passwordErrMsg}</p>
                                         </div>
-                                        <div className="form-text text-end"><a href="#">I Forgot My Password</a></div>
+                                        <div className="form-text text-end"><a className="link" href="#">I Forgot My Password</a></div>
                                     </div>
 
                                     <button type="submit" className="btn login btn-success">Login</button>
                                 </form>
-                            </div>
-                            
-                            <div className="text-success"><span>Don't have an account ?</span>
-                                    <a className="text-decoration-none" data-bs-target="#exampleModalToggle2" data-bs-dismiss="modal" data-bs-toggle="modal">Sign up</a>
+                                <div><span className="text-success">Don't have an account ?</span>
+                                    <a className="link text-decoration-none" onClick={()=>this.setState({displaySignup:true})}>Sign up</a>
                                 </div>
+                            </div>
+                        }
+                        {
+                            displaySignup&&
+                            <Signup/>
+                        }
+                        
+                            
+                            
                         </div>
                     </div>
                 </div>
 
-                <a className="login-btn" data-bs-dismiss="modal" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Login</a>
-                <Signup/>
+                <a className="pt-3 login-btn btn btn-success" onClick={()=>this.setState({displaySignup:false})} data-bs-toggle="modal" href="#exampleModalToggle" role="button">Login</a>
+                
             </div>
         )
     }

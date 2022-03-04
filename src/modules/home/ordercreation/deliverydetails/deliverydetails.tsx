@@ -44,7 +44,7 @@ export default class Deliverydetails extends React.Component<any,any>{
         }else if(name === 'deliverymode'){
             let deliverymodeErr='';
             if (value == undefined || value.length === 0) {
-                deliverymodeErr = "Please enter the Associate Name."
+                deliverymodeErr = "Please select delivery mode."
                 console.log(deliverymodeErr);
                 
                 this.setState({ deliverymodeErr })
@@ -84,9 +84,10 @@ render(){
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="Agent" className="col-form-label select-label">Delivery Mode</label>
-                                <select className="form-select" name="deliverymode" value={this.state.deliverymode} aria-label="Default select example" onBlur={this.validations} onChange={this.validations}>
-                                    <option selected hidden value="">Delivery Mode</option>
+                                <select className="form-select" name="deliverymode" value={this.state.deliverymode} aria-label="Default select example" onBlur={this.validations} onChange={(e)=>{this.changeHandler(e);this.validations(e)}}>
+                                    <option hidden value="">Delivery Mode</option>
                                     <option value="One">One</option>
+                                    <option value="Two">Two</option>
                                 </select>
                                 <p className="text-danger err">{this.state.deliverymodeErr}</p>
                             </div>

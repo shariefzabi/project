@@ -1,5 +1,5 @@
 
-.login-window, .signup-window{
+.login-window{
     .login-btn{
         width: 10.93rem;
     height: 3.625rem;
@@ -34,6 +34,10 @@
         text-decoration: none;
         color: #333333;
     }
+    }
+    .link:hover{
+        color: #2078bf!important;
+        cursor: pointer;
     }
     
 }
