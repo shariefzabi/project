@@ -1,0 +1,308 @@
+/* @font-face {
+    font-family: ubuntu;
+    src: url("./Fonts/Ubuntu/Ubuntu-Regular.ttf");
+  } */
+body{
+    overflow-x:hidden;
+    background-color: #F5FBFF!important;
+    font-family: ubuntu;  
+}
+ul {
+    list-style-type:none;
+    padding-left: 0px!important;
+}
+
+/* Header Part Start */
+
+.landingpage-header{
+    background-color: #2078BF;
+}
+.landingpage-header .active{
+    text-decoration: underline solid white;
+}
+.landingpage-header .nav-item{
+    margin-left: 2.93rem;
+}
+.landingpage-header .nav-item::after{
+    text-decoration: underline solid white;
+
+}
+
+.landingpage-header .nav-link{
+    font-size: 16px;
+}
+.landingpage-header .dropdown-menu{
+    padding: 0rem;
+    margin: 0rem;
+    border-radius: 00.3125rem;
+    font-family: sans-serif;
+}
+.landingpage-header .triangle-up {
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-bottom: 11px solid #fff;
+    position: absolute;
+    top : -11px;
+    left: 93px;
+}
+.landingpage-header .dropdown-menu .dropdown-item{
+    color: #838383!important;
+    padding-left: 5px;
+}
+.landingpage-header .dropdown-menu .dropdown-item:hover{
+    background-color: #2078BF;
+    color: #fff!important;
+}
+.landingpage-header .buynow{
+    border: 0.134rem solid #00C3FF!important;
+    border-radius: 0.3125rem!important;
+    height: 3.75rem;
+    width:11.063rem;
+    margin-right: 2.625rem;
+    margin-left: 2.625rem;
+}
+
+.landingpage-header .collapse{
+    padding-top: 1rem;
+    padding-right: 1rem;
+    margin-right: 3rem;
+}
+.dropdown .dropdown-menu {
+    padding: 0;
+    margin: 0;
+    border: 1px solid #E0E0E0;
+  }
+  .dropdown .dropdown-item {
+    font-weight: thin;
+    margin: 0;
+  }
+  .dropdown .dropdown-menu:before {
+    position: absolute;
+    top: -7px;
+    left: 9px;
+    display: inline-block;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #ccc;
+    border-left: 7px solid transparent;
+    border-bottom-color: rgba(0, 0, 0, 0.2);
+    content: "";
+    
+  }
+  .dropdown .dropdown-menu:after {
+    position: absolute;
+    top: -6px;
+    left: 10px;
+    display: inline-block;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid #ffffff;
+    border-left: 6px solid transparent;
+    content: "";
+  }
+  .dropdown .dropdown-item:hover {
+    color: #fff;
+    background-color: #2078BF;
+  }
+  
+/* Header Part End */
+
+
+/* Order your livestock Start */
+
+.order-livestock{
+    background-color: #003966;
+    /* height:53.75rem; */
+}
+.order-livestock article{
+    margin:12rem 5rem 7rem 7.625rem;
+    width:38.56rem;
+}
+.order-livestock .heading{
+    font-size:56px;
+    font-family: Ubuntu;
+    padding-right: 30px;
+}
+.order-livestock .livestock-title{
+    color: #2078BF;
+    font-weight: 700;
+}
+.order-livestock .features{
+    margin-bottom: 3.6875rem;
+}
+.order-livestock button{
+    height: 3.75rem;
+    width:11.063rem;
+    border-radius: 0.3125rem;
+}
+
+.order-livestock .buynow-btn{
+    border: 0.134rem solid white;
+    margin-left: 1.625rem;
+}
+.order-livestock .checkboard{
+     max-width:31rem;
+     height:26.375rem;
+     margin-top: 13.5625rem;
+}
+@media (min-width:375px)and (max-width:480px){
+    .order-livestock{
+        padding: 0;
+    }
+    .order-livestock .heading{
+        font-size:20px;
+        /* font-weight: 700; */
+    }
+    .order-livestock article{
+        margin: 0px 40px;
+        padding: 50px 0px;
+        max-width:250px;
+    }
+    .order-livestock .features{
+        margin-bottom: 19px;
+        font-size: 8px;
+        max-width: 190px;
+        list-style-type: "-";
+        line-height: 12.8px;
+    }
+    .order-livestock .features li{
+        padding-left: 3px;
+    }
+    .order-livestock button{
+        width:88px;
+        height: 30px;
+        font-size: 10px;
+        border-radius: 0.3125rem;
+    }
+    .order-livestock .buynow-btn{
+        border: 1px solid white;
+        margin-left: 9.5px;
+    }
+    .order-livestock aside{
+        display: none;
+    }
+}
+.dropup, .dropend, .dropdown, .dropstart {
+    position: relative;
+    list-style-type: none;
+}
+
+img, svg {
+  width: 50px;
+  right: 1%;
+  top: 1%;
+  cursor: pointer;
+  margin-left: 26rem !important;
+}
+
+.dropdown-menu {
+  padding: 0rem;
+  margin: 0rem;
+  width: 40%;
+
+}
+
+.dropdown .dropdown-menu .box {
+  padding: 0.625rem;
+  position: fixed;
+  border: 1px solid #e0e0e0;
+}
+.dropdown .dropdown-item {
+  font-weight: thin;
+  margin: 0;
+}
+.dropdown .dropdown-menu:before {
+  position: absolute;
+  top: -0.438;
+  /* left: 9px; */
+  right: 0.5rem;
+  display: inline-block;
+  margin-left: 1.25rem;
+  border-right: 0.438rem solid transparent;
+  border-bottom: 0.438rem solid #ccc;
+  border-left: 0.438rem solid transparent;
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+  content: "";
+}
+.dropdown .dropdown-menu:after {
+  position: auto;
+  top: -0.375rem;
+  left: 0.625rem;
+  display: inline-block;
+  border-right: 0.375rem solid transparent;
+  border-bottom: 0.375rem solid #ffffff;
+  border-left: 0.375rem solid transparent;
+  content: "";
+}
+
+.edit-dropdown {
+  width: 1.875rem;
+  height: 1.875rem;
+}
+
+.dropdown-item li {
+  list-style-type: none;
+  float: left;
+  margin-top: 0.313rem;
+  /* font-size: 12px; */
+  font-weight: 400;
+  margin-left: 1.25rem;
+} 
+
+.btn-success {
+  margin: 0.625rem;
+    padding: 0.938rem;
+    width: 30%;
+    font-size: 12px;
+    margin-top: -0.125rem;
+    margin-left: 3rem;
+    margin-right: -1.875rem;
+}
+
+li.quantity {
+  padding-left: 3.125rem;
+  margin-left: 1.5rem;
+}
+
+li#quantity {
+  padding-left: 1.125rem;
+}
+li.btn-primary {
+  margin-left: 5rem;
+  margin-top: -1.875rem;
+  font-size: 12px;
+}
+.animalid {
+  margin-bottom: -2.188rem;
+  font-size: 12px;
+  font-weight: 400;
+}
+.subtotal {
+  font-size: 12px;
+  margin-left: 1rem;
+}
+.total {
+  font-size: 12px;
+  margin-left: 1rem;
+}
+.option {
+  margin-bottom: -1.5rem;
+}
+.box {
+  margin-left: 1.25rem;
+}
+
+#dropdownMenuButton1 {
+  margin-left: 35rem;
+  position: fixed;
+}
+#dropdownMenuLink {
+    margin-left: 1rem;
+}
+
+.dropdown-menu[data-bs-popper] {
+  top: 100%;
+  left: 70% !important;
+  width: 330px;
+  height: 261px;
+  right: 0% !important;
+  margin-top: 0.125rem;
+}
