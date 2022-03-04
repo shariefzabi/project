@@ -20,8 +20,10 @@ mongoClient.connect(dburl, function (err, client) {
 
 
     userCollection = db.collection("user");
-    locationdetails = db.collection("locationdetails");
-    app.set("locationdetails", locationdetails);
+    locationdbs = db.collection("locationdbs");
+    let carddetails = db.collection("carddetails");
+    app.set("carddetails", carddetails)
+    app.set("locationdbs", locationdbs);
     console.log("connected to db");
   }
 });
@@ -29,8 +31,11 @@ mongoClient.connect(dburl, function (err, client) {
 // team -3 fetching cost of product and posting card
 let productCost = require("./paymentMethoddetails/cardDetailsApi.js");
 let cardDetail = require("./paymentMethoddetails/cardDetailsApi.js")
+let invoice = require("./invoice/invoiceapi.js")
 app.use("/product", productCost);
 app.use("/card", cardDetail);
+app.use("/invoicedetails", invoice)
+
 // end 
 
 

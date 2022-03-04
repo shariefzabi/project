@@ -3,20 +3,21 @@ const router = express.Router();
 router.use(express.json())
 const Card = require("./carddetails.cjs");
 
-router.get('/cost', function (req, res) {
+router.get('/cost/:id', function (req, res) {
+    let { params } = req;
 
-    const locationdetails = req.app.get('locationdetails')
+    const locationdetails = req.app.get('locationdbs')
     // locationdetails.save();
     locationdetails.findOne({}, function (err, result) {
         if (err) {
             console.log(err);
         }
         else {
-            if ("locationDetails" in result) {
+            if ("cattleMarkets" in result) {
                 console.log("product details are available");
-                let price = result.locationDetails.cattleMarket.price;
+                let price = result.cattleMarkets[params.id].price;
                 console.log("price", price)
-                res.send({ price })
+                res.send( price )
             }
             else
                 console.log("product details are not available");
