@@ -13,8 +13,10 @@
 }
 .box{
     width: 90%;
+    padding-top: 30px !important;
     margin : auto;
     text-align: start !important;
+    justify-content: space-between;
 }
 .aboutus h1{
     font-weight:700;
@@ -52,3 +54,4 @@ p{
     width:20rem;
     
 }
+
