@@ -4,7 +4,7 @@ import cross from "./asset/group35.png";
 import triangle from "./asset/Triangle.png";
 import { Link } from "react-router-dom";
 import "./app_header.scss";
-import BuyNow from "../../modules/home/ordercreation/ordercreation";
+import BuyNow from "../../modules/ordercreation/components/ordercreation";
 import Login from "../../modules/login/components/login";
 class Header extends React.Component {
   render() {
