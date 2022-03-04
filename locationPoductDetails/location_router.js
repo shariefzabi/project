@@ -3,12 +3,14 @@ const router = express.Router();
 const Location = require('./marketingDetailsSchema.js');
 
 //post market details
-const myLocation = []
+
+
+let locationdb = {};
+
 router.post("/marketDetails", async (req, res) => {
-    const locationDetails = req.body
+    locationdb = req.body
     try {
-        myLocation = new Location(locationDetails);
-        // console.log("my", myLocation)
+        const myLocation = new Location(locationdb);
         await Location.create(myLocation);
         res.send(myLocation);
     }
@@ -17,7 +19,6 @@ router.post("/marketDetails", async (req, res) => {
         console.log(err)
 
     }
-
 })
 
 // fetching entire market details
@@ -35,7 +36,7 @@ router.get('/marketDetails', async (req, res) => {
 
 //fecthing exact location market details (params)
 
-router.get('/locationDetails/:name', async (req, res) => {
+router.get('/marketDetails/:name', async (req, res) => {
     let { params } = req
     try {
         Location.find({ "locationName": params.name }).exec(function (err, result) {

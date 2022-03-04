@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const uniqueValidator=require("mongoose-unique-validator")
 
 const cattleMarketSchema = new mongoose.Schema({
     animalId: { type: String , 
@@ -43,11 +44,13 @@ const sheepMarketSchema  = new mongoose.Schema({
 const locationSchema = new mongoose.Schema(
     {
         locationName:{type:String ,
+            unique:true,
             required:true ,minlength:3,
             maxlength:20},
         cattleMarkets: [cattleMarketSchema] ,
         sheepMarkets: [sheepMarketSchema]
     }
 );
+cattleMarketSchema.plugin(uniqueValidator);
 const Location = mongoose.model("locationDB", locationSchema);
 module.exports = Location
