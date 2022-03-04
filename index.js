@@ -119,7 +119,7 @@ app.post("/invoicedetails", async (req, res) => {
 //fetching all location names (/locations)
 
 const locationRoutes = require("./locationPoductDetails/location_router.js");
-app.use(locationRoutes);
+app.use("/market",locationRoutes);
 
 mongoose.connect(
   dburl,
