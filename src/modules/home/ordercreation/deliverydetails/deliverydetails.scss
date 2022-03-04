@@ -1,5 +1,4 @@
 .deliverydetailspage{
-    overflow: hidden;
 .popupheading{
     color:  #2078BF;
     margin-top: 3.81rem;
@@ -20,6 +19,9 @@
     padding: 1.5% !important;
     /* padding-bottom: 1%; */
 }
+.err{
+    margin-left: 26%;
+}
 .col-form-label{
     margin-left: 26%;
     color: #838383;
@@ -35,9 +37,9 @@
     font-weight: 400;
     line-height: 35px;
     letter-spacing: 0px;
-    // text-align: center;
+    text-align: center;
     // width: 39.4%;
-    // margin: auto;
+    // margin: auto !important;
     color: #2078BF;
 }
 .continuebutton{
@@ -55,7 +57,4 @@
     top: 2.5rem;
     left: 70%;
 }
-// .select-label{
-//     margin-left: 26%;
-// }
 }

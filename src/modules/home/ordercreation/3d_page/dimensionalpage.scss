@@ -1,63 +1,40 @@
-// .dimesionalpage-form{
-// .heading-page{
-//     font-family: Ubuntu;
-//     font-style: normal;
-//     font-weight: bold;
-//     text-align: center;
-//     color:#2078BF;
-//     position: absolute;
-//     width: 700px;
-//     left: 484px;
-// }
-// .head-2{
-//     position: absolute;
-//     width: 228px;
-//     height: 24px;
-//     left: 1150.01px;
-//     top: 200.43px;
-//     font-family: Ubuntu;
-//     font-style: italic;
-//     font-weight: bold;
-//     font-size: 18px;
-//     line-height: 24px;
-//     color: #838383;
-// }
-// .description{
-//     position: absolute;
-//     width: 237.11px;
-//     height: 48px;
-//     left: 1150.01px;
-//     top: 250.43px; 
-//     font-family: Ubuntu;
-//     font-style: italic;
-//     font-weight: normal;
-//     font-size: 12px;
-//     line-height: 24px;
-//     color: #838383;
-// }
-// .description-1{
-//     top: 280px;
-// }
-// .description-2{
-//     top: 337px;
-// }
-// .description-4{
-//     top: 400px;
-// }
-// .button-226{
-//     position: absolute;
-//     top:70%;
-//     left:50%;
-//     background: #06864D;
-//     border-radius: 5px;
-// }
-// .continuebutton{
-//     border: 0.134rem solid #00C3FF;
-//     border-radius: 0.3125rem;
-//     height: 2.75rem;
-//     width:11.063rem;
-//     margin: 2rem 2.625rem;
-//     margin-top:10rem ;
-//     margin-left: 40%;
-// }
-// }
+.dimesionalpage-form{
+.heading-dimension{
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 400;
+    text-align: center !important;
+    width: 550px;
+    color:  #2078BF;
+    margin-top: 3.81rem;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: bold !important;
+    font-size: 25px;
+    margin: auto;
+}
+.dimesional-description{
+    position: absolute;
+    left: 780px;
+    right: 50px;
+}
+.hint-heading{
+    width: 228px;
+    height: 24px;
+    font-family: Ubuntu;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 24px;
+    color: #838383;
+}
+
+.continuebutton{
+    border: 0.134rem solid #00C3FF;
+    border-radius: 0.3125rem;
+    height: 2.75rem;
+    width:11.063rem;
+    margin: 2rem 2.625rem;
+    margin-top:28rem ;
+}
+}

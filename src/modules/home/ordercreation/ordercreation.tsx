@@ -1,8 +1,69 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DimesionalPage from './3d_page/dimensionalpage';
 // import DimesionalPage from './3d_page/dimensionalpage'
 import './ordercreation.scss'
 export default function BuyNow() {
+    const [type, setType] = useState("");
+    const [quantity, setQuantity] = useState("");
+    const [sex, setSex] = useState("");
+    const [weight, setWeight] = useState("");
+    const [breed, setBreed] = useState("");
+
+    const [typeerrmsg, setTypeerrmsg] = useState("");
+    const [quantityerrmsg, setQuantityerrmsg] = useState("");
+    const [sexerrmsg, setSexerrmsg] = useState("");
+    const [weighterrmsg, setWeighterrmsg] = useState("");
+    const [breederrmsg, setBreederrmsg] = useState("");
+    function Validate(event:any) {
+        let name = event.target.name;
+        let value = event.target.value; 
+        console.log(name); 
+        console.log(value);
+         if (name === "Type") { 
+             console.log(value);
+             
+             if (value === "") {
+                setTypeerrmsg("please select the type*") 
+        } else {
+            setTypeerrmsg(""); 
+            setType(value);
+            console.log(value);
+            
+        }
+    }
+        else if(name==="Quantity"){
+            if(value===""){
+                setQuantityerrmsg("please select the Quantity*") 
+            } else {
+                setQuantityerrmsg(""); 
+                setQuantity(value);
+            }
+        }
+        else if(name==="Sex"){
+            if(value===""){
+                setSexerrmsg("please select the Sex*") 
+            } else {
+                setSexerrmsg(""); 
+                setSex(value);
+            }
+        }
+        else if(name==="Weight"){
+            if(value===""){
+                setWeighterrmsg("please select the Weight*") 
+            } else {
+                setWeighterrmsg(""); 
+                setWeight(value);
+            }
+        }
+        else if(name==="Breed"){
+            if(value===""){
+                setBreederrmsg("please select the Breed*") 
+            } else {
+                setBreederrmsg(""); 
+                setBreed(value);
+            }
+        }
+     }
     return (
         <>
         <div className='ordercreation-container'>
@@ -26,56 +87,59 @@ export default function BuyNow() {
                                 <div className='row'>
                                     <div className="col-md-3 productype-dropdown" >
                                         <div className="dropdown" >
-                                            <select className="form-select" >
-                                                <option selected>Type</option>
-                                                <option value="1">Cow</option>
-                                                <option value="2">Goat</option>
-                                                <option value="3">Pig</option>
-                                            </select>
-
+                                        <select name = "Type" value ={type} onChange = {(event) => Validate(event)} onBlur = {(event) => Validate(event)} className="form-select" >
+                                            <option selected hidden value="">Type</option>
+                                            <option value="Cow">Cow</option>
+                                            <option value="Goat">Goat</option>
+                                            <option value="Pig">Pig</option>
+                                        </select>
+                                        <p className='text-danger'>{typeerrmsg}</p>
                                         </div>
                                     </div>
                                     <div className="col-md-2">
                                         <div className="dropdown" >
-                                            <select className="form-select">
-                                                <option selected>Quantity</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </select>
+                                        <select  name = "Quantity" value ={quantity} onChange = {(event) => Validate(event)} onBlur = {(event) => Validate(event)} className="form-select" >
+                                            <option selected hidden  value="">Quantity</option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
+                                        <p className='text-danger'>{quantityerrmsg}</p>
                                         </div>
                                     </div>
                                     <div className="col-md-1">
 
                                         <div className="dropdown">
-                                            <select className="form-select" >
-                                                <option selected>Sex</option>
-                                                <option value="1">Male</option>
-                                                <option value="2">Female</option>
-
-                                            </select>
+                                        <select name = "Sex" value = {sex} onChange = {(event) => Validate(event)} onBlur = {(event) => Validate(event)} className="form-select" >
+                                            <option selected hidden value="">Sex</option>
+                                            <option value="1">Male</option>
+                                            <option value="2">Female</option>
+                                        </select>
+                                        <p className='text-danger'>{sexerrmsg}</p>
                                         </div>
                                     </div>
                                     <div className="col-md-2">
 
                                         <div className="dropdown">
-                                            <select className="form-select" >
-                                                <option selected>Weight</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </select>
+                                        <select name = "Weight" value ={weight} onChange = {(event) => Validate(event)} onBlur = {(event) => Validate(event)} className="form-select" >
+                                            <option selected hidden value="">Weight</option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
+                                        <p className='text-danger'>{weighterrmsg}</p>
                                         </div>
                                     </div>
                                     <div className="col-md-2">
 
                                         <div className="dropdown">
-                                            <select className="form-select">
-                                                <option selected>Breed</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </select>
+                                        <select name = "Breed" value ={breed} onChange = {(event) => Validate(event)} onBlur = {(event) => Validate(event)} className="form-select">
+                                            <option selected hidden value="">Breed</option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
+                                        <p className='text-danger'>{breederrmsg}</p>
 
                                         </div>
                                         <div className='cart-icon'>

@@ -1,6 +1,9 @@
-// import "./assets/login.scss";
+import "./assets/login.scss";
 import React from "react";
-import "bootstrap/dist/css/bootstrap.css"
+import { connect } from "react-redux";
+import "bootstrap/dist/css/bootstrap.css";
+import mapStateToProps from "../state/stateMap";
+import mapDispatchToProps from "../state/actions";
 
 class Signup extends React.Component <any,any>{
     constructor(props:any) {
@@ -22,9 +25,7 @@ class Signup extends React.Component <any,any>{
     changeHandler = (e: any) => {
         this.setState({ [e.target.name]: e.target.value })
     }
-    submitHandler = (e: any) => {
-        e.preventDefault();
-    }
+    
     
     validations = (e: any) => {
         if (e.target.name === 'username') {
@@ -120,15 +121,22 @@ class Signup extends React.Component <any,any>{
             }
         }
     }
+    
+    submitHandler = (e: any,userDetails:any) => {
+        e.preventDefault();
+        console.log("userDetails:",userDetails);
+        this.props.createRecord(userDetails);
+    }
+
     render() {
         let {
-            username, password,email,confirmPassword
+            username, createPassword,email,confirmPassword
         } = this.state;
-        console.log(this.state);
+        console.log("props of signup:",this.props);
         
         return (
             <div className="signup-window">
-                <div className="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
+                <div className="modal fade signup-modal" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
                     tabIndex={-1}>
                     <div className="modal-dialog modal-dialog-centered">
                         <div className="modal-content text-black">
@@ -137,7 +145,7 @@ class Signup extends React.Component <any,any>{
                                     <h5 id="exampleModalToggleLabel2">Sign Up</h5>
                                     <p>Before we proceed further...</p>
                                 </div>
-                                <form onSubmit={this.submitHandler} className="px-2 py-2 ">
+                                <form onSubmit={(e)=>this.submitHandler(e,{username, createPassword,email})} className="px-2 py-2 ">
                                     <div className="mb-3 text-start">
                                         <label htmlFor="username" className="form-label">Full Name</label>
                                         <input type="text" name="username"
@@ -165,7 +173,7 @@ class Signup extends React.Component <any,any>{
                                     <div className="mb-3 text-start">
                                         <label htmlFor="createpwd" className="form-label">Password</label>
                                         <input type="password" name="createPassword"
-                                            value={password} placeholder="Password"
+                                            value={createPassword} placeholder="Password"
                                             className="form-control"
                                             onChange={this.changeHandler}
                                             onBlur={this.validations}  id="createpwd"  />
@@ -186,7 +194,7 @@ class Signup extends React.Component <any,any>{
                                             <p className="text-danger">{this.state.confirmPasswordErrMsg}</p>
                                         </div>
                                     </div>
-                                    <button type="submit" className="btn login btn-success">Sign Up</button>
+                                    <button type="submit" data-bs-dismiss="modal" data-bs-toggle="modal" className="btn login btn-success" role="button">Sign Up</button>
                                 </form>
                             </div>
                             
@@ -199,4 +207,4 @@ class Signup extends React.Component <any,any>{
     }
 }
 
-export default Signup;
+export default connect(mapStateToProps,mapDispatchToProps) (Signup);

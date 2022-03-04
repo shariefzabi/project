@@ -32,14 +32,6 @@
         margin-top: 1rem;
         margin-bottom: 7rem;
     }
-    .Continuebutton{
-        border: 0.134rem solid #00C3FF;
-        border-radius: 0.3125rem;
-        height: 2.75rem;
-        width:11.063rem;
-        margin: 2rem 2.625rem;
-        margin-top:10rem ;
-    }
    .cart-icon{
        position: absolute;
        left:89%;
@@ -91,22 +83,7 @@
     line-height: 24px;
     color: #838383;
 }
-.description-1{
-    top: 280px;
-}
-.description-2{
-    top: 337px;
-}
-.description-4{
-    top: 400px;
-}
-.button-226{
-    position: absolute;
-    top:70%;
-    left:50%;
-    background: #06864D;
-    border-radius: 5px;
-}
+
 .continuebutton{
     border: 0.134rem solid #00C3FF;
     border-radius: 0.3125rem;
@@ -115,6 +92,6 @@
     margin: 2rem 2.625rem;
     margin-top:10rem ;
     text-align: center;
-    // margin-left: 40%;
+    margin-left: 40%;
 }
 }
