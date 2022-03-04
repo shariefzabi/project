@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 import "bootstrap/dist/css/bootstrap.css"
 // import Signup from "./signup";
 import Signup from "./signup";
-import mapStateToProps from "../state/stateMap";
-import mapDispatchToProps from "../state/actions";
 
 
 class Login extends React.Component<any, any> {
@@ -168,6 +166,20 @@ class Login extends React.Component<any, any> {
                 
             </div>
         )
+    }
+}
+
+const mapStateToProps = (state:any) => {
+    console.log(state);
+    
+    return {
+        ...state
+    }
+}
+
+const mapDispatchToProps = (dispatch:Function) => {
+    return {
+        setUser: (userDetails:any) => dispatch({type: 'setUser', payload:userDetails})
     }
 }
 

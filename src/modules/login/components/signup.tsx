@@ -125,7 +125,7 @@ class Signup extends React.Component<any, any>{
     submitHandler = (e: any, userDetails: any) => {
         e.preventDefault();
         console.log("userDetails:", userDetails);
-        this.props.createRecord(userDetails);
+        this.props.setUser(userDetails);
     }
 
     render() {
@@ -202,13 +202,13 @@ const mapStateToProps = (state:any) => {
     console.log(state);
     
     return {
-        ...state
+        redux:state
     }
 }
 
 const mapDispatchToProps = (dispatch:Function) => {
     return {
-        createRecord: (userDetails:any) => dispatch({type: 'create_record', userDetails})
+        setUser: (userDetails:any) => dispatch({type: 'setUser', payload:userDetails})
     }
 }
 
