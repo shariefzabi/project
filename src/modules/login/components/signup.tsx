@@ -2,8 +2,7 @@ import "./assets/signup.scss";
 import React from "react";
 import { connect } from "react-redux";
 import "bootstrap/dist/css/bootstrap.css";
-import mapStateToProps from "../state/stateMap";
-import mapDispatchToProps from "../state/actions";
+
 
 class Signup extends React.Component<any, any>{
     constructor(props: any) {
@@ -196,6 +195,20 @@ class Signup extends React.Component<any, any>{
                 </div>
             </div>
         )
+    }
+}
+
+const mapStateToProps = (state:any) => {
+    console.log(state);
+    
+    return {
+        ...state
+    }
+}
+
+const mapDispatchToProps = (dispatch:Function) => {
+    return {
+        createRecord: (userDetails:any) => dispatch({type: 'create_record', userDetails})
     }
 }
 
