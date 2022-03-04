@@ -15,18 +15,22 @@ mongoClient.connect(dburl, function (err, client) {
     console.log("err while connecting db");
   } else {
     db = client.db("test");
-    // team -3 fetching cost of product
-    locationdetails = db.collection("locationdetails");
+
+
     userCollection = db.collection("user");
-
+    locationdetails = db.collection("locationdetails");
     app.set("locationdetails", locationdetails);
-
     console.log("connected to db");
   }
 });
 
+// team -3 fetching cost of product and posting card
 let productCost = require("./paymentMethoddetails/cardDetailsApi.js");
+let cardDetail = require("./paymentMethoddetails/cardDetailsApi.js")
 app.use("/product", productCost);
+app.use("/card", cardDetail);
+// end 
+
 
 app.use(
   bodyParser.urlencoded({
@@ -68,32 +72,9 @@ app.get("/", function (req, res) {
   res.send("Welcome to Home page");
 });
 
-// card_details from team 3
 
-const Card = require("./paymentMethoddetails/carddetails.cjs");
-app.get("/carddetails/:id", async (req, res) => {
-  try {
-    let { params } = req;
-    console.log(params.id);
-    const locations = await Card.findOne({ "cardDetails.CVV": params.id });
-    res.json(locations);
-  } catch (err) {
-    res.send("Error" + err);
-  }
-});
 
-app.post("/carddetails", async (req, res) => {
-  const { cardDetails } = req.body;
-  try {
-    const myCard = new Card({ cardDetails });
-    await Card.create(myCard);
-    res.send(myCard);
-  } catch (err) {
-    res.send({ message: err });
-  }
-});
-
-// invoice
+// team -3invoice
 app.post("/invoicedetails", async (req, res) => {
   let tokens = [];
   let token;
@@ -127,7 +108,7 @@ app.post("/invoicedetails", async (req, res) => {
   });
 });
 
-// end card_details from team 3
+// end invoice 
 
 //location product details code (team 4) .....starting
 
