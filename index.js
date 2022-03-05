@@ -66,6 +66,18 @@ app.post("/users", function (req, res) {
 
 //No.1 Team ending
 
+
+//team-2 storing order details
+app.post("/orderdetails",function(req,res){
+  let orderdetails=req.body;
+  console.log(orderdetails);
+  let orderDb=db.collection("orders");
+  orderDb.insert(orderdetails);
+  res.send(orderdetails)
+})
+//team-2 ending
+
+
 app.get("/", function (req, res) {
   let { body, params, query } = req;
   console.log("path:", req.url);
@@ -74,8 +86,6 @@ app.get("/", function (req, res) {
   console.log("query:", query);
   res.send("Welcome to Home page");
 });
-
-
 
 // team -3invoice
 app.post("/invoicedetails", async (req, res) => {
