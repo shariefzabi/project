@@ -4,6 +4,11 @@ import { connect } from "react-redux";
 import "bootstrap/dist/css/bootstrap.css";
 
 
+// import mapStateToProps from "../state/stateMap";
+// import mapDispatchToProps from "./state/actions";
+import axios from "axios";
+
+
 class Signup extends React.Component<any, any>{
     constructor(props: any) {
         super(props);
@@ -125,7 +130,17 @@ class Signup extends React.Component<any, any>{
     submitHandler = (e: any, userDetails: any) => {
         e.preventDefault();
         console.log("userDetails:", userDetails);
+
         this.props.setUser(userDetails);
+
+        axios.post("http://localhost:3005/users",userDetails)
+        .then((res)=>console.log("postresponse",res.data))
+        .catch((err)=>console.log("posterror",err)
+        );
+        
+        // axios.get("http://localhost:3005/users")
+        // this.props.createRecord(userDetails);
+
     }
 
     render() {
@@ -141,7 +156,7 @@ class Signup extends React.Component<any, any>{
                         <h5 id="exampleModalToggleLabel">Sign Up</h5>
                         <p>Before we proceed further...</p>
                     </div>
-                    <form onSubmit={(e) => this.submitHandler(e, { username, createPassword, email })} className="px-2 py-2 ">
+                    <form onSubmit={(e) => this.submitHandler(e, { username, createPassword,_id: email })} className="px-2 py-2 ">
                         <div className="mb-3 text-start">
                             <label htmlFor="username" className="form-label">Full Name</label>
                             <input type="text" name="username"
@@ -190,7 +205,7 @@ class Signup extends React.Component<any, any>{
                                 <p className="text-danger">{this.state.confirmPasswordErrMsg}</p>
                             </div>
                         </div>
-                        <button type="submit" data-bs-dismiss="modal" data-bs-toggle="modal" className="btn login btn-success" role="button">Sign Up</button>
+                        <button type="submit"   className="btn login btn-success" role="button">Sign Up</button>
                     </form>
                 </div>
             </div>
