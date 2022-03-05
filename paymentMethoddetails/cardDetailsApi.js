@@ -6,21 +6,24 @@ const Card = require("./carddetails.cjs");
 router.get('/cost/:id', function (req, res) {
     let { params } = req;
 
-    const locationdetails = req.app.get('locationdbs')
+    const locationdetails = req.app.get('locationCollection')
     // locationdetails.save();
     locationdetails.findOne({}, function (err, result) {
         if (err) {
             console.log(err);
+            res.status(502).json(err)
         }
         else {
             if ("cattleMarkets" in result) {
                 console.log("product details are available");
                 let price = result.cattleMarkets[params.id].price;
                 console.log("price", price)
-                res.send( price )
+                res.json(price)
             }
-            else
+            else {
                 console.log("product details are not available");
+                res.json(null)
+            }
         }
     })
 })

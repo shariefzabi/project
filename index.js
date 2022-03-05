@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const cors=require("cors");
+const cors = require("cors");
 const app = express();
 app.use(cors());
 
@@ -21,7 +21,7 @@ mongoClient.connect(dburl, function (err, client) {
     locationdbs = db.collection("locationdbs");
     let carddetails = db.collection("carddetails");
     app.set("carddetails", carddetails)
-    app.set("locationdbs", locationdbs);
+    app.set("locationCollection", locationdbs);
     console.log("connected to db");
   }
 });
@@ -29,7 +29,7 @@ mongoClient.connect(dburl, function (err, client) {
 // team -3 fetching cost of product and posting card
 let productCost = require("./paymentMethoddetails/cardDetailsApi.js");
 let cardDetail = require("./paymentMethoddetails/cardDetailsApi.js")
-let invoice = require("../../livestock_be/invoice/invoiceapi.js")
+let invoice = require("./invoice/invoiceapi")
 app.use("/product", productCost);
 app.use("/card", cardDetail);
 app.use("/invoicedetails", invoice);
@@ -46,21 +46,21 @@ app.use(bodyParser.json());
 
 //No.1 Team
 
-app.get("/users",function(req,res){
+app.get("/users", function (req, res) {
   console.log("log from get users");
   // res.send("Hello from get users");
-  res.json({"HI":"Bye"});
+  res.json({ "HI": "Bye" });
 
 })
 app.post("/users", function (req, res) {
-  console.log("log from post users",req.body);
+  console.log("log from post users", req.body);
   // console.log("response:",res)
   // console.log("request:",req);
   // const { username, password } = req.body;
   // const user = {};
   let userDb = db.collection("users");
-  userDb.insert({"Vinay":"Hello"})
-  res.send({"Hello":"Hi"});
+  userDb.insert({ "Vinay": "Hello" })
+  res.send({ "Hello": "Hi" });
   // userCollection.findOne({}, function (err, result) {
   //   if (err) console.log(err);
   //   else {
@@ -80,7 +80,7 @@ app.post("/users", function (req, res) {
   //   }
   //   res.status(200).json(user);
   // });
- 
+
 });
 
 //No.1 Team ending
@@ -139,7 +139,7 @@ app.post("/invoicedetails", async (req, res) => {
 //fetching all location names (/market/locations)
 
 const locationRoutes = require("./locationPoductDetails/location_router.js");
-app.use("/market",locationRoutes);
+app.use("/market", locationRoutes);
 
 mongoose.connect(
   dburl,
@@ -153,7 +153,7 @@ mongoose.connect(
 //location product details code (team 4) .....ending
 
 //team 6 start
-let animalAPI = require("../../livestock_be/cart/cart_details.js");
+let animalAPI = require("./cart/cart_details.js");
 app.use("/animal", animalAPI);
 //team 6 end
 
