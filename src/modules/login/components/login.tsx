@@ -125,7 +125,7 @@ class Login extends React.Component<any, any> {
                                             value={username} 
                                             className="form-control"
                                             onChange={this.changeHandler}
-                                            onBlur={this.validations}  id="uname" placeholder="Name" />
+                                            onBlur={this.validations}  id="uname" placeholder="Name" required/>
                                         <div>
                                             <p className="text-danger">{this.state.usernameErrMsg}</p>
                                         </div>
@@ -136,7 +136,7 @@ class Login extends React.Component<any, any> {
                                             value={password} placeholder="Password"
                                             className="form-control"
                                             onChange={this.changeHandler}
-                                            onBlur={this.validations}  id="pwd" />
+                                            onBlur={this.validations}  id="pwd" required/>
 
                                         <div>
                                             <p className="text-danger">{this.state.passwordErrMsg}</p>

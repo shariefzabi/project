@@ -163,7 +163,7 @@ class Signup extends React.Component<any, any>{
                                 value={username} placeholder=" Full Name"
                                 className="form-control"
                                 onChange={this.changeHandler}
-                                onBlur={this.validations} id="username" />
+                                onBlur={this.validations} id="username" required/>
                             <div>
                                 <p className="text-danger">{this.state.usernameErrMsg}</p>
                             </div>
@@ -174,7 +174,7 @@ class Signup extends React.Component<any, any>{
                                 value={email} placeholder="Email"
                                 className="form-control"
                                 onChange={this.changeHandler}
-                                onBlur={this.validations} id="email" />
+                                onBlur={this.validations} id="email" required/>
 
                             <div>
                                 <p className="text-danger">{this.state.emailErrMsg}</p>
@@ -187,7 +187,7 @@ class Signup extends React.Component<any, any>{
                                 value={createPassword} placeholder="Password"
                                 className="form-control"
                                 onChange={this.changeHandler}
-                                onBlur={this.validations} id="createpwd" />
+                                onBlur={this.validations} id="createpwd" required/>
 
                             <div>
                                 <p className="text-danger">{this.state.passwordErrMsg}</p>
@@ -199,7 +199,7 @@ class Signup extends React.Component<any, any>{
                                 value={confirmPassword} placeholder="Confirm Password"
                                 className="form-control"
                                 onChange={this.changeHandler}
-                                onBlur={this.validations} id="confpwd" />
+                                onBlur={this.validations} id="confpwd" required/>
 
                             <div>
                                 <p className="text-danger">{this.state.confirmPasswordErrMsg}</p>
