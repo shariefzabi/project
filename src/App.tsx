@@ -1,4 +1,3 @@
-import React from 'react';
 import './App.scss';
 import Dashboard from './modules/dashboard/dashboard';
 import Home from './modules/home/Home';
@@ -7,11 +6,8 @@ import Header from './components/header/app_header';
 import LandingPage from './modules/landing_page/LandingPage';
 import Aboutus from './modules/about_us/aboutus';
 import Blog from './modules/blog/final';
-import Login from './modules/login/components/login';
 
 import Footer from './components/footer/footer';
-
-
 
 
 function App() {
