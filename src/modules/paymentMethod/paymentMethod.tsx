@@ -1,5 +1,7 @@
 import React from 'react'
 import './asset/paymentMethod.scss'
+import axios from "axios"
+
 
 class PaymentMethod2 extends React.Component<any, any> {
   constructor(props: any) {
@@ -12,7 +14,8 @@ class PaymentMethod2 extends React.Component<any, any> {
       // err
       card_numberErr: '',
       cvv_numberErr: '',
-      month_yearErr: ''
+      month_yearErr: '',
+      cost: ""
 
     }
   }
@@ -21,6 +24,20 @@ class PaymentMethod2 extends React.Component<any, any> {
     this.setState({ [event.target.name]: event.target.value });
     // this.setState({ payment: event.target.value })
   }
+  componentDidMount() {
+    console.log("start");
+    axios.get("http://localhost:3005/product/cost/1")
+      .then((res) => {
+        console.log(res.data);
+        this.setState({ cost: res.data })
+      })
+      .catch(err => {
+        console.log("error: ", err);
+      })
+    console.log("end");
+  }
+  
+
   validation = (e: any) => {
     // card NUmber
     if (e.target.name === 'card_number') {
@@ -147,7 +164,7 @@ class PaymentMethod2 extends React.Component<any, any> {
                     <input className="form-control " type="text" value={this.state.cvv_number} name="cvv_number" placeholder="CVV" onChange={this.changeHandler} onBlur={this.validation} />
                     <p className="text-danger text-start m-0">{this.state.cvv_numberErr}</p>
                     <div className="text-center mb-3 mt-4 ">
-                      <button className="btn button-large btn-success mt-3" data-bs-target="#exampleModalToggle3" data-bs-toggle="modal" disabled={!(this.state.card_numberErr == '' && this.state.cvv_numberErr == '' && this.state.card_number !== '' && this.state.cvv_number !== '')}><img className="lock-icon" src={require("./asset/img/lock.png")}></img>Pay #200.00</button>
+                      <button  className="btn button-large btn-success mt-3" data-bs-target="#exampleModalToggle3" data-bs-toggle="modal" disabled={!(this.state.card_numberErr == '' && this.state.cvv_numberErr == '' && this.state.card_number !== '' && this.state.cvv_number !== '')}><img className="lock-icon" src={require("./asset/img/lock.png")}></img>{this.state.cost}</button>
                     </div>
                   </form>
                 </div>
