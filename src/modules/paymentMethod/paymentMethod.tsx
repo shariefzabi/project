@@ -1,5 +1,6 @@
 import React from 'react'
 import './asset/paymentMethod.scss'
+import axios from "axios"
 
 class PaymentMethod2 extends React.Component<any, any> {
   constructor(props: any) {
@@ -12,9 +13,22 @@ class PaymentMethod2 extends React.Component<any, any> {
       // err
       card_numberErr: '',
       cvv_numberErr: '',
-      month_yearErr: ''
+      month_yearErr: '',
+      cost: ""
 
     }
+  }
+  componentDidMount() {
+    console.log("start");
+    axios.get("http://localhost:3005/product/cost/1")
+      .then((res) => {
+        console.log(res.data);
+        this.setState({ cost: res.data })
+      })
+      .catch(err => {
+        console.log("error: ", err);
+      })
+    console.log("end");
   }
   changeHandler = (event: any) => {
     // let { payment } = this.state;
