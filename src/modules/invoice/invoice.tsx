@@ -1,12 +1,8 @@
-import Header from "../../components/header/app_header"
 import "./invoice.scss"
-
 export default function Invoice() {
     return (
         <div>
-
             <main id="mainContent">
-
                 <section className="invoiceSection">
                     <header>
                         <div className="headingText">
