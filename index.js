@@ -55,10 +55,11 @@ app.post("/users", function (req, res) {
   let userDb = db.collection("users");
    userDb.findOne({ _id: req.body._id }, function (err, result) {
     if (err) console.log(err);
-       if (result == null) {
-      userDb.insert(req.body)
-      res.send("user signed up");
+    if (result == null) {
+    userDb.insert(req.body)
+    res.send("success")
     }
+    else res.send("This email is already registered");
   }
 
   );
