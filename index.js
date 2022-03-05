@@ -29,7 +29,11 @@ mongoClient.connect(dburl, function (err, client) {
 // team -3 fetching cost of product and posting card
 let productCost = require("./paymentMethoddetails/cardDetailsApi.js");
 let cardDetail = require("./paymentMethoddetails/cardDetailsApi.js")
+
 let invoice = require("./invoice/invoiceapi")
+
+// let invoice = require("./invoice/invoiceapi.js")
+
 app.use("/product", productCost);
 app.use("/card", cardDetail);
 app.use("/invoicedetails", invoice);
@@ -46,41 +50,18 @@ app.use(bodyParser.json());
 
 //No.1 Team
 
-app.get("/users", function (req, res) {
-  console.log("log from get users");
-  // res.send("Hello from get users");
-  res.json({ "HI": "Bye" });
-
-})
 app.post("/users", function (req, res) {
   console.log("log from post users", req.body);
-  // console.log("response:",res)
-  // console.log("request:",req);
-  // const { username, password } = req.body;
-  // const user = {};
   let userDb = db.collection("users");
-  userDb.insert({ "Vinay": "Hello" })
-  res.send({ "Hello": "Hi" });
-  // userCollection.findOne({}, function (err, result) {
-  //   if (err) console.log(err);
-  //   else {
-  //     console.log(result);
-  //     if ("username" in result) {
-  //       console.log("user details are available");
-  //       var username = result.username;
-  //       user["username"] = result.username;
-  //       console.log(username);
-  //     } else console.log("either username  is not valid");
-  //     if ("password" in result) {
-  //       console.log("valid password");
-  //       var password = result.password;
-  //       user["password"] = result.password;
-  //       console.log(password);
-  //     } else console.log("either  password is not valid");
-  //   }
-  //   res.status(200).json(user);
-  // });
+   userDb.findOne({ _id: req.body._id }, function (err, result) {
+    if (err) console.log(err);
+       if (result == null) {
+      userDb.insert(req.body)
+      res.send("user signed up");
+    }
+  }
 
+  );
 });
 
 //No.1 Team ending
