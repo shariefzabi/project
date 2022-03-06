@@ -29,14 +29,14 @@ mongoClient.connect(dburl, function (err, client) {
 // team -3 fetching cost of product and posting card
 let productCost = require("./paymentMethoddetails/cardDetailsApi.js");
 let cardDetail = require("./paymentMethoddetails/cardDetailsApi.js");
-
 let invoice = require("./invoice/invoiceapi");
+let InvoiceUniqueID = require("./invoiceUniqueId/invoiceUniqueIDApi")
 
 // let invoice = require("./invoice/invoiceapi.js")
-
 app.use("/product", productCost);
 app.use("/card", cardDetail);
 app.use("/invoicedetails", invoice);
+app.use("/invoice", InvoiceUniqueID)
 
 // end
 
@@ -61,16 +61,16 @@ app.post("/users/signup", function (req, res) {
   });
 });
 
-app.post("/users/login",function(req,res){
-  console.log("log from login users",req.body);
+app.post("/users/login", function (req, res) {
+  console.log("log from login users", req.body);
   let userDb = db.collection("users");
-  userDb.findOne({_id:req.body.username,password:req.body.password},function (err,result){
+  userDb.findOne({ _id: req.body.username, password: req.body.password }, function (err, result) {
     if (err) console.log(err);
     if (result == null)
-    res.send("Invalid credentials")
-      // res.send("No account found with this username, please sign up and then login");
+      res.send("Invalid credentials")
+    // res.send("No account found with this username, please sign up and then login");
     else
-    res.send("success");
+      res.send("success");
   })
 });
 
@@ -95,41 +95,6 @@ app.get("/", function (req, res) {
   res.send("Welcome to Home page");
 });
 
-// team -3invoice
-app.post("/invoicedetails", async (req, res) => {
-  let tokens = [];
-  let token;
-  token = Math.round(Math.random() * 10000000000000);
-  let token1 = { token: token };
-  console.log("token1", token1);
-  if (!tokens.includes(token)) {
-    console.log(tokens);
-  } else {
-    tokens.push(token);
-  }
-  console.log("token", token);
-  // try {
-  //     const invoice = new uniqueInvoiceID({ token1 });
-  //     await uniqueInvoiceID.create(invoice);
-  //     res.send(invoice);
-  // }
-  // catch (err) {
-  //     res.send({ message: err })
-  // }
-
-  const uniqueInvoiceID = new mongoose.Schema({}, { strict: false });
-  const TestCollection = mongoose.model("invoicedetails", uniqueInvoiceID);
-  // let body = req.body;
-  const testCollectionData = new TestCollection({ token1 });
-  await testCollectionData.save();
-  return res.send({
-    status: "success",
-    token,
-    message: "Data Saved Successfully",
-  });
-});
-
-// end invoice
 
 //location product details code (team 4) .....starting
 
