@@ -1,11 +1,6 @@
-import "./assets/signup.scss";
 import React from "react";
 import { connect } from "react-redux";
 import "bootstrap/dist/css/bootstrap.css";
-
-
-// import mapStateToProps from "../state/stateMap";
-// import mapDispatchToProps from "./state/actions";
 import axios from "axios";
 
 
@@ -41,8 +36,6 @@ class Signup extends React.Component<any, any>{
                 this.setState({ usernameErrMsg })
                 e.target.classList.add("field-error")
             } else {
-                // let nameReg = /[a-zA-Z]{5, 30}/
-                // let nameReg = /^((?![A-Z ]+$)(?![a-z ]+$)[a-zA-Z ]+){5, 30}$/
                 let nameReg = /^([a-zA-Z ]{4,15})$/
                 console.log(nameReg.test(username));
                 if (!nameReg.test(username)) {
@@ -131,32 +124,29 @@ class Signup extends React.Component<any, any>{
         e.preventDefault();
         console.log("userDetails:", userDetails);
 
-        this.props.setUser(userDetails);
-
         axios.post("http://localhost:3005/users",userDetails)
-        .then((res)=>console.log("postresponse",res.data))
-        .catch((err)=>console.log("posterror",err)
-        );
-        
-        // axios.get("http://localhost:3005/users")
-        // this.props.createRecord(userDetails);
-
+        .then((res:any)=>{
+            if (res.data == "success")
+            this.props.handleClose();
+            else
+            this.setState({emailErrMsg:res.data})
+        })
+        .catch((err:any)=>console.log(" User Sign up Error",err));
     }
 
     render() {
         let {
             username, createPassword, email, confirmPassword
         } = this.state;
-        console.log("props of signup:", this.props);
-
+        // console.log("signup props::::",this.props);
+        
         return (
             <div className="signup-window">
-                <div className="modal-body">
-                    <div className="modal-title">
-                        <h5 id="exampleModalToggleLabel">Sign Up</h5>
+                    <div className="modal-title text-center">
+                        <h4>Sign Up</h4>
                         <p>Before we proceed further...</p>
                     </div>
-                    <form onSubmit={(e) => this.submitHandler(e, { username, createPassword,_id: email })} className="px-2 py-2 ">
+                    <form onSubmit={(e) => this.submitHandler(e, { username, createPassword,_id: email })}>
                         <div className="mb-3 text-start">
                             <label htmlFor="username" className="form-label">Full Name</label>
                             <input type="text" name="username"
@@ -164,9 +154,7 @@ class Signup extends React.Component<any, any>{
                                 className="form-control"
                                 onChange={this.changeHandler}
                                 onBlur={this.validations} id="username" required/>
-                            <div>
                                 <p className="text-danger">{this.state.usernameErrMsg}</p>
-                            </div>
                         </div>
                         <div className="mb-3 text-start">
                             <label htmlFor="email" className="form-label" >Email</label>
@@ -176,9 +164,7 @@ class Signup extends React.Component<any, any>{
                                 onChange={this.changeHandler}
                                 onBlur={this.validations} id="email" required/>
 
-                            <div>
                                 <p className="text-danger">{this.state.emailErrMsg}</p>
-                            </div>
 
                         </div>
                         <div className="mb-3 text-start">
@@ -189,9 +175,7 @@ class Signup extends React.Component<any, any>{
                                 onChange={this.changeHandler}
                                 onBlur={this.validations} id="createpwd" required/>
 
-                            <div>
                                 <p className="text-danger">{this.state.passwordErrMsg}</p>
-                            </div>
                         </div>
                         <div className="mb-3 text-start">
                             <label htmlFor="confpwd" className="form-label">Confirm Password</label>
@@ -201,13 +185,13 @@ class Signup extends React.Component<any, any>{
                                 onChange={this.changeHandler}
                                 onBlur={this.validations} id="confpwd" required/>
 
-                            <div>
                                 <p className="text-danger">{this.state.confirmPasswordErrMsg}</p>
-                            </div>
                         </div>
-                        <button type="submit"   className="btn login btn-success" role="button">Sign Up</button>
+                        <div className='row justify-content-center'>
+                    <button type="submit" className="btn col-3 login btn-success">Sign Up</button>
+                  </div>
                     </form>
-                </div>
+                
             </div>
         )
     }

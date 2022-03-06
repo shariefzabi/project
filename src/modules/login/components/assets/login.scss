@@ -1,21 +1,31 @@
 
-.login-window{
-    .login-btn{
-        width: 10.93rem;
+.login-btn{
+    width: 10.93rem;
     height: 3.625rem;
-    color: #ffffff;
+    color: #ffffff!important;
     border-radius: 5px;
     margin-top: 2rem;
     border: 2px solid #00c3ff;
-    background-color: #06864D;
+    background-color: #06864D!important;
     border: none;
     align-items: center;
     }
+
+
+.login-modal-container {
+    width: 500px;
+    transform: 'translate(-50%, -50%)';
+    border: '2px solid #000';
+    background-color: #ffffff;
+    overflow-y: scroll;
+    margin: 100px auto;
+  }
+
+.login-window{
+    margin: 30px auto;
+    width: 400px;
     .modal-title{
-    color: #2078bf;
-}
-    .modal-dialog-centered{
-        width: 676px;
+        color: #2078bf;
     }
     label{
         color: #838383;
@@ -24,11 +34,8 @@
         color:#dcdcdc
     }
     form {
-        width: 27.18rem;
-        margin: auto;
         .login{
-            height: 3.125rem;
-        margin-right: 0;
+            height: 3.125rem; 
     }
     a{
         text-decoration: none;
@@ -38,6 +45,9 @@
     .link:hover{
         color: #2078bf!important;
         cursor: pointer;
+    }
+    .field-error{
+        border: 2px solid red;
     }
     
 }
