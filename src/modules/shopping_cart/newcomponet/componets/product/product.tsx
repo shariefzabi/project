@@ -9,7 +9,7 @@ import {
   addToCart,
 } from "../../redux/Shopping/shopping-actions";
 
-const Product = ({ product, addToCart }) => {
+const Product = ( product:any, addToCart:any ) => {
   return (
     <div >
         <button className="btn btn-primary"
@@ -23,10 +23,10 @@ const Product = ({ product, addToCart }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch:any) => {
   return {
-    addToCart: (id) => dispatch(addToCart(id)),
-    loadCurrentItem: (item) => dispatch(loadCurrentItem(item)),
+    addToCart: (id:any) => dispatch(addToCart(id)),
+    loadCurrentItem: (item:any) => dispatch(loadCurrentItem(item)),
   };
 };
 

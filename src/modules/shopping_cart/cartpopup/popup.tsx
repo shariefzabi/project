@@ -97,12 +97,12 @@ export default class Header extends React.Component {
                                             <hr></hr>
                                         </div>
                                         <ul className="subtotal">
-                                            <li className="dropdown-item" href="#">Sub-Total</li>
+                                            <li className="dropdown-item" ref="#">Sub-Total</li>
 
                                         </ul>
                                         <hr></hr>
                                         <ul className="total">
-                                            <li className="dropdown-item" href="#">Total</li>
+                                            <li className="dropdown-item" ref="#">Total</li>
                                         </ul>
                                         <div className="option">
                                             <button className="btn btn-success view">View Cart</button>

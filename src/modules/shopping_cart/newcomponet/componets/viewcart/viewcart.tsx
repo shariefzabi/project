@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import CartItem from "./viewcarts";
 
 
-const Cart = ({ cart }) => {
+const Cart:any = ( cart:any ) => {
     const [totalPrice, setTotalPrice] = useState(0);
     const [totalItems, setTotalItems] = useState(0);
   
@@ -14,7 +14,7 @@ const Cart = ({ cart }) => {
       let items = 0;
       let price = 0;
   
-      cart.forEach((item) => {
+      cart.forEach((item:any) => {
         items += item.qty;
         price += item.qty * item.price;
       });
@@ -26,8 +26,8 @@ const Cart = ({ cart }) => {
     return (
       <div >
         <div >
-          {cart.map((item) => (
-            <CartItem key={item.id} item={item} />
+          {cart.map((item:any) => (
+           <CartItem key={item.id} item={item} />
           ))}
         </div>
         <div>
@@ -43,7 +43,7 @@ const Cart = ({ cart }) => {
     );
   };
   
-  const mapStateToProps = (state) => {
+  const mapStateToProps = (state:any) => {
     return {
       cart: state.shop.cart,
     };

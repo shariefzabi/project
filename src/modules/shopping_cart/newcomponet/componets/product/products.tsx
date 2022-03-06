@@ -6,17 +6,17 @@ import { connect } from "react-redux";
 
 import Product from "./product";
 
-const Products = ({ products }) => {
+const Products = ( products:any ) => {
   return (
     <div >
-      {products.map((product) => (
+      {products.map((product:any) => (
         <Product key={product.id} product={product} />
       ))}
     </div>
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state:any) => {
   return {
     products: state.shop.products,
   };

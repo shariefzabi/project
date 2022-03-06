@@ -7,10 +7,10 @@ import {
   removeFromCart,
 } from "../../redux/Shopping/shopping-actions";
 
-const CartItem = ({ item, adjustQty, removeFromCart }) => {
+const CartItem:any= ( item:any, adjustQty:any, removeFromCart:any ) => {
   const [input, setInput] = useState(item.qty);
 
-  const onChangeHandler = (e) => {
+  const onChangeHandler = (e:any) => {
     setInput(e.target.value);
     adjustQty(item.id, e.target.value);
   };
@@ -54,10 +54,10 @@ const CartItem = ({ item, adjustQty, removeFromCart }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch:any) => {
   return {
-    adjustQty: (id, value) => dispatch(adjustItemQty(id, value)),
-    removeFromCart: (id) => dispatch(removeFromCart(id)),
+    adjustQty: (id:any, value:any) => dispatch(adjustItemQty(id, value)),
+    removeFromCart: (id:any) => dispatch(removeFromCart(id)),
   };
 };
 
