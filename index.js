@@ -47,10 +47,10 @@ app.use(
 );
 app.use(bodyParser.json());
 
-//No.1 Team
+//*********** No.1 Team ************* Starting **************************
 
-app.post("/users", function (req, res) {
-  console.log("log from post users", req.body);
+app.post("/users/signup", function (req, res) {
+  console.log("log from signup users", req.body);
   let userDb = db.collection("users");
   userDb.findOne({ _id: req.body._id }, function (err, result) {
     if (err) console.log(err);
@@ -61,7 +61,20 @@ app.post("/users", function (req, res) {
   });
 });
 
-//No.1 Team ending
+app.post("/users/login",function(req,res){
+  console.log("log from login users",req.body);
+  let userDb = db.collection("users");
+  userDb.findOne({_id:req.body.username,password:req.body.password},function (err,result){
+    if (err) console.log(err);
+    if (result == null)
+    res.send("Invalid credentials")
+      // res.send("No account found with this username, please sign up and then login");
+    else
+    res.send("success");
+  })
+});
+
+//************ No.1 Team ************* Ending *****************************
 
 //team-2 storing order details
 app.post("/orderdetails", function (req, res) {
