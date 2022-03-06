@@ -1,14 +1,15 @@
-import { useState } from 'react';
+import { useState} from 'react';
 import { connect } from "react-redux";
 import Signup from './signup';
 import "./assets/login.scss";
+import axios from 'axios';
 
 // import Box from '@mui/material/Box';
 // import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 
 
-function Login() {
+function Login(props:any) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -47,13 +48,21 @@ function Login() {
     }
   }
 
-  const submitHandler = (e: any) => {
+  const LoginSubmitHandler = (e: any,userDetails:any) => {
     e.preventDefault();
-    handleClose();
+    axios.post("http://localhost:3005/users/login",userDetails)
+        .then( (res:any)=>{
+          if (res.data == "success"){
+             props.setUser({username,password});
+            handleClose();}
+          else
+            setUserError(res.data);
+        })
+        .catch((err:any)=>console.log(" User Login up Error",err));
   }
 
 
-  return (
+  return ( 
     <div >
       <button className="pt-2 login-btn btn btn-success"
         onClick={() => { handleOpen(); setDisplaySignup(false) }}>Login</button>
@@ -77,14 +86,14 @@ function Login() {
                   userError && <p className="text-danger">{userError}</p>
                 }
 
-                <form onSubmit={submitHandler}>
+                <form onSubmit={(e)=>LoginSubmitHandler(e,{username:username.toLowerCase(),password})}>
                   <div className="mb-3 text-start">
-                    <label htmlFor="uname" className="form-label">Name</label>
+                    <label htmlFor="uname" className="form-label">UserName</label>
                     <input type="text" name="username"
                       value={username}
                       className="form-control"
                       onChange={(e) => setUsername(e.target.value)}
-                      onBlur={validations} id="uname" placeholder="Name" required />
+                      onBlur={(e)=>validations(e)} id="uname" placeholder="Name" required />
                     <p className="text-danger">{usernameErrMsg}</p>
                   </div>
                   <div className="mb-3 text-start">
@@ -93,7 +102,7 @@ function Login() {
                       value={password} placeholder="Enter Password"
                       className="form-control"
                       onChange={(e) => setPassword(e.target.value)}
-                      onBlur={validations} id="pwd" required />
+                      onBlur={(e)=>validations(e)} id="pwd" required />
                     <p className="text-danger">{passwordErrMsg}</p>
                     <div className="form-text text-end"><a className="link" href="#">I Forgot My Password</a></div>
                   </div>
