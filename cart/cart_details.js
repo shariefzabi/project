@@ -1,10 +1,10 @@
 const express = require("express");
 const Animal = require("../locationPoductDetails/marketingDetailsSchema");
 const expressAsyncHandler = require("express-async-handler");
+const router = express.Router();
+// const animalAPI = express();
 
-const animalAPI = express();
-
-animalAPI.get(
+router.get(
   "/get-animal/:locationName/:animalId",
   expressAsyncHandler(async (req, res) => {
     let locationName = req.params.locationName;
@@ -49,6 +49,7 @@ animalAPI.get(
         data = {
           price: animalData.price,
           animalId: animalData.animalId,
+          weight: animalData.weight,
         };
         res.status(200).send({
           message: "Animal data fetched successfully!!",
@@ -97,8 +98,8 @@ animalAPI.get(
 //       }
 //     };
 // });
-animalAPI.use((err, req, res, next) => {
+router.use((err, req, res, next) => {
   res.send({ message: err.message });
 });
 
-module.exports = animalAPI;
+module.exports = router;

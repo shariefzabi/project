@@ -20,7 +20,7 @@ mongoClient.connect(dburl, function (err, client) {
     userCollection = db.collection("user");
     locationdbs = db.collection("locationdbs");
     let carddetails = db.collection("carddetails");
-    app.set("carddetails", carddetails)
+    app.set("carddetails", carddetails);
     app.set("locationCollection", locationdbs);
     console.log("connected to db");
   }
@@ -28,9 +28,9 @@ mongoClient.connect(dburl, function (err, client) {
 
 // team -3 fetching cost of product and posting card
 let productCost = require("./paymentMethoddetails/cardDetailsApi.js");
-let cardDetail = require("./paymentMethoddetails/cardDetailsApi.js")
+let cardDetail = require("./paymentMethoddetails/cardDetailsApi.js");
 
-let invoice = require("./invoice/invoiceapi")
+let invoice = require("./invoice/invoiceapi");
 
 // let invoice = require("./invoice/invoiceapi.js")
 
@@ -38,8 +38,7 @@ app.use("/product", productCost);
 app.use("/card", cardDetail);
 app.use("/invoicedetails", invoice);
 
-// end 
-
+// end
 
 app.use(
   bodyParser.urlencoded({
@@ -53,31 +52,26 @@ app.use(bodyParser.json());
 app.post("/users", function (req, res) {
   console.log("log from post users", req.body);
   let userDb = db.collection("users");
-   userDb.findOne({ _id: req.body._id }, function (err, result) {
+  userDb.findOne({ _id: req.body._id }, function (err, result) {
     if (err) console.log(err);
     if (result == null) {
-    userDb.insert(req.body)
-    res.send("success")
-    }
-    else res.send("This email is already registered");
-  }
-
-  );
+      userDb.insert(req.body);
+      res.send("success");
+    } else res.send("This email is already registered");
+  });
 });
 
 //No.1 Team ending
 
-
 //team-2 storing order details
-app.post("/orderdetails",function(req,res){
-  let orderdetails=req.body;
+app.post("/orderdetails", function (req, res) {
+  let orderdetails = req.body;
   console.log(orderdetails);
-  let orderDb=db.collection("orders");
+  let orderDb = db.collection("orders");
   orderDb.insert(orderdetails);
-  res.send(orderdetails)
-})
+  res.send(orderdetails);
+});
 //team-2 ending
-
 
 app.get("/", function (req, res) {
   let { body, params, query } = req;
@@ -122,7 +116,7 @@ app.post("/invoicedetails", async (req, res) => {
   });
 });
 
-// end invoice 
+// end invoice
 
 //location product details code (team 4) .....starting
 
@@ -145,8 +139,10 @@ mongoose.connect(
 //location product details code (team 4) .....ending
 
 //team 6 start
-let animalAPI = require("./cart/cart_details.js");
-app.use("/animal", animalAPI);
+// let animalAPI = require("./cart/cart_details.js");
+// app.use("/animal", animalAPI);
+let router = require("./cart/cart_details.js");
+app.use("/animal", router);
 //team 6 end
 
 // team 7
