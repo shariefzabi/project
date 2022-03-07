@@ -1,10 +1,10 @@
 import React from "react";
 import bar from "./asset/group2.png";
 import cross from "./asset/group35.png";
-import triangle from "./asset/Triangle.png";
+import triangle from "./asset/triangle.png";
 import { Link } from "react-router-dom";
 import "./app_header.scss";
-import BuyNow from "../../modules/ordercreation/components/ordercreation";
+// import BuyNow from "../../modules/ordercreation/components/ordercreation";
 import Login from "../../modules/login/components/login";
 import { connect } from "react-redux";
 import PopUp from "../../modules/locationPage/locationPopUp";

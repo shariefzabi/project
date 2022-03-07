@@ -1,14 +1,13 @@
+import { useState } from "react";
 import Deliverydetails from "../deliverydetails/deliverydetails";
 
 import './dimensionalpage.scss'
 function DimesionalPage() {
+    const [deliveryFlag,setDeliveryFlag]=useState(false);
     return (
     <>
+        {!deliveryFlag &&
         <div className="dimesionalpage-form">
-            {/* <button className="Continuebutton btn btn-success" data-bs-toggle="modal" data-bs-target="#3dexampleModal" data-bs-whatever="@mdo">Continue</button> */}
-            <div className="modal fade" id="dimensionalModal" aria-labelledby="dimensionalModalLabel" aria-hidden="true">
-                <div className="modal-dialog modal-xl" >
-                    <div className="modal-content">
                         <div className='modal-body'>
                             <div className="heading-dimension">
                                 <p>View the 3d representation of the product before you make payment</p>
@@ -22,15 +21,15 @@ function DimesionalPage() {
                                 <p className="">Scroll mouse wheel in to zoom into product and do the inverse to zoom out of product</p>
                             </div>
                             <div>
-                                <button type="button" className="btn btn-success continuebutton" data-bs-toggle="modal" data-bs-target="#deliverydetailsModal" data-bs-whatever="@mdo">continue</button>
+                                <button type="button" className="btn btn-success continuebutton"  onClick={()=>setDeliveryFlag(true)}>continue</button>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                        </div>          
             
         </div >
+        }
+        {deliveryFlag &&
         <Deliverydetails></Deliverydetails>
+        }
         </>
     
     )

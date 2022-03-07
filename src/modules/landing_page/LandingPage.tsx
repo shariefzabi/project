@@ -1,6 +1,7 @@
 import React from "react";
 import "./assets/landing_page.scss";
 // import Menu from "./menubar/menu";
+import BuyNow from "../ordercreation/components/ordercreation";
 export default class LandingPage extends React.Component {
     render() {
         return (
@@ -20,7 +21,8 @@ export default class LandingPage extends React.Component {
                             </ul>
                             <div className="buttons">
                                 <button className="btn btn-success learnmore-btn">Learn More</button>
-                                <button className="btn text-white buynow-btn">Buy Now</button>
+                                {/* <button className="btn text-white buynow-btn">Buy Now</button> */}
+                                <BuyNow></BuyNow>
                             </div>
                         </article>
                         <aside>
