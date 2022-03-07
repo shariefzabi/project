@@ -153,9 +153,9 @@ class Signup extends React.Component<any, any>{
                                 onBlur={this.validations} id="fullName" required/>
                                 <p className="text-danger">{this.state.fullNameErrMsg}</p>
                         </div>
-                        <div className="mb-3 text-start">
+                        <div className="mb-3 position-relative text-start">
                             <label htmlFor="email" className="form-label" >Email</label>
-                            <img className="user-icon" src={require("./assets/user.png")}></img>
+                            <img className="user-icon" src={require("./assets/email.png")}></img>
                             <input type="email" name="email"
                                 value={email} placeholder="Email"
                                 className="form-control"
@@ -165,8 +165,9 @@ class Signup extends React.Component<any, any>{
                                 <p className="text-danger">{this.state.emailErrMsg}</p>
 
                         </div>
-                        <div className="mb-3 text-start">
+                        <div className="mb-3 position-relative text-start">
                             <label htmlFor="createpwd" className="form-label">Password</label>
+                            <img className="user-icon" src={require("./assets/group.png")}></img>
                             <input type="password" name="createPassword"
                                 value={createPassword} placeholder="Password"
                                 className="form-control"
@@ -175,8 +176,9 @@ class Signup extends React.Component<any, any>{
 
                                 <p className="text-danger">{this.state.passwordErrMsg}</p>
                         </div>
-                        <div className="mb-3 text-start">
+                        <div className="mb-3 position-relative text-start">
                             <label htmlFor="confpwd" className="form-label">Confirm Password</label>
+                            <img className="user-icon" src={require("./assets/group.png")}></img>
                             <input type="password" name="confirmPassword"
                                 value={confirmPassword} placeholder="Confirm Password"
                                 className="form-control"
