@@ -9,6 +9,7 @@ import Blog from './modules/blog/final';
 import Blogform from './modules/addblogpage/blogform'
 
 import Footer from './components/footer/footer';
+// import Butcherypopup from './modules/butchery_form_page/form2';
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
           <Footer/>
         </div>
       </Router>
+      {/* <Butcherypopup></Butcherypopup> */}
     </div>
   );
 }
