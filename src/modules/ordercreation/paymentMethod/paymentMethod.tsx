@@ -19,18 +19,18 @@ class PaymentMethod2 extends React.Component<any, any> {
 
     }
   }
-  componentDidMount() {
-    console.log("start");
-    axios.get("http://localhost:3005/product/cost/1")
-      .then((res) => {
-        console.log(res.data);
-        this.setState({ cost: res.data })
-      })
-      .catch(err => {
-        console.log("error: ", err);
-      })
-    console.log("end");
-  }
+  // componentDidMount() {
+  //   console.log("start");
+  //   axios.get("http://localhost:3005/product/cost/1")
+  //     .then((res) => {
+  //       console.log(res.data);
+  //       this.setState({ cost: res.data })
+  //     })
+  //     .catch(err => {
+  //       console.log("error: ", err);
+  //     })
+  //   console.log("end");
+  // }
   changeHandler = (event: any) => {
     // let { payment } = this.state;
     this.setState({ [event.target.name]: event.target.value });
@@ -40,6 +40,7 @@ class PaymentMethod2 extends React.Component<any, any> {
     // card NUmber
     if (e.target.name === 'card_number') {
       let card_number = e.target.value;
+      card_number = card_number - 0
       let card_numberErr = '';
       if (card_number == undefined || card_number.length === 0) {
         card_numberErr = "Please enter the card number."
@@ -52,7 +53,7 @@ class PaymentMethod2 extends React.Component<any, any> {
         } else {
           card_numberErr = '';
           // e.target.classList.remove("field-error")
-          this.setState({ card_numberErr })
+          this.setState({ card_numberErr, card_number })
         }
       }
     }
@@ -88,6 +89,7 @@ class PaymentMethod2 extends React.Component<any, any> {
     // CVV number
     if (e.target.name === 'cvv_number') {
       let cvv_number = e.target.value;
+      cvv_number = cvv_number-0
       let cvv_numberErr = '';
       if (cvv_number == undefined || cvv_number.length === 0) {
         cvv_numberErr = "Please enter the card CVV."
@@ -100,7 +102,7 @@ class PaymentMethod2 extends React.Component<any, any> {
         } else {
           cvv_numberErr = '';
           // e.target.classList.remove("field-error")
-          this.setState({ cvv_numberErr })
+          this.setState({ cvv_numberErr, cvv_number})
         }
       }
     }
@@ -108,10 +110,29 @@ class PaymentMethod2 extends React.Component<any, any> {
   }
   submitHandler = (e: any) => {
     e.preventDefault()
-    let { payment, card_number, cvv_number } = this.state;
+    let { month, year, card_number, cvv_number } = this.state;
 
-    console.log("carddetails", { payment, card_number, cvv_number })
-    this.props.setCardDetails({ payment, card_number, cvv_number })
+    console.log("carddetails", { month, year, card_number, cvv_number })
+    this.props.setCardDetails({ month, year, card_number, cvv_number })
+    let cardDetails = {
+
+      "cardDetails": {
+        "cardNumber": card_number,
+        "Month": month,
+        "year": year,
+        "CVV": cvv_number
+      }
+    }
+
+    axios.post("http://localhost:3005/card/details", cardDetails)
+      .then((res) => {
+        console.log(res.data);
+        this.setState({ cost: res.data })
+      })
+      .catch(err => {
+        console.log("error: ", err);
+      })
+
     this.setState({
       card_number: '',
       cvv_number: '',
@@ -119,7 +140,6 @@ class PaymentMethod2 extends React.Component<any, any> {
     })
 
   }
-
   render() {
 
     return (
