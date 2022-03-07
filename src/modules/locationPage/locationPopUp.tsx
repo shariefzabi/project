@@ -12,6 +12,45 @@ export default function PopUp(prop: any) {
   let [locationNames, setLocationNames] = useState([])
   let [isAdding, setIsAdding] = useState(false)
   let [newLocation, setNewLocation] = useState('')
+  let [newLocationErr, setNewLocationErr] = useState('')
+
+
+  //error if location already
+  const validations = (e: any) => {
+    
+
+    if (e.target.name==="newLocation"){
+      let enteredLocation=e.target.value;
+      if (enteredLocation == undefined || enteredLocation.length === 0) {
+        setNewLocationErr("Location field should not be empty")
+        e.target.classList.add("field-error")
+       }
+      //  else if(locationNames.includes("enteredLocation")) {
+      //   setNewLocationErr("goovinda")
+      //   e.target.classList.add("field-error")
+      // }
+      else if(!/^([a-zA-Z ]{1,10})$/i.test(enteredLocation)) {
+        setNewLocationErr("Location field should not contain any special characters & numbers")
+        e.target.classList.add("field-error")
+      }else{
+        e.target.classList.remove("field-error")
+        setNewLocationErr("")
+      }
+    }
+  
+
+    }
+    const LocationSubmitHandler=(e: any,newLocation:any)=>{
+      e.preventDefault();
+     
+      addNewLocation()
+      setIsAdding(false);
+      
+      console.log(newLocation)
+    }
+  
+
+
 
 
   const fetchLocations = (async () => {
@@ -26,24 +65,25 @@ export default function PopUp(prop: any) {
   const addNewLocation = () => {
     const location = { locationName: newLocation }
     try {
-      axios.post("http://localhost:3005/market/newLocation", location)
+      axios.post("http://localhost:3005/market/marketDetails", location)
     } catch (err) {
       console.error(err)
     }
   }
 
+  
+
   const startAddingHandler = () => {
     setIsAdding(true);
   }
 
-  const addNewLocationHandler = (event: any) => {
-    setNewLocation(event.target.value)
-  }
+ 
 
-  const stopAddingHandler = () => {
-    addNewLocation()
-    setIsAdding(false);
-  }
+  // const stopAddingHandler = () => {
+  //   addNewLocation()
+  //   setIsAdding(false);
+  // }
+  
 
 
   return (
@@ -75,17 +115,22 @@ export default function PopUp(prop: any) {
                   <button className="btn-success btn-add ms-5" type="button" onClick={startAddingHandler}>Add&#32;Location</button>
                 </div>}
 
-                {isAdding && <form className="mt-3 needs-validation ms-5" >
-                  <label htmlFor="validationCustom03" className="form-label"></label>
+                {isAdding && <form className="mt-3 needs-validation ms-5"
+                onSubmit={ (e)=>LocationSubmitHandler(e,{newLocation})} >
+                  <label htmlFor="ulocation" className="form-label"></label>
                   <input className="addLocation "
-                    type="text" id="validationCustom03"
+                    type="text" id="ulocation"
+                    
                     placeholder="Enter your Location here"
-                    name={newLocation}
-                    onChange={addNewLocationHandler} required />
-                  <div className="invalid-feedback">
-                    Please provide a valid city.
-                  </div>
-                  <button className="btn-success btn-add" type="submit" onClick={stopAddingHandler}>
+                    value={newLocation}
+                    onBlur={(e)=>validations(e)}
+                    name="newLocation"
+                    onChange={(e) => setNewLocation(e.target.value)}
+
+                    required />
+                    <p className="text-danger">{newLocationErr}</p>
+                  
+                  <button className="btn-success btn-add" type="submit" >
                     Save&#32;Location
                   </button>
                 </form>}
