@@ -70,7 +70,7 @@ app.post("/users/login", function (req, res) {
       res.send("Invalid credentials")
     // res.send("No account found with this username, please sign up and then login");
     else
-      res.send("success");
+      res.send(result);
   })
 });
 
