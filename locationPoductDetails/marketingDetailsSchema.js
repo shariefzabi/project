@@ -2,38 +2,38 @@ const mongoose = require("mongoose");
 
 
 const cattleMarketSchema = new mongoose.Schema({
-  animalId: { type: String, required: [true, "Id is required"] },
-  productCode: { type: String, required: true },
+  animalId: { type: String, required: [ "Id is required"] },
+  productCode: { type: String  },
   availability: {
     type: String,
-    required: true,
+    
     enum: ["In Stock", "Out Of Stock"],
   },
-  price: { type: String, required: true },
-  weight: { type: String, required: true },
-  breed: { type: String, required: true },
-  source: { type: String, required: true },
+  price: { type: String  },
+  weight: { type: String},
+  breed: { type: String },
+  source: { type: String },
   certification: {
     type: String,
-    required: true,
+   
     enum: ["Certified", "Not Certified"],
   },
 });
 const sheepMarketSchema = new mongoose.Schema({
-  animalId: { type: String, required: true },
-  productCode: { type: String, required: true },
+  animalId: { type: String },
+  productCode: { type: String},
   availability: {
     type: String,
-    required: true,
+   
     enum: ["In Stock", "Out Of Stock"],
   },
-  price: { type: String, required: true },
-  weight: { type: String, required: true },
-  breed: { type: String, required: true },
-  source: { type: String, required: true },
+  price: { type: String },
+  weight: { type: String },
+  breed: { type: String },
+  source: { type: String},
   certification: {
     type: String,
-    required: true,
+    
     enum: ["Certified", "Not Certified"],
   },
 });
