@@ -3,20 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap"
-import appReducer from './app_reducers/appReducers';
-import appStore from './app_store/app_store'
+import appStore from './state/app_store'
 
 
 ReactDOM.render(
-  <React.Fragment>
     <Provider store={appStore}>
         <App />
-        </Provider>
-  </React.Fragment>,document.getElementById('root'));
+        </Provider>,document.getElementById('root'));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

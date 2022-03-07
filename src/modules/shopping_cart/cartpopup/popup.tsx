@@ -9,7 +9,7 @@ export default class Header extends React.Component {
                     <div className="d-flex flex-row-reverse bd-highlight">
                         <nav className="navbar navbar-expand-lg navbar-light">
                             <div className="container-fluid">
-                                <button className="navbar-toggler" type="button " data-bs-toggle="collapse"
+                                <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                                     aria-label="Toggle navigation">
                                     <span className="navbar-toggler-icon "></span>
@@ -97,12 +97,12 @@ export default class Header extends React.Component {
                                             <hr></hr>
                                         </div>
                                         <ul className="subtotal">
-                                            <li className="dropdown-item" href="#">Sub-Total</li>
+                                            <li className="dropdown-item" ref="#">Sub-Total</li>
 
                                         </ul>
                                         <hr></hr>
                                         <ul className="total">
-                                            <li className="dropdown-item" href="#">Total</li>
+                                            <li className="dropdown-item" ref="#">Total</li>
                                         </ul>
                                         <div className="option">
                                             <button className="btn btn-success view">View Cart</button>

@@ -1,5 +1,7 @@
 import React from 'react'
 import './asset/paymentMethod.scss'
+import axios from "axios"
+import {connect} from "react-redux" 
 
 class PaymentMethod2 extends React.Component<any, any> {
   constructor(props: any) {
@@ -12,9 +14,22 @@ class PaymentMethod2 extends React.Component<any, any> {
       // err
       card_numberErr: '',
       cvv_numberErr: '',
-      month_yearErr: ''
+      month_yearErr: '',
+      cost: ""
 
     }
+  }
+  componentDidMount() {
+    console.log("start");
+    axios.get("http://localhost:3005/product/cost/1")
+      .then((res) => {
+        console.log(res.data);
+        this.setState({ cost: res.data })
+      })
+      .catch(err => {
+        console.log("error: ", err);
+      })
+    console.log("end");
   }
   changeHandler = (event: any) => {
     // let { payment } = this.state;
@@ -91,8 +106,22 @@ class PaymentMethod2 extends React.Component<any, any> {
     }
 
   }
+  submitHandler = (e:any) => {
+    e.preventDefault()
+    let { payment, card_number, cvv_number } = this.state;
+    
+    console.log("carddetails",{ payment, card_number, cvv_number })
+    this.props.setCardDetails({ payment, card_number, cvv_number })
+    this.setState({
+      card_number: '',
+      cvv_number: '',
+      month_year: ''
+    })
+
+  }
 
   render() {
+
     return (
       <div >
         <div className="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex={-1} data-bs-backdrop="static">
@@ -147,7 +176,7 @@ class PaymentMethod2 extends React.Component<any, any> {
                     <input className="form-control " type="text" value={this.state.cvv_number} name="cvv_number" placeholder="CVV" onChange={this.changeHandler} onBlur={this.validation} />
                     <p className="text-danger text-start m-0">{this.state.cvv_numberErr}</p>
                     <div className="text-center mb-3 mt-4 ">
-                      <button className="btn button-large btn-success mt-3" data-bs-target="#exampleModalToggle3" data-bs-toggle="modal" disabled={!(this.state.card_numberErr == '' && this.state.cvv_numberErr == '' && this.state.card_number !== '' && this.state.cvv_number !== '')}><img className="lock-icon" src={require("./asset/img/lock.png")}></img>Pay #200.00</button>
+                      <button onClick={(e)=>this.submitHandler(e)}className="btn button-large btn-success mt-3" data-bs-target="#exampleModalToggle3" data-bs-toggle="modal" disabled={!(this.state.card_numberErr == '' && this.state.cvv_numberErr == '' && this.state.card_number !== '' && this.state.cvv_number !== '')}><img className="lock-icon" src={require("./asset/img/lock.png")}></img>Pay #200.00</button>
                     </div>
                   </form>
                 </div>
@@ -194,4 +223,18 @@ class PaymentMethod2 extends React.Component<any, any> {
   }
 }
 
-export default PaymentMethod2;
+const mapStateToProps = (state: any) => {
+  console.log(state);
+
+  return {
+    redux: state
+  }
+}
+
+const mapDispatchToProps = (dispatch: Function) => {
+  return {
+    setCardDetails: (cardDetails: any) => dispatch({ type: 'storeCardDetails', payload: cardDetails })
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PaymentMethod2);

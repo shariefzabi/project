@@ -6,8 +6,14 @@ import { Link } from "react-router-dom";
 import "./app_header.scss";
 import BuyNow from "../../modules/ordercreation/components/ordercreation";
 import Login from "../../modules/login/components/login";
+import { connect } from "react-redux";
 class Header extends React.Component {
   render() {
+    console.log('header values::', this.props);
+
+    const {redux:{user}} = this.props as any;
+
+
     return (
       <header className="landingpage-header d-lg-flex justify-content-end">
         <div className="small_bar">
@@ -80,7 +86,7 @@ class Header extends React.Component {
             </Link>
           </div>
           <div className="home">
-            <div className="dropdown">
+            {!user && <div className="dropdown">
               <div
                 className="dropdown-toggle menu_content "
                 role="button"
@@ -106,24 +112,49 @@ class Header extends React.Component {
                   </Link>
                 </li>
               </ul>
-            </div>
+            </div>}
           </div>
           <div className="home">
             <Link to="/blog" className="menu_content">
               Blog
             </Link>
           </div>
+          {user && 
+              <div className="home">
+              <Link to="/addblogs" className="menu_content">
+                Add Blogs
+              </Link>
+            </div>
+          }
           <div className="menu_btn">
             <BuyNow />
           </div>
-          <div className="menu_btn">
+          {!user && <div className="menu_btn">
             <div className="text-center">
               <Login />
             </div>
           </div>
+          }
         </div>
       </header>
     );
   }
 }
-export default Header;
+// export default Header;
+
+
+
+const mapStateToProps = (state:any) => {
+  // console.log(state);
+  
+  return {
+      redux:state
+  }
+}
+
+const mapDispatchToProps = (dispatch:Function) => {
+  return {
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
