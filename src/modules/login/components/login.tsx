@@ -99,7 +99,7 @@ function Login(props:any) {
                   </div>
                   <div className="mb-3 position-relative text-start">
                     <label htmlFor="pwd" className="form-label">Password</label>
-                    <img className="user-icon" src={require("./assets/Group.png")}></img>
+                    <img className="user-icon" src={require("./assets/lock.png")}></img>
                     <input type="password" name="password"
                       value={password} placeholder="Password"
                       className="form-control"
