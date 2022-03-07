@@ -139,7 +139,7 @@ class Header extends React.Component {
 
 <a className="btn text-white dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
     data-bs-toggle="dropdown" aria-expanded="false">
-    Ramon Ridw...
+    {user.fullName}
 </a>
 <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
     <li><a className="dropdown-item" href="profile.html">My Profile</a></li>

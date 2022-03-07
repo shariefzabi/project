@@ -192,7 +192,6 @@ class Signup extends React.Component<any, any>{
                     <button type="submit" className="btn col-3 login btn-success">Sign Up</button>
                   </div>
                     </form>
-                
             </div>
         )
     }
@@ -200,10 +199,7 @@ class Signup extends React.Component<any, any>{
 
 const mapStateToProps = (state:any) => {
     console.log(state);
-    
-    return {
-        redux:state
-    }
+    return {redux:state}
 }
 
 
