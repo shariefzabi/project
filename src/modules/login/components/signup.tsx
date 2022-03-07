@@ -121,7 +121,8 @@ class Signup extends React.Component<any, any>{
         axios.post("http://localhost:3005/users/signup",userDetails)
         .then((res:any)=>{
             if (res.data == "success")
-            this.props.handleClose();
+            this.props.setUser(userDetails)
+         
             else
             this.setState({emailErrMsg:res.data})
         })
@@ -205,9 +206,10 @@ const mapStateToProps = (state:any) => {
     }
 }
 
-const mapDispatchToProps = (dispatch:Function) => {
+
+const mapDispatchToProps = (dispatch: Function) =>{
     return {
-        setUser: (userDetails:any) => dispatch({type: 'setUser', payload:userDetails})
+        setUser: (userDetails: any) => dispatch({type: 'setUser', payload: userDetails})
     }
 }
 
