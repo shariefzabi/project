@@ -119,7 +119,20 @@ mongoose.connect(
 );
 
 //location product details code (team 4) .....ending
+//TEAM-5
+//Newly created product details
 
+app.use("/",require("./routes/productRoute"));
+mongoose.connect(dburl,{ useNewUrlParser: true, useUnifiedTopology: true },
+  (err) => {
+    if (err) throw err;
+    console.log("Connected to MongoDB!!!");
+  }
+  );
+
+
+
+//TEAM-5 ends
 //team 6 start
 // let animalAPI = require("./cart/cart_details.js");
 // app.use("/animal", animalAPI);
