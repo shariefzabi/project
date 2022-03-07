@@ -17,6 +17,8 @@
     "bootstrap": "^5.1.3",
     "mui": "^0.0.1",
     "node-sass": "^7.0.1",
+    "primereact": "^7.2.1",
+    "quill": "^1.3.7",
     "react": "^17.0.2",
     "react-bootstrap": "^2.1.2",
     "react-ckeditor-component": "^1.1.0",
