@@ -144,7 +144,7 @@ class BeanAgentPopup extends React.Component<any,any>  {
        
    
     return (
-        <>
+        <div className='be-an-agent'>
          <a className=""
         onClick={() => { this.handleOpen();  }}>Be an Agent</a>
          <Dialog
@@ -236,7 +236,7 @@ class BeanAgentPopup extends React.Component<any,any>  {
                 {/* </div> */}
             {/* </div> */}
             </Dialog>
-        </>
+        </div>
     )
 }
 }
