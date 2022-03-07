@@ -8,6 +8,7 @@ import "./app_header.scss";
 import Login from "../../modules/login/components/login";
 import { connect } from "react-redux";
 import PopUp from "../../modules/locationPage/locationPopUp";
+import BeanAgentPopup from "../../modules/be an agent form copy/form1"
 
 
 class Header extends React.Component {
@@ -105,9 +106,7 @@ class Header extends React.Component {
               <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <span className="triangle-up"></span>
                 <li>
-                  <Link to="/" className="dropdown-item">
-                    Be an Agent
-                  </Link>
+                 <BeanAgentPopup></BeanAgentPopup>
                 </li>
                 <li>
                   <Link to="/" className="dropdown-item">
