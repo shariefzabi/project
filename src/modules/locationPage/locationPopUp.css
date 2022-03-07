@@ -1,5 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
 
+
+.login-modal-container{
+  width: 62.27vw;
+   /* height: 50px; */
+  transform: 'translate(-50%, -50%)';
+  border: '2px solid #000';
+  background-color: #ffffff;
+  overflow:hidden;
+  border-radius: 5px;
+ 
+  margin-top :8.5rem;
+
+}
+.buy_button {
+  background-color: #2078BF;
+  margin-right: 2.8%;
+  
+}
 .popUp {
   display: flex;
   width: 62.27vw;
@@ -13,7 +31,7 @@
   margin: auto;
 }
 
-h3 {
+.locationHeading {
   color: #2078bf;
   font-size: 1.5rem;
   line-height: 1.5rem;
@@ -23,7 +41,7 @@ h3 {
   margin-top: 4.5rem !important;
 }
 
-article {
+.article {
   font-weight: normal;
   font-size: 1.125rem;
   line-height: 1.5rem;
@@ -31,17 +49,20 @@ article {
   margin-top: 1.875rem;
 }
 
-p {
+.pLoc {
   font-weight: normal;
   font-size: 1rem;
   line-height: 1.5rem;
   color: gray;
 }
-
-.dropdown {
+.addLocbtn{
+  margin: auto;
+}
+.dropDown {
   margin-top: 3.375rem;
   margin-bottom: 3.375rem;
 }
+ 
 
 /* .dropdown .dropdown-menu {
   padding: 0;
@@ -74,7 +95,7 @@ p {
   background: #2078bf;
 }
 
-.dropdown .dropdownToggle {
+.dropDown .dropdownToggle {
   margin: auto;
   background-color: #fff;
   border: 1px solid #f1f1f1;
@@ -85,7 +106,7 @@ p {
   text-align: start;
 }
 
-.dropdown .dropdownItem {
+.dropDown .dropdownItem {
   font-weight: thin;
   font-style: normal;
   font-weight: normal;
@@ -96,7 +117,7 @@ p {
   padding: 0.53125rem;
 }
 
-.dropdown .dropdownItem:hover {
+.dropDown .dropdownItem:hover {
   color: #fff;
   background-color: #2078bf;
 }
