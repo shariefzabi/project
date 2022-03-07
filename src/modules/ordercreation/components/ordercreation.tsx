@@ -208,7 +208,7 @@ function BuyNow(props: any) {
                         </div>
                     </div>
                 </div >
-                <button className="buy_button" onClick={()=>setProductdetailsflag(true)} data-bs-toggle="modal" data-bs-target="#exampleModal">Buy Now</button>
+                <button className="buy-button text-white" onClick={()=>setProductdetailsflag(true)} data-bs-toggle="modal" data-bs-target="#exampleModal">Buy Now</button>
 
             </div >
             
