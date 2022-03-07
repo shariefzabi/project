@@ -131,13 +131,25 @@ class Header extends React.Component {
           <div className="menu_btn">          
              <PopUp />
           </div>
-          {!user && <div className="menu_btn">
-            <div className="text-center">
+          {!user && <div className="menu_btn text-center">
               <Login />
-            
-            </div>
           </div>
           }
+          {user && <div className="nav-item dropdown user-profile">
+
+<a className="btn text-white dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+    data-bs-toggle="dropdown" aria-expanded="false">
+    Ramon Ridw...
+</a>
+<ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <li><a className="dropdown-item" href="profile.html">My Profile</a></li>
+    <li><a className="dropdown-item" href="orders.html">Orders</a></li>
+    <li><a className="dropdown-item" href="invoice.html">Invoice</a></li>
+    <li><a className="dropdown-item" href="payments.html">Payment</a></li>
+    <li><a className="dropdown-item" href="trackOrder.html">Track Order</a></li>
+    <li><a className="dropdown-item" href="logOut.html">Log out</a></li>
+</ul>
+</div>}
         </div>
       </header>
     );
