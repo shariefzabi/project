@@ -6,6 +6,7 @@ const Location = require('./marketingDetailsSchema.js');
 
 
 let locationdb = {};
+let newLocation = '';
 
 router.post("/marketDetails", async (req, res) => {
     locationdb = req.body
@@ -13,6 +14,21 @@ router.post("/marketDetails", async (req, res) => {
         const myLocation = new Location(locationdb);
         await Location.create(myLocation);
         res.send(myLocation);
+    }
+    catch (err) {
+        res.send({ message: err })
+        console.log(err)
+
+    }
+})
+
+// post new location
+
+router.post('/newLocation', async (req, res) => {
+    newLocation = req.body;
+    try {
+        Location.create(newLocation)
+        res.send(newLocation);
     }
     catch (err) {
         res.send({ message: err })
@@ -54,13 +70,13 @@ router.get('/marketDetails/:name', async (req, res) => {
 router.get('/locations', async (req, res) => {
     try {
         Location.find().exec(function (err, result) {
-        const locNames=result.map(function (e) {
-                    
-                    return e.locationName;
-                });
-                // console.log(locNames)
-                res.send(locNames)
-            })
+            const locNames = result.map(function (e) {
+
+                return e.locationName;
+            });
+            // console.log(locNames)
+            res.send(locNames)
+        })
 
     }
     catch (err) {
