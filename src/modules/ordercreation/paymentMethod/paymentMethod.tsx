@@ -3,7 +3,7 @@ import './asset/paymentMethod.scss'
 import axios from "axios"
 import { connect } from "react-redux"
 
-class PaymentMethod extends React.Component<any, any> {
+class PaymentMethod2 extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -11,8 +11,6 @@ class PaymentMethod extends React.Component<any, any> {
       card_number: '',
       cvv_number: '',
       month_year: '',
-      month: "",
-      year: "",
       // err
       card_numberErr: '',
       cvv_numberErr: '',
@@ -21,18 +19,18 @@ class PaymentMethod extends React.Component<any, any> {
 
     }
   }
-  // componentDidMount() {
-  //   console.log("start");
-  //   axios.get("http://localhost:3005/product/cost/1")
-  //     .then((res) => {
-  //       console.log(res.data);
-  //       this.setState({ cost: res.data })
-  //     })
-  //     .catch(err => {
-  //       console.log("error: ", err);
-  //     })
-  //   console.log("end");
-  // }
+  componentDidMount() {
+    console.log("start");
+    axios.get("http://localhost:3005/product/cost/1")
+      .then((res) => {
+        console.log(res.data);
+        this.setState({ cost: res.data })
+      })
+      .catch(err => {
+        console.log("error: ", err);
+      })
+    console.log("end");
+  }
   changeHandler = (event: any) => {
     // let { payment } = this.state;
     this.setState({ [event.target.name]: event.target.value });
@@ -42,7 +40,6 @@ class PaymentMethod extends React.Component<any, any> {
     // card NUmber
     if (e.target.name === 'card_number') {
       let card_number = e.target.value;
-      card_number = card_number - 0
       let card_numberErr = '';
       if (card_number == undefined || card_number.length === 0) {
         card_numberErr = "Please enter the card number."
@@ -55,7 +52,7 @@ class PaymentMethod extends React.Component<any, any> {
         } else {
           card_numberErr = '';
           // e.target.classList.remove("field-error")
-          this.setState({ card_numberErr, card_number })
+          this.setState({ card_numberErr })
         }
       }
     }
@@ -84,14 +81,13 @@ class PaymentMethod extends React.Component<any, any> {
         } else {
           month_yearErr = '';
           // e.target.classList.remove("field-error")
-          this.setState({ month_yearErr, month, year })
+          this.setState({ month_yearErr })
         }
       }
     }
     // CVV number
     if (e.target.name === 'cvv_number') {
       let cvv_number = e.target.value;
-      cvv_number = cvv_number - 0
       let cvv_numberErr = '';
       if (cvv_number == undefined || cvv_number.length === 0) {
         cvv_numberErr = "Please enter the card CVV."
@@ -104,7 +100,7 @@ class PaymentMethod extends React.Component<any, any> {
         } else {
           cvv_numberErr = '';
           // e.target.classList.remove("field-error")
-          this.setState({ cvv_numberErr, cvv_number })
+          this.setState({ cvv_numberErr })
         }
       }
     }
@@ -112,29 +108,10 @@ class PaymentMethod extends React.Component<any, any> {
   }
   submitHandler = (e: any) => {
     e.preventDefault()
-    let { month, year, card_number, cvv_number } = this.state;
+    let { payment, card_number, cvv_number } = this.state;
 
-    console.log("carddetails", { month, year, card_number, cvv_number })
-    this.props.setCardDetails({ month, year, card_number, cvv_number })
-    let cardDetails = {
-
-      "cardDetails": {
-        "cardNumber": card_number,
-        "Month": month,
-        "year": year,
-        "CVV": cvv_number
-      }
-    }
-
-    axios.post("http://localhost:3005/card/details", cardDetails)
-      .then((res) => {
-        console.log(res.data);
-        this.setState({ cost: res.data })
-      })
-      .catch(err => {
-        console.log("error: ", err);
-      })
-
+    console.log("carddetails", { payment, card_number, cvv_number })
+    this.props.setCardDetails({ payment, card_number, cvv_number })
     this.setState({
       card_number: '',
       cvv_number: '',
@@ -146,8 +123,8 @@ class PaymentMethod extends React.Component<any, any> {
   render() {
 
     return (
-      <div >
-        <div className="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex={-1} data-bs-backdrop="static">
+      <div className='card_Details'>
+        <div className="modal fade" id="exampleModalPayment" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex={-1} data-bs-backdrop="static">
           <div className="modal-dialog modal-dialog-centered ">
             <div className="modal-content">
               <div className="modal-body ">
@@ -159,10 +136,10 @@ class PaymentMethod extends React.Component<any, any> {
                 <section >
                   <input type="radio" name="payment"
                     className="form-check-input" id="Ravepay" value="Ravepay" onChange={this.changeHandler} checked={this.state.payment == 'Ravepay'}></input>
-                  <label htmlFor="Ravepay">Pay With Ravepay</label><br></br>
+                  <label className='payment' htmlFor="Ravepay">Pay With Ravepay</label><br></br>
                   <input type="radio" name="payment"
                     className="form-check-input" id="Pay_On_Delivery" value="Pay_On_Delivery" onChange={this.changeHandler} checked={this.state.payment == 'Pay_On_Delivery'} ></input>
-                  <label htmlFor="Pay_On_Delivery">Pay On Delivery</label>
+                  <label className='payment' htmlFor="Pay_On_Delivery">Pay On Delivery</label>
                 </section>
                 <div className="text-center">
                   <button className="btn btn-success" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Make Payment</button><br></br>
@@ -192,11 +169,11 @@ class PaymentMethod extends React.Component<any, any> {
                     <p className="text-danger text-start m-0">{this.state.card_numberErr}</p>
                     {/* Month year */}
                     <img className="placeholder-img" src={require("./asset/img/calendar.png")} alt=""></img>
-                    <input className="form-control " type="text" value={this.state.month_year} placeholder="MM/YY" name="month_year" onChange={this.changeHandler} onBlur={this.validation} />
+                    <input className="form-control  " type="text" value={this.state.month_year} placeholder="MM/YY" name="month_year" onChange={this.changeHandler} onBlur={this.validation} />
                     <p className="text-danger text-start m-0">{this.state.month_yearErr}</p>
                     {/* CVV number */}
                     <img className="placeholder-img" src={require("./asset/img/CVV.png")} alt=""></img>
-                    <input className="form-control " type="text" value={this.state.cvv_number} name="cvv_number" placeholder="CVV" onChange={this.changeHandler} onBlur={this.validation} />
+                    <input className="form-control  " type="text" value={this.state.cvv_number} name="cvv_number" placeholder="CVV" onChange={this.changeHandler} onBlur={this.validation} />
                     <p className="text-danger text-start m-0">{this.state.cvv_numberErr}</p>
                     <div className="text-center mb-3 mt-4 ">
                       <button onClick={(e) => this.submitHandler(e)} className="btn button-large btn-success mt-3" data-bs-target="#exampleModalToggle3" data-bs-toggle="modal" disabled={!(this.state.card_numberErr == '' && this.state.cvv_numberErr == '' && this.state.card_number !== '' && this.state.cvv_number !== '')}><img className="lock-icon" src={require("./asset/img/lock.png")}></img>Pay #200.00</button>
@@ -208,7 +185,7 @@ class PaymentMethod extends React.Component<any, any> {
           </div>
             <div className="modal fade" id="exampleModalToggle3" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabIndex={-1}>
               <div className="modal-dialog modal-dialog-centered modal-sm ">
-                <div className="modal-content">
+                <div className="modal-content succesfulPayment">
                   <div className="modal-body text-center">
                     <div className="Successfully_Placed_box">
                       <h3>&#10003;</h3>
@@ -239,8 +216,8 @@ class PaymentMethod extends React.Component<any, any> {
             </div>
           </div>
         }
-        <a className="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Proceed Payment</a>
-        <h1>{this.state.payment}</h1>
+        {/* <a className="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Proceed Payment</a>
+        <h1>{this.state.payment}</h1> */}
       </div>
     )
   }
@@ -260,4 +237,4 @@ const mapDispatchToProps = (dispatch: Function) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PaymentMethod);
+export default connect(mapStateToProps, mapDispatchToProps)(PaymentMethod2);

@@ -93,7 +93,7 @@ ul {
 .order-livestock .heading{
     font-size:56px;
     font-family: Ubuntu;
-    padding-right: 30px;
+    width: 100%;
 }
 .order-livestock .livestock-title{
     color: #2078BF;
@@ -101,6 +101,11 @@ ul {
 }
 .order-livestock .features{
     margin-bottom: 3.6875rem;
+    margin-left: 0.5rem;
+}
+.order-livestock .features li{
+    list-style-type: "-";
+    padding-left: 2px;
 }
 .order-livestock button{
     height: 3.75rem;

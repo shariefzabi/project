@@ -1,106 +1,129 @@
-import "./style.css";
+import "./blogform.scss";
 import React from "react";
-import CkEditorExampleComponent from "./CkEditorComponent";
-import Header from "../../components/header/app_header";
-import Footer from "../../components/footer/footer";
+import { Editor } from 'primereact/editor';
+import 'primereact/resources/primereact.min.css'
+import axios from "axios";
+// import { idText } from "typescript";
 
-class  Blogform extends React.Component<any,any>{
-    constructor(props:any) {
+class Blogform extends React.Component<any, any>{
+    constructor(props: any) {
         super(props);
         this.state = {
+            blogs: [],
             topic: "",
-            discripton:"",
-            // Error Messages 
+            text1: '',
+            id: '',
+            // Error Messages
+            dicErrMsg: "",
             topicErrMsg: "",
-            topicFlag:false
+            disFlag: true,
+            topicFlag:"",
         }
-    }
-    getdata(a:any){
-        this.setState({discripton:a})
     }
     changeHandler = (e: any) => {
         this.setState({ [e.target.name]: e.target.value })
     }
-    submitHandler = (e: any) => {
+    submitHandler = (e: any, data: any) => {
         e.preventDefault();
-        if(this.state.topicFlag){
-            console.log(this.state);
+        axios.get("http://localhost:3005/blogs")
+            .then(res => {
+                this.setState({ blogs: res.data, id: res.data.length })
+            })
+        if(this.state.topicFlag === "off"){
+        axios.post("http://localhost:3005/addblogs", data)
+            .then((res: any) => {
+                if (res.data == "success") {
+                    console.log(res.data);
+                }
+                else
+                    this.setState({ emailErrMsg: res.data })
+            })
+            .catch((err: any) => console.log("can't add the blog", err));
+        }else{
+            this.validations()
         }
     }
-    
-    validations = (e: any) => {
-        if (e.target.name=== 'topic') {
-            if (this.state.topic == undefined || this.state.topic.length === 0) {
-                this.setState({topicErrMsg:"Please enter the title."})
-                e.target.classList.add("field-error")
+
+    validations = () => {
+        if (this.state.topic == undefined || this.state.topic.length === 0) {
+            this.setState({ topicErrMsg: "Please enter the title." ,topicFlag:"on"})
+            
+        } else {
+            let nameReg = /^([a-zA-Z ]{10,100})$/
+            if (!nameReg.test(this.state.topic)) {
+                this.setState({ topicErrMsg: "Accepts Alphabets, space & Min 10 to Max 100 Char" ,topicFlag:"on"})
             } else {
-                let nameReg = /^([a-zA-Z ]{10,100})$/
-                // console.log(nameReg.test(username));
-                if (!nameReg.test(this.state.topic)) {
-                    this.setState({ topicErrMsg:"Accepts Alphabets, space & Min 10 to Max 100 Char" })
-                    e.target.classList.add("field-error")
-                } else {
-                    e.target.classList.remove("field-error")
-                    this.setState({topicErrMsg:"",topicFlag:true})
-                }
+                this.setState({ topicErrMsg: "", topicFlag:"off"})
             }
         }
     }
-    reset(){
-        this.setState({topic:"", discripton:"",})
-    }
-    render(){
-        let{topic,topicErrMsg}=this.state;
+    // validate = () => {
+    //     if (this.state.text1 == "" || this.state.text1.length === 1) {
+    //         this.setState({ dicErrMsg: "Please enter the Description." })
+    //         console.log("errr");
+            
+    //     } else {
+    //         if(this.state.text1.length < 300 ){
+    //         this.setState({ dicErrMsg: "the Entered the Description in below 300 words "})}
+    //         else{
+    //             this.setState({topicErrMsg: "enter",})
+    //         }
+    //     }
+    // }
+
+
+    render() {
+        let { topic, topicErrMsg, text1, topicFlag ,id ,disFlag ,dicErrMsg} = this.state;
         return (
             <>
-            {/* <header><Header></Header></header> */}
-            <div className="main">
-                <section className="aboutus">
-                    <h1>ADD BLOG</h1>
-                    
-                </section>
+                <div className="main blogform-container">
+                    <section className="aboutus">
+                        <h1>ADD BLOG</h1>
 
-                <div className="container">
-                    <h2>ADD BLOG</h2>
-                
-                <div  className="inner">
-                    <div className="d-flex box">
-                    <p>Fields with <span className="text-danger">*</span> are required</p>
-                        <button type="button" className="btn btn-success btnreset" onClick={this.reset} >
-                            Reset
-                        </button>
-                    </div>
-                    
-                    <div className="text-start box">
-                        <label className="me-2"><b>Title<span className="text-danger">*</span>:</b></label>
-                        <input placeholder="Title" className=" form-control" name="topic" value={topic}  onChange={(e)=>{this.changeHandler(e);this.validations(e)}}></input>
-                        <div>
-                            <p className="text-danger">{topicErrMsg}</p>
-                        </div>
-                    </div>
-                    <div className="box">
-                        <label className="me-3 mt-3"><b>Upload Image<span className="text-danger">*</span></b></label>
-                        <input type="file" id="myFile" name="filename"></input>
-                    </div>
-                    <div className="box">
-                        <label className="me-3 mt-3"><b>discripton<span className="text-danger">*</span>:</b></label>
-                        <CkEditorExampleComponent ></CkEditorExampleComponent>
-                    </div>
-                    <div className="mt-3 text-center">
-                        <button type="button" className="btn form_button btn-success " onClick={this.submitHandler}>
-                            Save
-                        </button>
-                    </div>
+                    </section>
+
+                    <div className="container">
+                        <h2>ADD BLOG</h2>
+                        <form className="needs-validation" onSubmit={(e) => { this.submitHandler(e, { "topic": topic, "about": text1, "id": id + 1 }) }}>
+                            <div className="inner">
+                                <div className=" box">
+                                    <p>Fields with <span className="text-danger">*</span> are required</p>
+                                </div>
+
+                                <div className="text-start box">
+                                    <label className="me-2"><b>Title<span className="text-danger">*</span>:</b></label>
+                                    <input placeholder="Title"  id="validationTooltip01"  className=" form-control" name="topic" value={topic} onChange={(e) => { this.changeHandler(e); this.validations() }}></input>
+                                    {topicFlag === "on" &&
+                                        <p className="text-danger">{topicErrMsg}</p>}
+                                        
+
+                                    
+                                </div>
+                                <div className="box">
+                                    <div className="mb-3">
+                                        <label className="me-2"><b>Image<span className="text-danger">*</span>:</b></label>
+                                        <input type="file" className="form-control" aria-label="file example" required />
+                                        <div className="invalid-feedback">Example invalid form file feedback</div>
+                                    </div>
+                                </div>
+                                <div className="box">
+                                    <label className="me-3 mt-3"><b>Description<span className="text-danger">*</span></b></label>
+                                    <Editor style={{ height: '320px' }} value={text1} onTextChange={(e) => { this.setState({ text1: e.textValue }) }} />
+                                </div>
+                                <div className="mt-3 text-center">
+                                    <button type="submit" className="btn form_button btn-success ">
+                                        Save
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-    
-            </div>
-            {/* <footer><Footer></Footer></footer> */}
             </>
-    
+
         );
     }
-    
+
 }
 
 export default Blogform;
