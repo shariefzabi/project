@@ -1,7 +1,7 @@
 import React from "react";
 import bar from "./asset/group2.png";
 import cross from "./asset/group35.png";
-import triangle from "./asset/triangle.png";
+import triangle from "./asset/Triangle.png";
 import { Link } from "react-router-dom";
 import "./app_header.scss";
 import BuyNow from "../../modules/ordercreation/components/ordercreation";
@@ -119,6 +119,13 @@ class Header extends React.Component {
               Blog
             </Link>
           </div>
+          {user && 
+              <div className="home">
+              <Link to="/addblogs" className="menu_content">
+                Add Blogs
+              </Link>
+            </div>
+          }
           <div className="menu_btn">
             <BuyNow />
           </div>
