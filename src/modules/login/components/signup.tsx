@@ -114,7 +114,7 @@ class Signup extends React.Component<any, any>{
         }
     }
 
-    SignUpSubmitHandler = (e: any, userDetails: any) => {
+    signUpSubmitHandler = (e: any, userDetails: any) => {
         e.preventDefault();
         // console.log("userDetails:", userDetails);
 
@@ -140,7 +140,7 @@ class Signup extends React.Component<any, any>{
                         <h4>Sign Up</h4>
                         <p>Before we proceed further...</p>
                     </div>
-                    <form onSubmit={(e) => this.SignUpSubmitHandler(e, { fullName, password:createPassword,_id: email.toLowerCase()})}>
+                    <form onSubmit={(e) => this.signUpSubmitHandler(e, { fullName, password:createPassword,_id: email.toLowerCase()})}>
                         <div className="mb-3 position-relative text-start">
 
                             <label htmlFor="fullName" className="form-label">Full Name</label>
