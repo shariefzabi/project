@@ -122,7 +122,7 @@ mongoose.connect(
 //TEAM-5
 //Newly created product details
 
-app.use("/",require("./routes/productRoute"));
+app.use("/",require("./Products/routes/ProductRoute.js"));
 mongoose.connect(dburl,{ useNewUrlParser: true, useUnifiedTopology: true },
   (err) => {
     if (err) throw err;
