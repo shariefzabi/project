@@ -52,11 +52,10 @@ function Login(props:any) {
     e.preventDefault();
     axios.post("http://localhost:3005/users/login",userDetails)
         .then( (res:any)=>{
-          if (res.data == "success"){
-             props.setUser({username,password});
+          if (res.data == "Invalid credentials")setUserError(res.data)
+          else{
+            props.setUser(res.data);
             handleClose();}
-          else
-            setUserError(res.data);
         })
         .catch((err:any)=>console.log(" User Login up Error",err));
   }

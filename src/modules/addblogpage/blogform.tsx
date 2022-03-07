@@ -2,60 +2,78 @@ import "./blogform.scss";
 import React from "react";
 import { Editor } from 'primereact/editor';
 import 'primereact/resources/primereact.min.css'
+import axios from "axios";
+// import { idText } from "typescript";
 
 class Blogform extends React.Component<any, any>{
     constructor(props: any) {
         super(props);
         this.state = {
+            blogs: [],
             topic: "",
             text1: '',
+            id: '',
             // Error Messages
             dicErrMsg: "",
             topicErrMsg: "",
-            disFlag: false,
-            topicFlag: false
+            disFlag: true,
+            topicFlag:"",
         }
-    }
-    getdata(a: any) {
-        this.setState({ discripton: a })
     }
     changeHandler = (e: any) => {
         this.setState({ [e.target.name]: e.target.value })
     }
-    submitHandler = (e: any) => {
-        if (this.state.topicFlag && this.state.disFlag) {
-            console.log(this.state);
+    submitHandler = (e: any, data: any) => {
+        e.preventDefault();
+        axios.get("http://localhost:3005/blogs")
+            .then(res => {
+                this.setState({ blogs: res.data, id: res.data.length })
+            })
+        if(this.state.topicFlag === "off"){
+        axios.post("http://localhost:3005/addblogs", data)
+            .then((res: any) => {
+                if (res.data == "success") {
+                    console.log(res.data);
+                }
+                else
+                    this.setState({ emailErrMsg: res.data })
+            })
+            .catch((err: any) => console.log("can't add the blog", err));
         }else{
-            this.validate();
+            this.validations()
         }
     }
 
-    validations = (e: any) => {
+    validations = () => {
         if (this.state.topic == undefined || this.state.topic.length === 0) {
-            this.setState({ topicErrMsg: "Please enter the title." })
-            e.target.classList.add("field-error")
+            this.setState({ topicErrMsg: "Please enter the title." ,topicFlag:"on"})
+            
         } else {
             let nameReg = /^([a-zA-Z ]{10,100})$/
             if (!nameReg.test(this.state.topic)) {
-                this.setState({ topicErrMsg: "Accepts Alphabets, space & Min 10 to Max 100 Char" })
-                e.target.classList.add("field-error")
+                this.setState({ topicErrMsg: "Accepts Alphabets, space & Min 10 to Max 100 Char" ,topicFlag:"on"})
             } else {
-                e.target.classList.remove("field-error")
-                this.setState({ topicErrMsg: "", topicFlag: true })
+                this.setState({ topicErrMsg: "", topicFlag:"off"})
             }
         }
     }
-    validate = () => {
-        if (this.state.topic == "" || this.state.text1.length === 0) {
-            this.setState({ dicErrMsg: "Please enter the Description." })
-        } else {
-            this.setState({ dicErrMsg: "", disFlag: true })
-        }
-    }
-   
+    // validate = () => {
+    //     if (this.state.text1 == "" || this.state.text1.length === 1) {
+    //         this.setState({ dicErrMsg: "Please enter the Description." })
+    //         console.log("errr");
+            
+    //     } else {
+    //         if(this.state.text1.length < 300 ){
+    //         this.setState({ dicErrMsg: "the Entered the Description in below 300 words "})}
+    //         else{
+    //             this.setState({topicErrMsg: "enter",})
+    //         }
+    //     }
+    // }
+
 
     render() {
-        let { topic, topicErrMsg } = this.state;
+        let { topic, topicErrMsg, text1, topicFlag ,id ,disFlag ,dicErrMsg} = this.state;
         return (
             <>
                 <div className="main blogform-container">
@@ -66,41 +84,40 @@ class Blogform extends React.Component<any, any>{
 
                     <div className="container">
                         <h2>ADD BLOG</h2>
-
-                        <div className="inner">
-                            <div className=" box">
-                                <p>Fields with <span className="text-danger">*</span> are required</p>
-                            </div>
-
-                            <div className="text-start box">
-                                <label className="me-2"><b>Title<span className="text-danger">*</span>:</b></label>
-                                <input placeholder="Title" className=" form-control" name="topic" value={topic} onChange={(e) => { this.changeHandler(e); this.validations(e) }}></input>
-                                <div>
-                                    <p className="text-danger">{topicErrMsg}</p>
+                        <form className="needs-validation" onSubmit={(e) => { this.submitHandler(e, { "topic": topic, "about": text1, "id": id + 1 }) }}>
+                            <div className="inner">
+                                <div className=" box">
+                                    <p>Fields with <span className="text-danger">*</span> are required</p>
                                 </div>
-                            </div>
-                            <div className="box">
-                                <div className="mb-3">
-                                    <label className="me-2"><b>Image<span className="text-danger">*</span>:</b></label>
-                                    <input type="file" className="form-control" aria-label="file example" required />
+
+                                <div className="text-start box">
+                                    <label className="me-2"><b>Title<span className="text-danger">*</span>:</b></label>
+                                    <input placeholder="Title"  id="validationTooltip01"  className=" form-control" name="topic" value={topic} onChange={(e) => { this.changeHandler(e); this.validations() }}></input>
+                                    {topicFlag === "on" &&
+                                        <p className="text-danger">{topicErrMsg}</p>}
+                                        
+
+                                    
+                                </div>
+                                <div className="box">
+                                    <div className="mb-3">
+                                        <label className="me-2"><b>Image<span className="text-danger">*</span>:</b></label>
+                                        <input type="file" className="form-control" aria-label="file example" required />
                                         <div className="invalid-feedback">Example invalid form file feedback</div>
+                                    </div>
+                                </div>
+                                <div className="box">
+                                    <label className="me-3 mt-3"><b>Description<span className="text-danger">*</span></b></label>
+                                    <Editor style={{ height: '320px' }} value={text1} onTextChange={(e) => { this.setState({ text1: e.textValue }) }} />
+                                </div>
+                                <div className="mt-3 text-center">
+                                    <button type="submit" className="btn form_button btn-success ">
+                                        Save
+                                    </button>
                                 </div>
                             </div>
-                            <div className="box">
-                                <label className="me-3 mt-3"><b>Description<span className="text-danger">*</span></b></label>
-                                <Editor style={{ height: '320px' }} value={this.state.text1} onTextChange={(e) => {this.setState({ text1: e.htmlValue }) }} />
-                                {!this.state.disFlag &&
-                                    <p className="text-danger">{this.state.disErrMsg}</p>
-                                }
-                            </div>
-                            <div className="mt-3 text-center">
-                                <button type="submit" className="btn form_button btn-success " onClick={this.submitHandler}>
-                                    Save
-                                </button>
-                            </div>
-                        </div>
+                        </form>
                     </div>
-
                 </div>
             </>
 
