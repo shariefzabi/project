@@ -87,8 +87,9 @@ function Login(props:any) {
                 }
 
                 <form onSubmit={(e)=>LoginSubmitHandler(e,{username:username.toLowerCase(),password})}>
-                  <div className="mb-3 text-start">
+                  <div className="mb-3 position-relative text-start">
                     <label htmlFor="uname" className="form-label">Name</label>
+                    <img className="user-icon" src={require("./assets/user.png")}></img>
                     <input type="text" name="username"
                       value={username}
                       className="form-control"
@@ -96,10 +97,11 @@ function Login(props:any) {
                       onBlur={(e)=>validations(e)} id="uname" placeholder="Name" required/>
                     <p className="text-danger">{usernameErrMsg}</p>
                   </div>
-                  <div className="mb-3 text-start">
+                  <div className="mb-3 position-relative text-start">
                     <label htmlFor="pwd" className="form-label">Password</label>
+                    <img className="user-icon" src={require("./assets/Group.png")}></img>
                     <input type="password" name="password"
-                      value={password} placeholder="Enter Password"
+                      value={password} placeholder="Password"
                       className="form-control"
                       onChange={(e) => setPassword(e.target.value)}
                       onBlur={(e)=>validations(e)} id="pwd" required />

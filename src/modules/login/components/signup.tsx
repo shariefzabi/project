@@ -141,10 +141,13 @@ class Signup extends React.Component<any, any>{
                         <p>Before we proceed further...</p>
                     </div>
                     <form onSubmit={(e) => this.SignUpSubmitHandler(e, { fullName, password:createPassword,_id: email.toLowerCase()})}>
-                        <div className="mb-3 text-start">
+                        <div className="mb-3 position-relative text-start">
+
                             <label htmlFor="fullName" className="form-label">Full Name</label>
+                            <img className="user-icon" src={require("./assets/user.png")}></img>
                             <input type="text" name="fullName"
                                 value={fullName} placeholder=" Full Name"
+                                
                                 className="form-control"
                                 onChange={this.changeHandler}
                                 onBlur={this.validations} id="fullName" required/>
@@ -152,6 +155,7 @@ class Signup extends React.Component<any, any>{
                         </div>
                         <div className="mb-3 text-start">
                             <label htmlFor="email" className="form-label" >Email</label>
+                            <img className="user-icon" src={require("./assets/user.png")}></img>
                             <input type="email" name="email"
                                 value={email} placeholder="Email"
                                 className="form-control"
