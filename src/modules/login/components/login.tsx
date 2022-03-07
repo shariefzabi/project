@@ -99,7 +99,7 @@ function Login(props:any) {
                   </div>
                   <div className="mb-3 position-relative text-start">
                     <label htmlFor="pwd" className="form-label">Password</label>
-                    <img className="user-icon" src={require("./assets/group.png")}></img>
+                    <img className="user-icon" src={require("./assets/Group.png")}></img>
                     <input type="password" name="password"
                       value={password} placeholder="Password"
                       className="form-control"
@@ -116,7 +116,6 @@ function Login(props:any) {
                 <div className='pt-3 text-center'>
                   <span className="text-success">Don't have an account ? </span>
                   <a className="link text-decoration-none ps-2" onClick={() => setDisplaySignup(true)}> Sign up</a>
-                  <img className="#" src={require('./assets/arrow.png')}></img>
                 </div>
 
               </div>
