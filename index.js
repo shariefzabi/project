@@ -107,7 +107,11 @@ app.use("/market", locationRoutes);
 
 mongoose.connect(
   dburl,
-  { useNewUrlParser: true, useUnifiedTopology: true },
+  { useNewUrlParser: true,
+    useUnifiedTopology: true,
+    
+    autoIndex: true
+     },
   (err) => {
     if (err) throw err;
     console.log("Connected to MongoDB!!!");
