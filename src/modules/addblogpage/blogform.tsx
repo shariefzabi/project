@@ -1,4 +1,4 @@
-import "./style.css";
+import "./blogform.scss";
 import React from "react";
 import { Editor } from 'primereact/editor';
 import 'primereact/resources/primereact.min.css'
@@ -58,7 +58,7 @@ class Blogform extends React.Component<any, any>{
         let { topic, topicErrMsg } = this.state;
         return (
             <>
-                <div className="main">
+                <div className="main blogform-container">
                     <section className="aboutus">
                         <h1>ADD BLOG</h1>
 
