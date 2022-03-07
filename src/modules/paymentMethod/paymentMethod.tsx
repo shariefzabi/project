@@ -1,9 +1,9 @@
 import React from 'react'
 import './asset/paymentMethod.scss'
 import axios from "axios"
-import {connect} from "react-redux" 
+import { connect } from "react-redux"
 
-class PaymentMethod2 extends React.Component<any, any> {
+class PaymentMethod extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -11,6 +11,8 @@ class PaymentMethod2 extends React.Component<any, any> {
       card_number: '',
       cvv_number: '',
       month_year: '',
+      month: "",
+      year: "",
       // err
       card_numberErr: '',
       cvv_numberErr: '',
@@ -19,18 +21,18 @@ class PaymentMethod2 extends React.Component<any, any> {
 
     }
   }
-  componentDidMount() {
-    console.log("start");
-    axios.get("http://localhost:3005/product/cost/1")
-      .then((res) => {
-        console.log(res.data);
-        this.setState({ cost: res.data })
-      })
-      .catch(err => {
-        console.log("error: ", err);
-      })
-    console.log("end");
-  }
+  // componentDidMount() {
+  //   console.log("start");
+  //   axios.get("http://localhost:3005/product/cost/1")
+  //     .then((res) => {
+  //       console.log(res.data);
+  //       this.setState({ cost: res.data })
+  //     })
+  //     .catch(err => {
+  //       console.log("error: ", err);
+  //     })
+  //   console.log("end");
+  // }
   changeHandler = (event: any) => {
     // let { payment } = this.state;
     this.setState({ [event.target.name]: event.target.value });
@@ -40,6 +42,7 @@ class PaymentMethod2 extends React.Component<any, any> {
     // card NUmber
     if (e.target.name === 'card_number') {
       let card_number = e.target.value;
+      card_number = card_number - 0
       let card_numberErr = '';
       if (card_number == undefined || card_number.length === 0) {
         card_numberErr = "Please enter the card number."
@@ -52,7 +55,7 @@ class PaymentMethod2 extends React.Component<any, any> {
         } else {
           card_numberErr = '';
           // e.target.classList.remove("field-error")
-          this.setState({ card_numberErr })
+          this.setState({ card_numberErr, card_number })
         }
       }
     }
@@ -81,13 +84,14 @@ class PaymentMethod2 extends React.Component<any, any> {
         } else {
           month_yearErr = '';
           // e.target.classList.remove("field-error")
-          this.setState({ month_yearErr })
+          this.setState({ month_yearErr, month, year })
         }
       }
     }
     // CVV number
     if (e.target.name === 'cvv_number') {
       let cvv_number = e.target.value;
+      cvv_number = cvv_number - 0
       let cvv_numberErr = '';
       if (cvv_number == undefined || cvv_number.length === 0) {
         cvv_numberErr = "Please enter the card CVV."
@@ -100,18 +104,37 @@ class PaymentMethod2 extends React.Component<any, any> {
         } else {
           cvv_numberErr = '';
           // e.target.classList.remove("field-error")
-          this.setState({ cvv_numberErr })
+          this.setState({ cvv_numberErr, cvv_number })
         }
       }
     }
 
   }
-  submitHandler = (e:any) => {
+  submitHandler = (e: any) => {
     e.preventDefault()
-    let { payment, card_number, cvv_number } = this.state;
-    
-    console.log("carddetails",{ payment, card_number, cvv_number })
-    this.props.setCardDetails({ payment, card_number, cvv_number })
+    let { month, year, card_number, cvv_number } = this.state;
+
+    console.log("carddetails", { month, year, card_number, cvv_number })
+    this.props.setCardDetails({ month, year, card_number, cvv_number })
+    let cardDetails = {
+
+      "cardDetails": {
+        "cardNumber": card_number,
+        "Month": month,
+        "year": year,
+        "CVV": cvv_number
+      }
+    }
+
+    axios.post("http://localhost:3005/card/details", cardDetails)
+      .then((res) => {
+        console.log(res.data);
+        this.setState({ cost: res.data })
+      })
+      .catch(err => {
+        console.log("error: ", err);
+      })
+
     this.setState({
       card_number: '',
       cvv_number: '',
@@ -176,7 +199,7 @@ class PaymentMethod2 extends React.Component<any, any> {
                     <input className="form-control " type="text" value={this.state.cvv_number} name="cvv_number" placeholder="CVV" onChange={this.changeHandler} onBlur={this.validation} />
                     <p className="text-danger text-start m-0">{this.state.cvv_numberErr}</p>
                     <div className="text-center mb-3 mt-4 ">
-                      <button onClick={(e)=>this.submitHandler(e)}className="btn button-large btn-success mt-3" data-bs-target="#exampleModalToggle3" data-bs-toggle="modal" disabled={!(this.state.card_numberErr == '' && this.state.cvv_numberErr == '' && this.state.card_number !== '' && this.state.cvv_number !== '')}><img className="lock-icon" src={require("./asset/img/lock.png")}></img>Pay #200.00</button>
+                      <button onClick={(e) => this.submitHandler(e)} className="btn button-large btn-success mt-3" data-bs-target="#exampleModalToggle3" data-bs-toggle="modal" disabled={!(this.state.card_numberErr == '' && this.state.cvv_numberErr == '' && this.state.card_number !== '' && this.state.cvv_number !== '')}><img className="lock-icon" src={require("./asset/img/lock.png")}></img>Pay #200.00</button>
                     </div>
                   </form>
                 </div>
@@ -237,4 +260,4 @@ const mapDispatchToProps = (dispatch: Function) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PaymentMethod2);
+export default connect(mapStateToProps, mapDispatchToProps)(PaymentMethod);
