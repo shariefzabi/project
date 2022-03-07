@@ -33,7 +33,7 @@ let invoice = require("./invoice/invoiceapi");
 let InvoiceUniqueID = require("./invoiceUniqueId/invoiceUniqueIDApi")
 
 // let invoice = require("./invoice/invoiceapi.js")
-app.use("/product", productCost);
+app.use("/productCost", productCost);
 app.use("/card", cardDetail);
 app.use("/invoicedetails", invoice);
 app.use("/invoice", InvoiceUniqueID)
