@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 
 
 const cattleMarketSchema = new mongoose.Schema({
-  animalId: { type: String, required: [true, "Id is required"] },
-  productCode: { type: String, required: true },
+  animalId: { type: String, required: [true, "Id is required"], default: null },
+  productCode: { type: String, required: true, default: null },
   availability: {
     type: String,
     required: true,

@@ -33,7 +33,7 @@ let invoice = require("./invoice/invoiceapi");
 let InvoiceUniqueID = require("./invoiceUniqueId/invoiceUniqueIDApi")
 
 // let invoice = require("./invoice/invoiceapi.js")
-app.use("/product", productCost);
+app.use("/productCost", productCost);
 app.use("/card", cardDetail);
 app.use("/invoicedetails", invoice);
 app.use("/invoice", InvoiceUniqueID)
@@ -70,7 +70,7 @@ app.post("/users/login", function (req, res) {
       res.send("Invalid credentials")
     // res.send("No account found with this username, please sign up and then login");
     else
-      res.send("success");
+      res.send(result);
   })
 });
 
@@ -78,15 +78,15 @@ app.post("/users/login", function (req, res) {
 
 
 //team-2 storing order details 
-// const orderRoutes=require('./ordercreation/orderdetails_router');
-// app.use("/order",orderRoutes);
-app.post("/orderdetails",function(req,res){
-  let orderdetails=req.body;
-  console.log(orderdetails);
-  let orderDb=db.collection("orders");
-  orderDb.insert(orderdetails);
-  res.send(orderdetails)
-})
+const orderRoutes=require('./ordercreation/orderdetails_router');
+app.use("/orders",orderRoutes);
+// app.post("/orderdetails",function(req,res){
+//   let orderdetails=req.body;
+//   console.log(orderdetails);
+//   let orderDb=db.collection("orders");
+//   orderDb.insert(orderdetails);
+//   res.send(orderdetails)
+// })
 
 //team-2 ending
 
@@ -119,7 +119,20 @@ mongoose.connect(
 );
 
 //location product details code (team 4) .....ending
+//TEAM-5
+//Newly created product details
 
+app.use("/",require("./routes/productRoute"));
+mongoose.connect(dburl,{ useNewUrlParser: true, useUnifiedTopology: true },
+  (err) => {
+    if (err) throw err;
+    console.log("Connected to MongoDB!!!");
+  }
+  );
+
+
+
+//TEAM-5 ends
 //team 6 start
 // let animalAPI = require("./cart/cart_details.js");
 // app.use("/animal", animalAPI);

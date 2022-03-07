@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const orderDetailsSchema = new mongoose.Schema({
-    orderId: { type: String, required: [true, "Id is required"] },
+    // orderId: { type: String, required: [true, "Id is required"] },
     productdetails: {
         type: { type: String, required: true },
         quantity: { type: String, required: true },
@@ -14,7 +14,7 @@ const orderDetailsSchema = new mongoose.Schema({
         deliveryperiod: { type: String, required: true },
         deliverymode: { type: String, required: true }
     }
-});
+},{versionKey:false});
 
 const Order=mongoose.model("order",orderDetailsSchema);
 module.exports=Order;
