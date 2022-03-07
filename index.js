@@ -76,14 +76,18 @@ app.post("/users/login", function (req, res) {
 
 //************ No.1 Team ************* Ending *****************************
 
-//team-2 storing order details
-app.post("/orderdetails", function (req, res) {
-  let orderdetails = req.body;
+
+//team-2 storing order details 
+// const orderRoutes=require('./ordercreation/orderdetails_router');
+// app.use("/order",orderRoutes);
+app.post("/orderdetails",function(req,res){
+  let orderdetails=req.body;
   console.log(orderdetails);
-  let orderDb = db.collection("orders");
+  let orderDb=db.collection("orders");
   orderDb.insert(orderdetails);
-  res.send(orderdetails);
-});
+  res.send(orderdetails)
+})
+
 //team-2 ending
 
 app.get("/", function (req, res) {
