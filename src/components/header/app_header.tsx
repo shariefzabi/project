@@ -7,6 +7,7 @@ import "./app_header.scss";
 import BuyNow from "../../modules/ordercreation/components/ordercreation";
 import Login from "../../modules/login/components/login";
 import { connect } from "react-redux";
+import LocationPopUp from "../../modules/locationPopupPage/LocationPopUp";
 class Header extends React.Component {
   render() {
     console.log('header values::', this.props);
@@ -121,10 +122,12 @@ class Header extends React.Component {
           </div>
           <div className="menu_btn">
             <BuyNow />
+            {/* <LocationPopUp /> */}
           </div>
           {!user && <div className="menu_btn">
             <div className="text-center">
               <Login />
+            
             </div>
           </div>
           }
