@@ -1,7 +1,9 @@
 interface initialState{
     user:any,
+    products:any[],
     orders: {},
     cardDetails:any
+    agent:any
 }
 
 
@@ -10,8 +12,10 @@ interface initialState{
 
 const appInitialstate:initialState = {
     user: null,
+    products:[],
     orders: {},
-    cardDetails:null
+    cardDetails:null,
+    agent:null
 }
 function appReducer(state = appInitialstate, action: any) {
     // console.log("from Reducer::::::",action);
@@ -29,6 +33,10 @@ function appReducer(state = appInitialstate, action: any) {
         }
         case 'setUser':
             return {...state, user: action.payload};
+        case 'setAgent':
+            return {...state, agent: action.payload};
+        case 'store_products' :
+        return { ...state, products: [...state.products, action.productDetails] };   
         case 'store_productdetails':
             return {...state,orders:{productdetails:action.productDetails}}
         case 'store_order':

@@ -110,7 +110,7 @@ function BuyNow(props: any) {
                                     </div>
                                     <form onSubmit={(e) => productsubmitHandler(e, { type, quantity, weight, sex, breed })}>
                                         <div className='row'>
-                                            <div className="col-md-3 productype-dropdown" >
+                                            <div className="col-md-2 productype-dropdown" >
                                                 <div className="dropdown" >
                                                     <select name="Type" required value={type} onChange={(event) => Validate(event)} onBlur={(event) => Validate(event)} className="form-select" >
                                                         <option hidden value="">Type</option>
@@ -132,7 +132,7 @@ function BuyNow(props: any) {
                                                     <p className='text-danger'>{quantityerrmsg}</p>
                                                 </div>
                                             </div>
-                                            <div className="col-md-1">
+                                            <div className="col-md-2">
 
                                                 <div className="dropdown">
                                                     <select name="Sex" value={sex} required onChange={(event) => Validate(event)} onBlur={(event) => Validate(event)} className="form-select" >
@@ -208,7 +208,7 @@ function BuyNow(props: any) {
                         </div>
                     </div>
                 </div >
-                <button className="buy_button" onClick={()=>setProductdetailsflag(true)} data-bs-toggle="modal" data-bs-target="#exampleModal">Buy Now</button>
+                <button className="buy-button text-white" onClick={()=>setProductdetailsflag(true)} data-bs-toggle="modal" data-bs-target="#exampleModal">Buy Now</button>
 
             </div >
             

@@ -19,10 +19,10 @@ export default class LandingPage extends React.Component {
                                 <li><em> Get it Processed at a Livestock247.com Certified Butchery / Abattoir.</em></li>
                                 <li><em> We Deliver to your address of choice.</em></li>
                             </ul>
-                            <div className="buttons">
-                                <button className="btn btn-success learnmore-btn">Learn More</button>
-                                {/* <button className="btn text-white buynow-btn">Buy Now</button> */}
+                            <div className="buttons d-flex">
+                                <button className="btn btn-success learnmore-btn me-5">Learn More</button>
                                 <BuyNow></BuyNow>
+                                
                             </div>
                         </article>
                         <aside>
