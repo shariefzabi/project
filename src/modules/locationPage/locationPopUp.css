@@ -17,6 +17,7 @@
 .buy_button {
   background-color: #2078BF;
   margin-right: 2.8%;
+  color: #ffffff;
   
 }
 .popUp {
@@ -129,6 +130,7 @@
   margin-bottom: 2.5rem;
   width: 12.25rem;
   height: 3.125rem;
+  margin-left: 9rem;
 }
 
 .btn-cnt,
@@ -145,6 +147,7 @@
   
 }
 
+
 .addLocation {
   margin-right: 1rem;
   border: 1px solid #f1f1f1;
@@ -155,4 +158,5 @@
 .addLocation {
   height: 40px;
   font-size: 1rem;
+  padding: 0 1rem;
 }
