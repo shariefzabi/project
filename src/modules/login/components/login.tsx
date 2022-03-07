@@ -88,12 +88,12 @@ function Login(props:any) {
 
                 <form onSubmit={(e)=>LoginSubmitHandler(e,{username:username.toLowerCase(),password})}>
                   <div className="mb-3 text-start">
-                    <label htmlFor="uname" className="form-label">UserName</label>
+                    <label htmlFor="uname" className="form-label">Name</label>
                     <input type="text" name="username"
                       value={username}
                       className="form-control"
                       onChange={(e) => setUsername(e.target.value)}
-                      onBlur={(e)=>validations(e)} id="uname" placeholder="Name" required />
+                      onBlur={(e)=>validations(e)} id="uname" placeholder="Name" required/>
                     <p className="text-danger">{usernameErrMsg}</p>
                   </div>
                   <div className="mb-3 text-start">
