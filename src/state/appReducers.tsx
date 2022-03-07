@@ -1,9 +1,9 @@
 interface initialState{
     user:any,
     products:any[],
-    deliveries:any[],
-    orders: any[],
+    orders: {},
     cardDetails:any
+    agent:any
 }
 
 
@@ -13,12 +13,12 @@ interface initialState{
 const appInitialstate:initialState = {
     user: null,
     products:[],
-    deliveries:[],
-    orders: [],
-    cardDetails:null
+    orders: {},
+    cardDetails:null,
+    agent:null
 }
 function appReducer(state = appInitialstate, action: any) {
-    console.log("from Reducer::::::",action);
+    // console.log("from Reducer::::::",action);
     // console.log("action.deliveryDetails",action.deliveryDetails,state.deliveries,state.users);
      
     switch (action.type) {
@@ -27,16 +27,20 @@ function appReducer(state = appInitialstate, action: any) {
         // case 'SUBTRACT':
         //     return{...state,counter:state.counter-1}
         // default:
-        //     return state
+        //     return stateorders{orderid:"",products:{},deliveries:{}}
         case 'logout':{
             return {...state, user: null};
         }
         case 'setUser':
             return {...state, user: action.payload};
+        case 'setAgent':
+            return {...state, agent: action.payload};
+        case 'store_products' :
+        return { ...state, products: [...state.products, action.productDetails] };   
         case 'store_productdetails':
-            return {...state,products:[...state.products, action.productDetails]}
-        case 'create_order':
-            return { ...state, deliveries: [...state.deliveries, action.deliveryDetails] }
+            return {...state,orders:{productdetails:action.productDetails}}
+        case 'store_order':
+            return { ...state, orders: {...state.orders,deliverydetails:action.deliveryDetails}}
         case "storeCardDetails":
             return ({ ...state, cardDetails: action.payload})
         default:

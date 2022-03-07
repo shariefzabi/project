@@ -4,9 +4,13 @@ import cross from "./asset/group35.png";
 import triangle from "./asset/triangle.png";
 import { Link } from "react-router-dom";
 import "./app_header.scss";
-import BuyNow from "../../modules/ordercreation/components/ordercreation";
+// import BuyNow from "../../modules/ordercreation/components/ordercreation";
 import Login from "../../modules/login/components/login";
 import { connect } from "react-redux";
+import PopUp from "../../modules/locationPage/locationPopUp";
+import BeanAgentPopup from "../../modules/be an agent form copy/form1"
+
+
 class Header extends React.Component {
   render() {
     console.log('header values::', this.props);
@@ -102,9 +106,7 @@ class Header extends React.Component {
               <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <span className="triangle-up"></span>
                 <li>
-                  <Link to="/" className="dropdown-item">
-                    Be an Agent
-                  </Link>
+                 <BeanAgentPopup></BeanAgentPopup>
                 </li>
                 <li>
                   <Link to="/" className="dropdown-item">
@@ -126,12 +128,13 @@ class Header extends React.Component {
               </Link>
             </div>
           }
-          <div className="menu_btn">
-            <BuyNow />
+          <div className="menu_btn">          
+             <PopUp />
           </div>
           {!user && <div className="menu_btn">
             <div className="text-center">
               <Login />
+            
             </div>
           </div>
           }

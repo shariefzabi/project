@@ -1,8 +1,4 @@
 .ordercreation-container{
-.buy_button {
-    background-color: #2078BF;
-    margin-right: 2.8%;
-}
  .popupheading{
         color: #2078BF;
         width: 555px;
@@ -94,4 +90,14 @@
     text-align: center;
     margin-left: 40%;
 }
+.field-error{
+    border: 2px solid red;
+}
+}
+.buy-button {
+    background-color: #003966 !important;
+    
+    // margin-right: 2.8%;
+    border: 0.134rem solid white;
+    margin-left: 1.625rem;
 }
