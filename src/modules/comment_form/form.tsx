@@ -21,7 +21,7 @@ class Form extends React.Component<any,any> {
         }
 
     }
-    changeHandler = (e) => {
+    changeHandler = (e:any) => {
         this.validate(e);
         this.setState({ [e.target.name]: e.target.value });
 
@@ -79,7 +79,7 @@ class Form extends React.Component<any,any> {
     //     this.setState({ noErrors: (!a) });
     // }
 
-    validate = (e) => {
+    validate = (e:any) => {
         // console.log(e);
         let n = e.target.name;
         let v = e.target.value;
@@ -184,7 +184,7 @@ class Form extends React.Component<any,any> {
                             </div>
                         </span>
                         <div className="text-center">
-                            <button type="submit" className="btn btn-success sub-btn" onClick={this.submitHandler} className="m-2 btn btn-primary">Submit</button>
+                            <button type="submit" className="btn btn-success sub-btn m-2 btn btn-primary" >Submit</button>
                         </div>
                     </form>
                 </section>
