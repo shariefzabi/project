@@ -119,6 +119,13 @@ class Header extends React.Component {
               Blog
             </Link>
           </div>
+          {user && 
+              <div className="home">
+              <Link to="/addblogs" className="menu_content">
+                Add Blogs
+              </Link>
+            </div>
+          }
           <div className="menu_btn">
             <BuyNow />
           </div>
