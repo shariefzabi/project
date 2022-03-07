@@ -1,13 +1,14 @@
 import React from "react";
 import bar from "./asset/group2.png";
 import cross from "./asset/group35.png";
-import triangle from "./asset/Triangle.png";
+import triangle from "./asset/triangle.png";
 import { Link } from "react-router-dom";
 import "./app_header.scss";
-import BuyNow from "../../modules/ordercreation/components/ordercreation";
+// import BuyNow from "../../modules/ordercreation/components/ordercreation";
 import Login from "../../modules/login/components/login";
 import { connect } from "react-redux";
 import LocationPopUp from "../../modules/locationPopupPage/LocationPopUp";
+
 class Header extends React.Component {
   render() {
     console.log('header values::', this.props);
@@ -128,7 +129,7 @@ class Header extends React.Component {
             </div>
           }
           <div className="menu_btn">
-            <BuyNow />
+            {/* <BuyNow /> */}
             {/* <LocationPopUp /> */}
           </div>
           {!user && <div className="menu_btn">
