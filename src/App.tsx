@@ -4,7 +4,7 @@ import Home from './modules/home/Home';
 import { BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
 import Header from './components/header/app_header';
 import LandingPage from './modules/landing_page/LandingPage';
-import Aboutus from './modules/about_us/aboutus';
+import Aboutus from './modules/about_us/Aboutus';
 import Blog from './modules/blog/final';
 import Blogform from './modules/addblogpage/blogform'
 

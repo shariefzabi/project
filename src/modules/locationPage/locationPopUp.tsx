@@ -55,7 +55,7 @@ export default function PopUp(prop:any){
         aria-describedby="modal-modal-description"
         sx={{overflow:'auto'}}
         >
-          <div className='login-modal-container'>
+          <div className='location-modal-container'>
           <div id="modal-modal-description" >
           
 
@@ -69,7 +69,7 @@ export default function PopUp(prop:any){
         </article>
 
 
-        {!isAdding && <div className="mt-3 addLocbtn">
+        {!isAdding && <div className=" addLocbtn mt-3">
           <p className=" pLoc d-inline">Can&#39;t&#32;find&#32;your&#32;location&#63;</p>
           <button className="btn-success btn-add ms-5" type="button" onClick={startAddingHandler}>Add&#32;Location</button>
         </div>}
