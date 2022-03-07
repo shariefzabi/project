@@ -2,7 +2,7 @@ import React from "react";
 import "./product.css";
 // import ReactDOM from 'react-dom';
 import { useFormik } from "formik";
-// import { connect } from "react-redux";
+import { connect } from "react-redux";
 
 const validateProduct = (productData: any) => {
   const errors: any = {};
@@ -54,12 +54,12 @@ function ProductDetails(props: any) {
       location: "Select Location"
     },
     validate: validateProduct,
-    onSubmit: (createProduct: any) => {
+    onSubmit: (productDetails: any) => {
       // alert(JSON.stringify(values));
       // values.preventDefault();
       // console.log(values);
-      console.log("New Product:", createProduct);
-      props.store_products(createProduct);
+      console.log("Latest Product:", productDetails);
+      props.store_products(productDetails);
     }
   });
 
@@ -217,9 +217,9 @@ function ProductDetails(props: any) {
                     name="create"
                     id="createButton"
                     className="btn btn-primary"
-                    // onClick={() => {
-                    //   props.store_productdetails(productDetails);
-                    // }}
+                  // onClick={() => {
+                  //   props.store_productdetails(productDetails);
+                  // }}
                   >
                     Create
                   </button>
@@ -241,20 +241,20 @@ function ProductDetails(props: any) {
   );
 }
 
-export default ProductDetails;
-// const mapStateToProps = (state: any) => {
-//   console.log(state);
+// export default ProductDetails;
+const mapStateToProps = (state: any) => {
+  console.log(state);
 
-//   return {
-//     redux: state
-//   };
-// };
+  return {
+    redux: state
+  };
+};
 
-// const mapDispatchToProps = (dispatch: Function) => {
-//   return {
-//     store_products: (createProduct: any) =>
-//       dispatch({ type: "store_products", createProduct })
-//   };
-// };
+const mapDispatchToProps = (dispatch: Function) => {
+  return {
+    store_products: (productDetails: any) =>
+      dispatch({ type: "store_products", productDetails })
+  };
+};
 
-// export default connect(mapStateToProps, mapDispatchToProps)(ProductDetails);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductDetails);
