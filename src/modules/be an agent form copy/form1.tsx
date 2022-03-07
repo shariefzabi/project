@@ -153,7 +153,7 @@ class BeanAgentPopup extends React.Component<any,any>  {
         aria-describedby="modal-modal-description"
         sx={{overflow:'auto'}}
         >
-            <a className="btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Be an Agent</a>
+            {/* <a className="btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Be an Agent</a> */}
 
             {/* <div className="modal fade" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true"> */}
                 {/* <div className="modal-dialog"> */}
