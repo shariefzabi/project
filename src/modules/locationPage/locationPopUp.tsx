@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import Modal from '@mui/material/Modal';
 import axios from 'axios';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useNavigationType } from "react-router-dom";
 import { connect } from "react-redux";
+import redux from 'react-redux';
 import "./locationPopUp.css";
 
 
 
- function PopUp(prop: any) {
+export default function PopUp(prop: any) {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
   const handleOpen = () => setOpen(true);
@@ -16,18 +17,15 @@ import "./locationPopUp.css";
   let [isAdding, setIsAdding] = useState(false)
   let [newLocation, setNewLocation] = useState('')
   let [newLocationErr, setNewLocationErr] = useState('')
-  let [selectedLocation,setSelectedLocation]=useState('')
-
 
   let [toggleflag, setToggleFlag] = useState(true);
 
-  const continueHandler=(e: any) =>{
-    e.preventDefault();
-     navigate("/products"); setToggleFlag(false) 
-    
-    prop.setLocationName(selectedLocation)
+  // function popUproute(e: any) {
+  //   e.preventDefault();
+  //   setToggleFlag(false)
+  //   prop.pop_up_toggle(toggleflag)
 
-  }
+  // }
 
 
   //error if location already
@@ -36,7 +34,7 @@ import "./locationPopUp.css";
 
     if (e.target.name === "newLocation") {
       let enteredLocation = e.target.value;
-      if (enteredLocation === undefined || enteredLocation.length === 0) {
+      if (enteredLocation == undefined || enteredLocation.length === 0) {
         setNewLocationErr("Location field should not be empty")
         e.target.classList.add("field-error")
       }
@@ -73,7 +71,7 @@ import "./locationPopUp.css";
     e.preventDefault();
      
 
-    if (newLocationErr === "") {
+    if (newLocationErr == "") {
       addNewLocation()
       setIsAdding(false);
     }
@@ -117,11 +115,7 @@ import "./locationPopUp.css";
   //   setIsAdding(false);
   // }
 
- const locationHandler=(e:any)=>{
-  setSelectedLocation(e.target.value)
- }
- 
- console.log(selectedLocation)
+
 
   return (
 
@@ -179,11 +173,8 @@ import "./locationPopUp.css";
                   <div className="dropDown " >
                     <select className="form-select dropdownToggle"
                       placeholder="Location"
-                      onChange={locationHandler}
                       onClick={fetchLocations}
-                    
                       required>
-                        
 
                       <option className="dropdownItem" selected disabled value="" hidden>Location</option>
                       {
@@ -192,22 +183,15 @@ import "./locationPopUp.css";
                             <option className="dropdownItem" >
                               {location}
                             </option>
-                            
                           )
-                          
                         })
                       }
-                      {/* console.log(option.value) */}
-                      setSelectedLocation(option.value)
-                   
-                     
 
                     </select>
-                  </div>
-                  
 
+                  </div>
                   {/* <Link to="/products"> */}
-                  <button className="btn-success btn-cnt" type="submit" onClick={continueHandler}>Continue</button>
+                  <button className="btn-success btn-cnt" type="submit" onClick={() => { navigate("/products"); setToggleFlag(false) }}>Continue</button>
                   {/* </Link> */}
 
 
@@ -223,20 +207,19 @@ import "./locationPopUp.css";
 
   )
 }
-const mapStateToProps = (state: any) => {
-  console.log(state);
+// const mapStateToProps = (state: any) => {
+//   console.log(state);
 
-  return {
-    redux: state
-  }
-}
+//   return {
+//     redux: state
+//   }
+// }
 
-const mapDispatchToProps = (dispatch: Function) => {
-  return {
-    // pop_up_toggle: (toggleflag: any) => dispatch({ type: 'toggle_flag', payload: toggleflag })
-    setLocationName: (locName: any) => dispatch({ type: 'storeLocname', payload: locName })
-  }
-}
+// const mapDispatchToProps = (dispatch: Function) => {
+//   return {
+//     pop_up_toggle: (toggleflag: any) => dispatch({ type: 'toggle_flag', payload: toggleflag })
+//   }
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PopUp);
+// export default connect(mapStateToProps, mapDispatchToProps)(PopUp);
 

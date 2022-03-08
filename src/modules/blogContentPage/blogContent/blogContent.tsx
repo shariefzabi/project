@@ -1,7 +1,7 @@
 import React from "react"
 import "./assets/blogContent.css"
-import axios from "axios"
 
+<<<<<<< HEAD
 class Blogcontent extends React.Component<any, any>{
     constructor(props: any) {
         super(props)
@@ -22,13 +22,19 @@ class Blogcontent extends React.Component<any, any>{
     }
     render() {
         return (
+=======
+class Blogcontent extends React.Component{
+    render(){
+        return(
+>>>>>>> 0c3dbcd94fa347316cbcfaa458e83bb71983ee58
             <div>
                 <div className="main-box">
                     <div className="top-buttons">
-                        <button type="button" className="btn-success rightcarosel"></button>
-                        <button type="button" className="btn-primary leftcarosel"></button>
+                        <button type="button" className="btn-success"></button>
+                        <button type="button" className="btn-primary"></button>
                     </div>
                 </div>
+<<<<<<< HEAD
                {this.state.blogs.map((e:any,i:any)=>{
                    {
                        if(i===this.state.id){
@@ -49,6 +55,12 @@ class Blogcontent extends React.Component<any, any>{
                     <div className="contenttitle">
                         <p className="title1">THE MERIT OF RUNNING AN AGRICULTURAL BUSINESS IN NIGERIA 2019</p>
                         <p className="blogdate">july 12 2019</p>
+=======
+                <section>
+                    <div className="title">
+                        <h1>THE MERIT OF RUNNING AN AGRICULTURAL BUSINESS IN NIGERIA 2019</h1>
+                        <p>july 12 2019</p>
+>>>>>>> 0c3dbcd94fa347316cbcfaa458e83bb71983ee58
                     </div>
                 </section>
                 <section className="discription">
@@ -82,11 +94,11 @@ class Blogcontent extends React.Component<any, any>{
                     <p className="txt">The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections
                         1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact
                         original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
-                </section> */}
+                </section>
             </div>
         )
     }
 
-
+    
 }
 export default Blogcontent;

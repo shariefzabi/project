@@ -8,7 +8,7 @@
 } */
 
 .main-box{
-    width: 100%;
+    width: 1500px;
     height: 619.86px;
     background-image: url('./rectangle.png');
     background-size: cover;
@@ -18,12 +18,12 @@
     height: 151px;
     border-radius: 0.5px;
     position: relative;
-    top: 65%;
-    left: 90%;
+    top: 400px;
+    left: 1278px;
     
 }
 
-.rightcarosel{
+.btn-success{
     width: 115.5px;
     height: 75.81px;
     background-image: url('./rightArrow.png');
@@ -32,7 +32,7 @@
     border-radius: 0.5px;
 }
 
-.leftcarosel{
+.btn-primary{
     width: 115.5px;
     height: 75.81px;
     background-image: url('./leftArrow.png');
@@ -41,7 +41,7 @@
     border-radius: 0.5px;
 }
 
-.contenttitle{
+.title{
     width:54.437rem;
     height:5rem;
     line-height: 2.5rem;
@@ -50,7 +50,7 @@
     
 }
 
-.blogdate{
+.title p{
     color:#2078BF;
     font-weight: 400;
     font-size: 22px;
@@ -70,10 +70,10 @@
 
 }
 
-.title1{
-    font-weight:400;
+h1{
+    font-weight:700;
     font-size: 2.25rem;
-    font-size:2.635vw;
+     font-size:2.635vw;
     font-size: 2.26rem;
     color:#2078BF;
 }

@@ -112,13 +112,14 @@ class PaymentMethod extends React.Component<any, any> {
   }
   submitHandler = (e: any) => {
     e.preventDefault()
-    let { month, year, card_number, cvv_number } = this.state;
+    let { month, year, payment, card_number, cvv_number } = this.state;
 
     console.log("carddetails", { month, year, card_number, cvv_number })
     this.props.setCardDetails({ month, year, card_number, cvv_number })
     let cardDetails = {
 
       "cardDetails": {
+        "payment": payment,
         "cardNumber": card_number,
         "Month": month,
         "year": year,
