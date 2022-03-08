@@ -10,12 +10,14 @@ class Blogcontent extends React.Component<any, any>{
             id: 0,
 
         }
+
+    }
+    componentDidMount() {
         axios.get("http://localhost:3005/blogs")
             .then(res => {
-                // console.log(res.data);
-                this.setState({ blogs: res.data })
-                console.log(this.state.blogs);
-
+                res.data.map((e: any, i: any) => {
+                    this.setState({ blogs: [...this.state.blogs, e.blogs] })
+                })
             })
     }
     render() {
@@ -27,23 +29,22 @@ class Blogcontent extends React.Component<any, any>{
                         <button type="button" className="btn-primary leftcarosel"></button>
                     </div>
                 </div>
-                {
-                    this.state.blogs.forEach((e: any, i: any) => {
-                        // if (i === this.state.id) {
-                            console.log(e.blogs.title);
-                            
-                            return(
-                                <div>
-                                    <div className="contenttitle">
-                                        <p className="title1">{e.blogs.title}</p>
-                                        <p className="blogdate">july 12 2019</p>
-                                    </div>
-                                </div>
-                            )
-
-                        // }
-                    })
-                }
+               {this.state.blogs.map((e:any,i:any)=>{
+                   {
+                       if(i===this.state.id){
+                           return(<>
+                           <div className="contenttitle">
+                                <p className="title1">{e.title}</p>
+                                <p className="blogdate">{e.date.slice(0,10)}</p>
+                           </div>
+                           <div className="discription">
+                            <p className="txt">{e.about}</p>
+                           </div>
+                           </>)
+                       }
+                   }
+               })}
+            
                 {/*<section>
                     <div className="contenttitle">
                         <p className="title1">THE MERIT OF RUNNING AN AGRICULTURAL BUSINESS IN NIGERIA 2019</p>
