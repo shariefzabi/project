@@ -47,6 +47,7 @@
   line-height: 1.5rem;
   color: #2078bf;
   margin-top: 1.875rem;
+  margin-bottom:1.875rem;
 }
 
 .pLoc {
@@ -105,6 +106,7 @@
   width: 22.86vw;
   color: #838383;
   text-align: start;
+ 
 }
 
 .dropDown .dropdownItem {
