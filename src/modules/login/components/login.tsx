@@ -1,4 +1,4 @@
-import { useState} from 'react';
+import { useEffect, useState} from 'react';
 import { connect } from "react-redux";
 import Signup from './signup';
 import "./assets/login.scss";
@@ -8,12 +8,16 @@ import axios from 'axios';
 // import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 
-
 function Login(props:any) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  useEffect (()=>{
+    return ()=>{
+      setOpen(false)
+    }
+  },[])
 
 
   const [username, setUsername] = useState("");
@@ -22,6 +26,9 @@ function Login(props:any) {
   const [usernameErrMsg, setUsernameErrMsg] = useState("");
   const [passwordErrMsg, setPasswordErrMsg] = useState("");
   const [displaySignup, setDisplaySignup] = useState(false);
+
+
+
 
   const validations = (e: any) => {
 
@@ -54,8 +61,7 @@ function Login(props:any) {
         .then( (res:any)=>{
           if (res.data == "Invalid credentials")setUserError(res.data)
           else{
-            props.setUser(res.data);
-            handleClose();}
+            props.setUser(res.data);}
         })
         .catch((err:any)=>console.log(" User Login up Error",err));
   }

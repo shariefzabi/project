@@ -6,10 +6,6 @@ interface initialState{
     agent:any
 }
 
-
-
-
-
 const appInitialstate:initialState = {
     user: null,
     products:[],
@@ -17,17 +13,8 @@ const appInitialstate:initialState = {
     cardDetails:null,
     agent:null
 }
-function appReducer(state = appInitialstate, action: any) {
-    // console.log("from Reducer::::::",action);
-    // console.log("action.deliveryDetails",action.deliveryDetails,state.deliveries,state.users);
-     
+function appReducer(state = appInitialstate, action: any) {   
     switch (action.type) {
-        // case 'ADD':
-        //     return{...state,counter:state.counter+1}
-        // case 'SUBTRACT':
-        //     return{...state,counter:state.counter-1}
-        // default:
-        //     return stateorders{orderid:"",products:{},deliveries:{}}
         case 'logout':{
             return {...state, user: null};
         }
