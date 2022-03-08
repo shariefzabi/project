@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import './deliverydetails.scss'
 import { connect } from "react-redux";
 import axios from 'axios'
-import PaymentMethod2 from '../../paymentMethod/paymentMethod'
+// import PaymentMethod2 from '../../paymentMethod/paymentMethod'
+import Orderdisplay from "../orderdisplay/orderdisplay";
 
 class Deliverydetails extends React.Component<any, any>{
     constructor(props: any) {
@@ -81,9 +82,11 @@ class Deliverydetails extends React.Component<any, any>{
 
     }
     render() {
-        let { deliveryloc, deliveryperiod, deliverymode } = this.state;
+            
+        let { deliveryloc, deliveryperiod, deliverymode,orderdisplayFlag} = this.state;
         return (
             < >
+            {orderdisplayFlag &&
             <div className='deliverydetailspage'>
                 <div className="modal-body">
                     <div className="text-center popupheading">
@@ -115,13 +118,16 @@ class Deliverydetails extends React.Component<any, any>{
                             <p className="text-danger err">{this.state.deliverymodeErr}</p>
                         </div>
                         <div className="mb-3 text-center">
-                            <button type="submit" role="button" className="btn btn-success continuebutton" data-bs-target="#exampleModalPayment">Continue</button>
+                            <button type="submit" role="button" className="btn btn-success continuebutton" onClick={()=>this.setState({orderdisplayFlag:false})}>Continue</button>
                         </div>
 
                     </form>
                 </div>
             </div>
-                <PaymentMethod2></PaymentMethod2>
+            }
+            {!orderdisplayFlag  &&
+                <Orderdisplay></Orderdisplay>
+            }
             </>
             
         )
