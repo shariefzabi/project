@@ -29,7 +29,7 @@ class Blogform extends React.Component<any, any>{
             .then(res => {
                 this.setState({ blogs: res.data, id: res.data.length })
             })
-        if(this.state.topicFlag === "off"){
+        if(this.state.topicFlag === "off" && this.state.topic >= 300){
         axios.post("http://localhost:3005/addblogs", data)
             .then((res: any) => {
                 if (res.data == "success") {
@@ -41,6 +41,7 @@ class Blogform extends React.Component<any, any>{
             .catch((err: any) => console.log("can't add the blog", err));
         }else{
             this.validations()
+            this.validate()
         }
     }
 
@@ -57,19 +58,19 @@ class Blogform extends React.Component<any, any>{
             }
         }
     }
-    // validate = () => {
-    //     if (this.state.text1 == "" || this.state.text1.length === 1) {
-    //         this.setState({ dicErrMsg: "Please enter the Description." })
-    //         console.log("errr");
+    validate = () => {
+        if (this.state.text1 == "" || this.state.text1.length === 1) {
+            this.setState({ dicErrMsg: "Please enter the Description." })
+            console.log("errr");
             
-    //     } else {
-    //         if(this.state.text1.length < 300 ){
-    //         this.setState({ dicErrMsg: "the Entered the Description in below 300 words "})}
-    //         else{
-    //             this.setState({topicErrMsg: "enter",})
-    //         }
-    //     }
-    // }
+        } else {
+            if(this.state.text1.length < 300 ){
+            this.setState({ dicErrMsg: "the Entered the Description in below 300 words "})}
+            else{
+                this.setState({topicErrMsg: "",disFlag:false})
+            }
+        }
+    }
 
 
     render() {
@@ -84,7 +85,7 @@ class Blogform extends React.Component<any, any>{
 
                     <div className="container">
                         <h2>ADD BLOG</h2>
-                        <form className="needs-validation" onSubmit={(e) => { this.submitHandler(e, { "topic": topic, "about": text1, "id": id + 1 }) }}>
+                        <form className="needs-validation" onSubmit={(e) => { this.submitHandler(e, { title: topic, about: text1, id: id+1 }) }}>
                             <div className="inner">
                                 <div className=" box">
                                     <p>Fields with <span className="text-danger">*</span> are required</p>
@@ -108,8 +109,13 @@ class Blogform extends React.Component<any, any>{
                                 </div>
                                 <div className="box">
                                     <label className="me-3 mt-3"><b>Description<span className="text-danger">*</span></b></label>
-                                    <Editor style={{ height: '320px' }} value={text1} onTextChange={(e) => { this.setState({ text1: e.textValue }) }} />
+                                    <Editor style={{ height: '320px' }} value={text1} onTextChange={(e) => { this.setState({ text1: e.textValue}) }} />
                                 </div>
+                                {disFlag && <p className="text-danger ms-5">{dicErrMsg}</p> 
+                        
+                                }
+                                
+                               
                                 <div className="mt-3 text-center">
                                     <button type="submit" className="btn form_button btn-success ">
                                         Save
