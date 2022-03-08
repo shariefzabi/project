@@ -112,7 +112,7 @@ export default function PopUp(prop: any) {
 
     <div>
       <button className="pt-2 buy_button btn  text-light"
-        onClick={() => { handleOpen() }}>Buy Now</button>
+        onClick={() => { handleOpen(); setToggleFlag(true) }}>Buy Now</button>
       {toggleflag && <Modal
         className="d-flex modalContainer"
         open={open}
