@@ -5,7 +5,7 @@ class Comment extends React.Component {
 
     render() {
         return (
-            <section className="client Comments">
+            <section className="clients">
                 <div className="d-flex justify-content-between head-part">
                     <h2>Satisfied Client Comments</h2>
                     <aside className="arrows align-self-center">
@@ -18,7 +18,7 @@ class Comment extends React.Component {
                 <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
                     <div className="carousel-inner">
                         <div className="carousel-item active">
-                            <div className="d-flex">
+                            <div className="d-lg-flex">
                                 <div className="card p-4 m-3">
                                     <p className="carousel-description">I really love the product and the delight coupons you
                                         guys always serve me with</p>

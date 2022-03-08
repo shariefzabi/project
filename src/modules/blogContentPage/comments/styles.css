@@ -39,3 +39,13 @@
 .clients p{
     color: #838383;
 }
+
+@media (max-width:640px){
+    .clients .card{
+        width: 300px;
+    }
+    .arrows{
+        display:none;
+    }
+}
+
