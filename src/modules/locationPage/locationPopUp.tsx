@@ -1,30 +1,31 @@
 import React, { useState } from "react";
 import Modal from '@mui/material/Modal';
 import axios from 'axios';
-import { Link } from "react-router-dom";
-// import { connect } from "react-redux";
-import redux from 'react-redux'
+import { useNavigate, useNavigationType } from "react-router-dom";
+import { connect } from "react-redux";
+import redux from 'react-redux';
 import "./locationPopUp.css";
 
 
 
- export default function PopUp(prop: any) {
+export default function PopUp(prop: any) {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  let [locationNames, setLocationNames] = useState([])
+  let [locationNames, setLocationNames] = useState<string[]>([])
   let [isAdding, setIsAdding] = useState(false)
   let [newLocation, setNewLocation] = useState('')
   let [newLocationErr, setNewLocationErr] = useState('')
 
   let [toggleflag, setToggleFlag] = useState(true);
 
-  function popUproute(e: any) {
-    e.preventDefault();
-    setToggleFlag(false)
-    prop.pop_up_toggle(toggleflag)
+  // function popUproute(e: any) {
+  //   e.preventDefault();
+  //   setToggleFlag(false)
+  //   prop.pop_up_toggle(toggleflag)
 
-  }
+  // }
 
 
   //error if location already
@@ -49,8 +50,17 @@ import "./locationPopUp.css";
           setNewLocationErr(fullNameErrMsg)
           e.target.classList.add("field-error")
         } else {
-          e.target.classList.remove("field-error")
-          setNewLocationErr("")
+          let valid = locationNames.includes(enteredLocation)
+          console.log(valid)
+          if(valid){
+            let fullNameErrMsg = "already exists in list"
+            setNewLocationErr(fullNameErrMsg)
+            e.target.classList.add("field-error")
+          }else{
+            e.target.classList.remove("field-error")
+            setNewLocationErr("")
+          }
+         
         }
       }
 
@@ -59,14 +69,14 @@ import "./locationPopUp.css";
   }
   const LocationSubmitHandler = (e: any, newLocation: any) => {
     e.preventDefault();
-
+     
 
     if (newLocationErr == "") {
       addNewLocation()
       setIsAdding(false);
     }
 
-
+   setNewLocation("")
     console.log(newLocation)
   }
 
@@ -109,10 +119,11 @@ import "./locationPopUp.css";
 
   return (
 
-    <div className="d-flex">
+    <div>
       <button className="pt-2 buy_button btn  text-light"
-        onClick={() => { handleOpen() }}>Buy Now</button>
-      <Modal
+        onClick={() => { handleOpen(); setToggleFlag(true) }}>Buy Now</button>
+      {toggleflag && <Modal
+        className="d-flex modalContainer"
         open={open}
         onClose={handleClose}
         aria-describedby="modal-modal-description"
@@ -137,7 +148,7 @@ import "./locationPopUp.css";
                   <button className="btn-success btn-add ms-5" type="button" onClick={startAddingHandler}>Add&#32;Location</button>
                 </div>}
 
-                {isAdding && <form className="mt-3 needs-validation ms-5"
+                {isAdding && <form className="d-inline mt-3 needs-validation ms-5"
                   onSubmit={(e) => LocationSubmitHandler(e, { newLocation })} >
                   <label htmlFor="ulocation" className="form-label"></label>
                   <input className="addLocation "
@@ -150,11 +161,12 @@ import "./locationPopUp.css";
                     onChange={(e) => setNewLocation(e.target.value)}
 
                     required />
-                  <p className="text-danger">{newLocationErr}</p>
+                 
 
-                  <button className="btn-success btn-add" type="submit" >
+                  <button className="d-inline btn-success btn-add" type="submit" >
                     Save&#32;Location
                   </button>
+                  <p className="text-danger ms-5 mb-0">{newLocationErr}</p>
                 </form>}
 
                 <form className="needs-validation" >
@@ -178,18 +190,18 @@ import "./locationPopUp.css";
                     </select>
 
                   </div>
-                  <Link to="/products">
-                  <button className="btn-success btn-cnt" type="submit" onClick={(e) => popUproute(e)}>Continue</button>
-                  </Link>
+                  {/* <Link to="/products"> */}
+                  <button className="btn-success btn-cnt" type="submit" onClick={() => { navigate("/products"); setToggleFlag(false) }}>Continue</button>
+                  {/* </Link> */}
 
-                 
+
 
                 </form>
               </main>
             </div >
           </div>
         </div>
-      </Modal>
+      </Modal>}
 
     </div>
 
