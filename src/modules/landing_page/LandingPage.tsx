@@ -3,21 +3,22 @@ import "./assets/landing_page.scss";
 // import Menu from "./menubar/menu";
 import { connect } from 'react-redux'
 import BuyNow from "../ordercreation/components/ordercreation";
-import Shop from '../locationPage/shoppingCart'
-class LandingPage extends React.Component<any, any>{
-    constructor(props: any) {
-        super(props);
 
-    }
+// import ProductDetails from "../locationPage/productDetailsPage/ProductDetails";
+class LandingPage extends React.Component<any, any>{
+    // constructor(props: any) {
+    //     super(props);
+
+    // }
 
     render() {
-        console.log("flag", this.props.state.toggleflag);
-        let flag = this.props.state.toggleflag
+        // console.log("flag", this.props.state.toggleflag);
+        // let flag = this.props.state.toggleflag
         return (
 
             <>
-                {
-                    flag && <main>
+                
+                      <main>
                         <section className="d-flex order-livestock">
                             <article>
 
@@ -417,10 +418,10 @@ class LandingPage extends React.Component<any, any>{
 
                         </section>
                     </main>
-                }
-                {
-                    !flag && <Shop></Shop>
-                }
+                
+                
+                     
+                
 
                 {/* <footer className="landing-footer">
                     <section >

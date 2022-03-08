@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import Modal from '@mui/material/Modal';
 import axios from 'axios';
+import { useNavigate, useNavigationType } from "react-router-dom";
 import { connect } from "react-redux";
-import redux from 'react-redux'
+import redux from 'react-redux';
 import "./locationPopUp.css";
 
 
 
-function PopUp(prop: any) {
+export default function PopUp(prop: any) {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   let [locationNames, setLocationNames] = useState<string[]>([])
@@ -18,12 +20,12 @@ function PopUp(prop: any) {
 
   let [toggleflag, setToggleFlag] = useState(true);
 
-  function popUproute(e: any) {
-    e.preventDefault();
-    setToggleFlag(false)
-    prop.pop_up_toggle(toggleflag)
+  // function popUproute(e: any) {
+  //   e.preventDefault();
+  //   setToggleFlag(false)
+  //   prop.pop_up_toggle(toggleflag)
 
-  }
+  // }
 
 
   //error if location already
@@ -117,10 +119,11 @@ function PopUp(prop: any) {
 
   return (
 
-    <div className="d-flex">
+    <div>
       <button className="pt-2 buy_button btn  text-light"
-        onClick={() => { handleOpen() }}>Buy Now</button>
-      <Modal
+        onClick={() => { handleOpen(); setToggleFlag(true) }}>Buy Now</button>
+      {toggleflag && <Modal
+        className="d-flex modalContainer"
         open={open}
         onClose={handleClose}
         aria-describedby="modal-modal-description"
@@ -187,33 +190,36 @@ function PopUp(prop: any) {
                     </select>
 
                   </div>
+                  {/* <Link to="/products"> */}
+                  <button className="btn-success btn-cnt" type="submit" onClick={() => { navigate("/products"); setToggleFlag(false) }}>Continue</button>
+                  {/* </Link> */}
 
-                  <button className="btn-success btn-cnt" type="submit" onClick={(e) => popUproute(e)}>Continue</button>
+
 
                 </form>
               </main>
             </div >
           </div>
         </div>
-      </Modal>
+      </Modal>}
 
     </div>
 
   )
 }
-const mapStateToProps = (state: any) => {
-  console.log(state);
+// const mapStateToProps = (state: any) => {
+//   console.log(state);
 
-  return {
-    redux: state
-  }
-}
+//   return {
+//     redux: state
+//   }
+// }
 
-const mapDispatchToProps = (dispatch: Function) => {
-  return {
-    pop_up_toggle: (toggleflag: any) => dispatch({ type: 'toggle_flag', payload: toggleflag })
-  }
-}
+// const mapDispatchToProps = (dispatch: Function) => {
+//   return {
+//     pop_up_toggle: (toggleflag: any) => dispatch({ type: 'toggle_flag', payload: toggleflag })
+//   }
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PopUp);
+// export default connect(mapStateToProps, mapDispatchToProps)(PopUp);
 

@@ -1,24 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
 
+.modalContainer {
+  overflow: hidden;
+}
 
-.location-modal-container{
+.location-modal-container {
   width: 62.27vw;
-   /* height: 50px; */
-  transform: 'translate(-50%, -50%)';
-  border: '2px solid #000';
+  transform: "translate(-50%, -50%)";
   background-color: #ffffff;
-  overflow:hidden;
+  overflow: hidden;
   border-radius: 5px;
- 
-  /* margin-top :8.5rem; */
- margin:8.5rem auto ;
-
+  margin: auto;
 }
 .buy_button {
-  background-color: #2078BF;
+  background-color: #2078bf;
   margin-right: 2.8%;
+  border: 2px solid #00c3ff !important;
   color: #ffffff;
-  
 }
 .popUp {
   display: flex;
@@ -59,7 +57,7 @@
   color: gray;
   margin-left: 5rem;
 }
-.addLocbtn{
+.addLocbtn {
   margin: auto;
   justify-content: center;
 }
@@ -67,7 +65,6 @@
   margin-top: 3.375rem;
   margin-bottom: 3.375rem;
 }
- 
 
 /* .dropdown .dropdown-menu {
   padding: 0;
@@ -146,10 +143,7 @@
   background: #06864d;
   border: none;
   border-radius: 5px;
- 
-  
 }
-
 
 .addLocation {
   margin-right: 1rem;

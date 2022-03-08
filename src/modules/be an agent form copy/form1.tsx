@@ -115,20 +115,26 @@ class BeanAgentPopup extends React.Component<any,any>  {
     }
      handleOpen = () => this.setState({openPopup:true});
      handleClose = () => this.setState({openPopup:false});
-    agentSubmitHandler = (e: any) => {
+    agentSubmitHandler = (e: any  ) => {
         let {
             name, agent,number, email,conadd,busadd,city
         } = this.state;
         e.preventDefault();
         // console.log("userDetails:", userDetails);
 
-        // axios.post("http://localhost:3005/users/signup",{
-        //     fullName, agent,number, email,contactAddress,businessAddress,City
-        // })
-        // .then((res:any)=>{
-           
-        // })
-        // .catch((err:any)=>console.log(" User Sign up Error",err));
+        axios.post("http://localhost:3005/agent/add-agent",{
+            name, agent,number, email,conadd,busadd,city
+        })
+        .then((res:any)=>{
+            if (res.data == "success")
+            this.props.setAgent({
+                fullName:name, agent,number, email,contactAddress:conadd,businessAddress:busadd,City:city
+            })
+         
+            else
+            this.setState({emailErrMsg:res.data})
+        })
+        .catch((err:any)=>console.log(" User Form Error",err));
         this.props.setAgent({
             fullName:name, agent,number, email,contactAddress:conadd,businessAddress:busadd,City:city
         })
@@ -154,14 +160,14 @@ class BeanAgentPopup extends React.Component<any,any>  {
                             <div className="mb-3">
                                 <img className="form-image" src={require("./assets/human.png")} />
                                 <label htmlFor="Full Name" className="col-form-label">Full Name</label>
-                                <input type="text" className="form-control " name="name" id="Full Name" placeholder="Full Name"
+                                <input type="text" className="form-control form-page" name="name" id="Full Name" placeholder="Full Name"
                                  onChange={this.changeHandler}
                                  onBlur={this.validate} required />
                                  <p className="mb-1 text-center text-danger">{this.state.nameErr}</p>
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="Agent" className="col-form-label select-label">Agent</label>
-                                <select className="form-select" defaultValue="1" name='agent' aria-label="Default select example"
+                                <select className="form-select " defaultValue="1" name='agent' aria-label="Default select example"
                                 onChange={this.changeHandler}
                                 onBlur={this.validate} >
                                     <option value="0">Individual</option>
@@ -174,7 +180,7 @@ class BeanAgentPopup extends React.Component<any,any>  {
                             <div className="mb-3">
                                 <img className="form-image" src={require("./assets/mobile.png")} />
                                 <label htmlFor="phone" className="col-form-label">Phone</label>
-                                <input type="text" className="form-control" name="number" id="phone" placeholder="Phone"
+                                <input type="text" className="form-control form-page" name="number" id="phone" placeholder="Phone"
                                 onChange={this.changeHandler}
                                 onBlur={this.validate} required />
                                 <p className="ms-1 text-center text-danger">{this.state.numberErr}</p>
@@ -182,7 +188,7 @@ class BeanAgentPopup extends React.Component<any,any>  {
                             <div className="mb-3">
                                 <img className="form-image" src={require("./assets/mail.png")} />
                                 <label htmlFor="Email" className="col-form-label">Email</label>
-                                <input type="email" className="form-control" name="email" id="Email" placeholder="Email"
+                                <input type="email" className="form-control form-page" name="email" id="Email" placeholder="Email"
                                 onChange={this.changeHandler}
                                 onBlur={this.validate} required/>
                                 <p className="ms-1 text-center text-danger">{this.state.emailErr}</p>
@@ -190,7 +196,7 @@ class BeanAgentPopup extends React.Component<any,any>  {
                             <div className="mb-3">
                                 <img className="form-image" src={require("./assets/location.png")} />
                                 <label htmlFor="Contact Address" className="col-form-label">Contact Address</label>
-                                <input type="text" className="form-control "  name="conadd" id="Contact Address" placeholder="Contact Address" 
+                                <input type="text" className="form-control form-page"  name="conadd" id="Contact Address" placeholder="Contact Address" 
                                  onChange={this.changeHandler}
                                  onBlur={this.validate} required/>
                                  <p className="ms-1 text-center text-danger">{this.state.conaddErr}</p>
@@ -198,7 +204,7 @@ class BeanAgentPopup extends React.Component<any,any>  {
                             <div className="mb-3">
                                 <img className="form-image" src={require("./assets/address1.png")} />
                                 <label htmlFor="Business Location" className="col-form-label">Business Location</label>
-                                <input type="text" className="form-control " name="busadd" id="Business Location" placeholder="Business Address"
+                                <input type="text" className="form-control form-page" name="busadd" id="Business Location" placeholder="Business Address"
                                 onChange={this.changeHandler}
                                 onBlur={this.validate} required />
                                 <p className="ms-1 text-center text-danger">{this.state.busaddErr}</p>
@@ -206,7 +212,7 @@ class BeanAgentPopup extends React.Component<any,any>  {
                             <div className="mb-3">
                                 <img className="form-image" src={require("./assets/address2.png")} />
                                 <label htmlFor="Town/City" className="col-form-label">Town/City</label>
-                                <input type="text" className="form-control "  name="city" id="Town/City" placeholder="Contact Address"
+                                <input type="text" className="form-control form-page"  name="city" id="Town/City" placeholder="Contact Address"
                                 onChange={this.changeHandler}
                                 onBlur={this.validate}  required/>
                                 <p className="ms-1 text-center text-danger">{this.state.cityErr}</p>
@@ -232,7 +238,7 @@ const mapStateToProps = (state:any) => {
 
 const mapDispatchToProps = (dispatch:Function) => {
     return {
-        setAgent: (userDetails:any) => dispatch({type: 'setAgent', payload:userDetails})
+        setAgent: (setAgent:any) => dispatch({type: 'setAgent', payload:setAgent})
     }
 }
 
