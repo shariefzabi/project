@@ -1,6 +1,7 @@
 import React from "react"
 import "./assets/blogContent.css"
 import axios from "axios"
+
 class Blogcontent extends React.Component<any, any>{
     constructor(props: any) {
         super(props)
@@ -19,14 +20,29 @@ class Blogcontent extends React.Component<any, any>{
                 })
             })
     }
+    carousel(v:any){
+        if(v){
+            if(this.state.id === this.state.blogs.length -1 ){
+                this.setState({id:0})
+            }else{
+                this.setState({id:this.state.id +1})
+            }
+        }else{
+            if(this.state.id === 0 ){
+                this.setState({id:this.state.blogs.length -1})
+            }else{
+                this.setState({id:this.state.id -1})
+            }
+        }
+    }
     render() {
         return (
 
             <div>
                 <div className="main-box">
                     <div className="top-buttons">
-                        <button type="button" className="btn-success left-carousel "></button>
-                        <button type="button" className="btn-primary right-carousel "></button>
+                        <button type="button" className="btn-success left-carousel " onClick={()=>{this.carousel(true)}}></button>
+                        <button type="button" className="btn-primary right-carousel " onClick={()=>{this.carousel(false)}}></button>
                     </div>
                 </div>
 
