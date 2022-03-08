@@ -3,23 +3,36 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import './productDetails.css';
 
+  
 
-export default function ProductDetails() {
+export default function ProductDetails(props : any) {
+
     let [products, setProducts] = useState([])
     const navigate = useNavigate();
+    // console.log(props.locName)
+    let selectedLocationName=props.locName
 
+
+   
     const fetchProducts = (async () => {
         try {
-            const response = await axios.get("http://localhost:3005/market/marketDetails")
-            setProducts(response.data);
+            const response = await axios.get("http://localhost:3005/market/marketDetails",{params:{locationName:{selectedLocationName}}})
+            setProducts(response.data.args);
         } catch (err) {
             console.error(err)
         }
     })
+    fetchProducts();
+    console.log(products)
 
 
-    const { locationName } = products
-    console.log(locationName)
+  
+    
+
+    
+
+    // const { locationName } = products
+    // console.log(locationName)
 
     return (
         <div id="productPage">
