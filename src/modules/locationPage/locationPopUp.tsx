@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import Modal from '@mui/material/Modal';
 import axios from 'axios';
-import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+// import { connect } from "react-redux";
 import redux from 'react-redux'
 import "./locationPopUp.css";
 
 
 
-function PopUp(prop: any) {
+ export default function PopUp(prop: any) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -177,8 +178,11 @@ function PopUp(prop: any) {
                     </select>
 
                   </div>
-
+                  <Link to="/products">
                   <button className="btn-success btn-cnt" type="submit" onClick={(e) => popUproute(e)}>Continue</button>
+                  </Link>
+
+                 
 
                 </form>
               </main>
@@ -191,19 +195,19 @@ function PopUp(prop: any) {
 
   )
 }
-const mapStateToProps = (state: any) => {
-  console.log(state);
+// const mapStateToProps = (state: any) => {
+//   console.log(state);
 
-  return {
-    redux: state
-  }
-}
+//   return {
+//     redux: state
+//   }
+// }
 
-const mapDispatchToProps = (dispatch: Function) => {
-  return {
-    pop_up_toggle: (toggleflag: any) => dispatch({ type: 'toggle_flag', payload: toggleflag })
-  }
-}
+// const mapDispatchToProps = (dispatch: Function) => {
+//   return {
+//     pop_up_toggle: (toggleflag: any) => dispatch({ type: 'toggle_flag', payload: toggleflag })
+//   }
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PopUp);
+// export default connect(mapStateToProps, mapDispatchToProps)(PopUp);
 

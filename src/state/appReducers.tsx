@@ -13,7 +13,7 @@ const appInitialstate: initialState = {
     orders: {},
     cardDetails: null,
     agent: null,
-    toggleflag: null
+    toggleflag: true
 }
 function appReducer(state = appInitialstate, action: any) {
     switch (action.type) {
