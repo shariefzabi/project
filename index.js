@@ -20,11 +20,11 @@ mongoClient.connect(dburl, function (err, client) {
     userCollection = db.collection("user");
     locationdbs = db.collection("locationdbs");
     let carddetails = db.collection("carddetails");
-    let invoiceCollection =db.collection("invoicedatas")
+    let invoiceCollection = db.collection("invoicedatas");
     app.set("carddetails", carddetails);
     app.set("locationCollection", locationdbs);
-    app.set("")
-    app.set("invoiceCollection", invoiceCollection)
+    app.set("");
+    app.set("invoiceCollection", invoiceCollection);
     console.log("connected to db");
   }
 });
@@ -130,8 +130,8 @@ mongoose.connect(
 let router = require("./cart/cart_details.js");
 app.use("/animal", router);
 
-const agentAPI = require("./agentform/agent.js");
-app.use("/agent", agentAPI);
+let agentAPI = require("./agentform/agent.js");
+app.use("/agents", agentAPI);
 //team 6 end
 
 // team 7

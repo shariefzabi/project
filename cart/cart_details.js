@@ -7,6 +7,7 @@ const router = express.Router();
 router.get(
   "/get-animal/:locationName/:animalId",
   expressAsyncHandler(async (req, res) => {
+    console.log(res);
     let locationName = req.params.locationName;
     let animalId = req.params.animalId;
     //   console.log(animalId);
