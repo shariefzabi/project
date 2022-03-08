@@ -40,7 +40,6 @@ class BeanAgentPopup extends React.Component<any,any>  {
 
     }
     validate = (e:any) => {
-        // console.log(e);
         let n = e.target.name;
         let v = e.target.value;
         let state = this.state;
@@ -53,7 +52,6 @@ class BeanAgentPopup extends React.Component<any,any>  {
                 this.setState({nameErr:"Accepts Alphabets, space & Min 5 to Max 10 Char"})
             }
             else
-                // state.nameErr = "";
                 this.setState({nameErr:""})
         }
         else if(n=== 'agent'){
@@ -73,7 +71,6 @@ class BeanAgentPopup extends React.Component<any,any>  {
                 this.setState({numberErr:"Maximum 10 Digits"})
             }
             else
-                // state.nameErr = "";
                 this.setState({numberErr:""})
         }
 

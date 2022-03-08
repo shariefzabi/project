@@ -9,6 +9,7 @@ import Login from "../../modules/login/components/login";
 import { connect } from "react-redux";
 import PopUp from "../../modules/locationPage/locationPopUp";
 import BeanAgentPopup from "../../modules/be an agent form copy/form1"
+import Butcherypopup from "../../modules/butchery_form_page/form2"
 
 
 class Header extends React.Component {
@@ -109,9 +110,10 @@ class Header extends React.Component {
                  <BeanAgentPopup></BeanAgentPopup>
                 </li>
                 <li>
-                  <Link to="/" className="dropdown-item">
+                <Butcherypopup></Butcherypopup>
+                  {/* <Link to="/" className="dropdown-item">
                     Butchery & Abarttoir
-                  </Link>
+                  </Link> */}
                 </li>
               </ul>
             </div>}
