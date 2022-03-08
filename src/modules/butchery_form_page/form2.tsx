@@ -2,6 +2,7 @@ import './forms.scss'
 import React from 'react';
 import { Dialog } from '@mui/material';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 class Butcherypopup extends React.Component<any, any>  {
     myRef: React.RefObject<unknown>;
@@ -11,6 +12,7 @@ class Butcherypopup extends React.Component<any, any>  {
         this.myRef = React.createRef();
         this.state = {
             name: "",
+            butchery:"",
             number: "",
             email: "",
             conadd: "",
@@ -18,6 +20,7 @@ class Butcherypopup extends React.Component<any, any>  {
             city: "",
 
             nameErr: "",
+            butcheryErr:"",
             numberErr: "",
             emailErr: "",
             conaddErr: "",
@@ -49,9 +52,14 @@ class Butcherypopup extends React.Component<any, any>  {
                 this.setState({ nameErr: "Accepts Alphabets, space & Min 5 to Max 10 Char" })
             }
             else
-                // state.nameErr = "";
                 this.setState({ nameErr: "" })
         }
+        else if(n=== 'butchery'){
+            if(v!='2'){
+                this.setState({butcheryErr: "Select Value as TWO or Change to Agent From"})
+            }
+            else
+            this.setState({butcheryErr:""})}
         else if (n === "number") {
             let re = /((\+*)((0[ -]*)*|((91 )*))((\d{12})+|(\d{10})+))|\d{5}([- ]*)\d{6}/;
             if (v === "") {
@@ -107,9 +115,9 @@ class Butcherypopup extends React.Component<any, any>  {
     }
     handleOpen = () => this.setState({ openPopup: true });
     handleClose = () => this.setState({ openPopup: false });
-    agentSubmitHandler = (e: any) => {
+    butcherySubmitHandler = (e: any) => {
         let {
-            name, agent, number, email, conadd, state, city
+            name, butchery, number, email, conadd, state, city
         } = this.state;
         e.preventDefault();
         // console.log("userDetails:", userDetails);
@@ -122,7 +130,7 @@ class Butcherypopup extends React.Component<any, any>  {
         // })
         // .catch((err:any)=>console.log(" User Sign up Error",err));
         this.props.setButchery({
-            fullName: name, agent, number, email, contactAddress: conadd, State: state, City: city
+            fullName: name, butchery, number, email, contactAddress: conadd, State: state, City: city
         })
         console.log(this.props);
 
@@ -131,18 +139,7 @@ class Butcherypopup extends React.Component<any, any>  {
         return (
 
             <>
-                <a className=""
-                    onClick={() => { this.handleOpen(); }}>Butchery</a>
-                <Dialog
-                    open={this.state.openPopup}
-                    onClose={this.handleClose}
-                    aria-describedby="modal-modal-description"
-                    sx={{ overflow: 'auto' }}
-                >
-                    {/* <a className="btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Be an Agent</a> */}
-
-                    {/* <div className="modal fade" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div className="modal-dialog"> */}
+                
                     <div className="modal-content">
                         <div className="text-center popupheading">
                             <p>Butchery/Abattoir</p>
@@ -151,12 +148,12 @@ class Butcherypopup extends React.Component<any, any>  {
                             <p>Fill the form below and our experts will get
                                 in touch with you.</p>
                         </div>
-                        <form onSubmit={this.agentSubmitHandler}>
+                        <form onSubmit={this.butcherySubmitHandler}>
 
                             <div className="mb-3">
                                 <img className="form-image" src={require("./assets/human.png")} />
                                 <label htmlFor="Full Name" className="col-form-label">Full Name</label>
-                                <input type="text" className="form-control" name="name" id="Full Name" placeholder="Full Name"
+                                <input type="text" className="form-control form-page" name="name" id="Full Name" placeholder="Full Name"
                                     onChange={this.changeHandler}
                                     onBlur={this.validate} required />
                                 <p className="mb-1 text-center text-danger">{this.state.nameErr}</p>
@@ -164,17 +161,20 @@ class Butcherypopup extends React.Component<any, any>  {
                             <div className="mb-3">
 
                                 <label htmlFor="Agent" className="col-form-label select-label">Butchery/Abattoir</label>
-                                <select className="form-select" aria-label="Default select example">
-                                    <option selected>Individual</option>
+                                <select className="form-select" defaultValue="2" name="butchery" aria-label="Default select example"
+                                 onChange={this.changeHandler}
+                                 onBlur={this.validate}>
+                                    <option value="0">Individual</option>
                                     <option value="1">One</option>
                                     <option value="2">Two</option>
                                     <option value="3">Three</option>
                                 </select>
+                                <p className="mb-1 text-center text-danger">{this.state.butcheryErr}</p>
                             </div>
                             <div className="mb-3">
                                 <img className="form-image" src={require("./assets/mobile.png")} />
                                 <label htmlFor="phone" className="col-form-label">Phone</label>
-                                <input type="number" className="form-control" name="number" id="phone" placeholder="Phone"
+                                <input type="number" className="form-control form-page" name="number" id="phone" placeholder="Phone"
                                     onChange={this.changeHandler}
                                     onBlur={this.validate} required />
                                 <p className="mb-1 text-center text-danger">{this.state.numberErr}</p>
@@ -182,7 +182,7 @@ class Butcherypopup extends React.Component<any, any>  {
                             <div className="mb-3">
                                 <img className="form-image" src={require("./assets/mail.png")} />
                                 <label htmlFor="Email" className="col-form-label">Email</label>
-                                <input type="email" className="form-control" name="email" id="Email" placeholder="Email Address"
+                                <input type="email" className="form-control form-page" name="email" id="Email" placeholder="Email Address"
                                     onChange={this.changeHandler}
                                     onBlur={this.validate} required />
                                 <p className="mb-1 text-center text-danger">{this.state.emailErr}</p>
@@ -190,7 +190,7 @@ class Butcherypopup extends React.Component<any, any>  {
                             <div className="mb-3">
                                 <img className="form-image" src={require("./assets/location.png")} />
                                 <label htmlFor="Contact Address" className="col-form-label">Contact Address</label>
-                                <input type="text" className="form-control " name="conadd" id="Contact Address" placeholder="Contact Address"
+                                <input type="text" className="form-control form-page" name="conadd" id="Contact Address" placeholder="Contact Address"
                                     onChange={this.changeHandler}
                                     onBlur={this.validate} required />
                                 <p className="mb-1 text-center text-danger">{this.state.conaddErr}</p>
@@ -198,7 +198,7 @@ class Butcherypopup extends React.Component<any, any>  {
                             <div className="mb-3">
                                 <img className="form-image" src={require("./assets/address1.png")} />
                                 <label htmlFor="State" className="col-form-label">State</label>
-                                <input type="text" className="form-control " name="state" id="State" placeholder="State"
+                                <input type="text" className="form-control  form-page" name="state" id="State" placeholder="State"
                                     onChange={this.changeHandler}
                                     onBlur={this.validate} required />
                                 <p className="mb-1 text-center text-danger">{this.state.stateErr}</p>
@@ -206,7 +206,7 @@ class Butcherypopup extends React.Component<any, any>  {
                             <div className="mb-3">
                                 <img className="form-image" src={require("./assets/address2.png")} />
                                 <label htmlFor="Town/City" className="col-form-label">Town/City</label>
-                                <input type="text" className="form-control " name="city" id="Town/City" placeholder="Town/City"
+                                <input type="text" className="form-control form-page" name="city" id="Town/City" placeholder="Town/City"
                                     onChange={this.changeHandler}
                                     onBlur={this.validate} required />
                                 <p className="mb-1 text-center text-danger">{this.state.cityErr}</p>
@@ -217,11 +217,7 @@ class Butcherypopup extends React.Component<any, any>  {
 
                         </form>
                     </div>
-                {/* </div> */}
-            {/* </div> */}
-        {/* </div > */}
-    
-</Dialog >
+        
         </>
         );
 }
@@ -238,7 +234,7 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: Function) => {
     return {
-        setAgent: (userDetails: any) => dispatch({ type: 'setButchery', payload: userDetails })
+        setButchery: (userDetails: any) => dispatch({ type: 'setButchery', payload: userDetails })
     }
 }
 
