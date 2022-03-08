@@ -36,4 +36,20 @@ router.get("/accountdetails/:id", async (req, res) => {
 
 })
 
+router.post("/details", async (req, res) => {
+    console.log(req.body)
+
+    try {
+        data = req.body
+
+    
+        const myInvoice = new Card({ data });
+        await Card.create(myInvoice);
+        res.send(myInvoice);
+    } catch (err) {
+        res.send({ message: err });
+    }
+});
+
+
 module.exports = router;

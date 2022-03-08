@@ -30,13 +30,13 @@ mongoClient.connect(dburl, function (err, client) {
 let productCost = require("./paymentMethoddetails/cardDetailsApi.js");
 let cardDetail = require("./paymentMethoddetails/cardDetailsApi.js");
 let invoice = require("./invoice/invoiceapi");
-let InvoiceUniqueID = require("./invoiceUniqueId/invoiceUniqueIDApi")
+let InvoiceUniqueID = require("./invoiceUniqueId/invoiceUniqueIDApi");
 
 // let invoice = require("./invoice/invoiceapi.js")
-app.use("/productCost", productCost);
+app.use("/product", productCost);
 app.use("/card", cardDetail);
 app.use("/invoicedetails", invoice);
-app.use("/invoice", InvoiceUniqueID)
+app.use("/invoice", InvoiceUniqueID);
 
 // end
 
@@ -64,30 +64,27 @@ app.post("/users/signup", function (req, res) {
 app.post("/users/login", function (req, res) {
   console.log("log from login users", req.body);
   let userDb = db.collection("users");
-  userDb.findOne({ _id: req.body.username, password: req.body.password }, function (err, result) {
-    if (err) console.log(err);
-    if (result == null)
-      res.send("Invalid credentials")
-    // res.send("No account found with this username, please sign up and then login");
-    else
-      res.send(result);
-  })
+  userDb.findOne(
+    { _id: req.body.username, password: req.body.password },
+    function (err, result) {
+      if (err) console.log(err);
+      if (result == null) res.send("Invalid credentials");
+      // res.send("No account found with this username, please sign up and then login");
+      else res.send(result);
+    }
+  );
 });
 
 //************ No.1 Team ************* Ending *****************************
 
-
-//team-2 storing order details 
-const orderRoutes=require('./ordercreation/orderdetails_router');
-app.use("/orders",orderRoutes);
-// app.post("/orderdetails",function(req,res){
-//   let orderdetails=req.body;
-//   console.log(orderdetails);
-//   let orderDb=db.collection("orders");
-//   orderDb.insert(orderdetails);
-//   res.send(orderdetails)
-// })
-
+//team-2 storing order details
+app.post("/orderdetails", function (req, res) {
+  let orderdetails = req.body;
+  console.log(orderdetails);
+  let orderDb = db.collection("orders");
+  orderDb.insert(orderdetails);
+  res.send(orderdetails);
+});
 //team-2 ending
 
 app.get("/", function (req, res) {
@@ -98,7 +95,6 @@ app.get("/", function (req, res) {
   console.log("query:", query);
   res.send("Welcome to Home page");
 });
-
 
 //location product details code (team 4) .....starting
 
@@ -111,7 +107,12 @@ app.use("/market", locationRoutes);
 
 mongoose.connect(
   dburl,
-  { useNewUrlParser: true, useUnifiedTopology: true },
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+
+    autoIndex: true,
+  },
   (err) => {
     if (err) throw err;
     console.log("Connected to MongoDB!!!");
@@ -119,25 +120,15 @@ mongoose.connect(
 );
 
 //location product details code (team 4) .....ending
-//TEAM-5
-//Newly created product details
 
-app.use("/",require("./Products/routes/ProductRoute.js"));
-mongoose.connect(dburl,{ useNewUrlParser: true, useUnifiedTopology: true },
-  (err) => {
-    if (err) throw err;
-    console.log("Connected to MongoDB!!!");
-  }
-  );
-
-
-
-//TEAM-5 ends
 //team 6 start
 // let animalAPI = require("./cart/cart_details.js");
 // app.use("/animal", animalAPI);
 let router = require("./cart/cart_details.js");
 app.use("/animal", router);
+
+const agentAPI = require("./agentform/agent.js");
+app.use("/agent", agentAPI);
 //team 6 end
 
 // team 7
