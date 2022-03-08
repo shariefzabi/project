@@ -1,13 +1,41 @@
-.circle{
-    font-size:50px;
-    border-radius: 50%;
+/* .clients{
+    margin-left:8.981875rem;
+    margin-top:140px;
+} */
+.arrows{
+    margin-right:0.5rem;
 }
+.clients .card{
+    width: 570px;
+    border-radius:10px;
+    justify-content: space-between;
 
-.name{
-    margin-right:25px;
-    text-decoration: none;
 }
-.email{
-    margin:0px;
-    text-decoration: none;
+.clients .carousel-description{
+    font-weight:400px;
+    font-size:14px;
+    line-height: 20px;
+    font-family: ubuntu;
+    width:264px;
+    
+}
+.clients .carousel-radio{
+    width:35px;
+    height:35px;
+    left: 180.96px;
+}
+.clients .client-details{
+    top: calc(50% - 16px/2 + 2436.27px);
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.4px;
+}
+.clients label{
+    color: #06864D;
+}
+.clients p{
+    color: #838383;
 }
