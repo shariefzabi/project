@@ -20,8 +20,11 @@ mongoClient.connect(dburl, function (err, client) {
     userCollection = db.collection("user");
     locationdbs = db.collection("locationdbs");
     let carddetails = db.collection("carddetails");
+    let invoiceCollection =db.collection("invoicedatas")
     app.set("carddetails", carddetails);
     app.set("locationCollection", locationdbs);
+    app.set("")
+    app.set("invoiceCollection", invoiceCollection)
     console.log("connected to db");
   }
 });
