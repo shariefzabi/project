@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from 'axios';
-import { useNavigate } from "react-router-dom";
 import './productDetails.css';
 
   
@@ -8,7 +7,6 @@ import './productDetails.css';
 export default function ProductDetails(props : any) {
 
     let [products, setProducts] = useState([])
-    const navigate = useNavigate();
     // console.log(props.locName)
     let selectedLocationName=props.locName
 
@@ -49,7 +47,7 @@ export default function ProductDetails(props : any) {
                         <hr />
                         <div className="card-deck d-flex ">
                             <div className="card col-4 m-2 ">
-                                <img className="card-img-top" src="..." alt="Card image cap" />
+                              
                                 <div className="card-body">
                                     <h5 className="card-id">Animal id</h5>
                                     <p className="card-price">Price</p>
@@ -58,7 +56,7 @@ export default function ProductDetails(props : any) {
                                 </div>
                             </div>
                             <div className="card col-4 m-2 ">
-                                <img className="card-img-top" src="..." alt="Card image cap" />
+                               
                                 <div className="card-body">
 
                                     <h5 className="card-id">Animal id</h5>
@@ -67,7 +65,7 @@ export default function ProductDetails(props : any) {
                                 </div>
                             </div>
                             <div className="card col-4  m-2">
-                                <img className="card-img-top" src="..." alt="Card image cap" />
+                            
                                 <div className="card-body">
 
                                     <h5 className="card-id">Animal id</h5>

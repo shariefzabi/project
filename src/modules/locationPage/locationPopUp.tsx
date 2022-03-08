@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import Modal from '@mui/material/Modal';
 import axios from 'axios';
-import { useNavigate, useNavigationType } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
-import redux from 'react-redux';
 import "./locationPopUp.css";
 
 
@@ -37,7 +36,7 @@ import "./locationPopUp.css";
 
     if (e.target.name === "newLocation") {
       let enteredLocation = e.target.value;
-      if (enteredLocation == undefined || enteredLocation.length === 0) {
+      if (enteredLocation === undefined || enteredLocation.length === 0) {
         setNewLocationErr("Location field should not be empty")
         e.target.classList.add("field-error")
       }
@@ -74,7 +73,7 @@ import "./locationPopUp.css";
     e.preventDefault();
      
 
-    if (newLocationErr == "") {
+    if (newLocationErr === "") {
       addNewLocation()
       setIsAdding(false);
     }
