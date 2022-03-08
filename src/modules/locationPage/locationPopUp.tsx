@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Modal from '@mui/material/Modal';
+import { Link } from "react-router-dom";
+import ProductDetails from "./productDetailsPage/ProductDetails"
 import axios from 'axios';
 import "./locationPopUp.css";
 
@@ -21,19 +23,19 @@ export default function PopUp(prop: any) {
 
     if (e.target.name === "newLocation") {
       let enteredLocation = e.target.value;
-      if (enteredLocation == undefined || enteredLocation.length === 0) {
+      if (enteredLocation == undefined || enteredLocation.length === 0  ) {
         setNewLocationErr("Location field should not be empty")
         e.target.classList.add("field-error")
       }
-      //  else if(locationNames.find("enteredLocation")) {
+      //  else if(locationNames.includes([enteredLocation])) {
       //   setNewLocationErr("goovinda")
       //   e.target.classList.add("field-error")
       // }
       else {
-        let nameReg = /^([a-zA-Z ]{4,15})$/
+        let nameReg = /^([a-zA-Z ]{3,20})$/
 
         if (!nameReg.test(enteredLocation)) {
-          let fullNameErrMsg = "Accepts Alphabets, space & Min 3 to Max 15 Char"
+          let fullNameErrMsg = "Accepts Alphabets, space & Min 3 to Max 20 Char"
           setNewLocationErr(fullNameErrMsg)
           e.target.classList.add("field-error")
         } else {
@@ -166,14 +168,17 @@ export default function PopUp(prop: any) {
 
                     </div>
 
-                    <button className="btn-success btn-cnt" type="submit">Continue</button>
+                    {/* <button className="btn-success btn-cnt" type="submit" >Continue</button> */}
+                    <Link  to="/ProductDetails" className="btn-success btn-cnt" type="submit" >Continue</Link>
 
                   </form>
                 </main>
               </div >
             </div>
+            
           </div>
         </Modal>
+        
 
       </div>
 

@@ -1,0 +1,77 @@
+
+#sub{
+    margin-top: 11.938rem;
+    margin-left: 8.75rem;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 0.75rem;
+    line-height: 1.5rem;
+    color: #838383;
+    text-align: left;
+   
+}
+#marketHeading{
+    width: 15.063rem;
+    height: 1.5rem;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 2.25rem;
+    line-height: 1.5;
+    color: #838383;
+}
+#locationMarketHeading{
+    height: 24px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 24px;
+    color: #838383;
+    text-align: start;
+   
+    margin-top: 1.25rem;
+
+}
+hr{
+  
+margin-right: 6.625rem;
+border: 1px solid #D5D5D5;
+
+}
+.locNames{
+    background: #FFFFFF;
+    border: 1px solid #E0E0E0;
+
+}
+.card-deck{
+    margin-right: 6.625rem;
+
+}
+.card-id{
+   
+
+ 
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+  
+
+    letter-spacing: 0.1px;
+
+    color: #838383;
+    text-align: start;
+}
+.card-price{
+  
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 24px;
+  
+
+    letter-spacing: 0.1px;
+
+    color: #838383;
+    text-align: start;
+
+}
