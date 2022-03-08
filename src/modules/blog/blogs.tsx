@@ -1,10 +1,26 @@
 import React from "react";
 import arrow from "./assets/img/Icon (1).png";
+import axios from "axios"
+import './assets/styles.css'
 
-class Blogtable extends React.Component {
+class Blogtable extends React.Component<any,any> {
+    constructor(props: any) {
+        super(props);
+        this.state = {
+            blogs: [],
+        }
+    }
+    init(){
+        axios.get("http://localhost:3005/blogs")
+            .then(res => {
+                this.setState({ blogs: res.data})
+                console.log(this.state.blogs);
+                
+            })
+    }
     render() {
         return (
-            <div>
+            <div onLoad={this.init}>
                 <section className="blog text-center">
                     <h1 >Blog</h1>
                     <span className="aboutus-content ">Home/Blog</span>
