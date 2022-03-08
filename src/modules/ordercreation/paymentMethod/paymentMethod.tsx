@@ -2,6 +2,8 @@ import React from 'react'
 import './asset/paymentMethod.scss'
 import axios from "axios"
 import { connect } from "react-redux"
+// import { useNavigate} from "react-router-dom"
+import { Link } from 'react-router-dom'
 
 class PaymentMethod extends React.Component<any, any> {
   constructor(props: any) {
@@ -17,10 +19,17 @@ class PaymentMethod extends React.Component<any, any> {
       card_numberErr: '',
       cvv_numberErr: '',
       month_yearErr: '',
-      cost: ""
+      cost: "",
+      popUpCloseFlag:true,
 
     }
   }
+
+
+  // componentDidMount() {
+  //   console.log(this.props.redux.orders)
+  // }
+
   // componentDidMount() {
   //   console.log("start");
   //   axios.get("http://localhost:3005/product/cost/1")
@@ -110,6 +119,16 @@ class PaymentMethod extends React.Component<any, any> {
     }
 
   }
+  popupClose = () => {
+    let { popUpCloseFlag } = this.state
+  
+    this.setState({ popUpCloseFlag: !popUpCloseFlag})
+    console.log(popUpCloseFlag)
+    
+
+}
+
+
   submitHandler = (e: any) => {
     e.preventDefault()
     let { month, year, payment, card_number, cvv_number } = this.state;
@@ -145,6 +164,7 @@ class PaymentMethod extends React.Component<any, any> {
   }
 
   render() {
+    // const navigate = useNavigate()
 
     return (
       <div >
@@ -225,7 +245,7 @@ class PaymentMethod extends React.Component<any, any> {
 
 
         {
-          this.state.payment == "Pay_On_Delivery" && <div className="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabIndex={-1}>
+          this.state.payment == "Pay_On_Delivery" && this.state.popUpCloseFlag&& <div className="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabIndex={-1}>
             <div className="modal-dialog modal-dialog-centered ">
               <div className="modal-content">
                 <div className="modal-body text-center">
@@ -234,7 +254,14 @@ class PaymentMethod extends React.Component<any, any> {
                   </div>
                   <h5 className='Successfully_Placed'>Order has been<br />Successfully Placed</h5>
 
-                  <button className="btn btn-success" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Continue Shopping</button>
+                  {/* <Link to="/products" className="btn btn-success">Continue Shopping</Link> */}
+                  {/* <button onClick={()=>this.redirectToProducts()} className ="btn btn-succes">continue Shopping</button> */}
+                  <Link to="/products">
+                    <button className='btn btn-success' onClick={this.popupClose}>
+                      Click Me!
+                    </button>
+                  </Link>
+
                 </div>
               </div>
             </div>
