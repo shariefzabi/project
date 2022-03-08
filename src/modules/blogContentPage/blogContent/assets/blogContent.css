@@ -23,7 +23,7 @@
     
 }
 
-.btn-success{
+.right-carousel{
     width: 115.5px;
     height: 75.81px;
     background-image: url('./rightArrow.png');
@@ -32,7 +32,7 @@
     border-radius: 0.5px;
 }
 
-.btn-primary{
+.left-carousel{
     width: 115.5px;
     height: 75.81px;
     background-image: url('./leftArrow.png');

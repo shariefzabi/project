@@ -25,8 +25,8 @@ class Blogcontent extends React.Component<any, any>{
             <div>
                 <div className="main-box">
                     <div className="top-buttons">
-                        <button type="button" className="btn-success"></button>
-                        <button type="button" className="btn-primary"></button>
+                        <button type="button" className="btn-success left-carousel "></button>
+                        <button type="button" className="btn-primary right-carousel "></button>
                     </div>
                 </div>
 
@@ -35,7 +35,7 @@ class Blogcontent extends React.Component<any, any>{
                        if(i===this.state.id){
                            return(<>
                            <div className="contenttitle">
-                                <p className="title1">{e.title}</p>
+                                <p className="title">{e.title}</p>
                                 <p className="blogdate">{e.date.slice(0,10)}</p>
                            </div>
                            <div className="discription">

@@ -14,6 +14,7 @@ import BeanAgentPopup from './modules/be an agent form copy/form1'
 import Blogtable from './modules/blog/blogs';
 import ProductDetails from './modules/locationPage/productDetailsPage/ProductDetails';
 import Invoice1 from './modules/invoice/invoicetrial'
+import Blogcontent from './modules/blogContentPage/blogContent/blogContent';
 
 
 function App() {
@@ -32,6 +33,8 @@ function App() {
             <Route path="/addblogs" element={<Blogform />}>
             </Route>
             <Route path="/products" element={<ProductDetails />}>
+            </Route>
+            <Route path="/blogcontent" element={<Blogcontent/>}>
             </Route>
           </Routes>
           <Invoice1></Invoice1>
