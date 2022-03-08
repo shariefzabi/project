@@ -9,8 +9,6 @@ import Blog from './modules/blog/blogs';
 import Blogform from './modules/addblogpage/blogform'
 
 import Footer from './components/footer/footer';
-// import Butcherypopup from './modules/butchery_form_page/form2';
-import BeanAgentPopup from './modules/be an agent form copy/form1'
 import Blogtable from './modules/blog/blogs';
 import ProductDetails from './modules/locationPage/productDetailsPage/ProductDetails';
 import Invoice1 from './modules/invoice/invoicetrial'
