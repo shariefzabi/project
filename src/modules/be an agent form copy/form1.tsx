@@ -115,36 +115,35 @@ class BeanAgentPopup extends React.Component<any,any>  {
     }
      handleOpen = () => this.setState({openPopup:true});
      handleClose = () => this.setState({openPopup:false});
-    agentSubmitHandler = (e: any  ) => {
-        let {
-            name, agent,number, email,conadd,busadd,city
-        } = this.state;
+    agentSubmitHandler = (e: any , agentDetails:any  ) => {
+        
         e.preventDefault();
         // console.log("userDetails:", userDetails);
 
-        axios.post("http://localhost:3005/agent/add-agent",{
-            name, agent,number, email,conadd,busadd,city
-        })
+        axios.post("http://localhost:3005/agent/add-agent",agentDetails)
+        // {
+        //     name, agent,number, email,conadd,busadd,city
+        // })
         .then((res:any)=>{
             if (res.data == "success")
-            this.props.setAgent({
-                fullName:name, agent,number, email,contactAddress:conadd,businessAddress:busadd,City:city
-            })
+            this.props.setAgent(agentDetails)
          
             else
             this.setState({emailErrMsg:res.data})
         })
         .catch((err:any)=>console.log(" User Form Error",err));
-        this.props.setAgent({
-            fullName:name, agent,number, email,contactAddress:conadd,businessAddress:busadd,City:city
-        })
-        console.log(this.props);
+        // this.props.setAgent({
+        //     fullName:name, agent,number, email,contactAddress:conadd,businessAddress:busadd,City:city
+        // })
+        // console.log(this.props);
         
     }
 
    render() {
     
-       
+    let {
+        name, agent,number, email,conadd,busadd,city
+    } = this.state; 
    
     return (
         <div className='be-an-agent'>
@@ -155,7 +154,7 @@ class BeanAgentPopup extends React.Component<any,any>  {
                             <p>Fill the form below and our experts will get
                                 in touch with you.</p>
                         </div>
-                        <form onSubmit={this.agentSubmitHandler}>
+                        <form onSubmit={(e) => this.agentSubmitHandler(e, { fullName:name, agent,number, email,contactAddress:conadd,businessAddress:busadd,City:city})}>
 
                             <div className="mb-3">
                                 <img className="form-image" src={require("./assets/human.png")} />
@@ -238,7 +237,7 @@ const mapStateToProps = (state:any) => {
 
 const mapDispatchToProps = (dispatch:Function) => {
     return {
-        setAgent: (setAgent:any) => dispatch({type: 'setAgent', payload:setAgent})
+        setAgent: (agentDetails:any) => dispatch({type: 'setAgent', payload:agentDetails})
     }
 }
 
