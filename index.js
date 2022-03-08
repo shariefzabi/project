@@ -59,7 +59,7 @@ app.post("/users/signup", function (req, res) {
     if (err) console.log(err);
     if (result == null) {
       userDb.insert(req.body);
-      res.send("success");
+      res.send(result);
     } else res.send("This email is already registered");
   });
 });
