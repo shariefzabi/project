@@ -20,8 +20,11 @@ mongoClient.connect(dburl, function (err, client) {
     userCollection = db.collection("user");
     locationdbs = db.collection("locationdbs");
     let carddetails = db.collection("carddetails");
+    let invoiceCollection =db.collection("invoicedatas")
     app.set("carddetails", carddetails);
     app.set("locationCollection", locationdbs);
+    app.set("")
+    app.set("invoiceCollection", invoiceCollection)
     console.log("connected to db");
   }
 });
@@ -30,13 +33,13 @@ mongoClient.connect(dburl, function (err, client) {
 let productCost = require("./paymentMethoddetails/cardDetailsApi.js");
 let cardDetail = require("./paymentMethoddetails/cardDetailsApi.js");
 let invoice = require("./invoice/invoiceapi");
-let InvoiceUniqueID = require("./invoiceUniqueId/invoiceUniqueIDApi")
+let InvoiceUniqueID = require("./invoiceUniqueId/invoiceUniqueIDApi");
 
 // let invoice = require("./invoice/invoiceapi.js")
 app.use("/product", productCost);
 app.use("/card", cardDetail);
 app.use("/invoicedetails", invoice);
-app.use("/invoice", InvoiceUniqueID)
+app.use("/invoice", InvoiceUniqueID);
 
 // end
 
@@ -56,7 +59,7 @@ app.post("/users/signup", function (req, res) {
     if (err) console.log(err);
     if (result == null) {
       userDb.insert(req.body);
-      res.send("success");
+      res.send(result);
     } else res.send("This email is already registered");
   });
 });
@@ -64,14 +67,15 @@ app.post("/users/signup", function (req, res) {
 app.post("/users/login", function (req, res) {
   console.log("log from login users", req.body);
   let userDb = db.collection("users");
-  userDb.findOne({ _id: req.body.username, password: req.body.password }, function (err, result) {
-    if (err) console.log(err);
-    if (result == null)
-      res.send("Invalid credentials")
-    // res.send("No account found with this username, please sign up and then login");
-    else
-      res.send(result);
-  })
+  userDb.findOne(
+    { _id: req.body.username, password: req.body.password },
+    function (err, result) {
+      if (err) console.log(err);
+      if (result == null) res.send("Invalid credentials");
+      // res.send("No account found with this username, please sign up and then login");
+      else res.send(result);
+    }
+  );
 });
 
 //************ No.1 Team ************* Ending *****************************
@@ -95,7 +99,6 @@ app.get("/", function (req, res) {
   res.send("Welcome to Home page");
 });
 
-
 //location product details code (team 4) .....starting
 
 //fetching complete market details(/market/marketDetails)
@@ -107,11 +110,12 @@ app.use("/market", locationRoutes);
 
 mongoose.connect(
   dburl,
-  { useNewUrlParser: true,
+  {
+    useNewUrlParser: true,
     useUnifiedTopology: true,
-    
-    autoIndex: true
-     },
+
+    autoIndex: true,
+  },
   (err) => {
     if (err) throw err;
     console.log("Connected to MongoDB!!!");
@@ -125,6 +129,9 @@ mongoose.connect(
 // app.use("/animal", animalAPI);
 let router = require("./cart/cart_details.js");
 app.use("/animal", router);
+
+const agentAPI = require("./agentform/agent.js");
+app.use("/agent", agentAPI);
 //team 6 end
 
 // team 7
