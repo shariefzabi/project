@@ -1,23 +1,25 @@
 import React, { useState } from "react";
 import axios from 'axios';
-import './productDetails.css'
+import { useNavigate } from "react-router-dom";
+import './productDetails.css';
 
 
 export default function ProductDetails() {
     let [products, setProducts] = useState([])
+    const navigate = useNavigate();
 
     const fetchProducts = (async () => {
         try {
-          const response = await axios.get("http://localhost:3005/market/marketDetails")
-          setProducts(response.data);
+            const response = await axios.get("http://localhost:3005/market/marketDetails")
+            setProducts(response.data);
         } catch (err) {
-          console.error(err)
+            console.error(err)
         }
-      })
+    })
 
-    
-   const{locationName}=products
-   console.log(locationName)
+
+    const { locationName } = products
+    console.log(locationName)
 
     return (
         <div id="productPage">
@@ -35,30 +37,30 @@ export default function ProductDetails() {
                         <div className="card-deck d-flex ">
                             <div className="card col-4 m-2 ">
                                 <img className="card-img-top" src="..." alt="Card image cap" />
-                                    <div className="card-body">
-                                        <h5 className="card-id">Animal id</h5>
-                                        <p className="card-price">Price</p>
-                                        <button type="button" className="btn btn-success">Success</button>
-                                        
-                                    </div>
+                                <div className="card-body">
+                                    <h5 className="card-id">Animal id</h5>
+                                    <p className="card-price">Price</p>
+                                    <button type="button" className="btn btn-success">Success</button>
+
+                                </div>
                             </div>
                             <div className="card col-4 m-2 ">
                                 <img className="card-img-top" src="..." alt="Card image cap" />
-                                    <div className="card-body">
-   
-                                        <h5 className="card-id">Animal id</h5>
-                                        <p className="card-price">Price</p>
-                                        <button type="button" className="btn btn-success">Success</button>
-                                    </div>
+                                <div className="card-body">
+
+                                    <h5 className="card-id">Animal id</h5>
+                                    <p className="card-price">Price</p>
+                                    <button type="button" className="btn btn-success">Success</button>
+                                </div>
                             </div>
                             <div className="card col-4  m-2">
                                 <img className="card-img-top" src="..." alt="Card image cap" />
-                                    <div className="card-body">
-                                      
-                                        <h5 className="card-id">Animal id</h5>
-                                        <p className="card-price">Price</p>
-                                        <button type="button" className="btn btn-success">Success</button>
-                                    </div>
+                                <div className="card-body">
+
+                                    <h5 className="card-id">Animal id</h5>
+                                    <p className="card-price">Price</p>
+                                    <button type="button" className="btn btn-success">Success</button>
+                                </div>
                             </div>
                         </div>
 

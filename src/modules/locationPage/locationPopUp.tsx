@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import Modal from '@mui/material/Modal';
 import axios from 'axios';
-import { Link } from "react-router-dom";
-// import { connect } from "react-redux";
-import redux from 'react-redux'
+import { useNavigate, useNavigationType } from "react-router-dom";
+import { connect } from "react-redux";
+import redux from 'react-redux';
 import "./locationPopUp.css";
 
 
 
- export default function PopUp(prop: any) {
+export default function PopUp(prop: any) {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   let [locationNames, setLocationNames] = useState([])
@@ -19,12 +20,12 @@ import "./locationPopUp.css";
 
   let [toggleflag, setToggleFlag] = useState(true);
 
-  function popUproute(e: any) {
-    e.preventDefault();
-    setToggleFlag(false)
-    prop.pop_up_toggle(toggleflag)
+  // function popUproute(e: any) {
+  //   e.preventDefault();
+  //   setToggleFlag(false)
+  //   prop.pop_up_toggle(toggleflag)
 
-  }
+  // }
 
 
   //error if location already
@@ -109,10 +110,11 @@ import "./locationPopUp.css";
 
   return (
 
-    <div className="d-flex">
+    <div>
       <button className="pt-2 buy_button btn  text-light"
         onClick={() => { handleOpen() }}>Buy Now</button>
-      <Modal
+      {toggleflag && <Modal
+        className="d-flex modalContainer"
         open={open}
         onClose={handleClose}
         aria-describedby="modal-modal-description"
@@ -150,11 +152,11 @@ import "./locationPopUp.css";
                     onChange={(e) => setNewLocation(e.target.value)}
 
                     required />
-                  <p className="text-danger">{newLocationErr}</p>
 
                   <button className="btn-success btn-add" type="submit" >
                     Save&#32;Location
                   </button>
+                  <p className="text-danger">{newLocationErr}</p>
                 </form>}
 
                 <form className="needs-validation" >
@@ -178,18 +180,18 @@ import "./locationPopUp.css";
                     </select>
 
                   </div>
-                  <Link to="/products">
-                  <button className="btn-success btn-cnt" type="submit" onClick={(e) => popUproute(e)}>Continue</button>
-                  </Link>
+                  {/* <Link to="/products"> */}
+                  <button className="btn-success btn-cnt" type="submit" onClick={() => { navigate("/products"); setToggleFlag(false) }}>Continue</button>
+                  {/* </Link> */}
 
-                 
+
 
                 </form>
               </main>
             </div >
           </div>
         </div>
-      </Modal>
+      </Modal>}
 
     </div>
 
