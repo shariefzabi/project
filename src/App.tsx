@@ -1,7 +1,7 @@
 import './App.scss';
 import Dashboard from './modules/dashboard/dashboard';
 import Home from './modules/home/Home';
-import { BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Header from './components/header/app_header';
 import LandingPage from './modules/landing_page/LandingPage';
 import Aboutus from './modules/about_us/aboutus';
@@ -13,6 +13,8 @@ import Footer from './components/footer/footer';
 import BeanAgentPopup from './modules/be an agent form copy/form1'
 import Blogtable from './modules/blog/blogs';
 import ProductDetails from './modules/locationPage/productDetailsPage/ProductDetails';
+import Invoice1 from './modules/invoice/invoicetrial'
+import Blogcontent from './modules/blogContentPage/blogContent/blogContent';
 
 
 function App() {
@@ -20,20 +22,23 @@ function App() {
     <div className="App">
       <Router>
         <div>
-          <Header/>
+          <Header />
           <Routes>
-            <Route path="/" element={<LandingPage/>}>
+            <Route path="/" element={<LandingPage />}>
             </Route>
-            <Route path="/aboutus" element={<Aboutus/>}>
+            <Route path="/aboutus" element={<Aboutus />}>
             </Route>
-            <Route path="/blog" element={<Blogtable/>}>
+            <Route path="/blog" element={<Blogtable />}>
             </Route>
             <Route path="/addblogs" element={<Blogform />}>
             </Route>
             <Route path="/products" element={<ProductDetails />}>
             </Route>
+            <Route path="/blogcontent" element={<Blogcontent/>}>
+            </Route>
           </Routes>
-          <Footer/>
+          {/* <Invoice1></Invoice1> */}
+          <Footer />
         </div>
       </Router>
       {/* <Butcherypopup></Butcherypopup> */}
