@@ -1,7 +1,7 @@
 import React from "react";
 import bar from "./asset/group2.png";
 import cross from "./asset/group35.png";
-import triangle from "./asset/Triangle.png";
+import triangle from "./asset/triangle.png";
 import { Link } from "react-router-dom";
 import "./app_header.scss";
 // import BuyNow from "../../modules/ordercreation/components/ordercreation";
@@ -10,6 +10,7 @@ import { connect } from "react-redux";
 import PopUp from "../../modules/locationPage/locationPopUp";
 import BeanAgentPopup from "../../modules/be an agent form copy/form1"
 import Butcherypopup from "../../modules/butchery_form_page/form2"
+import AgentModel from "../../modules/AgentModel(Mod) copy/AgentModel1";
 
 
 class Header extends React.Component {
@@ -107,7 +108,7 @@ class Header extends React.Component {
               <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <span className="triangle-up"></span>
                 <li>
-                 <BeanAgentPopup></BeanAgentPopup>
+                 <AgentModel></AgentModel>
                 </li>
                 <li>
                 <Butcherypopup></Butcherypopup>

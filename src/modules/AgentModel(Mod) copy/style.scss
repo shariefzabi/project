@@ -1,12 +1,10 @@
-.dialog {
-  width: 840px !important;
-}
-@media (min-width: 576px) {
-  .dialog {
-    max-width: 800px !important;
-    margin: 1.75rem auto;
-  }
-}
+.beanAgent{
+
+
+
+  width: 940px  ;
+
+
 .pop_up_heading {
   color: #2078bf;
   margin-top: 2.5rem;
@@ -56,4 +54,11 @@
 .livestock247 {
   list-style-type: none;
   padding: 0rem !important;
+}
+}
+@media (min-width: 576px) {
+  .dialog {
+    max-width: 800px !important;
+    margin: 1.75rem auto;
+  }
 }

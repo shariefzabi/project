@@ -142,19 +142,6 @@ class BeanAgentPopup extends React.Component<any,any>  {
    
     return (
         <div className='be-an-agent'>
-         <a className=""
-        onClick={() => { this.handleOpen();  }}>Be an Agent</a>
-         <Dialog
-        open={this.state.openPopup}
-        onClose={this.handleClose}
-        aria-describedby="modal-modal-description"
-        sx={{overflow:'auto'}}
-        >
-            {/* <a className="btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Be an Agent</a> */}
-
-            {/* <div className="modal fade" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true"> */}
-                {/* <div className="modal-dialog"> */}
-                    <div className="modal-content">
                         <div className="text-center popupheading">
                             <p>Be an Agent</p>
                         </div>
@@ -229,10 +216,7 @@ class BeanAgentPopup extends React.Component<any,any>  {
                             </div>
 
                         </form>
-                    </div>
-                {/* </div> */}
-            {/* </div> */}
-            </Dialog>
+                
         </div>
     )
 }
