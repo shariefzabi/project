@@ -34,6 +34,15 @@ class Blogform extends React.Component<any, any>{
             .then((res: any) => {
                 if (res.data == "success") {
                     console.log(res.data);
+                    this.setState({ blogs: [],
+                        topic: "",
+                        text1: '',
+                        id: '',
+                        // Error Messages
+                        dicErrMsg: "",
+                        topicErrMsg: "",
+                        disFlag: true,
+                        topicFlag:"",})
                 }
                 else
                     this.setState({ emailErrMsg: res.data })
