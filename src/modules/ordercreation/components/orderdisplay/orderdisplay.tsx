@@ -1,10 +1,10 @@
 
-import PaymentMethod2 from '../../paymentMethod/paymentMethod'
-function Orderdisplay(){
-    const submitHandler=(e:any)=>{
+import PaymentMethod from '../../paymentMethod/paymentMethod'
+function Orderdisplay() {
+    const submitHandler = (e: any) => {
         e.preventDefault();
     }
-    return(
+    return (
         <>
             <div className='deliverydetailspage'>
                 <div className="modal-body">
@@ -14,7 +14,7 @@ function Orderdisplay(){
                     <div className="form-paragraph">
                         <p>Fill in the required information</p>
                     </div>
-                    <form className='text-start' onSubmit={(e:any)=>submitHandler(e)}>
+                    <form className='text-start' onSubmit={(e: any) => submitHandler(e)}>
                         {/* <div className="mb-3">
                             <label htmlFor="Delivery Location" className="col-form-label">Delivery Location</label>
                             <input type="text" className="form-control" id="Delivery Location"  placeholder="Delivery Location" name="deliveryloc" 
@@ -38,13 +38,13 @@ function Orderdisplay(){
                         </div> */}
                     </form>
                     <div className="mb-3 text-center">
-                            <button type="submit" role="button" className="btn btn-success continuebutton" data-bs-target="#exampleModalPayment">Proceed to Payment</button>
-                        </div>
+                        <button type="submit" role="button" className="btn btn-success continuebutton" data-bs-target="#exampleModalPayment">Proceed to Payment</button>
+                    </div>
                 </div>
             </div>
-                <PaymentMethod2></PaymentMethod2>
-            </>
-    
+            <PaymentMethod></PaymentMethod>
+        </>
+
     )
 }
 export default Orderdisplay
