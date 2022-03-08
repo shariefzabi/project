@@ -120,22 +120,22 @@ class BeanAgentPopup extends React.Component<any,any>  {
         e.preventDefault();
         // console.log("userDetails:", userDetails);
 
-        axios.post("http://localhost:3005/agent/add-agent",agentDetails)
-        // {
-        //     name, agent,number, email,conadd,busadd,city
-        // })
+        axios.post("http://localhost:3005/agentdetails",agentDetails)
+        
         .then((res:any)=>{
-            if (res.data == "success")
-            this.props.setAgent(agentDetails)
+            console.log(res.data);
+            
+            if (res.data == "Agent created successfully!!")
+            this.props.setAgent(res.data)
          
             else
             this.setState({emailErrMsg:res.data})
         })
         .catch((err:any)=>console.log(" User Form Error",err));
-        // this.props.setAgent({
-        //     fullName:name, agent,number, email,contactAddress:conadd,businessAddress:busadd,City:city
-        // })
-        // console.log(this.props);
+    
+        
+        console.log(agentDetails);
+        
         
     }
 
@@ -166,7 +166,7 @@ class BeanAgentPopup extends React.Component<any,any>  {
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="Agent" className="col-form-label select-label">Agent</label>
-                                <select className="form-select " defaultValue="1" name='agent' aria-label="Default select example"
+                                <select className="form-select " value={this.state.agent} name='agent' aria-label="Default select example"
                                 onChange={this.changeHandler}
                                 onBlur={this.validate} >
                                     <option value="0">Individual</option>

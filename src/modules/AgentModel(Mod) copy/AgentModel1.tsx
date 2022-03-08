@@ -7,22 +7,22 @@ export default function AgentModel() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const [displayForm,setDisplayForm]= useState(false);
+  const [displayForm, setDisplayForm] = useState(false);
   return (
     <>
-    <a
-        onClick={() => { handleOpen(); setDisplayForm(false) }}>Be an Agent</a>
-    <div >
-       
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-describedby="modal-modal-description"
-        sx={{ overflow: 'auto'}}
+      <h6 className="agent_dropDown"
+        onClick={() => { handleOpen(); setDisplayForm(false) }}>Be an Agent</h6>
+      <div >
 
-      >
-        {!displayForm&&  
-            <div className="beanAgent">
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-describedby="modal-modal-description"
+          sx={{ overflow: 'auto' }}
+
+        >
+          {!displayForm &&
+            <div className="model-content">
               <div className="text-center pop_up_heading">
                 <p>Be an Agent</p>
               </div>
@@ -66,14 +66,19 @@ export default function AgentModel() {
               </div>
               <div className="mb-3 text-center">
                 <button type="button" className="btn btn-success form_button"
-                onClick={()=>setDisplayForm(true)}>
+                  onClick={() => setDisplayForm(true)}>
                   Proceed to Form
                 </button>
               </div>
             </div>
-}
-{displayForm&&<BeanAgentPopup></BeanAgentPopup>}
-      </Dialog>
+
+
+          }
+        
+      
+
+      {displayForm && <BeanAgentPopup></BeanAgentPopup>}
+    </Dialog>
     </div>
     </>
   );
