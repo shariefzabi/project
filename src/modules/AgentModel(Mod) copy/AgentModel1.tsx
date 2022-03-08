@@ -12,13 +12,14 @@ export default function AgentModel() {
     <>
     <a
         onClick={() => { handleOpen(); setDisplayForm(false) }}>Be an Agent</a>
-    <div className="">
+    <div >
        
       <Dialog
         open={open}
         onClose={handleClose}
         aria-describedby="modal-modal-description"
-        sx={{ overflow: 'hidden'}}
+        sx={{ overflow: 'auto'}}
+
       >
         {!displayForm&&  
             <div className="beanAgent">
