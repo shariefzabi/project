@@ -39,7 +39,7 @@ const sheepMarketSchema = new mongoose.Schema({
 });
 const locationSchema = new mongoose.Schema(
   {
-    locationName: { type: String, required: true, minlength: 3, maxlength: 20 ,unique:true},
+    locationName: { type: String, required: true, minlength: 3, maxlength: 20 ,unique:true , lowercase:true},
     cattleMarkets: [cattleMarketSchema],
     sheepMarkets: [sheepMarketSchema],
   },
