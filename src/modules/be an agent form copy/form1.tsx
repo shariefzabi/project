@@ -115,20 +115,26 @@ class BeanAgentPopup extends React.Component<any,any>  {
     }
      handleOpen = () => this.setState({openPopup:true});
      handleClose = () => this.setState({openPopup:false});
-    agentSubmitHandler = (e: any) => {
+    agentSubmitHandler = (e: any  ) => {
         let {
             name, agent,number, email,conadd,busadd,city
         } = this.state;
         e.preventDefault();
         // console.log("userDetails:", userDetails);
 
-        // axios.post("http://localhost:3005/users/signup",{
-        //     fullName, agent,number, email,contactAddress,businessAddress,City
-        // })
-        // .then((res:any)=>{
-           
-        // })
-        // .catch((err:any)=>console.log(" User Sign up Error",err));
+        axios.post("http://localhost:3005/agent/add-agent",{
+            name, agent,number, email,conadd,busadd,city
+        })
+        .then((res:any)=>{
+            if (res.data == "success")
+            this.props.setAgent({
+                fullName:name, agent,number, email,contactAddress:conadd,businessAddress:busadd,City:city
+            })
+         
+            else
+            this.setState({emailErrMsg:res.data})
+        })
+        .catch((err:any)=>console.log(" User Form Error",err));
         this.props.setAgent({
             fullName:name, agent,number, email,contactAddress:conadd,businessAddress:busadd,City:city
         })
@@ -232,7 +238,7 @@ const mapStateToProps = (state:any) => {
 
 const mapDispatchToProps = (dispatch:Function) => {
     return {
-        setAgent: (userDetails:any) => dispatch({type: 'setAgent', payload:userDetails})
+        setAgent: (setAgent:any) => dispatch({type: 'setAgent', payload:setAgent})
     }
 }
 
