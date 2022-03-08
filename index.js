@@ -127,11 +127,15 @@ mongoose.connect(
 //team 6 start
 // let animalAPI = require("./cart/cart_details.js");
 // app.use("/animal", animalAPI);
+let butcheryAPI = require("./butchery/butchery.js");
+app.use("/butchery", butcheryAPI);
+
 let router = require("./cart/cart_details.js");
 app.use("/animal", router);
 
 let agentAPI = require("./agentform/agent.js");
 app.use("/agents", agentAPI);
+
 //team 6 end
 
 // team 7
