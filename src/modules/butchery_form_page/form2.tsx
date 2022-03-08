@@ -1,5 +1,7 @@
 import './forms.scss'
 import React from 'react';
+import { Dialog } from '@mui/material';
+import { connect } from 'react-redux';
 
     class Butcherypopup extends React.Component<any,any>  {
         myRef: React.RefObject<unknown>;
@@ -22,6 +24,7 @@ import React from 'react';
                 stateErr:"",
                 cityErr:"",
                 
+                openPopup:false,
                 noErrors: true,
                 submitFlag :true
             }
@@ -102,13 +105,48 @@ import React from 'react';
                     this.setState({cityErr:""})
             }
         }
+        handleOpen = () => this.setState({openPopup:true});
+        handleClose = () => this.setState({openPopup:false});
+       agentSubmitHandler = (e: any) => {
+           let {
+               name, agent,number, email,conadd,state,city
+           } = this.state;
+           e.preventDefault();
+           // console.log("userDetails:", userDetails);
+   
+           // axios.post("http://localhost:3005/users/signup",{
+           //     fullName, agent,number, email,contactAddress,businessAddress,City
+           // })
+           // .then((res:any)=>{
+              
+           // })
+           // .catch((err:any)=>console.log(" User Sign up Error",err));
+           this.props.setButchery({
+               fullName:name, agent,number, email,contactAddress:conadd,State:state,City:city
+           })
+           console.log(this.props);
+           
+       }
        render() {
     return(
+<<<<<<< Updated upstream
         <div className='butcheryform'>
             <a className="btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Be an Agent</a>
+=======
+        <>
+         <a className=""
+        onClick={() => { this.handleOpen();  }}>Butchery</a>
+         <Dialog
+        open={this.state.openPopup}
+        onClose={this.handleClose}
+        aria-describedby="modal-modal-description"
+        sx={{overflow:'auto'}}
+        >
+            {/* <a className="btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Be an Agent</a> */}
+>>>>>>> Stashed changes
 
-<div className="modal fade" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div className="modal-dialog">
+{/* <div className="modal fade" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div className="modal-dialog"> */}
         <div className="modal-content">
             <div className="text-center popupheading">
                 <p>Butchery/Abattoir</p>
@@ -117,7 +155,7 @@ import React from 'react';
                 <p>Fill the form below and our experts will get
                     in touch with you.</p>
             </div>
-            <form>
+            <form onSubmit={this.agentSubmitHandler}>
 
                 <div className="mb-3">
                     <img className="form-image" src={require("./assets/human.png")}/>
@@ -178,16 +216,38 @@ import React from 'react';
                     <p className="mb-1 text-center text-danger">{this.state.cityErr}</p>
                 </div>
                 <div className="mb-3 text-center">
-                    <button type="button" className="btn btn-success sendbutton">Send</button>
+                    <button type="submit" className="btn btn-success sendbutton">Send</button>
                 </div>
 
             </form>
         </div>
+<<<<<<< Updated upstream
     </div>
 </div>
         </div>
+=======
+    {/* </div> */}
+{/* </div> */}
+</Dialog>
+        </>
+>>>>>>> Stashed changes
     )
 
 }
     }
-     export default Butcherypopup;
+    const mapStateToProps = (state:any) => {
+        console.log(state);
+        
+        return {
+            redux:state
+        }
+    }
+    
+    const mapDispatchToProps = (dispatch:Function) => {
+        return {
+            setAgent: (userDetails:any) => dispatch({type: 'setButchery', payload:userDetails})
+        }
+    }
+    
+    export default connect(mapStateToProps, mapDispatchToProps)(Butcherypopup);
+    //  export default Butcherypopup;
