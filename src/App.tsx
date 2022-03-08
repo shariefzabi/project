@@ -12,6 +12,7 @@ import Footer from './components/footer/footer';
 // import Butcherypopup from './modules/butchery_form_page/form2';
 import BeanAgentPopup from './modules/be an agent form copy/form1'
 import Blogtable from './modules/blog/blogs';
+import ProductDetails from './modules/locationPage/productDetailsPage/ProductDetails';
 
 
 function App() {
@@ -28,6 +29,8 @@ function App() {
             <Route path="/blog" element={<Blogtable/>}>
             </Route>
             <Route path="/addblogs" element={<Blogform />}>
+            </Route>
+            <Route path="/products" element={<ProductDetails />}>
             </Route>
           </Routes>
           <Footer/>
