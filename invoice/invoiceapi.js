@@ -42,7 +42,7 @@ router.use(express.json())
 //     try {
 //         data = req.body
 
-    
+
 //         const myInvoice = new Card({ data });
 //         await Card.create(myInvoice);
 //         res.send(myInvoice);
@@ -51,21 +51,17 @@ router.use(express.json())
 //     }
 // });
 router.get("/details", async (req, res) => {
-   
+
     try {
         const invoiceCollection = req.app.get('invoiceCollection')
-        const invoiceDetails = invoiceCollection.find().toArray(function (err, result) {
+        const invoiceDetails = invoiceCollection.find().sort({ "orderId": - 1 }).toArray(function (err, result) {
             res.json(result)
-        
-        
         })
     }
     catch (err) {
         console.log(err)
         res.json(err)
     }
-    
-
 })
 
 

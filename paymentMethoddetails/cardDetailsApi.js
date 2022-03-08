@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 router.use(express.json())
-const Card = require("./carddetails.cjs");
+const Invoice = require("./carddetails.cjs");
 
 router.get('/cost/:id', function (req, res) {
     let { params } = req;
@@ -38,13 +38,29 @@ router.get("/details/:id", async (req, res) => {
         res.send("Error" + err);
     }
 });
+
+
+
+// let tokens = [];
+
 router.post("/details", async (req, res) => {
-    console.log(req.body)
-    const { cardDetails } = req.body;
+    // let token;
+    // console.log(tokens);
+    // if (tokens.length == 0 || tokens.includes(token)) {
+    //     token = Math.round(Math.random() * 1000000000000);
+    //     tokens.push(token);
+    // }
+    // else {
+    //     token = Math.round(Math.random() * 1000000000000);
+    //     tokens.push(token);
+    // }
+    // console.log(req.body)
+    const { invoicedata } = req.body;
+
     try {
-        const myCard = new Card({ cardDetails });
-        await Card.create(myCard);
-        res.send(myCard);
+        const myInvoice = new Invoice({ invoicedata });
+        await Invoice.create(myInvoice);
+        res.send(myInvoice);
     } catch (err) {
         res.send({ message: err });
     }
