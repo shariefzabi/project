@@ -39,25 +39,25 @@ class Blogtable extends React.Component<any, any> {
                 <section className="blog-content">
                     <article className="text-center txt">The latest and best articles selected by our editorial choice</article>
                 </section>
-                <section className="text-center main_box" onClick={this.proceed}>
+                <section className="text-center main_box" >
                     {this.state.blogs.map((x: any, i: any) => {
                         console.log(x.title);
                         
                         if (ind % 5 === 0) {
                             ind++;
                             console.log(i);
-                            return (<div className="first_box">
+                            return (<div className="first_box" onClick={this.proceed}>
                                 <p className="blog_title">{x.title}</p>
                             </div>)
                         }else if(ind === 6){
                             ind =-1
-                            return (<div className="first_box">
+                            return (<div className="first_box" onClick={this.proceed}>
                             <p className="blog_title">{x.title}</p>
                         </div>)
                         }else {
                             console.log(i);
                             ind++;
-                            return (<div className="second_box"><p className="blog_title">{x.title}</p></div>)
+                            return (<div className="second_box" onClick={this.proceed}><p className="blog_title" >{x.title}</p></div>)
                         }
                        
                     })
