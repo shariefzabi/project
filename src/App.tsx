@@ -14,6 +14,7 @@ import Invoice1 from './modules/invoice/invoicetrial'
 import Blogcontent from './modules/blogContentPage/blogContent/blogContent';
 import ProductDetails from './modules/productDetailsPage/ProductDetails';
 import Profile from './modules/profile/Profile';
+import Orders from './modules/orders/orders';
 
 
 function App() {
@@ -36,6 +37,8 @@ function App() {
             <Route path="/blogcontent" element={<Blogcontent />}>
             </Route>
             <Route path="/profile" element={<Profile />}>
+            </Route>
+            <Route path="/orders" element={<Orders />}>
             </Route>
             <Route path="/invoice" element={< Invoice1 />}>
             </Route>

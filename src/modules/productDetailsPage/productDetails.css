@@ -75,3 +75,26 @@ border: 1px solid #D5D5D5;
     text-align: start;
 
 }
+/* dropdown */
+.location-btn{
+    background-color: #FFFFFF;
+    font-family: ubuntu;
+    font-weight: normal;
+    font-weight: normal;
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+    color: #838383;
+}
+.location-btn:active{
+    background-color: #2078BF;
+}
+.dropdown{
+    margin: 0px;
+    padding: 0px;
+    display: inline-block;
+    position: relative;
+}
+.dropdown-menu{
+    display: none;
+    position: ;
+}
