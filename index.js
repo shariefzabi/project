@@ -202,7 +202,6 @@ app.get("/comments", async (req, res) => {
     res.send("Error" + err);
   }
 });
-
 app.get("/blogs", async (req, res) => {
   try {
     const data = await Blog.find({});
@@ -211,6 +210,7 @@ app.get("/blogs", async (req, res) => {
     res.send("Error" + err);
   }
 });
+
 
 // app.post("/addblogs", async (req, res) => {
 //   const { blogs } = req.body;
@@ -225,21 +225,26 @@ app.get("/blogs", async (req, res) => {
 
 app.post("/addblogs", function (req, res) {
   console.log("adding blog", req.body);
-  let commentDb = db.collection("blogs");
+  let blogDb = db.collection("blogs");
+  blogDb.insert(req.body);
+  res.send("success");
+});
+app.post("/addcomment", function (req, res) {
+  console.log("adding comment", req.body);
+  let commentDb = db.collection("comments");
   commentDb.insert(req.body);
   res.send("success");
 });
-
-app.post("/addcomment", async (req, res) => {
-  const { comment } = req.body;
-  try {
-    const mycom = new Comments({ comment });
-    await Comments.create(mycom);
-    res.send(mycom);
-  } catch (err) {
-    res.send({ message: err });
-  }
-});
+// app.post("/addcomment", async (req, res) => {
+//   const { comment } = req.body;
+//   try {
+//     const mycom = new Comments({ comment });
+//     await Comments.create(mycom);
+//     res.send(mycom);
+//   } catch (err) {
+//     res.send({ message: err });
+//   }
+// });
 
 //team 7 end
 app.listen(PORT, function (err, res) {
