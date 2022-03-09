@@ -58,7 +58,8 @@ class Butcherypopup extends React.Component<any, any> {
       } else this.setState({ butcheryErr: "" });
     } else if (n === "number") {
       let re =
-        /((\+*)((0[ -]*)*|((91 )*))((\d{12})+|(\d{10})+))|\d{5}([- ]*)\d{6}/;
+        // /((\+*)((0[ -]*)*|((91 )*))((\d{12})+|(\d{10})+))|\d{5}([- ]*)\d{6}/;
+        /^[0-9]{10}$/;
       if (v === "") {
         this.setState({ numberErr: "Please enter the Phone Number." });
       } else if (!re.test(v)) {
@@ -92,47 +93,28 @@ class Butcherypopup extends React.Component<any, any> {
   };
   handleOpen = () => this.setState({ openPopup: true });
   handleClose = () => this.setState({ openPopup: false });
-  butcherySubmitHandler = (e: any) => {
+  butcherySubmitHandler = (e: any, butcheryDetails: any) => {
     let { name, butchery, number, email, conadd, state, city } = this.state;
     e.preventDefault();
     // console.log("userDetails:", userDetails);
 
     axios
-      .post("http://localhost:3005/butchery/add-butchery", {
-        name,
-        butchery,
-        number,
-        email,
-        conadd,
-        state,
-        city,
-      })
+      .post("http://localhost:3005/butchery/add-butchery", butcheryDetails)
       .then((res: any) => {
-        if (res.data == "success")
-          this.props.setAgent({
-            fullName: name,
-            butchery,
-            number,
-            email,
-            contactAddress: conadd,
-            state: state,
-            City: city,
-          });
+        console.log(res.data);
+
+        if (res.data == "Butchery  created successfully!!")
+          this.props.setAgent(res.data);
         else this.setState({ emailErrMsg: res.data });
       })
-      .catch((err: any) => console.log(" User Form Error", err));
-    this.props.setButchery({
-      fullName: name,
-      butchery,
-      number,
-      email,
-      contactAddress: conadd,
-      State: state,
-      City: city,
-    });
-    console.log(this.props);
+      .catch((err: any) => console.log(" Butchery Form Error", err));
+    // this.props.setButchery({
+    //     fullName: name, butchery, number, email, contactAddress: conadd, State: state, City: city
+    // })
+    console.log(butcheryDetails);
   };
   render() {
+    let { name, butchery, number, email, conadd, state, city } = this.state;
     return (
       <>
         <div className="be-an-agent modal-content">
@@ -144,7 +126,19 @@ class Butcherypopup extends React.Component<any, any> {
               Fill the form below and our experts will get in touch with you.
             </p>
           </div>
-          <form onSubmit={this.butcherySubmitHandler}>
+          <form
+            onSubmit={(e) =>
+              this.butcherySubmitHandler(e, {
+                fullName: name,
+                butchery,
+                number,
+                email,
+                contactAddress: conadd,
+                State: state,
+                City: city,
+              })
+            }
+          >
             <div className="mb-3">
               <img className="form-image" src={require("./assets/human.png")} />
               <label htmlFor="Full Name" className="col-form-label">
@@ -195,7 +189,7 @@ class Butcherypopup extends React.Component<any, any> {
                 Phone
               </label>
               <input
-                type="number"
+                type="text"
                 className="form-control form-page"
                 name="number"
                 id="phone"
@@ -315,8 +309,8 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: Function) => {
   return {
-    setButchery: (setButchery: any) =>
-      dispatch({ type: "setButchery", payload: setButchery }),
+    setButchery: (butcheryDetails: any) =>
+      dispatch({ type: "setButchery", payload: butcheryDetails }),
   };
 };
 
