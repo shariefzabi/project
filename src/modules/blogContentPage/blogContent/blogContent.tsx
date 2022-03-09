@@ -40,6 +40,8 @@ class Blogcontent extends React.Component<any, any>{
         }
     }
     render() {
+        console.log("blog id :" ,this.state.id);
+        
         return (
 
             <div>
@@ -106,7 +108,7 @@ class Blogcontent extends React.Component<any, any>{
                         1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact
                         original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
                 </section> */}
-                <Form></Form>
+                <Form id={this.state.id}></Form>
                 <Comment/>
             </div>
         )

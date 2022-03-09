@@ -13,13 +13,13 @@ class Form extends React.Component<any, any> {
             name: "",
             email: "",
             comment: "",
-            id:"",
+            // error
             nameErr: "",
             emailErr: "",
             commentErr: "",
-            noErrors: true,
-            submitFlag: true,
-            topicFlag:"",
+            commentFlag:false,
+            emailFlag:false,
+            nameFlag:false,err:''
         }
 
     }
@@ -31,88 +31,89 @@ class Form extends React.Component<any, any> {
 
 
     submitHandler = (e: any, data: any) => {
-
         e.preventDefault();
-        axios.get("http://localhost:3005/comments")
-            .then(res => {
-                this.setState({ comments: res.data, id: res.data.length })
-               
-            })
-        if (this.state.topicFlag === "off") {
+        let{commentFlag,
+            emailFlag,
+            nameFlag}=this.state
+        if(commentFlag && emailFlag && nameFlag){
+            console.log(data);
             axios.post("http://localhost:3005/addcomment", data)
-                .then((res: any) => {
-                    if (res.data == "success") {
-                        console.log(res.data);
-                    }
-                    else
-                        this.setState({ emailErrMsg: res.data })
-                })
-                .catch((err: any) => console.log("can't add the comment", err));
-        } else {
-            this.validate(e);
+            .then((res: any) => {
+                if (res.data == "success") {
+                    console.log(res.data);
+                    this.setState({ 
+                        name: "",
+                        email: "",
+                        comment: "",
+                        // error
+                        nameErr: "",
+                        emailErr: "",
+                        commentErr: "",
+                        commentFlag:false,
+                        emailFlag:false,
+                        nameFlag:false,err:''
+                        })
+                }
+                else
+                    this.setState({ emailErrMsg: res.data })
+            })
+            .catch((err: any) => console.log("can't add the blog", err));
+            
+        }else{
+            this.setState({err:"please enter all fields correctly"})
         }
+       
     }
 
     validate = (e: any) => {
-        // console.log(e);
         let n = e.target.name;
         let v = e.target.value;
-        let state = this.state;
         if (n === "name") {
-            let re = /^[a-zA-Z ]{5,10}$/;
+            let re = /^[a-zA-Z ]{5,30}$/;
             if (v === "") {
-                // state.nameErr = "Please enter the Associate Name.";
-                this.setState({ nameErr: "Please enter the Associate Name." })
+                this.setState({ nameErr: "Please enter the User Name." })
             }
             else if (!re.test(v)) {
-                // state.nameErr = "Accepts Alphabets, space & Min 5 to Max 10 Char";
-                this.setState({ nameErr: "Accepts Alphabets, space & Min 5 to Max 10 Char" })
+                this.setState({ nameErr: "Accepts Alphabets, space & Min 5 to Max 30 Char" })
             }
             else
-                // state.nameErr = "";
-                this.setState({ nameErr: "" })
+                this.setState({ nameErr: "" ,nameFlag:true})
         }
         else if (n === "email") {
             let re = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/
             if (v === "") {
-                // state.emailErr = "Please enter the Associate Name.";
-                this.setState({ emailErr: "Please enter the Associate Name." })
+                this.setState({ emailErr: "Please enter the eMail." })
             }
             else if (!re.test(v)) {
-                // state.emailErr = "please enter email in a specific formate";
                 this.setState({ emailErr: "please enter email in a specific formate" })
             }
             else
-                // state.emailErr = "";
-                this.setState({ emailErr: "" })
+                this.setState({ emailErr: "" ,emailFlag:true})
         }
         else if (n === "comment") {
-            let re = /^[a-zA-Z ]{50,200}$/;
-            // console.log("hi this comment");
+            let re = /^[a-zA-Z ]{10,200}$/;
             if (v === "") {
-                // state.commentErr = "Please Enter Comments";
                 this.setState({ commentErr: "Please Enter Comments" })
             }
             else if (!re.test(v)) {
-                // state.commentErr = "Accepts Alphabets, space & Min 50 to Max 200 Char";
                 this.setState({ commentErr: "Accepts Alphabets, space & Min 50 to Max 200 Char" })
             }
             else
-                // state.commentErr = "";
-                this.setState({ commentErr: "" })
+                this.setState({ commentErr: "" ,commentFlag:true})
         }
 
 
     }
     render() {
-        let { name, email, comment ,id } = this.state;
+        let { name, email, comment } = this.state;
+        
         return (
 
             <div>
                 <section className="form">
                     <h2> Leave A Comment</h2>
 
-                    <form onSubmit={(e) => { this.submitHandler(e, { "name":name, "email": email, "comment":comment ,"id": id + 1 }) }}>
+                    <form onSubmit={(e) => { this.submitHandler(e, { "name":name, "email": email, "comment":comment ,"id":this.props.id }) }}>
                         <span className="col-12 row">
                             <div className="col-md-6 col-sm-12">
                                 <label className="col-12" htmlFor="name">Full Name</label>
@@ -142,6 +143,7 @@ class Form extends React.Component<any, any> {
                             </div>
                         </span>
                         <div className="text-center">
+                            <p className="ms-1 text-danger">{this.state.err}</p>
                             <button type="submit" className="btn btn-success doneBtn m-2 btn btn-primary" >Submit</button>
                         </div>
                     </form>
