@@ -153,7 +153,7 @@ class PaymentMethod extends React.Component<any, any> {
   render() {
 
     return (
-      <div>
+      <div className='paymentmethod'>
         {/* <div className="modal fade" id="exampleModalPayment" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" data-bs-toggle="modal" tabIndex={-1} data-bs-backdrop="static"> */}
         {this.state.flag1 &&
           <div className="modal-dialog modal-dialog-centered ">
