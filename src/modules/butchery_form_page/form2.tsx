@@ -1,4 +1,4 @@
-import "./forms.scss";
+import "./forms_butchery.scss";
 import React from "react";
 import { Dialog } from "@mui/material";
 import { connect } from "react-redux";
@@ -170,7 +170,8 @@ class Butcherypopup extends React.Component<any, any> {
               </label>
               <select
                 className="form-select"
-                defaultValue="2"
+                // defaultValue="2"
+                value={this.state.butchery}
                 name="butchery"
                 aria-label="Default select example"
                 onChange={this.changeHandler}

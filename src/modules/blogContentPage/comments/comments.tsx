@@ -1,8 +1,25 @@
 import React from "react";
 import "./styles.css";
+import axios from "axios";
 
-class Comment extends React.Component {
+class Comment extends React.Component<any,any> {
+  
+    constructor(props: any) {
+        super(props);
+        this.state = {
+           comments:"",
+        }
 
+    }
+    componentDidMount() {
+        axios.get("http://localhost:3005/comments")
+            .then(res => {
+                console.log(res.data)
+                // res.data.map((e: any, i: any) => {
+                //     this.setState({ comments: [...this.state.comments, e.comments] })
+                // })
+            })
+    }
     render() {
         return (
             <section className="clients">
