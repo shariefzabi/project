@@ -177,15 +177,22 @@ app.get("/blogs", async (req, res) => {
   }
 });
 
-app.post("/addblogs", async (req, res) => {
-  const { blogs } = req.body;
-  try {
-    const myBlog = new Blog({ blogs });
-    await Blog.create(myBlog);
-    res.send(myBlog);
-  } catch (err) {
-    res.send({ message: err });
-  }
+// app.post("/addblogs", async (req, res) => {
+//   const { blogs } = req.body;
+//   try {
+//     const myBlog = new Blog({ blogs });
+//     await Blog.create(myBlog);
+//     res.send(myBlog);
+//   } catch (err) {
+//     res.send({ message: err });
+//   }
+// });
+
+app.post("/addblogs", function (req, res) {
+  console.log("adding blog", req.body);
+  let commentDb = db.collection("blogs");
+  commentDb.insert(req.body);
+  res.send("success");
 });
 
 app.post("/addcomment", async (req, res) => {
