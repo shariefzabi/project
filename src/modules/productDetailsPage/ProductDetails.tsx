@@ -4,6 +4,8 @@ import './productDetails.css';
 import { connect } from "react-redux";
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import { Link } from "react-router-dom";
+import { Accordion } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
@@ -12,8 +14,11 @@ function ProductDetails(props: any) {
 
     let [products, setProducts] = useState([])
     let [marketType, setMarketType] = useState("")
+    let name = props.state.locName;
     // console.log(props.locName)
-    let selectedLocationName = props.state.locName
+    let [selectedLocationName, setSelectedLocationName] = useState('')
+    setSelectedLocationName(name)
+    // console.log(selectedLocationName)
 
 
     useEffect(() => {
@@ -65,26 +70,53 @@ function ProductDetails(props: any) {
             </Breadcrumb>
             <div className="container">
                 <div className="row">
-                    <div className="col-2 locNames ">
-                        <div>
-                            {
-                                products.map((e: any) => {
+                    <div className="col-3 locNames ">
+
+
+                        {
+                            products.map((e: any) => {
+                                // console.log(selectedLocationName, e.locationName)
+                                let locations = e.locationName;
+                                // let flag = true;
+                                if (selectedLocationName === locations) {
                                     return (
-                                        <div>
-                                            <button className="location-btn btn " role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                                {e.locationName}
-                                            </button>
-                                            <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                <li><a className="dropdown-item" onClick={marketTypeHandler} >Cattle Market({e.cattleMarkets.length})</a></li>
-                                                <li><a className="dropdown-item" onClick={markettypeHandler}>Sheep Market({e.sheepMarkets.length})</a></li>
-                                            </ul>
-                                        </div>
+                                        <Accordion defaultActiveKey={e} flush>
+                                            <Accordion.Item eventKey={e}>
+                                                <Accordion.Header>{e.locationName}</Accordion.Header>
+                                                <Accordion.Body>
+                                                    Cattle Market <span>{e.cattleMarkets.length}</span>
+                                                </Accordion.Body>
+                                                <Accordion.Body>
+                                                    Sheep Market <span>{e.sheepMarkets.length}</span>
+                                                </Accordion.Body>
+                                            </Accordion.Item>
+                                        </Accordion>
                                     )
-                                })
-                            }
-                        </div>
+                                    // flag = false;
+                                    // console.log(flag, locations)
+                                }
+                                else {
+                                    return (
+                                        <Accordion flush>
+                                            <Accordion.Item eventKey={e}>
+                                                <Accordion.Header>{e.locationName}</Accordion.Header>
+                                                <Accordion.Body>
+                                                    Cattle Market <span>{e.cattleMarkets.length}</span>
+                                                </Accordion.Body>
+                                                <Accordion.Body>
+                                                    Sheep Market <span>{e.sheepMarkets.length}</span>
+                                                </Accordion.Body>
+                                            </Accordion.Item>
+                                        </Accordion>
+                                    )
+                                    // console.log(flag, locations)
+
+                                }
+                            })
+                        }
+
                     </div>
-                    <div className="col-10">
+                    <div className="col-9">
                         <h3 id="marketHeading">{marketType}</h3>
                         <h4 id="locationMarketHeading">Location&#32;{marketType}</h4>
                         <hr />

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Modal from '@mui/material/Modal';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
@@ -7,7 +7,7 @@ import "./locationPopUp.css";
 
 
 
- function PopUp(prop: any) {
+function PopUp(prop: any) {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
   const handleOpen = () => setOpen(true);
@@ -16,15 +16,15 @@ import "./locationPopUp.css";
   let [isAdding, setIsAdding] = useState(false)
   let [newLocation, setNewLocation] = useState('')
   let [newLocationErr, setNewLocationErr] = useState('')
-  let [selectedLocation,setSelectedLocation]=useState('')
+  let [selectedLocation, setSelectedLocation] = useState('')
 
 
   let [toggleflag, setToggleFlag] = useState(true);
 
-  const continueHandler=(e: any) =>{
+  const continueHandler = (e: any) => {
     e.preventDefault();
-     navigate("/products"); setToggleFlag(false) 
-    
+    navigate("/products"); setToggleFlag(false)
+
     prop.setLocationName(selectedLocation)
 
   }
@@ -54,15 +54,15 @@ import "./locationPopUp.css";
         } else {
           let valid = locationNames.includes(enteredLocation)
           console.log(valid)
-          if(valid){
+          if (valid) {
             let fullNameErrMsg = "already exists in list"
             setNewLocationErr(fullNameErrMsg)
             e.target.classList.add("field-error")
-          }else{
+          } else {
             e.target.classList.remove("field-error")
             setNewLocationErr("")
           }
-         
+
         }
       }
 
@@ -71,29 +71,25 @@ import "./locationPopUp.css";
   }
   const LocationSubmitHandler = (e: any, newLocation: any) => {
     e.preventDefault();
-     
+
 
     if (newLocationErr === "") {
       addNewLocation()
       setIsAdding(false);
     }
 
-   setNewLocation("")
+    setNewLocation("")
     console.log(newLocation)
   }
 
-
-
-
-
-  const fetchLocations = (async () => {
-    try {
-      const response = await axios.get("http://localhost:3005/market/Locations")
-      setLocationNames(response.data);
-    } catch (err) {
-      console.error(err)
-    }
-  })
+  useEffect(() => {
+    axios.get("http://localhost:3005/market/Locations")
+      .then(
+        response => {
+          setLocationNames(response.data)
+        }
+      )
+  }, []);
 
   const addNewLocation = () => {
     const location = { locationName: newLocation }
@@ -117,11 +113,11 @@ import "./locationPopUp.css";
   //   setIsAdding(false);
   // }
 
- const locationHandler=(e:any)=>{
-  setSelectedLocation(e.target.value)
- }
- 
- console.log(selectedLocation)
+  const locationHandler = (e: any) => {
+    setSelectedLocation(e.target.value)
+  }
+
+  // console.log(selectedLocation)
 
   return (
 
@@ -167,7 +163,7 @@ import "./locationPopUp.css";
                     onChange={(e) => setNewLocation(e.target.value)}
 
                     required />
-                 
+
 
                   <button className="d-inline btn-success btn-add" type="submit" >
                     Save&#32;Location
@@ -180,10 +176,9 @@ import "./locationPopUp.css";
                     <select className="form-select dropdownToggle"
                       placeholder="Location"
                       onChange={locationHandler}
-                      onClick={fetchLocations}
-                    
+
                       required>
-                        
+
 
                       <option className="dropdownItem" selected disabled value="" hidden>Location</option>
                       {
@@ -192,19 +187,19 @@ import "./locationPopUp.css";
                             <option className="dropdownItem" >
                               {location}
                             </option>
-                            
+
                           )
-                          
+
                         })
                       }
                       {/* console.log(option.value) */}
                       setSelectedLocation(option.value)
-                   
-                     
+
+
 
                     </select>
                   </div>
-                  
+
 
                   {/* <Link to="/products"> */}
                   <button className="btn-success btn-cnt" type="submit" onClick={continueHandler}>Continue</button>

@@ -45,6 +45,11 @@ hr {
   margin-right: 6.625rem;
   border: 1px solid #d5d5d5;
 }
+
+.accordion-button::after {
+  background-image: none !important;
+}
+
 .locNames {
   background: #ffffff;
   border: 1px solid #e0e0e0;
