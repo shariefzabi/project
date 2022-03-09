@@ -81,14 +81,45 @@ app.post("/users/login", function (req, res) {
 //************ No.1 Team ************* Ending *****************************
 
 //team-2 storing order details
-app.post("/orderdetails", function (req, res) {
+app.get("/orders/orderdetails", function (req, res) {
   let orderdetails = req.body;
   console.log(orderdetails);
-  let orderDb = db.collection("orders");
-  orderDb.insert(orderdetails);
-  res.send(orderdetails);
+  let ordercollection = db.collection("orders");
+  ordercollection.find().sort({"orderId":-1}).limit(1).toArray(function (err,result) {
+    res.send(result)
+  })
 });
+app.post("/orders/orderdetails", function (req, res) {
+  let orderdetails = req.body;
+  console.log(orderdetails);
+  let ordercollection = db.collection("orders");
+  ordercollection.count(function(err,result){
+    if(err)console.log(err);
+    else {
+      if(result==0){
+        orderdetails.orderId=1;
+      }else{
+        orderdetails.orderId=result+1;
+      }
+      ordercollection.insertOne(orderdetails);
+      res.json(orderdetails);
+    }
+  })
+});
+//fetching order details based on username
+app.get("/orders/orderdetails/:username", function(req,res) {
+  let {params}=req.body;
+  let ordercollection = db.collection("orders");
+  ordercollection.find({user:params.username},function(err,result) {
+    if(err) console.log(err);
+    else{
+      res.send(result);
+    }
+  })
+})
+
 //team-2 ending
+
 
 app.get("/", function (req, res) {
   let { body, params, query } = req;
