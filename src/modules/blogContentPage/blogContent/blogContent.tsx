@@ -2,6 +2,8 @@ import React from "react"
 import "./assets/blogContent.css"
 import axios from "axios"
 import Comment from "../comments/comments"
+import Form from "../comment_form/form"
+// import { Form } from "formik"
 
 class Blogcontent extends React.Component<any, any>{
     constructor(props: any) {
@@ -16,9 +18,10 @@ class Blogcontent extends React.Component<any, any>{
     componentDidMount() {
         axios.get("http://localhost:3005/blogs")
             .then(res => {
-                res.data.map((e: any, i: any) => {
-                    this.setState({ blogs: [...this.state.blogs, e.blogs] })
-                })
+                this.setState({ blogs:res.data })
+                // res.data.map((e: any, i: any) => {
+                //     this.setState({ blogs: [...this.state.blogs, e.blogs] })
+                // })
             })
     }
     carousel(v:any){
@@ -50,10 +53,12 @@ class Blogcontent extends React.Component<any, any>{
                {this.state.blogs.map((e:any,i:any)=>{
                    {
                        if(i===this.state.id){
+                        //    console.log(e);
+                           
                            return(<>
                            <div className="contenttitle">
                                 <p className="title">{e.title}</p>
-                                <p className="blogdate">{e.date.slice(0,10)}</p>
+                                <p className="blogdate">{e.blogs.date.slice(0,10)}</p>
                            </div>
                            <div className="discription">
                             <p className="txt">{e.about}</p>
@@ -101,6 +106,7 @@ class Blogcontent extends React.Component<any, any>{
                         1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact
                         original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
                 </section> */}
+                <Form></Form>
                 <Comment/>
             </div>
         )

@@ -15,26 +15,30 @@ class Deliverydetails extends React.Component<any, any>{
             deliverylocerr: " ",
             deliveryperioderr: " ",
             deliverymodeErr: " ",
-            orderdisplayFlag:true
+            orderdisplayFlag:true,
+            orderDetails:props.orders,
+            Id:0
         }
     }
     changeHandler = (e: any) => {
         this.setState({ [e.target.name]: e.target.value })
+        
         // console.log(e.target.value);
     }
     submitHandler = (e: any, deliveryDetails: any) => {
         e.preventDefault();
-        console.log("props in createorder", this.props);
         console.log("delivery details", deliveryDetails);
-        
+        this.props.createOrder(deliveryDetails);
+        console.log("props in createorder", this.props);
         // let orderDetails1={...deliveryDetails,...this.props.products}
         // this.setState({orderDetails1});
         
         // console.log("hello",this.state.orderDetails1);
-        axios.post("http://localhost:3005/orders/orderdetails",this.props.orders)
-        .then((res)=>console.log("postresponse",res.data))
-        .catch((err)=>console.log("posterror",err));
-        this.props.createOrder(deliveryDetails);
+        // axios.post("http://localhost:3005/orders/orderdetails",this.props)
+        // .then((res)=>console.log("postresponse",res.data))
+        // .catch((err)=>console.log("posterror",err));
+        this.setState({orderdisplayFlag:false})
+      
     }
     validations = (e: any) => {
         let name = e.target.name;
@@ -77,9 +81,6 @@ class Deliverydetails extends React.Component<any, any>{
                 this.setState({ deliverymodeErr })
             }
         }
-
-
-
     }
     render() {
             
@@ -88,6 +89,8 @@ class Deliverydetails extends React.Component<any, any>{
             < >
             {orderdisplayFlag &&
             <div className='deliverydetailspage'>
+                <div className="modal-dialog modal-xl" >
+                    <div className="modal-content">
                 <div className="modal-body">
                     <div className="text-center popupheading">
                         <p>You are one step closer to buying your lifestock</p>
@@ -118,10 +121,12 @@ class Deliverydetails extends React.Component<any, any>{
                             <p className="text-danger err">{this.state.deliverymodeErr}</p>
                         </div>
                         <div className="mb-3 text-center">
-                            <button type="submit" role="button" className="btn btn-success continuebutton" onClick={()=>this.setState({orderdisplayFlag:false})}>Continue</button>
+                            <button type="submit" role="button" className="btn btn-success continuebutton">Continue</button>
                         </div>
 
                     </form>
+                </div>
+                </div>
                 </div>
             </div>
             }

@@ -1,0 +1,144 @@
+
+
+.order-display .modal-body{
+.heading-cartpage{
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 24px;
+    display: block;
+    letter-spacing: 0.1px;
+    color: #2078BF;
+    margin-top: 5%;
+}
+.heading-cartpage-Id{
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center !important;
+    letter-spacing: 0.1px;
+    color: #2078BF;
+    margin-top: 2%;
+    margin-bottom: 4%;
+}
+.body-card{
+    background: #FFFFFF;
+    opacity: 0.7;
+    border: 1px solid #D2D2D2;
+    box-sizing: border-box;
+    width:80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 5%;
+}
+.body-head{
+font-family: Ubuntu;
+font-style: normal;
+font-weight: bold;
+font-size: 20px;
+line-height: 24px;
+letter-spacing: 0.1px;
+color: #838383;
+opacity: 0.7;
+}
+.body-description{
+    
+font-family: Ubuntu;
+font-style: normal;
+font-weight: normal;
+font-size: 18px;
+line-height: 24px;
+/* or 133% */
+text-align: center;
+letter-spacing: 0.1px;
+color: #838383;
+opacity: 0.7;
+}
+.ruler{
+    width:90%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.body-head-Product{
+    font-family: Ubuntu;
+font-style: normal;
+font-weight: bold;
+font-size: 22px;
+line-height: 24px;
+/* identical to box height, or 109% */
+color: #838383;
+opacity: 0.7;
+text-align: start !important;
+margin-left: 7%;
+}
+.body-list-items{
+    text-align: start !important;
+    list-style-type: none;
+    color: #838383;
+    margin-left: 2%;
+}
+.weight-items{
+    margin-left: 14%;
+}
+.vl {
+    border-left: 1px solid green;
+    transform: rotate(90deg);
+    width: 140px;
+    position : absolute;
+    top:65%;
+    left:42%;
+  }
+.vl-right {
+    border-left: 1px solid green;
+    transform: rotate(90deg);
+    width: 140px;
+    position : absolute;
+    top:65%;
+    left:60%;
+  }  
+.body-list-items-amount{
+    position: absolute;
+    top:60%;
+    left:50%;
+    list-style-type: none;
+    color: #838383;
+    font-size: 14px;
+    line-height: 24px;
+}  
+.product-head{
+    text-decoration: underline;
+}
+.body-list-items-total{
+    position: absolute;
+    top:60%;
+    left:68%;
+    list-style-type: none;
+    color: #838383;
+    font-size: 14px;
+    line-height: 24px;
+}
+.quantity-style{
+font-family: Ubuntu;
+font-style: normal;
+font-weight: bold;
+font-size: 23px;
+line-height: 24px;
+/* identical to box height, or 104% */
+text-align: center;
+color: #06864D;
+
+}
+.proceed-button{
+    background: #06864D;
+    border-radius: 5px;
+    position: absolute;
+    color:#fff;
+    top:94%;
+    left:40%;
+    width:160px;
+    margin-bottom: 5%;
+}
+}

@@ -20,7 +20,7 @@ class Blogform extends React.Component<any, any>{
             topicFlag:"",
         }
     }
-    componentDidMount() {
+    componentDidUpdate() {
         axios.get("http://localhost:3005/blogs")
             .then(res => {
                 this.setState({ blogs: res.data, id: res.data.length })
