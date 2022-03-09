@@ -50,7 +50,7 @@ class Blogtable extends React.Component<any, any> {
                                 <p className="blog_title">{x.title}</p>
                             </div>)
                         }else if(ind === 6){
-                            ind =-1
+                            ind =1
                             return (<div className="first_box" onClick={this.proceed}>
                             <p className="blog_title">{x.title}</p>
                         </div>)
