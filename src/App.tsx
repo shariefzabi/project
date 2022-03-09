@@ -10,10 +10,10 @@ import Blogform from './modules/addblogpage/blogform'
 
 import Footer from './components/footer/footer';
 import Blogtable from './modules/blog/blogs';
-// import ProductDetails from './modules/locationPage/productDetailsPage/ProductDetails';
 import Invoice1 from './modules/invoice/invoicetrial'
 import Blogcontent from './modules/blogContentPage/blogContent/blogContent';
 import ProductDetails from './modules/productDetailsPage/ProductDetails';
+import Profile from './modules/profile/Profile';
 
 
 function App() {
@@ -33,10 +33,14 @@ function App() {
             </Route>
             <Route path="/products" element={<ProductDetails />}>
             </Route>
-            <Route path="/blogcontent" element={<Blogcontent/>}>
+            <Route path="/blogcontent" element={<Blogcontent />}>
+            </Route>
+            <Route path="/profile" element={<Profile />}>
+            </Route>
+            <Route path="/invoice" element={< Invoice1 />}>
             </Route>
           </Routes>
-          {/* <Invoice1></Invoice1> */}
+
           <Footer />
         </div>
       </Router>

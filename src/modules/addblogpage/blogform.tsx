@@ -20,18 +20,24 @@ class Blogform extends React.Component<any, any>{
             topicFlag:"",
         }
     }
+    componentDidMount() {
+        axios.get("http://localhost:3005/blogs")
+            .then(res => {
+                this.setState({ blogs: res.data, id: res.data.length })
+            })}
     changeHandler = (e: any) => {
         this.setState({ [e.target.name]: e.target.value })
     }
     submitHandler = (e: any, data: any) => {
         e.preventDefault();
-        axios.get("http://localhost:3005/blogs")
-            .then(res => {
-                this.setState({ blogs: res.data, id: res.data.length })
-            })
-        if(this.state.topicFlag === "off" && this.state.topic >= 300){
+        // console.log("heifurb");
+        if(this.state.topicFlag == "off" && this.state.text1.length >=100){
+            console.log("hiii");
+            
         axios.post("http://localhost:3005/addblogs", data)
             .then((res: any) => {
+                console.log("heloo");
+                
                 if (res.data == "success") {
                     console.log(res.data);
                     this.setState({ blogs: [],
@@ -64,19 +70,22 @@ class Blogform extends React.Component<any, any>{
                 this.setState({ topicErrMsg: "Accepts Alphabets, space & Min 10 to Max 100 Char" ,topicFlag:"on"})
             } else {
                 this.setState({ topicErrMsg: "", topicFlag:"off"})
+                console.log(this.state.topicFlag);
+                
             }
         }
     }
     validate = () => {
-        if (this.state.text1 == "" || this.state.text1.length === 1) {
+        if (this.state.text1 == "" || this.state.text1.length === 0) {
             this.setState({ dicErrMsg: "Please enter the Description." })
             console.log("errr");
             
         } else {
-            if(this.state.text1.length < 300 ){
-            this.setState({ dicErrMsg: "the Entered the Description in below 300 words "})}
+            if(this.state.text1.length < 150 ){
+            this.setState({ dicErrMsg: "the Entered the Description in below 150 words "})}
             else{
                 this.setState({topicErrMsg: "",disFlag:false})
+                console.log(this.state.disFlag);
             }
         }
     }
@@ -94,7 +103,7 @@ class Blogform extends React.Component<any, any>{
 
                     <div className="container">
                         <h2>ADD BLOG</h2>
-                        <form className="needs-validation" onSubmit={(e) => { this.submitHandler(e, { title: topic, about: text1, id: id+1 }) }}>
+                        <form className="needs-validation" onSubmit={(e) => { this.submitHandler(e, { "title": topic, "about": text1, "id":id  , "date":Date.now}) }}>
                             <div className="inner">
                                 <div className=" box">
                                     <p>Fields with <span className="text-danger">*</span> are required</p>
