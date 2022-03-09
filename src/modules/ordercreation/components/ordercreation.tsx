@@ -199,10 +199,7 @@ function BuyNow(props: any) {
                                         <button className="continuebutton btn btn-success">Continue</button>
                                     </div>
                                 </form>
-
                             </div>
-                        
-                        
                     </div>
 
                 </div>

@@ -4,7 +4,7 @@ import "./orders.scss";
 
 export default function Orders() {
     return (
-        <div>
+        <div className='orders-dashboard'>
             <main id="mainContent">
                 <section className="order-section">
                     <header>
