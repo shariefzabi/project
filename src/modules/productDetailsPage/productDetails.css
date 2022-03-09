@@ -101,3 +101,14 @@ hr {
 .dropdown-menu {
   display: none;
 }
+
+Accordion.body p:active{
+    background-color: green;
+
+}
+Accordion.body p{
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+
+}

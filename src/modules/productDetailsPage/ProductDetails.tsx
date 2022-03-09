@@ -8,19 +8,12 @@ import { Accordion } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-
-
 function ProductDetails(props: any) {
 
     let [products, setProducts] = useState([])
-    let [marketType, setMarketType] = useState("")
-    let name = props.state.locName;
-    // console.log(props.locName)
-    let [selectedLocationName, setSelectedLocationName] = useState('')
-    setSelectedLocationName(name)
-    // console.log(selectedLocationName)
-
-
+    let [marketType, setMarketType] = useState("Cattle Market")
+    let [selectedLocationName, setSelectedLocationName] = useState(props.state.locName)
+    
     useEffect(() => {
         axios.get("http://localhost:3005/market/marketDetails")
             .then(
@@ -30,33 +23,16 @@ function ProductDetails(props: any) {
             )
     }, []);
 
-    const marketTypeHandler = () => {
-        setMarketType("Cattle Market")
-    }
-    const markettypeHandler = () => {
-        setMarketType("Sheep Market")
-    }
+//for dynamic market heading
+    const marketTypeHandler = () => {setMarketType("Cattle Market")}
+    const markettypeHandler = () => {setMarketType("Sheep Market")}
+    
+//npt working dynamic product data
+    // console.log(products[0].sheepMarkets[0])
 
-
-
-
-
-
-    // const fetchProducts = (async () => {
-    //     try {
-    //         const response = await axios.get("http://localhost:3005/market/marketDetails", { params: { locationName: { selectedLocationName } } })
-    //         setProducts(response.data.args);
-    //     } catch (err) {
-    //         console.error(err)
-    //     }
-    // })
-    // fetchProducts();
-    // const { locationName } = products
-    // console.log(locationName)
 
     return (
         <div id="productPage">
-            {/* <p id="sub">Home / Location / Cattle Market</p> */}
             <Breadcrumb id="sub">
                 <Breadcrumb.Item>
                     <Link className="breadCrumbs" to='/'>Home</Link>
@@ -65,87 +41,71 @@ function ProductDetails(props: any) {
                     <Link className="breadCrumbs" to='/location'>{selectedLocationName}</Link>
                 </Breadcrumb.Item >
                 <Breadcrumb.Item active>
-                    selectedMarket
+                   {marketType}
                 </Breadcrumb.Item>
             </Breadcrumb>
             <div className="container">
                 <div className="row">
                     <div className="col-3 locNames ">
-
-
                         {
                             products.map((e: any) => {
-                                // console.log(selectedLocationName, e.locationName)
                                 let locations = e.locationName;
-                                // let flag = true;
                                 if (selectedLocationName === locations) {
                                     return (
                                         <Accordion defaultActiveKey={e} flush>
                                             <Accordion.Item eventKey={e}>
-                                                <Accordion.Header>{e.locationName}</Accordion.Header>
+                                                <Accordion.Header onClick={()=>{setSelectedLocationName(e.locationName)}}>{e.locationName}</Accordion.Header>
                                                 <Accordion.Body>
-                                                    Cattle Market <span>{e.cattleMarkets.length}</span>
+                                                <p onClick={marketTypeHandler}>Cattle Market <span>{e.cattleMarkets.length}</span></p>  
                                                 </Accordion.Body>
                                                 <Accordion.Body>
-                                                    Sheep Market <span>{e.sheepMarkets.length}</span>
+                                                <p onClick={markettypeHandler}>Sheep Market <span>{e.sheepMarkets.length}</span></p> 
                                                 </Accordion.Body>
                                             </Accordion.Item>
                                         </Accordion>
                                     )
-                                    // flag = false;
-                                    // console.log(flag, locations)
                                 }
                                 else {
                                     return (
                                         <Accordion flush>
                                             <Accordion.Item eventKey={e}>
-                                                <Accordion.Header>{e.locationName}</Accordion.Header>
+                                                <Accordion.Header onClick={()=>{setSelectedLocationName(e.locationName)}}>{e.locationName}</Accordion.Header>
                                                 <Accordion.Body>
-                                                    Cattle Market <span>{e.cattleMarkets.length}</span>
+                                                  <p onClick={marketTypeHandler}>Cattle Market <span>{e.cattleMarkets.length}</span></p>  
                                                 </Accordion.Body>
                                                 <Accordion.Body>
-                                                    Sheep Market <span>{e.sheepMarkets.length}</span>
+                                                   <p onClick={markettypeHandler}>Sheep Market <span>{e.sheepMarkets.length}</span></p> 
                                                 </Accordion.Body>
                                             </Accordion.Item>
                                         </Accordion>
                                     )
-                                    // console.log(flag, locations)
-
                                 }
                             })
                         }
-
                     </div>
                     <div className="col-9">
                         <h3 id="marketHeading">{marketType}</h3>
-                        <h4 id="locationMarketHeading">Location&#32;{marketType}</h4>
+                        <h4 id="locationMarketHeading">{selectedLocationName}&#32;{marketType}</h4>
                         <hr />
                         <div className="card-deck d-flex ">
-                            <div className="card col-4 m-2 ">
-                                <div className="card-body">
-                                    <h5 className="card-id">Animal id</h5>
-                                    <p className="card-price">Price</p>
-                                    <button type="button" className="btn btn-success">Success</button>
+                        {
+                            products.map((e: any) => {
+                                return(
+                                    
+                                    <div className="card col-4 ">
+                                        <div className="card-body">
+                                            {/* <h5 className="card-id">animal:{e.sheepMarkets}</h5>
+                                            <p className="card-price">p:{e.sheepMarkets.price}</p> */}
+                                            <button type="button" className="btn btn-success">Success</button>
+                                        </div>
                                 </div>
-                            </div>
-                            <div className="card col-4 m-2 ">
-                                <div className="card-body">
-                                    <h5 className="card-id">Animal id</h5>
-                                    <p className="card-price">Price</p>
-                                    <button type="button" className="btn btn-success">Success</button>
-                                </div>
-                            </div>
-                            <div className="card col-4  m-2">
 
-                                <div className="card-body">
-
-                                    <h5 className="card-id">Animal id</h5>
-                                    <p className="card-price">Price</p>
-                                    <button type="button" className="btn btn-success">Success</button>
-                                </div>
-                            </div>
-
+                                )
+                            })
+                        }
                         </div>
+                       
+                        
 
                     </div>
                 </div>
