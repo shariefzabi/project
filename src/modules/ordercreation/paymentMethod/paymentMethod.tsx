@@ -2,7 +2,6 @@ import React from 'react'
 import './asset/paymentMethod.scss'
 import axios from "axios"
 import { connect } from "react-redux"
-import { Link } from 'react-router-dom'
 
 class PaymentMethod extends React.Component<any, any> {
   constructor(props: any) {
@@ -18,8 +17,7 @@ class PaymentMethod extends React.Component<any, any> {
       card_numberErr: '',
       cvv_numberErr: '',
       month_yearErr: '',
-      cost: "",
-      popUpCloseFlag: true
+      cost: ""
 
     }
   }
@@ -40,12 +38,6 @@ class PaymentMethod extends React.Component<any, any> {
     this.setState({ [event.target.name]: event.target.value });
     // this.setState({ payment: event.target.value })
   }
-  popupClose = () => {
-
-    this.setState({ popUpCloseFlag: false })
-  }
-
-
   validation = (e: any) => {
     // card NUmber
     if (e.target.name === 'card_number') {
@@ -137,7 +129,7 @@ class PaymentMethod extends React.Component<any, any> {
     axios.post("http://localhost:3005/card/details", cardDetails)
       .then((res) => {
         console.log(res.data);
-
+        this.setState({ cost: res.data })
       })
       .catch(err => {
         console.log("error: ", err);
@@ -155,10 +147,9 @@ class PaymentMethod extends React.Component<any, any> {
 
     return (
       <div >
-        {<div className="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex={-1} data-bs-backdrop="static">
+        <div className="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex={-1} data-bs-backdrop="static">
           <div className="modal-dialog modal-dialog-centered ">
             <div className="modal-content">
-
               <div className="modal-body ">
                 <div className='row'>
                   <h5 className="modal-title col-11" id="exampleModalToggleLabel">Payment Method</h5>
@@ -179,7 +170,7 @@ class PaymentMethod extends React.Component<any, any> {
               </div>
             </div>
           </div>
-        </div>}
+        </div>
 
         {
           this.state.payment == "Ravepay" && <div> <div className="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex={-1}>
@@ -215,7 +206,7 @@ class PaymentMethod extends React.Component<any, any> {
               </div>
             </div>
           </div>
-            {<div className="modal fade" id="exampleModalToggle3" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabIndex={-1}>
+            <div className="modal fade" id="exampleModalToggle3" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabIndex={-1}>
               <div className="modal-dialog modal-dialog-centered modal-sm ">
                 <div className="modal-content">
                   <div className="modal-body text-center">
@@ -227,50 +218,34 @@ class PaymentMethod extends React.Component<any, any> {
                   </div>
                 </div>
               </div>
-            </div>}
+            </div>
           </div>
         }
 
 
-      
-
-            {this.state.payment == "Pay_On_Delivery" && this.state.popUpCloseFlag && <div className="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabIndex={-1}>
-              <div className="modal-dialog modal-dialog-centered ">
-                <div className="modal-content">
-                  <div className="modal-body text-center">
-                    <div className="Successfully_Placed_box">
-                      <h3>&#10003;</h3>
-                    </div>
-                    <h5 className='Successfully_Placed'>Order has been<br />Successfully Placed</h5>
-
-
-        
-
-                    {/* <Link to="/products" className="btn btn-success">Continue Shopping</Link> */}
-                    {/* <button onClick={()=>this.redirectToProducts()} className ="btn btn-succes">continue Shopping</button> */}
-                    <Link to="/products">
-                      <button data-bs-toggle="modal" className='btn btn-success' onClick={this.popupClose}>
-                        Click Me!
-                      </button>
-                    </Link>
-
-
+        {
+          this.state.payment == "Pay_On_Delivery" && <div className="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabIndex={-1}>
+            <div className="modal-dialog modal-dialog-centered ">
+              <div className="modal-content">
+                <div className="modal-body text-center">
+                  <div className="Successfully_Placed_box">
+                    <h3>&#10003;</h3>
                   </div>
+                  <h5 className='Successfully_Placed'>Order has been<br />Successfully Placed</h5>
+
+                  <button className="btn btn-success" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Continue Shopping</button>
                 </div>
               </div>
             </div>
-            }
-
-          
+          </div>
+        }
         <a className="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Proceed Payment</a>
         <h1>{this.state.payment}</h1>
       </div>
     )
   }
-
-
-
 }
+
 const mapStateToProps = (state: any) => {
   console.log(state);
 
@@ -284,4 +259,5 @@ const mapDispatchToProps = (dispatch: Function) => {
     setCardDetails: (cardDetails: any) => dispatch({ type: 'storeCardDetails', payload: cardDetails })
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(PaymentMethod)
+
+export default connect(mapStateToProps, mapDispatchToProps)(PaymentMethod);
