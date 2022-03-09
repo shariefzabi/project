@@ -20,11 +20,11 @@ mongoClient.connect(dburl, function (err, client) {
     userCollection = db.collection("user");
     locationdbs = db.collection("locationdbs");
     let carddetails = db.collection("carddetails");
-    let invoiceCollection =db.collection("invoicedatas")
+    let invoiceCollection = db.collection("invoicedatas");
     app.set("carddetails", carddetails);
     app.set("locationCollection", locationdbs);
-    app.set("")
-    app.set("invoiceCollection", invoiceCollection)
+    app.set("");
+    app.set("invoiceCollection", invoiceCollection);
     console.log("connected to db");
   }
 });
@@ -59,8 +59,8 @@ app.post("/users/signup", function (req, res) {
     if (err) console.log(err);
     if (result == null) {
       userDb.insert(req.body);
-      res.send(result);
-    } else res.send("This email is already registered");
+      res.send(["success",result]);
+    } else res.send(["failed","This email is already registered"]);
   });
 });
 
@@ -81,14 +81,45 @@ app.post("/users/login", function (req, res) {
 //************ No.1 Team ************* Ending *****************************
 
 //team-2 storing order details
-app.post("/orderdetails", function (req, res) {
+app.get("/orders/orderdetails", function (req, res) {
   let orderdetails = req.body;
   console.log(orderdetails);
-  let orderDb = db.collection("orders");
-  orderDb.insert(orderdetails);
-  res.send(orderdetails);
+  let ordercollection = db.collection("orders");
+  ordercollection.find().sort({"orderId":-1}).limit(1).toArray(function (err,result) {
+    res.send(result)
+  })
 });
+app.post("/orders/orderdetails", function (req, res) {
+  let orderdetails = req.body;
+  console.log(orderdetails);
+  let ordercollection = db.collection("orders");
+  ordercollection.count(function(err,result){
+    if(err)console.log(err);
+    else {
+      if(result==0){
+        orderdetails.orderId=1;
+      }else{
+        orderdetails.orderId=result+1;
+      }
+      ordercollection.insertOne(orderdetails);
+      res.json(orderdetails);
+    }
+  })
+});
+//fetching order details based on username
+app.get("/orders/orderdetails/:username", function(req,res) {
+  let {params}=req.body;
+  let ordercollection = db.collection("orders");
+  ordercollection.find({user:params.username},function(err,result) {
+    if(err) console.log(err);
+    else{
+      res.send(result);
+    }
+  })
+})
+
 //team-2 ending
+
 
 app.get("/", function (req, res) {
   let { body, params, query } = req;
@@ -127,11 +158,15 @@ mongoose.connect(
 //team 6 start
 // let animalAPI = require("./cart/cart_details.js");
 // app.use("/animal", animalAPI);
+let butcheryAPI = require("./butchery/butchery.js");
+app.use("/butchery", butcheryAPI);
+
 let router = require("./cart/cart_details.js");
 app.use("/animal", router);
 
-const agentAPI = require("./agentform/agent.js");
-app.use("/agent", agentAPI);
+let agentAPI = require("./agentform/agent.js");
+app.use("/agents", agentAPI);
+
 //team 6 end
 
 // team 7
