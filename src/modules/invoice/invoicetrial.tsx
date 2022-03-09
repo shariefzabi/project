@@ -54,7 +54,7 @@ function Invoice1(props: any) {
                             let index = "#ind" + ind
                             return (
                                 <div key={ind}>
-                                    <p className="invoice-id">ID - {data["invoicedata"]["token"]}<img className="text-end" onClick={(e) => invoiceToggle(e)} data-bs-toggle="collapse" data-bs-target={index} aria-expanded="false" aria-controls="collapseExample" src={triangle1}></img></p>
+                                    <p className="invoice-id">ID - {data["invoicedata"]["orderId"]}<img className="text-end" onClick={(e) => invoiceToggle(e)} data-bs-toggle="collapse" data-bs-target={index} aria-expanded="false" aria-controls="collapseExample" src={triangle1}></img></p>
                                     <div className="table collapse" id={index.slice(1)}>
                                         <div>
                                             <table>
@@ -87,12 +87,12 @@ function Invoice1(props: any) {
                                                         <td>{data["invoicedata"]["quantity"]}</td>
                                                         <td>{data["invoicedata"]["weight"]}</td>
                                                         <td>
-                                                            <span className="first-line">N 100,00000</span>
+                                                            <span className="first-line">N {data["invoicedata"]["productAmount"]}</span>
                                                             <span>0.00</span>
                                                         </td>
-                                                        <td className="dbl ">N 200,00 0.00</td>
+                                                        <td className="dbl ">N {data["invoicedata"]["deliveryAmount"]}.00</td>
                                                         <td>
-                                                            <span className="first-line">N 100,00000</span>
+                                                            <span className="first-line">N {data["invoicedata"]["totalAmount"]}</span>
                                                             <span>0.00</span>
                                                         </td>
                                                     </tr>

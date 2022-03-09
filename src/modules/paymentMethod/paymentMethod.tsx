@@ -207,9 +207,9 @@ class PaymentMethod extends React.Component<any, any> {
             </div>
           </div>
             <div className="modal fade" id="exampleModalToggle3" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabIndex={-1}>
-              <div className="modal-dialog modal-dialog-centered modal-sm ">
+              <div className="modal-dialog modal-dialog-centered modal-sm " >
                 <div className="modal-content">
-                  <div className="modal-body text-center">
+                  <div className="modal-body text-center" >
                     <div className="Successfully_Placed_box">
                       <h3>&#10003;</h3>
                     </div>
