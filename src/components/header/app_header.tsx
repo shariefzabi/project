@@ -18,7 +18,7 @@ class Header extends React.Component {
   render() {
     console.log('header values::', this.props);
 
-    const {redux:{user}} = this.props as any;
+    const { redux: { user } } = this.props as any;
 
 
     return (
@@ -49,8 +49,8 @@ class Header extends React.Component {
                     src={cross}
                   />
                   <div className="text-center">
-                    <Link  to="/" className="menu_content_small" onClick={()=>alert("cgh")}>
-                      Home 
+                    <Link to="/" className="menu_content_small" onClick={() => alert("cgh")}>
+                      Home
                     </Link>
                     <Link to="/aboutus" className="menu_content_small">
                       About Us
@@ -109,10 +109,10 @@ class Header extends React.Component {
               <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <span className="triangle-up"></span>
                 <li>
-                 <AgentModel></AgentModel>
+                  <AgentModel></AgentModel>
                 </li>
                 <li>
-                <ButcheryModel></ButcheryModel>
+                  <ButcheryModel></ButcheryModel>
                 </li>
               </ul>
             </div>
@@ -122,35 +122,35 @@ class Header extends React.Component {
               Blog
             </Link>
           </div>
-          {user && 
-              <div className="home">
+          {user &&
+            <div className="home">
               <Link to="/addblogs" className="menu_content">
                 Add Blogs
               </Link>
             </div>
           }
-          <div className="menu_btn">          
-             <PopUp />
+          <div className="menu_btn">
+            <PopUp />
           </div>
           {!user && <div className="menu_btn text-center">
-              <Login />
+            <Login />
           </div>
           }
           {user && <div className="nav-item dropdown user-profile">
 
-<a className="btn text-white dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-    data-bs-toggle="dropdown" aria-expanded="false">
-    {user.fullName}
-</a>
-<ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <li><Link className="dropdown-item" to="/profile">My Profile</Link></li>
-    <li><Link className="dropdown-item" to="orders">Orders</Link></li>
-    <li><Link className="dropdown-item" to="invoice">Invoice</Link></li>
-    <li><Link className="dropdown-item" to="payments">Payment</Link></li>
-    <li><Link className="dropdown-item" to="trackOrder">Track Order</Link></li>
-    <li><Link className="dropdown-item" to="logOut">Log out</Link></li>
-</ul>
-</div>}
+            <a className="btn text-white dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              {user.fullName}
+            </a>
+            <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <li><Link className="dropdown-item" to="/profile">My Profile</Link></li>
+              <li><Link className="dropdown-item" to="orders">Orders</Link></li>
+              <li><Link className="dropdown-item" to="invoice">Invoice</Link></li>
+              <li><Link className="dropdown-item" to="payments">Payment</Link></li>
+              <li><Link className="dropdown-item" to="trackOrder">Track Order</Link></li>
+              <li><Link className="dropdown-item" to="logOut">Log out</Link></li>
+            </ul>
+          </div>}
         </div>
       </header>
     );
@@ -160,15 +160,15 @@ class Header extends React.Component {
 
 
 
-const mapStateToProps = (state:any) => {
+const mapStateToProps = (state: any) => {
   // console.log(state);
-  
+
   return {
-      redux:state
+    redux: state
   }
 }
 
-const mapDispatchToProps = (dispatch:Function) => {
+const mapDispatchToProps = (dispatch: Function) => {
   return {
   }
 }

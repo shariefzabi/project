@@ -125,13 +125,14 @@ class PaymentMethod2 extends React.Component<any, any> {
         "Month": month,
         "year": year,
         "CVV": cvv_number
+
       }
     }
 
     axios.post("http://localhost:3005/card/details", cardDetails)
-      .then((res) => {
-        console.log(res.data);
-        this.setState({ cost: res.data })
+      .then((result) => {
+        console.log(result.data);
+        // this.setState({ cost: res.data })
       })
       .catch(err => {
         console.log("error: ", err);
@@ -149,25 +150,25 @@ class PaymentMethod2 extends React.Component<any, any> {
 
     return (
       <div>
-        <div className="modal fade" id="exampleModalPayment" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex={-1} data-bs-backdrop="static">
+        <div className="modal fade" id="exampleModalPayment" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" data-bs-toggle="modal" tabIndex={-1} data-bs-backdrop="static">
           <div className="modal-dialog modal-dialog-centered ">
             <div className="modal-content">
               <div className="modal-body ">
-                <div className='row'>
-                  <h5 className="modal-title col-11" id="exampleModalToggleLabel">Payment Method</h5>
-                  <button type="button" className="btn-close btn-cancele col-1" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
+
+                <h5 className="modal-title " id="exampleModalToggleLabel">Payment Method</h5>
+                {/* <button type="button" className="btn-close btn-cancele col-1" data-bs-dismiss="modal" aria-label="Close"></button> */}
+
                 <p>Choose your preferred payment<br /> method to continue</p>
                 <section >
                   <input type="radio" name="payment"
-                    className="form-check-input" id="Ravepay" value="Ravepay" onChange={this.changeHandler} checked={this.state.payment == 'Ravepay'}></input>
-                  <label htmlFor="Ravepay">Pay With Ravepay</label><br></br>
+                    className="form-check-input " id="Ravepay" value="Ravepay" onChange={this.changeHandler} checked={this.state.payment == 'Ravepay'}></input>
+                  <label htmlFor="Ravepay" className='payment_label'>Pay With Ravepay</label><br></br>
                   <input type="radio" name="payment"
                     className="form-check-input" id="Pay_On_Delivery" value="Pay_On_Delivery" onChange={this.changeHandler} checked={this.state.payment == 'Pay_On_Delivery'} ></input>
-                  <label htmlFor="Pay_On_Delivery">Pay On Delivery</label>
+                  <label htmlFor="Pay_On_Delivery" className='payment_label'>Pay On Delivery</label>
                 </section>
                 <div className="text-center">
-                  <button className="btn btn-success" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Make Payment</button><br></br>
+                  <button className="btn btn-success payment_button" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Make Payment</button><br></br>
                 </div>
               </div>
             </div>
