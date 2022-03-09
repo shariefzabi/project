@@ -44,7 +44,7 @@ class Blogcontent extends React.Component<any, any>{
         
         return (
 
-            <div>
+            <div> 
                 <div className="main-box">
                     <div className="top-buttons">
                         <button type="button" className="btn-success left-carousel " onClick={()=>{this.carousel(true)}}></button>
