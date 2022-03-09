@@ -163,7 +163,8 @@ class BeanAgentPopup extends React.Component<any, any> {
             </label>
             <select
               className="form-select "
-              defaultValue="1"
+              //   defaultValue="1"
+              value={this.state.agent}
               name="agent"
               aria-label="Default select example"
               onChange={this.changeHandler}
