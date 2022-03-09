@@ -124,7 +124,7 @@ class Signup extends React.Component<any, any>{
             this.props.setUser(userDetails)
          
             else
-            this.setState({emailErrMsg:res.data})
+            this.setState({emailErrMsg:res.data[1]})
         })
         .catch((err:any)=>console.log(" User Sign up Error",err));
     }
