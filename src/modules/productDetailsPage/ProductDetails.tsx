@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 function ProductDetails(props: any) {
 
     let [products, setProducts] = useState([])
+    let [marketType,setMarketType]=useState("")
     // console.log(props.locName)
     let selectedLocationName = props.state.locName
 
@@ -21,7 +22,16 @@ function ProductDetails(props: any) {
         )
     },[]);
 
-    // console.log(products)
+    const marketTypeHandler=()=>{
+        setMarketType("Cattle Market")
+    }
+    const markettypeHandler=()=>{
+        setMarketType("Sheep Market")
+    }
+    
+
+    
+
 
     
     // const fetchProducts = (async () => {
@@ -38,7 +48,7 @@ function ProductDetails(props: any) {
 
     return (
         <div id="productPage">
-            <p id="sub">Home / Location / Cattle Market</p>
+            {/* <p id="sub">Home / Location / Cattle Market</p> */}
             <div className="container">
                 <div className="row">
                     <div className="col-2 locNames ">
@@ -47,12 +57,12 @@ function ProductDetails(props: any) {
                                products.map((e:any)=>{
                                    return(
                                     <div>
-                                    <button className="btn " role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">                                                                                
+                                    <button className="location-btn btn " role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">                                                                                
                                         {e.locationName}                                                                              
                                     </button>
                                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <li><a className="dropdown-item" >Cattle Market()</a></li>
-                                        <li><a className="dropdown-item">Sheep Market()</a></li>
+                                        <li><a className="dropdown-item" onClick={marketTypeHandler} >Cattle Market({e.cattleMarkets.length})</a></li>
+                                        <li><a className="dropdown-item" onClick={markettypeHandler}>Sheep Market({e.sheepMarkets.length})</a></li>
                                     </ul>
                                     </div>
                                    )
@@ -61,8 +71,8 @@ function ProductDetails(props: any) {
                         </div>
                     </div>
                     <div className="col-10">
-                        <h3 id="marketHeading">Cattle&#32;Market</h3>
-                        <h4 id="locationMarketHeading">Location&#32;Cattle&#32;Market</h4>
+                        <h3 id="marketHeading">{marketType}</h3>
+                        <h4 id="locationMarketHeading">Location&#32;{marketType}</h4>
                         <hr />
                         <div className="card-deck d-flex ">
                             <div className="card col-4 m-2 ">
