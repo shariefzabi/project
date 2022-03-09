@@ -41,12 +41,12 @@ label{
     border-radius: 0.833rem;
     margin-bottom:3.375rem;
 }
-.sub-btn{
+.doneBtn{
     padding-top:1.182rem;
     padding-bottom:1.182rem;
     padding-right:3.5rem;
     padding-left:3.5rem;
     font-weight:400;
     font-size:1.25rem;
-    width:8rem;
+    width:15rem;
 }

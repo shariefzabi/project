@@ -142,7 +142,7 @@ class Form extends React.Component<any, any> {
                             </div>
                         </span>
                         <div className="text-center">
-                            <button type="submit" className="btn btn-success sub-btn m-2 btn btn-primary" >Submit</button>
+                            <button type="submit" className="btn btn-success doneBtn m-2 btn btn-primary" >Submit</button>
                         </div>
                     </form>
                 </section>
