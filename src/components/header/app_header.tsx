@@ -8,18 +8,18 @@ import "./app_header.scss";
 import Login from "../../modules/login/components/login";
 import { connect } from "react-redux";
 import PopUp from "../../modules/locationPage/locationPopUp";
-import BeanAgentPopup from "../../modules/be an agent form copy/form1";
-import Butcherypopup from "../../modules/butchery_form_page/form2";
+import BeanAgentPopup from "../../modules/be an agent form copy/form1"
+import Butcherypopup from "../../modules/butchery_form_page/form2"
 import AgentModel from "../../modules/AgentModel(Mod) copy/AgentModel1";
 import ButcheryModel from "../../modules/butchery_form/butcherypopup";
 
+
 class Header extends React.Component {
   render() {
-    console.log("header values::", this.props);
+    console.log('header values::', this.props);
 
-    const {
-      redux: { user },
-    } = this.props as any;
+    const {redux:{user}} = this.props as any;
+
 
     return (
       <header className="landingpage-header d-lg-flex justify-content-end">
@@ -49,12 +49,8 @@ class Header extends React.Component {
                     src={cross}
                   />
                   <div className="text-center">
-                    <Link
-                      to="/"
-                      className="menu_content_small"
-                      onClick={() => alert("cgh")}
-                    >
-                      Home
+                    <Link  to="/" className="menu_content_small" onClick={()=>alert("cgh")}>
+                      Home 
                     </Link>
                     <Link to="/aboutus" className="menu_content_small">
                       About Us
@@ -96,102 +92,65 @@ class Header extends React.Component {
               About Us
             </Link>
           </div>
-          {!user && (
-            <div className="home">
-              <div className="dropdown">
-                <div
-                  className="dropdown-toggle menu_content "
-                  role="button"
-                  id="dropdownMenuLink"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <Link to="/" className="text-white text-decoration-none">
-                    Be a Partner
-                  </Link>
-                </div>
-                {/* <img className="inverted_tri" aria-labelledby="dropdownMenuLink" src={triangle}/> */}
-                <ul
-                  className="dropdown-menu"
-                  aria-labelledby="dropdownMenuLink"
-                >
-                  <span className="triangle-up"></span>
-                  <li>
-                    <AgentModel></AgentModel>
-                  </li>
-                  <li>
-                    <ButcheryModel></ButcheryModel>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          )}
-          <div className="home">
-            <Link to="/blog" className="menu_content">
-              Blog
-            </Link>
-          </div>
-          {user && (
-            <div className="home">
-              <Link to="/addblogs" className="menu_content">
-                Add Blogs
-              </Link>
-            </div>
-          )}
-          <div className="menu_btn">
-            <PopUp />
-          </div>
-          {!user && (
-            <div className="menu_btn text-center">
-              <Login />
-            </div>
-          )}
-          {user && (
-            <div className="nav-item dropdown user-profile">
-              <a
-                className="btn text-white dropdown-toggle"
-                href="#"
+          {!user && <div className="home">
+            <div className="dropdown">
+              <div
+                className="dropdown-toggle menu_content "
                 role="button"
                 id="dropdownMenuLink"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                {user.fullName}
-              </a>
+                <Link to="/" className="text-white text-decoration-none">
+                  Be a Partner
+                </Link>
+              </div>
+              {/* <img className="inverted_tri" aria-labelledby="dropdownMenuLink" src={triangle}/> */}
               <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <span className="triangle-up"></span>
                 <li>
-                  <Link className="dropdown-item" to="/profile">
-                    My Profile
-                  </Link>
+                 <AgentModel></AgentModel>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="orders">
-                    Orders
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="invoice">
-                    Invoice
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="payments">
-                    Payment
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="trackOrder">
-                    Track Order
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="logOut">
-                    Log out
-                  </Link>
+                <ButcheryModel></ButcheryModel>
                 </li>
               </ul>
             </div>
-          )}
+          </div>}
+          <div className="home">
+            <Link to="/blog" className="menu_content">
+              Blog
+            </Link>
+          </div>
+          {user && 
+              <div className="home">
+              <Link to="/addblogs" className="menu_content">
+                Add Blogs
+              </Link>
+            </div>
+          }
+          <div className="menu_btn">          
+             <PopUp />
+          </div>
+          {!user && <div className="menu_btn text-center">
+              <Login />
+          </div>
+          }
+          {user && <div className="nav-item dropdown user-profile">
+
+<a className="btn text-white dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+    data-bs-toggle="dropdown" aria-expanded="false">
+    {user.fullName}
+</a>
+<ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <li><Link className="dropdown-item" to="/profile">My Profile</Link></li>
+    <li><Link className="dropdown-item" to="orders">Orders</Link></li>
+    <li><Link className="dropdown-item" to="invoice">Invoice</Link></li>
+    <li><Link className="dropdown-item" to="payments">Payment</Link></li>
+    <li><Link className="dropdown-item" to="trackOrder">Track Order</Link></li>
+    <li><Link className="dropdown-item" to="logOut">Log out</Link></li>
+</ul>
+</div>}
         </div>
       </header>
     );
@@ -199,16 +158,19 @@ class Header extends React.Component {
 }
 // export default Header;
 
-const mapStateToProps = (state: any) => {
+
+
+const mapStateToProps = (state:any) => {
   // console.log(state);
-
+  
   return {
-    redux: state,
-  };
-};
+      redux:state
+  }
+}
 
-const mapDispatchToProps = (dispatch: Function) => {
-  return {};
-};
+const mapDispatchToProps = (dispatch:Function) => {
+  return {
+  }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
