@@ -25,13 +25,21 @@ class Blogform extends React.Component<any, any>{
     }
     submitHandler = (e: any, data: any) => {
         e.preventDefault();
+        // console.log("heifurb");
+        
         axios.get("http://localhost:3005/blogs")
             .then(res => {
                 this.setState({ blogs: res.data, id: res.data.length })
+                console.log("data resived");
+                
             })
-        if(this.state.topicFlag === "off" && this.state.topic >= 300){
+        if(this.state.topicFlag == "off" && this.state.text1.length >=100){
+            console.log("hiii");
+            
         axios.post("http://localhost:3005/addblogs", data)
             .then((res: any) => {
+                console.log("heloo");
+                
                 if (res.data == "success") {
                     console.log(res.data);
                     this.setState({ blogs: [],
@@ -64,19 +72,22 @@ class Blogform extends React.Component<any, any>{
                 this.setState({ topicErrMsg: "Accepts Alphabets, space & Min 10 to Max 100 Char" ,topicFlag:"on"})
             } else {
                 this.setState({ topicErrMsg: "", topicFlag:"off"})
+                console.log(this.state.topicFlag);
+                
             }
         }
     }
     validate = () => {
-        if (this.state.text1 == "" || this.state.text1.length === 1) {
+        if (this.state.text1 == "" || this.state.text1.length === 0) {
             this.setState({ dicErrMsg: "Please enter the Description." })
             console.log("errr");
             
         } else {
-            if(this.state.text1.length < 300 ){
-            this.setState({ dicErrMsg: "the Entered the Description in below 300 words "})}
+            if(this.state.text1.length < 150 ){
+            this.setState({ dicErrMsg: "the Entered the Description in below 150 words "})}
             else{
                 this.setState({topicErrMsg: "",disFlag:false})
+                console.log(this.state.disFlag);
             }
         }
     }
