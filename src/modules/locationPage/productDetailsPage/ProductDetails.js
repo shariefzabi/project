@@ -1,25 +1,36 @@
 import React, { useState } from "react";
 import axios from 'axios';
-import { useNavigate } from "react-router-dom";
 import './productDetails.css';
 
+  
 
-export default function ProductDetails() {
+export default function ProductDetails(props : any) {
+
     let [products, setProducts] = useState([])
-    const navigate = useNavigate();
+    // console.log(props.locName)
+    let selectedLocationName=props.locName
 
+
+   
     const fetchProducts = (async () => {
         try {
-            const response = await axios.get("http://localhost:3005/market/marketDetails")
-            setProducts(response.data);
+            const response = await axios.get("http://localhost:3005/market/marketDetails",{params:{locationName:{selectedLocationName}}})
+            setProducts(response.data.args);
         } catch (err) {
             console.error(err)
         }
     })
+    fetchProducts();
+    console.log(products)
 
 
-    const { locationName } = products
-    console.log(locationName)
+  
+    
+
+    
+
+    // const { locationName } = products
+    // console.log(locationName)
 
     return (
         <div id="productPage">
@@ -27,7 +38,11 @@ export default function ProductDetails() {
             <div className="container">
                 <div className="row">
                     <div className="col-2 locNames ">
-                        location names
+                    <button role="button" type="button" className="btn dropdown" data-toggle="dropdown">drop</button>
+                    <div className="dropdown-menu" aria-labelledby="dropdownmenu1">
+                        <a className="dropdown-item" href=" ">action</a>
+                        <a className="dropdown-item" href=" ">bction</a>
+                    </div>
 
                     </div>
                     <div className="col-10">
@@ -36,7 +51,7 @@ export default function ProductDetails() {
                         <hr />
                         <div className="card-deck d-flex ">
                             <div className="card col-4 m-2 ">
-                                <img className="card-img-top" src="..." alt="Card image cap" />
+                              
                                 <div className="card-body">
                                     <h5 className="card-id">Animal id</h5>
                                     <p className="card-price">Price</p>
@@ -45,7 +60,7 @@ export default function ProductDetails() {
                                 </div>
                             </div>
                             <div className="card col-4 m-2 ">
-                                <img className="card-img-top" src="..." alt="Card image cap" />
+                               
                                 <div className="card-body">
 
                                     <h5 className="card-id">Animal id</h5>
@@ -54,7 +69,7 @@ export default function ProductDetails() {
                                 </div>
                             </div>
                             <div className="card col-4  m-2">
-                                <img className="card-img-top" src="..." alt="Card image cap" />
+                            
                                 <div className="card-body">
 
                                     <h5 className="card-id">Animal id</h5>
@@ -70,3 +85,5 @@ export default function ProductDetails() {
         </div>
     )
 }
+
+
