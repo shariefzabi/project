@@ -4,18 +4,17 @@ import { useEffect, useState } from 'react';
 import PaymentMethod from '../../paymentMethod/paymentMethod'
 import axios from 'axios';
 
-// import PaymentMethod2 from '../../paymentMethod/paymentMethod'
 function Orderdisplay(props: any) {
     // console.log("orderdisplay",props.user.fullName);
     const [orderdata, setOrderdata] = useState([]);
     const [paymentflag, setPaymentflag] = useState(false);
-    //    const [cowPrice,setCowPrice]=useState(0);
-    //    const [goatPrice,setGoatPrice]=useState(0);
-    //    const [pigPrice,setPigPrice]=useState(0)
     console.log("orderdata", orderdata);
 
     useEffect(() => {
-        axios.post("http://localhost:3005/orders/orderdetails", props)
+        const orderdata={...props.user,...props.orders};
+        console.log("orders",orderdata);
+        
+        axios.post("http://localhost:3005/orders/orderdetails", orderdata)
             .then((res) => console.log("postresponse", res.data))
             .catch((err) => console.log("posterror", err));
         axios.get("http://localhost:3005/orders/orderdetails")
@@ -27,13 +26,6 @@ function Orderdisplay(props: any) {
             )
 
     }, [])
-    // if(props.orders.productdetails.type ==='Cow'){
-    //     setCowPrice(props.orders.productdetails.quantity*props.orders.productdetails.weight*50000);
-    // }else if(props.orders.productdetails.type ==='Goat'){
-    //     setGoatPrice(props.orders.productdetails.quantity*props.orders.productdetails.weight*10000);
-    // }else{
-    //     setPigPrice(props.orders.productdetails.quantity*props.orders.productdetails.weight*10000);
-    // }
     return (
         <>
             {!paymentflag &&
@@ -61,31 +53,14 @@ function Orderdisplay(props: any) {
                                     <hr className="vl" />
                                     <ul className="body-list-items-amount">
                                         <li className="product-head">Product Amount </li>
-                                        {props.orders.productdetails.type === 'Cow' &&
-                                            <li> N{props.orders.productdetails.quantity * props.orders.productdetails.weight * 50000}.00</li>
-                                        }
-                                        {props.orders.productdetails.type === 'Goat' &&
-                                            <li> N{props.orders.productdetails.quantity * props.orders.productdetails.weight * 10000}.00</li>
-                                        }
-                                        {props.orders.productdetails.type === 'Pig' &&
-                                            <li> N{props.orders.productdetails.quantity * props.orders.productdetails.weight * 5000}.00</li>
-                                        }
+                                        <li>N{props.orders.productdetails.price}.00</li>         
                                         <li className="product-head mt-2">Delivery Amount </li>
-                                        <li> N2,000.00</li>
+                                        <li> N{props.orders.productdetails.delprice}.00.00</li>
                                     </ul>
                                     <hr className="vl-right" />
                                     <ul className="body-list-items-total">
                                         <li className="product-head">Total Amount</li>
-                                        {props.orders.productdetails.type === 'Cow' &&
-                                            <li className="quantity-style"> N{props.orders.productdetails.quantity * props.orders.productdetails.weight * 50000 + 2000}.00</li>
-                                        }
-                                        {props.orders.productdetails.type === 'Goat' &&
-                                            <li className="quantity-style"> N{props.orders.productdetails.quantity * props.orders.productdetails.weight * 10000 + 2000}.00</li>
-                                        }
-                                        {props.orders.productdetails.type === 'Pig' &&
-                                            <li className="quantity-style"> N{props.orders.productdetails.quantity * props.orders.productdetails.weight * 5000 + 2000}.00</li>
-                                        }
-                                        {/* <li className="quantity-style">N{(props.orders.productdetails.quantity*props.orders.productdetails.weight*50000)+2000}.00</li> */}
+                                        <li className="quantity-style">N{props.orders.productdetails.totalprice}.00</li>
                                     </ul>
                                 </div>
                                 {/* <button className="proceed-button">Proceed Payment</button> */}

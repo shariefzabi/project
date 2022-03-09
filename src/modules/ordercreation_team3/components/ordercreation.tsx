@@ -77,9 +77,7 @@ function BuyNow(props: any) {
     return (
         <>
             <div className='ordercreation-container'>
-
                 {/* <a className="btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">ordercreation</a> */}
-
                 <div className="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true" tabIndex={-1}>
                     <div className="modal-dialog modal-xl" >
                         <div className="modal-content">
@@ -156,11 +154,8 @@ function BuyNow(props: any) {
                                                 <img src={require("./assets/addtocarticon.png")} />
                                             </div>
                                         </div>
-
                                     </div>
-
                                     <button className="continuebutton btn btn-success" onClick={(e) => onsubmitHandler(e, { type, quantity, weight, sex, breed })} data-bs-toggle="modal" data-bs-target="#dimensionalModal" data-bs-whatever="@mdo">Continue</button>
-
                                 </form>
 
                             </div>

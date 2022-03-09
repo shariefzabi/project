@@ -13,7 +13,7 @@ function BuyNow(props: any) {
     const [cow, setCow] = useState(["Aberdeen", "Holstein", "Hereford", "simmental"]);
     const [sheep, setSheep] = useState(["Boer", "American Pygmy", "Saanen goat", "angora"]);
     const [pig, setPig] = useState(["Duroc", "Large White", "Hampshire", "Large Black"]);
-
+    const [price,setPrice]=useState(1);
 
     const [typeerrmsg, setTypeerrmsg] = useState("");
     const [quantityerrmsg, setQuantityerrmsg] = useState("");
@@ -27,7 +27,20 @@ function BuyNow(props: any) {
         if(props.user!=null)
             setProductdetailsflag(false);
         // console.log("props in products", props);
-        // console.log("productdetails", productDetails);
+        // console.log("productdetails", productDetails.type);
+         if(productDetails.type ==='Cow'){
+            productDetails.price=productDetails.quantity*productDetails.weight*50000;
+            // setPrice(productDetails.quantity*productDetails.weight*50000);
+         }else if(productDetails.type ==='Goat'){
+            productDetails.price=productDetails.quantity*productDetails.weight*10000;
+        }else{
+            productDetails.price=productDetails.quantity*productDetails.weight*5000;
+        }
+        productDetails.delprice=2000;
+        productDetails.totalprice=productDetails.price+productDetails.delprice;
+        // productDetails.price=price;
+
+        console.log("productdetails", productDetails);
         props.storeProductdetails(productDetails);
     }
     function Validate(event: any) {

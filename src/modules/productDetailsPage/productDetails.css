@@ -92,6 +92,8 @@ hr {
 .location-btn:active {
   background-color: #2078bf;
 }
+.productPage {
+  
 .dropdown {
   margin: 0px;
   padding: 0px;
@@ -100,6 +102,7 @@ hr {
 }
 .dropdown-menu {
   display: none;
+}
 }
 
 Accordion.body p:active{

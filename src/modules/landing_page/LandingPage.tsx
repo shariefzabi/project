@@ -2,6 +2,7 @@ import React from "react";
 import "./assets/landing_page.scss";
 // import Menu from "./menubar/menu";
 import { connect } from 'react-redux'
+// import BuyNow from "../ordercreation/components/ordercreation";
 import BuyNow from "../ordercreation/components/ordercreation";
 
 // import ProductDetails from "../locationPage/productDetailsPage/ProductDetails";

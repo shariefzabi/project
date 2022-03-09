@@ -12,11 +12,14 @@
     font-weight: bold !important;
     font-size: 25px;
     margin: auto;
+    margin-bottom: 100px;
 }
 .dimesional-description{
-    position: absolute;
-    left: 780px;
-    right: 50px;
+    margin-left: 100px;
+    margin-right: 50px;
+    // position: absolute;
+    // left: 780px;
+    // right: 50px;
 }
 .hint-heading{
     width: 228px;
@@ -35,6 +38,5 @@
     height: 2.75rem;
     width:11.063rem;
     margin: 2rem 28.625rem;
-    margin-top:28rem ;
 }
 }

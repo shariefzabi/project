@@ -32,7 +32,7 @@ function ProductDetails(props: any) {
 
 
     return (
-        <div id="productPage">
+        <div id="productPage" className="productPage">
             <Breadcrumb id="sub">
                 <Breadcrumb.Item>
                     <Link className="breadCrumbs" to='/'>Home</Link>
