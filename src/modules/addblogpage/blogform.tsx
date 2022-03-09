@@ -20,19 +20,17 @@ class Blogform extends React.Component<any, any>{
             topicFlag:"",
         }
     }
+    componentDidMount() {
+        axios.get("http://localhost:3005/blogs")
+            .then(res => {
+                this.setState({ blogs: res.data, id: res.data.length })
+            })}
     changeHandler = (e: any) => {
         this.setState({ [e.target.name]: e.target.value })
     }
     submitHandler = (e: any, data: any) => {
         e.preventDefault();
         // console.log("heifurb");
-        
-        axios.get("http://localhost:3005/blogs")
-            .then(res => {
-                this.setState({ blogs: res.data, id: res.data.length })
-                console.log("data resived");
-                
-            })
         if(this.state.topicFlag == "off" && this.state.text1.length >=100){
             console.log("hiii");
             
@@ -105,7 +103,7 @@ class Blogform extends React.Component<any, any>{
 
                     <div className="container">
                         <h2>ADD BLOG</h2>
-                        <form className="needs-validation" onSubmit={(e) => { this.submitHandler(e, { title: topic, about: text1, id: id+1 }) }}>
+                        <form className="needs-validation" onSubmit={(e) => { this.submitHandler(e, { "title": topic, "about": text1, "id":id  , "date":Date.now}) }}>
                             <div className="inner">
                                 <div className=" box">
                                     <p>Fields with <span className="text-danger">*</span> are required</p>
