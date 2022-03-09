@@ -23,6 +23,10 @@ class Blogtable extends React.Component<any, any> {
         // console.log(array);
 
     }
+    proceed(){
+        // alert("hii");
+        window.open("/blogContent");
+    }
     render() {
         let ind=0;
         return (
@@ -35,7 +39,7 @@ class Blogtable extends React.Component<any, any> {
                 <section className="blog-content">
                     <article className="text-center txt">The latest and best articles selected by our editorial choice</article>
                 </section>
-                <section className="text-center main_box">
+                <section className="text-center main_box" onClick={this.proceed}>
                     {this.state.blogs.map((x: any, i: any) => {
                         console.log(x.title);
                         
