@@ -6,7 +6,6 @@ interface initialState {
   cardDetails: any;
   agent: any;
   Butchery: any;
-  locName:any
 }
 
 const appInitialstate: initialState = {
@@ -16,7 +15,6 @@ const appInitialstate: initialState = {
   cardDetails: null,
   agent: null,
   Butchery: null,
-  locName:null
 };
 function appReducer(state = appInitialstate, action: any) {
   switch (action.type) {
@@ -41,8 +39,9 @@ function appReducer(state = appInitialstate, action: any) {
       };
     case "storeCardDetails":
       return { ...state, cardDetails: action.payload };
-      case "storeLocname":
-        return ({ ...state, locName: action.payload })
+    case "toggle_flag":
+      return { ...state, toggleflag: action.payload };
+    default:
       return state;
   }
 }

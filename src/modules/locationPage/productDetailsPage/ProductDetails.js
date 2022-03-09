@@ -1,36 +1,25 @@
 import React, { useState } from "react";
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 import './productDetails.css';
 
-  
 
-export default function ProductDetails(props : any) {
-
+export default function ProductDetails() {
     let [products, setProducts] = useState([])
-    // console.log(props.locName)
-    let selectedLocationName=props.locName
+    const navigate = useNavigate();
 
-
-   
     const fetchProducts = (async () => {
         try {
-            const response = await axios.get("http://localhost:3005/market/marketDetails",{params:{locationName:{selectedLocationName}}})
-            setProducts(response.data.args);
+            const response = await axios.get("http://localhost:3005/market/marketDetails")
+            setProducts(response.data);
         } catch (err) {
             console.error(err)
         }
     })
-    fetchProducts();
-    console.log(products)
 
 
-  
-    
-
-    
-
-    // const { locationName } = products
-    // console.log(locationName)
+    const { locationName } = products
+    console.log(locationName)
 
     return (
         <div id="productPage">
@@ -38,11 +27,7 @@ export default function ProductDetails(props : any) {
             <div className="container">
                 <div className="row">
                     <div className="col-2 locNames ">
-                    <button role="button" type="button" className="btn dropdown" data-toggle="dropdown">drop</button>
-                    <div className="dropdown-menu" aria-labelledby="dropdownmenu1">
-                        <a className="dropdown-item" href=" ">action</a>
-                        <a className="dropdown-item" href=" ">bction</a>
-                    </div>
+                        location names
 
                     </div>
                     <div className="col-10">
@@ -51,7 +36,7 @@ export default function ProductDetails(props : any) {
                         <hr />
                         <div className="card-deck d-flex ">
                             <div className="card col-4 m-2 ">
-                              
+                                <img className="card-img-top" src="..." alt="Card image cap" />
                                 <div className="card-body">
                                     <h5 className="card-id">Animal id</h5>
                                     <p className="card-price">Price</p>
@@ -60,7 +45,7 @@ export default function ProductDetails(props : any) {
                                 </div>
                             </div>
                             <div className="card col-4 m-2 ">
-                               
+                                <img className="card-img-top" src="..." alt="Card image cap" />
                                 <div className="card-body">
 
                                     <h5 className="card-id">Animal id</h5>
@@ -69,7 +54,7 @@ export default function ProductDetails(props : any) {
                                 </div>
                             </div>
                             <div className="card col-4  m-2">
-                            
+                                <img className="card-img-top" src="..." alt="Card image cap" />
                                 <div className="card-body">
 
                                     <h5 className="card-id">Animal id</h5>
@@ -85,5 +70,3 @@ export default function ProductDetails(props : any) {
         </div>
     )
 }
-
-
