@@ -13,7 +13,9 @@ body{
 .di{
     background-color: #2078BF;
 }
-
+.blog-content{
+    margin-top: 100px;
+}
 
 .blog{
     background-image: url("./img/Rectangle.png"); 
@@ -39,7 +41,7 @@ body{
 .main_box{
     width: 90%;
     /* height: 300px; */
-    background-color: #2078BF;
+    /* background-color: #2078BF; */
     margin: auto;
     margin-top: 70px;
     display: flex;
@@ -47,21 +49,26 @@ body{
     gap: unset;
 }
 .first_box{
-    background-color: black;
+    /* background-color: black; */
+    background-image: url('./img/Rectangle.png');
+    background-repeat: no-repeat;
+    background-size: cover;
     display: inline-block;
     width: 49.5%;
-    height: 17.85rem ;
+    height: 30rem;
     margin-bottom: 1.1825rem;
     margin-right: 0.5%;
     border-radius: 0.625rem;
+    cursor: pointer;
 }
 .second_box {
-    min-width: 24%;
+    width: 326px !important;
     height: 30rem;
-    background-color: red;
+    background-color:#2078BF;
     margin-bottom: 1.1825rem;
     margin-right: 1%;
     border-radius: 0.625rem;
+    cursor: pointer;
 } 
 .single_box{
     width:50%;
@@ -69,6 +76,14 @@ body{
     /* height: 50rem ; */
     background-color: aquamarine;
     
+}
+.blog_title{
+    width: 80%;
+    margin: 0%;
+    font-weight: 700;
+    font-size: 28px;
+    color: white;
+    margin-top: 50px;
 }
 /* .main_box{
     
