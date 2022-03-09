@@ -9,7 +9,7 @@ export default function AgentModel() {
   const [displayForm,setDisplayForm]= useState(false);
   return (
     <>
-    <a onClick={() => { handleOpen(); setDisplayForm(false) }}>Be an Agent</a>
+    <h6 className="agent_dropdown" onClick={() => { handleOpen(); setDisplayForm(false) }}>Be an Agent</h6>
 
     <Modal
         open={open}

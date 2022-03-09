@@ -10,9 +10,10 @@ import Blogform from './modules/addblogpage/blogform'
 
 import Footer from './components/footer/footer';
 import Blogtable from './modules/blog/blogs';
-import ProductDetails from './modules/locationPage/productDetailsPage/ProductDetails';
+// import ProductDetails from './modules/locationPage/productDetailsPage/ProductDetails';
 import Invoice1 from './modules/invoice/invoicetrial'
 import Blogcontent from './modules/blogContentPage/blogContent/blogContent';
+import ProductDetails from './modules/productDetailsPage/ProductDetails';
 
 
 function App() {

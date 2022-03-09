@@ -9,8 +9,8 @@ export default function ButcheryModel() {
   const [displayForm,setDisplayForm]= useState(false);
     return (
         <>
-        <a
-        onClick={() => { handleOpen(); setDisplayForm(false) }}>Butchery/Abattoir</a>
+        <h6 className='butchery_dropdown'
+        onClick={() => { handleOpen(); setDisplayForm(false) }}>Butchery/Abattoir</h6>
          <Dialog
         open={open}
         onClose={handleClose}

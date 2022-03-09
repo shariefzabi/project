@@ -135,7 +135,7 @@ class Butcherypopup extends React.Component<any, any> {
   render() {
     return (
       <>
-        <div className="modal-content">
+        <div className="be-an-agent modal-content">
           <div className="text-center popupheading">
             <p>Butchery/Abattoir</p>
           </div>
