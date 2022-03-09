@@ -1,7 +1,6 @@
 import "./style.scss";
 import Modal from '@mui/material/Modal';
 import { useState } from "react";
-import { Dialog } from "@mui/material";
 import BeanAgentPopup from '../be an agent form copy/form1'
 export default function AgentModel() {
   const [open, setOpen] = useState(false);
@@ -10,19 +9,20 @@ export default function AgentModel() {
   const [displayForm,setDisplayForm]= useState(false);
   return (
     <>
-    <a
-        onClick={() => { handleOpen(); setDisplayForm(false) }}>Be an Agent</a>
-    <div >
-       
-      <Dialog
+    <a onClick={() => { handleOpen(); setDisplayForm(false) }}>Be an Agent</a>
+
+    <Modal
         open={open}
         onClose={handleClose}
         aria-describedby="modal-modal-description"
-        sx={{ overflow: 'auto'}}
+        sx={{overflow:'auto'}}
+        >
 
-      >
-        {!displayForm&&  
-            <div className="beanAgent">
+
+        <div className='be-an-agent-container'>
+          <div id="modal-modal-description" className='beAnAgent-window' >
+            {!displayForm &&
+              <div>
               <div className="text-center pop_up_heading">
                 <p>Be an Agent</p>
               </div>
@@ -70,11 +70,15 @@ export default function AgentModel() {
                   Proceed to Form
                 </button>
               </div>
-            </div>
-}
-{displayForm&&<BeanAgentPopup></BeanAgentPopup>}
-      </Dialog>
-    </div>
+              </div>
+            }
+            {
+              displayForm &&
+              <BeanAgentPopup handleClose={handleClose}/>
+            }
+          </div>
+        </div>
+      </Modal>
     </>
   );
 }

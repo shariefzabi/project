@@ -1,7 +1,7 @@
 import React from "react";
 import bar from "./asset/group2.png";
 import cross from "./asset/group35.png";
-import triangle from "./asset/Triangle.png";
+import triangle from "./asset/triangle.png";
 import { Link } from "react-router-dom";
 import "./app_header.scss";
 // import BuyNow from "../../modules/ordercreation/components/ordercreation";
@@ -92,8 +92,8 @@ class Header extends React.Component {
               About Us
             </Link>
           </div>
-          <div className="home">
-            {!user && <div className="dropdown">
+          {!user && <div className="home">
+            <div className="dropdown">
               <div
                 className="dropdown-toggle menu_content "
                 role="button"
@@ -115,8 +115,8 @@ class Header extends React.Component {
                 <ButcheryModel></ButcheryModel>
                 </li>
               </ul>
-            </div>}
-          </div>
+            </div>
+          </div>}
           <div className="home">
             <Link to="/blog" className="menu_content">
               Blog
@@ -143,12 +143,12 @@ class Header extends React.Component {
     {user.fullName}
 </a>
 <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <li><a className="dropdown-item" href="profile.html">My Profile</a></li>
-    <li><a className="dropdown-item" href="orders.html">Orders</a></li>
-    <li><a className="dropdown-item" href="invoice.html">Invoice</a></li>
-    <li><a className="dropdown-item" href="payments.html">Payment</a></li>
-    <li><a className="dropdown-item" href="trackOrder.html">Track Order</a></li>
-    <li><a className="dropdown-item" href="logOut.html">Log out</a></li>
+    <li><Link className="dropdown-item" to="/profile">My Profile</Link></li>
+    <li><Link className="dropdown-item" to="orders">Orders</Link></li>
+    <li><Link className="dropdown-item" to="invoice">Invoice</Link></li>
+    <li><Link className="dropdown-item" to="payments">Payment</Link></li>
+    <li><Link className="dropdown-item" to="trackOrder">Track Order</Link></li>
+    <li><Link className="dropdown-item" to="logOut">Log out</Link></li>
 </ul>
 </div>}
         </div>

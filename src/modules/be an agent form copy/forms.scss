@@ -1,15 +1,6 @@
 
-// .modal-dialog{
-//     width: 71% !important;
-//     height:94%;
 
-// }
-@media (min-width: 576px){
-.modal-dialog {
-    max-width: 800px !important;
-    margin: 1.75rem auto;
-}
-}
+.be-an-agent{
 .popupheading{
     color: #2078BF;
     margin-top: 3.81rem;
@@ -67,4 +58,11 @@
 }
 .select-label{
     margin-left: 26%;
+}
+@media (min-width: 576px){
+.modal-dialog {
+    max-width: 800px !important;
+    margin: 1.75rem auto;
+}
+}
 }

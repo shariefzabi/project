@@ -1,9 +1,11 @@
-.beanAgent{
+.be-an-agent-container{
+  width: 940px;
+    transform: 'translate(-50%, -50%)';
+    border: '2px solid #000';
+    background-color: #ffffff;
+    margin: 100px auto;
 
-
-
-  width: 940px  ;
-
+.beAnAgent-window{
 
 .pop_up_heading {
   color: #2078bf;
@@ -15,14 +17,8 @@
   line-height: 4.875rem;
   letter-spacing: -1.6px;
 }
-/* .heading p{
-    margin-bottom: 0%;
-} */
-/* .col-form-label{
-    margin-left: 13%;
-} */
-.paragraph,
-.livestock247 {
+
+.paragraph, .livestock247 {
   width: 34.56rem;
   font-family: Ubuntu;
   font-size: 18px;
@@ -61,4 +57,5 @@
     max-width: 800px !important;
     margin: 1.75rem auto;
   }
+}
 }

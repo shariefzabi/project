@@ -3,7 +3,7 @@ import './asset/paymentMethod.scss'
 import axios from "axios"
 import { connect } from "react-redux"
 
-class PaymentMethod extends React.Component<any, any> {
+class PaymentMethod2 extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -260,4 +260,4 @@ const mapDispatchToProps = (dispatch: Function) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PaymentMethod);
+export default connect(mapStateToProps, mapDispatchToProps)(PaymentMethod2);
