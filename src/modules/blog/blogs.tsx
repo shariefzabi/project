@@ -13,9 +13,8 @@ class Blogtable extends React.Component<any, any> {
     componentDidMount() {
         axios.get("http://localhost:3005/blogs")
             .then(res => {
-                res.data.map((e: any, i: any) => {
-                    this.setState({ blogs: [...this.state.blogs, e.blogs] })
-                })
+                console.log(res.data);
+                this.setState({ blogs:res.data })
             })
         let array = [];
         for (let i = 0; i <= Math.round(this.state.blogs.length / 3); i++) {
