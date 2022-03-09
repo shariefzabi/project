@@ -10,9 +10,9 @@ function BuyNow(props: any) {
     const [sex, setSex] = useState("");
     const [weight, setWeight] = useState("");
     const [breed, setBreed] = useState("");
-    const [cow,setCow]=useState(["Aberdeen","Holstein","Hereford","simmental"]);
-    const [sheep,setSheep]=useState(["Boer","American Pygmy","Saanen goat","angora"]);
-    const [pig,setPig]=useState(["Duroc","Large White","Hampshire","Large Black"]);
+    const [cow, setCow] = useState(["Aberdeen", "Holstein", "Hereford", "simmental"]);
+    const [sheep, setSheep] = useState(["Boer", "American Pygmy", "Saanen goat", "angora"]);
+    const [pig, setPig] = useState(["Duroc", "Large White", "Hampshire", "Large Black"]);
 
 
     const [typeerrmsg, setTypeerrmsg] = useState("");
@@ -23,7 +23,9 @@ function BuyNow(props: any) {
     const [productdetailsflag, setProductdetailsflag] = useState(true);
 
     const productsubmitHandler = (e: any, productDetails: any) => {
-        setProductdetailsflag(false);
+        e.preventDefault();
+        if(props.user!=null)
+            setProductdetailsflag(false);
         // console.log("props in products", props);
         // console.log("productdetails", productDetails);
         props.storeProductdetails(productDetails);
@@ -89,130 +91,130 @@ function BuyNow(props: any) {
         }
     }
     return (
-        <>
-            <div>
 
-                {/* <a className="btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">ordercreation</a> */}
-
-                <div className="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true" tabIndex={-1}>
-                    <div className="modal-dialog modal-xl" >
-                        <div className="modal-content">
-                            {productdetailsflag &&
-                                <div className='modal-body ordercreation-container'>
-                                    <div className="text-center popupheading">
-                                        <p>Yor are one step closer to buying your livestock</p>
-                                    </div>
-                                    <div className="form-paragraph  ">
-                                        <p>Fill in the required information</p>
-                                    </div>
-                                    <div className='viewall-icon'>
-                                        <img src={require("./assets/viewallproductsicon.png")} />
-                                    </div>
-                                    <form onSubmit={(e) => productsubmitHandler(e, { type, quantity, weight, sex, breed })}>
-                                        <div className='row'>
-                                            <div className="col-md-3 productype-dropdown" >
-                                                <div className="dropdown" >
-                                                    <select name="Type" required value={type} onChange={(event) => Validate(event)} onBlur={(event) => Validate(event)} className="form-select" >
-                                                        <option hidden value="">Type</option>
-                                                        <option value="Cow">Cow</option>
-                                                        <option value="Goat">Goat</option>
-                                                        <option value="Pig">Pig</option>
-                                                    </select>
-                                                    <p className='text-danger'>{typeerrmsg}</p>
-                                                </div>
-                                            </div>
-                                            <div className="col-md-2">
-                                                <div className="dropdown" >
-                                                    <select name="Quantity" required value={quantity} onChange={(event) => Validate(event)} onBlur={(event) => Validate(event)} className="form-select" >
-                                                        <option hidden value="">Quantity</option>
-                                                        <option value="One">One</option>
-                                                        <option value="Two">Two</option>
-                                                        <option value="Three">Three</option>
-                                                    </select>
-                                                    <p className='text-danger'>{quantityerrmsg}</p>
-                                                </div>
-                                            </div>
-                                            <div className="col-md-1">
-
-                                                <div className="dropdown">
-                                                    <select name="Sex" value={sex} required onChange={(event) => Validate(event)} onBlur={(event) => Validate(event)} className="form-select" >
-                                                        <option hidden value="">Sex</option>
-                                                        <option value="Male">Male</option>
-                                                        <option value="Female">Female</option>
-                                                    </select>
-                                                    <p className='text-danger'>{sexerrmsg}</p>
-                                                </div>
-                                            </div>
-                                            <div className="col-md-2">
-
-                                                <div className="dropdown">
-                                                    <select name="Weight" required value={weight} onChange={(event) => Validate(event)} onBlur={(event) => Validate(event)} className="form-select" >
-                                                        <option hidden value="">Weight</option>
-                                                        <option value="One">One</option>
-                                                        <option value="Two">Two</option>
-                                                        <option value="Three">Three</option>
-                                                    </select>
-                                                    <p className='text-danger'>{weighterrmsg}</p>
-                                                </div>
-                                            </div>
-                                            <div className="col-md-2">
-
-                                                <div className="dropdown">
-                                                    <select name="Breed" required value={breed} onChange={(event) => Validate(event)} onBlur={(event) => Validate(event)} className="form-select">
-                                                        <option hidden value="">Breed</option>
-                                                        {
-                                                            type != " " &&
-                                                              type ==="Cow" &&
-                                                                 cow.map((item,i)=>{
-                                                                     return(<option value={item} key={i}>{item}</option>)
-                                                                 })       
-                                                        }
-                                                        {
-                                                            type != " " &&
-                                                              type ==="Goat" &&
-                                                                 sheep.map((item,i)=>{
-                                                                     return(<option value={item} key={i}>{item}</option>)
-                                                                 })       
-                                                        }
-                                                        {
-                                                            type != " " &&
-                                                              type ==="Pig" &&
-                                                                 pig.map((item,i)=>{
-                                                                     return(<option value={item} key={i}>{item}</option>)
-                                                                 })       
-                                                        }
-                                                        {/* <option value="One">One</option>
-                                                        <option value="Two">Two</option>
-                                                        <option value="Three">Three</option> */}
-                                                    </select>
-                                                    <p className='text-danger'>{breederrmsg}</p>
-
-                                                </div>
-                                                <div className='cart-icon'>
-                                                    <img src={require("./assets/addtocarticon.png")} />
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <div className="mb-3">
-                                        <button  className="continuebutton btn btn-success">Continue</button>
-                                    </div>
-                                    </form>
-                                    
-                                </div>
-                            }
-                            {!productdetailsflag&&
-                                <DimesionalPage></DimesionalPage>
-                            }
-
-                        </div>
-                    </div>
-                </div >
-                <button className="buy-button text-white" onClick={()=>setProductdetailsflag(true)} data-bs-toggle="modal" data-bs-target="#exampleModal">Buy Now</button>
-
-            </div >
+        <div>
+            {/* <a className="btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">ordercreation</a> */}
             
-        </>
+            <div className="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true" tabIndex={-1}>
+                 {productdetailsflag &&
+                <div className="modal-dialog modal-xl" >
+                    <div className="modal-content">
+                       
+                            <div className='modal-body ordercreation-container'>
+                                <div className="text-center popupheading">
+                                    <p>Yor are one step closer to buying your livestock</p>
+                                </div>
+                                <div className="form-paragraph  ">
+                                    <p>Fill in the required information</p>
+                                    {props.user === null&&
+                                <p className='text-danger text-center'>please login to your account</p>}
+                                </div>
+                                <div className='viewall-icon'>
+                                    <img src={require("./assets/viewallproductsicon.png")} />
+                                </div>
+                                <form onSubmit={(e) => productsubmitHandler(e, { type, quantity, weight, sex, breed })}>
+                                    <div className='row'>
+                                        <div className="col-md-2 productype-dropdown" >
+                                            <div className="dropdown" >
+                                                <select name="Type" required value={type} onChange={(event) => Validate(event)} onBlur={(event) => Validate(event)} className="form-select" >
+                                                    <option hidden value="">Type</option>
+                                                    <option value="Cow">Cow</option>
+                                                    <option value="Goat">Goat</option>
+                                                    <option value="Pig">Pig</option>
+                                                </select>
+                                                <p className='text-danger'>{typeerrmsg}</p>
+                                            </div>
+                                        </div>
+                                        <div className="col-md-2">
+                                            <div className="dropdown" >
+                                                <select name="Quantity" required value={quantity} onChange={(event) => Validate(event)} onBlur={(event) => Validate(event)} className="form-select" >
+                                                    <option hidden value="">Quantity</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                </select>
+                                                <p className='text-danger'>{quantityerrmsg}</p>
+                                            </div>
+                                        </div>
+                                        <div className="col-md-2">
+                                            <div className="dropdown">
+                                                <select name="Sex" value={sex} required onChange={(event) => Validate(event)} onBlur={(event) => Validate(event)} className="form-select" >
+                                                    <option hidden value="">Sex</option>
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                </select>
+                                                <p className='text-danger'>{sexerrmsg}</p>
+                                            </div>
+                                        </div>
+                                        <div className="col-md-2">
+                                            <div className="dropdown">
+                                                <select name="Weight" required value={weight} onChange={(event) => Validate(event)} onBlur={(event) => Validate(event)} className="form-select" >
+                                                    <option hidden value="">Weight</option>
+                                                    <option value="1">1 KG</option>
+                                                    <option value="2">2 KG</option>
+                                                    <option value="3">3 KG</option>
+                                                    <option value="4">4 KG</option>
+                                                    <option value="5">5 KG</option>
+                                                </select>
+                                                <p className='text-danger'>{weighterrmsg}</p>
+                                            </div>
+                                        </div>
+                                        <div className="col-md-2">
+                                            <div className="dropdown">
+                                                <select name="Breed" required value={breed} onChange={(event) => Validate(event)} onBlur={(event) => Validate(event)} className="form-select">
+                                                    <option hidden value="">Breed</option>
+                                                    {
+                                                        type != " " &&
+                                                        type === "Cow" &&
+                                                        cow.map((item, i) => {
+                                                            return (<option value={item} key={i}>{item}</option>)
+                                                        })
+                                                    }
+                                                    {
+                                                        type != " " &&
+                                                        type === "Goat" &&
+                                                        sheep.map((item, i) => {
+                                                            return (<option value={item} key={i}>{item}</option>)
+                                                        })
+                                                    }
+                                                    {
+                                                        type != " " &&
+                                                        type === "Pig" &&
+                                                        pig.map((item, i) => {
+                                                            return (<option value={item} key={i}>{item}</option>)
+                                                        })
+                                                    }
+                                                </select>
+                                                <p className='text-danger'>{breederrmsg}</p>
+
+                                            </div>
+                                            <div className='cart-icon'>
+                                                <img src={require("./assets/addtocarticon.png")} />
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div className="mb-3">
+                                        <button className="continuebutton btn btn-success">Continue</button>
+                                    </div>
+                                </form>
+
+                            </div>
+                        
+                        
+                    </div>
+
+                </div>
+                }
+                {!productdetailsflag &&
+                            <DimesionalPage></DimesionalPage>
+                }
+            </div >
+            <button className="buy-button text-white" onClick={() => setProductdetailsflag(true)} data-bs-toggle="modal" data-bs-target="#exampleModal">Buy Now</button>
+
+        </div >
+
     )
 
 }

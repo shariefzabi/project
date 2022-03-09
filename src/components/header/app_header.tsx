@@ -1,7 +1,7 @@
 import React from "react";
 import bar from "./asset/group2.png";
 import cross from "./asset/group35.png";
-import triangle from "./asset/Triangle.png";
+import triangle from "./asset/triangle.png";
 import { Link } from "react-router-dom";
 import "./app_header.scss";
 // import BuyNow from "../../modules/ordercreation/components/ordercreation";
@@ -144,7 +144,7 @@ class Header extends React.Component {
             </a>
             <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
               <li><Link className="dropdown-item" to="/profile">My Profile</Link></li>
-              <li><Link className="dropdown-item" to="orders">Orders</Link></li>
+              <li><Link className="dropdown-item" to="/orders">Orders</Link></li>
               <li><Link className="dropdown-item" to="invoice">Invoice</Link></li>
               <li><Link className="dropdown-item" to="payments">Payment</Link></li>
               <li><Link className="dropdown-item" to="trackOrder">Track Order</Link></li>

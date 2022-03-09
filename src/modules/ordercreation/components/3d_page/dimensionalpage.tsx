@@ -8,6 +8,8 @@ function DimesionalPage() {
     <>
         {!deliveryFlag &&
         <div className="dimesionalpage-form">
+            <div className="modal-dialog modal-xl" >
+                    <div className="modal-content">
                         <div className='modal-body'>
                             <div className="heading-dimension">
                                 <p>View the 3d representation of the product before you make payment</p>
@@ -23,7 +25,9 @@ function DimesionalPage() {
                             <div>
                                 <button type="button" className="btn btn-success continuebutton"  onClick={()=>setDeliveryFlag(true)}>continue</button>
                             </div>
-                        </div>          
+                        </div>  
+                        </div>
+                        </div>        
             
         </div >
         }
