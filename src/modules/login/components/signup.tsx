@@ -120,7 +120,7 @@ class Signup extends React.Component<any, any>{
 
         axios.post("http://localhost:3005/users/signup",userDetails)
         .then((res:any)=>{
-            if (res.data == "success")
+            if (res.data[0] == "success")
             this.props.setUser(userDetails)
          
             else
