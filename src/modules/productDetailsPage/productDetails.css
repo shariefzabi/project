@@ -1,100 +1,98 @@
-
-#sub{
-    margin-top: 11.938rem;
-    margin-left: 8.75rem;
-    font-weight: normal;
-    font-style: normal;
-    font-size: 0.75rem;
-    line-height: 1.5rem;
-    color: #838383;
-    text-align: left;
-   
+.breadCrumbs {
+  text-decoration: none;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 24px;
+  color: #838383 !important;
 }
-#marketHeading{
-    width: 15.063rem;
-    height: 1.5rem;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 2.25rem;
-    line-height: 1.5;
-    color: #838383;
+
+.breadCrumbs:hover {
+  color: #2078bf !important;
 }
-#locationMarketHeading{
-    height: 24px;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 18px;
-    line-height: 24px;
-    color: #838383;
-    text-align: start;
-   
-    margin-top: 1.25rem;
 
+#sub {
+  margin-top: 4.4375rem;
+  margin-left: 8.75rem;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 0.75rem;
+  line-height: 1.5rem;
+  color: #838383;
+  text-align: left;
 }
-hr{
-  
-margin-right: 6.625rem;
-border: 1px solid #D5D5D5;
-
+#marketHeading {
+  width: 15.063rem;
+  height: 1.5rem;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 2.25rem;
+  line-height: 1.5;
+  color: #838383;
 }
-.locNames{
-    background: #FFFFFF;
-    border: 1px solid #E0E0E0;
+#locationMarketHeading {
+  height: 24px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  color: #838383;
+  text-align: start;
 
+  margin-top: 1.25rem;
 }
-.card-deck{
-    margin-right: 6.625rem;
-
+hr {
+  margin-right: 6.625rem;
+  border: 1px solid #d5d5d5;
 }
-.card-id{
-   
-
- 
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 24px;
-  
-
-    letter-spacing: 0.1px;
-
-    color: #838383;
-    text-align: start;
+.locNames {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
 }
-.card-price{
-  
-    font-style: normal;
-    font-weight: bold;
-    font-size: 14px;
-    line-height: 24px;
-  
+.card-deck {
+  margin-right: 6.625rem;
+}
+.card-id {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
 
-    letter-spacing: 0.1px;
+  letter-spacing: 0.1px;
 
-    color: #838383;
-    text-align: start;
+  color: #838383;
+  text-align: start;
+}
+.card-price {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 24px;
 
+  letter-spacing: 0.1px;
+
+  color: #838383;
+  text-align: start;
 }
 /* dropdown */
-.location-btn{
-    background-color: #FFFFFF;
-    font-family: ubuntu;
-    font-weight: normal;
-    font-weight: normal;
-    font-size: 0.875rem;
-    line-height: 1.5rem;
-    color: #838383;
+.location-btn {
+  background-color: #ffffff;
+  font-family: ubuntu;
+  font-weight: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  color: #838383;
 }
-.location-btn:active{
-    background-color: #2078BF;
+.location-btn:active {
+  background-color: #2078bf;
 }
-.dropdown{
-    margin: 0px;
-    padding: 0px;
-    display: inline-block;
-    position: relative;
+.dropdown {
+  margin: 0px;
+  padding: 0px;
+  display: inline-block;
+  position: relative;
 }
-.dropdown-menu{
-    display: none;
-    position: ;
+.dropdown-menu {
+  display: none;
 }
