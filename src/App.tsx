@@ -33,12 +33,14 @@ function App() {
             </Route>
             <Route path="/products" element={<ProductDetails />}>
             </Route>
-            <Route path="/blogcontent" element={<Blogcontent/>}>
+            <Route path="/blogcontent" element={<Blogcontent />}>
             </Route>
-            <Route path="/profile" element={<Profile/>}>
+            <Route path="/profile" element={<Profile />}>
+            </Route>
+            <Route path="/invoice" element={< Invoice1 />}>
             </Route>
           </Routes>
-          {/* <Invoice1></Invoice1> */}
+
           <Footer />
         </div>
       </Router>
