@@ -7,8 +7,9 @@ const cattleMarketSchema = new mongoose.Schema({
   availability: {
     type: String,
     required: true,
-    enum: ["In Stock", "Out Of Stock"],
+    enum: ["In Stock", "Out of Stock"],
   },
+  image:{type:Buffer,required:true},
   price: { type: String, required: true },
   weight: { type: String, required: true },
   breed: { type: String, required: true },
@@ -25,8 +26,9 @@ const sheepMarketSchema = new mongoose.Schema({
   availability: {
     type: String,
     required: true,
-    enum: ["In Stock", "Out Of Stock"],
+    enum: ["In Stock", "Out of Stock"],
   },
+  image:{type:Buffer,required:true},
   price: { type: String, required: true },
   weight: { type: String, required: true },
   breed: { type: String, required: true },
@@ -40,7 +42,7 @@ const sheepMarketSchema = new mongoose.Schema({
 const locationSchema = new mongoose.Schema(
   {
     locationName: {
-      type: String, required: true, minlength: 3, maxlength: 20, unique: true},
+      type: String, required: true, minlength: 3, maxlength: 20, unique:true},
  
     cattleMarkets: [cattleMarketSchema],
     sheepMarkets: [sheepMarketSchema],
@@ -55,3 +57,6 @@ locationSchema.pre('save', function (next) {
 })
 const Location = mongoose.model("locationDB", locationSchema);
 module.exports = Location;
+
+
+
