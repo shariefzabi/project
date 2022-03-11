@@ -16,17 +16,18 @@ function PopUp(prop: any) {
   let [isAdding, setIsAdding] = useState(false)
   let [newLocation, setNewLocation] = useState('')
   let [newLocationErr, setNewLocationErr] = useState('')
-  let [selectedLocation, setSelectedLocation] = useState('')
+  let [selectedLocation, setSelectedLocation] = useState('Location')
 
 
   let [toggleflag, setToggleFlag] = useState(true);
 
   const continueHandler = (e: any) => {
     e.preventDefault();
+    if(selectedLocation != "Location"){
     navigate("/products"); setToggleFlag(false)
 
     prop.setLocationName(selectedLocation)
-
+    }
   }
 
 
@@ -180,7 +181,7 @@ function PopUp(prop: any) {
                       required>
 
 
-                      <option className="dropdownItem" selected disabled value="" hidden>Location</option>
+                      <option className="dropdownItem" selected disabled value="" hidden>{selectedLocation}</option>
                       {
                         locationNames.map(location => {
                           return (
