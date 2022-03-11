@@ -52,12 +52,6 @@
     line-height: 1rem;
     letter-spacing: 0.025rem;
   }
-  form .row {
-    border: 1.5px solid #E0E0E0;
-    border-radius: 0.313rem;
-    padding: 0.1rem 0rem;
-    /* margin-bottom: 0.5rem; */
-  }
   form button {
     width: 28%;
     height: 10%;
