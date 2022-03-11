@@ -1,7 +1,12 @@
+
+
 .paymentmethod{
-
-
-.modal-body>p{
+    width: 32%;
+    margin: 7% auto;
+    .payment{
+        margin-top: 4%;
+    }
+    .modal-body>p{
     font-style: normal;
     font-weight: normal;
     font-size: 18px;
@@ -11,8 +16,8 @@
     margin:8% 0%;
     }
     .modal-body>section{
-        margin:11% 19%;
-        padding-left: 6%;
+        margin: 9% 19%;
+        padding-left: 7%;
     }
     button{
         font-style: normal;
@@ -40,8 +45,8 @@
         border: 5px solid green;
         border-radius: 50%;
         margin: auto;
-        margin-bottom: 65px;
-        margin-top: 64px;
+        margin-bottom: 38px;
+        margin-top: 38px;
     }
     .Successfully_Placed_box > h3{
         font-size: 3.813rem;
@@ -57,7 +62,7 @@
         text-align: center;
         margin-top: 20px;
         color: #838383;
-        margin-bottom: 63px;
+        margin-bottom:48px;
     }
     
     .payment_label {
@@ -100,6 +105,5 @@
             width: 1rem;
             bottom: 0.2rem;
         }
-        
+    }       
     
-    }
