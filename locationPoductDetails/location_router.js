@@ -12,9 +12,9 @@ router.post("/marketDetails", async (req, res) => {
     locationdb = req.body
     console.log(" locationdb", locationdb);
     try {
-        // const myLocation = new Location(locationdb);
-        // await Location.create(myLocation);
-        // res.send(myLocation);
+        const myLocation = new Location(locationdb);
+        await Location.create(myLocation);
+        res.send(myLocation);
         res.send({status:"success"})
     }
     catch (err) {
@@ -110,7 +110,7 @@ router.post("/updateDetails", async (req, res) => {
             certification: prodData.certification,
         }
         // console.log("cattlemarket")
-         console.log("hello murali sir");
+         
         Location.findOne({locationName: prodData.location}).exec(function (err, result) {
             console.log("result",result);
             console.log("err",err);
