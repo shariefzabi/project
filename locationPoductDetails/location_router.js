@@ -70,7 +70,7 @@ router.get('/locations', async (req, res) => {
         res.send({ message: err })
     }
 })
-////////////////// Storing product details-----//////////
+////////////////// Storing product details-----Team-5///////////////////
 let cattleMarketData = {};
 let sheepMarketData = {};
 router.post("/updateDetails", async (req, res) => {
@@ -78,8 +78,6 @@ router.post("/updateDetails", async (req, res) => {
     let prodData = req.body
     try {
         console.log('productData', prodData);
-        // const ProdData = new Location(prodData);
-        // if(prodData.market === 'cattleMarkets') {
         cattleMarketData =
         {
             animalId:"222",
@@ -93,10 +91,6 @@ router.post("/updateDetails", async (req, res) => {
             market: prodData.market,
             certification: prodData.certification,
         }
-
-
-        // console.log("cattlemarket")
-        // } else
         sheepMarketData = {
             
             animalId:"200",
@@ -109,44 +103,30 @@ router.post("/updateDetails", async (req, res) => {
             source: prodData.source,
             certification: prodData.certification,
         }
-        // console.log("cattlemarket")
-         
         Location.findOne({locationName: prodData.location}).exec(function (err, result) {
-            console.log("result",result);
+            // console.log("before adding products",result);
             console.log("err",err);
             let cattleMarkets= result.cattleMarkets;
             let sheepMarkets = result.sheepMarkets;
-            if(prodData.market=='cattleMarkets'){
+            if(prodData.market=='Cattle Market'){
                 result.cattleMarkets.push(cattleMarketData)
                 Location.updateOne({locationName:prodData.location},
                     result
-                    // {cattleMarkets:{$set:[...result.cattleMarkets,cattleMarketData]}}
                     ).exec(function(err,result){
                        return res.send({status:"success",result})
                     })
-            }else if(prodData.market=='sheepMarkets'){
+            }else if(prodData.market=='Sheep Market'){
                 result.sheepMarkets.push(sheepMarketData)
                 Location.updateOne({locationName:prodData.location},
                     result
-                    // {cattleMarkets:{$set:[...result.cattleMarkets,cattleMarketData]}}
                     ).exec(function(err,result){
                        return res.send({status:"success",result})
                     })
             }
+            // console.log("after adding products",result);
          // else
             // res.send({status:"success"})
         })
-        // const collectionData = new Location(
-        //     {
-        //         locationName: prodData.location,
-        //         cattleMarkets: cattleMarketData,
-        //         sheepMarkets: sheepMarketData,
-        //     }
-        // );
-        // var adddata = Location.create(collectionData);
-        // await adddata;
-        // res.send(adddata);
-        // console.log(collectionData)
     }
     catch (err) {
         res.send({ message: err })
