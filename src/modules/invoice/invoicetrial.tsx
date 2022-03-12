@@ -44,14 +44,14 @@ function Invoice1(props: any) {
                         </div>
                     </header>
                     <main className="invoice-body">
-                        <h3 className="invoice-heading">Product Details</h3>
-                        <hr className="hr-line" />
+                        <h3 className="invoice-heading invoice-border">Product Details</h3>
+                        {/* <hr className="hr-line" /> */}
                         {
                             // console.log(data["invoicedata"]["type"])
                             invoice.map((data, ind) => {
                                 let index = "#ind" + ind
                                 return (
-                                    <div key={ind}>
+                                    <div key={ind} className="invoice-border">
                                         <p className="invoice-id">ID - {data["invoicedata"]["orderId"]}<img className="text-end" onClick={(e) => invoiceToggle(e)} data-bs-toggle="collapse" data-bs-target={index} aria-expanded="false" aria-controls="collapseExample" src={upArrow}></img></p>
                                         <div className="table collapse" id={index.slice(1)}>
                                             <div>
@@ -117,7 +117,7 @@ function Invoice1(props: any) {
                                                 </div>
                                             </div>
                                         </div>
-                                        <hr className="hr-line" />
+
                                     </div>
                                 )
                             })

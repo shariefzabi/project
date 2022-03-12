@@ -1,3 +1,6 @@
+.invoice-border{
+ border-bottom: 0.1px solid #c2b9b9;
+}
 .invoiceSection {
     margin: 6.562rem 12.13vw 0rem 11vw;
     padding: 0;
@@ -25,11 +28,14 @@
   
   .invoice-heading, .head h3 {
     line-height: 1rem;
-    margin-left: 4.6vw;
-    padding-top: 2.25rem;
+    /* margin-left: 4.6vw; */
+    padding-top: 2rem;
     font-weight: bold;
     color: #838383;
     font-size: 1.125rem;
+    padding-left: 4.7vw;
+    padding-bottom: 2rem;
+    margin-bottom: 0rem !important;
   }
   
   .head h3 {
@@ -54,15 +60,14 @@
     line-height: 1rem;
     margin: 0;
     margin-left: 4.6vw;
-    padding-bottom: 1rem;
+    padding-bottom: 1.3rem;
     color: #838383;
     font-size: 0.875rem;
+    padding-top: 1.3rem;
   }
   .invoice-id img{
-    /* padding-left: 40vw; */
-    float: right;
-    // padding-right: 3.33vw;
-    padding: 1rem 3rem 0rem 41rem;
+   float: right;
+    padding: 0.5rem 3rem 0.6rem 39vw;
     cursor: pointer;
   }
   .hr-line{
