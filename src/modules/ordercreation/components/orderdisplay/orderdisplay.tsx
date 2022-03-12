@@ -8,18 +8,18 @@ function Orderdisplay(props: any) {
     // console.log("orderdisplay",props.user.fullName);
     const [orderdata, setOrderdata] = useState([]);
     const [paymentflag, setPaymentflag] = useState(false);
-    console.log("orderdata", orderdata);
+    // console.log("orderdata", orderdata);
 
     useEffect(() => {
-        const orderdata={...props.user,...props.orders};
+        const orderdata={user:{...props.user},...props.orders};
         console.log("orders",orderdata);
         
         axios.post("http://localhost:3005/orders/orderdetails", orderdata)
-            .then((res) => console.log("postresponse", res.data))
+            .then((res) => console.log("orderdata postresponse", res.data))
             .catch((err) => console.log("posterror", err));
         axios.get("http://localhost:3005/orders/orderdetails")
             .then((res) => {
-                console.log(res.data);
+                console.log("orderdisplay get response",res.data);
                 setOrderdata(res.data);
             })
             .catch((err) => console.log(err)
