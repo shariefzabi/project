@@ -54,8 +54,22 @@ router.get("/details", async (req, res) => {
 
     try {
         const invoiceCollection = req.app.get('invoiceCollection')
-        const invoiceDetails = invoiceCollection.find().sort({ "orderId": - 1 }).toArray(function (err, result) {
+        // sort1 = ["invoicedata"]["orderId"]
+        // const invoiceDetails = invoiceCollection.find().sort({ sort1: 1 }).collation({
+        //     locale: "en_US",
+        //     numericOrdering: true
+        // }).toArray(function (err, result) {
+        //     let sorted = result.sort((a, b) => a.invoicedata.localeCompare(b.invoicedata));
+
+        //     res.json(result)
+        //     console.log("the result", result[0])
+        // })
+    
+        const invoiceDetails = invoiceCollection.find().sort({ _id: -1 }).collation().toArray(function (err, result) {
+    
+
             res.json(result)
+            console.log("the result", result[0])
         })
     }
     catch (err) {
