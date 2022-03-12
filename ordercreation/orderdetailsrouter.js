@@ -36,4 +36,26 @@ router.get('/', async (req, res) => {
         res.send({ message: err })
     }
 })
+let tokens = [];
+
+router.post("/orderdetails/:username", async (req, res) => {
+    let token;
+    console.log(tokens);
+    if (tokens.length == 0 || tokens.includes(token)) {
+        token = Math.round(Math.random() * 1000000000000);
+        tokens.push(token);
+    }
+    else {
+        token = Math.round(Math.random() * 1000000000000);
+        tokens.push(token);
+    }
+    console.log(req.body)
+    const { orderdata } = req.body;
+
+    try {
+        
+    } catch (err) {
+        res.send({ message: err });
+    }
+});
 module.exports = router

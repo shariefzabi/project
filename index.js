@@ -101,21 +101,27 @@ app.post("/orders/orderdetails", function (req, res) {
       }else{
         orderdetails.orderId=result+1;
       }
+      const newdate=new Date();
+      orderdetails.date=`${newdate.getDay()}/${newdate.getMonth()}/${newdate.getFullYear()}}`;
+      console.log(orderdetails.date);
       ordercollection.insertOne(orderdetails);
       res.json(orderdetails);
     }
   })
 });
 //fetching order details based on username
-app.get("/orders/orderdetails/:username", function(req,res) {
-  let {params}=req.body;
-  let ordercollection = db.collection("orders");
-  ordercollection.find({user:params.username},function(err,result) {
-    if(err) console.log(err);
-    else{
-      res.send(result);
-    }
-  })
+app.get('/orders/orderdetails/:username', async (req, res) => {
+  let { params } = req
+  console.log(params.username);
+  let ordercollection = db.collection("ordersdisplay");
+  try {
+    ordercollection.find({ "username": params.username }).exec(function (err, result) {
+          res.send(result)
+      })
+  }
+  catch (err) {
+      res.send({ message: err })
+  }
 })
 
 //team-2 ending
