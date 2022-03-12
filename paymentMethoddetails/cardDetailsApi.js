@@ -41,23 +41,24 @@ router.get("/details/:id", async (req, res) => {
 
 
 
-// let tokens = [];
+let tokens = [];
 
 router.post("/details", async (req, res) => {
-    // let token;
-    // console.log(tokens);
-    // if (tokens.length == 0 || tokens.includes(token)) {
-    //     token = Math.round(Math.random() * 1000000000000);
-    //     tokens.push(token);
-    // }
-    // else {
-    //     token = Math.round(Math.random() * 1000000000000);
-    //     tokens.push(token);
-    // }
-    // console.log(req.body)
+    let token;
+    token = Math.round(Math.random() * 1000000000000);
+    console.log(tokens);
+    if (tokens.includes(token)) {
+        token = Math.round(Math.random() * 1000000000000);
+        tokens.push(token);
+    }
+    else {
+        tokens.push(token);
+    }
+    console.log(req.body)
     const { invoicedata } = req.body;
 
     try {
+        invoicedata.token = token;
         const myInvoice = new Invoice({ invoicedata });
         await Invoice.create(myInvoice);
         res.send(myInvoice);
