@@ -96,7 +96,7 @@ class Form extends React.Component<any, any> {
                 this.setState({ commentErr: "Please Enter Comments" })
             }
             else if (!re.test(v)) {
-                this.setState({ commentErr: "Accepts Alphabets, space & Min 50 to Max 200 Char" })
+                this.setState({ commentErr: "Accepts Alphabets, space & Min 10 to Max 200 Char" })
             }
             else
                 this.setState({ commentErr: "" ,commentFlag:true})
