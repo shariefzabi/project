@@ -23,10 +23,10 @@ function PopUp(prop: any) {
 
   const continueHandler = (e: any) => {
     e.preventDefault();
-    if(selectedLocation != "Location"){
-    navigate("/products"); setToggleFlag(false)
+    if (selectedLocation !== "Location") {
+      navigate("/products"); setToggleFlag(false)
 
-    prop.setLocationName(selectedLocation)
+      prop.setLocationName(selectedLocation)
     }
   }
 
@@ -177,15 +177,15 @@ function PopUp(prop: any) {
                     <select className="form-select dropdownToggle"
                       placeholder="Location"
                       onChange={locationHandler}
-
+                      defaultValue={selectedLocation}
                       required>
 
 
-                      <option className="dropdownItem" selected disabled value="" hidden>{selectedLocation}</option>
+                      <option className="dropdownItem" disabled hidden>{selectedLocation}</option>
                       {
                         locationNames.map(location => {
                           return (
-                            <option className="dropdownItem" >
+                            <option className="dropdownItem" key={location} >
                               {location}
                             </option>
 
