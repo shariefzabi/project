@@ -58,24 +58,32 @@ function ProductDetails(props: any) {
     }, [props.state.locName]);
     console.log(locationMarketData)
     console.log(locationMarketData.cattleMarkets)
+
+    // locationMarketData.cattleMarkets.map((e: any) => {
+    //     console.log(e);
+    // })
+
+    // console.log(locationMarketData.cattleMarkets[0])
     // setLocationCattleData(locationMarketData.cattleMarkets)
     // setLocationSheepData(locationMarketData.sheepMarkets)
     // console.log(products)
     // console.log(locationCattleData)
     // console.log(locationSheepData)
 
-
+    // for (let value in locationMarketData.cattleMarkets) {
+    //     console.log(value);
+    // }
 
 
     //for dynamic market heading
     const marketTypeHandler = () => {
         setMarketType("Cattle Market");
-        setLocationCattleData(locationMarketData.cattleMarkets)
+        // setLocationCattleData(locationMarketData.cattleMarkets)
         // setIsDisplaying(!isDisplaying)
     }
     const markettypeHandler = () => {
         setMarketType("Sheep Market")
-        setLocationCattleData(locationMarketData.sheepMarkets)
+        // setLocationCattleData(locationMarketData.sheepMarkets)
         // setIsDisplaying(!isDisplaying)
     }
 
@@ -144,10 +152,9 @@ function ProductDetails(props: any) {
                         <h4 id="locationMarketHeading">{props.state.locName}&#32;{marketType}</h4>
                         <hr />
                         <div className="card-deck">
-                            {
+                            {/* {
                                 locationCattleData.map((e: any) => {
                                     return (
-
                                         <div className="card col-4 ">
                                             <div className="card-body">
                                                 <h5 className="card-id">animal: {e.animalId}</h5>
@@ -158,7 +165,7 @@ function ProductDetails(props: any) {
 
                                     )
                                 })
-                            }
+                            } */}
                             {/* {!isDisplaying &&
                                 locationMarketData.sheepMarkets.map((e: any) => {
                                     return (
