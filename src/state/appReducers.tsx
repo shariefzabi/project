@@ -1,5 +1,4 @@
 interface initialState {
-    token: any,
     user: any,
     products: any[],
     orders: {},
@@ -11,7 +10,6 @@ interface initialState {
 }
 
 const appInitialstate: initialState = {
-    token: null,
     user: null,
     products: [],
     orders: {},
@@ -25,8 +23,6 @@ function appReducer(state = appInitialstate, action: any) {
         case 'logout': {
             return { ...state, user: null };
         }
-        // case "setToken":
-            // return {...state,token:action.payload}
         case 'setUser':
             return { ...state, user: action.payload };
         case 'setAgent':
