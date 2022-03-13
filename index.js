@@ -11,13 +11,13 @@ var dburl =
   "mongodb://LocationData:1234567890@cluster0-shard-00-00.hn7hc.mongodb.net:27017,cluster0-shard-00-01.hn7hc.mongodb.net:27017,cluster0-shard-00-02.hn7hc.mongodb.net:27017/test?ssl=true&replicaSet=atlas-g18s7s-shard-0&authSource=admin&retryWrites=true&w=majority";
 
 let db;
-let userCollection;
+let userDb;
 mongoClient.connect(dburl, function (err, client) {
   if (err) {
     console.log("err while connecting db");
   } else {
     db = client.db("test");
-    userCollection = db.collection("user");
+    userDb = db.collection("users");
     locationdbs = db.collection("locationdbs");
     let carddetails = db.collection("carddetails");
     let invoiceCollection = db.collection("invoicedatas");
@@ -51,10 +51,8 @@ app.use(
 app.use(bodyParser.json());
 
 //*********** No.1 Team ************* Starting **************************
-
 app.post("/users/signup", function (req, res) {
   console.log("log from signup users", req.body);
-  let userDb = db.collection("users");
   userDb.findOne({ _id: req.body._id }, function (err, result) {
     if (err) console.log(err);
     if (result == null) {
@@ -63,20 +61,31 @@ app.post("/users/signup", function (req, res) {
     } else res.send(["failed","This email is already registered"]);
   });
 });
-
+let token;
 app.post("/users/login", function (req, res) {
-  console.log("log from login users", req.body);
-  let userDb = db.collection("users");
+  console.log("log from login users :", req.body);
   userDb.findOne(
     { _id: req.body.username, password: req.body.password },
     function (err, result) {
       if (err) console.log(err);
       if (result == null) res.send("Invalid credentials");
       // res.send("No account found with this username, please sign up and then login");
-      else res.send(result);
+      else {
+        token = Math.floor(Math.random()*900000)+100000;
+        result.token=String(token);
+        userDb.updateOne({_id:result._id},{$set:{token:result.token}});
+        res.send(result)};
     }
   );
 });
+app.get("/users/:token",function(req,res){
+  userDb.findOne(req.params,function (err,result){
+    if(err) throw err;
+    if (result==null) res.send("null")
+    else res.send(result)
+  })
+  
+})
 
 //************ No.1 Team ************* Ending *****************************
 
