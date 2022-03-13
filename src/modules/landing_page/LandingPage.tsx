@@ -517,7 +517,7 @@ class LandingPage extends React.Component<any, any>{
     }
 }
 const mapStateToProps = (state: any) => {
-    console.log(state);
+    // console.log(state);
 
     return {
         state

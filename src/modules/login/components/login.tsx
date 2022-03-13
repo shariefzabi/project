@@ -18,7 +18,7 @@ function Login(props:any) {
       setOpen(false)
     }
   },[])
-
+  
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -28,8 +28,10 @@ function Login(props:any) {
   const [displaySignup, setDisplaySignup] = useState(false);
 
 
-
-
+  const setToken = (token:any)=>{
+    sessionStorage.setItem("token",token);
+  }
+  
   const validations = (e: any) => {
 
     if (e.target.name === 'username') {
@@ -59,9 +61,13 @@ function Login(props:any) {
     e.preventDefault();
     axios.post("http://localhost:3005/users/login",userDetails)
         .then( (res:any)=>{
+          console.log("result from client:",res.data);
+          
           if (res.data == "Invalid credentials")setUserError(res.data)
           else{
-            props.setUser(res.data);}
+            setToken(res.data.token);
+            props.setUser(res.data);
+          }
         })
         .catch((err:any)=>console.log(" User Login up Error",err));
   }

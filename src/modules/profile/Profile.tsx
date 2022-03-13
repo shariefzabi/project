@@ -1,17 +1,20 @@
-import { useState } from 'react'
+import axios from 'axios'
+import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import './profile.scss'
 
 function Profile(props: any) {
+    const [userDetails, setUserDetails] = useState(
+        {
+            fullName: "",
+            email: "",
+            phone: "",
+            zipCode: "",
+            location: "",
+            address: ""
+        })
 
 
-    const user = props.redux.user
-    const [fullName, setFullName] = useState(user != null ? user.fullName : "")
-    const [email, setEmail] = useState(user != null ? user._id : "")
-    const [phone, setPhone] = useState(user?.phone != undefined ? user.phone : "")
-    const [zipCode, setZipCode] = useState(user?.zipCode != undefined ? user.zipCode : "")
-    const [location, setLocation] = useState(user?.location != undefined ? user.location : "")
-    const [address, setAddress] = useState(user?.address != undefined ? user.address : "")
 
     const [fullNameErrMsg, setfullNameErrMsg] = useState("")
     const [emailErrMsg, setemailErrMsg] = useState("")
@@ -21,10 +24,28 @@ function Profile(props: any) {
     const [addressErrMsg, setaddressErrMsg] = useState("")
 
 
+    const getToken = () => sessionStorage.getItem("token");
 
+    useEffect(() => {
+        axios.get("http://localhost:3005/users/" + getToken())
+            .then(res => {
+                if (res.data != "null") {
+                    props.setUser(res.data)
+                    let { fullName, _id } = res.data
+                    setUserDetails({ ...userDetails, fullName, email: _id })
+                }
+            })
+            .catch(err => console.log("No previous user found")
+            )
+    }, [])
+
+
+    const changeHandler = (e: any) => {
+        setUserDetails({ ...userDetails, [e.target.name]: e.target.value })
+    }
 
     const validations = (e: any) => {
-        if (e.target.name === 'name') {
+        if (e.target.name === 'fullName') {
             let fullName = e.target.value;
             let fullNameErrMsg = '';
             if (fullName == undefined || fullName.length === 0) {
@@ -149,21 +170,16 @@ function Profile(props: any) {
         }
     }
 
-
-
     function resetPasswordToggler() {
         // var profileBlock=document.getElementById('profileBlock')
         // // profileBlock.style.display = "none"
         // var resetBlock=document.getElementById('resetBlock')
         // // resetBlock.style.display = "block"
-
-
-
     }
     return (
+
         <div className='profile-container'>
-            {console.log("Props from profile:", props)
-            }
+            {props.redux.user &&
             <main id="mainContent">
                 <section className="profileSection">
                     <header>
@@ -181,61 +197,53 @@ function Profile(props: any) {
                                     </div>
                                     <div className="my-4 position-relative text-start">
                                         <label className="col-md-12" htmlFor="name">Name<span className="text-danger">*</span></label>
-                                        <input type="text" id="name" name="name" value={fullName} onChange={(e) => setFullName(e.target.value)} placeholder="Enter Name"
+                                        <input type="text" id="name" name="fullName" value={userDetails.fullName} onChange={changeHandler} placeholder="Enter Name"
                                             className="form-control"
                                             // onChange={this.changeHandler}
                                             onBlur={validations} required />
                                         <p className="text-danger">{fullNameErrMsg}</p>
                                     </div>
                                     <div className="my-4 position-relative text-start">
-                                    <label htmlFor="phone">Phone<span className="text-danger">*</span></label>
-                                        <input type="text" id="phone" name="phone" value={phone} onChange={(e) => setPhone(e.target.value)} className="form-control " placeholder="Enter Number"
-                                                //   onChange={this.changeHandler}
-                                                onBlur={validations} required />
-                                        
+                                        <label htmlFor="phone">Phone<span className="text-danger">*</span></label>
+                                        <input type="text" id="phone" name="phone" value={userDetails.phone} onChange={changeHandler} className="form-control " placeholder="Enter Number"
+                                            //   onChange={this.changeHandler}
+                                            onBlur={validations} required />
+
                                         <p className="text-danger">{phoneErrMsg}</p>
                                     </div>
                                     <div className="my-4 position-relative text-start">
-                                    <label htmlFor="email">Email<span className="text-danger">*</span></label>
-                                    
-                                        
-                                            <input type="email" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} className="form-control" placeholder="Enter Email"
-                                                onBlur={validations} required />
+                                        <label htmlFor="email">Email<span className="text-danger">*</span></label>
 
-                                        
-                                    <p className="text-danger">{emailErrMsg}</p>
+
+                                        <input type="email" id="email" name="email" value={userDetails.email} onChange={changeHandler} className="form-control" placeholder="Enter Email"
+                                            onBlur={validations} required />
+
+
+                                        <p className="text-danger">{emailErrMsg}</p>
                                     </div>
                                     <div className="my-4 position-relative text-start">
-                                    <label htmlFor="location">Location<span className="text-danger">*</span></label>
-                                      <input type="text" id="location" name="location" value={location} onChange={(e) => setLocation(e.target.value)} className="form-control " placeholder="Enter Location"
-                                                onBlur={validations} required />
-                                    <p className="text-danger">{locationErrMsg}</p>
+                                        <label htmlFor="location">Location<span className="text-danger">*</span></label>
+                                        <input type="text" id="location" name="location" value={userDetails.location} onChange={changeHandler} className="form-control " placeholder="Enter Location"
+                                            onBlur={validations} required />
+                                        <p className="text-danger">{locationErrMsg}</p>
                                     </div>
 
                                     <div className="my-4 position-relative text-start">
-                                    <label htmlFor="zipCode">Zipcode<span className="text-danger">*</span></label>
-                                    
-                                            <input type="text" id="zipCode" name="zipCode" value={zipCode} onChange={(e) => setZipCode(e.target.value)} className="form-control " placeholder="Enter Zipcode"
-                                                onBlur={validations} required />
+                                        <label htmlFor="zipCode">Zipcode<span className="text-danger">*</span></label>
 
-                                        
-
-                                    
-                                    <p className="text-danger">{zipcodeErrMsg}</p>
+                                        <input type="text" id="zipCode" name="zipCode" value={userDetails.zipCode} onChange={changeHandler} className="form-control " placeholder="Enter Zipcode"
+                                            onBlur={validations} required />
+                                        <p className="text-danger">{zipcodeErrMsg}</p>
                                     </div>
                                     <div className="my-4 position-relative text-start">
-                                    <label htmlFor="address">Delivery Address<span className="text-danger">*</span></label>
-                                    
-                                            <input type="text" id="address" value={address} onChange={(e) => setAddress(e.target.value)} name="address" className="form-control "
-                                                placeholder="Enter Address" onBlur={validations} required />
+                                        <label htmlFor="address">Delivery Address<span className="text-danger">*</span></label>
 
-                                       
-
-                                   
-                                    <p className="text-danger">{addressErrMsg}</p>
+                                        <input type="text" id="address" value={userDetails.address} onChange={changeHandler} name="address" className="form-control "
+                                            placeholder="Enter Address" onBlur={validations} required />
+                                        <p className="text-danger">{addressErrMsg}</p>
                                     </div>
                                     <div className="row justify-content-center">
-                                    <button type="submit" id="saveButton" className="btn btn-success col-md-4">Save</button>
+                                        <button type="submit" id="saveButton" className="btn btn-success col-md-4">Save</button>
                                     </div>
                                 </form>
                             </section>
@@ -282,8 +290,10 @@ function Profile(props: any) {
                         </main>
                     </div> */}
                 </section>
-            </main>
-            
+            </main>}
+            {!props.redux.user && <div className='mt-5 text-center'><h2 className='text-danger'>** PLease login and try again **</h2>
+            </div> }
+
         </div >
     )
 }
