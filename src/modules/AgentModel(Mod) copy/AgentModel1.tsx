@@ -26,7 +26,7 @@ export default function AgentModel() {
               <div className="text-center pop_up_heading">
                 <p>Be an Agent</p>
               </div>
-              <div className="paragraph-1">
+              <div className="paragraph">
                 <p>
                   Join the largest community of veterinary doctors, breed
                   improvement specialists, and animal science professionals.{" "}
@@ -38,7 +38,7 @@ export default function AgentModel() {
               <div className="mb-3 text-center be_a_agent">
                 <p>Becoming our Agent</p>
               </div>
-              <div className="mb-3 text-center form-paragraph">
+              <div className="mb-3 text-center ">
                 <ul className="livestock247">
                   <li>A Livestock247.com agent MUST be a qualified veterinary</li>
                   <li>
@@ -54,7 +54,7 @@ export default function AgentModel() {
               <div className="mb-3 text-center be_a_agent">
                 <p>Role of The Agent</p>
               </div>
-              <div className="mb-3 text-center  form-paragraph">
+              <div className="mb-3 text-center  ">
                 <p className="paragraph">
                   The Livestock247.com agent ordinarily has an existing
                   relationship with a livestock producer, rancher or merchant. And
