@@ -15,6 +15,7 @@ function ProductDetails(props: any) {
     let [location, setLocation] = useState(props.state.locName)
     let [market, setMarket] = useState('Cattle Market')
     let [isDisplaying, setIsDisplaying] = useState(true)
+    let [showCount, setShowCount] = useState(5)
     const navigate = useNavigate();
     // let [isOpened, setIsOpened] = useState('')
     // let [marketType, setMarketType] = useState('cattleMarkets')
@@ -34,15 +35,15 @@ function ProductDetails(props: any) {
     const setLocationHandler = (event: any) => {
         setLocation(event.target.value)
 
-        if (event.target.className === "") {
-            event.target.className = 'opened'
-        } else if (event.target.className === "opened") {
-            event.target.className = ''
+        if (event.target.id === "") {
+            event.target.id = 'opened'
+        } else if (event.target.id === "opened") {
+            event.target.id = ''
         }
         // class_name = 'opened'
         // setIsOpened(class_name)
     }
-    const productDataHandler=(e:any)=>{
+    const productDataHandler = (e: any) => {
         e.preventDefault();
         navigate("/selectedProduct");
         props.setProductDetails(e.target.id)
@@ -59,7 +60,12 @@ function ProductDetails(props: any) {
         //     setMarketType('sheepMarkets')
         // }
     }
-    
+
+    const showHandler = (event: any) => {
+        setShowCount(event.target.value)
+        console.log(market)
+    }
+
 
 
 
@@ -82,10 +88,6 @@ function ProductDetails(props: any) {
                         {
                             products.map((e: any, ind) => {
                                 let index = "#ind" + ind
-                                
-                                // let index1 = "ind" + ind
-                                // let locations = e.locationName
-                                // if ({ location } === locations) {
                                 return (
 
                                     <div data-bs-toggle="collapse" data-bs-target={index} aria-expanded="false" aria-controls="collapseExample" key={ind} >
@@ -99,65 +101,9 @@ function ProductDetails(props: any) {
                                         </div>
 
                                     </div>
-
-
-
-                                    // <div className="accordion" id="accordionExample">
-                                    //     <div className="accordion-item">
-                                    //         <h2 className="accordion-header" id="headingOne">
-                                    //             <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onClick={setLocationHandler} value={e.locationName}>
-                                    //                 {e.locationName}
-                                    //             </button>
-                                    //         </h2>
-                                    //         <div id="collapseOne" className="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                    //             <div className="accordion-body">
-                                    //                 <ul>
-                                    //                     <button className="marketButton"onClick={setMarketHandler} value='Cattle Market'>Cattle Market<span>({e.cattleMarkets.length})</span></button>
-                                    //                     <button className="marketButton" onClick={setMarketHandler} value='Sheep Market'>Sheep Market<span>({e.sheepMarkets.length})</span></button>
-                                    //                 </ul>
-                                    //             </div>
-                                    //         </div>
-                                    //     </div>
-                                    // </div>
                                 )
-                                // }
-                                // else {
-                                //     return (
-                                //         <div data-bs-toggle="collapse" data-bs-target={index} aria-expanded="false" aria-controls="collapseExample" key={ind} >
-                                //             <button className="btn" onClick={setLocationHandler} value={e.locationName}>{e.locationName}</button>
-
-                                //             <div className="collapse" id={index.slice(1)}>
-                                //                 <ul>
-                                //                     <li><button className="marketButton" onClick={setMarketHandler} value='Cattle Market'>Cattle Market<span>({e.cattleMarkets.length})</span></button></li>
-                                //                     <li><button className="marketButton" onClick={setMarketHandler} value='Sheep Market'>Sheep Market<span>({e.sheepMarkets.length})</span></button></li>
-                                //                 </ul>
-                                //             </div>
-
-                                //         </div>
-                                //         <div className="accordion" id="accordionExample">
-                                //             <div className="accordion-item">
-                                //                 <h2 className="accordion-header" id="headingOne">
-                                //                     <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onClick={setLocationHandler} value={e.locationName}>
-                                //                         {e.locationName}
-                                //                     </button>
-                                //                 </h2>
-                                //                 <div id="collapseOne" className="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                //                     <div className="accordion-body">
-                                //                         <ul>
-                                //                             <button onClick={setMarketHandler} value='Cattle Market'>Cattle Market<span>({e.cattleMarkets.length})</span></button>
-                                //                             <button onClick={setMarketHandler} value='Sheep Market'>Sheep Market<span>({e.sheepMarkets.length})</span></button>
-                                //                         </ul>
-                                //                     </div>
-                                //                 </div>
-                                //             </div>
-                                //         </div>
-
-                                //     )
-                                // }
                             })
                         }
-
-
                     </div>
                     <div className="col-9">
                         <h3 id="marketHeading">{market}</h3>
@@ -176,10 +122,11 @@ function ProductDetails(props: any) {
                             <p className="d-inline pt-2">Show</p>
                             <select className="dropdownToggle "
                                 placeholder="Default"
+                                onChange={showHandler}
                                 required>
-                                <option className="dropdownItem" selected disabled value="" hidden>10</option>
-                                <option className="dropdownItem" >8</option>
-                                <option className="dropdownItem" >9</option>
+                                <option className="dropdownItem" selected>5</option>
+                                <option className="dropdownItem" >4</option>
+                                <option className="dropdownItem" >3</option>
                             </select>
                         </div>
                         <div className="card-deck row row-cols-3">
@@ -199,18 +146,18 @@ function ProductDetails(props: any) {
 
                                                         <div className="card mb-4">
                                                             {/* <Link to="/selectedProduct" > */}
-                                                                <div className="card-body" onClick={productDataHandler} id={e._id}>
-                                                                    <button className="wishListButton"><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
-                                                                    <div className="emptydiv" id={e._id}></div>
-                                                                    <img src={`data:image/jpeg;based64,${e.image}`} />
+                                                            <div className="card-body" onClick={productDataHandler} id={e.animalId}>
+                                                                <button className="wishListButton"><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
+                                                                <div className="emptydiv" id={e.animalId}></div>
+                                                                <img src={`data:image/jpeg;based64,${e.image}`} />
 
-                                                                    <h5 className="card-id">Animal ID: {e._id}</h5>
+                                                                <h5 className="card-id" id={e.animalId}>Animal ID: {e._id}</h5>
 
-                                                                    <p className="card-price">Price:{e.price}</p>
-                                                                    <div className="text-center">
-                                                                        <button type="button" className="btn btn-success">Add to Cart</button>
-                                                                    </div>
+                                                                <p className="card-price" id={e.animalId}>Price:{e.price}</p>
+                                                                <div className="text-center">
+                                                                    <button type="button" className="btn btn-success">Add to Cart</button>
                                                                 </div>
+                                                            </div>
 
                                                             {/* </Link> */}
 
@@ -240,19 +187,19 @@ function ProductDetails(props: any) {
                                                     <div key={i}>
                                                         <div className="card mb-4">
                                                             {/* <Link to="/selectedProduct" > */}
-                                                                <div className="card-body" onClick={productDataHandler} id={e._id}>
-                                                                    <button className="wishListButton"><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
-                                                                    <div className="emptydiv" id={e._id}></div>
-                                                                    {/* <img src=`data:image/jpeg;based64,+btoa(${e.image})` /> */}
+                                                            <div className="card-body" onClick={productDataHandler} id={e.animalId}>
+                                                                <button className="wishListButton"><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
+                                                                <div className="emptydiv" id={e.animalId}></div>
+                                                                {/* <img src=`data:image/jpeg;based64,+btoa(${e.image})` /> */}
 
 
-                                                                    <h5 className="card-id" id={e._id}>animal: {e._id}</h5>
+                                                                <h5 className="card-id" id={e.animalId}>animal: {e._id}</h5>
 
-                                                                    <p className="card-price" id={e._id}>p:{e.price}</p>
-                                                                    <div className="text-center">
-                                                                        <button type="button" className="btn btn-success">Add to Cart</button>
-                                                                    </div>
+                                                                <p className="card-price" id={e.animalId}>p:{e.price}</p>
+                                                                <div className="text-center">
+                                                                    <button type="button" className="btn btn-success">Add to Cart</button>
                                                                 </div>
+                                                            </div>
 
                                                             {/* </Link> */}
 
