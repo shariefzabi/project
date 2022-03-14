@@ -74,7 +74,7 @@ class Form extends React.Component<any, any> {
                 this.setState({ nameErr: "Please enter the User Name." })
             }
             else if (!re.test(v)) {
-                this.setState({ nameErr: "Accepts Alphabets, space & Min 5 to Max 30 Char" })
+                this.setState({ nameErr: "Accepts Alphabets, space,digits & Min 5 to Max 30 Char" })
             }
             else
                 this.setState({ nameErr: "" ,nameFlag:true})
@@ -82,10 +82,10 @@ class Form extends React.Component<any, any> {
         else if (n === "email") {
             let re = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/
             if (v === "") {
-                this.setState({ emailErr: "Please enter the EMail." })
+                this.setState({ emailErr: "Please enter the Email." })
             }
             else if (!re.test(v)) {
-                this.setState({ emailErr: "please enter email in a specific formate" })
+                this.setState({ emailErr: "please enter Email in a specific formate" })
             }
             else
                 this.setState({ emailErr: "" ,emailFlag:true})
