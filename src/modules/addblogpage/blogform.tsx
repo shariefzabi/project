@@ -100,8 +100,7 @@ class Blogform extends React.Component<any, any>{
                         <h1>ADD BLOG</h1>
 
                     </section>
-
-                    <div className="container">
+                   <div className="container">
                         <h2>ADD BLOG</h2>
                         <form className="needs-validation" onSubmit={(e) => { this.submitHandler(e, { "title": topic, "about": text1, "id":id  , "date":Date.now}) }}>
                             <div className="inner">
