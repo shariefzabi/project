@@ -206,13 +206,13 @@ const Comments = require("./Blogs/comschema.cjs");
 
 app.get("/comments/:id", async (req, res) => {
   try {
-    let { params } = req;
-    // console.log(params.id)
-    const data = await Comments.find({ "comment.blog_id": params.id });
-    res.json(data);
-  } catch (err) {
-    res.send("Error" + err);
-  }
+      let { params } = req;
+      console.log( Comments.find({ "id": params.id }));
+      const data = await Comments.find({ "id": params.id });
+      res.json(data);
+    } catch (err) {
+      res.send("Error" + err);
+    }
 });
 // app.get("/blogs/:id", async (req, res) => {
 //   try {
