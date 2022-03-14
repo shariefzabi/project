@@ -191,6 +191,7 @@ img, svg {
   top: 1%;
   cursor: pointer;
   margin-left: 26rem !important;
+  margin-bottom: 20px;
 }
 
 .dropdown-menu {
