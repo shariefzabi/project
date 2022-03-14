@@ -14,8 +14,10 @@ function ProductDetails(props: any) {
     let [location, setLocation] = useState(props.state.locName)
     let [market, setMarket] = useState('Cattle Market')
     let [isDisplaying, setIsDisplaying] = useState(true)
+    
     // let [isOpened, setIsOpened] = useState('')
     // let [marketType, setMarketType] = useState('cattleMarkets')
+
 
     console.log(location)
     useEffect(() => {
@@ -66,23 +68,24 @@ function ProductDetails(props: any) {
                 </Breadcrumb.Item>
             </Breadcrumb>
             <div className="container">
-                <div className=" row">
-                    <div className="col-3">
+                <div className="row">
+                    <div className="locBox col-3 mt-3 p-0 bg-white">
                         {
                             products.map((e: any, ind) => {
                                 let index = "#ind" + ind
+                                
                                 // let index1 = "ind" + ind
                                 // let locations = e.locationName
                                 // if ({ location } === locations) {
                                 return (
 
                                     <div data-bs-toggle="collapse" data-bs-target={index} aria-expanded="false" aria-controls="collapseExample" key={ind} >
-                                        <button onClick={setLocationHandler} value={e.locationName}>{e.locationName}</button>
+                                        <button className="locbtn bg-white text-start px-3" onClick={setLocationHandler} value={e.locationName}>{e.locationName}</button>
 
-                                        <div className="collapse" id={index.slice(1)}>
+                                        <div className="collapse " id={index.slice(1)}>
                                             <ul>
-                                                <li><button className="marketButton" onClick={setMarketHandler} value='Cattle Market'>Cattle Market<span>({e.cattleMarkets.length})</span></button></li>
-                                                <li><button className="marketButton" onClick={setMarketHandler} value='Sheep Market'>Sheep Market<span>({e.sheepMarkets.length})</span></button></li>
+                                                <li className="mx-4"><span className="blue mx-2">&#9679;</span><button className="marketButton " onClick={setMarketHandler} value='Cattle Market'>Cattle Market<span>({e.cattleMarkets.length})</span></button></li>
+                                                <li className="mx-4"><span className="blue mx-2">&#9679;</span><button className="marketButton " onClick={setMarketHandler} value='Sheep Market'>Sheep Market<span>({e.sheepMarkets.length})</span></button></li>
                                             </ul>
                                         </div>
 
@@ -191,9 +194,9 @@ function ProductDetails(props: any) {
                                                                     <button className="wishListButton"><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
                                                                     <div className="emptydiv"></div>
 
-                                                                    <h5 className="card-id">animal: {e._id}</h5>
+                                                                    <h5 className="card-id">Animal ID: {e._id}</h5>
 
-                                                                    <p className="card-price">p:{e.price}</p>
+                                                                    <p className="card-price">Price:{e.price}</p>
                                                                     <div className="text-center">
                                                                         <button type="button" className="btn btn-success">Add to Cart</button>
                                                                     </div>
