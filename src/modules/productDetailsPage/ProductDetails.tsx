@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import './productDetails.scss';
 import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import { Link } from "react-router-dom";
 import { Accordion } from 'react-bootstrap';
@@ -14,7 +15,9 @@ function ProductDetails(props: any) {
     let [location, setLocation] = useState(props.state.locName)
     let [market, setMarket] = useState('Cattle Market')
     let [isDisplaying, setIsDisplaying] = useState(true)
-    // let [marketType, setMarketType] = useState('cattleMarkets')
+    const navigate = useNavigate();
+    // let [selectedProduct, setSelectedProduct] = useState('')
+    
 
     console.log(location)
     useEffect(() => {
@@ -30,6 +33,13 @@ function ProductDetails(props: any) {
     const setLocationHandler = (event: any) => {
         setLocation(event.target.value)
     }
+    const productDataHandler=(e:any)=>{
+        e.preventDefault();
+        navigate("/selectedProduct");
+        props.setProductDetails(e.target.id)
+        // setSelectedProduct(e.target.id)
+        // console.log('sdfghj',selectedProduct)
+    }
 
     const setMarketHandler = (event: any) => {
         setMarket(event.target.value)
@@ -40,6 +50,7 @@ function ProductDetails(props: any) {
         //     setMarketType('sheepMarkets')
         // }
     }
+    
 
     return (
         <div id="productPage" className="productPage">
@@ -72,7 +83,7 @@ function ProductDetails(props: any) {
                                             <div id="collapseOne" className="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                                 <div className="accordion-body">
                                                     <ul>
-                                                        <button className="marketButton"onClick={setMarketHandler} value='Cattle Market'>Cattle Market<span>({e.cattleMarkets.length})</span></button>
+                                                        <button className="marketButton" onClick={setMarketHandler} value='Cattle Market'>Cattle Market<span>({e.cattleMarkets.length})</span></button>
                                                         <button className="marketButton" onClick={setMarketHandler} value='Sheep Market'>Sheep Market<span>({e.sheepMarkets.length})</span></button>
                                                     </ul>
                                                 </div>
@@ -147,22 +158,23 @@ function ProductDetails(props: any) {
                                                     <div key={i}>
 
                                                         <div className="card mb-4">
-                                                            <Link to="/selectedProduct" >
-                                                            <div className="card-body">
-                                                                <button className="wishListButton"><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
-                                                                <div className="emptydiv"></div>
+                                                            {/* <Link to="/selectedProduct" > */}
+                                                                <div className="card-body" onClick={productDataHandler} id={e._id}>
+                                                                    <button className="wishListButton"><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
+                                                                    <div className="emptydiv" id={e._id}></div>
+                                                                    <img src={`data:image/jpeg;based64,${e.image}`} />
 
-                                                                <h5 className="card-id">animal: {e._id}</h5>
+                                                                    <h5 className="card-id" id={e._id}>animal: {e._id}</h5>
 
-                                                                <p className="card-price">p:{e.price}</p>
-                                                                <div className="text-center">
-                                                                    <button type="button" className="btn btn-success">Add to Cart</button>
+                                                                    <p className="card-price" id={e._id}>p:{e.price}</p>
+                                                                    <div className="text-center">
+                                                                        <button type="button" className="btn btn-success">Add to Cart</button>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
 
-                                                            </Link>
+                                                            {/* </Link> */}
 
-                                                            
+
 
                                                         </div>
 
@@ -179,27 +191,32 @@ function ProductDetails(props: any) {
                                     if (product.locationName === location) {
                                         return (
                                             product.sheepMarkets.map((e: any, i: any) => {
+
+
                                                 // console.log('running')
                                                 return (
+
                                                     // <p>Sheep</p>
                                                     <div key={i}>
                                                         <div className="card mb-4">
-                                                        <Link to="/selectedProduct" >
-                                                        <div className="card-body">
-                                                                <button className="wishListButton"><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
-                                                                <div className="emptydiv"></div>
+                                                            {/* <Link to="/selectedProduct" > */}
+                                                                <div className="card-body" onClick={productDataHandler} id={e._id}>
+                                                                    <button className="wishListButton"><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
+                                                                    <div className="emptydiv" id={e._id}></div>
+                                                                    {/* <img src=`data:image/jpeg;based64,+btoa(${e.image})` /> */}
 
-                                                                <h5 className="card-id">animal: {e._id}</h5>
 
-                                                                <p className="card-price">p:{e.price}</p>
-                                                                <div className="text-center">
-                                                                    <button type="button" className="btn btn-success">Add to Cart</button>
+                                                                    <h5 className="card-id" id={e._id}>animal: {e._id}</h5>
+
+                                                                    <p className="card-price" id={e._id}>p:{e.price}</p>
+                                                                    <div className="text-center">
+                                                                        <button type="button" className="btn btn-success">Add to Cart</button>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
 
-                                                        </Link>
+                                                            {/* </Link> */}
 
-                                                            
+
 
                                                         </div>
 
@@ -226,4 +243,10 @@ const mapStateToProps = (state: any) => {
     console.log(state);
     return { state }
 }
-export default connect(mapStateToProps)(ProductDetails)
+const mapDispatchToProps = (dispatch: Function) => {
+    return {
+
+        setProductDetails: (productData: any) => dispatch({ type: 'storeProductData', payload: productData })
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(ProductDetails)
