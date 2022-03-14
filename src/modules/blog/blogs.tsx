@@ -2,6 +2,9 @@ import React from "react";
 import arrow from "./assets/img/Icon (1).png";
 import axios from "axios"
 import './assets/styles.css'
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+
 
 class Blogtable extends React.Component<any, any> {
     constructor(props: any) {
@@ -13,7 +16,7 @@ class Blogtable extends React.Component<any, any> {
     componentDidMount() {
         axios.get("http://localhost:3005/blogs")
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 this.setState({ blogs:res.data })
             })
         let array = [];
@@ -24,8 +27,7 @@ class Blogtable extends React.Component<any, any> {
 
     }
     proceed(){
-        // alert("hii");
-        window.open("/blogContent");
+        
     }
     render() {
         let ind=0;
@@ -41,23 +43,25 @@ class Blogtable extends React.Component<any, any> {
                 </section>
                 <section className="text-center main_box" >
                     {this.state.blogs.map((x: any, i: any) => {
-                        console.log(x.title);
+                        // console.log(x.title);
                         
                         if (ind % 5 === 0) {
                             ind++;
-                            console.log(i);
-                            return (<div className="first_box" onClick={this.proceed}>
+                            // console.log(i);
+                            return (<Link to={"/blogContent"}><div className="first_box" key={x.id} onClick={()=>this.props.setBlog(x.id)}>
                                 <p className="blog_title">{x.title}</p>
-                            </div>)
+                            </div></Link>)
                         }else if(ind === 6){
                             ind =1
-                            return (<div className="first_box" onClick={this.proceed}>
+                            return (<Link to={"/blogContent"}><div className="first_box" key={x.id} onClick={()=>this.props.setBlog(x.id)}>
                             <p className="blog_title">{x.title}</p>
-                        </div>)
+                            </div></Link>)
                         }else {
-                            console.log(i);
+                            // console.log(i);
                             ind++;
-                            return (<div className="second_box" onClick={this.proceed}><p className="blog_title" >{x.title}</p></div>)
+                            return (<Link to={"/blogContent"}><div className="second_box" key={x.id} onClick={()=>this.props.setBlog(x.id)}>
+                                <p className="blog_title" >{x.title}</p>
+                            </div></Link>)
                         }
                        
                     })
@@ -67,8 +71,16 @@ class Blogtable extends React.Component<any, any> {
         );
     }
 }
+const mapStateToProps = (state:any) => { return { ...state } }
 
-export default Blogtable;
+const mapDispatchToProps = (dispatch :Function) => {
+  return {
+    setBlog: (blogDetails :any) => dispatch({ type: 'setCurrentBlog', payload: blogDetails })
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Blogtable);
+// export default Blogtable;
 // this.state.blogs.map((x: any, i: any) => {
 //     return(<div className="single_box">
 //         {(i % 5 === 0) ?

@@ -54,10 +54,10 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     display: inline-block;
-    width: 49.5%;
+    width: 650px;
     height: 30rem;
     margin-bottom: 1.1825rem;
-    margin-right: 0.5%;
+    margin-right: 10px;
     border-radius: 0.625rem;
     cursor: pointer;
 }
@@ -66,7 +66,7 @@ body{
     height: 30rem;
     background-color:#2078BF;
     margin-bottom: 1.1825rem;
-    margin-right: 1%;
+    margin-right: 10px;
     border-radius: 0.625rem;
     cursor: pointer;
 } 
@@ -83,8 +83,9 @@ body{
     font-weight: 700;
     font-size: 28px;
     color: white;
-    margin-top: 50px;
+    /* margin-top: 50px; */
 }
+
 /* .main_box{
     
     margin:auto;

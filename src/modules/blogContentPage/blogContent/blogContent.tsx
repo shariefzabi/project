@@ -3,26 +3,31 @@ import "./assets/blogContent.css"
 import axios from "axios"
 import Comment from "../comments/comments"
 import Form from "../comment_form/form"
+import { connect } from "react-redux";
+
 // import { Form } from "formik"
 
 class Blogcontent extends React.Component<any, any>{
     constructor(props: any) {
         super(props)
         this.state = {
-            blogs: [],
+            blogs:[],
             id: 0,
 
         }
 
     }
-    componentDidMount() {
+    componentDidMount(){
         axios.get("http://localhost:3005/blogs")
             .then(res => {
+                // console.log(res.data);
                 this.setState({ blogs:res.data })
-                // res.data.map((e: any, i: any) => {
-                //     this.setState({ blogs: [...this.state.blogs, e.blogs] })
-                // })
+                console.log(this.state.blogs);
             })
+        const {
+            redux: { currentBlog },
+        } = this.props as any;
+        this.setState({id:currentBlog})
     }
     carousel(v:any){
         if(v){
@@ -40,8 +45,7 @@ class Blogcontent extends React.Component<any, any>{
         }
     }
     render() {
-        console.log("blog id :" ,this.state.id);
-        
+        let {blogs, id}=this.state
         return (
 
             <div> 
@@ -51,24 +55,21 @@ class Blogcontent extends React.Component<any, any>{
                         <button type="button" className="btn-primary right-carousel " onClick={()=>{this.carousel(true)}}></button>
                     </div>
                 </div>
-
-               {this.state.blogs.map((e:any,i:any)=>{
-                   {
-                       if(i===this.state.id){
-                        //    console.log(e);
+               {blogs.map((e:any,i:any)=>{
+                   if(e.id === id)
                            
-                           return(<>
+                           return(<div key={i}>
                            <div className="contenttitle">
                                 <p className="title">{e.title}</p>
-                                <p className="blogdate">{e.blogs.date.slice(0,10)}</p>
+                                <p className="blogdate">{e.date.slice(0,10)}</p> 
                            </div>
                            <div className="discription">
                             <p className="txt">{e.about}</p>
                            </div>
-                           </>)
-                       }
+                           </div>)
+                       
                    }
-               })}
+               )}
             
                 {/* <section>
                     <div className="contenttitle">
@@ -116,4 +117,17 @@ class Blogcontent extends React.Component<any, any>{
 
     
 }
-export default Blogcontent;
+const mapStateToProps = (state: any) => {
+    // console.log(state);
+  
+    return {
+      redux: state,
+    };
+  };
+  
+  const mapDispatchToProps = (dispatch: Function) => {
+    return {};
+  };
+
+  export default connect(mapStateToProps, mapDispatchToProps)(Blogcontent);
+// export default Blogcontent;
