@@ -81,7 +81,7 @@ function Invoice1(props: any) {
                                                         <tr className="Brow">
                                                             <td>{data["invoicedata"]["type"]}</td>
                                                             <td className="dbl">{data["invoicedata"]["sex"]}</td>
-                                                            <td>14/02/2019</td>
+                                                            <td>{data["invoicedata"]["date"]}</td>
                                                             <td>{data["invoicedata"]["quantity"]}</td>
                                                             <td>{data["invoicedata"]["weight"]}</td>
                                                             <td>

@@ -14,6 +14,8 @@ class PaymentMethod extends React.Component<any, any> {
       month_year: '',
       month: "",
       year: "",
+      date: "",
+      orderId: 0,
       // err
       card_numberErr: '',
       cvv_numberErr: '',
@@ -25,18 +27,20 @@ class PaymentMethod extends React.Component<any, any> {
 
     }
   }
-  // componentDidMount() {
-  //   console.log("start");
-  //   axios.get("http://localhost:3005/product/cost/1")
-  //     .then((res) => {
-  //       console.log(res.data);
-  //       this.setState({ cost: res.data })
-  //     })
-  //     .catch(err => {
-  //       console.log("error: ", err);
-  //     })
-  //   console.log("end");
-  // }
+  componentDidMount() {
+    axios.get("http://localhost:3005/orders/orderdetails")
+      .then((result) => {
+        console.log("productdetails", result.data);
+        let { orderId, date } = result.data[0]
+        console.log(orderId)
+        this.setState({ orderId, date })
+        console.log("stATE ORDERID", this.state.orderId, typeof (this.state.orderId),this.state.date)
+      })
+      .catch(err => {
+        console.log("error: ", err);
+      })
+
+  }
   changeHandler = (event: any) => {
     // let { payment } = this.state;
     this.setState({ [event.target.name]: event.target.value });
@@ -116,8 +120,11 @@ class PaymentMethod extends React.Component<any, any> {
   }
   submitHandler = (e: any) => {
     e.preventDefault()
+
+
+
     this.setState({ flag2: false })
-    let { month, year, payment, card_number, cvv_number } = this.state;
+    let { month, year, payment, card_number, cvv_number, orderId, date } = this.state;
 
     console.log("carddetails", { month, year, card_number, cvv_number })
 
@@ -131,9 +138,8 @@ class PaymentMethod extends React.Component<any, any> {
     let product_amount = this.props.redux.orders.productdetails.quantity * this.props.redux.orders.productdetails.weight * 50000;
     let deliveryAmount = this.props.redux.orders.productdetails.quantity * this.props.redux.orders.productdetails.weight * 10000;
     let totalAmount = this.props.redux.orders.productdetails.quantity * this.props.redux.orders.productdetails.weight * 50000 + 2000;
-    let orderId = 64875;
-    // { props.orders.productdetails.quantity * props.orders.productdetails.weight * 50000 + 2000
     this.props.setCardDetails({ month, year, card_number, cvv_number })
+    console.log("originalInvoice", this.state.orderId)
     let invoicedata = {
 
       "invoicedata": {
@@ -151,12 +157,14 @@ class PaymentMethod extends React.Component<any, any> {
         "productAmount": product_amount,
         "deliveryAmount": deliveryAmount,
         "totalAmount": totalAmount,
+        "date": date
       }
 
     }
+
     axios.post("http://localhost:3005/card/details", invoicedata)
       .then((result) => {
-        console.log(result.data);
+        console.log("invoicedata", result.data);
         // this.setState({ cost: res.data })
       })
       .catch(err => {
