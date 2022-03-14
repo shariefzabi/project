@@ -17,8 +17,8 @@ import SelectedProductDetails from './modules/productDetailsPage/selectedProduct
 import Profile from './modules/profile/Profile';
 import Orders from './modules/orders/orders';
 
-import Popup from './modules/shopping_cart/cartpopup/popup';
-import Shoppingcart from "./modules/shopping_cart/shoppingcart";
+// import Popup from './modules/shopping_cart/cartpopup/popup';
+// import Shoppingcart from "./modules/shopping_cart/shoppingcart";
 
 
 
@@ -27,9 +27,9 @@ function App() {
     <div className="App">
       <Router>
         <div>
-           {/* <Header /> */}
+           <Header /> 
 
-          {/* <Routes>
+          <Routes>
 
             <Route path="/" element={<LandingPage />}></Route>
             <Route path="/aboutus" element={<Aboutus />}></Route>
@@ -43,12 +43,12 @@ function App() {
             <Route path="/selectedProduct" element={<SelectedProductDetails />}></Route>
            
            </Routes>
-          <Footer />  */}
-          <Routes>
+          <Footer /> 
+          {/* <Routes>
             <Route path="/" element={<Popup />}></Route>
             <Route path="/shoppingcart" element={<Shoppingcart />}></Route>
 
-          </Routes>
+          </Routes> */}
         </div>
       </Router>
       {/* <Butcherypopup></Butcherypopup> */}
