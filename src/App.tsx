@@ -13,8 +13,10 @@ import Blogtable from './modules/blog/blogs';
 import Invoice1 from './modules/invoice/invoicetrial'
 import Blogcontent from './modules/blogContentPage/blogContent/blogContent';
 import ProductDetails from './modules/productDetailsPage/ProductDetails';
+import SelectedProductDetails from './modules/productDetailsPage/selectedProductPage';
 import Profile from './modules/profile/Profile';
 import Orders from './modules/orders/orders';
+
 // import Popup from './modules/shopping_cart/cartpopup/popup';
 // import Shoppingcart from "./modules/shopping_cart/shoppingcart";
 
@@ -38,6 +40,7 @@ function App() {
             <Route path="/profile" element={<Profile />}></Route>
             <Route path="/orders" element={<Orders />}></Route>
             <Route path="/invoice" element={<Invoice1 />}></Route>
+            <Route path="/products/selectedProduct" element={<SelectedProductDetails />}></Route>
            
            </Routes>
           <Footer /> 
