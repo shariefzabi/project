@@ -15,7 +15,7 @@ function ProductDetails(props: any) {
     let [location, setLocation] = useState(props.state.locName)
     let [market, setMarket] = useState('Cattle Market')
     let [isDisplaying, setIsDisplaying] = useState(true)
-    
+    const navigate = useNavigate();
     // let [isOpened, setIsOpened] = useState('')
     // let [marketType, setMarketType] = useState('cattleMarkets')
 
