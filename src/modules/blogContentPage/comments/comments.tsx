@@ -21,68 +21,65 @@ class Comment extends React.Component<any, any> {
     //             // })
     //         })
     // }
-    render(){
-        axios.get("http://localhost:3005/comments")
-        .then(res => {
-            // console.log(res.data)
-            this.setState({ comments: res.data })
-            // res.data.map((e: any, i: any) => {
-            //     this.setState({ comments: [...this.state.comments, e.comments] })
-            // })
-        })
+    render() {
+        axios.get("http://localhost:3005/comments/" + this.props.id)
+            .then(res => {
+                // console.log(res.data)
+                this.setState({ comments: res.data })
+                // res.data.map((e: any, i: any) => {
+                //     this.setState({ comments: [...this.state.comments, e.comments] })
+                // })
+            })
+        let total = 0
         return (
             <section className="clients">
-                <div className="d-flex justify-content-between head-part">
+                <div className=" head-part">
                     <h2>Satisfied Client Comments</h2>
-                    <aside className="arrows align-self-center">
-                        <img className="arrows" src={require("./Img/leftarrow.png")} data-bs-target="#carouselExampleIndicators"
-                            data-bs-slide="prev" />
-                        <img src={require("./Img/rightarrow (1).png")} data-bs-target="#carouselExampleIndicators"
-                            data-bs-slide="next" />
-                    </aside>
                 </div>
-                <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
-                    <div className="carousel-inner">
-                        <div className="carousel-item active ">
-                            {this.state.comments.map((e: any, i: any) => {
-                                if (e.id == this.props.id) {
-                                    return (
-                                        <div className="card p-4 m-3" key={i}>
-                                            <p className="carousel-description">{e.comment}</p>
-                                            <div className="d-flex flex-row justify-content-between">
-                                                <div className="d-flex align-items-center">
-                                                    <input type="radio" className="carousel-radio m-2" id="radiobtn" name="radio" />
-                                                    <label htmlFor="radiobtn" className="client-details">{e.name}</label>
-                                                </div>
-                                                <div>
-                                                    <p className="client-details mt-3">{e.email}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    )
-                                }
+                <div className="d-flex comment_box">
+                    {this.state.comments.map((e: any, i: any) => {
+                        return (
+                            <div className="card p-4 m-3" key={i}>
+                                <p className="carousel-description">{e.comment}</p>
+                                <div className="d-flex flex-row justify-content-between">
+                                    <div className="d-flex align-items-center">
+                                        <input type="radio" className="carousel-radio m-2" id="radiobtn" name="radio" />
+                                        <label htmlFor="radiobtn" className="client-details">{e.name}</label>
+                                    </div>
+                                    <div>
+                                        <p className="client-details mt-3">{e.email}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    })}
 
-                            })
-                            }
-                        </div>
-                    </div>
+
+
                 </div>
-
-                <div className="text-center">
-                    <span data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active"
-                        aria-current="true" aria-label="Slide 1">&#9900;</span>
-                    <span data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                        aria-label="Slide 2">&#9900;</span>
-                    <span data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                        aria-label="Slide 3">&#9900;</span>
-                </div>
-
             </section>
         )
     }
 }
 
 export default Comment;
+
+// return (
+{/* <div className="card p-4 m-3" key={i}>
+    <p className="carousel-description">{e.comment}</p>
+    <div className="d-flex flex-row justify-content-between">
+        <div className="d-flex align-items-center">
+            <input type="radio" className="carousel-radio m-2" id="radiobtn" name="radio" />
+            <label htmlFor="radiobtn" className="client-details">{e.name}</label>
+        </div>
+        <div>
+            <p className="client-details mt-3">{e.email}</p>
+        </div>
+    </div>
+</div> */}
+// )
+
+
 
 
 {/* <div className="d-lg-flex">
