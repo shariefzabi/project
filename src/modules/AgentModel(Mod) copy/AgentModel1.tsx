@@ -1,32 +1,32 @@
 import "./style.scss";
 import Modal from '@mui/material/Modal';
 import { useState } from "react";
+import { Dialog } from "@mui/material";
 import BeanAgentPopup from '../be an agent form copy/form1'
 export default function AgentModel() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const [displayForm,setDisplayForm]= useState(false);
+  const [displayForm, setDisplayForm] = useState(false);
   return (
     <>
-    <h6 className="agent_dropdown" onClick={() => { handleOpen(); setDisplayForm(false) }}>Be an Agent</h6>
+      <h6 className="agent_dropDown"
+        onClick={() => { handleOpen(); setDisplayForm(false) }}>Be an Agent</h6>
+      <div >
 
-    <Modal
-        open={open}
-        onClose={handleClose}
-        aria-describedby="modal-modal-description"
-        sx={{overflow:'auto'}}
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-describedby="modal-modal-description"
+          sx={{ overflow: 'auto' }}
+
         >
-
-
-        <div className='be-an-agent-container'>
-          <div id="modal-modal-description" className='beAnAgent-window' >
-            {!displayForm &&
-              <div>
+          {!displayForm &&
+            <div className="model-content">
               <div className="text-center pop_up_heading">
                 <p>Be an Agent</p>
               </div>
-              <div className="paragraph">
+              <div className="paragraph-1">
                 <p>
                   Join the largest community of veterinary doctors, breed
                   improvement specialists, and animal science professionals.{" "}
@@ -66,19 +66,20 @@ export default function AgentModel() {
               </div>
               <div className="mb-3 text-center">
                 <button type="button" className="btn btn-success form_button"
-                onClick={()=>setDisplayForm(true)}>
+                  onClick={() => setDisplayForm(true)}>
                   Proceed to Form
                 </button>
               </div>
-              </div>
-            }
-            {
-              displayForm &&
-              <BeanAgentPopup handleClose={handleClose}/>
-            }
-          </div>
-        </div>
-      </Modal>
+            </div>
+
+
+          }
+        
+      
+
+      {displayForm && <BeanAgentPopup></BeanAgentPopup>}
+    </Dialog>
+    </div>
     </>
   );
 }
