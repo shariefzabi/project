@@ -69,7 +69,7 @@ class Form extends React.Component<any, any> {
         let n = e.target.name;
         let v = e.target.value;
         if (n === "name") {
-            let re = /^[a-zA-Z ]{5,30}$/;
+            let re = /^[a-zA-Z0-9]{5,30}$/;
             if (v === "") {
                 this.setState({ nameErr: "Please enter the User Name." })
             }
@@ -82,7 +82,7 @@ class Form extends React.Component<any, any> {
         else if (n === "email") {
             let re = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/
             if (v === "") {
-                this.setState({ emailErr: "Please enter the eMail." })
+                this.setState({ emailErr: "Please enter the EMail." })
             }
             else if (!re.test(v)) {
                 this.setState({ emailErr: "please enter email in a specific formate" })
@@ -91,7 +91,7 @@ class Form extends React.Component<any, any> {
                 this.setState({ emailErr: "" ,emailFlag:true})
         }
         else if (n === "comment") {
-            let re = /^[a-zA-Z ]{10,200}$/;
+            let re = /^[a-zA-Z]{10,200}$/;
             if (v === "") {
                 this.setState({ commentErr: "Please Enter Comments" })
             }
