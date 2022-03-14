@@ -110,11 +110,12 @@ hr {
     border-collapse: separate;
 }
 
+
 .incre{
   background-color: #2078BF;
   width: 2.5rem; 
   height: 2.5rem;
-  /* padding: 1px; */
+  padding: 8px;
   color: white;
   float: right;
   border: none;
@@ -122,10 +123,11 @@ hr {
 }
 .rectangle {
   width: 2rem; 
-  /* height: 1.25vh; */
-  background-color:white;
-  border: 1px solid #E0E0E0;
+  /* height: 2.5rem !important; */
+  /* background-color:white; */
+  /* border: 1px solid #E0E0E0; */
   border-radius: 2px;
+  /* box-sizing: border-box; */
 }
 
 .check_btn {

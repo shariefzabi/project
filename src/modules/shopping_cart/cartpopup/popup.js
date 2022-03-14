@@ -242,15 +242,18 @@ export default class Header extends React.Component {
                         <ul
                           className="dropdown-item"
                           key={items.animalId}
-                          style={{ color: hover }}
+                          
                         >
                           {console.log('++==', datalength)}
                           <li className="btn btn-primary">X</li>
-                          <li>AnimalId : x {datalength}</li>
+                          <li>Animal Id : </li>
+                          <li className='aa'>x {datalength}</li>
                           <br />
-                          <br />
-                          <li>900085000597636 : {items.animalId}</li>
-                        </ul>
+                          </ul>
+                          {/* <br /> */}
+                          <p className='Id'>{items.animalId}</p>
+                         
+                        
                       </div>
                       <br />
                       <hr></hr>
@@ -261,11 +264,11 @@ export default class Header extends React.Component {
                       </li>
                     </ul>
                     <hr></hr>
-                    <ul className="total">
-                      <li className="dropdown-item" ref="#">
+                    <div className="total">
+                      <p className="dropdown-item" ref="#">
                         Total: {items.price * datalength}
-                      </li>
-                    </ul>
+                      </p>
+                    </div>
                     <div className="option">
                       <Link to="/shoppingcart" className="btn btn-success view">
                         View Cart
@@ -283,7 +286,7 @@ export default class Header extends React.Component {
             <h5>
               <b>ANIMAL ID : {items.animalId}</b>
             </h5>
-            <h5>89987656788654568 </h5>
+            {/* <h5>89987656788654568 </h5> */}
             <div className="option">
               <button
                 onClick={(e) => this.getButtonData(items.animalId, items.price)}
