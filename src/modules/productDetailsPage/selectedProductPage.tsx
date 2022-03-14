@@ -14,9 +14,10 @@ function SelectedProductDetails(props: any) {
     let [location, setLocation] = useState(props.state.locName)
     let [market, setMarket] = useState('Cattle Market')
     let [isDisplaying, setIsDisplaying] = useState(true)
+    let [selectedProduct, setSelectedProduct] = useState(props.state.productData)
     // let [marketType, setMarketType] = useState('cattleMarkets')
 
-    console.log(location)
+
     useEffect(() => {
         axios.get("http://localhost:3005/market/marketDetails")
             .then(
@@ -25,7 +26,7 @@ function SelectedProductDetails(props: any) {
                 }
             )
     }, []);
-    console.log(products)
+    console.log(selectedProduct)
 
     const setLocationHandler = (event: any) => {
         setLocation(event.target.value)
@@ -50,68 +51,29 @@ function SelectedProductDetails(props: any) {
                 <Breadcrumb.Item>
                     <Link className="breadCrumbs" to='/location'>{location}</Link>
                 </Breadcrumb.Item >
+                <Breadcrumb.Item >
+                    <Link className="breadCrumbs" to='/products'>{market}</Link>
+                </Breadcrumb.Item>
                 <Breadcrumb.Item active>
-                    {market}
+                    Animal id: {selectedProduct}
                 </Breadcrumb.Item>
             </Breadcrumb>
             <div className="container">
                 <div className=" row">
                     <div className="col-3">
-                        {
-                            products.map((e: any) => {
-                                // let locations = e.locationName
-                                // if ({ location } === locations) {
-                                return (
-                                    <div className="accordion" id="accordionExample">
-                                        <div className="accordion-item">
-                                            <h2 className="accordion-header" id="headingOne">
-                                                <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onClick={setLocationHandler} value={e.locationName}>
-                                                    {e.locationName}
-                                                </button>
-                                            </h2>
-                                            <div id="collapseOne" className="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                                <div className="accordion-body">
-                                                    <ul>
-                                                        <button className="marketButton" onClick={setMarketHandler} value='Cattle Market'>Cattle Market<span>({e.cattleMarkets.length})</span></button>
-                                                        <button className="marketButton" onClick={setMarketHandler} value='Sheep Market'>Sheep Market<span>({e.sheepMarkets.length})</span></button>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                )
-                                // }
-                                // else {
-                                //     return (
-                                //         <div className="accordion" id="accordionExample">
-                                //             <div className="accordion-item">
-                                //                 <h2 className="accordion-header" id="headingOne">
-                                //                     <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onClick={setLocationHandler} value={e.locationName}>
-                                //                         {e.locationName}
-                                //                     </button>
-                                //                 </h2>
-                                //                 <div id="collapseOne" className="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                //                     <div className="accordion-body">
-                                //                         <ul>
-                                //                             <button onClick={setMarketHandler} value='Cattle Market'>Cattle Market<span>({e.cattleMarkets.length})</span></button>
-                                //                             <button onClick={setMarketHandler} value='Sheep Market'>Sheep Market<span>({e.sheepMarkets.length})</span></button>
-                                //                         </ul>
-                                //                     </div>
-                                //                 </div>
-                                //             </div>
-                                //         </div>
-
-                                //     )
-                                // }
-                            })
-                        }
+                    
+                        
+                                            
+                                            
+                      
+                      
 
 
                     </div>
                     <div className="col-9">
                         <h3 id="marketHeading">{market}</h3>
                         <h4 id="locationMarketHeading">{location} {market}</h4>
-                       
+
                     </div>
                 </div>
 

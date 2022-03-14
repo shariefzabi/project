@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import './productDetails.scss';
 import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import { Link } from "react-router-dom";
 import { Accordion } from 'react-bootstrap';
@@ -41,6 +42,13 @@ function ProductDetails(props: any) {
         // class_name = 'opened'
         // setIsOpened(class_name)
     }
+    const productDataHandler=(e:any)=>{
+        e.preventDefault();
+        navigate("/selectedProduct");
+        props.setProductDetails(e.target.id)
+        // setSelectedProduct(e.target.id)
+        // console.log('sdfghj',selectedProduct)
+    }
 
     const setMarketHandler = (event: any) => {
         setMarket(event.target.value)
@@ -51,6 +59,7 @@ function ProductDetails(props: any) {
         //     setMarketType('sheepMarkets')
         // }
     }
+    
 
 
 
@@ -189,10 +198,11 @@ function ProductDetails(props: any) {
                                                     <div key={i}>
 
                                                         <div className="card mb-4">
-                                                            <Link to="/selectedProduct" >
-                                                                <div className="card-body">
+                                                            {/* <Link to="/selectedProduct" > */}
+                                                                <div className="card-body" onClick={productDataHandler} id={e._id}>
                                                                     <button className="wishListButton"><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
-                                                                    <div className="emptydiv"></div>
+                                                                    <div className="emptydiv" id={e._id}></div>
+                                                                    <img src={`data:image/jpeg;based64,${e.image}`} />
 
                                                                     <h5 className="card-id">Animal ID: {e._id}</h5>
 
@@ -202,7 +212,7 @@ function ProductDetails(props: any) {
                                                                     </div>
                                                                 </div>
 
-                                                            </Link>
+                                                            {/* </Link> */}
 
 
 
@@ -221,25 +231,30 @@ function ProductDetails(props: any) {
                                     if (product.locationName === location) {
                                         return (
                                             product.sheepMarkets.map((e: any, i: any) => {
+
+
                                                 // console.log('running')
                                                 return (
+
                                                     // <p>Sheep</p>
                                                     <div key={i}>
                                                         <div className="card mb-4">
-                                                            <Link to="/selectedProduct" >
-                                                                <div className="card-body">
+                                                            {/* <Link to="/selectedProduct" > */}
+                                                                <div className="card-body" onClick={productDataHandler} id={e._id}>
                                                                     <button className="wishListButton"><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
-                                                                    <div className="emptydiv"></div>
+                                                                    <div className="emptydiv" id={e._id}></div>
+                                                                    {/* <img src=`data:image/jpeg;based64,+btoa(${e.image})` /> */}
 
-                                                                    <h5 className="card-id">animal: {e._id}</h5>
 
-                                                                    <p className="card-price">p:{e.price}</p>
+                                                                    <h5 className="card-id" id={e._id}>animal: {e._id}</h5>
+
+                                                                    <p className="card-price" id={e._id}>p:{e.price}</p>
                                                                     <div className="text-center">
                                                                         <button type="button" className="btn btn-success">Add to Cart</button>
                                                                     </div>
                                                                 </div>
 
-                                                            </Link>
+                                                            {/* </Link> */}
 
 
 
@@ -268,4 +283,10 @@ const mapStateToProps = (state: any) => {
     console.log(state);
     return { state }
 }
-export default connect(mapStateToProps)(ProductDetails)
+const mapDispatchToProps = (dispatch: Function) => {
+    return {
+
+        setProductDetails: (productData: any) => dispatch({ type: 'storeProductData', payload: productData })
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(ProductDetails)
