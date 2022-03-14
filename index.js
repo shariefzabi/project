@@ -21,6 +21,7 @@ mongoClient.connect(dburl, function (err, client) {
     locationdbs = db.collection("locationdbs");
     let carddetails = db.collection("carddetails");
     let invoiceCollection = db.collection("invoicedatas");
+    let orderDetails = db.collection("invoicedatas");
     app.set("carddetails", carddetails);
     app.set("locationCollection", locationdbs);
     app.set("");
@@ -90,7 +91,7 @@ app.get("/users/:token",function(req,res){
 //************ No.1 Team ************* Ending *****************************
 
 //team-2 storing order details
-app.get("/orders/orderdetails", function (req, res) {
+app.get("/orders/orderdetails",  async(req, res)=> {
   let orderdetails = req.body;
   console.log(orderdetails);
   let ordercollection = db.collection("orders");
@@ -111,7 +112,7 @@ app.post("/orders/orderdetails", function (req, res) {
         orderdetails.orderId=result+1;
       }
       const newdate=new Date();
-      orderdetails.date=`${newdate.getDay()}/${newdate.getMonth()}/${newdate.getFullYear()}}`;
+      orderdetails.date=`${newdate.getDay()}/${newdate.getMonth()}/${newdate.getFullYear()}`;
       console.log(orderdetails.date);
       ordercollection.insertOne(orderdetails);
       res.json(orderdetails);
