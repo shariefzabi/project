@@ -29,17 +29,17 @@ function Orderdisplay(props: any) {
     return (
         <>
             {!paymentflag &&
+            <div className='order-modal'>
                 <div className='order-display'>
                     {/* <div className="modal-body"> */}
-                    <div className="modal-dialog modal-xl" >
-                        <div className="modal-content">
-                            <div className="modal-body">
+                    
+                            <div className="modal-body-orderdisplay">
                                 <h2 className="heading-cartpage text-center">Product Added to Cart</h2>
                                 {orderdata.map((item: any, i) => {
-                                    return (<h3 key={i} className="heading-cartpage-Id"> Order ID -{item.orderId + 1} has been placed you now have to proceed payment</h3>)
+                                    return (<h3 key={i} className="heading-cartpage-Id"> Order ID -<b>{item.orderId + 1}</b> has been placed you now have to proceed payment</h3>)
                                 })}
 
-                                <div className="body-card text-center">
+                                <div className="body-card position-relative text-center">
                                     <img src={require("../assets/Vector.png")} className="mt-3" />
                                     <h4 className="body-head">Hello, {props.user.fullName}</h4>
                                     <p className="body-description">Your order <span className="body-head">{props.orders.productdetails.breed} {props.orders.productdetails.type} </span> has been added to your basket to proceed for checkout</p>
@@ -70,10 +70,7 @@ function Orderdisplay(props: any) {
                                 </div>
                             </div>
                         </div>
-
-                    </div>
-
-                </div>
+                        </div>
             }
             {paymentflag &&
                 <PaymentMethod></PaymentMethod>

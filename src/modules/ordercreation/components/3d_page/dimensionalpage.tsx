@@ -7,10 +7,9 @@ function DimesionalPage() {
     return (
         <>
             {!deliveryFlag &&
+            <div className='order-modal'>
                 <div className="dimesionalpage-form">
-                    <div className="modal-dialog modal-xl" >
-                        <div className="modal-content">
-                            <div className='modal-body'>
+                            <div className=''>
                                 <div className="heading-dimension">
                                     <p>View the 3d representation of the product before you make payment</p>
                                 </div>
@@ -32,9 +31,7 @@ function DimesionalPage() {
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                </div >
+                        </div>
             }
             {deliveryFlag &&
                 <Deliverydetails></Deliverydetails>

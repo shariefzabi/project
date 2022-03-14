@@ -88,10 +88,9 @@ class Deliverydetails extends React.Component<any, any>{
         return (
             < >
             {orderdisplayFlag &&
+            <div className='order-modal'>
             <div className='deliverydetailspage'>
-                <div className="modal-dialog modal-xl" >
-                    <div className="modal-content">
-                <div className="modal-body">
+                <div className="">
                     <div className="text-center popupheading">
                         <p>You are one step closer to buying your lifestock</p>
                     </div>
@@ -115,8 +114,8 @@ class Deliverydetails extends React.Component<any, any>{
 
                             <select className="form-select" name="deliverymode" required value={this.state.deliverymode} aria-label="Default select example" onBlur={this.validations} onChange={(e) => { this.changeHandler(e); this.validations(e) }}>
                                 <option hidden value="">Delivery Mode</option>
-                                <option value="Offline">Offline</option>
-                                <option value="Online">Online</option>
+                                <option value="Prime">Prime</option>
+                                <option value="Non-Prime">Non-Prime</option>
                             </select>
                             <p className="text-danger err">{this.state.deliverymodeErr}</p>
                         </div>
@@ -126,8 +125,8 @@ class Deliverydetails extends React.Component<any, any>{
 
                     </form>
                 </div>
-                </div>
-                </div>
+            </div>
+            
             </div>
             }
             {!orderdisplayFlag  &&

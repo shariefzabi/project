@@ -5,19 +5,29 @@
     border: 0.134rem solid white;
     margin-left: 1.625rem;
 }
-.ordercreation-container{
+
+.order-modal{
+    width: 1200px;
+    // height: 500px;
+    transform: 'translate(-50%, -50%)';
+    // border: '2px solid #000';
+    background-color: #ffffff;
+    margin: 100px auto;
+    }
+.ordercreation-container{  
  .popupheading{
         color: #2078BF;
-        width: 555px;
-        height: 24px;
-        left: 472px;
-        top: 254px;
+        // width: 555px;
+        // height: 24px;
+        // left: 472px;
+        // top: 254px;
+        padding-top: 30px;
         font-family: Ubuntu;
         font-style: normal;
         font-weight: bold;
         font-size: 24px;
         line-height: 24px;
-        margin-left: 17rem;
+        // margin-left: 17rem;
         margin-top: 5rem;
     }
     .form-paragraph{

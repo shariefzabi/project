@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DimesionalPage from './3d_page/dimensionalpage';
 // import DimesionalPage from './3d_page/dimensionalpage'
 import './ordercreation.scss'
 import { connect } from "react-redux";
+import Modal from '@mui/material/Modal';
 
 function BuyNow(props: any) {
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
     const [type, setType] = useState("");
     const [quantity, setQuantity] = useState("");
     const [sex, setSex] = useState("");
@@ -13,7 +18,7 @@ function BuyNow(props: any) {
     const [cow, setCow] = useState(["Aberdeen", "Holstein", "Hereford", "simmental"]);
     const [sheep, setSheep] = useState(["Boer", "American Pygmy", "Saanen goat", "angora"]);
     const [pig, setPig] = useState(["Duroc", "Large White", "Hampshire", "Large Black"]);
-    const [price,setPrice]=useState(1);
+    const [price, setPrice] = useState(1);
 
     const [typeerrmsg, setTypeerrmsg] = useState("");
     const [quantityerrmsg, setQuantityerrmsg] = useState("");
@@ -21,23 +26,28 @@ function BuyNow(props: any) {
     const [weighterrmsg, setWeighterrmsg] = useState("");
     const [breederrmsg, setBreederrmsg] = useState("");
     const [productdetailsflag, setProductdetailsflag] = useState(true);
+    useEffect(() => {
+        return () => {
+            setOpen(false)
+        }
+    }, [])
 
     const productsubmitHandler = (e: any, productDetails: any) => {
         e.preventDefault();
-        if(props.user!=null)
+        if (props.user != null)
             setProductdetailsflag(false);
         // console.log("props in products", props);
         // console.log("productdetails", productDetails.type);
-         if(productDetails.type ==='Cow'){
-            productDetails.price=productDetails.quantity*productDetails.weight*50000;
+        if (productDetails.type === 'Cow') {
+            productDetails.price = productDetails.quantity * productDetails.weight * 50000;
             // setPrice(productDetails.quantity*productDetails.weight*50000);
-         }else if(productDetails.type ==='Goat'){
-            productDetails.price=productDetails.quantity*productDetails.weight*10000;
-        }else{
-            productDetails.price=productDetails.quantity*productDetails.weight*5000;
+        } else if (productDetails.type === 'Goat') {
+            productDetails.price = productDetails.quantity * productDetails.weight * 10000;
+        } else {
+            productDetails.price = productDetails.quantity * productDetails.weight * 5000;
         }
-        productDetails.delprice=2000;
-        productDetails.totalprice=productDetails.price+productDetails.delprice;
+        productDetails.delprice = 2000;
+        productDetails.totalprice = productDetails.price + productDetails.delprice;
         // productDetails.price=price;
 
         console.log("productdetails", productDetails);
@@ -107,20 +117,24 @@ function BuyNow(props: any) {
 
         <div>
             {/* <a className="btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">ordercreation</a> */}
-            
-            <div className="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true" tabIndex={-1}>
-                 {productdetailsflag &&
-                <div className="modal-dialog modal-xl" >
-                    <div className="modal-content">
-                       
-                            <div className='modal-body ordercreation-container'>
+            <Modal
+                open={open}
+                onClose={handleClose}
+                aria-describedby="modal-modal-description"
+                sx={{ overflow: 'auto' }}
+            >
+                <>
+                {productdetailsflag &&
+                <div className='order-modal'>
+                {/* <div className="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true" tabIndex={-1}> */}
+                            <div className='ordercreation-container position-relative'>
                                 <div className="text-center popupheading">
                                     <p>Yor are one step closer to buying your livestock</p>
                                 </div>
                                 <div className="form-paragraph  ">
                                     <p>Fill in the required information</p>
-                                    {props.user === null&&
-                                <p className='text-danger text-center'>please login to your account</p>}
+                                    {props.user === null &&
+                                        <p className='text-danger text-center'>please login to your account</p>}
                                 </div>
                                 <div className='viewall-icon'>
                                     <img src={require("./assets/viewallproductsicon.png")} />
@@ -213,16 +227,16 @@ function BuyNow(props: any) {
                                     </div>
                                 </form>
                             </div>
-                    </div>
-
-                </div>
+                
+                
+                </div >
                 }
                 {!productdetailsflag &&
-                            <DimesionalPage></DimesionalPage>
+                    <DimesionalPage></DimesionalPage>
                 }
-            </div >
-            <button className="buy-button text-white" onClick={() => setProductdetailsflag(true)} data-bs-toggle="modal" data-bs-target="#exampleModal">Buy Now</button>
-
+                </>
+            </Modal>
+            <button className="buy-button text-white" onClick={() => {handleOpen();setProductdetailsflag(true)}} >Buy Now</button>
         </div >
 
     )

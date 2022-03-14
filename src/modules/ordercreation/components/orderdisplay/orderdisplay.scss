@@ -1,6 +1,6 @@
 
 
-.order-display .modal-body{
+.order-display .modal-body-orderdisplay{
 .heading-cartpage{
     font-family: Ubuntu;
     font-style: normal;
@@ -10,6 +10,7 @@
     display: block;
     letter-spacing: 0.1px;
     color: #2078BF;
+    padding-top: 30px;
     margin-top: 5%;
 }
 .heading-cartpage-Id{
@@ -22,7 +23,7 @@
     letter-spacing: 0.1px;
     color: #2078BF;
     margin-top: 2%;
-    margin-bottom: 4%;
+    margin-bottom: 2%;
 }
 .body-card{
     background: #FFFFFF;
@@ -88,7 +89,7 @@ margin-left: 7%;
     transform: rotate(90deg);
     width: 140px;
     position : absolute;
-    top:65%;
+    top:70%;
     left:42%;
   }
 .vl-right {
@@ -96,7 +97,7 @@ margin-left: 7%;
     transform: rotate(90deg);
     width: 140px;
     position : absolute;
-    top:65%;
+    top:70%;
     left:60%;
   }  
 .body-list-items-amount{
@@ -131,14 +132,14 @@ text-align: center;
 color: #06864D;
 
 }
-.proceed-button{
+.continuebutton{
     background: #06864D;
     border-radius: 5px;
-    position: absolute;
+    // position: absolute;
     color:#fff;
-    top:94%;
-    left:40%;
+    // top:94%;
+    // left:40%;
     width:160px;
-    margin-bottom: 5%;
+    margin-bottom: 40px !important;
 }
 }
