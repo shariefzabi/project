@@ -48,18 +48,18 @@ class Blogtable extends React.Component<any, any> {
                         if (ind % 5 === 0) {
                             ind++;
                             // console.log(i);
-                            return (<Link to={"/blogContent"}><div className="first_box" key={x.id} onClick={()=>this.props.setBlog(x.id)}>
+                            return (<Link to={"/blogContent?id="+x.id}><div className="first_box" key={x.id} >
                                 <p className="blog_title">{x.title}</p>
                             </div></Link>)
                         }else if(ind === 6){
                             ind =1
-                            return (<Link to={"/blogContent"}><div className="first_box" key={x.id} onClick={()=>this.props.setBlog(x.id)}>
+                            return (<Link to={"/blogContent?id="+x.id}><div className="first_box" key={x.id} >
                             <p className="blog_title">{x.title}</p>
                             </div></Link>)
                         }else {
                             // console.log(i);
                             ind++;
-                            return (<Link to={"/blogContent"}><div className="second_box" key={x.id} onClick={()=>this.props.setBlog(x.id)}>
+                            return (<Link to={"/blogContent?id="+x.id}><div className="second_box" key={x.id} >
                                 <p className="blog_title" >{x.title}</p>
                             </div></Link>)
                         }
@@ -71,15 +71,9 @@ class Blogtable extends React.Component<any, any> {
         );
     }
 }
-const mapStateToProps = (state:any) => { return { ...state } }
 
-const mapDispatchToProps = (dispatch :Function) => {
-  return {
-    setBlog: (blogDetails :any) => dispatch({ type: 'setCurrentBlog', payload: blogDetails })
-  }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Blogtable);
+export default (Blogtable);
 // export default Blogtable;
 // this.state.blogs.map((x: any, i: any) => {
 //     return(<div className="single_box">
