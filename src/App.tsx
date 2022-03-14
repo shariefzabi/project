@@ -15,6 +15,9 @@ import Blogcontent from './modules/blogContentPage/blogContent/blogContent';
 import ProductDetails from './modules/productDetailsPage/ProductDetails';
 import Profile from './modules/profile/Profile';
 import Orders from './modules/orders/orders';
+// import Popup from './modules/shopping_cart/cartpopup/popup';
+// import Shoppingcart from "./modules/shopping_cart/shoppingcart";
+
 
 
 function App() {
@@ -23,28 +26,27 @@ function App() {
       <Router>
         <div>
           <Header />
-          <Routes>
-            <Route path="/" element={<LandingPage />}>
-            </Route>
-            <Route path="/aboutus" element={<Aboutus />}>
-            </Route>
-            <Route path="/blog" element={<Blogtable />}>
-            </Route>
-            <Route path="/addblogs" element={<Blogform />}>
-            </Route>
-            <Route path="/products" element={<ProductDetails />}>
-            </Route>
-            <Route path="/blogcontent" element={<Blogcontent />}>
-            </Route>
-            <Route path="/profile" element={<Profile />}>
-            </Route>
-            <Route path="/orders" element={<Orders />}>
-            </Route>
-            <Route path="/invoice" element={< Invoice1 />}>
-            </Route>
-          </Routes>
 
+          <Routes>
+
+            <Route path="/" element={<LandingPage />}></Route>
+            <Route path="/aboutus" element={<Aboutus />}></Route>
+            <Route path="/blog" element={<Blogtable />}></Route>
+            <Route path="/addblogs" element={<Blogform />}></Route>
+            <Route path="/products" element={<ProductDetails />}></Route>
+            <Route path="/blogcontent" element={<Blogcontent />}></Route>
+            <Route path="/profile" element={<Profile />}></Route>
+            <Route path="/orders" element={<Orders />}></Route>
+            <Route path="/invoice" element={<Invoice1 />}></Route>
+            {/* <Route path="/" element={<Popup />}></Route>
+            <Route path="/shoppingcart" element={<Shoppingcart />}></Route> */}
+          </Routes>
           <Footer />
+          {/* <Routes>
+            <Route path="/" element={<Popup />}></Route>
+            <Route path="/shoppingcart" element={<Shoppingcart />}></Route>
+
+          </Routes> */}
         </div>
       </Router>
       {/* <Butcherypopup></Butcherypopup> */}

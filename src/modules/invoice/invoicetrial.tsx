@@ -3,8 +3,8 @@ import { useState } from "react"
 import { connect } from "react-redux";
 import React, { useEffect } from "react";
 import axios from "axios"
-import downArrow from "./assets/img/uptriangle.png";
-import upArrow from "./assets/img/downtriangle.png";
+import upArrow from "./assets/img/uptriangle.png";
+import downArrow from "./assets/img/downtriangle.png";
 
 function invoiceToggle(e: any) {
 
@@ -33,10 +33,10 @@ function Invoice1(props: any) {
     return (
         <main id="mainContent">
             {
-                props.user === null &&
+                !props.user &&
                 <p className='text-danger text-center'>please login to your account</p>
             }
-            {invoiceFlag && <div>
+            {props.user && <div>
                 < section className="invoiceSection">
                     <header >
                         <div className="headingText ">
@@ -51,11 +51,11 @@ function Invoice1(props: any) {
                             invoice.map((data, ind) => {
                                 let index = "#ind" + ind
                                 return (
-                                    <div key={ind} className="invoice-border">
-                                        <p className="invoice-id">ID - {data["invoicedata"]["orderId"]}<img className="text-end" onClick={(e) => invoiceToggle(e)} data-bs-toggle="collapse" data-bs-target={index} aria-expanded="false" aria-controls="collapseExample" src={upArrow}></img></p>
-                                        <div className="table collapse" id={index.slice(1)}>
+                                    <div key={ind} >
+                                        <p className="invoice-id invoice-border">ID - {data["invoicedata"]["orderId"]}<img className="text-end" onClick={(e) => invoiceToggle(e)} data-bs-toggle="collapse" data-bs-target={index} aria-expanded="false" aria-controls="collapseExample" src={upArrow}></img></p>
+                                        <div className=" invoice-border table collapse" id={index.slice(1)}>
                                             <div>
-                                                <table>
+                                                <table className="mt-4">
                                                     <thead>
                                                         <tr className="Hrow">
                                                             <th>Type</th>

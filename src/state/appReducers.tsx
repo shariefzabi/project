@@ -41,6 +41,8 @@ function appReducer(state = appInitialstate, action: any) {
             return ({ ...state, cardDetails: action.payload })
         case "storeLocname":
             return ({ ...state, locName: action.payload })
+        case 'setCurrentBlog':
+            return {...state, currentBlog: action.payload};
         default:
             return state;
     }

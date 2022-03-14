@@ -49,10 +49,10 @@ ul {
     color: #838383!important;
     padding-left: 5px;
 }
-.landingpage-header .dropdown-menu .dropdown-item:hover{
-    background-color: #2078BF;
-    color: #fff!important;
-}
+/* .landingpage-header .dropdown-menu .dropdown-item:hover{
+    background-color: #2078BF; */
+    /* color: #fff!important;
+} */
 .landingpage-header .buynow{
     border: 0.134rem solid #00C3FF!important;
     border-radius: 0.3125rem!important;
@@ -98,10 +98,10 @@ ul {
     border-left: 6px solid transparent;
     content: "";
   }
-  .dropdown .dropdown-item:hover {
+  /* .dropdown .dropdown-item:hover {
     color: #fff;
     background-color: #2078BF;
-  }
+  } */
   
 /* Header Part End */
 
@@ -109,7 +109,7 @@ ul {
 /* Order your livestock Start */
 
 .order-livestock{
-    background-color: #003966;
+    background-color: #ebeef0;
     /* height:53.75rem; */
 }
 .order-livestock article{
@@ -266,8 +266,8 @@ li#quantity {
   padding-left: 1.125rem;
 }
 li.btn-primary {
-  margin-left: 5rem;
-  margin-top: -1.875rem;
+  margin-left: 1rem;
+  margin-top: 1rem;
   font-size: 12px;
 }
 .animalid {
@@ -305,4 +305,8 @@ li.btn-primary {
   height: 261px;
   right: 0% !important;
   margin-top: 0.125rem;
+}
+
+.navbar {
+  margin-right: 100px;
 }
