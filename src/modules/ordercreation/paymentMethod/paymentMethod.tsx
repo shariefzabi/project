@@ -20,7 +20,7 @@ class PaymentMethod extends React.Component<any, any> {
       card_numberErr: '',
       cvv_numberErr: '',
       month_yearErr: '',
-      totalprice:0,
+      totalprice: 0,
       cost: "",
       flag1: true,
       flag2: true,
@@ -36,8 +36,8 @@ class PaymentMethod extends React.Component<any, any> {
         let { totalprice } = result.data[0].productdetails
 
         console.log(orderId)
-        this.setState({ orderId, date, totalprice})
-        console.log("stATE ORDERID", this.state.orderId, typeof (this.state.orderId),this.state.date)
+        this.setState({ orderId, date, totalprice })
+        console.log("stATE ORDERID", this.state.orderId, typeof (this.state.orderId), this.state.date)
       })
       .catch(err => {
         console.log("error: ", err);
@@ -131,7 +131,7 @@ class PaymentMethod extends React.Component<any, any> {
 
     console.log("carddetails", { month, year, card_number, cvv_number })
 
-    let { breed, quantity, sex, type, weight, price, delprice,totalprice } = this.props.redux.orders.productdetails;
+    let { breed, quantity, sex, type, weight, price, delprice, totalprice } = this.props.redux.orders.productdetails;
 
     // let product_amount = this.props.redux.orders.productdetails.quantity * this.props.redux.orders.productdetails.weight * 50000;
     // let deliveryAmount = 5505;
@@ -247,7 +247,7 @@ class PaymentMethod extends React.Component<any, any> {
                           <input className="form-control " type="text" value={this.state.cvv_number} name="cvv_number" placeholder="CVV" onChange={this.changeHandler} onBlur={this.validation} />
                           <p className="text-danger text-start m-0">{this.state.cvv_numberErr}</p>
                           <div className="text-center mb-3 mt-4 ">
-                            <button onClick={(e) => { this.submitHandler(e) }} className="btn button-large btn-success mt-3" disabled={!(this.state.card_numberErr == '' && this.state.cvv_numberErr == '' && this.state.card_number !== '' && this.state.cvv_number !== '')}><img className="lock-icon" src={require("./asset/img/lock.png")}></img>{`Pay ${this.state.totalprice}`}</button>
+                            <button onClick={(e) => { this.submitHandler(e) }} className="btn button-large btn-success mt-3" disabled={!(this.state.card_numberErr == '' && this.state.cvv_numberErr == '' && this.state.card_number !== '' && this.state.cvv_number !== '')}><img className="lock-icon" src={require("./asset/img/lock.png")}></img>Pay &#8377;  {` ${this.state.totalprice}.00`}</button>
                             {/* <button onClick={(e) => this.submitHandler(e)} className="btn button-large btn-success mt-3" data-bs-target="#exampleModalToggle3" data-bs-toggle="modal" ><img className="lock-icon" src={require("./asset/img/lock.png")}></img>Pay #200.00</button> */}
                           </div>
                         </form>

@@ -1,19 +1,20 @@
-import { hover } from '@testing-library/user-event/dist/hover';
-import axios from 'axios';
-import React, { useState } from 'react';
-import './style.css';
-import appStore from '../../../state/app_store';
-import { addToCart } from '../newcomponet/redux/Shopping/shopping-actions';
-import { Link } from 'react-router-dom';
+import { hover } from "@testing-library/user-event/dist/hover";
+import axios from "axios";
+import React, { useState } from "react";
+import "./style.css";
+import appStore from "../../../state/app_store";
+import { addToCart } from "../newcomponet/redux/Shopping/shopping-actions";
+import { Link } from "react-router-dom";
 
 export default class Header extends React.Component {
-  constructor(props) {
+  buttonData: any;
+  constructor(props: any) {
     super(props);
     this.state = {
       items: [],
       DataisLoaded: false,
-      reduxData: '',
-      buttonData: '',
+      reduxData: "",
+      buttonData: "",
       datalength: 0,
     };
   }
@@ -26,7 +27,7 @@ export default class Header extends React.Component {
     });
   }
 
-  getButtonData(id, price, props) {
+  getButtonData(id: any, price: any) {
     addToCart(id, price);
     this.buttonData = appStore.getState();
     this.setState({
@@ -35,7 +36,7 @@ export default class Header extends React.Component {
   }
 
   fetchProducts = () => {
-    axios('http://localhost:3005/animal/get-animal/Chennai/11')
+    fetch("http://localhost:3005/animal/get-animal/Chennai/8")
       // this.setState({ items: getData.payload })
       .then((res) => res.json())
       // .then((res) => console.log(res))
@@ -46,7 +47,7 @@ export default class Header extends React.Component {
   };
 
   render() {
-    const { DataisLoaded, items, id, datalength } = this.state;
+    const { DataisLoaded, items, id, datalength }: any = this.state;
     return (
       <>
         <header className="landingpage-header">
@@ -185,18 +186,10 @@ export default class Header extends React.Component {
                   >
                     <view
                       className="add-to-cart"
-                      style={{ flexDirection: 'row' }}
+                      style={{ flexDirection: "row" }}
                     >
-                      <div className='cart-count'
-                        
-                      >
-                        <text
-                          style={{
-                            
-                          }}
-                        >
-                          {datalength}
-                        </text>
+                      <div className="cart-count">
+                        <text style={{}}>{datalength}</text>
                       </div>
                       <svg
                         className="img"
@@ -239,18 +232,15 @@ export default class Header extends React.Component {
                   >
                     <div>
                       <div className="animalid">
-                        <ul
-                          className="dropdown-item"
-                          key={items.animalId}
-                          style={{ color: hover }}
-                        >
-                          {console.log('++==', datalength)}
+                        <ul className="dropdown-item" key={items.animalId}>
+                          {console.log("++==", datalength)}
                           <li className="btn btn-primary">X</li>
-                          <li>AnimalId : x {datalength}</li>
+                          <li>Animal Id : </li>
+                          <li className="aa">x {datalength}</li>
                           <br />
-                          <br />
-                          <li>900085000597636 : {items.animalId}</li>
                         </ul>
+                        {/* <br /> */}
+                        <p className="Id">{items.animalId}</p>
                       </div>
                       <br />
                       <hr></hr>
@@ -261,11 +251,11 @@ export default class Header extends React.Component {
                       </li>
                     </ul>
                     <hr></hr>
-                    <ul className="total">
-                      <li className="dropdown-item" ref="#">
+                    <div className="total">
+                      <p className="dropdown-item" ref="#">
                         Total: {items.price * datalength}
-                      </li>
-                    </ul>
+                      </p>
+                    </div>
                     <div className="option">
                       <Link to="/shoppingcart" className="btn btn-success view">
                         View Cart
@@ -283,7 +273,7 @@ export default class Header extends React.Component {
             <h5>
               <b>ANIMAL ID : {items.animalId}</b>
             </h5>
-            <h5>89987656788654568 </h5>
+            {/* <h5>89987656788654568 </h5> */}
             <div className="option">
               <button
                 onClick={(e) => this.getButtonData(items.animalId, items.price)}
@@ -297,5 +287,8 @@ export default class Header extends React.Component {
         </section>
       </>
     );
+  }
+  getReduxData(): void {
+    throw new Error("Method not implemented.");
   }
 }

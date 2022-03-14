@@ -6,24 +6,24 @@ import axios from "axios"
 import upArrow from "./assets/img/uptriangle.png";
 import downArrow from "./assets/img/downtriangle.png";
 
-function invoiceToggle(e:any) {
-    
-    
+function invoiceToggle(e: any) {
+
+
 
     if (e.target.src == upArrow) {
         e.target.src = downArrow;
     }
     else
         e.target.src = upArrow;
-// let image: any = document.querySelector(index)
-//     console.log("photo", image)
-//     console.log(image.src) 
-//     if (image.src == upArrow) {
-//         image.src = downArrow;
-//         console.log("downarrow", image.src == downArrow)
-//     }
-//     else
-//         image.src = upArrow;
+    // let image: any = document.querySelector(index)
+    //     console.log("photo", image)
+    //     console.log(image.src) 
+    //     if (image.src == upArrow) {
+    //         image.src = downArrow;
+    //         console.log("downarrow", image.src == downArrow)
+    //     }
+    //     else
+    //         image.src = upArrow;
 }
 function Invoice1(props: any) {
     const [invoiceFlag, setinvoiceFlag] = useState(true);
@@ -55,17 +55,17 @@ function Invoice1(props: any) {
                         </div>
                     </header>
                     <main className="invoice-body">
-                        <h3 className="invoice-heading invoice-border">Product Details</h3>
+                        <h3 className="invoice-heading invoice-border mb-0">Product Details</h3>
                         {/* <hr className="hr-line" /> */}
                         {
                             // console.log(data["invoicedata"]["type"])
                             invoice.map((data, ind) => {
                                 let index = "#ind" + ind
-                                let index1="ind"+ind
+                                let index1 = "ind" + ind
                                 return (
-                                    <div  data-bs-toggle="collapse" data-bs-target={index} aria-expanded="false" aria-controls="collapseExample" key={ind} >
+                                    <div data-bs-toggle="collapse" data-bs-target={index} aria-expanded="false" aria-controls="collapseExample" key={ind} >
                                         <p className="invoice-id invoice-border">ID - {data["invoicedata"]["orderId"]}<img className="text-end" id={`${ind}`} onClick={(e) => invoiceToggle(e)} src={upArrow}></img></p>
-                                        <div className=" invoice-border table collapse" id={index.slice(1)}>
+                                        <div className=" invoice-border table collapse mb-0" id={index.slice(1)}>
                                             <div>
                                                 <table className="mt-4">
                                                     <thead>
@@ -95,14 +95,14 @@ function Invoice1(props: any) {
                                                             <td className="dbl">{data["invoicedata"]["sex"]}</td>
                                                             <td>{data["invoicedata"]["date"]}</td>
                                                             <td>{data["invoicedata"]["quantity"]}</td>
-                                                            <td>{data["invoicedata"]["weight"]}</td>
+                                                            <td>{data["invoicedata"]["weight"]}Kg</td>
                                                             <td>
-                                                                <span className="first-line">N {data["invoicedata"]["productAmount"]}</span>
+                                                                <span className="first-line">&#8377; {data["invoicedata"]["productAmount"]}</span>
                                                                 <span>0.00</span>
                                                             </td>
-                                                            <td className="dbl ">N {data["invoicedata"]["deliveryAmount"]}.00</td>
+                                                            <td className="dbl ">&#8377; {data["invoicedata"]["deliveryAmount"]}.00</td>
                                                             <td>
-                                                                <span className="first-line">N {data["invoicedata"]["totalAmount"]}</span>
+                                                                <span className="first-line">&#8377;{data["invoicedata"]["totalAmount"]}</span>
                                                                 <span>0.00</span>
                                                             </td>
                                                         </tr>
@@ -114,7 +114,7 @@ function Invoice1(props: any) {
                                                     <span className="first-line">Payment Information</span>
                                                     <span><i>Via {data["invoicedata"]["payment"]}</i></span>
                                                 </h3>
-                                                <div className="row m-0">
+                                                <div className="row mb-0">
                                                     <div className="col-5 inv-bd-lp text-end p-0">
                                                         <p>Bank Name:</p>
                                                         <p>Account Number:</p>
@@ -131,6 +131,7 @@ function Invoice1(props: any) {
                                         </div>
 
                                     </div>
+
                                 )
                             })
                         }

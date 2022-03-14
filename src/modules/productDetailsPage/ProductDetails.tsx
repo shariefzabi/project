@@ -18,6 +18,8 @@ function ProductDetails(props: any) {
     const navigate = useNavigate();
     // let [selectedProduct, setSelectedProduct] = useState('')
     
+    // let [isOpened, setIsOpened] = useState('')
+    // let [marketType, setMarketType] = useState('cattleMarkets')
 
     console.log(location)
     useEffect(() => {
@@ -32,6 +34,14 @@ function ProductDetails(props: any) {
 
     const setLocationHandler = (event: any) => {
         setLocation(event.target.value)
+
+        if (event.target.className === "") {
+            event.target.className = 'opened'
+        } else if (event.target.className === "opened") {
+            event.target.className = ''
+        }
+        // class_name = 'opened'
+        // setIsOpened(class_name)
     }
     const productDataHandler=(e:any)=>{
         e.preventDefault();
@@ -52,6 +62,8 @@ function ProductDetails(props: any) {
     }
     
 
+
+
     return (
         <div id="productPage" className="productPage">
             <Breadcrumb id="sub">
@@ -69,31 +81,59 @@ function ProductDetails(props: any) {
                 <div className=" row">
                     <div className="col-3">
                         {
-                            products.map((e: any) => {
+                            products.map((e: any, ind) => {
+                                let index = "#ind" + ind
+                                // let index1 = "ind" + ind
                                 // let locations = e.locationName
                                 // if ({ location } === locations) {
                                 return (
-                                    <div className="accordion" id="accordionExample">
-                                        <div className="accordion-item">
-                                            <h2 className="accordion-header" id="headingOne">
-                                                <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onClick={setLocationHandler} value={e.locationName}>
-                                                    {e.locationName}
-                                                </button>
-                                            </h2>
-                                            <div id="collapseOne" className="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                                <div className="accordion-body">
-                                                    <ul>
-                                                        <button className="marketButton" onClick={setMarketHandler} value='Cattle Market'>Cattle Market<span>({e.cattleMarkets.length})</span></button>
-                                                        <button className="marketButton" onClick={setMarketHandler} value='Sheep Market'>Sheep Market<span>({e.sheepMarkets.length})</span></button>
-                                                    </ul>
-                                                </div>
-                                            </div>
+
+                                    <div data-bs-toggle="collapse" data-bs-target={index} aria-expanded="false" aria-controls="collapseExample" key={ind} >
+                                        <button onClick={setLocationHandler} value={e.locationName}>{e.locationName}</button>
+
+                                        <div className="collapse" id={index.slice(1)}>
+                                            <ul>
+                                                <li><button className="marketButton" onClick={setMarketHandler} value='Cattle Market'>Cattle Market<span>({e.cattleMarkets.length})</span></button></li>
+                                                <li><button className="marketButton" onClick={setMarketHandler} value='Sheep Market'>Sheep Market<span>({e.sheepMarkets.length})</span></button></li>
+                                            </ul>
                                         </div>
+
                                     </div>
+
+
+
+                                    // <div className="accordion" id="accordionExample">
+                                    //     <div className="accordion-item">
+                                    //         <h2 className="accordion-header" id="headingOne">
+                                    //             <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onClick={setLocationHandler} value={e.locationName}>
+                                    //                 {e.locationName}
+                                    //             </button>
+                                    //         </h2>
+                                    //         <div id="collapseOne" className="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                    //             <div className="accordion-body">
+                                    //                 <ul>
+                                    //                     <button className="marketButton"onClick={setMarketHandler} value='Cattle Market'>Cattle Market<span>({e.cattleMarkets.length})</span></button>
+                                    //                     <button className="marketButton" onClick={setMarketHandler} value='Sheep Market'>Sheep Market<span>({e.sheepMarkets.length})</span></button>
+                                    //                 </ul>
+                                    //             </div>
+                                    //         </div>
+                                    //     </div>
+                                    // </div>
                                 )
                                 // }
                                 // else {
                                 //     return (
+                                //         <div data-bs-toggle="collapse" data-bs-target={index} aria-expanded="false" aria-controls="collapseExample" key={ind} >
+                                //             <button className="btn" onClick={setLocationHandler} value={e.locationName}>{e.locationName}</button>
+
+                                //             <div className="collapse" id={index.slice(1)}>
+                                //                 <ul>
+                                //                     <li><button className="marketButton" onClick={setMarketHandler} value='Cattle Market'>Cattle Market<span>({e.cattleMarkets.length})</span></button></li>
+                                //                     <li><button className="marketButton" onClick={setMarketHandler} value='Sheep Market'>Sheep Market<span>({e.sheepMarkets.length})</span></button></li>
+                                //                 </ul>
+                                //             </div>
+
+                                //         </div>
                                 //         <div className="accordion" id="accordionExample">
                                 //             <div className="accordion-item">
                                 //                 <h2 className="accordion-header" id="headingOne">

@@ -31,7 +31,7 @@ export default function ButcheryModel() {
                     {/* </div> */}
                 </div>
             // </div>
-}
+ }
 {displayForm&&<ButcheryPopup></ButcheryPopup>}
             </Dialog>
         </>

@@ -36,7 +36,7 @@ class Cart extends React.Component<any, any> {
   }
 
   fetchProducts = () => {
-    axios('http://localhost:3005/animal/get-animal/Chennai/11')
+    fetch('http://localhost:3005/animal/get-animal/Chennai/8')
       // this.setState({ items: getData.payload })
       .then((res:any) => res.json())
       // .then((res) => console.log(res))
@@ -179,7 +179,7 @@ class Cart extends React.Component<any, any> {
               <tbody>
                 <tr>
                   <td>
-                    {' '}
+                  
                     <span className="first-line">
                       AnimalId - {items.animalId}
                     </span>
@@ -192,16 +192,16 @@ class Cart extends React.Component<any, any> {
                   {console.log('++', datalength)}
                   <td className="rectangle ">
                     {datalength}
-                    <button
+                    <p
                       className="fas fa-plus incre"
                       onClick={(e) =>
                         this.clickHandler(items.animalId, items.price)
                       }
-                    ></button>
+                    ></p>
                   </td>
                   <td>{items.price * datalength}</td>
                   <td>
-                    <span>Delivery Date/ Pick up:<br /> 2019-08-18</span>
+                    <span>Delivery Date/ Pick up: 2019-08-18</span>
                   </td>
                 </tr>
               </tbody>

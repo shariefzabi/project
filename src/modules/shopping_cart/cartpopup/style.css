@@ -191,6 +191,7 @@ img, svg {
   top: 1%;
   cursor: pointer;
   margin-left: 26rem !important;
+  margin-bottom: 20px;
 }
 
 .dropdown-menu {
@@ -267,13 +268,15 @@ li#quantity {
 }
 li.btn-primary {
   margin-left: 1rem;
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
   font-size: 12px;
+  float: right;
 }
 .animalid {
   margin-bottom: -2.188rem;
   font-size: 12px;
   font-weight: 400;
+  margin-left: 50px;
 }
 .subtotal {
   font-size: 12px;
@@ -282,6 +285,7 @@ li.btn-primary {
 .total {
   font-size: 12px;
   margin-left: 1rem;
+  
 }
 .option {
   margin-bottom: -1.5rem;
@@ -331,4 +335,9 @@ li.btn-primary {
    align-self: center;
     text-align: center;
      margin-bottom: 5px;
+}
+.Id{
+  padding-left:40px;
+  color: #838383;
+  font-size: 12px;
 }

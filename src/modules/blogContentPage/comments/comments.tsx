@@ -45,9 +45,9 @@ class Comment extends React.Component<any, any> {
                     <div className="carousel-inner">
                         <div className="carousel-item active ">
                             {this.state.comments.map((e: any, i: any) => {
-                                if (e.id === this.props.id) {
+                                if (e.id == this.props.id) {
                                     return (
-                                        <div className="card p-4 m-3">
+                                        <div className="card p-4 m-3" key={i}>
                                             <p className="carousel-description">{e.comment}</p>
                                             <div className="d-flex flex-row justify-content-between">
                                                 <div className="d-flex align-items-center">

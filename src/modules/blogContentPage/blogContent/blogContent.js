@@ -3,13 +3,16 @@ import "./assets/blogContent.css"
 import axios from "axios"
 import Comment from "../comments/comments"
 import Form from "../comment_form/form"
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
+// import { URLSearchParams } from 'Url';
+
+
 
 // import { Form } from "formik"
 
-class Blogcontent extends React.Component<any, any>{
-    constructor(props: any) {
-        super(props)
+class Blogcontent extends React.Component{
+    constructor() {
+        super()
         this.state = {
             blogs:[],
             id: 0,
@@ -24,12 +27,12 @@ class Blogcontent extends React.Component<any, any>{
                 this.setState({ blogs:res.data })
                 // console.log(this.state.blogs);
             })
-        const {
-            redux: { currentBlog },
-        } = this.props as any;
-        this.setState({id:currentBlog})
+            let params = (new URL(document.location)).searchParams;
+            // console.log(params.get('id'));
+            const id = params.get('id');
+            this.setState({id : id})
     }
-    carousel(v:any){
+    carousel(v){
         if(v){
             if(this.state.id === this.state.blogs.length -1 ){
                 this.setState({id:0})
@@ -55,8 +58,8 @@ class Blogcontent extends React.Component<any, any>{
                         <button type="button" className="btn-primary right-carousel " onClick={()=>{this.carousel(true)}}></button>
                     </div>
                 </div>
-               {blogs.map((e:any,i:any)=>{
-                   if(e.id === id)
+               {blogs.map((e,i)=>{
+                   if(e.id == id)
                            
                            return(<div key={i}>
                            <div className="contenttitle">
@@ -117,17 +120,5 @@ class Blogcontent extends React.Component<any, any>{
 
     
 }
-const mapStateToProps = (state: any) => {
-    // console.log(state);
-  
-    return {
-      redux: state,
-    };
-  };
-  
-  const mapDispatchToProps = (dispatch: Function) => {
-    return {};
-  };
-
-  export default connect(mapStateToProps, mapDispatchToProps)(Blogcontent);
+  export default (Blogcontent);
 // export default Blogcontent;

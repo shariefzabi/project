@@ -49,7 +49,7 @@ hr {
 .accordion-button::after {
   background-image: none !important;
 }
-.marketButton{
+.marketButton {
   border: none;
   background-color: #ffffff;
 }
@@ -97,45 +97,45 @@ hr {
   background-color: #2078bf;
 }
 .productPage {
-  
-.dropdown {
-  margin: 0px;
-  padding: 0px;
-  display: inline-block;
-  position: relative;
-}
-.dropdown-menu {
-  display: none;
-}
-}
-
-Accordion.body p:active{
-    background-color: green;
-
-}
-Accordion.body p{
+  .dropdown {
     margin: 0px;
     padding: 0px;
-    text-align: center;
-
+    display: inline-block;
+    position: relative;
+  }
+  .dropdown-menu {
+    display: none;
+  }
 }
-.horizontalRule{
+
+Accordion.body p:active {
+  background-color: green;
+}
+Accordion.body p {
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+}
+.horizontalRule {
   border: 2px solid #e0e0e0;
 }
-.dropdownToggle{
+.dropdownToggle {
   margin-right: 2rem;
   margin-left: 1rem;
 }
-.wishListImg{
-  width:30px;
+.wishListImg {
+  width: 30px;
   height: 30px;
-  
 }
-.wishListButton{
+.wishListButton {
   border: 1px solid rgb(230, 224, 224);
   border-radius: 5px;
   background-color: #ffffff;
 }
-.emptydiv{
-  height:7.25rem
+.emptydiv {
+  height: 7.25rem;
+}
+.opened {
+  background-color: #2078bf;
+  color: #ffffff;
 }
