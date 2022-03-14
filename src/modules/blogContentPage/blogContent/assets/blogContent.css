@@ -78,4 +78,111 @@
     line-height:2.5rem;
     color: #838383;
 }
+@media(max-width:380px){
+    .big_bar{
+        display: none !important;
+    }
+    .small_bar{
+        display: block;
+        margin-left: 90%;
+        padding-top: 1rem;
+    }
+    header{
+        width: 100%;
+        height: 3.8125rem;
+        background-color: #2078BF; 
+    }
+    .bar_img{
+        width: 0.687rem;
+        height: 0.5rem;
+    }
+    .small_menu{
+        background-color: #2078BF;
+    }
+    .close{
+        width: 1.375rem;
+        height: 1.512rem;
+        margin-top: 2.5rem;
+        margin-left: 85%;
+    }
+    .menu_content_small{
+        text-decoration: none;
+        font-weight: 400;
+        font-size: 1.375rem;
+        line-height: 1.5rem;
+        color: #ffffff;
+        display: block;
+        margin-top: 3.187rem;
+    }
+    .sub{
+        font-size: 0.8125rem;
+        margin-top: 1.125rem;
+    }
+    .buy_button , .log_button{
+        border-radius: 5px;
+        margin-top: 2.25rem;
+        margin-right: 0%;
+    }
+    .menu_bottom{
+        margin-top: 9.9375rem;
+    }
+    .menu_faqs{
+        font-family: karla;
+        font-weight: 400;
+        font-size: 0.625rem;
+        margin: 0px;
+        color: #ffffff;
+        text-transform: uppercase;
+        letter-spacing: 0.093rem;
+    }
+    .main-box{
+        width: 376px;
+        height: 170px;
+        background-image: url('./rectangle.png');
+        background-size: cover;
+    }
+     .contenttitle{
+        width: 222px;
+        height: auto;
+        /* top: 258px;
+        left: 20px; */
+        
+    }
+    .title{
+        width: 222px;
+        height: auto;
+        /* top: 258px;
+        left: 42px; */
+        color:#2078BF;
+        font-weight: 700 bold;
+        font-size: 10px;
+        margin-top: 0px;
+        
+        
+    }
+    .blogdate{
+        width: 33px;
+        height: 8px;
+        /* top:287px;
+        left: 42px; */
+        font-size: 6px;
+        line-height: 7px;
+    }
+    .discription{
+        width: 285px;
+        height: 583px;
+        /* top: 314px;
+        left: 44px; */
+    }
+    .txt{
+        
+            font-size: 8px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 13px;
+            letter-spacing: 0px;
+            text-align: left;
+
+    }
+}
 
