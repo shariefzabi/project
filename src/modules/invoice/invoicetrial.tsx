@@ -6,13 +6,24 @@ import axios from "axios"
 import upArrow from "./assets/img/uptriangle.png";
 import downArrow from "./assets/img/downtriangle.png";
 
-function invoiceToggle(e: any) {
+function invoiceToggle(e:any) {
+    
+    
 
     if (e.target.src == upArrow) {
         e.target.src = downArrow;
     }
     else
         e.target.src = upArrow;
+// let image: any = document.querySelector(index)
+//     console.log("photo", image)
+//     console.log(image.src) 
+//     if (image.src == upArrow) {
+//         image.src = downArrow;
+//         console.log("downarrow", image.src == downArrow)
+//     }
+//     else
+//         image.src = upArrow;
 }
 function Invoice1(props: any) {
     const [invoiceFlag, setinvoiceFlag] = useState(true);
@@ -50,9 +61,10 @@ function Invoice1(props: any) {
                             // console.log(data["invoicedata"]["type"])
                             invoice.map((data, ind) => {
                                 let index = "#ind" + ind
+                                let index1="ind"+ind
                                 return (
-                                    <div key={ind} >
-                                        <p className="invoice-id invoice-border">ID - {data["invoicedata"]["orderId"]}<img className="text-end" onClick={(e) => invoiceToggle(e)} data-bs-toggle="collapse" data-bs-target={index} aria-expanded="false" aria-controls="collapseExample" src={upArrow}></img></p>
+                                    <div  data-bs-toggle="collapse" data-bs-target={index} aria-expanded="false" aria-controls="collapseExample" key={ind} >
+                                        <p className="invoice-id invoice-border">ID - {data["invoicedata"]["orderId"]}<img className="text-end" id={`${ind}`} onClick={(e) => invoiceToggle(e)} src={upArrow}></img></p>
                                         <div className=" invoice-border table collapse" id={index.slice(1)}>
                                             <div>
                                                 <table className="mt-4">
