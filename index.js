@@ -189,6 +189,7 @@ app.use("/agents", agentAPI);
 const Blog = require("./Blogs/schema.cjs");
 const Comments = require("./Blogs/comschema.cjs");
 
+
 app.get("/comments/:id", async (req, res) => {
   try {
     let { params } = req;
@@ -199,11 +200,21 @@ app.get("/comments/:id", async (req, res) => {
     res.send("Error" + err);
   }
 });
+// app.get("/blogs/:id", async (req, res) => {
+//   try {
+//     let { params } = req;
+//     // console.log(params.id);
+//     const data = await Blog.find({ "id": params.id });
+//     res.json(data);
+//   } catch (err) {
+//     res.send("Error" + err);
+//   }
+// });
 app.get("/blogs/:id", async (req, res) => {
   try {
     let { params } = req;
-    console.log(params.id);
-    const data = await Blog.find({ "blogs.id": params.id });
+    console.log( Blog.find({ "id": params.id }));
+    const data = await Blog.find({ "id": params.id });
     res.json(data);
   } catch (err) {
     res.send("Error" + err);
