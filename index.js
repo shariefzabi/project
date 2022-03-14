@@ -120,22 +120,30 @@ app.post("/orders/orderdetails", function (req, res) {
   })
 });
 //fetching order details based on username
-app.get('/orders/orderdetails/:username', async (req, res) => {
+app.get('/orders/orderdetails/:uname', async (req, res) => {
   let { params } = req
-  console.log(params.username);
+  console.log(params.uname);
   let ordercollection = db.collection("ordersdisplay");
-  try {
-    ordercollection.find({ "username": params.username }).exec(function (err, result) {
-          res.send(result)
+
+    ordercollection.find({ "username": params.uname }).toArray(function (err, result) {
+      if(err) console.log(err);
+      else   res.send(result)
       })
-  }
-  catch (err) {
-      res.send({ message: err })
-  }
+ 
+})
+//fetching whishlist based on username
+app.get('/orders/wishlists/:uname', async (req, res) => {
+  let { params } = req
+  console.log(params.uname);
+  let ordercollection = db.collection("wishlists");
+  ordercollection.find({ "username": params.uname }).toArray(function (err, result) {
+      if(err) console.log(err);
+      else   res.send(result)
+      })
+ 
 })
 
 //team-2 ending
-
 
 app.get("/", function (req, res) {
   let { body, params, query } = req;
