@@ -4,11 +4,7 @@ import { createStore } from "redux";
 // const appStore = createStore(appReducer);
 // export default appStore;
 
-
-
-
-import shopReducer from '../../src/modules/shopping_cart/newcomponet/redux/Shopping/shopping-reducer';
+import shopReducer from "../modules/shopping_cart/newcomponet/redux/Shopping/shopping-reducer";
 
 const appStore = createStore(shopReducer);
 export default appStore;
-

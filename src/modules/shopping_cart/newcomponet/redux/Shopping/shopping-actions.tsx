@@ -1,19 +1,18 @@
 import * as actionTypes from "./shopping-types";
 import appStore from "../../../../../state/app_store";
 
-export const addToCart = (itemID, itemPrice) => {
+export const addToCart = (itemID: any, itemPrice: any) => {
   appStore.dispatch({
     type: "ADD_TO_CART",
     payload: {
       AnimalId: itemID,
-      price: itemPrice
+      price: itemPrice,
     },
-  })
+  });
   console.log("++++", appStore.getState());
 };
 
-
-export const loadCurrentItem = (item) => {
+export const loadCurrentItem = (item: any) => {
   return {
     type: actionTypes.LOAD_CURRENT_ITEM,
     payload: item,
