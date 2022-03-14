@@ -113,7 +113,7 @@ class Form extends React.Component<any, any> {
                 <section className="form">
                     <h2> Leave A Comment</h2>
 
-                    <form onSubmit={(e) => { this.submitHandler(e, { "name":name, "email": email, "comment":comment ,"id":this.props.id }) }}>
+                    <form onSubmit={(e) => { this.submitHandler(e, { "name":name, "email": email, "comment":comment ,"id":this.props.id ,'date':Date.now}) }}>
                         <span className="col-12 row">
                             <div className="col-md-6 col-sm-12">
                                 <label className="col-12" htmlFor="name">Full Name</label>

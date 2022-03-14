@@ -2,25 +2,34 @@ import React from "react";
 import "./styles.css";
 import axios from "axios";
 
-class Comment extends React.Component<any,any> {
-  
+class Comment extends React.Component<any, any> {
+
     constructor(props: any) {
         super(props);
         this.state = {
-           comments:"",
+            comments: [],
         }
 
     }
-    componentDidMount() {
+    // componentDidMount() {
+    //     axios.get("http://localhost:3005/comments")
+    //         .then(res => {
+    //             console.log(res.data)
+    //             this.setState({ comments: res.data })
+    //             // res.data.map((e: any, i: any) => {
+    //             //     this.setState({ comments: [...this.state.comments, e.comments] })
+    //             // })
+    //         })
+    // }
+    render(){
         axios.get("http://localhost:3005/comments")
-            .then(res => {
-                console.log(res.data)
-                // res.data.map((e: any, i: any) => {
-                //     this.setState({ comments: [...this.state.comments, e.comments] })
-                // })
-            })
-    }
-    render() {
+        .then(res => {
+            // console.log(res.data)
+            this.setState({ comments: res.data })
+            // res.data.map((e: any, i: any) => {
+            //     this.setState({ comments: [...this.state.comments, e.comments] })
+            // })
+        })
         return (
             <section className="clients">
                 <div className="d-flex justify-content-between head-part">
@@ -34,130 +43,27 @@ class Comment extends React.Component<any,any> {
                 </div>
                 <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
                     <div className="carousel-inner">
-                        <div className="carousel-item active">
-                            <div className="d-lg-flex">
-                                <div className="card p-4 m-3">
-                                    <p className="carousel-description">I really love the product and the delight coupons you
-                                        guys always serve me with</p>
-                                    <div className="d-flex flex-row justify-content-between">
-                                        <div className="d-flex align-items-center">
-                                            <input type="radio" className="carousel-radio m-2" id="radiobtn" name="radio" />
-                                            <label htmlFor="radiobtn" className="client-details">Daniel Toyin</label>
+                        <div className="carousel-item active ">
+                            {this.state.comments.map((e: any, i: any) => {
+                                if (e.id === this.props.id) {
+                                    return (
+                                        <div className="card p-4 m-3">
+                                            <p className="carousel-description">{e.comment}</p>
+                                            <div className="d-flex flex-row justify-content-between">
+                                                <div className="d-flex align-items-center">
+                                                    <input type="radio" className="carousel-radio m-2" id="radiobtn" name="radio" />
+                                                    <label htmlFor="radiobtn" className="client-details">{e.name}</label>
+                                                </div>
+                                                <div>
+                                                    <p className="client-details mt-3">{e.email}</p>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <p className="client-details mt-3">Sales Rep. Vegax Initiative</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="card p-4 m-3">
-                                    <p className="carousel-description">Quality product for the money</p>
-                                    <div className="d-flex flex-row justify-content-between">
-                                        <div className="d-flex align-items-center">
-                                            <input type="radio" className="carousel-radio m-2" id="radiobtn" name="radio" />
-                                            <label htmlFor="radiobtn" className="client-details">Ogunbiyi Ibrahim</label>
-                                        </div>
-                                        <div>
-                                            <p className="client-details mt-3">Marketer. Dreamland Tech.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="card p-4 m-3">
-                                    <p className="carousel-description">I highly recommend this service</p>
-                                    <div className="d-flex flex-row justify-content-between">
-                                        <div className="d-flex align-items-center">
-                                            <input type="radio" className="carousel-radio m-2" id="radiobtn" name="radio" />
-                                            <label htmlFor="radiobtn" className="client-details">Chukwu Ebuka</label>
-                                        </div>
-                                        <div>
-                                            <p className="client-details mt-3">Ceo. Spareparts</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="carousel-item">
-                            <div className="d-flex">
-                                <div className="card p-4 m-3">
-                                    <p className="carousel-description">I really love the product and the delight coupons
-                                        you
-                                        guys always serve me with</p>
-                                    <div className="d-flex flex-row justify-content-between">
-                                        <div className="d-flex align-items-center">
-                                            <input type="radio" className="carousel-radio m-2" id="radiobtn" name="radio" />
-                                            <label htmlFor="radiobtn" className="client-details">Daniel Toyin</label>
-                                        </div>
-                                        <div>
-                                            <p className="client-details mt-3">Sales Rep. Vegax Initiative</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="card p-4 m-3">
-                                    <p className="carousel-description">Quality product for the money</p>
-                                    <div className="d-flex flex-row justify-content-between">
-                                        <div className="d-flex align-items-center">
-                                            <input type="radio" className="carousel-radio m-2" id="radiobtn" name="radio" />
-                                            <label htmlFor="radiobtn" className="client-details">Ogunbiyi Ibrahim</label>
-                                        </div>
-                                        <div>
-                                            <p className="client-details mt-3">Marketer. Dreamland Tech.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="card p-4 m-3">
-                                    <p className="carousel-description">I highly recommend this service</p>
-                                    <div className="d-flex flex-row justify-content-between">
-                                        <div className="d-flex align-items-center">
-                                            <input type="radio" className="carousel-radio m-2" id="radiobtn" name="radio" />
-                                            <label htmlFor="radiobtn" className="client-details">Chukwu Ebuka</label>
-                                        </div>
-                                        <div>
-                                            <p className="client-details mt-3">Ceo. Spareparts</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="carousel-item">
-                            <div className="d-flex">
-                                <div className="card p-4 m-3">
-                                    <p className="carousel-description">I really love the product and the delight coupons
-                                        you
-                                        guys always serve me with</p>
-                                    <div className="d-flex flex-row justify-content-between">
-                                        <div className="d-flex align-items-center">
-                                            <input type="radio" className="carousel-radio m-2" id="radiobtn" name="radio" />
-                                            <label htmlFor="radiobtn" className="client-details">Daniel Toyin</label>
-                                        </div>
-                                        <div>
-                                            <p className="client-details mt-3">Sales Rep. Vegax Initiative</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="card p-4 m-3">
-                                    <p className="carousel-description">Quality product for the money</p>
-                                    <div className="d-flex flex-row justify-content-between">
-                                        <div className="d-flex align-items-center">
-                                            <input type="radio" className="carousel-radio m-2" id="radiobtn" name="radio" />
-                                            <label htmlFor="radiobtn" className="client-details">Ogunbiyi Ibrahim</label>
-                                        </div>
-                                        <div>
-                                            <p className="client-details mt-3">Marketer. Dreamland Tech.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="card p-4 m-3">
-                                    <p className="carousel-description">I highly recommend this service</p>
-                                    <div className="d-flex flex-row justify-content-between">
-                                        <div className="d-flex align-items-center">
-                                            <input type="radio" className="carousel-radio m-2" id="radiobtn" name="radio" />
-                                            <label htmlFor="radiobtn" className="client-details">Chukwu Ebuka</label>
-                                        </div>
-                                        <div>
-                                            <p className="client-details mt-3">Ceo. Spareparts</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                    )
+                                }
+
+                            })
+                            }
                         </div>
                     </div>
                 </div>
@@ -177,3 +83,129 @@ class Comment extends React.Component<any,any> {
 }
 
 export default Comment;
+
+
+{/* <div className="d-lg-flex">
+<div className="card p-4 m-3">
+    <p className="carousel-description">I really love the product and the delight coupons you
+        guys always serve me with</p>
+    <div className="d-flex flex-row justify-content-between">
+        <div className="d-flex align-items-center">
+            <input type="radio" className="carousel-radio m-2" id="radiobtn" name="radio" />
+            <label htmlFor="radiobtn" className="client-details">Daniel Toyin</label>
+        </div>
+        <div>
+            <p className="client-details mt-3">Sales Rep. Vegax Initiative</p>
+        </div>
+    </div>
+</div>
+<div className="card p-4 m-3">
+    <p className="carousel-description">Quality product for the money</p>
+    <div className="d-flex flex-row justify-content-between">
+        <div className="d-flex align-items-center">
+            <input type="radio" className="carousel-radio m-2" id="radiobtn" name="radio" />
+            <label htmlFor="radiobtn" className="client-details">Ogunbiyi Ibrahim</label>
+        </div>
+        <div>
+            <p className="client-details mt-3">Marketer. Dreamland Tech.</p>
+        </div>
+    </div>
+</div>
+<div className="card p-4 m-3">
+    <p className="carousel-description">I highly recommend this service</p>
+    <div className="d-flex flex-row justify-content-between">
+        <div className="d-flex align-items-center">
+            <input type="radio" className="carousel-radio m-2" id="radiobtn" name="radio" />
+            <label htmlFor="radiobtn" className="client-details">Chukwu Ebuka</label>
+        </div>
+        <div>
+            <p className="client-details mt-3">Ceo. Spareparts</p>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<div className="carousel-item">
+<div className="d-flex">
+<div className="card p-4 m-3">
+    <p className="carousel-description">I really love the product and the delight coupons
+        you
+        guys always serve me with</p>
+    <div className="d-flex flex-row justify-content-between">
+        <div className="d-flex align-items-center">
+            <input type="radio" className="carousel-radio m-2" id="radiobtn" name="radio" />
+            <label htmlFor="radiobtn" className="client-details">Daniel Toyin</label>
+        </div>
+        <div>
+            <p className="client-details mt-3">Sales Rep. Vegax Initiative</p>
+        </div>
+    </div>
+</div>
+<div className="card p-4 m-3">
+    <p className="carousel-description">Quality product for the money</p>
+    <div className="d-flex flex-row justify-content-between">
+        <div className="d-flex align-items-center">
+            <input type="radio" className="carousel-radio m-2" id="radiobtn" name="radio" />
+            <label htmlFor="radiobtn" className="client-details">Ogunbiyi Ibrahim</label>
+        </div>
+        <div>
+            <p className="client-details mt-3">Marketer. Dreamland Tech.</p>
+        </div>
+    </div>
+</div>
+<div className="card p-4 m-3">
+    <p className="carousel-description">I highly recommend this service</p>
+    <div className="d-flex flex-row justify-content-between">
+        <div className="d-flex align-items-center">
+            <input type="radio" className="carousel-radio m-2" id="radiobtn" name="radio" />
+            <label htmlFor="radiobtn" className="client-details">Chukwu Ebuka</label>
+        </div>
+        <div>
+            <p className="client-details mt-3">Ceo. Spareparts</p>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<div className="carousel-item">
+<div className="d-flex">
+<div className="card p-4 m-3">
+    <p className="carousel-description">I really love the product and the delight coupons
+        you
+        guys always serve me with</p>
+    <div className="d-flex flex-row justify-content-between">
+        <div className="d-flex align-items-center">
+            <input type="radio" className="carousel-radio m-2" id="radiobtn" name="radio" />
+            <label htmlFor="radiobtn" className="client-details">Daniel Toyin</label>
+        </div>
+        <div>
+            <p className="client-details mt-3">Sales Rep. Vegax Initiative</p>
+        </div>
+    </div>
+</div>
+<div className="card p-4 m-3">
+    <p className="carousel-description">Quality product for the money</p>
+    <div className="d-flex flex-row justify-content-between">
+        <div className="d-flex align-items-center">
+            <input type="radio" className="carousel-radio m-2" id="radiobtn" name="radio" />
+            <label htmlFor="radiobtn" className="client-details">Ogunbiyi Ibrahim</label>
+        </div>
+        <div>
+            <p className="client-details mt-3">Marketer. Dreamland Tech.</p>
+        </div>
+    </div>
+</div>
+<div className="card p-4 m-3">
+    <p className="carousel-description">I highly recommend this service</p>
+    <div className="d-flex flex-row justify-content-between">
+        <div className="d-flex align-items-center">
+            <input type="radio" className="carousel-radio m-2" id="radiobtn" name="radio" />
+            <label htmlFor="radiobtn" className="client-details">Chukwu Ebuka</label>
+        </div>
+        <div>
+            <p className="client-details mt-3">Ceo. Spareparts</p>
+        </div>
+    </div>
+</div>
+</div>
+</div> */}
