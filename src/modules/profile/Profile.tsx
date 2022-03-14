@@ -33,6 +33,9 @@ function Profile(props: any) {
                     props.setUser(res.data)
                     let { fullName, _id } = res.data
                     setUserDetails({ ...userDetails, fullName, email: _id })
+                    if (res.data?.phone!=undefined){
+                        setUserDetails({ ...res.data,email: res.data._id })
+                    }
                 }
             })
             .catch(err => console.log("No previous user found")
@@ -67,6 +70,7 @@ function Profile(props: any) {
                 }
             }
         }
+        
 
         //  phone no
         if (e.target.name === 'phone') {
@@ -125,7 +129,7 @@ function Profile(props: any) {
 
                     e.target.classList.add("field-error")
                 } else {
-                    setemailErrMsg('')
+                    setlocationErrMsg("")
                     e.target.classList.remove("field-error")
 
                 }
@@ -170,6 +174,19 @@ function Profile(props: any) {
         }
     }
 
+    const submitHandler = (e:any) => {
+        e.preventDefault()
+        console.log("profile sumbitted :",userDetails);
+        console.log(props);
+        
+        
+        axios.post("http://localhost:3005/users/"+props.redux.user.token,userDetails)
+        .then( (res:any)=>{
+        
+        })
+        .catch((err:any)=>console.log(" Profile update error ",err));
+    }
+
     function resetPasswordToggler() {
         // var profileBlock=document.getElementById('profileBlock')
         // // profileBlock.style.display = "none"
@@ -190,7 +207,7 @@ function Profile(props: any) {
                     <div className="formContainer container-fluid " id='profileBlock'>
                         <main className="row box col-sm-12">
                             <section className="col-md-12 col-sm-12  row">
-                                <form>
+                                <form onSubmit={submitHandler}>
                                     <div className='profile' >
                                         <p> Fields with <span className="text-danger">*</span> are required</p>
                                         <button className="btn btn-success btn-float-right " id="resetButton" type="button" onClick={resetPasswordToggler}>Reset Password</button>
@@ -215,8 +232,8 @@ function Profile(props: any) {
                                         <label htmlFor="email">Email<span className="text-danger">*</span></label>
 
 
-                                        <input type="email" id="email" name="email" value={userDetails.email} onChange={changeHandler} className="form-control" placeholder="Enter Email"
-                                            onBlur={validations} required />
+                                        <input type="email" id="email" name="email" disabled value={userDetails.email} onChange={changeHandler} className="form-control" placeholder="Enter Email"
+                                            onBlur={validations}  />
 
 
                                         <p className="text-danger">{emailErrMsg}</p>
