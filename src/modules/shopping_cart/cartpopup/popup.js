@@ -35,7 +35,7 @@ export default class Header extends React.Component {
   }
 
   fetchProducts = () => {
-    fetch('http://localhost:3005/animal/get-animal/Chennai/11')
+    axios('http://localhost:3005/animal/get-animal/Chennai/11')
       // this.setState({ items: getData.payload })
       .then((res) => res.json())
       // .then((res) => console.log(res))
@@ -187,28 +187,12 @@ export default class Header extends React.Component {
                       className="add-to-cart"
                       style={{ flexDirection: 'row' }}
                     >
-                      <div
-                        style={{
-                          position: 'relative',
-                          borderRadius: 80,
-                          height: 20,
-                          width: 20,
-                          backgroundColor: '#FFFFFF',
-                          alignContent: 'center',
-                          justifyContent: 'center',
-                          alignItems: 'center',
-                          textAlign: 'center',
-                          marginLeft: 440,
-                          top: 40,
-                        }}
+                      <div className='cart-count'
+                        
                       >
                         <text
                           style={{
-                            color: '#2078BF',
-                            fontSize: 15,
-                            alignSelf: 'center',
-                            textAlign: 'center',
-                            marginBottom: 5,
+                            
                           }}
                         >
                           {datalength}

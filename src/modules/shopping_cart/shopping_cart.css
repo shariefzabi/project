@@ -112,17 +112,17 @@ hr {
 
 .incre{
   background-color: #2078BF;
-  width: 1.875rem; 
-  height: 1.437rem;
-  padding: 1px;
+  width: 2.5rem; 
+  height: 2.5rem;
+  /* padding: 1px; */
   color: white;
   float: right;
   border: none;
   
 }
 .rectangle {
-  width: 2.812vw; 
-  height: 1.25vh;
+  width: 2rem; 
+  /* height: 1.25vh; */
   background-color:white;
   border: 1px solid #E0E0E0;
   border-radius: 2px;
@@ -133,6 +133,7 @@ hr {
     float: right;
     margin-top: 0.25rem;
     margin-right: 0.5rem;
+    width:200px
 } 
 @media (max-width: 576px){
   .cart_nav {

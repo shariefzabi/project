@@ -183,21 +183,21 @@ class Cart extends React.Component<any, any> {
                     <span className="first-line">
                       AnimalId - {items.animalId}
                     </span>
-                    <br />
+                    {/* <br />
                     <br />
                     <span className="second-line">
                       900085000597636 : {items.animalId}
-                    </span>
+                    </span> */}
                   </td>
                   {console.log('++', datalength)}
-                  <td className="rectangle">
+                  <td className="rectangle ">
                     {datalength}
                     <button
                       className="fas fa-plus incre"
                       onClick={(e) =>
                         this.clickHandler(items.animalId, items.price)
                       }
-                    >+</button>
+                    ></button>
                   </td>
                   <td>{items.price * datalength}</td>
                   <td>
