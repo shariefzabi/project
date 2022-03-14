@@ -85,7 +85,13 @@ app.get("/users/:token",function(req,res){
     if (result==null) res.send("null")
     else res.send(result)
   })
-  
+})
+app.post("/users/:token",function(req,res){
+  userDb.updateOne(req.params,{$set:req.body},function (err,result){
+    if(err) throw err;
+    // if (result==null) res.send("null")
+    // else res.send(result)
+  })
 })
 
 //************ No.1 Team ************* Ending *****************************
