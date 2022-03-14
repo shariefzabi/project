@@ -36,7 +36,7 @@ class Cart extends React.Component<any, any> {
   }
 
   fetchProducts = () => {
-    axios('http://localhost:3005/animal/get-animal/Chennai/11')
+    fetch('http://localhost:3005/animal/get-animal/Chennai/8')
       // this.setState({ items: getData.payload })
       .then((res:any) => res.json())
       // .then((res) => console.log(res))

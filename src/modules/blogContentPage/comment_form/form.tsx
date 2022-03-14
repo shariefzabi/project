@@ -69,12 +69,12 @@ class Form extends React.Component<any, any> {
         let n = e.target.name;
         let v = e.target.value;
         if (n === "name") {
-            let re = /^[a-zA-Z ]{5,30}$/;
+            let re = /^[a-zA-Z0-9]{5,30}$/;
             if (v === "") {
                 this.setState({ nameErr: "Please enter the User Name." })
             }
             else if (!re.test(v)) {
-                this.setState({ nameErr: "Accepts Alphabets, space & Min 5 to Max 30 Char" })
+                this.setState({ nameErr: "Accepts Alphabets, space,digits & Min 5 to Max 30 Char" })
             }
             else
                 this.setState({ nameErr: "" ,nameFlag:true})
@@ -82,16 +82,16 @@ class Form extends React.Component<any, any> {
         else if (n === "email") {
             let re = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/
             if (v === "") {
-                this.setState({ emailErr: "Please enter the eMail." })
+                this.setState({ emailErr: "Please enter the Email." })
             }
             else if (!re.test(v)) {
-                this.setState({ emailErr: "please enter email in a specific formate" })
+                this.setState({ emailErr: "please enter Email in a specific formate" })
             }
             else
                 this.setState({ emailErr: "" ,emailFlag:true})
         }
         else if (n === "comment") {
-            let re = /^[a-zA-Z ]{10,200}$/;
+            let re = /^[a-zA-Z]{10,200}$/;
             if (v === "") {
                 this.setState({ commentErr: "Please Enter Comments" })
             }
@@ -113,7 +113,7 @@ class Form extends React.Component<any, any> {
                 <section className="form">
                     <h2> Leave A Comment</h2>
 
-                    <form onSubmit={(e) => { this.submitHandler(e, { "name":name, "email": email, "comment":comment ,"id":this.props.id }) }}>
+                    <form onSubmit={(e) => { this.submitHandler(e, { "name":name, "email": email, "comment":comment ,"id":this.props.id ,'date':Date.now}) }}>
                         <span className="col-12 row">
                             <div className="col-md-6 col-sm-12">
                                 <label className="col-12" htmlFor="name">Full Name</label>

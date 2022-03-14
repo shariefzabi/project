@@ -13,10 +13,12 @@ import Blogtable from './modules/blog/blogs';
 import Invoice1 from './modules/invoice/invoicetrial'
 import Blogcontent from './modules/blogContentPage/blogContent/blogContent';
 import ProductDetails from './modules/productDetailsPage/ProductDetails';
+import SelectedProductDetails from './modules/productDetailsPage/selectedProductPage';
 import Profile from './modules/profile/Profile';
 import Orders from './modules/orders/orders';
-// import Popup from './modules/shopping_cart/cartpopup/popup';
-// import Shoppingcart from "./modules/shopping_cart/shoppingcart";
+
+import Popup from './modules/shopping_cart/cartpopup/popup';
+import Shoppingcart from "./modules/shopping_cart/shoppingcart";
 
 
 
@@ -25,9 +27,9 @@ function App() {
     <div className="App">
       <Router>
         <div>
-           <Header />
+           {/* <Header /> */}
 
-          <Routes>
+          {/* <Routes>
 
             <Route path="/" element={<LandingPage />}></Route>
             <Route path="/aboutus" element={<Aboutus />}></Route>
@@ -38,14 +40,15 @@ function App() {
             <Route path="/profile" element={<Profile />}></Route>
             <Route path="/orders" element={<Orders />}></Route>
             <Route path="/invoice" element={<Invoice1 />}></Route>
+            <Route path="/selectedProduct" element={<SelectedProductDetails />}></Route>
            
            </Routes>
-          <Footer /> 
-          {/* <Routes>
+          <Footer />  */}
+          <Routes>
             <Route path="/" element={<Popup />}></Route>
             <Route path="/shoppingcart" element={<Shoppingcart />}></Route>
 
-          </Routes> */}
+          </Routes>
         </div>
       </Router>
       {/* <Butcherypopup></Butcherypopup> */}

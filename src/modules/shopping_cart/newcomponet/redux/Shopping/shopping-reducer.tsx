@@ -2,16 +2,17 @@ import * as actionTypes from "./shopping-types";
 
 let lastId = 0;
 
-const shopReducer = (state = [], action) => {
+const shopReducer = (state = [], action: any) => {
   switch (action.type) {
     case "ADD_TO_CART":
       return [
-        ...state, {
+        ...state,
+        {
           id: ++lastId,
           AnimalId: action.payload.AnimalId,
           price: action.payload.price,
-        }
-      ]
+        },
+      ];
 
     default:
       return state;

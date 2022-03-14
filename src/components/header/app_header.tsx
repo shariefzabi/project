@@ -14,20 +14,22 @@ import AgentModel from "../../modules/AgentModel(Mod) copy/AgentModel1";
 import ButcheryModel from "../../modules/butchery_form/butcherypopup";
 import axios from "axios";
 
-class Header extends React.Component<any,any> {
+class Header extends React.Component<any, any> {
 
-  componentDidMount(){
+  componentDidMount() {
     // this.props.setToken(this.getToken)
-    axios.get("http://localhost:3005/users/"+this.getToken())
-        .then(res=>{if (res.data!="null") this.props.setUser(res.data)
-      else this.props.setUser(null)})
-        .catch(err=>console.log("No previous user found")
-        )
+    axios.get("http://localhost:3005/users/" + this.getToken())
+      .then(res => {
+        if (res.data != "null") this.props.setUser(res.data)
+        else this.props.setUser(null)
+      })
+      .catch(err => console.log("No previous user found")
+      )
 
   }
-  getToken = ()=>sessionStorage.getItem("token");
+  getToken = () => sessionStorage.getItem("token");
 
-  logOut = ()=>{
+  logOut = () => {
     sessionStorage.clear();
     this.props.setUser(null)
   }
@@ -38,7 +40,7 @@ class Header extends React.Component<any,any> {
       redux: { user },
     } = this.props as any;
 
-    
+
 
     return (
       <header className="landingpage-header d-lg-flex justify-content-end">

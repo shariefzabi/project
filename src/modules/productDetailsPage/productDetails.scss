@@ -49,6 +49,10 @@ hr {
 .accordion-button::after {
   background-image: none !important;
 }
+.marketButton{
+  border: none;
+  background-color: #ffffff;
+}
 
 .locNames {
   background: #ffffff;
@@ -60,8 +64,8 @@ hr {
 .card-id {
   font-style: normal;
   font-weight: normal;
-  font-size: 14px;
-  line-height: 24px;
+  font-size: 0.8125rem;
+  line-height: 1.5rem;
 
   letter-spacing: 0.1px;
 
@@ -71,8 +75,8 @@ hr {
 .card-price {
   font-style: normal;
   font-weight: bold;
-  font-size: 14px;
-  line-height: 24px;
+  font-size: 0.8125rem;
+  line-height: 1.5rem;
 
   letter-spacing: 0.1px;
 
@@ -114,4 +118,24 @@ Accordion.body p{
     padding: 0px;
     text-align: center;
 
+}
+.horizontalRule{
+  border: 2px solid #e0e0e0;
+}
+.dropdownToggle{
+  margin-right: 2rem;
+  margin-left: 1rem;
+}
+.wishListImg{
+  width:30px;
+  height: 30px;
+  
+}
+.wishListButton{
+  border: 1px solid rgb(230, 224, 224);
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+.emptydiv{
+  height:7.25rem
 }

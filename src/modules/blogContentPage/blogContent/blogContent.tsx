@@ -22,7 +22,7 @@ class Blogcontent extends React.Component<any, any>{
             .then(res => {
                 // console.log(res.data);
                 this.setState({ blogs:res.data })
-                console.log(this.state.blogs);
+                // console.log(this.state.blogs);
             })
         const {
             redux: { currentBlog },
@@ -110,7 +110,7 @@ class Blogcontent extends React.Component<any, any>{
                         original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
                 </section> */}
                 <Form id={this.state.id}></Form>
-                <Comment/>
+                <Comment id={this.state.id} />
             </div>
         )
     }

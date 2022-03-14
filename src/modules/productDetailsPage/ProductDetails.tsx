@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-import './productDetails.css';
+import './productDetails.scss';
 import { connect } from "react-redux";
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import { Link } from "react-router-dom";
@@ -72,8 +72,8 @@ function ProductDetails(props: any) {
                                             <div id="collapseOne" className="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                                 <div className="accordion-body">
                                                     <ul>
-                                                        <button onClick={setMarketHandler} value='Cattle Market'>Cattle Market<span>({e.cattleMarkets.length})</span></button>
-                                                        <button onClick={setMarketHandler} value='Sheep Market'>Sheep Market<span>({e.sheepMarkets.length})</span></button>
+                                                        <button className="marketButton"onClick={setMarketHandler} value='Cattle Market'>Cattle Market<span>({e.cattleMarkets.length})</span></button>
+                                                        <button className="marketButton" onClick={setMarketHandler} value='Sheep Market'>Sheep Market<span>({e.sheepMarkets.length})</span></button>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -111,8 +111,27 @@ function ProductDetails(props: any) {
                     <div className="col-9">
                         <h3 id="marketHeading">{market}</h3>
                         <h4 id="locationMarketHeading">{location} {market}</h4>
-                        <hr />
-                        <div className="card-deck">
+                        {/* <hr /> */}
+                        <div className="horizontalRule"></div>
+                        <div className="sort-filter my-5 d-flex justify-content-end">
+                            <p className="d-inline pt-2">Sort by</p>
+                            <select className="dropdownToggle "
+                                placeholder="Default"
+                                required>
+                                <option className="dropdownItem" selected disabled value="" hidden>Default</option>
+                                <option className="dropdownItem" >Price High to Low</option>
+                                <option className="dropdownItem" >Price Low To High</option>
+                            </select>
+                            <p className="d-inline pt-2">Show</p>
+                            <select className="dropdownToggle "
+                                placeholder="Default"
+                                required>
+                                <option className="dropdownItem" selected disabled value="" hidden>10</option>
+                                <option className="dropdownItem" >8</option>
+                                <option className="dropdownItem" >9</option>
+                            </select>
+                        </div>
+                        <div className="card-deck row row-cols-3">
                             {isDisplaying &&
                                 products.map((product: any, i) => {
                                     if (product.locationName === location) {
@@ -127,17 +146,23 @@ function ProductDetails(props: any) {
                                                     // <p>Cattle</p>
                                                     <div key={i}>
 
-                                                        <div className="card col-4 ">
-
+                                                        <div className="card mb-4">
+                                                            <Link to="/selectedProduct" >
                                                             <div className="card-body">
+                                                                <button className="wishListButton"><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
+                                                                <div className="emptydiv"></div>
 
                                                                 <h5 className="card-id">animal: {e._id}</h5>
 
                                                                 <p className="card-price">p:{e.price}</p>
-
-                                                                <button type="button" className="btn btn-success">Add to Cart</button>
-
+                                                                <div className="text-center">
+                                                                    <button type="button" className="btn btn-success">Add to Cart</button>
+                                                                </div>
                                                             </div>
+
+                                                            </Link>
+
+                                                            
 
                                                         </div>
 
@@ -158,20 +183,27 @@ function ProductDetails(props: any) {
                                                 return (
                                                     // <p>Sheep</p>
                                                     <div key={i}>
-
-                                                        <div className="card col-4 ">
-
-                                                            <div className="card-body">
+                                                        <div className="card mb-4">
+                                                        <Link to="/selectedProduct" >
+                                                        <div className="card-body">
+                                                                <button className="wishListButton"><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
+                                                                <div className="emptydiv"></div>
 
                                                                 <h5 className="card-id">animal: {e._id}</h5>
 
                                                                 <p className="card-price">p:{e.price}</p>
-
-                                                                <button type="button" className="btn btn-success">Add to Cart</button>
-
+                                                                <div className="text-center">
+                                                                    <button type="button" className="btn btn-success">Add to Cart</button>
+                                                                </div>
                                                             </div>
 
+                                                        </Link>
+
+                                                            
+
                                                         </div>
+
+
 
                                                     </div>
                                                 )
