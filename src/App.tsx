@@ -1,6 +1,6 @@
 import './App.scss';
-import Dashboard from './modules/dashboard/dashboard';
-import Home from './modules/home/Home';
+// import Dashboard from './modules/dashboard/dashboard';
+// import Home from './modules/home/Home';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Header from './components/header/app_header';
 import LandingPage from './modules/landing_page/LandingPage';
@@ -15,6 +15,10 @@ import Blogcontent from './modules/blogContentPage/blogContent/blogContent';
 import ProductDetails from './modules/productDetailsPage/ProductDetails';
 import Profile from './modules/profile/Profile';
 import Orders from './modules/orders/orders';
+// import Popup from './modules/shopping_cart/cartpopup/popup';
+// import Shoppingcart from "./modules/shopping_cart/Shoppingcart";
+
+
 
 
 function App() {
@@ -45,6 +49,11 @@ function App() {
           </Routes>
 
           <Footer />
+          {/* <Routes>
+            <Route path="/" element={<Popup/>}></Route>
+            <Route path ="/shoppingcart" element={<Shoppingcart/>}></Route>
+            
+          </Routes> */}
         </div>
       </Router>
       {/* <Butcherypopup></Butcherypopup> */}
