@@ -4,9 +4,6 @@ import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { addToCart } from "./newcomponet/redux/Shopping/shopping-actions";
 
-// import shoppingcart from "../shopping_cart/Shoppingcart"
-// import Menu from "./menubar/menu";
-
 
 const LandingPage = () => {
     const [items, setItems] = useState();
@@ -45,12 +42,6 @@ const LandingPage = () => {
     )
 
 }
-
-// const mapStateToProps = state => {
-//     return {
-//         products:state.shop.products,
-//     }
-// }
 
 const mapDispatchToProps = dispatch => {
     return {

@@ -1,8 +1,10 @@
 import './shopping_cart.css';
 import React from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import appStore from '../../state/app_store';
 import { addToCart } from './newcomponet/redux/Shopping/shopping-actions';
+
 class Cart extends React.Component<any, any> {
   buttonData: any;
   getReduxData: any;
@@ -34,9 +36,9 @@ class Cart extends React.Component<any, any> {
   }
 
   fetchProducts = () => {
-    fetch('http://localhost:3005/animal/get-animal/Chennai/11')
+    axios('http://localhost:3005/animal/get-animal/Chennai/11')
       // this.setState({ items: getData.payload })
-      .then((res) => res.json())
+      .then((res:any) => res.json())
       // .then((res) => console.log(res))
       .then((res) => {
         this.setState({ items: res.payload });
