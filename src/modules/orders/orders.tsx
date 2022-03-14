@@ -1,8 +1,30 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 import "./orders.scss";
 
 
-export default function Orders() {
+function Orders(props:any) {
+    const [orders, setOrders] = useState<any[]>([]);
+    const [wishlists, setWishlists] = useState<any[]>([]);
+    useEffect(() => {
+        const id=props.user._id;
+        axios.get("http://localhost:3005/orders/orderdetails/"+id)
+            .then((res) => {
+                console.log("orders display get response", res.data);
+                setOrders(res.data);
+            })
+            .catch((err) => console.log(err)
+            )
+        axios.get("http://localhost:3005/orders/wishlists/"+id)
+            .then((res) => {
+                console.log("wishlists display get response", res.data);
+                setWishlists(res.data);
+            })
+            .catch((err) => console.log(err)
+            )
+    }, [])
+
     return (
         <div className='orders-dashboard'>
             <main id="mainContent">
@@ -23,14 +45,24 @@ export default function Orders() {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td> <span className="first-line">ID - 900085000597636</span>
-                                        <span className="second-line">20/19/2019</span></td>
-                                    <td>Bunaji</td>
-                                    <td>Out of Stock</td>
-                                    <td ><button className=' button1 btn btn-primary'>Awaiting Payment</button></td>
-                                </tr>
-                                <tr>
+                                {orders.map((order, i) => {
+                                    return (
+                                        <tr key={i}>
+                                            <td> <span className="first-line">ID - {order.productId}</span>
+                                                <span className="second-line">{order.date}</span></td>
+                                            <td>{order.productcode}</td>
+                                            <td>{order.availability}</td>
+                                            {order.status !== 'cancelled order' &&
+                                                <td ><button className=' button1 btn btn-primary'>{order.status}</button></td>
+                                            }
+                                            {order.status === 'cancelled order' &&
+                                                <td ><button className=' button1 btn btn-danger'>{order.status}</button></td>
+                                            }
+                                        </tr>
+                                    )
+                                })}
+
+                                {/* <tr>
                                     <td> <span className="first-line">ID - 900085000597636</span>
                                         <span className="second-line">20/19/2019</span></td>
                                     <td>Bunaji</td>
@@ -92,7 +124,7 @@ export default function Orders() {
                                     <td>Bunaji</td>
                                     <td>Out of Stock</td>
                                     <td><button className=' button1 btn btn-danger'>Cancelled Order</button></td>
-                                </tr>
+                                </tr>*/}
                                 <tr className="line hr-line"></tr>
                                 <tr>
                                     <td ><span className="wish">Wishlists</span></td>
@@ -100,13 +132,18 @@ export default function Orders() {
                                     <td></td>
                                     <td ><span className="orderrowheading">&#x1D14F;</span></td>
                                 </tr>
-                                <tr>
-                                    <td> <span className="first-line">ID - 900085000597636</span>
-                                        <span className="second-line">20/19/2019</span></td>
-                                    <td>Bunaji</td>
-                                    <td>Out of Stock</td>
-                                    <td><button className=' button1 btn btn-primary'>Awaiting Payment</button></td>
-                                </tr>
+                                {wishlists.map((wishlist, i) => {
+                                    return (
+                                        <tr>
+                                            <td> <span className="first-line">ID - {wishlist.productId}</span>
+                                                <span className="second-line">{wishlist.date}</span></td>
+                                            <td>{wishlist.productcode}</td>
+                                            <td>{wishlist.availability}</td>
+                                            <td><button className=' button1 btn btn-primary'>{wishlist.status}</button></td>
+                                        </tr>
+                                    )
+                                })}
+
 
                             </tbody>
                         </table>
@@ -116,3 +153,14 @@ export default function Orders() {
         </div>
     )
 }
+const mapStateToProps = (state: any) => {
+    return {
+        ...state
+    }
+}
+const mapDispatchToProps = (dispatch: Function) => {
+    return {
+
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Orders);

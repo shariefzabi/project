@@ -12,14 +12,14 @@ function Orderdisplay(props: any) {
 
     useEffect(() => {
         const orderdata={user:{...props.user},...props.orders};
-        console.log("orders",orderdata);
+        // console.log("orders",orderdata);
         
         axios.post("http://localhost:3005/orders/orderdetails", orderdata)
             .then((res) => console.log("orderdata postresponse", res.data))
             .catch((err) => console.log("posterror", err));
         axios.get("http://localhost:3005/orders/orderdetails")
             .then((res) => {
-                console.log("orderdisplay get response",res.data);
+                // console.log("orderdisplay get response",res.data);
                 setOrderdata(res.data);
             })
             .catch((err) => console.log(err)
@@ -36,7 +36,7 @@ function Orderdisplay(props: any) {
                             <div className="modal-body">
                                 <h2 className="heading-cartpage text-center">Product Added to Cart</h2>
                                 {orderdata.map((item: any, i) => {
-                                    return (<h3 key={i} className="heading-cartpage-Id"> Order ID - 90008500059{item.orderId + 1} has been placed you now have to proceed payment</h3>)
+                                    return (<h3 key={i} className="heading-cartpage-Id"> Order ID -{item.orderId + 1} has been placed you now have to proceed payment</h3>)
                                 })}
 
                                 <div className="body-card text-center">

@@ -20,7 +20,7 @@
   }
   
   .tabcol {
-    height: 66vw;
+    height: 30vw;
     background-color: #FFFFFF;
     box-shadow: 0rem 1.875rem 2.5rem #E3F3FF;
     border-radius:  0.625rem;
@@ -35,7 +35,6 @@
     font-family: Ubuntu;
   }
   .tabcol td {
-    /* padding-right: 0vw 4.601vw 0vw 5vw; */
     font-size: 0.875rem;
     text-align: center;
 
@@ -72,6 +71,7 @@
     font-size: 0.933vw;
     font-weight: normal;
   }
+  
   .button1{
     width: 11vw;
     font-size: 0.875rem;
@@ -94,13 +94,13 @@
   }
   .hr-line {
     border: 2px solid #E0E0E0;
-    /* padding-top:3.867vw; */
+    padding-top:3.867vw; 
   }
   
   @media (min-width: 0px) and (max-width: 576px) {
-    /* .order-section {
+    .order-section {
       margin:4%;
-    } */
+    } 
     .order-section{
       margin-top: 2.5rem;
     }

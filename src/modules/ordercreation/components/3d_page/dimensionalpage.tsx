@@ -16,7 +16,7 @@ function DimesionalPage() {
                                 </div>
                                 <div className="d-flex">
                                     <div>
-                                        <img src={require("../assets/statue.jpeg")}></img>
+                                        <img src={require("../assets/cow.jpg")}></img>
                                     </div>
                                     <div className="dimesional-description">
                                         <h3 className="hint-heading">Hints for better experience</h3>
