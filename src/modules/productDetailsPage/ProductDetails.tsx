@@ -10,86 +10,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function ProductDetails(props: any) {
 
-    let [products, setProducts] = useState([])
-    let [marketType, setMarketType] = useState("Cattle Market")
-    // let [selectedLocationName, setSelectedLocationName] = useState(props.state.locName)
-    let [locationMarketData, setLocationMarketData] = useState<any>([])
-    let [isDisplaying, setIsDisplaying] = useState(true)
-    let [locationCattleData, setLocationCattleData] = useState<any>([])
-    // let [locationSheepData, setLocationSheepData] = useState<any>([])
-    let i = -1;
-
-    // console.log(selectedLocationName)
-
+     let [products, setProducts] = useState([])
     useEffect(() => {
-        (async () => {
-            try {
-                axios.get("http://localhost:3005/market/marketDetails")
-                    .then(
-                        response => {
-                            // console.log(response.data)
-                            setProducts(response.data)
-                        }
-                    )
-            } catch (err) {
-                console.error(err);
+        axios.get("http://localhost:3005/market/marketDetails")
+          .then(
+            response => {
+              setProducts(response.data)
             }
-
-        })();
-
-        return () => { };
-
-    }, []);
-
-    useEffect(() => {
-        (async () => {
-            let getLocationDataURL = "http://localhost:3005/market/marketDetails/" + props.state.locName;
-            await axios.get(getLocationDataURL)
-                .then(
-                    response => {
-                        // console.log(response.data)
-                        setLocationMarketData(response.data[0])
-                    }
-                )
-        })();
-
-        return () => { };
-
-    }, [props.state.locName]);
-    console.log(locationMarketData)
-    console.log(locationMarketData.cattleMarkets)
-
-    // locationMarketData.cattleMarkets.map((e: any) => {
-    //     console.log(e);
-    // })
-
-    // console.log(locationMarketData.cattleMarkets[0])
-    // setLocationCattleData(locationMarketData.cattleMarkets)
-    // setLocationSheepData(locationMarketData.sheepMarkets)
-    // console.log(products)
-    // console.log(locationCattleData)
-    // console.log(locationSheepData)
-
-    // for (let value in locationMarketData.cattleMarkets) {
-    //     console.log(value);
-    // }
-
-
-    //for dynamic market heading
-    const marketTypeHandler = () => {
-        setMarketType("Cattle Market");
-        // setLocationCattleData(locationMarketData.cattleMarkets)
-        // setIsDisplaying(!isDisplaying)
-    }
-    const markettypeHandler = () => {
-        setMarketType("Sheep Market")
-        // setLocationCattleData(locationMarketData.sheepMarkets)
-        // setIsDisplaying(!isDisplaying)
-    }
-
-    //npt working dynamic product data
-    // console.log(products[0].sheepMarkets[0])
-
+          )
+      }, []);
+      console.log(products)
 
     return (
         <div id="productPage" className="productPage">
@@ -101,94 +31,107 @@ function ProductDetails(props: any) {
                     <Link className="breadCrumbs" to='/location'>{props.state.locName}</Link>
                 </Breadcrumb.Item >
                 <Breadcrumb.Item active>
-                    {marketType}
+                    
                 </Breadcrumb.Item>
             </Breadcrumb>
             <div className="container">
-                <div className="row">
-                    <div className="col-3 locNames ">
-                        {
-
-                            products.map((e: any) => {
-                                let locations = e.locationName;
-                                i = i + 1;
-                                // console.log(i)
-                                if (props.state.locName === locations) {
-                                    return (
-                                        <Accordion defaultActiveKey={String(i)} flush>
-                                            <Accordion.Item eventKey={String(i)}>
-                                                <Accordion.Header >{e.locationName}</Accordion.Header>
-                                                <Accordion.Body>
-                                                    <p onClick={marketTypeHandler}>Cattle Market <span>{e.cattleMarkets.length}</span></p>
-                                                </Accordion.Body>
-                                                <Accordion.Body>
-                                                    <p onClick={markettypeHandler}>Sheep Market <span>{e.sheepMarkets.length}</span></p>
-                                                </Accordion.Body>
-                                            </Accordion.Item>
-                                        </Accordion>
-                                    )
-                                }
-                                else {
-                                    return (
-                                        <Accordion flush>
-                                            <Accordion.Item eventKey={String(i)}>
-                                                <Accordion.Header >{e.locationName}</Accordion.Header>
-                                                <Accordion.Body>
-                                                    <p onClick={marketTypeHandler}>Cattle Market <span>{e.cattleMarkets.length}</span></p>
-                                                </Accordion.Body>
-                                                <Accordion.Body>
-                                                    <p onClick={markettypeHandler}>Sheep Market <span>{e.sheepMarkets.length}</span></p>
-                                                </Accordion.Body>
-                                            </Accordion.Item>
-                                        </Accordion>
-                                    )
-
-                                }
-                            })
-                        }
-                    </div>
-                    <div className="col-9">
-                        <h3 id="marketHeading">{marketType}</h3>
-                        <h4 id="locationMarketHeading">{props.state.locName}&#32;{marketType}</h4>
-                        <hr />
-                        <div className="card-deck">
-                            {/* {
-                                locationCattleData.map((e: any) => {
-                                    return (
-                                        <div className="card col-4 ">
-                                            <div className="card-body">
-                                                <h5 className="card-id">animal: {e.animalId}</h5>
-                                                <p className="card-price">p:{e.price}</p>
-                                                <button type="button" className="btn btn-success">Add to Cart</button>
+            <div className=" row">
+                <div className="col-3">
+                    {
+                        products.map((e:any)=>{
+                            let locations=e.locationName
+                            if(props.state.locName===locations){
+                                return(
+                                    <div className="accordion" id="accordionExample">
+                                    <div className="accordion-item">
+                                        <h2 className="accordion-header" id="headingOne">
+                                            <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            {e.locationName}
+                                            </button>
+                                        </h2>
+                                        <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                            <div className="accordion-body">
+                                               <ul>
+                                                   <li>cattle market<span>({e.cattleMarkets.length})</span></li>
+                                                   <li>sheep market<span>({e.sheepMarkets.length})</span></li>
+                                               </ul>
                                             </div>
                                         </div>
-
-                                    )
-                                })
-                            } */}
-                            {/* {!isDisplaying &&
-                                locationMarketData.sheepMarkets.map((e: any) => {
-                                    return (
-
-                                        <div className="card col-4 ">
-                                            <div className="card-body">
-                                                <h5 className="card-id">animal: {e.animalId}</h5>
-                                                <p className="card-price">p:{e.price}</p>
-                                                <button type="button" className="btn btn-success">Success</button>
+                                    </div>
+                                </div>
+                                )
+                            }
+                            else{
+                                return(
+                                    <div className="accordion" id="accordionExample">
+                                    <div className="accordion-item">
+                                        <h2 className="accordion-header" id="headingOne">
+                                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            {e.locationName}
+                                            </button>
+                                        </h2>
+                                        <div id="collapseOne" className="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                            <div className="accordion-body">
+                                               <ul>
+                                                   <li>cattle market<span>({e.cattleMarkets.length})</span></li>
+                                                   <li>sheep market<span>({e.sheepMarkets.length})</span></li>
+                                               </ul>
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
 
+                                )
+                            }
+                        })
+                    }
+                   
+
+                </div>
+                <div className="col-9">
+                    <h3 id="marketHeading">CattleMarkets</h3>
+                    <h4 id="locationMarketHeading">{props.state.locName} cattle Market</h4>
+                    <hr/>
+                    <div className="card-deck">
+                    {
+                        products.map((product:any,i)=>{
+                            if(product.locationName===props.state.locName){
+                            return (
+                                product.cattleMarkets.map((e:any,i:any)=>{
+                                    return (
+                                        <div key={i}>
+                                             
+                                            <div className="card col-4 ">
+
+                                                <div className="card-body">
+
+                                                    <h5 className="card-id">animal: {e.animalId}</h5>
+
+                                                    <p className="card-price">p:{e.price}</p>
+
+                                                    <button type="button" className="btn btn-success">Add to Cart</button>
+
+                                                </div>
+
+                                           </div>
+
+                                            {/* <p>{e.animalId}</p>
+                                            <p>{e.price}</p> */}
+                                        </div>
                                     )
                                 })
-                            } */}
-
-                        </div>
-
-
-
+                                
+                            )
+                            }
+                        })
+                    }
                     </div>
                 </div>
             </div>
+                
+            </div>
+                   
+                       
         </div >
     )
 }
