@@ -228,7 +228,7 @@ class PaymentMethod2 extends React.Component<any, any> {
 
 
         {
-          this.state.payment == "Pay_On_Delivery" && <div className="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabIndex={-1}>
+          this.state.payment == "Pay_On_Delivery" && <div className="modal fade">
             <div className="modal-dialog modal-dialog-centered ">
               <div className="modal-content">
                 <div className="modal-body text-center">
@@ -236,10 +236,10 @@ class PaymentMethod2 extends React.Component<any, any> {
                     <h3>&#10003;</h3>
                   </div>
                   <h5 className='Successfully_Placed'>Order has been<br />Successfully Placed</h5>
-                  {/* <Link to="/products">
+                  <Link to="/products">
                     <button className="btn btn-success" data-bs-toggle="modal">Continue Shopping</button>
-                  </Link> */}
-                  <button className="btn btn-success" data-bs-toggle="modal"><Link to='/products'>Continue Shopping</Link></button>
+                  </Link>
+                  {/* <button className="btn btn-success" data-bs-toggle="modal"><Link to='/products'>Continue Shopping</Link></button> */}
                 </div>
               </div>
             </div>
