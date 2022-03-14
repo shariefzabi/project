@@ -147,7 +147,7 @@ function ProductDetails(props: any) {
                                                     <div key={i}>
 
                                                         <div className="card mb-4">
-
+                                                            <Link to="/selectedProduct" >
                                                             <div className="card-body">
                                                                 <button className="wishListButton"><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
                                                                 <div className="emptydiv"></div>
@@ -159,6 +159,10 @@ function ProductDetails(props: any) {
                                                                     <button type="button" className="btn btn-success">Add to Cart</button>
                                                                 </div>
                                                             </div>
+
+                                                            </Link>
+
+                                                            
 
                                                         </div>
 
@@ -180,8 +184,8 @@ function ProductDetails(props: any) {
                                                     // <p>Sheep</p>
                                                     <div key={i}>
                                                         <div className="card mb-4">
-
-                                                            <div className="card-body">
+                                                        <Link to="/selectedProduct" >
+                                                        <div className="card-body">
                                                                 <button className="wishListButton"><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
                                                                 <div className="emptydiv"></div>
 
@@ -192,6 +196,10 @@ function ProductDetails(props: any) {
                                                                     <button type="button" className="btn btn-success">Add to Cart</button>
                                                                 </div>
                                                             </div>
+
+                                                        </Link>
+
+                                                            
 
                                                         </div>
 

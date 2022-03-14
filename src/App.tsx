@@ -40,7 +40,7 @@ function App() {
             <Route path="/profile" element={<Profile />}></Route>
             <Route path="/orders" element={<Orders />}></Route>
             <Route path="/invoice" element={<Invoice1 />}></Route>
-            <Route path="/products/selectedProduct" element={<SelectedProductDetails />}></Route>
+            <Route path="/selectedProduct" element={<SelectedProductDetails />}></Route>
            
            </Routes>
           <Footer /> 
