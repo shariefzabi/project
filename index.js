@@ -41,6 +41,7 @@ app.use("/product", productCost);
 app.use("/card", cardDetail);
 app.use("/invoicedetails", invoice);
 app.use("/invoice", InvoiceUniqueID);
+app.use("/payment", cardDetail)
 
 // end
 
