@@ -26,6 +26,9 @@ class Signup extends React.Component<any, any>{
         this.setState({ [e.target.name]: e.target.value })
     }
 
+    setToken = (token:any)=>{
+        sessionStorage.setItem("token",token);
+      }
 
     validations = (e: any) => {
         if (e.target.name === 'fullName') {
@@ -120,8 +123,9 @@ class Signup extends React.Component<any, any>{
 
         axios.post("http://localhost:3005/users/signup",userDetails)
         .then((res:any)=>{
-            if (res.data[0] == "success")
-            this.props.setUser(userDetails)
+            if (res.data[0] == "success"){
+            this.setToken(res.data[1].token)
+            this.props.setUser(res.data[1])}
          
             else
             this.setState({emailErrMsg:res.data[1]})
