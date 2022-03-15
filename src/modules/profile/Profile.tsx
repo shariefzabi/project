@@ -305,7 +305,7 @@ function Profile(props: any) {
 
             </div >
             }
-            {!props.redux.user && <div className='mt-5 text-center'><h2 className='text-danger'>** Please login and try again **</h2>
+            {!props.redux.user && <div className='profile-err mt-5  text-center'><h2 className='text-danger'>** Please login and try again **</h2>
                 </div>}
                 {displayReset &&
                                 <Reset setdisplayReset={setdisplayReset}></Reset>

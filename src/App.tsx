@@ -16,6 +16,7 @@ import ProductDetails from './modules/productDetailsPage/ProductDetails';
 import SelectedProductDetails from './modules/productDetailsPage/selectedProductPage';
 import Profile from './modules/profile/Profile';
 import Orders from './modules/orders/orders';
+import LogOut from './modules/logOut/logOut';
 // import Popup from './modules/shopping_cart/cartpopup/popup';
 // import Shoppingcart from "./modules/shopping_cart/shoppingcart";
 
@@ -41,6 +42,7 @@ function App() {
             <Route path="/orders" element={<Orders />}></Route>
             <Route path="/invoice" element={<Invoice />}></Route>
             <Route path="/selectedProduct" element={<SelectedProductDetails />}></Route>
+            <Route path="/logout" element={<LogOut/>}></Route>
 
           </Routes>
           <Footer />

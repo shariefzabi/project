@@ -215,7 +215,7 @@ class Header extends React.Component<any, any> {
                   </Link>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/" onClick={this.logOut}>
+                  <Link className="dropdown-item" to="/logout" onClick={this.logOut}>
                     Log out
                   </Link>
                 </li>

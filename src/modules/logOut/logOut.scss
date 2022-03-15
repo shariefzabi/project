@@ -1,3 +1,6 @@
+.logout-container{
+
+
 .logout {
     margin: 10.125vw !important;
     margin: 0;
@@ -10,6 +13,17 @@
     background-color: #F5FBFF;
     margin-left: 4.375vw;
   }
+  .user-icon{
+    position: absolute;
+    right: 1.8rem;
+    top: 3.7rem;
+  }
+  .lock-icon{
+    top: 6.3rem;
+    position: absolute;
+    right: 1.8rem;
+  }
+
   
   aside {
     margin-top: 2.375rem;
@@ -20,17 +34,30 @@
     font-size: 2.25rem;
     line-height: 1rem;
     /* background-color: #E3F3FF; */
-    color: #2078BF;
-    box-shadow: 0rem 1.875rem 2.5rem #E3F3FF;
+    
+    // box-shadow: 0rem 1.875rem 2.5rem #E3F3FF;
+    h2{
+      color: #2078BF;
+      padding-right: 20px;
+      font-weight: bolder;
+    }
+    
   }
   
   .box {
-    background: #FFFFFF;
-    box-shadow: 0rem 1.875rem 2.5rem #E3F3FF;
+    
     border-radius: 0.625rem;
     margin-right:0 !important;
     margin-left:0 !important;
+    section{
+      background: #FFFFFF;
+    box-shadow: 0rem 1.875rem 2.5rem #E3F3FF;
+    width: 1000px;
+    box-sizing: border-box!important;
+    padding: 50px;
+    }
   }
+
   .box h3 {
     text-align: center;
     font-family: Ubuntu;
@@ -80,9 +107,10 @@
     color: white;
   }
   .box section form input {
-    border: none;
-    outline: none;
+    // border: none;
+    // outline: none;
     font-size: 1.125rem;
     width: 100%;
-    height: 2.3em;
+    height: 45px;
   }
+}
