@@ -257,7 +257,8 @@ hr {
 
 .descriptionbox{
   border: 1px solid #e0e0e0;
-   border-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
   padding: 1.5625rem;
 
 }
@@ -273,13 +274,16 @@ hr {
   width: 8.5rem;
   height: 3.5rem;
   margin-right:0.625rem ;
+  margin-bottom: 0px;
   font-size: 0.75rem;
   line-height: 1.5rem;
   color: #838383;
   background-color: rgb(245,251,255);
   margin-top: 4.375rem;
   border: 1px solid #e0e0e0;
-  border-radius: 5px;
+  border-bottom: none;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 .descripbtn:hover{
   border-top: 3px solid #2078bf;
