@@ -66,7 +66,7 @@ function Reset(props: any) {
         <div>
 
             <section className="resetSection">
-                <span onClick={()=>props.setdisplayReset(false)}>&lt;</span>
+                <span  onClick={()=>props.setdisplayReset(false)}> <i className="pb-4 fa fa-long-arrow-left"></i></span>
                 <div className='formContainer resetpage'><h3>Reset Password</h3>
                     <form >
                         <p> Fields with <span className="text-danger">*</span> are required</p>
