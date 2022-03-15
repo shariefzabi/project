@@ -5,21 +5,10 @@ const Invoice = new mongoose.Schema({
         payment: { type: String, required: [true, "Id is required"] },
         orderId: { type: Number, required: [true, "Id is required"] },
         token: { type: Number },
-
         cardNumber: { type: Number, required: true, min: 100000000000, max: 999999999999, },
         Month: { type: Number, required: true, min: 1, max: 12 },
         year: { type: Number, required: true, min: 22 },
         CVV: { type: Number, required: true, max: 000, max: 999 },
-        type: { type: String, required: true },
-        breed: { type: String, required: true },
-        quantity: { type: String, required: true },
-
-        sex: { type: String, required: true },
-        weight: { type: String, required: true },
-
-        productAmount: { type: Number, required: true },
-        deliveryAmount: { type: Number, required: true },
-        totalAmount: { type: Number, required: true },
         date: { type: String, required: true }
     }
 }
