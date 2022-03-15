@@ -121,6 +121,10 @@ hr {
   line-height: 1.5rem;
   color: #838383;
 }
+.dropdownToggle1:hover{
+  border: 2px solid #2078bf;
+}
+
 .dropdownToggle2 {
   padding-left: 12px;
   margin-right: 2rem;
@@ -131,6 +135,9 @@ hr {
   line-height: 1.5rem;
   color: #838383;
   width: 5.6875rem;
+}
+.dropdownToggle2:hover{
+  border: 2px solid #2078bf;
 }
 
 .sort{
@@ -232,7 +239,7 @@ hr {
 
 .descriptionbox{
   border: 1px solid #e0e0e0;
-   
+   border-radius: 5px;
   padding: 1.5625rem;
 
 }
@@ -254,8 +261,12 @@ hr {
   background-color: rgb(245,251,255);
   margin-top: 4.375rem;
   border: 1px solid #e0e0e0;
+  border-radius: 5px;
 }
 .descripbtn:hover{
   border-top: 3px solid #2078bf;
+}
+.addbtn{
+  border-radius: 5px;
 }
 

@@ -120,7 +120,7 @@ function SelectedProductDetails(props: any) {
                             <p className=" qty mb-1">Qty</p>
                             <div className="row quantity ms-0">
                                 <p className="col m-0">{count}</p>
-                                <button className="btn-primary col" onClick={countHandler}>+</button>
+                                <button className="addbtn btn-primary col" onClick={countHandler}>+</button>
                             </div>
                         </div>
                         <div>
