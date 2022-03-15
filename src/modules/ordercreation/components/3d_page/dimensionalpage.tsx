@@ -13,7 +13,7 @@ function DimesionalPage() {
                                 <div className="heading-dimension">
                                     <p>View the 3d representation of the product before you make payment</p>
                                 </div>
-                                <div className="d-flex">
+                                {/* <div className="d-flex">
                                     <div>
                                         <img src={require("../assets/cow.jpg")}></img>
                                     </div>
@@ -25,7 +25,7 @@ function DimesionalPage() {
                                         <p className="">Pan mouse around to view  product in 360 degree</p>
                                         <p className="">Scroll mouse wheel in to zoom into product and do the inverse to zoom out of product</p>
                                     </div>
-                                </div>
+                                </div> */}
                                 <div>
                                     <button type="button" className="btn btn-success continuebutton" onClick={() => setDeliveryFlag(true)}>continue</button>
                                 </div>

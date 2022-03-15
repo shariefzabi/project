@@ -144,7 +144,7 @@ const mapStateToProps = (state: any) => {
 }
 const mapDispatchToProps = (dispatch: Function) => {
     return {
-        createOrder: (deliveryDetails: any) => dispatch({ type: 'store_order', deliveryDetails })
+        createOrder: (deliveryDetails: any) => dispatch({ type: 'store_order', payload:deliveryDetails })
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Deliverydetails);

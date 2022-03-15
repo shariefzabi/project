@@ -4,21 +4,19 @@ import DimesionalPage from './3d_page/dimensionalpage';
 import './ordercreation.scss'
 import { connect } from "react-redux";
 import Modal from '@mui/material/Modal';
+import axios from 'axios';
 
 function BuyNow(props: any) {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
+    const [selectdata, setSelectData] = useState<any[]>([]);
     const [type, setType] = useState("");
     const [quantity, setQuantity] = useState("");
     const [sex, setSex] = useState("");
     const [weight, setWeight] = useState("");
     const [breed, setBreed] = useState("");
-    const [cow, setCow] = useState(["Aberdeen", "Holstein", "Hereford", "simmental"]);
-    const [sheep, setSheep] = useState(["Boer", "American Pygmy", "Saanen goat", "angora"]);
-    const [pig, setPig] = useState(["Duroc", "Large White", "Hampshire", "Large Black"]);
-    const [price, setPrice] = useState(1);
 
     const [typeerrmsg, setTypeerrmsg] = useState("");
     const [quantityerrmsg, setQuantityerrmsg] = useState("");
@@ -26,7 +24,17 @@ function BuyNow(props: any) {
     const [weighterrmsg, setWeighterrmsg] = useState("");
     const [breederrmsg, setBreederrmsg] = useState("");
     const [productdetailsflag, setProductdetailsflag] = useState(true);
+    const [addFlag, setAddFlag] = useState(false);
+    const [viewFlag, setViewFlag] = useState(false);
+    const [Errmsg, setErrmsg] = useState('');
     useEffect(() => {
+        axios.get("http://localhost:3005/orders/productfilters")
+            .then((res) => {
+                console.log("product details from be", res.data)
+                setSelectData(res.data)
+            })
+            .catch((err) => console.log(err)
+            )
         return () => {
             setOpen(false)
         }
@@ -38,21 +46,39 @@ function BuyNow(props: any) {
             setProductdetailsflag(false);
         // console.log("props in products", props);
         // console.log("productdetails", productDetails.type);
-        if (productDetails.type === 'Cow') {
-            productDetails.price = productDetails.quantity * productDetails.weight * 50000;
-            // setPrice(productDetails.quantity*productDetails.weight*50000);
-        } else if (productDetails.type === 'Goat') {
-            productDetails.price = productDetails.quantity * productDetails.weight * 10000;
-        } else {
-            productDetails.price = productDetails.quantity * productDetails.weight * 5000;
-        }
-        productDetails.delprice = 2000;
-        productDetails.totalprice = productDetails.price + productDetails.delprice;
+        // if (productDetails.type === 'Cow') {
+        //     productDetails.price = productDetails.quantity * productDetails.weight * 50000;
+        //     // setPrice(productDetails.quantity*productDetails.weight*50000);
+        // } else if (productDetails.type === 'Goat') {
+        //     productDetails.price = productDetails.quantity * productDetails.weight * 10000;
+        // } else {
+        //     productDetails.price = productDetails.quantity * productDetails.weight * 5000;
+        // }
+        // productDetails.delprice = 2000;
+        // productDetails.totalprice = productDetails.price + productDetails.delprice;
         // productDetails.price=price;
-
-        console.log("productdetails", productDetails);
-        props.storeProductdetails(productDetails);
+        if (type != '' && quantity != '' && breed != '' && weight != '' && sex != '')
+            props.storeProductdetails(productDetails);
+        // console.log("productdetails", productDetails);
     }
+    const addProduct = (products: any) => {
+        setAddFlag(true);
+        if (type != '' && quantity != '' && breed != '' && weight != '' && sex != '') {
+            props.storeProductdetails(products);
+        }
+    }
+    const resetHandler = (e: any) => {
+        if (type === '' || quantity === '' || breed === '' || weight === '' || sex === '')
+            setErrmsg("please select all details")
+        if (type != '' && quantity != '' && breed != '' && weight != '' && sex != '') {
+            setType(" ");
+            setQuantity("");
+            setBreed("");
+            setWeight("");
+            setSex("");
+        }
+    }
+
     function Validate(event: any) {
         let name = event.target.name;
         let value = event.target.value;
@@ -114,9 +140,7 @@ function BuyNow(props: any) {
         }
     }
     return (
-
         <div>
-            {/* <a className="btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">ordercreation</a> */}
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -124,9 +148,8 @@ function BuyNow(props: any) {
                 sx={{ overflow: 'auto' }}
             >
                 <>
-                {productdetailsflag &&
-                <div className='order-modal'>
-                {/* <div className="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true" tabIndex={-1}> */}
+                    {productdetailsflag &&
+                        <div className='order-modal'>
                             <div className='ordercreation-container position-relative'>
                                 <div className="text-center popupheading">
                                     <p>Yor are one step closer to buying your livestock</p>
@@ -135,19 +158,35 @@ function BuyNow(props: any) {
                                     <p>Fill in the required information</p>
                                     {props.user === null &&
                                         <p className='text-danger text-center'>please login to your account</p>}
+                                    {Errmsg != '' &&
+                                        <p className='text-danger text-center'>{Errmsg}</p>
+                                    }
                                 </div>
                                 <div className='viewall-icon'>
-                                    <img src={require("./assets/viewallproductsicon.png")} />
+                                    <button className='cart-button' onClick={() => setViewFlag(true)}><img src={require("./assets/viewallproductsicon.png")} /></button>
                                 </div>
                                 <form onSubmit={(e) => productsubmitHandler(e, { type, quantity, weight, sex, breed })}>
+                                    {addFlag === true &&
+                                        !viewFlag &&
+                                        Errmsg === '' &&
+                                        <p className='text-primary text-center'>filter added</p>
+                                    }
+
+                                    {/* {!viewFlag && */}
                                     <div className='row'>
                                         <div className="col-md-2 productype-dropdown" >
                                             <div className="dropdown" >
                                                 <select name="Type" required value={type} onChange={(event) => Validate(event)} onBlur={(event) => Validate(event)} className="form-select" >
                                                     <option hidden value="">Type</option>
-                                                    <option value="Cow">Cow</option>
-                                                    <option value="Goat">Goat</option>
-                                                    <option value="Pig">Pig</option>
+                                                    {
+                                                        selectdata.map((item: any, i: any) => {
+                                                            return (
+                                                                item.Types.map((e: any, i: any) => {
+                                                                    return (<option key={i} value={e}>{e}</option>)
+                                                                })
+                                                            )
+                                                        })
+                                                    }
                                                 </select>
                                                 <p className='text-danger'>{typeerrmsg}</p>
                                             </div>
@@ -193,21 +232,21 @@ function BuyNow(props: any) {
                                                     {
                                                         type != " " &&
                                                         type === "Cow" &&
-                                                        cow.map((item, i) => {
+                                                        selectdata[0].cowbreed.map((item: any, i: any) => {
                                                             return (<option value={item} key={i}>{item}</option>)
                                                         })
                                                     }
                                                     {
                                                         type != " " &&
                                                         type === "Goat" &&
-                                                        sheep.map((item, i) => {
+                                                        selectdata[0].goatbreed.map((item: any, i: any) => {
                                                             return (<option value={item} key={i}>{item}</option>)
                                                         })
                                                     }
                                                     {
                                                         type != " " &&
                                                         type === "Pig" &&
-                                                        pig.map((item, i) => {
+                                                        selectdata[0].pigbreed.map((item: any, i: any) => {
                                                             return (<option value={item} key={i}>{item}</option>)
                                                         })
                                                     }
@@ -216,27 +255,25 @@ function BuyNow(props: any) {
 
                                             </div>
                                             <div className='cart-icon'>
-                                                <img src={require("./assets/addtocarticon.png")} />
+                                                <button className='cart-button' type='button' onClick={(e: any) => { addProduct({ type, quantity, weight, sex, breed }); resetHandler(e) }}><img src={require("./assets/addtocarticon.png")} /></button>
                                             </div>
+
                                         </div>
-
                                     </div>
-
                                     <div className="mb-3">
                                         <button className="continuebutton btn btn-success">Continue</button>
                                     </div>
                                 </form>
                             </div>
-                
-                
-                </div >
-                }
-                {!productdetailsflag &&
-                    <DimesionalPage></DimesionalPage>
-                }
+
+                        </div >
+                    }
+                    { !productdetailsflag  &&
+                        <DimesionalPage></DimesionalPage>
+                    }
                 </>
             </Modal>
-            <button className="buy-button text-white" onClick={() => {handleOpen();setProductdetailsflag(true)}} >Buy Now</button>
+            <button className="buy-button text-white" onClick={() => { handleOpen(); setProductdetailsflag(true) }} >Buy Now</button>
         </div >
 
     )

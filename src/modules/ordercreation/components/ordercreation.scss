@@ -15,6 +15,15 @@
     margin: 100px auto;
     }
 .ordercreation-container{  
+    .cart-button{
+        background-color: white;
+        border: none;
+    }
+    .products-cards,.cards-body{
+        width: 20%;
+        margin-left: 9%;
+        display: inline;
+    }
  .popupheading{
         color: #2078BF;
         // width: 555px;
@@ -52,8 +61,8 @@
    }
    .viewall-icon{
     position: absolute;
-    left:85%;
-    top:30%;
+    left:84%;
+    top:19%;
    }
    .productype-dropdown{
        margin-left: 60px !important;
