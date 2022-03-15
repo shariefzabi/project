@@ -125,9 +125,9 @@ app.post("/orders/orderdetails", function (req, res) {
       }else{
         orderdetails.orderId=result+1;
       }
-      const newdate=new Date();
-      orderdetails.date=`${newdate.getDay()}/${newdate.getMonth()}/${newdate.getFullYear()}`;
-      console.log(orderdetails.date);
+      // const newdate=new Date();
+      // orderdetails.date=`${newdate.getDay()}/${newdate.getMonth()}/${newdate.getFullYear()}`;
+      // console.log(orderdetails.date);
       ordercollection.insertOne(orderdetails);
       res.json(orderdetails);
     }
@@ -145,6 +145,19 @@ app.get('/orders/orderdetails/:uname', async (req, res) => {
       })
  
 })
+//storing wishlists
+app.post("/orders/wishlists", function (req, res) {
+  let wishlistdetails = req.body;
+  console.log(wishlistdetails);
+  let wishlistcollection = db.collection("wishlists");
+  wishlistcollection.count(function(err,result){
+    if(err)console.log(err);
+    else {
+      wishlistcollection.insertOne(wishlistdetails);
+      res.json(wishlistdetails);
+    }
+  })
+});
 //fetching whishlist based on username
 app.get('/orders/wishlists/:uname', async (req, res) => {
   let { params } = req
