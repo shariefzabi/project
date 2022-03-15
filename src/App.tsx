@@ -16,7 +16,6 @@ import ProductDetails from './modules/productDetailsPage/ProductDetails';
 import SelectedProductDetails from './modules/productDetailsPage/selectedProductPage';
 import Profile from './modules/profile/Profile';
 import Orders from './modules/orders/orders';
-
 // import Popup from './modules/shopping_cart/cartpopup/popup';
 // import Shoppingcart from "./modules/shopping_cart/shoppingcart";
 

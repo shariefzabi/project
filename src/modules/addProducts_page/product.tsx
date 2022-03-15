@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./product.css";
+import "./product.scss";
 // import ReactDOM from 'react-dom';
 import { useFormik } from "formik";
 import axios from "axios";
