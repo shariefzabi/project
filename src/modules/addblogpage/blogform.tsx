@@ -25,8 +25,14 @@ class Blogform extends React.Component<any, any>{
     componentDidMount() {
         axios.get("http://localhost:3005/blogs")
             .then(res => {
-                this.setState({ blogs: res.data, id: res.data.length })
+                this.setState({ blogs: res.data, id: res.data.length +1 })
             })}
+    componentDidUpdate(prevState:any) {
+        if(prevState.finalFlag !== this.state.finalFlag){
+        axios.get("http://localhost:3005/blogs")
+            .then(res => {
+                this.setState({ blogs: res.data, id: res.data.length +1 })
+            })}}
     changeHandler = (e: any) => {
         this.setState({ [e.target.name]: e.target.value })
     }
@@ -61,6 +67,8 @@ class Blogform extends React.Component<any, any>{
         }else{
             this.validations()
             this.validate()
+            this.setState({finalFlag:false ,
+                finalMsg:''})
         }
     }
 
@@ -69,8 +77,8 @@ class Blogform extends React.Component<any, any>{
             this.setState({ topicErrMsg: "Please enter the title." ,topicFlag:"on"})
             
         } else {
-            let nameReg = /^([a-zA-Z0-9 ]{10,100})$/
-            if (!nameReg.test(this.state.topic)) {
+            // let nameReg =  /^([a-zA-Z0-9 ]{4,15})$/
+            if (  this.state.topic.length <= 9) {
                 this.setState({ topicErrMsg: "Accepts Alphabets, space & Min 10 to Max 100 Char" ,topicFlag:"on"})
             } else {
                 this.setState({ topicErrMsg: "", topicFlag:"off"})
@@ -97,6 +105,8 @@ class Blogform extends React.Component<any, any>{
 
     render() {
         let { topic, topicErrMsg, text1, topicFlag ,id ,disFlag ,dicErrMsg, finalFlag ,finalMsg} = this.state;
+        console.log("new :"+id);
+        
         return (
             <>
                 <div className="main blogform-container">
