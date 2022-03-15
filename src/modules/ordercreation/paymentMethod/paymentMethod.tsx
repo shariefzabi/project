@@ -127,7 +127,7 @@ class PaymentMethod extends React.Component<any, any> {
     this.setState({ flag1: false })
     let paymentStatus = {
       orderId: orderId,
-      status: "Awaiting Payment"
+      payment: "Awaiting payment"
     }
     if (payment === "Pay_On_Delivery") {
       axios.post("http://localhost:3005/payment/status", paymentStatus)
@@ -139,22 +139,21 @@ class PaymentMethod extends React.Component<any, any> {
         .catch(err => {
           console.log("error: ", err);
         })
-      
+
       this.props.setPaymentInformation(payment)
-      
+
       console.log(paymentStatus)
 
-      
+
 
 
     }
   }
   submitHandler = (e: any) => {
     e.preventDefault()
-<<<<<<< Updated upstream
-    this.setState({ flag2: false })
-    let { month, year, payment, card_number, cvv_number, orderId, date } = this.state;
-=======
+
+
+
 
 
 
@@ -163,7 +162,7 @@ class PaymentMethod extends React.Component<any, any> {
     let { month, year, payment, card_number, cvv_number, orderId, date } = this.state;
     this.props.setPaymentInformation(payment)
 
->>>>>>> Stashed changes
+
     console.log("carddetails", { month, year, card_number, cvv_number })
     // let { breed, quantity, sex, type, weight, price, delprice, totalprice } = this.props.redux.orders.productdetails;
     // let product_amount = this.props.redux.orders.productdetails.quantity * this.props.redux.orders.productdetails.weight * 50000;
@@ -205,8 +204,9 @@ class PaymentMethod extends React.Component<any, any> {
     })
     let paymentStatus = {
       orderId: orderId,
-      status: "payment success"
+      payment: "payment success"
     }
+    console.log(orderId)
     axios.post("http://localhost:3005/payment/status", paymentStatus)
       .then((result) => {
         console.log("status", result.data);
@@ -214,7 +214,7 @@ class PaymentMethod extends React.Component<any, any> {
 
 
       })
-      
+
       .catch(err => {
         console.log("error: ", err);
       })
