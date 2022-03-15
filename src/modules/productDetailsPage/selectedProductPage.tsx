@@ -111,9 +111,9 @@ function SelectedProductDetails(props: any) {
                     <div className="col-5 p-0">
                         <button className="wishListButton"><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
                         <h3  id="marketHeading">ANIMAL ID - </h3>
-                        <h3  className="mb-3" id="marketHeading">{product._id}</h3>
+                        <h3  className="mb-4" id="marketHeading">{product._id}</h3>
                         <p id="text_code">Product Code: {product.productCode}</p>
-                        <p className="mb-1" id="text_code">Availability: {product.availability}</p>
+                        <p className="mb-2" id="text_code">Availability: {product.availability}</p>
                         <Rating className="iconFilled" name="half-rating-read" defaultValue={4} precision={0.5} readOnly />
                         <p className="price">{product.price}</p>
                         <div>
