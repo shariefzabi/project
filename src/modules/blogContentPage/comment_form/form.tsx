@@ -106,6 +106,7 @@ class Form extends React.Component<any, any> {
     }
     render() {
         let { name, email, comment } = this.state;
+        console.log("comments put id :"+this.props.id);
         
         return (
 

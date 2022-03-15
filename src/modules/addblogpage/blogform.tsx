@@ -3,6 +3,7 @@ import React from "react";
 import { Editor } from 'primereact/editor';
 import 'primereact/resources/primereact.min.css'
 import axios from "axios";
+import { Link } from "react-router-dom";
 // import { idText } from "typescript";
 
 class Blogform extends React.Component<any, any>{
@@ -18,9 +19,10 @@ class Blogform extends React.Component<any, any>{
             topicErrMsg: "",
             disFlag: true,
             topicFlag:"",
+            finalFlag:false,finalMsg:''
         }
     }
-    componentDidUpdate() {
+    componentDidMount() {
         axios.get("http://localhost:3005/blogs")
             .then(res => {
                 this.setState({ blogs: res.data, id: res.data.length })
@@ -48,7 +50,9 @@ class Blogform extends React.Component<any, any>{
                         dicErrMsg: "",
                         topicErrMsg: "",
                         disFlag: true,
-                        topicFlag:"",})
+                        topicFlag:"",
+                        finalFlag:true ,
+                        finalMsg:'Blog Added in Blog List, click here for Blogs',})
                 }
                 else
                     this.setState({ emailErrMsg: res.data })
@@ -92,7 +96,7 @@ class Blogform extends React.Component<any, any>{
 
 
     render() {
-        let { topic, topicErrMsg, text1, topicFlag ,id ,disFlag ,dicErrMsg} = this.state;
+        let { topic, topicErrMsg, text1, topicFlag ,id ,disFlag ,dicErrMsg, finalFlag ,finalMsg} = this.state;
         return (
             <>
                 <div className="main blogform-container">
@@ -134,6 +138,9 @@ class Blogform extends React.Component<any, any>{
                                 
                                
                                 <div className="mt-3 text-center">
+                                    {finalFlag&&
+                                        <Link to="/blog"><p className="text-success ms-5">{finalMsg}</p></Link>
+                                    }
                                     <button type="submit" className="btn form_button btn-success ">
                                         Save
                                     </button>

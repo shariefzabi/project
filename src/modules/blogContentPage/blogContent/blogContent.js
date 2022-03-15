@@ -30,14 +30,16 @@ class Blogcontent extends React.Component{
             let params = (new URL(document.location)).searchParams;
             // console.log(params.get('id'));
             const id = params.get('id');
-            this.setState({id : id})
+            const num =+ id
+            this.setState({id : num})
     }
     carousel(v){
+        let params = (new URL(document.location)).searchParams;
         if(v){
             if(this.state.id === this.state.blogs.length -1 ){
                 this.setState({id:0})
             }else{
-                this.setState({id:this.state.id +1})
+                this.setState({id:this.state.id + 1})
             }
         }else{
             if(this.state.id === 0 ){
@@ -49,6 +51,7 @@ class Blogcontent extends React.Component{
     }
     render() {
         let {blogs, id}=this.state
+        console.log("blog id :"+id);
         return (
 
             <div> 

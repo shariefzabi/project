@@ -11,25 +11,25 @@ class Comment extends React.Component<any, any> {
         }
 
     }
-    // componentDidMount() {
-    //     axios.get("http://localhost:3005/comments")
-    //         .then(res => {
-    //             console.log(res.data)
-    //             this.setState({ comments: res.data })
-    //             // res.data.map((e: any, i: any) => {
-    //             //     this.setState({ comments: [...this.state.comments, e.comments] })
-    //             // })
-    //         })
-    // }
-    render() {
-        axios.get("http://localhost:3005/comments/" + this.props.id)
+    componentDidUpdate(prevProps:any) {
+        if(prevProps.id !== this.props.id){
+        axios.get("http://localhost:3005/comments/"+this.props.id)
             .then(res => {
-                // console.log(res.data)
+                console.log(res.data)
                 this.setState({ comments: res.data })
-                // res.data.map((e: any, i: any) => {
-                //     this.setState({ comments: [...this.state.comments, e.comments] })
-                // })
-            })
+            })}
+    }
+    render() {
+        console.log("comments get :"+this.props.id);
+        
+        // axios.get("http://localhost:3005/comments/" + this.props.id)
+        //     .then(res => {
+        //         // console.log(res.data)
+        //         this.setState({ comments: res.data })
+        //         // res.data.map((e: any, i: any) => {
+        //         //     this.setState({ comments: [...this.state.comments, e.comments] })
+        //         // })
+        //     })
         let total = 0
         return (
             <section className="clients">
