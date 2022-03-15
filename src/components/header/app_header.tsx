@@ -159,6 +159,13 @@ class Header extends React.Component<any, any> {
               </Link>
             </div>
           )}
+           {user && (
+            <div className="home">
+              <Link to="/addproducts" className="menu_content">
+                Add Products
+              </Link>
+            </div>
+          )}
           <div className="menu_btn">
             <PopUp />
           </div>

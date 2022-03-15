@@ -47,17 +47,18 @@
   form label {
     color: #838383;
     font-size: 1.125rem;
-    margin-bottom: 1.625rem;
+    margin-bottom: 1.2rem;
     font-family: ubuntu;
     line-height: 1rem;
     letter-spacing: 0.025rem;
   }
   form button {
+    align-items: center;
     width: 28%;
     height: 10%;
     font-size: 2.25rem;
     display: block;
-    margin: 5% 1%;
+    margin: 5% 35%;
   }
   form input {
     border: none;

@@ -40,8 +40,8 @@ const validateProduct = (productData: any) => {
   if (productData.location === "Select Location") {
     errors.location = "Please Enter Location";
   }
-  if (!productData.certification) {
-    errors.certification = "Please Enter cerification";
+  if (productData.certification==="Select Certification") {
+    errors.certification = "Please Choose cerification";
   }
   if (productData.availability === "Select Availability") {
     errors.availability = "Please Choose availability";
@@ -57,7 +57,7 @@ const validateProduct = (productData: any) => {
   }
   return errors;
 };
-function ProductDetails(props: any) {
+function AddProducts(props: any) {
   const formik = useFormik({
     initialValues: {
       image: null,
@@ -66,7 +66,7 @@ function ProductDetails(props: any) {
       breed: "",
       source: "",
       price: "",
-      certification: "",
+      certification: "Select Certification",
       availability: "Select Availability",
       market: "Select Market",
       location: "Select Location"
@@ -233,16 +233,19 @@ function ProductDetails(props: any) {
                 <label className="field" htmlFor="certification">
                   Certification<span className="text-danger">*</span>
                 </label>
-                <input
-                  type="text"
-                  id="certification"
+                <select
                   name="certification"
-                  className="form-control"
-                  placeholder="certification"
-                  value={formik.values.certification}
+                  id="certification"
+                  className="form-select"
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
-                ></input>
+                >
+                  <option value={formik.values.certification}>
+                    Select Certification
+                  </option>
+                  <option value="Certified">Certified</option>
+                  <option value= "Not Certified">Not Certified</option>
+                </select >
                 <div>
                   {formik.touched.certification && formik.errors.certification ? (
                     <span style={{ color: "red" }}>{formik.errors.certification}</span>
@@ -338,14 +341,6 @@ function ProductDetails(props: any) {
                   >
                     Create
                   </button>
-                  <button
-                    type="button"
-                    name="update"
-                    id="updateButton"
-                    className="btn btn-success"
-                  >
-                    Update
-                  </button>
                 </div>
               </form>
             </section>
@@ -372,4 +367,4 @@ const mapDispatchToProps = (dispatch: Function) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductDetails);
+export default connect(mapStateToProps, mapDispatchToProps)(AddProducts);
