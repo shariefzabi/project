@@ -3,34 +3,46 @@ import arrow from "./assets/img/Icon (1).png";
 import axios from "axios"
 import './assets/styles.css'
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
+
 
 
 class Blogtable extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
         this.state = {
-            blogs: []
+            blogs: [],
+            array:[]
         }
     }
     componentDidMount() {
         axios.get("http://localhost:3005/blogs")
             .then(res => {
                 // console.log(res.data);
-                this.setState({ blogs:res.data })
+                this.setState({ blogs: res.data })
+                // let start =0;
+                // let end =12;
+                // console.log( Math.round(this.state.blogs.length/12));
+                
+                // for( let i=0;i<= Math.round(this.state.blogs.length/12);i++){
+                //     // console.log(this.state.blogs.splice(start,end));
+                    
+                //     this.setState({array:[...this.state.array,this.state.blogs.splice(start,end)]})
+                //     start += 12
+                //     if(end+12 < this.state.blogs.length ){
+                //         end = this.state.blogs.length -start
+                //     }else{
+                //         end +=12
+                //     }
+                    
+                // }
             })
-        let array = [];
-        for (let i = 0; i <= Math.round(this.state.blogs.length / 3); i++) {
-            array[i] = i
-        }
-        // console.log(array);
-
-    }
-    proceed(){
-        
     }
     render() {
-        let ind=0;
+        let ind = 0;
+        let total =0;
+        // let len = this.state.blogs.length ;
+        console.log(this.state.array);
+        
         return (
 
             <div>
@@ -41,37 +53,37 @@ class Blogtable extends React.Component<any, any> {
                 <section className="blog-content">
                     <article className="text-center txt">The latest and best articles selected by our editorial choice</article>
                 </section>
-                <section className="text-center main_box" >
+                    <div className=" main_box">
                     {this.state.blogs.map((x: any, i: any) => {
-                        // console.log(x.title);
+                            // console.log(x.title);
+                            if (ind % 5 === 0) {
+                                ind++
+                                // console.log(i);
+                                return (<Link to={"/blogContent?id=" + x.id}><div className="first_box" key={x.id} >
+                                    <p className="blog_title">{x.title}</p>
+                                </div></Link>)
+                            } else if (ind === 6) {
+                                ind = 1;                               return (<Link to={"/blogContent?id=" + x.id}><div className="first_box" key={x.id} >
+                                    <p className="blog_title">{x.title}</p>
+                                </div></Link>)
+                            } else {
+                                // console.log(i);
+                                ind++
+                                return (<Link to={"/blogContent?id=" + x.id}><div className="second_box" key={x.id} >
+                                    <p className="blog_title" >{x.title}</p>
+                                </div></Link>)
+                            }
+
+                        })
+                        } 
                         
-                        if (ind % 5 === 0) {
-                            ind++;
-                            // console.log(i);
-                            return (<Link to={"/blogContent?id="+x.id}><div className="first_box" key={x.id} >
-                                <p className="blog_title">{x.title}</p>
-                            </div></Link>)
-                        }else if(ind === 6){
-                            ind =1
-                            return (<Link to={"/blogContent?id="+x.id}><div className="first_box" key={x.id} >
-                            <p className="blog_title">{x.title}</p>
-                            </div></Link>)
-                        }else {
-                            // console.log(i);
-                            ind++;
-                            return (<Link to={"/blogContent?id="+x.id}><div className="second_box" key={x.id} >
-                                <p className="blog_title" >{x.title}</p>
-                            </div></Link>)
-                        }
-                       
-                    })
-                    }
-                </section>
+                    </div>
+                    
             </div>
+            // </div>
         );
     }
 }
-
 
 export default (Blogtable);
 // export default Blogtable;
@@ -83,6 +95,27 @@ export default (Blogtable);
 //     }
 //         </div>)
 // })
+
+
+
+
+{/* <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span className="visually-hidden">Previous</span>
+                    </button>
+                    <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                        <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span className="visually-hidden">Next</span>
+                    </button> */}
+
+
+
+
+
+
+ 
+
+
 
 
 // {

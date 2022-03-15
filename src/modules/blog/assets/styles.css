@@ -23,7 +23,7 @@ body{
     background-size:cover;
     height: 38.75rem;
 } 
- h1{
+h1{
    font-weight:700;
    font-size:3.5rem;
    color: #ffffff;
@@ -66,7 +66,7 @@ body{
     height: 30rem;
     background-color:#2078BF;
     margin-bottom: 1.1825rem;
-    margin-right: 10px;
+    margin: 10px !important;
     border-radius: 0.625rem;
     cursor: pointer;
 } 

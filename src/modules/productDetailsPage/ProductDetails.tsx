@@ -112,7 +112,7 @@ function ProductDetails(props: any) {
                         <div className="horizontalRule"></div>
                         <div className="sort-filter my-5 d-flex justify-content-end">
                             <p className="sort d-inline pt-2">Sort by</p>
-                            <select className="dropdownToggle "
+                            <select className="dropdownToggle1"
                                 placeholder="Default"
                                 required>
                                 <option className="dropdownItem" selected disabled value="" hidden>Default</option>
@@ -120,7 +120,7 @@ function ProductDetails(props: any) {
                                 <option className="dropdownItem" >Price Low To High</option>
                             </select>
                             <p className="sort d-inline pt-2">Show</p>
-                            <select className="dropdownToggle "
+                            <select className="dropdownToggle2 "
                                 placeholder="Default"
                                 onChange={showHandler}
                                 required>
@@ -144,7 +144,7 @@ function ProductDetails(props: any) {
                                                     // <p>Cattle</p>
                                                     <div key={i}>
 
-                                                        <div className="card mb-4">
+                                                        <div className="card my-4">
                                                             {/* <Link to="/selectedProduct" > */}
                                                             <div className="card-body" onClick={productDataHandler} id={e.animalId}>
                                                                 <button className="wishListButton"><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
@@ -185,7 +185,7 @@ function ProductDetails(props: any) {
 
                                                     // <p>Sheep</p>
                                                     <div key={i}>
-                                                        <div className="card mb-4">
+                                                        <div className="card my-4">
                                                             {/* <Link to="/selectedProduct" > */}
                                                             <div className=" card-body" onClick={productDataHandler} id={e.animalId}>
                                                                 <button className="wishListButton"><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
