@@ -163,12 +163,18 @@ hr {
   background-color: #2078bf !important;
   color: #ffffff;
 }
+
 .locbtn {
   border: none;
   height: 2.5rem;
   width: 100%;
   font-size: 0.875rem;
   color: #838383;
+}
+
+.locbtn:hover {
+  color: #fff;
+  background-color: #2078bf !important;
 }
 .marketButton {
   font-size: 0.875rem;

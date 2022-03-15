@@ -7,10 +7,10 @@ import { connect } from "react-redux";
 
 const validateProduct = (productData: any) => {
   const errors: any = {};
-  if (productData.image === null) {
-    errors.image = "Please Upload an image";
-  } else if (!/\.(jpg|jpeg|png)$/.test(productData.image)) {
-    errors.image = "image format should be in .jpeg/.png/jpg.";
+  if (productData.file === null) {
+    errors.file = "Please Upload an image";
+  } else if (!/\.(jpg|jpeg|png)$/.test(productData.file)) {
+    errors.file = "image format should be in .jpeg/.png/jpg.";
   }
   if (!productData.quantity) {
     errors.quantity = "Please Enter Quantity";
@@ -60,7 +60,8 @@ const validateProduct = (productData: any) => {
 function AddProducts(props: any) {
   const formik = useFormik({
     initialValues: {
-      image: null,
+      file: null,
+      fileData:null,
       quantity: "",
       weight: "",
       breed: "",
@@ -76,8 +77,11 @@ function AddProducts(props: any) {
       // alert(JSON.stringify(values));
       // values.preventDefault();
       // console.log(values);
-      storeProductData(productDetails);
-      console.log("Latest Product:", productDetails);
+      const formData = new FormData();
+        for (let key in productDetails)
+            formData.set(key, productDetails[key]);
+      storeProductData(formData);
+      console.log("Latest Product:", formData);
       props.store_products(productDetails);
     }
   });
@@ -122,18 +126,23 @@ function AddProducts(props: any) {
                   required
                 </p>
                 <div>
-                  <label htmlFor="image">
+                  <label htmlFor="file">
                     Upload Image<span className="text-danger">*</span>{" "}
                   </label>
-                  <input
+                  <input id="file"
                     type="file"
-                    name="image"
-                    id="image" //value={formik.values.Id}
-                    onChange={formik.handleChange}
+                    name="file"
+                    //value={formik.values.Id}
+                    onChange={(event:any) => {
+                      formik.setFieldValue("fileData", event.currentTarget.files[0]);
+                      formik.handleChange(event)
+
+                    }}
+                  //  onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   ></input>
-                  {formik.touched.image && formik.errors.image ? (
-                    <span style={{ color: "red" }}>{formik.errors.image}</span>
+                  {formik.touched.file && formik.errors.file ? (
+                    <span style={{ color: "red" }}>{formik.errors.file}</span>
                   ) : null}
                 </div>
                 <label className="field" htmlFor="quantity">
