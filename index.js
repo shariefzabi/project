@@ -57,12 +57,17 @@ app.post("/users/signup", function (req, res) {
   userDb.findOne({ _id: req.body._id }, function (err, result) {
     if (err) console.log(err);
     if (result == null) {
-      userDb.insert(req.body);
-      res.send(["success",result]);
+      req.body.token = String(createToken())
+      userDb.insertOne(req.body);
+      console.log("signup",req.body);
+      res.send(["success",req.body]);
     } else res.send(["failed","This email is already registered"]);
   });
 });
-let token;
+
+const createToken=()=>{
+  return Math.floor(Math.random()*900000)+100000
+}
 app.post("/users/login", function (req, res) {
   console.log("log from login users :", req.body);
   userDb.findOne(
@@ -72,8 +77,7 @@ app.post("/users/login", function (req, res) {
       if (result == null) res.send("Invalid credentials");
       // res.send("No account found with this username, please sign up and then login");
       else {
-        token = Math.floor(Math.random()*900000)+100000;
-        result.token=String(token);
+        result.token=String(createToken());
         userDb.updateOne({_id:result._id},{$set:{token:result.token}});
         res.send(result)};
     }
