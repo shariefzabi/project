@@ -55,6 +55,7 @@ hr {
   background: #ffffff;
   border: 1px solid #e0e0e0;
 }
+
 .card-deck {
   margin-right: 6.625rem;
 }
@@ -111,6 +112,17 @@ hr {
 .dropdownToggle {
   margin-right: 2rem;
   margin-left: 1rem;
+  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  color: #838383;
+}
+
+.sort{
+  color: #838383;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
 }
 .wishListImg {
   width: 30px;
@@ -124,6 +136,7 @@ hr {
 .emptydiv {
   height: 7.25rem;
 }
+
 //leftdiv css
 #opened {
   background-color: #2078bf !important;
@@ -146,6 +159,7 @@ hr {
   border: 2px solid #e0e0e0;
   height: 15rem;
   overflow-y: scroll;
+  border-radius: 5px;
 }
 .blue {
   width: 10px;

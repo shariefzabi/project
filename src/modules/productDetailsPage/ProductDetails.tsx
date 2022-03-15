@@ -111,7 +111,7 @@ function ProductDetails(props: any) {
                         {/* <hr /> */}
                         <div className="horizontalRule"></div>
                         <div className="sort-filter my-5 d-flex justify-content-end">
-                            <p className="d-inline pt-2">Sort by</p>
+                            <p className="sort d-inline pt-2">Sort by</p>
                             <select className="dropdownToggle "
                                 placeholder="Default"
                                 required>
@@ -119,7 +119,7 @@ function ProductDetails(props: any) {
                                 <option className="dropdownItem" >Price High to Low</option>
                                 <option className="dropdownItem" >Price Low To High</option>
                             </select>
-                            <p className="d-inline pt-2">Show</p>
+                            <p className="sort d-inline pt-2">Show</p>
                             <select className="dropdownToggle "
                                 placeholder="Default"
                                 onChange={showHandler}
@@ -187,7 +187,7 @@ function ProductDetails(props: any) {
                                                     <div key={i}>
                                                         <div className="card mb-4">
                                                             {/* <Link to="/selectedProduct" > */}
-                                                            <div className="card-body" onClick={productDataHandler} id={e.animalId}>
+                                                            <div className=" card-body" onClick={productDataHandler} id={e.animalId}>
                                                                 <button className="wishListButton"><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
                                                                 <div className="emptydiv" id={e.animalId}></div>
                                                                 {/* <img src=`data:image/jpeg;based64,+btoa(${e.image})` /> */}
@@ -197,7 +197,7 @@ function ProductDetails(props: any) {
 
                                                                 <p className="card-price" id={e.animalId}>p:{e.price}</p>
                                                                 <div className="text-center">
-                                                                    <button type="button" className="btn btn-success">Add to Cart</button>
+                                                                    <button type="button" className=" btn btn-success">Add to Cart</button>
                                                                 </div>
                                                             </div>
 
