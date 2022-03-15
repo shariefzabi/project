@@ -65,7 +65,6 @@ class PaymentMethod extends React.Component<any, any> {
           this.setState({ card_numberErr })
         } else {
           card_numberErr = '';
-          // e.target.classList.remove("field-error")
           this.setState({ card_numberErr, card_number })
         }
       }
@@ -74,7 +73,6 @@ class PaymentMethod extends React.Component<any, any> {
     if (e.target.name === 'month_year') {
       let month_year = e.target.value;
       let month_yearErr = '';
-      // [12,22]
       let [month, year] = e.target.value.split("/");
       month = month - 0;
       year = year - 0;
@@ -84,11 +82,7 @@ class PaymentMethod extends React.Component<any, any> {
         month_yearErr = "Please enter the Month and Year."
         this.setState({ month_yearErr })
       }
-
       else {
-
-        // let re1 = /^[0-9]{1,12}$/;
-        // let re2 = /^[0-9]{22,50}$/;
         if (!((month >= 1 && month <= 12) && (year >= 22 && year <= 50))) {
           month_yearErr = "Invalid Month and Year (MM/YY)"
           this.setState({ month_yearErr })
@@ -122,7 +116,7 @@ class PaymentMethod extends React.Component<any, any> {
 
   }
   setPaymentInformation = () => {
-    alert()
+    // alert()
     let { payment, orderId } = this.state
     this.setState({ flag1: false })
     let paymentStatus = {
@@ -133,36 +127,19 @@ class PaymentMethod extends React.Component<any, any> {
       axios.post("http://localhost:3005/payment/status", paymentStatus)
         .then((result) => {
           console.log("status", result.data);
-
-
         })
         .catch(err => {
           console.log("error: ", err);
         })
-
       this.props.setPaymentInformation(payment)
-
       console.log(paymentStatus)
-
-
-
-
     }
   }
   submitHandler = (e: any) => {
     e.preventDefault()
-
-
-
-
-
-
-
     this.setState({ flag2: false })
     let { month, year, payment, card_number, cvv_number, orderId, date } = this.state;
     this.props.setPaymentInformation(payment)
-
-
     console.log("carddetails", { month, year, card_number, cvv_number })
     // let { breed, quantity, sex, type, weight, price, delprice, totalprice } = this.props.redux.orders.productdetails;
     // let product_amount = this.props.redux.orders.productdetails.quantity * this.props.redux.orders.productdetails.weight * 50000;
@@ -175,7 +152,6 @@ class PaymentMethod extends React.Component<any, any> {
     this.props.setCardDetails({ month, year, card_number, cvv_number })
     console.log("originalInvoice", this.state.orderId)
     let invoicedata = {
-
       "invoicedata": {
         "orderId": orderId,
         'payment': payment,
@@ -185,9 +161,7 @@ class PaymentMethod extends React.Component<any, any> {
         "CVV": cvv_number,
         "date": date
       }
-
     }
-
     axios.post("http://localhost:3005/card/details", invoicedata)
       .then((result) => {
         console.log("invoicedata", result.data);
@@ -196,7 +170,6 @@ class PaymentMethod extends React.Component<any, any> {
       .catch(err => {
         console.log("error: ", err);
       })
-
     this.setState({
       card_number: '',
       cvv_number: '',
@@ -209,12 +182,8 @@ class PaymentMethod extends React.Component<any, any> {
     console.log(orderId)
     axios.post("http://localhost:3005/payment/status", paymentStatus)
       .then((result) => {
-        console.log("status", result.data);
-
-
-
+        // console.log("status", result.data);
       })
-
       .catch(err => {
         console.log("error: ", err);
       })
@@ -226,8 +195,6 @@ class PaymentMethod extends React.Component<any, any> {
     // console.log(this.props.redux.orders.productdetails);
     // let { breed, quantity, sex, type, weight } = this.props.redux.orders.productdetails;
     // console.log("breed", breed);
-
-
     return (
       <div className='paymentmethod'>
         {/* <div className="modal fade" id="exampleModalPayment" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" data-bs-toggle="modal" tabIndex={-1} data-bs-backdrop="static"> */}
@@ -235,7 +202,6 @@ class PaymentMethod extends React.Component<any, any> {
           <div className="modal-dialog modal-dialog-centered ">
             <div className="modal-content">
               <div className="modal-body ">
-
                 <h5 className="modal-title " id="exampleModalToggleLabel">Payment Method</h5>
                 {/* <button type="button" className="btn-close btn-cancele col-1" data-bs-dismiss="modal" aria-label="Close"></button> */}
 
@@ -328,36 +294,13 @@ class PaymentMethod extends React.Component<any, any> {
             }
           </div>
         }
-
-
-        {/* {this.state.payment == "Pay_On_Delivery" &&  */}
-        {/* <div className="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabIndex={-1}>
-            <div className="modal-dialog modal-dialog-centered ">
-              <div className="modal-content">
-                <div className="modal-body text-center">
-                  <div className="Successfully_Placed_box">
-                    <h3>&#10003;</h3>
-                  </div>
-                  <h5 className='Successfully_Placed'>Order has been<br />Successfully Placed</h5>
-                  {/* <Link to="/products">
-                    <button className="btn btn-success" data-bs-toggle="modal">Continue Shopping</button>
-                  </Link> */}
-        {/* <button className="btn btn-success" data-bs-toggle="modal"><Link to='/products'>Continue Shopping</Link></button>
-                </div>
-              </div>
-            </div>
-          </div> */}
-        {/* } */}
-        {/* <a className="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Proceed Payment</a>
-        <h1>{this.state.payment}</h1> */}
       </div>
     )
   }
 }
 
 const mapStateToProps = (state: any) => {
-  console.log(state);
-
+  // console.log(state);
   return {
     redux: state
   }

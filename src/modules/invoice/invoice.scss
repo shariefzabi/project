@@ -1,3 +1,13 @@
+.invoice-border{
+ border-bottom: 2px solid #E0E0E0;
+}
+.dbl{
+  width: calc(100%/8);
+  height: 2% !important;
+}
+.bRow{
+  height: 3.93rem;
+}
 .invoiceSection {
     margin: 6.562rem 12.13vw 0rem 11vw;
     padding: 0;
@@ -25,16 +35,20 @@
   
   .invoice-heading, .head h3 {
     line-height: 1rem;
-    margin-left: 4.6vw;
-    padding-top: 2.25rem;
+    /* margin-left: 4.6vw; */
+    padding-top: 1.5rem;
     font-weight: bold;
     color: #838383;
     font-size: 1.125rem;
+    padding-left: 4.7vw;
+    padding-bottom: 1.5rem;
+    margin-bottom: 0rem !important;
   }
   
   .head h3 {
     margin-top: 1.375rem;
     padding: 0rem;
+    margin-left :6%
   }
   .head h3 i {
     font-size: 0.875rem;
@@ -53,23 +67,25 @@
   .invoice-id {
     line-height: 1rem;
     margin: 0;
-    margin-left: 4.6vw;
-    padding-bottom: 1rem;
+    padding-left: 4.6vw;
+    padding-bottom: 1.1rem;
     color: #838383;
     font-size: 0.875rem;
+    padding-top: 1.1rem;
   }
-  .invoice-id span{
-    /* padding-left: 40vw; */
-    float: right;
-    padding-right: 3.33vw;
+  .invoice-id img{
+   float: right;
+    padding: 0.5rem 3rem 0.6rem 39vw;
+    cursor: pointer;
   }
   .hr-line{
     margin-top: 0;
   }
   table{
     margin:auto;
-    width: 62.06vw;
+    width: 66vw !important;
     height:161px;
+    border-bottom: none !important;
 
   }
   
@@ -100,6 +116,9 @@
   }
   .inv-bd-lp p {
     margin-bottom: 1.365rem;
+  }
+  .head{
+    border-top:none !important;
   }
   @media (max-width: 576px) {
     .invoiceSection{
@@ -208,7 +227,5 @@
       padding: 0.1vw;
       font-size: 0.8rem;
     }
-  
-   
   }
   
