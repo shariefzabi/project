@@ -129,8 +129,21 @@ app.post("/users/reset/:token",function(req,res){
 
 //************ No.1 Team ************* Ending *****************************
 
-//team-2 storing order details
-app.get("/orders/orderdetails", async (req, res) => {
+
+
+//team-2 
+//getting product filter details
+app.get("/orders/productfilters",  async(req, res)=> {
+  let filterdetails = req.body;
+  // console.log(filterdetails);
+  let filtercollection = db.collection("productfilters");
+  filtercollection.find().toArray(function (err,result) {
+    console.log(result);
+    res.send(result)
+  })
+});
+
+app.get("/orders/orderdetails",  async(req, res)=> {
   let orderdetails = req.body;
   console.log(orderdetails);
   let ordercollection = db.collection("orders");
@@ -138,6 +151,7 @@ app.get("/orders/orderdetails", async (req, res) => {
     res.send(result)
   })
 });
+//storing order details
 app.post("/orders/orderdetails", function (req, res) {
   let orderdetails = req.body;
   console.log(orderdetails);
