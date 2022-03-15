@@ -123,21 +123,14 @@ class PaymentMethod extends React.Component<any, any> {
   }
   submitHandler = (e: any) => {
     e.preventDefault()
-
-
-
     this.setState({ flag2: false })
     let { month, year, payment, card_number, cvv_number, orderId, date } = this.state;
-
     console.log("carddetails", { month, year, card_number, cvv_number })
-
-    let { breed, quantity, sex, type, weight, price, delprice, totalprice } = this.props.redux.orders.productdetails;
-
+    // let { breed, quantity, sex, type, weight, price, delprice, totalprice } = this.props.redux.orders.productdetails;
     // let product_amount = this.props.redux.orders.productdetails.quantity * this.props.redux.orders.productdetails.weight * 50000;
     // let deliveryAmount = 5505;
     // let totalAmount = 578;
     // let orderId = 64875;
-
     // let product_amount = this.props.redux.orders.productdetails.quantity * this.props.redux.orders.productdetails.weight * 50000;
     // let deliveryAmount = this.props.redux.orders.productdetails.quantity * this.props.redux.orders.productdetails.weight * 10000;
     // let totalAmount = this.props.redux.orders.productdetails.quantity * this.props.redux.orders.productdetails.weight * 50000 + 2000;
@@ -152,14 +145,6 @@ class PaymentMethod extends React.Component<any, any> {
         "Month": month,
         "year": year,
         "CVV": cvv_number,
-        "type": type,
-        "breed": breed,
-        "quantity": quantity,
-        "sex": sex,
-        "weight": weight,
-        "productAmount": price,
-        "deliveryAmount": delprice,
-        "totalAmount": totalprice,
         "date": date
       }
 
@@ -236,15 +221,15 @@ class PaymentMethod extends React.Component<any, any> {
                         <form  >
                           {/* card Number */}
                           <img className="placeholder-img" src={require("./asset/img/card.png")} alt=""></img>
-                          <input className=" form-control " type="text" value={this.state.card_number} name="card_number" placeholder="Card number" onChange={this.changeHandler} onBlur={this.validation} />
+                          <input className=" form-control pt-2 pb-2" type="number" value={this.state.card_number} name="card_number" placeholder="Card number" onChange={this.changeHandler} onBlur={this.validation} />
                           <p className="text-danger text-start m-0">{this.state.card_numberErr}</p>
                           {/* Month year */}
                           <img className="placeholder-img" src={require("./asset/img/calendar.png")} alt=""></img>
-                          <input className="form-control " type="text" value={this.state.month_year} placeholder="MM/YY" name="month_year" onChange={this.changeHandler} onBlur={this.validation} />
+                          <input className="form-control pt-2 pb-2 " type="text" value={this.state.month_year} placeholder="MM/YY" name="month_year" onChange={this.changeHandler} onBlur={this.validation} />
                           <p className="text-danger text-start m-0">{this.state.month_yearErr}</p>
                           {/* CVV number */}
                           <img className="placeholder-img" src={require("./asset/img/CVV.png")} alt=""></img>
-                          <input className="form-control " type="text" value={this.state.cvv_number} name="cvv_number" placeholder="CVV" onChange={this.changeHandler} onBlur={this.validation} />
+                          <input className="form-control  pt-2 pb-2" type="number" value={this.state.cvv_number} name="cvv_number" placeholder="CVV" onChange={this.changeHandler} onBlur={this.validation} />
                           <p className="text-danger text-start m-0">{this.state.cvv_numberErr}</p>
                           <div className="text-center mb-3 mt-4 ">
                             <button onClick={(e) => { this.submitHandler(e) }} className="btn button-large btn-success mt-3" disabled={!(this.state.card_numberErr == '' && this.state.cvv_numberErr == '' && this.state.card_number !== '' && this.state.cvv_number !== '')}><img className="lock-icon" src={require("./asset/img/lock.png")}></img>Pay &#8377;  {` ${this.state.totalprice}.00`}</button>

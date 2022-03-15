@@ -70,20 +70,20 @@ function Invoice1(props: any) {
                                                 <table className="mt-4">
                                                     <thead>
                                                         <tr className="Hrow">
-                                                            <th>Type</th>
+                                                            <th className="dbl">Type</th>
                                                             <th className="dbl">Sex</th>
-                                                            <th>Date</th>
-                                                            <th>Quantity</th>
-                                                            <th>Weight</th>
-                                                            <th>
+                                                            <th className="dbl">Date</th>
+                                                            <th className="dbl">Quantity</th>
+                                                            <th className="dbl">Weight</th>
+                                                            <th className="dbl">
                                                                 <span className="first-line">Product</span>
                                                                 <span>Amount</span>
-                                                            </th>
+                                                            </th >
                                                             <th className="dbl">
                                                                 <span className="first-line">Delivery</span>
                                                                 <span>Amount</span>
-                                                            </th>
-                                                            <th >
+                                                            </th >
+                                                            <th className="dbl">
                                                                 <span className="first-line">Total</span>
                                                                 <span>Amount</span>
                                                             </th>
@@ -122,9 +122,9 @@ function Invoice1(props: any) {
                                                     </div>
                                                     <div className="col-1 inv-vr p-0"></div>
                                                     <div className="col-5  col-sm-3 inv-bd-lp text-start p-0">
-                                                        <p>First Bank</p>
-                                                        <p>{data["invoicedata"]["cardNumber"]}</p>
-                                                        <p>Olubodun Akinleye</p>
+                                                        <p>NA</p>
+                                                        <p>NA</p>
+                                                        <p>NA</p>
                                                     </div>
                                                 </div>
                                             </div>

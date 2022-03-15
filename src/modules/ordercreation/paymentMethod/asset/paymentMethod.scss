@@ -1,8 +1,12 @@
 
-
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button { 
+	-webkit-appearance: none;
+}
 .paymentmethod{
-    width: 32%;
+    width: 38%;
     margin: 7% auto;
+ 
     .payment{
         margin-top: 4%;
     }
