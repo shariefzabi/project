@@ -65,7 +65,7 @@ class Blogform extends React.Component<any, any>{
             this.setState({ topicErrMsg: "Please enter the title." ,topicFlag:"on"})
             
         } else {
-            let nameReg = /^([a-zA-Z ]{10,100})$/
+            let nameReg = /^([a-zA-Z0-9 ]{10,100})$/
             if (!nameReg.test(this.state.topic)) {
                 this.setState({ topicErrMsg: "Accepts Alphabets, space & Min 10 to Max 100 Char" ,topicFlag:"on"})
             } else {
