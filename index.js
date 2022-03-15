@@ -42,7 +42,16 @@ app.use("/product", productCost);
 app.use("/card", cardDetail);
 app.use("/invoicedetails", invoice);
 app.use("/invoice", InvoiceUniqueID);
-app.use("/payment", cardDetail)
+app.use("/payment", cardDetail);
+
+app.get("/orders", async (req, res) => {
+  let orderdetails = req.body;
+  console.log(orderdetails);
+  let ordercollection = db.collection("orders");
+  ordercollection.find().sort({ "orderId": -1 }).toArray(function (err, result) {
+    res.send(result)
+  })
+});
 
 // end
 
@@ -56,47 +65,48 @@ app.use(bodyParser.json());
 //*********** No.1 Team ************* Starting **************************
 app.post("/users/signup", function (req, res) {
   console.log("log from signup users", req.body);
-  userDb.findOne({ _id: req.body.email },{projection:{_id:0}}, function (err, result) {
+  userDb.findOne({ _id: req.body.email }, { projection: { _id: 0 } }, function (err, result) {
     if (err) console.log(err);
     if (result == null) {
       req.body.token = String(createToken())
-      userDb.insertOne({...req.body,_id:req.body.email});
+      userDb.insertOne({ ...req.body, _id: req.body.email });
       // console.log("signup",req.body);
-      res.send(["success",req.body]);
-    } else res.send(["failed","This email is already registered"]);
+      res.send(["success", req.body]);
+    } else res.send(["failed", "This email is already registered"]);
   });
 });
 
-const createToken=()=>{
-  return Math.floor(Math.random()*900000)+100000
+const createToken = () => {
+  return Math.floor(Math.random() * 900000) + 100000
 }
 app.post("/users/login", function (req, res) {
   console.log("log from login users :", req.body);
   userDb.findOne(
-    { _id: req.body.username, password: req.body.password },{projection:{_id:0}},
+    { _id: req.body.username, password: req.body.password }, { projection: { _id: 0 } },
     function (err, result) {
       if (err) console.log(err);
       if (result == null) res.send("Invalid credentials");
       // res.send("No account found with this username, please sign up and then login");
       else {
-        result.token=String(createToken());
-        userDb.updateOne({_id:result.email},{$set:{token:result.token}});
+        result.token = String(createToken());
+        userDb.updateOne({ _id: result.email }, { $set: { token: result.token } });
         // console.log("result from login",result);
-        res.send(result)};
+        res.send(result)
+      };
     }
   );
 });
-app.get("/users/:token",function(req,res){
+app.get("/users/:token", function (req, res) {
   // console.log("get token :",req.params);
-  userDb.findOne(req.params,{projection:{_id:0}},function (err,result){
-    if(err) throw err;
-    if (result==null) res.send("null")
+  userDb.findOne(req.params, { projection: { _id: 0 } }, function (err, result) {
+    if (err) throw err;
+    if (result == null) res.send("null")
     else res.send(result)
   })
 })
-app.post("/users/:token",function(req,res){
-  userDb.updateOne(req.params,{$set:req.body},function (err,result){
-    if(err) throw err;
+app.post("/users/:token", function (req, res) {
+  userDb.updateOne(req.params, { $set: req.body }, function (err, result) {
+    if (err) throw err;
     // if (result==null) res.send("null")
     // else res.send(result)
   })
@@ -105,11 +115,11 @@ app.post("/users/:token",function(req,res){
 //************ No.1 Team ************* Ending *****************************
 
 //team-2 storing order details
-app.get("/orders/orderdetails",  async(req, res)=> {
+app.get("/orders/orderdetails", async (req, res) => {
   let orderdetails = req.body;
   console.log(orderdetails);
   let ordercollection = db.collection("orders");
-  ordercollection.find().sort({"orderId":-1}).limit(1).toArray(function (err,result) {
+  ordercollection.find().sort({ "orderId": -1 }).limit(1).toArray(function (err, result) {
     res.send(result)
   })
 });
@@ -117,13 +127,13 @@ app.post("/orders/orderdetails", function (req, res) {
   let orderdetails = req.body;
   console.log(orderdetails);
   let ordercollection = db.collection("orders");
-  ordercollection.count(function(err,result){
-    if(err)console.log(err);
+  ordercollection.count(function (err, result) {
+    if (err) console.log(err);
     else {
-      if(result==0){
-        orderdetails.orderId=1;
-      }else{
-        orderdetails.orderId=result+1;
+      if (result == 0) {
+        orderdetails.orderId = 1;
+      } else {
+        orderdetails.orderId = result + 1;
       }
       // const newdate=new Date();
       // orderdetails.date=`${newdate.getDay()}/${newdate.getMonth()}/${newdate.getFullYear()}`;
@@ -139,19 +149,19 @@ app.get('/orders/orderdetails/:uname', async (req, res) => {
   console.log(params.uname);
   let ordercollection = db.collection("ordersdisplay");
 
-    ordercollection.find({ "username": params.uname }).toArray(function (err, result) {
-      if(err) console.log(err);
-      else   res.send(result)
-      })
- 
+  ordercollection.find({ "username": params.uname }).toArray(function (err, result) {
+    if (err) console.log(err);
+    else res.send(result)
+  })
+
 })
 //storing wishlists
 app.post("/orders/wishlists", function (req, res) {
   let wishlistdetails = req.body;
   console.log(wishlistdetails);
   let wishlistcollection = db.collection("wishlists");
-  wishlistcollection.count(function(err,result){
-    if(err)console.log(err);
+  wishlistcollection.count(function (err, result) {
+    if (err) console.log(err);
     else {
       wishlistcollection.insertOne(wishlistdetails);
       res.json(wishlistdetails);
@@ -164,10 +174,10 @@ app.get('/orders/wishlists/:uname', async (req, res) => {
   console.log(params.uname);
   let ordercollection = db.collection("wishlists");
   ordercollection.find({ "username": params.uname }).toArray(function (err, result) {
-      if(err) console.log(err);
-      else   res.send(result)
-      })
- 
+    if (err) console.log(err);
+    else res.send(result)
+  })
+
 })
 
 //team-2 ending
@@ -227,13 +237,13 @@ const Comments = require("./Blogs/comschema.cjs");
 
 app.get("/comments/:id", async (req, res) => {
   try {
-      let { params } = req;
-      console.log( Comments.find({ "id": params.id }));
-      const data = await Comments.find({ "id": params.id });
-      res.json(data);
-    } catch (err) {
-      res.send("Error" + err);
-    }
+    let { params } = req;
+    console.log(Comments.find({ "id": params.id }));
+    const data = await Comments.find({ "id": params.id });
+    res.json(data);
+  } catch (err) {
+    res.send("Error" + err);
+  }
 });
 // app.get("/blogs/:id", async (req, res) => {
 //   try {
@@ -248,7 +258,7 @@ app.get("/comments/:id", async (req, res) => {
 app.get("/blogs/:id", async (req, res) => {
   try {
     let { params } = req;
-    console.log( Blog.find({ "id": params.id }));
+    console.log(Blog.find({ "id": params.id }));
     const data = await Blog.find({ "id": params.id });
     res.json(data);
   } catch (err) {
