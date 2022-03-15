@@ -50,3 +50,68 @@ label{
     font-size:1.25rem;
     width:15rem;
 }
+@media (max-width:380px){
+    .landingpage-header{
+        height: 61px;
+    }
+    .form{
+        margin-left: auto;
+        padding-left: 44px;
+        padding-right:95px;
+    
+    }
+    .commentheading{
+        width: 86px;
+       
+        top: 934px;
+        margin-left: 0px;
+        
+        font-size: 10px;
+        font-style: normal;
+        font-weight: 700;
+        /* line-height: 11px; */
+    }
+    .fullname{
+        width: 236px;
+        color: #838383;
+        margin-bottom: 16px;
+        font-size: 8px !important;
+        /* margin-left: 44px; */
+    }
+    .Email{
+        color: #838383;
+        font-size: 8px !important;
+    }
+    .commenttitle{
+        color: #838383 !important;
+        font-size: 8px !important;
+    }
+    .fullnameinput{
+        width: 236px !important;
+        margin-bottom: 0px;
+        font-size: 8px;
+    }
+    .emailinput{
+        width: 236px !important;
+        font-size: 8px;
+        margin-bottom: 0px;
+    }
+    .commentinput{
+        width: 236px !important;
+       font-size: 8px;
+        margin-bottom: 1px !important;
+        
+    }
+     .sbutton{
+        text-align: left !important;
+        
+    } 
+    .doneBtn{
+        width: 88.5px !important;
+        height: 30px !important;
+        /* text-align: center !important; */
+        font-size: 10px !important;
+        padding-left: 44px;
+    }
+
+}

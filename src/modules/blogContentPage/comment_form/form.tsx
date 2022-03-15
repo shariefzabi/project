@@ -111,30 +111,30 @@ class Form extends React.Component<any, any> {
 
             <div>
                 <section className="form">
-                    <h2> Leave A Comment</h2>
+                    <h2 className="commentheading"> Leave A Comment</h2>
 
                     <form onSubmit={(e) => { this.submitHandler(e, { "name":name, "email": email, "comment":comment ,"id":this.props.id ,'date':Date.now}) }}>
                         <span className="col-12 row">
                             <div className="col-md-6 col-sm-12">
-                                <label className="col-12" htmlFor="name">Full Name</label>
-                                <input className="col-12 input-x" type="text" name="name" id="name" placeholder="Full Name" value={name}
+                                <label className="col-12 fullname" htmlFor="name">Full Name</label>
+                                <input className="col-12 input-x fullnameinput " type="text" name="name" id="name" placeholder="Full Name" value={name}
                                     onChange={this.changeHandler}
                                     onBlur={this.validate}
                                 ></input>
-                                <p className="ms-1 text-danger">{this.state.nameErr}</p>
+                                <p className="ms-1 text-danger namerr">{this.state.nameErr}</p>
 
                             </div>
                             <div className="col-md-6 col-sm-12">
-                                <label className="col-12" htmlFor="email">Email</label>
-                                <input className="col-12 input-x" type="email" name="email" id="inputEmail" placeholder="Email" value={email}
+                                <label className="col-12 Email" htmlFor="email">Email</label>
+                                <input className="col-12 input-x emailinput" type="email" name="email" id="inputEmail" placeholder="Email" value={email}
                                     onChange={this.changeHandler}
                                     onBlur={this.validate} ></input>
                                 <p className="ms-1 text-danger">{this.state.emailErr}</p>
 
                             </div>
                             <div>
-                                <label className="col-12" htmlFor="comments">comment</label>
-                                <textarea className="col-12 comment" placeholder="Your Comments" id="comment" name="comment" value={comment}
+                                <label className="col-12 commenttitle" htmlFor="comments">Comment</label>
+                                <textarea className="col-12 comment commentinput" placeholder="Your Comments" id="comment" name="comment" value={comment}
                                     onChange={this.changeHandler}
                                     onBlur={this.validate}
                                 ></textarea>
@@ -142,9 +142,9 @@ class Form extends React.Component<any, any> {
 
                             </div>
                         </span>
-                        <div className="text-center">
+                        <div className=" sbutton">
                             <p className="ms-1 text-danger">{this.state.err}</p>
-                            <button type="submit" className="btn btn-success doneBtn m-2 btn btn-primary" >Submit</button>
+                            <button type="submit" className="btn btn-success doneBtn m-2 btn btn-primary " >Submit</button>
                         </div>
                     </form>
                 </section>

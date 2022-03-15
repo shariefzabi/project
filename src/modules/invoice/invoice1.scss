@@ -4,6 +4,10 @@
 // .invoice-border:last-child{
 //   border-bottom: none;
 //  }
+.dbl{
+  width: calc(100%/8);
+  height: 2% !important;
+}
 .invoiceSection {
     margin: 6.562rem 12.13vw 0rem 11vw;
     padding: 0;
@@ -222,7 +226,5 @@
       padding: 0.1vw;
       font-size: 0.8rem;
     }
-  
-   
   }
   
