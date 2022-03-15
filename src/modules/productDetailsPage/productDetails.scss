@@ -178,6 +178,11 @@ hr {
   background-color: #ffffff;
   color: #838383;
 }
+.addbtn{
+  font-size:0.75rem !important;
+  line-height:1.5rem !important;
+  letter-spacing: 0.1px;
+}
 //for chrome
 .locBox::-webkit-scrollbar{
   display: none;
@@ -273,7 +278,14 @@ hr {
 .descripbtn:hover{
   border-top: 3px solid #2078bf;
 }
-.addbtn{
-  border-radius: 5px;
+
+.review{
+  border: 1px solid #e0e0e0;
+   border-radius: 5px;
+  padding: 1.5625rem;
+  font-size: 0.75rem;
+  line-height: 1.5rem;
+  color: #838383;
 }
+
 

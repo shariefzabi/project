@@ -17,6 +17,7 @@ function PopUp(prop: any) {
   let [newLocation, setNewLocation] = useState('')
   let [newLocationErr, setNewLocationErr] = useState('')
   let [selectedLocation, setSelectedLocation] = useState('Location')
+  let [locErrorMsg, setLocErrorMsg]=useState("")
 
 
   let [toggleflag, setToggleFlag] = useState(true);
@@ -27,6 +28,10 @@ function PopUp(prop: any) {
       navigate("/products"); setToggleFlag(false)
 
       prop.setLocationName(selectedLocation)
+    }
+    else{
+      setLocErrorMsg("Please Select any Location")
+      
     }
   }
 
@@ -199,12 +204,14 @@ function PopUp(prop: any) {
 
 
                     </select>
+                    <p className="text-danger text-center mb-0">{locErrorMsg}</p>
                   </div>
 
 
                   {/* <Link to="/products"> */}
                   <button className="btn-success btn-cnt" type="submit" onClick={continueHandler}>Continue</button>
                   {/* </Link> */}
+                  
 
 
 

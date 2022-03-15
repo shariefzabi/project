@@ -146,7 +146,7 @@ function SelectedProductDetails(props: any) {
                             </div>
                         }
                         {!isDisplaying &&
-                            <div>
+                            <div className="review">
                                 Review
                             </div>
 
