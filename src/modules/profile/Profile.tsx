@@ -274,7 +274,7 @@ function Profile(props: any) {
                                                     <label htmlFor="zipCode">Zipcode<span className="text-danger">*</span></label>
 
                                                     <input maxLength={6} type="tel"  id="zipCode" name="zipCode" value={userDetails.zipCode} onChange={changeHandler} className="form-control " placeholder="Enter Zipcode"
-                                                        onBlur={validations} required />
+]                                                        onBlur={validations} required />
                                                     <p className="text-danger">{zipcodeErrMsg}</p>
                                                 </div>
                                                 <div className="my-4 position-relative text-start">
