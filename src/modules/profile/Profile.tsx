@@ -34,10 +34,10 @@ function Profile(props: any) {
             .then(res => {
                 if (res.data != "null") {
                     props.setUser(res.data)
-                    let { fullName, _id } = res.data
-                    setUserDetails({ ...userDetails, fullName, email: _id })
+                    let { fullName, email} = res.data
+                    setUserDetails({ ...userDetails, fullName, email })
                     if (res.data?.phone != undefined) {
-                        setUserDetails({ ...res.data, email: res.data._id })
+                        setUserDetails(res.data)
                     }
                 }
             })
