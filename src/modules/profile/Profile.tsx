@@ -48,7 +48,11 @@ function Profile(props: any) {
 
 
     const changeHandler = (e: any) => {
-        setUserDetails({ ...userDetails, [e.target.name]: e.target.value })
+        if (e.target.type=="number"&& e.target.maxLength>=e.target.value.length){
+         setUserDetails({ ...userDetails, [e.target.name]: e.target.value })    
+        }
+        else{
+        setUserDetails({ ...userDetails, [e.target.name]: e.target.value })}
     }
 
     const validations = (e: any) => {
@@ -243,7 +247,7 @@ function Profile(props: any) {
                                                 </div>
                                                 <div className="my-4 position-relative text-start">
                                                     <label htmlFor="phone">Phone<span className="text-danger">*</span></label>
-                                                    <input type="number" id="phone" name="phone" value={userDetails.phone} onChange={changeHandler} className="form-control " placeholder="Enter Number"
+                                                    <input maxLength={10}  type="tel" id="phone" name="phone" value={userDetails.phone} onChange={changeHandler} className="form-control " placeholder="Enter Number"
                                                         //   onChange={this.changeHandler}
                                                         onBlur={validations} required />
 
@@ -269,7 +273,7 @@ function Profile(props: any) {
                                                 <div className="my-4 position-relative text-start">
                                                     <label htmlFor="zipCode">Zipcode<span className="text-danger">*</span></label>
 
-                                                    <input type="number" id="zipCode" name="zipCode" value={userDetails.zipCode} onChange={changeHandler} className="form-control " placeholder="Enter Zipcode"
+                                                    <input maxLength={6} type="tel"  id="zipCode" name="zipCode" value={userDetails.zipCode} onChange={changeHandler} className="form-control " placeholder="Enter Zipcode"
                                                         onBlur={validations} required />
                                                     <p className="text-danger">{zipcodeErrMsg}</p>
                                                 </div>

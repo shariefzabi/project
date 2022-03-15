@@ -1,7 +1,7 @@
 import React from "react";
 import bar from "./asset/group2.png";
 import cross from "./asset/group35.png";
-import triangle from "./asset/Triangle.png";
+import triangle from "./asset/triangle.png";
 import { Link } from "react-router-dom";
 import "./app_header.scss";
 // import BuyNow from "../../modules/ordercreation/components/ordercreation";
@@ -18,10 +18,10 @@ class Header extends React.Component<any, any> {
 
   componentDidMount() {
     // this.props.setToken(this.getToken)
-    
+
     axios.get("http://localhost:3005/users/" + this.getToken())
       .then(res => {
-        
+
         if (res.data != "null") this.props.setUser(res.data)
         else this.props.setUser(null)
       })
@@ -161,7 +161,7 @@ class Header extends React.Component<any, any> {
               </Link>
             </div>
           )}
-           {user && (
+          {user && (
             <div className="home">
               <Link to="/addproducts" className="menu_content">
                 Add Products

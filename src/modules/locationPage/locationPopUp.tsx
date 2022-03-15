@@ -25,6 +25,7 @@ function PopUp(prop: any) {
   const continueHandler = (e: any) => {
     e.preventDefault();
     if (selectedLocation !== "Location") {
+      setLocErrorMsg("")
       navigate("/products"); setToggleFlag(false)
 
       prop.setLocationName(selectedLocation)
