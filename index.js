@@ -111,6 +111,21 @@ app.post("/users/:token", function (req, res) {
     // else res.send(result)
   })
 })
+app.post("/users/reset/:token",function(req,res){
+  console.log("reset :",req.body,req.params);
+  userDb.findOne(req.params,function(err,result){
+    if (err) throw err
+    console.log("result",result);
+    if (req.body.oldPassword == result.password){
+      userDb.updateOne(req.params,{$set:{password:req.body.newPassword}})
+      res.send(["success","Password updated successfully"])
+
+    }
+    
+    else
+    res.send(["failed","Incorrect password"])
+  })
+})
 
 //************ No.1 Team ************* Ending *****************************
 
