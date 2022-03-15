@@ -119,7 +119,7 @@ function SelectedProductDetails(props: any) {
                     <div className="col-5 p-0">
                         <button className="wishListButton"><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
                         <h3 id="marketHeading">ANIMAL ID - </h3>
-                        <h3 className="mb-4" id="marketHeading">{product._id}</h3>
+                        <h3 className="mb-3" id="marketHeading">{product._id}</h3>
                         <p id="text_code">Product Code: {product.productCode}</p>
                         <p className="mb-2" id="text_code">Availability: {product.availability}</p>
                         <Rating className="iconFilled" name="half-rating-read" defaultValue={4} precision={0.5} readOnly />
@@ -128,7 +128,7 @@ function SelectedProductDetails(props: any) {
                             <p className=" qty mb-1">Qty</p>
                             <div className="row quantity ms-0">
                                 <p className="col m-0">{count}</p>
-                                <button className="addbtn btn-primary col" onClick={countHandler}>+</button>
+                                <button className="addbtn2 btn-primary col" onClick={countHandler}>+</button>
                             </div>
                         </div>
                         <div>
@@ -139,11 +139,11 @@ function SelectedProductDetails(props: any) {
 
                 <div className="row">
                     <div className="col-3"></div>
-                    <div className="col-9">
-                        <button onClick={descriptionHandler}>Description</button>
-                        <button onClick={reviewHandler}>Reviews(0)</button>
+                    <div className="col-9 ">
+                        <button className="descripbtn" onClick={descriptionHandler}>Description</button>
+                        <button className="descripbtn"  onClick={reviewHandler}>Reviews(0)</button>
                         {isDisplayingDescription &&
-                            <div>
+                            <div className="descriptionbox">
                                 <p>Animal ID-{product._id}</p>
                                 <p>Weight-{product.weight}</p>
                                 <p>Breed-{product.breed}</p>
@@ -156,7 +156,7 @@ function SelectedProductDetails(props: any) {
                         
                             
                         {isDisplayingReview &&
-                            <div>
+                            <div className="review">
                                 Review
                             </div>
 
