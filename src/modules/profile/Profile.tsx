@@ -2,6 +2,7 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import './profile.scss'
+import Reset from './reset/reset'
 // import './sidebar.scss'
 import Sidebar from './sidebar/sidebar'
 
@@ -200,22 +201,24 @@ function Profile(props: any) {
         <div>
             <Sidebar></Sidebar>
 
-
+            {props.redux.user &&
             <div className='profile-container'>
 
-                {props.redux.user &&
+                
+                <header>
 
+                <div className="headingText">
+                    <h2>Profile</h2>
+                </div>
+                </header>
+                {!displayReset &&
                     <main id="mainContent">
                         <section className="profileSection">
 
-                            {!displayReset &&
-                                <div className="formContainer container-fluid " id='profileBlock'>
-                                    <header>
-
-                                        <div className="headingText">
-                                            <h2>Profile</h2>
-                                        </div>
-                                    </header>
+                            
+                                <div className="formContainer  " id='profileBlock'>
+                                    
+                                    
                                     <main className="row box col-sm-12">
                                         <section className="col-md-12 col-sm-12  row">
                                             <div className='profile' >
@@ -283,58 +286,26 @@ function Profile(props: any) {
                                             </form>
                                         </section>
                                     </main>
+                                    
                                 </div>
-                            }
-                                {displayReset &&
-                                <div className="formContainer container-fluid form-control " id="resetBlock">
-                                    <main className="row box">
-                                        <section className="col-md-10 col-sm-10 col-10 row">
-                                            <div className='resetpage'><h3>Reset Password</h3></div>
-                                            <form>
-                                                <p> Fields with <span className="text-danger">*</span> are required</p>
-                                                <div>
-                                                    <label htmlFor="name">Old Password<span className="text-danger">*</span></label>
-                                                    <div className="row">
-                                                        <div className="col-md-11 col-sm-11 col-10">
-                                                            <input type="text" id="name" name="name" className="inputBox" placeholder="Enter your name" />
-                                                        </div>
-                                                        <div className="col-md-1 col-sm-1 col-1 pt-1">
-                                                            <i className='fa fa-lock'></i>
-                                                        </div>
-                                                    </div>
-                                                    <label htmlFor="phone">Password<span className="text-danger">*</span></label>
-                                                    <div className="row">
-                                                        <div className="col-md-11 col-sm-11 col-10">
-                                                            <input type="password" id="phone" name="phone" className="inputBox" placeholder="Enter New Password" />
-                                                        </div>
-                                                        <div className="col-md-1 col-sm-1 col-1 pt-1">
-                                                            <i className="fa fa-lock"></i>
-                                                        </div>
-                                                    </div>
-                                                    <label htmlFor="email">Retype Password<span className="text-danger">*</span></label>
-                                                    <div className="row">
-                                                        <div className="col-md-11 col-sm-11 col-10">
-                                                            <input type="password" id="email" name="email" className="inputBox" placeholder="Retype New Password " />
-                                                        </div>
-                                                        <div className="col-md-1 col-sm-1 col-1 pt-1">
-                                                            <i className="fa fa-lock"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <button type="submit" id="saveButton" className="btn btn-success col-md-4">Save</button>
-                                            </form>
-                                        </section>
-                                    </main>
-                                </div>}
+                            
+                                
                         </section>
-                    </main>}
-                {!props.redux.user && <div className='mt-5 text-center'><h2 className='text-danger'>** Please login and try again **</h2>
-                </div>}
+                    </main>
+                }
+                
+                
 
 
 
 
             </div >
+            }
+            {!props.redux.user && <div className='mt-5 text-center'><h2 className='text-danger'>** Please login and try again **</h2>
+                </div>}
+                {displayReset &&
+                                <Reset setdisplayReset={setdisplayReset}></Reset>
+                                }
 
         </div>
     )

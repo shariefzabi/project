@@ -3,22 +3,25 @@
 .profileSection {
   margin: 0;
   padding: 0;
-  margin-left: 11vw;
-  margin-right: 12.13vw;
-  margin-top: 6.5625rem;
+  margin: auto;
+  margin-top: 3.5rem;
   box-sizing: border-box;
+  width: 1000px;
 }
-.profileSection .headingText h2{
+.headingText h2{
   color: #2078BF;
   font-weight: bolder;
+  margin-left: 210px!important ;
+  margin-top: 100px!important;
   margin: 0;
   font-size: 2.25rem;
   line-height: 1rem;
 }
-.profileSection header{
-  margin-bottom: 2.9375rem;
-  height: 2.8125rem;
-}
+
+// .header{
+//   margin-bottom: 2.9375rem;
+//   height: 2.8125rem;
+// }
 // form{
 //   margin-left:1rem;
 // }
@@ -41,6 +44,7 @@ input{
 .formContainer p{
   color: #838383;
   font-weight: 700;
+  // padding-top: 30px;
 }
 
 // .formContainer p {

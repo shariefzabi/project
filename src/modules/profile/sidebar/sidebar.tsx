@@ -13,7 +13,7 @@ export default function Sidebar() {
     }
 
     return (
-        <div>
+        <div className='sidebar-container'>
             <nav className="sidebar position-fixed d-none d-sm-block">
                 <ul className="nav flex-column fixed-left">
                     <li className="nav-item">
