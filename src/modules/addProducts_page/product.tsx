@@ -30,6 +30,12 @@ const validateProduct = (productData: any) => {
     //accepts alphabets and space
     errors.breed = "Enter a valid breed";
   }
+  if (!productData.types) {
+    errors.types = "Please Enter type";
+  } else if (!/^([a-zA-Z ]{1,30})$/i.test(productData.types)) {
+    //accepts alphabets and space
+    errors.types = "Enter a valid type";
+  }
   if (!productData.source) {
     errors.source = "Please Enter Source";
   } else if (!/^([a-zA-Z0-9 ]){4,}$/i.test(productData.source)) {
@@ -39,6 +45,9 @@ const validateProduct = (productData: any) => {
 
   if (productData.location === "Select Location") {
     errors.location = "Please Enter Location";
+  }
+  if (productData.sex === "Select Sex") {
+    errors.sex = "Please Select Male/Female";
   }
   if (productData.certification==="Select Certification") {
     errors.certification = "Please Choose cerification";
@@ -63,6 +72,8 @@ function AddProducts(props: any) {
       file: null,
       fileData:null,
       quantity: "",
+      types:"",
+      sex:"Select Sex",
       weight: "",
       breed: "",
       source: "",
@@ -143,6 +154,47 @@ function AddProducts(props: any) {
                   ></input>
                   {formik.touched.file && formik.errors.file ? (
                     <span style={{ color: "red" }}>{formik.errors.file}</span>
+                  ) : null}
+                </div>
+                <label className="field" htmlFor="types">
+                  Type<span className="text-danger">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="types"
+                  name="types"
+                  className="form-control"
+                  placeholder="Enter Type"
+                  value={formik.values.types}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                ></input>
+                <div>
+                  {formik.touched.types && formik.errors.types ? (
+                    <span style={{ color: "red" }}>{formik.errors.types}</span>
+                  ) : null}
+                </div>
+                <label htmlFor="sex" className="field">
+                  Sex<span className="text-danger">*</span>
+                </label>
+                <select
+                  name="sex"
+                  id="sex"
+                  className="form-select"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                >
+                  <option value={formik.values.sex}>
+                    Select Sex
+                  </option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+                <div>
+                  {formik.touched.sex && formik.errors.sex ? (
+                    <span style={{ color: "red" }}>
+                      {formik.errors.sex}
+                    </span>
                   ) : null}
                 </div>
                 <label className="field" htmlFor="quantity">

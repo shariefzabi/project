@@ -61,6 +61,7 @@ hr {
 //   margin-right: 6.625rem;
 //   margin-top: 10px ;
 // }
+
 .card-id {
   font-style: normal;
   font-weight: normal;
@@ -154,9 +155,9 @@ hr {
   border-radius: 5px;
   background-color: #ffffff;
 }
-.emptydiv {
-  height: 7.25rem;
-}
+// .emptydiv {
+//   height: 7.25rem;
+// }
 
 //leftdiv css
 #opened {
@@ -257,7 +258,9 @@ hr {
 
 .descriptionbox{
   border: 1px solid #e0e0e0;
-   border-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
   padding: 1.5625rem;
 
 }
@@ -273,13 +276,16 @@ hr {
   width: 8.5rem;
   height: 3.5rem;
   margin-right:0.625rem ;
+  margin-bottom: 0px;
   font-size: 0.75rem;
   line-height: 1.5rem;
   color: #838383;
   background-color: rgb(245,251,255);
   margin-top: 4.375rem;
   border: 1px solid #e0e0e0;
-  border-radius: 5px;
+  border-bottom: none;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 .descripbtn:hover{
   border-top: 3px solid #2078bf;
@@ -297,4 +303,14 @@ hr {
   border-radius: 5px;
 }
 
+
+.productImage{
+  width: 225px;
+  height: 200px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+
+
+
+}
 

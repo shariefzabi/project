@@ -118,17 +118,17 @@ function SelectedProductDetails(props: any) {
                     </div>
                     <div className="col-5 p-0">
                         <button className="wishListButton"><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
-                        <h3 id="marketHeading">ANIMAL ID - </h3>
-                        <h3 className="mb-3" id="marketHeading">{product._id}</h3>
+                        <h3 className="p-0" id="marketHeading">ANIMAL ID - </h3>
+                        <h3 className="mb-3 p-0" id="marketHeading">{product._id}</h3>
                         <p id="text_code">Product Code: {product.productCode}</p>
                         <p className="mb-2" id="text_code">Availability: {product.availability}</p>
                         <Rating className="iconFilled" name="half-rating-read" defaultValue={4} precision={0.5} readOnly />
                         <p className="price">{product.price}</p>
                         <div>
                             <p className=" qty mb-1">Qty</p>
-                            <div className="row quantity ms-0">
-                                <p className="col m-0">{count}</p>
-                                <button className="addbtn2 btn-primary col" onClick={countHandler}>+</button>
+                            <div className="row quantity ms-0 addbtn2">
+                                <p className="col m-auto">{count}</p>
+                                <button className="btn btn-primary col" onClick={countHandler}>+</button>
                             </div>
                         </div>
                         <div>
@@ -141,7 +141,7 @@ function SelectedProductDetails(props: any) {
                     <div className="col-3"></div>
                     <div className="col-9 ">
                         <button className="descripbtn" onClick={descriptionHandler}>Description</button>
-                        <button className="descripbtn"  onClick={reviewHandler}>Reviews(0)</button>
+                        <button className="descripbtn" onClick={reviewHandler}>Reviews(0)</button>
                         {isDisplayingDescription &&
                             <div className="descriptionbox">
                                 <p>Animal ID-{product._id}</p>
@@ -153,8 +153,8 @@ function SelectedProductDetails(props: any) {
                                 <p>Certified by Qualified Veterinary Professionals to be Traceable and Fit-For-Slaughter</p>
                             </div>
                         }
-                        
-                            
+
+
                         {isDisplayingReview &&
                             <div className="review">
                                 Review

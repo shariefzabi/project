@@ -10,7 +10,7 @@ import Blogform from './modules/addblogpage/blogform';
 import AddProducts from './modules/addProducts_page/product';
 import Footer from './components/footer/footer';
 import Blogtable from './modules/blog/blogs';
-import Invoice1 from './modules/invoice/invoicetrial'
+import Invoice from './modules/invoice/invoice'
 import Blogcontent from './modules/blogContentPage/blogContent/blogContent';
 import ProductDetails from './modules/productDetailsPage/ProductDetails';
 import SelectedProductDetails from './modules/productDetailsPage/selectedProductPage';
@@ -34,12 +34,12 @@ function App() {
             <Route path="/aboutus" element={<Aboutus />}></Route>
             <Route path="/blog" element={<Blogtable />}></Route>
             <Route path="/addblogs" element={<Blogform />}></Route>
-            <Route path="/addproducts" element={<AddProducts/>}></Route>
+            <Route path="/addproducts" element={<AddProducts />}></Route>
             <Route path="/products" element={<ProductDetails />}></Route>
             <Route path="/blogcontent" element={<Blogcontent />}></Route>
             <Route path="/profile" element={<Profile />}></Route>
             <Route path="/orders" element={<Orders />}></Route>
-            <Route path="/invoice" element={<Invoice1 />}></Route>
+            <Route path="/invoice" element={<Invoice />}></Route>
             <Route path="/selectedProduct" element={<SelectedProductDetails />}></Route>
 
           </Routes>
