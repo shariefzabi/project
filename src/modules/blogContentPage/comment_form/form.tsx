@@ -69,11 +69,11 @@ class Form extends React.Component<any, any> {
         let n = e.target.name;
         let v = e.target.value;
         if (n === "name") {
-            let re = /^[a-zA-Z0-9]{5,30}$/;
+            // let re = /^[a-zA-Z0-9]{5,30}$/;
             if (v === "") {
                 this.setState({ nameErr: "Please enter the User Name." })
             }
-            else if (!re.test(v)) {
+            else if (v.length <=4) {
                 this.setState({ nameErr: "Accepts Alphabets, space,digits & Min 5 to Max 30 Char" })
             }
             else
@@ -91,11 +91,11 @@ class Form extends React.Component<any, any> {
                 this.setState({ emailErr: "" ,emailFlag:true})
         }
         else if (n === "comment") {
-            let re = /^[a-zA-Z0-9]{10,200}$/;
+            // let re = /^[a-zA-Z0-9]{10,200}$/;
             if (v === "") {
                 this.setState({ commentErr: "Please Enter Comments" })
             }
-            else if (!re.test(v)) {
+            else if (v.length <=9) {
                 this.setState({ commentErr: "Accepts Alphabets, space & Min 10 to Max 200 Char" })
             }
             else
