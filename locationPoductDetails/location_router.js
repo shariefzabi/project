@@ -1,5 +1,8 @@
 
 const express = require('express');
+const multer  = require('multer')
+const upload = multer({ dest: 'uploads/' })
+
 const expressAsyncHandler = require("express-async-handler");
 const { param } = require('express/lib/request');
 const { ObjectId } = require('mongodb');
@@ -102,30 +105,36 @@ router.get('/selectedProductDetails/:id', async (req, res) => {
 ////////////////// Storing product details-----Team-5///////////////////
 let cattleMarketData = {};
 let sheepMarketData = {};
-router.post("/updateDetails", async (req, res) => {
+router.post("/updateDetails",upload.single('fileData'), async (req, res) => {
     // console.log('req', req.body);
-    let prodData = req.body
+    let prodData = req.body;
+    let {file} = req;
     try {
         console.log('productData', prodData);
         cattleMarketData =
         {
             animalId: "222",
             productCode: "c23ds",
+            quantity:prodData.quantity,
             availability: prodData.availability,
-            image: prodData.image,
+            type:prodData.types,
+            sex:prodData.sex,
+            image: file,
             price: prodData.price,
             weight: prodData.weight,
             breed: prodData.breed,
             source: prodData.source,
-            market: prodData.market,
             certification: prodData.certification,
         }
         sheepMarketData = {
 
             animalId: "200",
             productCode: "c23ds",
+            quantity:prodData.quantity,
             availability: prodData.availability,
-            image: prodData.image,
+            type:prodData.types,
+            sex:prodData.sex,
+            image: file,
             price: prodData.price,
             weight: prodData.weight,
             breed: prodData.breed,
