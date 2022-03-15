@@ -18,8 +18,10 @@ class Header extends React.Component<any, any> {
 
   componentDidMount() {
     // this.props.setToken(this.getToken)
+    
     axios.get("http://localhost:3005/users/" + this.getToken())
       .then(res => {
+        
         if (res.data != "null") this.props.setUser(res.data)
         else this.props.setUser(null)
       })

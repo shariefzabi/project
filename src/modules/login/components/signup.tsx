@@ -39,7 +39,7 @@ class Signup extends React.Component<any, any>{
                 this.setState({ fullNameErrMsg })
                 e.target.classList.add("field-error")
             } else {
-                let nameReg = /^([a-zA-Z ]{4,15})$/
+                let nameReg = /^([a-zA-Z0-9 ]{4,15})$/
                 console.log(nameReg.test(fullName));
                 if (!nameReg.test(fullName)) {
                     let fullNameErrMsg = "Accepts Alphabets, space & Min 3 to Max 15 Char"
@@ -64,7 +64,7 @@ class Signup extends React.Component<any, any>{
             } else {
                 let emailReg = /^[a-zA-Z0-9.]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/
                 if (!emailReg.test(email)) {
-                    let emailErrMsg = "Invalid Email-Id)"
+                    let emailErrMsg = "Invalid Email-Id"
                     this.setState({ emailErrMsg })
                     e.target.classList.add("field-error")
                 } else {
@@ -145,7 +145,7 @@ class Signup extends React.Component<any, any>{
                         <h4>Sign Up</h4>
                         <p>Before we proceed further...</p>
                     </div>
-                    <form onSubmit={(e) => this.signUpSubmitHandler(e, { fullName, password:createPassword,_id: email.toLowerCase()})}>
+                    <form onSubmit={(e) => this.signUpSubmitHandler(e, { fullName, password:createPassword,email: email.toLowerCase()})}>
                         <div className="mb-3 position-relative text-start">
 
                             <label htmlFor="fullName" className="form-label">Full Name</label>
