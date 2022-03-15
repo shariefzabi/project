@@ -178,14 +178,21 @@ hr {
   background-color: #ffffff;
   color: #838383;
 }
+//for chrome
+.locBox::-webkit-scrollbar{
+  display: none;
+}
+//for edge
+.locBox{
+  -ms-overflow-style: none;
+}
 
 .locBox {
   width: 17.4vw !important;
   margin-right: 2.5rem;
-  
   border: 2px solid #e0e0e0;
   height: 15rem;
-  overflow-y: scroll;
+  overflow-y:scroll;
   border-radius: 5px;
 }
 .blue {
