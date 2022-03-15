@@ -3,9 +3,6 @@
     height: 619.86px;
     
 }
-/* .body{
-    width: 100%;
-} */
 .contenttitle{
     width:871px;
     margin-left:13.375rem;
@@ -27,10 +24,8 @@
     border-radius: 0.5px;
     position: relative;
     top: 400px;
-    left: 1278px;
-    
+    left: 1278px; 
 }
-
 .right-carousel{
     width: 115.5px;
     height: 75.81px;
@@ -39,7 +34,6 @@
     background-repeat: no-repeat;
     border-radius: 0.5px;
 }
-
 .left-carousel{
     width: 115.5px;
     height: 75.81px;
@@ -48,7 +42,6 @@
     background-repeat: no-repeat;
     border-radius: 0.5px;
 }
-
 .title{
     width:54.437rem;
     height:5rem;
@@ -57,15 +50,12 @@
     margin: 0%;
     line-height: 40px;
     margin-top:7.6875rem;
-    
 }
-
 .title {
     color:#2078BF;
     font-weight: 700;
     font-size: 36px;
 }
-
 .discription{
     margin-left:13.375rem;
     margin-top:6.562rem;
@@ -144,9 +134,10 @@
      .contenttitle{
         width: 222px;
         height: auto;
+        margin-left: 42px;
+        margin-top: 27px ;
         /* top: 258px;
-        left: 20px; */
-        
+        left: 20px; */   
     }
     .title{
         width: 222px;
@@ -156,9 +147,7 @@
         color:#2078BF;
         font-weight: 700 bold;
         font-size: 10px;
-        margin-top: 0px;
-        
-        
+        margin-top: 0px; 
     }
     .blogdate{
         width: 33px;
@@ -169,20 +158,23 @@
         line-height: 7px;
     }
     .discription{
-        width: 285px;
-        height: 583px;
-        /* top: 314px;
-        left: 44px; */
+        margin-left:44px;
+        margin-top:19px;
+        width:285px;
+        /* margin-right:13.3125rem; */
+        font-weight:400;
+        font-size:8px;
+        line-height:160%;
+        color: #838383;
     }
     .txt{
-        
-            font-size: 8px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 13px;
-            letter-spacing: 0px;
-            text-align: left;
-
+        font-size: 8px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 13px;
+        letter-spacing: 0px;
+        text-align: left;
     }
+
 }
 

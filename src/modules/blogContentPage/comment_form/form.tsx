@@ -91,7 +91,7 @@ class Form extends React.Component<any, any> {
                 this.setState({ emailErr: "" ,emailFlag:true})
         }
         else if (n === "comment") {
-            let re = /^[a-zA-Z]{10,200}$/;
+            let re = /^[a-zA-Z0-9]{10,200}$/;
             if (v === "") {
                 this.setState({ commentErr: "Please Enter Comments" })
             }

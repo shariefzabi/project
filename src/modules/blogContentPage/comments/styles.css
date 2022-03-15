@@ -24,7 +24,7 @@
     left: 180.96px;
 }
 .clients .client-details{
-    top: calc(50% - 16px/2 + 2436.27px);
+    /* top: calc(50% - 16px/2 + 2436.27px); */
     font-family: Ubuntu;
     font-style: normal;
     font-weight: normal;
@@ -40,12 +40,43 @@
     color: #838383;
 }
 
-@media (max-width:640px){
-    .clients .card{
-        width: 300px;
+@media (max-width:380px){
+    .clients{
+        margin: auto;
+        margin-top: 20px;
+        width: 100%;
     }
-    .arrows{
-        display:none;
+    .clients h2{
+        font-size: 15px;
+        line-height: 120%;
+        margin: 0%;
+        margin-left: 30PX;
+    }
+    .clients .card{
+        width: 100%;
+        border-radius:10px;
+        /* justify-content: space-between; */
+    
+    }
+    .clients .carousel-description{
+        font-weight:400px;
+        font-size:10px;
+        line-height: 20px;
+        font-family: ubuntu;
+        width:80%;
+    }
+    .clients .client-details{
+        /* top: calc(50% - 16px/2 + 2436.27px); */
+        width: 60%;
+        font-family: Ubuntu;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 10px;
+        line-height: 16px;
+        /* margin: 5px !important; */
+        letter-spacing: 0.4px;
+    }.head-part{
+        margin-bottom: 0% !important;
     }
 }
 

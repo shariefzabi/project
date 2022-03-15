@@ -57,42 +57,37 @@ label{
     .form{
         margin-left: auto;
         padding-left: 44px;
-        padding-right:95px;
+        margin-top: 13px;
     
     }
     .commentheading{
-        width: 86px;
+        width: auto;
        
         top: 934px;
         margin-left: 0px;
-        
-        font-size: 10px;
+        padding: 0%;
+        font-size: 15px;
         font-style: normal;
         font-weight: 700;
         /* line-height: 11px; */
     }
-    .fullname{
+    .fullname , .Email, .commenttitle{
         width: 236px;
         color: #838383;
         margin-bottom: 16px;
-        font-size: 8px !important;
+        font-size: 10px !important;
         /* margin-left: 44px; */
-    }
-    .Email{
-        color: #838383;
-        font-size: 8px !important;
-    }
-    .commenttitle{
-        color: #838383 !important;
-        font-size: 8px !important;
     }
     .fullnameinput{
         width: 236px !important;
-        margin-bottom: 0px;
+        height: 39px;
+        margin: auto;
         font-size: 8px;
+        /* border-radius: 0.5px; */
     }
     .emailinput{
         width: 236px !important;
+        height: 39px;
         font-size: 8px;
         margin-bottom: 0px;
     }
