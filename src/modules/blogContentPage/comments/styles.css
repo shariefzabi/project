@@ -1,14 +1,12 @@
-/* .clients{
-    margin-left:8.981875rem;
-    margin-top:140px;
-} */
-.arrows{
-    margin-right:0.5rem;
+.comment_box{
+    width: 90%;
+    margin: auto;
+    flex-wrap: wrap;
 }
 .clients .card{
-    width: 570px;
+    /* width: 570px; */
     border-radius:10px;
-    justify-content: space-between;
+    /* justify-content: space-between; */
 
 }
 .clients .carousel-description{
@@ -17,6 +15,7 @@
     line-height: 20px;
     font-family: ubuntu;
     width:264px;
+    
     
 }
 .clients .carousel-radio{
@@ -31,6 +30,7 @@
     font-weight: normal;
     font-size: 14px;
     line-height: 16px;
+    margin: 5px !important;
     letter-spacing: 0.4px;
 }
 .clients label{
