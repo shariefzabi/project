@@ -193,9 +193,9 @@ function ProductDetails(props: any) {
                                                                 {/* <img src=`data:image/jpeg;based64,+btoa(${e.image})` /> */}
 
 
-                                                                <h5 className="card-id" id={e.animalId}>animal: {e._id}</h5>
+                                                                <h5 className="card-id" id={e.animalId}>Animal ID: {e._id}</h5>
 
-                                                                <p className="card-price" id={e.animalId}>p:{e.price}</p>
+                                                                <p className="card-price" id={e.animalId}>Price:{e.price}</p>
                                                                 <div className="text-center">
                                                                     <button type="button" className=" btn btn-success">Add to Cart</button>
                                                                 </div>
