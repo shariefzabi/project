@@ -7,7 +7,8 @@ interface initialState {
     agent: any
     Butchery: any
     locName: any
-    productData:any
+    productData: any
+    paymentType :any
 }
 
 const appInitialstate: initialState = {
@@ -18,7 +19,8 @@ const appInitialstate: initialState = {
     agent: null,
     Butchery: null,
     locName: null,
-    productData:null
+    productData: null,
+    paymentType: null
 }
 function appReducer(state = appInitialstate, action: any) {
     switch (action.type) {
@@ -41,6 +43,10 @@ function appReducer(state = appInitialstate, action: any) {
             return { ...state, orders: { ...state.orders, deliverydetails: action.deliveryDetails } }
         case "storeCardDetails":
             return ({ ...state, cardDetails: action.payload })
+        case "storePaymentType":
+            return ({ ...state, paymentType: action.payload })
+
+        
         case "storeLocname":
             return ({ ...state, locName: action.payload })
         case 'setCurrentBlog':

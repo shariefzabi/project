@@ -121,10 +121,49 @@ class PaymentMethod extends React.Component<any, any> {
     }
 
   }
+  setPaymentInformation = () => {
+    alert()
+    let { payment, orderId } = this.state
+    this.setState({ flag1: false })
+    let paymentStatus = {
+      orderId: orderId,
+      status: "Awaiting Payment"
+    }
+    if (payment === "Pay_On_Delivery") {
+      axios.post("http://localhost:3005/payment/status", paymentStatus)
+        .then((result) => {
+          console.log("status", result.data);
+
+
+        })
+        .catch(err => {
+          console.log("error: ", err);
+        })
+      
+      this.props.setPaymentInformation(payment)
+      
+      console.log(paymentStatus)
+
+      
+
+
+    }
+  }
   submitHandler = (e: any) => {
     e.preventDefault()
+<<<<<<< Updated upstream
     this.setState({ flag2: false })
     let { month, year, payment, card_number, cvv_number, orderId, date } = this.state;
+=======
+
+
+
+
+    this.setState({ flag2: false })
+    let { month, year, payment, card_number, cvv_number, orderId, date } = this.state;
+    this.props.setPaymentInformation(payment)
+
+>>>>>>> Stashed changes
     console.log("carddetails", { month, year, card_number, cvv_number })
     // let { breed, quantity, sex, type, weight, price, delprice, totalprice } = this.props.redux.orders.productdetails;
     // let product_amount = this.props.redux.orders.productdetails.quantity * this.props.redux.orders.productdetails.weight * 50000;
@@ -164,6 +203,22 @@ class PaymentMethod extends React.Component<any, any> {
       cvv_number: '',
       month_year: ''
     })
+    let paymentStatus = {
+      orderId: orderId,
+      status: "payment success"
+    }
+    axios.post("http://localhost:3005/payment/status", paymentStatus)
+      .then((result) => {
+        console.log("status", result.data);
+
+
+
+      })
+      
+      .catch(err => {
+        console.log("error: ", err);
+      })
+
 
   }
 
@@ -194,7 +249,7 @@ class PaymentMethod extends React.Component<any, any> {
                   <label htmlFor="Pay_On_Delivery" className='payment_label'>Pay On Delivery</label>
                 </section>
                 <div className="text-center">
-                  <button className="btn btn-success payment_button" onClick={() => this.setState({ flag1: false })}>Make Payment</button><br></br>
+                  <button className="btn btn-success payment_button" onClick={this.setPaymentInformation}>Make Payment</button><br></br>
                 </div>
               </div>
             </div>
@@ -310,7 +365,8 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: Function) => {
   return {
-    setCardDetails: (cardDetails: any) => dispatch({ type: 'storeCardDetails', payload: cardDetails })
+    setCardDetails: (cardDetails: any) => dispatch({ type: 'storeCardDetails', payload: cardDetails }),
+    setPaymentInformation: (paymentType: any) => dispatch({ type: 'storePaymentType', payload: paymentType })
   }
 }
 
