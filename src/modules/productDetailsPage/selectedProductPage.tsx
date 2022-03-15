@@ -105,37 +105,37 @@ function SelectedProductDetails(props: any) {
                             })
                         }
                     </div>
-                    <div className="col-4">
+                    <div className="col-4 p-0">
                         Image
                     </div>
-                    <div className="col-5">
+                    <div className="col-5 p-0">
                         <button className="wishListButton"><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
-                        <h3 id="marketHeading">ANIMAL ID - </h3>
-                        <h3 id="marketHeading">{product._id}</h3>
+                        <h3  id="marketHeading">ANIMAL ID - </h3>
+                        <h3  className="mb-3" id="marketHeading">{product._id}</h3>
                         <p id="text_code">Product Code: {product.productCode}</p>
-                        <p id="text_code">Availability: {product.availability}</p>
+                        <p className="mb-1" id="text_code">Availability: {product.availability}</p>
                         <Rating className="iconFilled" name="half-rating-read" defaultValue={4} precision={0.5} readOnly />
-                        <p>{product.price}</p>
+                        <p className="price">{product.price}</p>
                         <div>
-                            <p>Qty</p>
-                            <div className="row quantity">
-                                <p className="col">{count}</p>
+                            <p className=" qty mb-1">Qty</p>
+                            <div className="row quantity ms-0">
+                                <p className="col m-0">{count}</p>
                                 <button className="btn-primary col" onClick={countHandler}>+</button>
                             </div>
                         </div>
                         <div>
-                            <button type="button" className="btn btn-success">Add to Cart</button>
+                            <button type="button" className="sucessbtn btn btn-success">Add to Cart</button>
                         </div>
                     </div>
                 </div>
 
                 <div className="row">
                     <div className="col-3"></div>
-                    <div className="col-9">
-                        <button onClick={descriptionHandler}>Description</button>
-                        <button onClick={descriptionHandler}>Reviews(0)</button>
+                    <div className="col-9 ">
+                        <button className="descripbtn" onClick={descriptionHandler}>Description</button>
+                        <button className="descripbtn" onClick={descriptionHandler}>Reviews(0)</button>
                         {isDisplaying &&
-                            <div>
+                            <div className="descriptionbox ">
                                 <p>Animal ID-{product._id}</p>
                                 <p>Weight-{product.weight}</p>
                                 <p>Breed-{product.breed}</p>
