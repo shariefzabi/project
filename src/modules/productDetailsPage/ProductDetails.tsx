@@ -147,7 +147,7 @@ function ProductDetails(props: any) {
                             </select>
                         </div>
                         <div className="card-deck row row-cols-3">
-                            {isDisplaying &&
+                            {!isDisplaying &&
                                 products.map((product: any, i) => {
                                     if (sortValue === "default") {
                                         if (product.locationName === location) {
@@ -249,7 +249,7 @@ function ProductDetails(props: any) {
 
                                 })
                             }
-                            {!isDisplaying &&
+                            {isDisplaying &&
                                 products.map((product: any, i) => {
                                     if (sortValue === "default") {
                                         if (product.locationName === location) {
