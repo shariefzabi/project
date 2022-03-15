@@ -157,7 +157,6 @@ function ProductDetails(props: any) {
                                                     let imagePath= "";
                                                     if ( typeof e.image === 'object'){
                                                         imagePath=serverUrl+e.image.filename;
-                                                        console.log(imagePath)
                                                     }
                                                     return (
                                                         <div key={i}>
@@ -166,8 +165,8 @@ function ProductDetails(props: any) {
                                                                 <div className="card-body" id={e.animalId}>
                                                                     <button className="wishListButton" onClick={addtoWishlist}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
                                                                     <div onClick={productDataHandler}>
-                                                                        <div className="emptydiv" id={e.animalId}></div>
-                                                                         <img src={imagePath} width="200px" height="250px"/>
+                                                                        
+                                                                         <img className="productImage"  src={imagePath} />
                                                                          {/* <img src={`data:image/jpeg;based64,${e.image}`} /> */}
 
                                                                         <h5 className="card-id" id={e.animalId}>Animal ID: {e._id}</h5>
@@ -193,6 +192,11 @@ function ProductDetails(props: any) {
 
                                             return (
                                                 highToLowData.map((e: any, i: any) => {
+                                                    let imagePath= "";
+                                                    if ( typeof e.image === 'object'){
+                                                        
+                                                        imagePath=serverUrl+e.image.filename;
+                                                    }
                                                     return (
                                                         <div key={i}>
 
@@ -200,8 +204,7 @@ function ProductDetails(props: any) {
                                                                 <div className="card-body" id={e.animalId}>
                                                                     <button className="wishListButton" onClick={addtoWishlist}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
                                                                     <div onClick={productDataHandler}>
-                                                                        <div className="emptydiv" id={e.animalId}></div>
-                                                                        <img src={`data:image/jpeg;based64,${e.image}`} />
+                                                                        < img className="productImage"  src={imagePath} />
 
                                                                         <h5 className="card-id" id={e.animalId}>Animal ID: {e._id}</h5>
 
@@ -226,6 +229,10 @@ function ProductDetails(props: any) {
                                             const lowToHighData = [].concat(product.cattleMarkets).sort((a: any, b: any) => a.price < b.price ? -1 : 1)
                                             return (
                                                 lowToHighData.map((e: any, i: any) => {
+                                                    let imagePath= "";
+                                                    if ( typeof e.image === 'object'){
+                                                        imagePath=serverUrl+e.image.filename;
+                                                    }
                                                     return (
                                                         <div key={i}>
 
@@ -233,8 +240,7 @@ function ProductDetails(props: any) {
                                                                 <div className="card-body" id={e.animalId}>
                                                                     <button className="wishListButton" onClick={addtoWishlist}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
                                                                     <div onClick={productDataHandler}>
-                                                                        <div className="emptydiv" id={e.animalId}></div>
-                                                                        <img src={`data:image/jpeg;based64,${e.image}`} />
+                                                                        <img  className="productImage" src={imagePath} />
 
                                                                         <h5 className="card-id" id={e.animalId}>Animal ID: {e._id}</h5>
 
@@ -262,6 +268,10 @@ function ProductDetails(props: any) {
                                         if (product.locationName === location) {
                                             return (
                                                 product.sheepMarkets.map((e: any, i: any) => {
+                                                    let imagePath= "";
+                                                    if ( typeof e.image === 'object'){
+                                                        imagePath=serverUrl+e.image.filename;
+                                                    }
                                                     return (
                                                         <div key={i}>
 
@@ -269,8 +279,7 @@ function ProductDetails(props: any) {
                                                                 <div className="card-body" id={e.animalId}>
                                                                     <button className="wishListButton" onClick={addtoWishlist}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
                                                                     <div onClick={productDataHandler}>
-                                                                        <div className="emptydiv" id={e.animalId}></div>
-                                                                        <img src={`data:image/jpeg;based64,${e.image}`} />
+                                                                        <img  className="productImage" src={imagePath} />
 
                                                                         <h5 className="card-id" id={e.animalId}>Animal ID: {e._id}</h5>
 
@@ -296,6 +305,10 @@ function ProductDetails(props: any) {
 
                                             return (
                                                 highToLowData.map((e: any, i: any) => {
+                                                    let imagePath= "";
+                                                    if ( typeof e.image === 'object'){
+                                                        imagePath=serverUrl+e.image.filename;
+                                                    }
                                                     // console.log(e)
                                                     return (
                                                         <div key={i}>
@@ -304,9 +317,8 @@ function ProductDetails(props: any) {
                                                                 <div className="card-body" id={e.animalId}>
                                                                     <button className="wishListButton" onClick={addtoWishlist}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
                                                                     <div onClick={productDataHandler}>
-                                                                        <div className="emptydiv" id={e.animalId}></div>
-                                                                        {/* <img src={`data:image/jpeg;based64,${e.image}`} /> */}
-                                                                        {/* <img src={"http://localhost:3005"+e.image.filename}/> */}
+                                                                        
+                                                                        <img className="productImage" src={imagePath} />
            
                                                                         <h5 className="card-id" id={e.animalId}>Animal ID: {e._id}</h5>
 
@@ -330,6 +342,10 @@ function ProductDetails(props: any) {
                                             const lowToHighData = [].concat(product.sheepMarkets).sort((a: any, b: any) => a.price < b.price ? -1 : 1)
                                             return (
                                                 lowToHighData.map((e: any, i: any) => {
+                                                    let imagePath= "";
+                                                    if ( typeof e.image === 'object'){
+                                                        imagePath=serverUrl+e.image.filename;
+                                                    }
                                                     return (
                                                         <div key={i}>
 
@@ -337,8 +353,7 @@ function ProductDetails(props: any) {
                                                                 <div className="card-body" id={e.animalId}>
                                                                     <button className="wishListButton" onClick={addtoWishlist}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
                                                                     <div onClick={productDataHandler}>
-                                                                        <div className="emptydiv" id={e.animalId}></div>
-                                                                        <img src={`data:image/jpeg;based64,${e.image}`} />
+                                                                        <img className="productImage" src={imagePath} />
 
                                                                         <h5 className="card-id" id={e.animalId}>Animal ID: {e._id}</h5>
 
