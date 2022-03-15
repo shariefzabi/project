@@ -41,12 +41,12 @@ class BeanAgentPopup extends React.Component<any, any> {
     let v = e.target.value;
     let state = this.state;
     if (n === "name") {
-      let re = /^[a-zA-Z ]{5,10}$/;
+      let re = /^[0-9a-zA-Z ]{5,10}$/;
       if (v === "") {
         this.setState({ nameErr: "Please enter the Full Name." });
       } else if (!re.test(v)) {
         this.setState({
-          nameErr: "Accepts Alphabets, space & Min 5 to Max 10 Char",
+          nameErr: "Accepts Alphabets, numbers, space & Min 5 to Max 10 Char",
         });
       } else this.setState({ nameErr: "" });
     } else if (n === "agent") {
@@ -57,7 +57,8 @@ class BeanAgentPopup extends React.Component<any, any> {
       } else this.setState({ agentErr: "" });
     } else if (n === "number") {
       let re =
-        /((\+*)((0[ -]*)*|((91 )*))((\d{12})+|(\d{10})+))|\d{5}([- ]*)\d{6}/;
+        // /((\+*)((0[ -]*)*|((91 )*))((\d{12})+|(\d{10})+))|\d{5}([- ]*)\d{6}/;
+        /^[0-9]{6}$/;
       if (v === "") {
         this.setState({ numberErr: "Please enter the Phone Number." });
       } else if (!re.test(v)) {

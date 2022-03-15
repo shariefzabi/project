@@ -42,12 +42,12 @@ class Butcherypopup extends React.Component<any, any> {
     let v = e.target.value;
     let state = this.state;
     if (n === "name") {
-      let re = /^[a-zA-Z ]{5,10}$/;
+      let re = /^[a-zA-Z0-9 ]{5,10}$/;
       if (v === "") {
         this.setState({ nameErr: "Please enter the Full Name." });
       } else if (!re.test(v)) {
         this.setState({
-          nameErr: "Accepts Alphabets, space & Min 5 to Max 10 Char",
+          nameErr: "Accepts Alphabets, Numbers, space & Min 5 to Max 10 Char",
         });
       } else this.setState({ nameErr: "" });
     } else if (n === "butchery") {

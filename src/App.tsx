@@ -27,7 +27,7 @@ function App() {
     <div className="App">
       <Router>
         <div>
-           <Header /> 
+          <Header />
 
           <Routes>
 
@@ -41,9 +41,9 @@ function App() {
             <Route path="/orders" element={<Orders />}></Route>
             <Route path="/invoice" element={<Invoice1 />}></Route>
             <Route path="/selectedProduct" element={<SelectedProductDetails />}></Route>
-           
-           </Routes>
-          <Footer /> 
+
+          </Routes>
+          <Footer />
           {/* <Routes>
             <Route path="/" element={<Popup />}></Route>
             <Route path="/shoppingcart" element={<Shoppingcart />}></Route>
