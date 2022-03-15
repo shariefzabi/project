@@ -2,6 +2,8 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import './profile.scss'
+// import './sidebar.scss'
+import Sidebar from './sidebar/sidebar'
 
 function Profile(props: any) {
     const [userDetails, setUserDetails] = useState(
@@ -22,6 +24,7 @@ function Profile(props: any) {
     const [zipcodeErrMsg, setzipcodeErrMsg] = useState("")
     const [locationErrMsg, setlocationErrMsg] = useState("")
     const [addressErrMsg, setaddressErrMsg] = useState("")
+    const [displayReset, setdisplayReset] = useState(false)
 
 
     const getToken = () => sessionStorage.getItem("token");
@@ -31,10 +34,10 @@ function Profile(props: any) {
             .then(res => {
                 if (res.data != "null") {
                     props.setUser(res.data)
-                    let { fullName, email } = res.data
-                    setUserDetails({ ...userDetails, fullName, email })
-                    if (res.data?.phone!=undefined){
-                        setUserDetails({ ...res.data })
+                    let { fullName, _id } = res.data
+                    setUserDetails({ ...userDetails, fullName, email: _id })
+                    if (res.data?.phone != undefined) {
+                        setUserDetails({ ...res.data, email: res.data._id })
                     }
                 }
             })
@@ -70,7 +73,7 @@ function Profile(props: any) {
                 }
             }
         }
-        
+
 
         //  phone no
         if (e.target.name === 'phone') {
@@ -174,17 +177,17 @@ function Profile(props: any) {
         }
     }
 
-    const submitHandler = (e:any) => {
+    const submitHandler = (e: any) => {
         e.preventDefault()
-        console.log("profile sumbitted :",userDetails);
+        console.log("profile sumbitted :", userDetails);
         console.log(props);
-        
-        
-        axios.post("http://localhost:3005/users/"+props.redux.user.token,userDetails)
-        .then( (res:any)=>{
-        
-        })
-        .catch((err:any)=>console.log(" Profile update error ",err));
+
+
+        axios.post("http://localhost:3005/users/" + props.redux.user.token, userDetails)
+            .then((res: any) => {
+
+            })
+            .catch((err: any) => console.log(" Profile update error ", err));
     }
 
     function resetPasswordToggler() {
@@ -194,124 +197,146 @@ function Profile(props: any) {
         // // resetBlock.style.display = "block"
     }
     return (
-
-        <div className='profile-container'>
-            {props.redux.user &&
-            <main id="mainContent">
-                <section className="profileSection">
-                    <header>
-                        <div className="headingText">
-                            <h2>Profile</h2>
-                        </div>
-                    </header>
-                    <div className="formContainer container-fluid " id='profileBlock'>
-                        <main className="row box col-sm-12">
-                            <section className="col-md-12 col-sm-12  row">
-                                <form onSubmit={submitHandler}>
-                                    <div className='profile' >
-                                        <p> Fields with <span className="text-danger">*</span> are required</p>
-                                        <button className="btn btn-success btn-float-right " id="resetButton" type="button" onClick={resetPasswordToggler}>Reset Password</button>
-                                    </div>
-                                    <div className="my-4 position-relative text-start">
-                                        <label className="col-md-12" htmlFor="name">Name<span className="text-danger">*</span></label>
-                                        <input type="text" id="name" name="fullName" value={userDetails.fullName} onChange={changeHandler} placeholder="Enter Name"
-                                            className="form-control"
-                                            // onChange={this.changeHandler}
-                                            onBlur={validations} required />
-                                        <p className="text-danger">{fullNameErrMsg}</p>
-                                    </div>
-                                    <div className="my-4 position-relative text-start">
-                                        <label htmlFor="phone">Phone<span className="text-danger">*</span></label>
-                                        <input type="text" id="phone" name="phone" value={userDetails.phone} onChange={changeHandler} className="form-control " placeholder="Enter Number"
-                                            //   onChange={this.changeHandler}
-                                            onBlur={validations} required />
-
-                                        <p className="text-danger">{phoneErrMsg}</p>
-                                    </div>
-                                    <div className="my-4 position-relative text-start">
-                                        <label htmlFor="email">Email<span className="text-danger">*</span></label>
+        <div>
+            <Sidebar></Sidebar>
 
 
-                                        <input type="email" id="email" name="email" disabled value={userDetails.email} onChange={changeHandler} className="form-control" placeholder="Enter Email"
-                                            onBlur={validations}  />
+            <div className='profile-container'>
 
+                {props.redux.user &&
 
-                                        <p className="text-danger">{emailErrMsg}</p>
-                                    </div>
-                                    <div className="my-4 position-relative text-start">
-                                        <label htmlFor="location">Location<span className="text-danger">*</span></label>
-                                        <input type="text" id="location" name="location" value={userDetails.location} onChange={changeHandler} className="form-control " placeholder="Enter Location"
-                                            onBlur={validations} required />
-                                        <p className="text-danger">{locationErrMsg}</p>
-                                    </div>
+                    <main id="mainContent">
+                        <section className="profileSection">
 
-                                    <div className="my-4 position-relative text-start">
-                                        <label htmlFor="zipCode">Zipcode<span className="text-danger">*</span></label>
+                            {!displayReset &&
+                                <div className="formContainer container-fluid " id='profileBlock'>
+                                    <header>
 
-                                        <input type="text" id="zipCode" name="zipCode" value={userDetails.zipCode} onChange={changeHandler} className="form-control " placeholder="Enter Zipcode"
-                                            onBlur={validations} required />
-                                        <p className="text-danger">{zipcodeErrMsg}</p>
-                                    </div>
-                                    <div className="my-4 position-relative text-start">
-                                        <label htmlFor="address">Delivery Address<span className="text-danger">*</span></label>
-
-                                        <input type="text" id="address" value={userDetails.address} onChange={changeHandler} name="address" className="form-control "
-                                            placeholder="Enter Address" onBlur={validations} required />
-                                        <p className="text-danger">{addressErrMsg}</p>
-                                    </div>
-                                    <div className="row justify-content-center">
-                                        <button type="submit" id="saveButton" className="btn btn-success col-md-4">Save</button>
-                                    </div>
-                                </form>
-                            </section>
-                        </main>
-                    </div>
-                    {/* <div className="formContainer container-fluid form-control " id="resetBlock">
-                        <main className="row box">
-                            <section className="col-md-10 col-sm-10 col-10 row">
-                                <div className='resetpage'><h3>Reset Password</h3></div>
-                                <form>
-                                    <p> Fields with <span className="text-danger">*</span> are required</p>
-                                    <div>
-                                        <label htmlFor="name">Old Password<span className="text-danger">*</span></label>
-                                        <div className="row">
-                                            <div className="col-md-11 col-sm-11 col-10">
-                                                <input type="text" id="name" name="name" className="inputBox" placeholder="Enter your name" />
-                                            </div>
-                                            <div className="col-md-1 col-sm-1 col-1 pt-1">
-                                                <i className='fa fa-lock'></i>
-                                            </div>
+                                        <div className="headingText">
+                                            <h2>Profile</h2>
                                         </div>
-                                        <label htmlFor="phone">Password<span className="text-danger">*</span></label>
-                                        <div className="row">
-                                            <div className="col-md-11 col-sm-11 col-10">
-                                                <input type="password" id="phone" name="phone" className="inputBox" placeholder="Enter New Password" />
-                                            </div>
-                                            <div className="col-md-1 col-sm-1 col-1 pt-1">
-                                                <i className="fa fa-lock"></i>
-                                            </div>
-                                        </div>
-                                        <label htmlFor="email">Retype Password<span className="text-danger">*</span></label>
-                                        <div className="row">
-                                            <div className="col-md-11 col-sm-11 col-10">
-                                                <input type="password" id="email" name="email" className="inputBox" placeholder="Retype New Password " />
-                                            </div>
-                                            <div className="col-md-1 col-sm-1 col-1 pt-1">
-                                                <i className="fa fa-lock"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button type="submit" id="saveButton" className="btn btn-success col-md-4">Save</button>
-                                </form>
-                            </section>
-                        </main>
-                    </div> */}
-                </section>
-            </main>}
-            {!props.redux.user && <div className='mt-5 text-center'><h2 className='text-danger'>** PLease login and try again **</h2>
-            </div> }
+                                    </header>
+                                    <main className="row box col-sm-12">
+                                        <section className="col-md-12 col-sm-12  row">
+                                            <div className='profile' >
+                                                <p> Fields with <span className="text-danger">*</span> are required</p><button className="btn btn-success btn-float-right col-2 " id="resetButton" type="button"
+                                                    onClick={() => {
+                                                        setdisplayReset(true)
 
-        </div >
+                                                    }}> Reset Password</button>
+
+
+                                            </div>
+
+                                            <form onSubmit={submitHandler}>
+
+                                                <div className="my-4 position-relative text-start">
+                                                    <label className="col-md-12" htmlFor="name">Name<span className="text-danger">*</span></label>
+                                                    <input type="text" id="name" name="fullName" value={userDetails.fullName} onChange={changeHandler} placeholder="Enter Name"
+                                                        className="form-control"
+                                                        // onChange={this.changeHandler}
+                                                        onBlur={validations} required />
+                                                    <p className="text-danger">{fullNameErrMsg}</p>
+                                                </div>
+                                                <div className="my-4 position-relative text-start">
+                                                    <label htmlFor="phone">Phone<span className="text-danger">*</span></label>
+                                                    <input type="number" id="phone" name="phone" value={userDetails.phone} onChange={changeHandler} className="form-control " placeholder="Enter Number"
+                                                        //   onChange={this.changeHandler}
+                                                        onBlur={validations} required />
+
+                                                    <p className="text-danger">{phoneErrMsg}</p>
+                                                </div>
+                                                <div className="my-4 position-relative text-start">
+                                                    <label htmlFor="email">Email<span className="text-danger">*</span></label>
+
+
+                                                    <input type="email" id="email" name="email" disabled value={userDetails.email} onChange={changeHandler} className="form-control" placeholder="Enter Email"
+                                                        onBlur={validations} />
+
+
+                                                    <p className="text-danger">{emailErrMsg}</p>
+                                                </div>
+                                                <div className="my-4 position-relative text-start">
+                                                    <label htmlFor="location">Location<span className="text-danger">*</span></label>
+                                                    <input type="text" id="location" name="location" value={userDetails.location} onChange={changeHandler} className="form-control " placeholder="Enter Location"
+                                                        onBlur={validations} required />
+                                                    <p className="text-danger">{locationErrMsg}</p>
+                                                </div>
+
+                                                <div className="my-4 position-relative text-start">
+                                                    <label htmlFor="zipCode">Zipcode<span className="text-danger">*</span></label>
+
+                                                    <input type="number" id="zipCode" name="zipCode" value={userDetails.zipCode} onChange={changeHandler} className="form-control " placeholder="Enter Zipcode"
+                                                        onBlur={validations} required />
+                                                    <p className="text-danger">{zipcodeErrMsg}</p>
+                                                </div>
+                                                <div className="my-4 position-relative text-start">
+                                                    <label htmlFor="address">Delivery Address<span className="text-danger">*</span></label>
+
+                                                    <input type="text" id="address" value={userDetails.address} onChange={changeHandler} name="address" className="form-control "
+                                                        placeholder="Enter Address" onBlur={validations} required />
+                                                    <p className="text-danger">{addressErrMsg}</p>
+                                                </div>
+                                                <div className="row justify-content-center">
+                                                    <button type="submit" id="saveButton" className="btn btn-success col-md-4">Save</button>
+                                                </div>
+                                            </form>
+                                        </section>
+                                    </main>
+                                </div>
+                            }
+                                {displayReset &&
+                                <div className="formContainer container-fluid form-control " id="resetBlock">
+                                    <main className="row box">
+                                        <section className="col-md-10 col-sm-10 col-10 row">
+                                            <div className='resetpage'><h3>Reset Password</h3></div>
+                                            <form>
+                                                <p> Fields with <span className="text-danger">*</span> are required</p>
+                                                <div>
+                                                    <label htmlFor="name">Old Password<span className="text-danger">*</span></label>
+                                                    <div className="row">
+                                                        <div className="col-md-11 col-sm-11 col-10">
+                                                            <input type="text" id="name" name="name" className="inputBox" placeholder="Enter your name" />
+                                                        </div>
+                                                        <div className="col-md-1 col-sm-1 col-1 pt-1">
+                                                            <i className='fa fa-lock'></i>
+                                                        </div>
+                                                    </div>
+                                                    <label htmlFor="phone">Password<span className="text-danger">*</span></label>
+                                                    <div className="row">
+                                                        <div className="col-md-11 col-sm-11 col-10">
+                                                            <input type="password" id="phone" name="phone" className="inputBox" placeholder="Enter New Password" />
+                                                        </div>
+                                                        <div className="col-md-1 col-sm-1 col-1 pt-1">
+                                                            <i className="fa fa-lock"></i>
+                                                        </div>
+                                                    </div>
+                                                    <label htmlFor="email">Retype Password<span className="text-danger">*</span></label>
+                                                    <div className="row">
+                                                        <div className="col-md-11 col-sm-11 col-10">
+                                                            <input type="password" id="email" name="email" className="inputBox" placeholder="Retype New Password " />
+                                                        </div>
+                                                        <div className="col-md-1 col-sm-1 col-1 pt-1">
+                                                            <i className="fa fa-lock"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <button type="submit" id="saveButton" className="btn btn-success col-md-4">Save</button>
+                                            </form>
+                                        </section>
+                                    </main>
+                                </div>}
+                        </section>
+                    </main>}
+                {!props.redux.user && <div className='mt-5 text-center'><h2 className='text-danger'>** Please login and try again **</h2>
+                </div>}
+
+
+
+
+            </div >
+
+        </div>
     )
 }
 

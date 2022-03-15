@@ -1,4 +1,4 @@
-import "./assets/Aboutus.scss";
+import "./assets/aboutus.scss";
 export default function Aboutus() {
   return (
     <div className="body aboutus-container">
