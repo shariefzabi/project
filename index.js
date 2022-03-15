@@ -55,33 +55,39 @@ app.use(bodyParser.json());
 //*********** No.1 Team ************* Starting **************************
 app.post("/users/signup", function (req, res) {
   console.log("log from signup users", req.body);
-  userDb.findOne({ _id: req.body._id }, function (err, result) {
+  userDb.findOne({ _id: req.body.email },{projection:{_id:0}}, function (err, result) {
     if (err) console.log(err);
     if (result == null) {
-      userDb.insert(req.body);
-      res.send(["success",result]);
+      req.body.token = String(createToken())
+      userDb.insertOne({...req.body,_id:req.body.email});
+      // console.log("signup",req.body);
+      res.send(["success",req.body]);
     } else res.send(["failed","This email is already registered"]);
   });
 });
-let token;
+
+const createToken=()=>{
+  return Math.floor(Math.random()*900000)+100000
+}
 app.post("/users/login", function (req, res) {
   console.log("log from login users :", req.body);
   userDb.findOne(
-    { _id: req.body.username, password: req.body.password },
+    { _id: req.body.username, password: req.body.password },{projection:{_id:0}},
     function (err, result) {
       if (err) console.log(err);
       if (result == null) res.send("Invalid credentials");
       // res.send("No account found with this username, please sign up and then login");
       else {
-        token = Math.floor(Math.random()*900000)+100000;
-        result.token=String(token);
-        userDb.updateOne({_id:result._id},{$set:{token:result.token}});
+        result.token=String(createToken());
+        userDb.updateOne({_id:result.email},{$set:{token:result.token}});
+        // console.log("result from login",result);
         res.send(result)};
     }
   );
 });
 app.get("/users/:token",function(req,res){
-  userDb.findOne(req.params,function (err,result){
+  // console.log("get token :",req.params);
+  userDb.findOne(req.params,{projection:{_id:0}},function (err,result){
     if(err) throw err;
     if (result==null) res.send("null")
     else res.send(result)
