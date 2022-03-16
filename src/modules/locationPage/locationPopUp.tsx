@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import Modal from '@mui/material/Modal';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import { connect } from "react-redux";
 import "./locationPopUp.css";
 
@@ -16,8 +18,9 @@ function PopUp(prop: any) {
   let [isAdding, setIsAdding] = useState(false)
   let [newLocation, setNewLocation] = useState('')
   let [newLocationErr, setNewLocationErr] = useState('')
+  let [newLocationAdded, setNewLocationAdded] = useState('')
   let [selectedLocation, setSelectedLocation] = useState('Location')
-  let [locErrorMsg, setLocErrorMsg]=useState("")
+  let [locErrorMsg, setLocErrorMsg] = useState("")
 
 
   let [toggleflag, setToggleFlag] = useState(true);
@@ -30,9 +33,9 @@ function PopUp(prop: any) {
 
       prop.setLocationName(selectedLocation)
     }
-    else{
+    else {
       setLocErrorMsg("Please Select any Location")
-      
+
     }
   }
 
@@ -83,6 +86,7 @@ function PopUp(prop: any) {
     if (newLocationErr === "") {
       addNewLocation()
       setIsAdding(false);
+      setNewLocationAdded('Location Added Successfully!')
     }
 
     setNewLocation("")
@@ -96,7 +100,7 @@ function PopUp(prop: any) {
           setLocationNames(response.data)
         }
       )
-  }, []);
+  }, [locationNames]);
 
   const addNewLocation = () => {
     const location = { locationName: newLocation }
@@ -111,6 +115,7 @@ function PopUp(prop: any) {
 
   const startAddingHandler = () => {
     setIsAdding(true);
+    setNewLocationAdded('')
   }
 
 
@@ -124,11 +129,16 @@ function PopUp(prop: any) {
     setSelectedLocation(e.target.value)
   }
 
+
   // console.log(selectedLocation)
 
   return (
 
     <div>
+      {/* <div>
+        <button onClick={notify}>Click</button>
+        <ToastContainer />
+      </div> */}
       <button className="pt-2 buy_button btn  text-light"
         onClick={() => { handleOpen(); setToggleFlag(true) }}>Buy Now</button>
       {toggleflag && <Modal
@@ -157,32 +167,39 @@ function PopUp(prop: any) {
                   <button className="btn-success btn-add ms-5" type="button" onClick={startAddingHandler}>Add&#32;Location</button>
                 </div>}
 
-                {isAdding && <form className="d-inline mt-3 needs-validation ms-5"
-                  onSubmit={(e) => LocationSubmitHandler(e, { newLocation })} >
-                  <label htmlFor="ulocation" className="form-label"></label>
-                  <input className="addLocation "
-                    type="text" id="ulocation"
+                {isAdding && <div>
+                  <form className="d-inline mt-3 needs-validation ms-5"
+                    onSubmit={(e) => {
+                      LocationSubmitHandler(e, { newLocation });
+                      // notify();
+                    }} >
+                    <label htmlFor="ulocation" className="form-label"></label>
+                    <input className="addLocation "
+                      type="text" id="ulocation"
 
-                    placeholder="Enter your Location here"
-                    value={newLocation}
-                    onBlur={(e) => validations(e)}
-                    name="newLocation"
-                    onChange={(e) => setNewLocation(e.target.value)}
+                      placeholder="Enter your Location here"
+                      value={newLocation}
+                      onBlur={(e) => validations(e)}
+                      name="newLocation"
+                      onChange={(e) => setNewLocation(e.target.value)}
 
-                    required />
+                      required />
 
-
-                  <button className="d-inline btn-success btn-add" type="submit" >
-                    Save&#32;Location
-                  </button>
-                  <p className="text-danger ms-5 mb-0">{newLocationErr}</p>
-                </form>}
+                    <button className="d-inline btn-success btn-add" type="submit">
+                      Save&#32;Location
+                    </button>
+                    <p className="text-danger ms-5 mb-0">{newLocationErr}</p>
+                  </form>
+                  <ToastContainer />
+                </div>}
+                <p className="text-success text-center mb-0 mt-2">{newLocationAdded}</p>
 
                 <form className="needs-validation" >
                   <div className="dropDown " >
                     <select className="form-select dropdownToggle"
                       placeholder="Location"
                       onChange={locationHandler}
+                      onClick={() => setNewLocationAdded('')}
                       defaultValue={selectedLocation}
                       required>
 
@@ -212,7 +229,7 @@ function PopUp(prop: any) {
                   {/* <Link to="/products"> */}
                   <button className="btn-success btn-cnt" type="submit" onClick={continueHandler}>Continue</button>
                   {/* </Link> */}
-                  
+
 
 
 

@@ -9,7 +9,7 @@ import { Accordion } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-var serverUrl="http://localhost:3005/";
+var serverUrl = "http://localhost:3005/";
 function ProductDetails(props: any) {
 
     let [products, setProducts] = useState([])
@@ -18,6 +18,7 @@ function ProductDetails(props: any) {
     let [isDisplaying, setIsDisplaying] = useState(true)
     let [showCount, setShowCount] = useState(5)
     let [sortValue, setSortValue] = useState('default')
+    let [id, setId] = useState('')
     const navigate = useNavigate();
     // let [isOpened, setIsOpened] = useState('')
     // let [marketType, setMarketType] = useState('cattleMarkets')
@@ -36,6 +37,8 @@ function ProductDetails(props: any) {
 
     const setLocationHandler = (event: any) => {
         setLocation(event.target.value)
+        // setId('opened')
+
 
         if (event.target.id === "") {
             event.target.id = 'opened'
@@ -79,6 +82,7 @@ function ProductDetails(props: any) {
 
     const addtoWishlist = () => {
 
+
     }
 
 
@@ -104,13 +108,14 @@ function ProductDetails(props: any) {
                     <div className="locBox col-3 mt-3 p-0 bg-white">
                         {
                             products.map((e: any, ind) => {
-                                let index = "#ind" + ind
+                                let index = "#collapse" + ind
+                                let index2 = "collapse" + ind
                                 return (
 
                                     <div data-bs-toggle="collapse" data-bs-target={index} aria-expanded="false" aria-controls="collapseExample" key={ind} >
-                                        <button className="locbtn bg-white text-start px-3" onClick={setLocationHandler} value={e.locationName}>{e.locationName}</button>
+                                        <button className="locbtn bg-white text-start px-3" id={id} onClick={setLocationHandler} value={e.locationName}>{e.locationName}</button>
 
-                                        <div className="collapse " id={index.slice(1)}>
+                                        <div className="collapse" id={index2}>
                                             <ul>
                                                 <li className="mx-4"><span className="blue mx-2">&#9679;</span><button className="marketButton " onClick={setMarketHandler} value='Cattle Market'>Cattle Market<span>({e.cattleMarkets.length})</span></button></li>
                                                 <li className="mx-4"><span className="blue mx-2">&#9679;</span><button className="marketButton " onClick={setMarketHandler} value='Sheep Market'>Sheep Market<span>({e.sheepMarkets.length})</span></button></li>
@@ -154,24 +159,24 @@ function ProductDetails(props: any) {
                                         if (product.locationName === location) {
                                             return (
                                                 product.cattleMarkets.map((e: any, i: any) => {
-                                                    let imagePath= "";
-                                                    if ( typeof e.image === 'object'){
-                                                        imagePath=serverUrl+e.image.filename;
+                                                    let imagePath = "";
+                                                    if (typeof e.image === 'object') {
+                                                        imagePath = serverUrl + e.image.filename;
                                                     }
                                                     return (
                                                         <div key={i}>
 
                                                             <div className="card mb-4">
-                                                                <div className="card-body" id={e.animalId}>
+                                                                <div className="card-body" id={e._id}>
                                                                     <button className="wishListButton" onClick={addtoWishlist}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
                                                                     <div onClick={productDataHandler}>
-                                                                        
-                                                                         <img className="productImage"  src={imagePath} />
-                                                                         {/* <img src={`data:image/jpeg;based64,${e.image}`} /> */}
 
-                                                                        <h5 className="card-id" id={e.animalId}>Animal ID: {e._id}</h5>
+                                                                        <img className="productImage" src={imagePath} />
+                                                                        {/* <img src={`data:image/jpeg;based64,${e.image}`} /> */}
 
-                                                                        <p className="card-price" id={e.animalId}>Price:{e.price}</p>
+                                                                        <h5 className="card-id" id={e._id}>Animal ID: {e._id}</h5>
+
+                                                                        <p className="card-price" id={e._id}>Price:{e.price}</p>
                                                                     </div>
                                                                     <div className="text-center">
                                                                         <button type="button" className="btn btn-success">Add to Cart</button>
@@ -192,23 +197,23 @@ function ProductDetails(props: any) {
 
                                             return (
                                                 highToLowData.map((e: any, i: any) => {
-                                                    let imagePath= "";
-                                                    if ( typeof e.image === 'object'){
-                                                        
-                                                        imagePath=serverUrl+e.image.filename;
+                                                    let imagePath = "";
+                                                    if (typeof e.image === 'object') {
+
+                                                        imagePath = serverUrl + e.image.filename;
                                                     }
                                                     return (
                                                         <div key={i}>
 
                                                             <div className="card mb-4">
-                                                                <div className="card-body" id={e.animalId}>
+                                                                <div className="card-body" id={e._id}>
                                                                     <button className="wishListButton" onClick={addtoWishlist}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
                                                                     <div onClick={productDataHandler}>
-                                                                        < img className="productImage"  src={imagePath} />
+                                                                        < img className="productImage" src={imagePath} />
 
-                                                                        <h5 className="card-id" id={e.animalId}>Animal ID: {e._id}</h5>
+                                                                        <h5 className="card-id" id={e._id}>Animal ID: {e._id}</h5>
 
-                                                                        <p className="card-price" id={e.animalId}>Price:{e.price}</p>
+                                                                        <p className="card-price" id={e._id}>Price:{e.price}</p>
                                                                     </div>
 
                                                                     <div className="text-center">
@@ -229,22 +234,22 @@ function ProductDetails(props: any) {
                                             const lowToHighData = [].concat(product.cattleMarkets).sort((a: any, b: any) => a.price < b.price ? -1 : 1)
                                             return (
                                                 lowToHighData.map((e: any, i: any) => {
-                                                    let imagePath= "";
-                                                    if ( typeof e.image === 'object'){
-                                                        imagePath=serverUrl+e.image.filename;
+                                                    let imagePath = "";
+                                                    if (typeof e.image === 'object') {
+                                                        imagePath = serverUrl + e.image.filename;
                                                     }
                                                     return (
                                                         <div key={i}>
 
                                                             <div className="card mb-4">
-                                                                <div className="card-body" id={e.animalId}>
+                                                                <div className="card-body" id={e._id}>
                                                                     <button className="wishListButton" onClick={addtoWishlist}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
                                                                     <div onClick={productDataHandler}>
-                                                                        <img  className="productImage" src={imagePath} />
+                                                                        <img className="productImage" src={imagePath} />
 
-                                                                        <h5 className="card-id" id={e.animalId}>Animal ID: {e._id}</h5>
+                                                                        <h5 className="card-id" id={e._id}>Animal ID: {e._id}</h5>
 
-                                                                        <p className="card-price" id={e.animalId}>Price:{e.price}</p>
+                                                                        <p className="card-price" id={e._id}>Price:{e.price}</p>
                                                                     </div>
                                                                     <div className="text-center">
                                                                         <button type="button" className="btn btn-success">Add to Cart</button>
@@ -268,22 +273,22 @@ function ProductDetails(props: any) {
                                         if (product.locationName === location) {
                                             return (
                                                 product.sheepMarkets.map((e: any, i: any) => {
-                                                    let imagePath= "";
-                                                    if ( typeof e.image === 'object'){
-                                                        imagePath=serverUrl+e.image.filename;
+                                                    let imagePath = "";
+                                                    if (typeof e.image === 'object') {
+                                                        imagePath = serverUrl + e.image.filename;
                                                     }
                                                     return (
                                                         <div key={i}>
 
                                                             <div className="card mb-4">
-                                                                <div className="card-body" id={e.animalId}>
+                                                                <div className="card-body" id={e._id}>
                                                                     <button className="wishListButton" onClick={addtoWishlist}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
                                                                     <div onClick={productDataHandler}>
-                                                                        <img  className="productImage" src={imagePath} />
+                                                                        <img className="productImage" src={imagePath} />
 
-                                                                        <h5 className="card-id" id={e.animalId}>Animal ID: {e._id}</h5>
+                                                                        <h5 className="card-id" id={e._id}>Animal ID: {e._id}</h5>
 
-                                                                        <p className="card-price" id={e.animalId}>Price:{e.price}</p>
+                                                                        <p className="card-price" id={e._id}>Price:{e.price}</p>
                                                                     </div>
                                                                     <div className="text-center">
                                                                         <button type="button" className="btn btn-success">Add to Cart</button>
@@ -301,28 +306,28 @@ function ProductDetails(props: any) {
                                     else if (sortValue === "highToLow") {
                                         if (product.locationName === location) {
                                             const highToLowData = [].concat(product.sheepMarkets).sort((a: any, b: any) => a.price < b.price ? 1 : -1)
-                                            
+
 
                                             return (
                                                 highToLowData.map((e: any, i: any) => {
-                                                    let imagePath= "";
-                                                    if ( typeof e.image === 'object'){
-                                                        imagePath=serverUrl+e.image.filename;
+                                                    let imagePath = "";
+                                                    if (typeof e.image === 'object') {
+                                                        imagePath = serverUrl + e.image.filename;
                                                     }
                                                     // console.log(e)
                                                     return (
                                                         <div key={i}>
 
                                                             <div className="card mb-4">
-                                                                <div className="card-body" id={e.animalId}>
+                                                                <div className="card-body" id={e._id}>
                                                                     <button className="wishListButton" onClick={addtoWishlist}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
                                                                     <div onClick={productDataHandler}>
-                                                                        
-                                                                        <img className="productImage" src={imagePath} />
-           
-                                                                        <h5 className="card-id" id={e.animalId}>Animal ID: {e._id}</h5>
 
-                                                                        <p className="card-price" id={e.animalId}>Price:{e.price}</p>
+                                                                        <img className="productImage" src={imagePath} />
+
+                                                                        <h5 className="card-id" id={e._id}>Animal ID: {e._id}</h5>
+
+                                                                        <p className="card-price" id={e._id}>Price:{e.price}</p>
                                                                     </div>
                                                                     <div className="text-center">
                                                                         <button type="button" className="btn btn-success">Add to Cart</button>
@@ -342,22 +347,22 @@ function ProductDetails(props: any) {
                                             const lowToHighData = [].concat(product.sheepMarkets).sort((a: any, b: any) => a.price < b.price ? -1 : 1)
                                             return (
                                                 lowToHighData.map((e: any, i: any) => {
-                                                    let imagePath= "";
-                                                    if ( typeof e.image === 'object'){
-                                                        imagePath=serverUrl+e.image.filename;
+                                                    let imagePath = "";
+                                                    if (typeof e.image === 'object') {
+                                                        imagePath = serverUrl + e.image.filename;
                                                     }
                                                     return (
                                                         <div key={i}>
 
                                                             <div className="card mb-4">
-                                                                <div className="card-body" id={e.animalId}>
+                                                                <div className="card-body" id={e._id}>
                                                                     <button className="wishListButton" onClick={addtoWishlist}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
                                                                     <div onClick={productDataHandler}>
                                                                         <img className="productImage" src={imagePath} />
 
-                                                                        <h5 className="card-id" id={e.animalId}>Animal ID: {e._id}</h5>
+                                                                        <h5 className="card-id" id={e._id}>Animal ID: {e._id}</h5>
 
-                                                                        <p className="card-price" id={e.animalId}>Price:{e.price}</p>
+                                                                        <p className="card-price" id={e._id}>Price:{e.price}</p>
                                                                     </div>
                                                                     <div className="text-center">
                                                                         <button type="button" className="btn btn-success">Add to Cart</button>
