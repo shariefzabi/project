@@ -149,7 +149,7 @@ function PopUp(prop: any) {
         sx={{ overflow: 'auto' }}
       >
         <div className='location-modal-container'>
-          <div id="modal-modal-description" className="location-window">
+          <div id="modal-modal-description" className="location-window text-center">
 
 
             <div className="popUp">
@@ -228,7 +228,7 @@ function PopUp(prop: any) {
                   </div>
 
 
-                  <div className="text-center">
+                  <div >
                   <button className="btn-success btn-cnt" type="submit" onClick={continueHandler}>Continue</button>
                   </div>
                   

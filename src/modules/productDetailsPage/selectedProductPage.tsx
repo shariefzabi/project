@@ -10,7 +10,7 @@ import { Rating } from "@mui/material";
 
 
 
-
+var serverUrl = "http://localhost:3005/";
 function SelectedProductDetails(props: any) {
 
     let [product, setProduct] = useState<any>([])
@@ -77,8 +77,9 @@ function SelectedProductDetails(props: any) {
     }
 
     // var serverUrl = "http://localhost:3005/";
-    // let imagePath = "";
-    // imagePath = serverUrl +product.image.filename;
+    let imagePath = "";
+    if (typeof product.image === 'object') {
+    imagePath = serverUrl +product.image.filename;}
 
     return (
         <div id="productPage" className="productPage">
@@ -119,10 +120,12 @@ function SelectedProductDetails(props: any) {
                             })
                         }
                     </div>
-                    <div className="col-4 p-0">
+                    <div className="col-4 mt-3 p-0">
+                    
+                        <img className="Image" src={imagePath} />
                     {/* < img className="productImage" src={"http://localhost:3005/" +product.image.filename } /> */}
                     </div>
-                    <div className="col-5 p-0">
+                    <div className="col-5 mt-3 p-0">
                         <button className="wishListButton"><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
                         <h3 className="p-0" id="marketHeading">ANIMAL ID - </h3>
                         <h3 className="mb-3 p-0" id="marketHeading">{product._id}</h3>

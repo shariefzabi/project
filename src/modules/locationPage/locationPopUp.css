@@ -87,6 +87,7 @@
 
 .dropDown .dropdownToggle {
   margin: auto;
+  margin-left: 42px;
   background-color: #fff;
   border: 1px solid #f1f1f1;
   box-sizing: border-box;
