@@ -38,7 +38,7 @@ a:hover{
    background-color: #2078BF!important;
 }
 .dropdown-menu.show{
-    margin-top: 10px !important;
+    // margin-top: 10px !important;
     padding: 0%;
 }
 .buy_button , .log_button{
@@ -142,3 +142,53 @@ border-left: 8px solid transparent;
     }
     
 }
+
+// team 6
+.popHover {
+    right: 1%;
+    top: 1%;
+    cursor: pointer;
+    position: relative;
+    top:1.625rem;
+    right: 5.938rem;
+  }
+  .cart-count{
+    width: 21px;
+    height: 23px;
+    text-align: center;
+    background-color: white !important;
+      border-radius: 50%;
+    position: relative;
+    text-decoration: none;
+    list-style-type:none ;
+    top: 2.625rem;
+    /* right: -1.062rem; */
+    left: 1rem;
+    color: #2078BF;;
+  }
+  .cartPopUp {
+    padding: 0rem;
+    margin: 0rem;
+    width: 20.625rem !important;
+    height: 14.438rem;
+    // margin-right: 80px !important;
+    padding:22px 32px 25px 22px !important;
+    // margin-top:40px !important;
+    // padding-top: 20px !important;
+  }
+  .option {
+    margin-left: 20%;
+  }
+  .option>button {
+    margin-left: 5%;
+     }
+     .animalid {
+        margin-bottom: -2.188rem;
+        font-size: 12px;
+        font-weight: 400;
+        margin-left: 50px;
+        height: 60px;
+      }
+  hr{
+      margin: 0 !important;
+  }
