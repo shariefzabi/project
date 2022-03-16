@@ -82,7 +82,7 @@ function AddProducts(props: any) {
     },
     validate: validateProduct,
     onSubmit: (productDetails: any) => {
-      // alert(JSON.stringify(values));
+      alert(JSON.stringify("Product Created Successfully"));
       // values.preventDefault();
       // console.log(values);
       const formData = new FormData();
