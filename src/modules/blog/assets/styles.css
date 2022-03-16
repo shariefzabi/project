@@ -42,14 +42,22 @@ h1{
     text-decoration: underline;
 }
 .main_box{
-    width: 90%;
+    width: 90% !important;
     /* height: 300px; */
     /* background-color: #2078BF; */
-    margin: auto;
-    margin-top: 70px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: unset;
+    margin: auto !important;
+    margin-top: 70px !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    /* gap: unset; */
+}
+.carousel-indicators{
+    margin-left: 49% !important;
+    margin-top: 30px !important;
+    margin-bottom: 0% !important;
+    background-color: rgba(127, 214, 255, 0.808);
+    width: 65px !important;
+    border-radius: 5px;
 }
 .first_box{
     /* background-color: black; */
