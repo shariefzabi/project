@@ -42,12 +42,12 @@ class Butcherypopup extends React.Component<any, any> {
     let v = e.target.value;
     let state = this.state;
     if (n === "name") {
-      let re = /^[a-zA-Z ]{5,10}$/;
+      let re = /^[a-zA-Z0-9 ]{5,10}$/;
       if (v === "") {
         this.setState({ nameErr: "Please enter the Full Name." });
       } else if (!re.test(v)) {
         this.setState({
-          nameErr: "Accepts Alphabets, space & Min 5 to Max 10 Char",
+          nameErr: "Accepts Alphabets, Numbers, space & Min 5 to Max 10 Char",
         });
       } else this.setState({ nameErr: "" });
     } else if (n === "butchery") {
@@ -58,7 +58,8 @@ class Butcherypopup extends React.Component<any, any> {
       } else this.setState({ butcheryErr: "" });
     } else if (n === "number") {
       let re =
-        /((\+*)((0[ -]*)*|((91 )*))((\d{12})+|(\d{10})+))|\d{5}([- ]*)\d{6}/;
+        // /((\+*)((0[ -]*)*|((91 )*))((\d{12})+|(\d{10})+))|\d{5}([- ]*)\d{6}/;
+        /^[0-9]{10}$/;
       if (v === "") {
         this.setState({ numberErr: "Please enter the Phone Number." });
       } else if (!re.test(v)) {
@@ -92,203 +93,206 @@ class Butcherypopup extends React.Component<any, any> {
   };
   handleOpen = () => this.setState({ openPopup: true });
   handleClose = () => this.setState({ openPopup: false });
-  butcherySubmitHandler = (e: any) => {
+  butcherySubmitHandler = (e: any, butcheryDetails: any) => {
     let { name, butchery, number, email, conadd, state, city } = this.state;
     e.preventDefault();
     // console.log("userDetails:", userDetails);
 
-    // axios.post("http://localhost:3005/users/signup",{
-    //     fullName, agent,number, email,contactAddress,businessAddress,City
-    // })
-    // .then((res:any)=>{
+    axios
+      .post("http://localhost:3005/butchery/add-butchery", butcheryDetails)
+      .then((res: any) => {
+        console.log(res.data);
 
+        if (res.data == "Butchery  created successfully!!")
+          this.props.setAgent(res.data);
+        else this.setState({ emailErrMsg: res.data });
+      })
+      .catch((err: any) => console.log(" Butchery Form Error", err));
+    // this.props.setButchery({
+    //     fullName: name, butchery, number, email, contactAddress: conadd, State: state, City: city
     // })
-    // .catch((err:any)=>console.log(" User Sign up Error",err));
-    this.props.setButchery({
-      fullName: name,
-      butchery,
-      number,
-      email,
-      contactAddress: conadd,
-      State: state,
-      City: city,
-    });
-    console.log(this.props);
+    console.log(butcheryDetails);
   };
   render() {
+    let { name, butchery, number, email, conadd, state, city } = this.state;
     return (
       <>
-        <div className="section">
-          <div className="modal-content butcheryform">
-            <div className="text-center popupheading">
-              <p>Butchery/Abattoir</p>
-            </div>
-            <div className="form-paragraph">
-              <p>
-                Fill the form below and our experts will get in touch with you.
+        <div className="be-an-agent modal-content">
+          <div className="text-center popupheading">
+            <p>Butchery/Abattoir</p>
+          </div>
+          <div className="form-paragraph">
+            <p>
+              Fill the form below and our experts will get in touch with you.
+            </p>
+          </div>
+          <form
+            onSubmit={(e) =>
+              this.butcherySubmitHandler(e, {
+                fullName: name,
+                butchery,
+                number,
+                email,
+                contactAddress: conadd,
+                State: state,
+                City: city,
+              })
+            }
+          >
+            <div className="mb-3">
+              <img className="form-image" src={require("./assets/human.png")} />
+              <label htmlFor="Full Name" className="col-form-label">
+                Full Name
+              </label>
+              <input
+                type="text"
+                className="form-control form-page"
+                name="name"
+                id="Full Name"
+                placeholder="Full Name"
+                onChange={this.changeHandler}
+                onBlur={this.validate}
+                required
+              />
+              <p className="mb-1 text-center text-danger">
+                {this.state.nameErr}
               </p>
             </div>
-            <form onSubmit={this.butcherySubmitHandler}>
-              <div className="mb-3">
-                <img
-                  className="form-image"
-                  src={require("./assets/human.png")}
-                />
-                <label htmlFor="Full Name" className="col-form-label">
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  className="form-control form-page"
-                  name="name"
-                  id="Full Name"
-                  placeholder="Full Name"
-                  onChange={this.changeHandler}
-                  onBlur={this.validate}
-                  required
-                />
-                <p className="mb-1 text-center text-danger">
-                  {this.state.nameErr}
-                </p>
-              </div>
-              <div className="mb-3">
-                <label htmlFor="Agent" className="col-form-label select-label">
-                  Butchery/Abattoir
-                </label>
-                <select
-                  className="form-select"
-                  defaultValue="2"
-                  name="butchery"
-                  aria-label="Default select example"
-                  onChange={this.changeHandler}
-                  onBlur={this.validate}
-                >
-                  <option value="0">Individual</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
-                <p className="mb-1 text-center text-danger">
-                  {this.state.butcheryErr}
-                </p>
-              </div>
-              <div className="mb-3">
-                <img
-                  className="form-image"
-                  src={require("./assets/mobile.png")}
-                />
-                <label htmlFor="phone" className="col-form-label">
-                  Phone
-                </label>
-                <input
-                  type="number"
-                  className="form-control form-page"
-                  name="number"
-                  id="phone"
-                  placeholder="Phone"
-                  onChange={this.changeHandler}
-                  onBlur={this.validate}
-                  required
-                />
-                <p className="mb-1 text-center text-danger">
-                  {this.state.numberErr}
-                </p>
-              </div>
-              <div className="mb-3">
-                <img
-                  className="form-image"
-                  src={require("./assets/mail.png")}
-                />
-                <label htmlFor="Email" className="col-form-label">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  className="form-control form-page"
-                  name="email"
-                  id="Email"
-                  placeholder="Email Address"
-                  onChange={this.changeHandler}
-                  onBlur={this.validate}
-                  required
-                />
-                <p className="mb-1 text-center text-danger">
-                  {this.state.emailErr}
-                </p>
-              </div>
-              <div className="mb-3">
-                <img
-                  className="form-image"
-                  src={require("./assets/location.png")}
-                />
-                <label htmlFor="Contact Address" className="col-form-label">
-                  Contact Address
-                </label>
-                <input
-                  type="text"
-                  className="form-control form-page"
-                  name="conadd"
-                  id="Contact Address"
-                  placeholder="Contact Address"
-                  onChange={this.changeHandler}
-                  onBlur={this.validate}
-                  required
-                />
-                <p className="mb-1 text-center text-danger">
-                  {this.state.conaddErr}
-                </p>
-              </div>
-              <div className="mb-3">
-                <img
-                  className="form-image"
-                  src={require("./assets/address1.png")}
-                />
-                <label htmlFor="State" className="col-form-label">
-                  State
-                </label>
-                <input
-                  type="text"
-                  className="form-control  form-page"
-                  name="state"
-                  id="State"
-                  placeholder="State"
-                  onChange={this.changeHandler}
-                  onBlur={this.validate}
-                  required
-                />
-                <p className="mb-1 text-center text-danger">
-                  {this.state.stateErr}
-                </p>
-              </div>
-              <div className="mb-3">
-                <img
-                  className="form-image"
-                  src={require("./assets/address2.png")}
-                />
-                <label htmlFor="Town/City" className="col-form-label">
-                  Town/City
-                </label>
-                <input
-                  type="text"
-                  className="form-control form-page"
-                  name="city"
-                  id="Town/City"
-                  placeholder="Town/City"
-                  onChange={this.changeHandler}
-                  onBlur={this.validate}
-                  required
-                />
-                <p className="mb-1 text-center text-danger">
-                  {this.state.cityErr}
-                </p>
-              </div>
-              <div className="mb-3 text-center">
-                <button type="submit" className="btn btn-success sendbutton">
-                  Send
-                </button>
-              </div>
-            </form>
-          </div>
+            <div className="mb-3">
+              <label htmlFor="Agent" className="col-form-label select-label">
+                Butchery/Abattoir
+              </label>
+              <select
+                className="form-select"
+                // defaultValue="2"
+                value={this.state.butchery}
+                name="butchery"
+                aria-label="Default select example"
+                onChange={this.changeHandler}
+                onBlur={this.validate}
+              >
+                <option value="0">Individual</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+              <p className="mb-1 text-center text-danger">
+                {this.state.butcheryErr}
+              </p>
+            </div>
+            <div className="mb-3">
+              <img
+                className="form-image"
+                src={require("./assets/mobile.png")}
+              />
+              <label htmlFor="phone" className="col-form-label">
+                Phone
+              </label>
+              <input
+                type="text"
+                className="form-control form-page"
+                name="number"
+                id="phone"
+                placeholder="Phone"
+                onChange={this.changeHandler}
+                onBlur={this.validate}
+                required
+              />
+              <p className="mb-1 text-center text-danger">
+                {this.state.numberErr}
+              </p>
+            </div>
+            <div className="mb-3">
+              <img className="form-image" src={require("./assets/mail.png")} />
+              <label htmlFor="Email" className="col-form-label">
+                Email
+              </label>
+              <input
+                type="email"
+                className="form-control form-page"
+                name="email"
+                id="Email"
+                placeholder="Email Address"
+                onChange={this.changeHandler}
+                onBlur={this.validate}
+                required
+              />
+              <p className="mb-1 text-center text-danger">
+                {this.state.emailErr}
+              </p>
+            </div>
+            <div className="mb-3">
+              <img
+                className="form-image"
+                src={require("./assets/location.png")}
+              />
+              <label htmlFor="Contact Address" className="col-form-label">
+                Contact Address
+              </label>
+              <input
+                type="text"
+                className="form-control form-page"
+                name="conadd"
+                id="Contact Address"
+                placeholder="Contact Address"
+                onChange={this.changeHandler}
+                onBlur={this.validate}
+                required
+              />
+              <p className="mb-1 text-center text-danger">
+                {this.state.conaddErr}
+              </p>
+            </div>
+            <div className="mb-3">
+              <img
+                className="form-image"
+                src={require("./assets/address1.png")}
+              />
+              <label htmlFor="State" className="col-form-label">
+                State
+              </label>
+              <input
+                type="text"
+                className="form-control  form-page"
+                name="state"
+                id="State"
+                placeholder="State"
+                onChange={this.changeHandler}
+                onBlur={this.validate}
+                required
+              />
+              <p className="mb-1 text-center text-danger">
+                {this.state.stateErr}
+              </p>
+            </div>
+            <div className="mb-3">
+              <img
+                className="form-image"
+                src={require("./assets/address2.png")}
+              />
+              <label htmlFor="Town/City" className="col-form-label">
+                Town/City
+              </label>
+              <input
+                type="text"
+                className="form-control form-page"
+                name="city"
+                id="Town/City"
+                placeholder="Town/City"
+                onChange={this.changeHandler}
+                onBlur={this.validate}
+                required
+              />
+              <p className="mb-1 text-center text-danger">
+                {this.state.cityErr}
+              </p>
+            </div>
+            <div className="mb-3 text-center">
+              <button type="submit" className="btn btn-success sendbutton">
+                Send
+              </button>
+            </div>
+          </form>
         </div>
       </>
     );
@@ -305,8 +309,8 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: Function) => {
   return {
-    setButchery: (userDetails: any) =>
-      dispatch({ type: "setButchery", payload: userDetails }),
+    setButchery: (butcheryDetails: any) =>
+      dispatch({ type: "setButchery", payload: butcheryDetails }),
   };
 };
 

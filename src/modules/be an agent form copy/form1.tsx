@@ -41,12 +41,12 @@ class BeanAgentPopup extends React.Component<any, any> {
     let v = e.target.value;
     let state = this.state;
     if (n === "name") {
-      let re = /^[a-zA-Z ]{5,10}$/;
+      let re = /^[0-9a-zA-Z ]{5,10}$/;
       if (v === "") {
         this.setState({ nameErr: "Please enter the Full Name." });
       } else if (!re.test(v)) {
         this.setState({
-          nameErr: "Accepts Alphabets, space & Min 5 to Max 10 Char",
+          nameErr: "Accepts Alphabets, numbers, space & Min 5 to Max 10 Char",
         });
       } else this.setState({ nameErr: "" });
     } else if (n === "agent") {
@@ -57,7 +57,8 @@ class BeanAgentPopup extends React.Component<any, any> {
       } else this.setState({ agentErr: "" });
     } else if (n === "number") {
       let re =
-        /((\+*)((0[ -]*)*|((91 )*))((\d{12})+|(\d{10})+))|\d{5}([- ]*)\d{6}/;
+        // /((\+*)((0[ -]*)*|((91 )*))((\d{12})+|(\d{10})+))|\d{5}([- ]*)\d{6}/;
+        /^[0-9]{6}$/;
       if (v === "") {
         this.setState({ numberErr: "Please enter the Phone Number." });
       } else if (!re.test(v)) {
@@ -89,48 +90,28 @@ class BeanAgentPopup extends React.Component<any, any> {
   };
   handleOpen = () => this.setState({ openPopup: true });
   handleClose = () => this.setState({ openPopup: false });
-  agentSubmitHandler = (e: any) => {
-    let { name, agent, number, email, conadd, busadd, city } = this.state;
+  agentSubmitHandler = (e: any, agentDetails: any) => {
     e.preventDefault();
     // console.log("userDetails:", userDetails);
 
     axios
-      .post("http://localhost:3005/agents/add-agents", {
-        name,
-        agent,
-        number,
-        email,
-        conadd,
-        busadd,
-        city,
-      })
+      .post("http://localhost:3005/agents/add-agents", agentDetails)
+
       .then((res: any) => {
-        if (res.data == "success")
-          this.props.setAgent({
-            fullName: name,
-            agent,
-            number,
-            email,
-            contactAddress: conadd,
-            businessAddress: busadd,
-            City: city,
-          });
+        console.log(res.data);
+
+        if (res.data == "Agent created successfully!!")
+          this.props.setAgent(res.data);
         else this.setState({ emailErrMsg: res.data });
       })
       .catch((err: any) => console.log(" User Form Error", err));
-    this.props.setAgent({
-      fullName: name,
-      agent,
-      number,
-      email,
-      contactAddress: conadd,
-      businessAddress: busadd,
-      City: city,
-    });
-    console.log(this.props);
+
+    console.log(agentDetails);
   };
 
   render() {
+    let { name, agent, number, email, conadd, busadd, city } = this.state;
+
     return (
       <div className="be-an-agent">
         <div className="text-center popupheading">
@@ -139,7 +120,19 @@ class BeanAgentPopup extends React.Component<any, any> {
         <div className="form-paragraph">
           <p>Fill the form below and our experts will get in touch with you.</p>
         </div>
-        <form onSubmit={this.agentSubmitHandler}>
+        <form
+          onSubmit={(e) =>
+            this.agentSubmitHandler(e, {
+              fullName: name,
+              agent,
+              number,
+              email,
+              contactAddress: conadd,
+              businessAddress: busadd,
+              City: city,
+            })
+          }
+        >
           <div className="mb-3">
             <img className="form-image" src={require("./assets/human.png")} />
             <label htmlFor="Full Name" className="col-form-label">
@@ -163,7 +156,7 @@ class BeanAgentPopup extends React.Component<any, any> {
             </label>
             <select
               className="form-select "
-              defaultValue="1"
+              value={this.state.agent}
               name="agent"
               aria-label="Default select example"
               onChange={this.changeHandler}
@@ -301,8 +294,8 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: Function) => {
   return {
-    setAgent: (setAgent: any) =>
-      dispatch({ type: "setAgent", payload: setAgent }),
+    setAgent: (agentDetails: any) =>
+      dispatch({ type: "setAgent", payload: agentDetails }),
   };
 };
 
