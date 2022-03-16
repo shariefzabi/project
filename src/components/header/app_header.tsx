@@ -1,7 +1,7 @@
 import React from "react";
 import bar from "./asset/group2.png";
 import cross from "./asset/group35.png";
-import triangle from "./asset/Triangle.png";
+import triangle from "./asset/triangle.png";
 import { Link } from "react-router-dom";
 import "./app_header.scss";
 // import BuyNow from "../../modules/ordercreation/components/ordercreation";
@@ -225,7 +225,7 @@ class Header extends React.Component<any, any> {
           {/* team6 */}
           {
             user && (
-              <div>
+              <div >
                 <a
                   className="edit-toggler text-secondary popHover"
                   type="button"
@@ -281,7 +281,7 @@ class Header extends React.Component<any, any> {
                   className="dropdown-menu  cartPopUp "
                   aria-labelledby="dropdownMenuButton1"
                 >
-                  <div>
+                  <div className="popItems">
                     <div className="animalid">
                       {/* <ul className="dropdown-item" key={items.animalId}>
                         <li className="btn btn-primary">X</li>
@@ -289,9 +289,9 @@ class Header extends React.Component<any, any> {
                         <li className="aa">x {datalength}</li>
                         <br />
                       </ul> */}
-                      <div className="row">
+                      <div className="row animaldetails">
                         <div className="col-6">
-                          <p>Animal Id : </p>
+                          <p>ANIMAL ID - </p>
                           <p>23456770707</p>
                         </div>
                         <div className="col-3">
@@ -306,7 +306,7 @@ class Header extends React.Component<any, any> {
                     <hr></hr>
 
                     {/* Sub-Total: {items.price * datalength} */}
-                    <div className="row">
+                    <div className="row total">
                       <div className="col">
                         Sub-Total:
                       </div>
@@ -316,8 +316,8 @@ class Header extends React.Component<any, any> {
                     </div>
                     <hr></hr>
 
-                    <div className="row">
-                      <div className="col">
+                    <div className="row total">
+                      <div className="col text-center">
                         Total:
                       </div>
                       <div className="col text-end">

@@ -175,6 +175,12 @@ border-left: 8px solid transparent;
     padding:22px 32px 25px 22px !important;
     // margin-top:40px !important;
     // padding-top: 20px !important;
+    
+  }
+  .popItems{
+    color: #838383;
+    // font-weight: 400;
+    font-family: ubuntu;
   }
   .option {
     margin-left: 20%;
@@ -191,4 +197,12 @@ border-left: 8px solid transparent;
       }
   hr{
       margin: 0 !important;
+  }
+  .animaldetails p{
+       margin: 0px;
+  }
+  .total{
+      padding: 12px;
+      font-weight: bold;
+    //   font-size: 12px;
   }
