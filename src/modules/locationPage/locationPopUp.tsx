@@ -164,7 +164,7 @@ function PopUp(prop: any) {
                 </div>
 
 
-                {!isAdding && <div className="  addLocbtn justify-content-center mt-3">
+                {!isAdding && <div className="  addLocbtn justify-content-center mt-4">
                   <p className=" pLoc d-inline">Can&#39;t&#32;find&#32;your&#32;location&#63;</p>
                   <button className="btn-success btn-add ms-5" type="button" onClick={startAddingHandler}>Add&#32;Location</button>
                 </div>}
@@ -176,7 +176,7 @@ function PopUp(prop: any) {
                       // notify();
                     }} >
                     <label htmlFor="ulocation" className="form-label"></label>
-                    <input className="addLocation "
+                    <input className="addLocation mt-4"
                       type="text" id="ulocation"
 
                       placeholder="Enter your Location here"
