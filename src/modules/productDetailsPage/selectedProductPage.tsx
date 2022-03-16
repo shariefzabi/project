@@ -76,9 +76,9 @@ function SelectedProductDetails(props: any) {
         // }
     }
 
-    var serverUrl = "http://localhost:3005/";
-    let imagePath = "";
-    imagePath = serverUrl + product.image.filename;
+    // var serverUrl = "http://localhost:3005/";
+    // let imagePath = "";
+    // imagePath = serverUrl +product.image.filename;
 
     return (
         <div id="productPage" className="productPage">
@@ -120,7 +120,7 @@ function SelectedProductDetails(props: any) {
                         }
                     </div>
                     <div className="col-4 p-0">
-                    < img className="productImage" src={imagePath} />
+                    {/* < img className="productImage" src={"http://localhost:3005/" +product.image.filename } /> */}
                     </div>
                     <div className="col-5 p-0">
                         <button className="wishListButton"><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
