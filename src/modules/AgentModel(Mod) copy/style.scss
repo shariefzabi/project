@@ -1,10 +1,12 @@
-.model-content{
+.be-an-agent-container{
+  width: 940px;
+    transform: 'translate(-50%, -50%)';
+    border: '2px solid #000';
+    background-color: #ffffff;
+    margin: 100px auto;
 
+.beAnAgent-window{
 
-
-  width: 940px !important  ;
-  
-}
 .pop_up_heading {
   color: #2078bf;
   margin-top: 2.5rem;
@@ -16,8 +18,7 @@
   letter-spacing: -1.6px;
 }
 
-.paragraph,
-.livestock247 {
+.paragraph, .livestock247 {
   width: 34.56rem;
   font-family: Ubuntu;
   font-size: 18px;
@@ -50,37 +51,11 @@
   list-style-type: none;
   padding: 0rem !important;
 }
-
+}
 @media (min-width: 576px) {
   .dialog {
     max-width: 800px !important;
     margin: 1.75rem auto;
   }
-
 }
-.agent_dropDown{
-  text-decoration: none;
-        font-weight: 400;
-        font-family: Ubuntu;
-        // font-size: 1.375rem;
-        line-height: 1.5rem;
-        color: #838383;
-        ;
-        // display: block;
-        // margin-top: 3.187rem;
-        cursor: pointer;
-}
-.agent_dropDown:hover{
-  background-color: #2078BF!important;
-  color: white !important;
-}
-
-
-
-.css-1t1j96h-MuiPaper-root-MuiDialog-paper
-{
-  overflow-y: visible !important;
-  max-height: none !important;
-  max-width: none !important;
-  margin-top: 40rem !important;
 }

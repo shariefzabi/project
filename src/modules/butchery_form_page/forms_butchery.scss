@@ -1,75 +1,76 @@
+.section {
+  width: 200%;
 
-.be-an-agent{
-  
-    .popupheading{
-        color: #2078BF;
-        margin-top: 3.81rem;
-        font-family: Ubuntu;
-        font-style: normal;
-        font-weight: bold !important;
-        font-size: 36px;
-        line-height: 4.875rem;
-        letter-spacing: -1.6px;
-    }
-    .popupheading p{
-        margin-bottom: 0%;
-    }
-    .form-page,.form-select{
-        width: 48.5% !important;
-        height:5.09%;
-        margin: auto !important;
-        padding: 1.5% !important;
-        /* padding-bottom: 1%; */
-    }
-    .col-form-label{
-        margin-left: 13%;
-        color: #838383;
-        padding-bottom: 1px;
-        margin-left: 24%;
-    }
-    ::placeholder,select{
-        color: #dcdcdc !important;
-    }
-    .form-paragraph{
-        font-family: Ubuntu;
-        font-size: 18px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 35px;
-        letter-spacing: 0px;
-        text-align: center;
-        width: 39.4%;
-        margin: auto;
-        color: #838383;
-    }
-    .sendbutton{
-        border: 0.134rem solid #00C3FF;
-        border-radius: 0.3125rem;
-        height: 2.75rem;
-        width:11.063rem;
-        margin: 2rem 2.625rem;
-    }
-    .form-image{
-        position: relative;
-        width:1rem;
-        height:1rem;
-        top: 2.5rem;
-        left: 70%;
-        margin-bottom: 14px;
-    }
-    .select-label{
-        margin-left: 26%;
-    }
-    @media (min-width: 576px){
+  .butcheryform {
     .modal-dialog {
+      width: 71% !important;
+      height: 94%;
+    }
+    @media (min-width: 576px) {
+      .modal-dialog {
         max-width: 800px !important;
         margin: 1.75rem auto;
-    }
-    }
-    }
-    .css-1t1j96h-MuiPaper-root-MuiDialog-paper{
-        overflow-y:visible !important;
-           max-height: none !important;
-          margin-top:30rem!important;
-    
       }
+    }
+    .popupheading {
+      color: #2078bf;
+      margin-top: 3.81rem;
+      font-family: Ubuntu;
+      font-style: normal;
+      font-weight: bold !important;
+      font-size: 36px;
+      line-height: 4.875rem;
+      letter-spacing: -1.6px;
+    }
+    .popupheading p {
+      margin-bottom: 0%;
+    }
+    .form-page,
+    .form-select {
+      width: 48.5% !important;
+      height: 5.09%;
+      margin: auto !important;
+      padding: 1.5% !important;
+      /* padding-bottom: 1%; */
+    }
+    .col-form-label {
+      margin-left: 13%;
+      color: #838383;
+      padding-bottom: 1px;
+      margin-left: 24%;
+    }
+    ::placeholder,
+    select {
+      color: #dcdcdc !important;
+    }
+    .form-paragraph {
+      font-family: Ubuntu;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 35px;
+      letter-spacing: 0px;
+      text-align: center;
+      width: 39.4%;
+      margin: auto;
+      color: #838383;
+    }
+    .sendbutton {
+      border: 0.134rem solid #00c3ff;
+      border-radius: 0.3125rem;
+      height: 2.75rem;
+      width: 11.063rem;
+      margin: 2rem 2.625rem;
+    }
+    .form-image {
+      position: relative;
+      width: 1rem;
+      height: 1rem;
+      top: 2.5rem;
+      left: 70%;
+    }
+    .select-label {
+      margin-left: 26%;
+    }
+  }
+}
