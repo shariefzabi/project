@@ -266,7 +266,7 @@ app.get('/orders/orderdetails/:uname', async (req, res) => {
 //storing wishlists
 app.post("/orders/wishlists", function (req, res) {
   let wishlistdetails = req.body;
-  console.log(wishlistdetails);
+  // console.log(wishlistdetails);
   let wishlistcollection = db.collection("wishlists");
   wishlistcollection.count(function (err, result) {
     if (err) console.log(err);
@@ -276,6 +276,25 @@ app.post("/orders/wishlists", function (req, res) {
     }
   })
 });
+
+//deleting whislist from team 4
+
+
+app.delete("/orders/wishlists/:id", function (req, res) {
+  let { params } = req;
+
+  try{
+    let ordercollection = db.collection("wishlists");
+    ordercollection.deleteOne({"product._id":(params.id.toString())
+  })
+
+  }
+  catch (err) {
+    res.send({ message: err })
+}
+  
+})
+
 //fetching whishlist based on username
 app.get('/orders/wishlists/:uname', async (req, res) => {
   let { params } = req
