@@ -62,7 +62,9 @@ function PopUp(prop: any) {
           setNewLocationErr(fullNameErrMsg)
           e.target.classList.add("field-error")
         } else {
-          let valid = locationNames.includes(enteredLocation)
+
+          let enteredLoc = enteredLocation.trim()[0].toUpperCase() + enteredLocation.slice(1).toLowerCase()
+          let valid = locationNames.includes(enteredLoc)
           console.log(valid)
           if (valid) {
             let fullNameErrMsg = "already exists in list"
@@ -155,12 +157,12 @@ function PopUp(prop: any) {
             <div className="popUp">
               <main className="popUpContent">
                 <div className="modal-title text-center" >
-                <h3 className="locationHeading">
-                  Choose&#32;your&#32;preferred&#32;location
-                </h3>
-                <article className="article">
-                  This&#32;displays&#32;all&#32;products&#32;associated&#32;with&#32;the&#32;chosen&#32;address
-                </article>
+                  <h3 className="locationHeading">
+                    Choose&#32;your&#32;preferred&#32;location
+                  </h3>
+                  <article className="article">
+                    This&#32;displays&#32;all&#32;products&#32;associated&#32;with&#32;the&#32;chosen&#32;address
+                  </article>
                 </div>
 
 
@@ -229,9 +231,9 @@ function PopUp(prop: any) {
 
 
                   <div >
-                  <button className="btn-success btn-cnt" type="submit" onClick={continueHandler}>Continue</button>
+                    <button className="btn-success btn-cnt" type="submit" onClick={continueHandler}>Continue</button>
                   </div>
-                  
+
 
 
 

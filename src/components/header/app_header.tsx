@@ -1,7 +1,7 @@
 import React from "react";
 import bar from "./asset/group2.png";
 import cross from "./asset/group35.png";
-import triangle from "./asset/Triangle.png";
+import triangle from "./asset/triangle.png";
 import { Link } from "react-router-dom";
 import "./app_header.scss";
 // import BuyNow from "../../modules/ordercreation/components/ordercreation";
@@ -17,6 +17,9 @@ import axios from "axios";
 class Header extends React.Component<any, any> {
   componentDidMount() {
     // this.props.setToken(this.getToken)
+    // console.log("team6", this.props.redux.quantity[0]);
+    // let rupeess = this.props.redux.quantity[1];
+    // console.log("team6dssd", parseInt(rupeess));
 
     axios
       .get("http://localhost:3005/users/" + this.getToken())
@@ -239,7 +242,7 @@ class Header extends React.Component<any, any> {
                   >
                     <div className="cart-count">
                       {/* <text style={{}}>{datalength}</text> */}
-                      <p style={{}}>4</p>
+                      <p >{this.props.redux.quantity[0]}</p>
 
                     </div>
                     <svg
@@ -292,11 +295,11 @@ class Header extends React.Component<any, any> {
                       <div className="row animaldetails">
                         <div className="col-6">
                           <p>ANIMAL ID - </p>
-                          <p>23456770707</p>
+                          <p>{this.props.redux.quantity[2]}</p>
                         </div>
                         <div className="col-3">
                           <p> x </p>
-                          <p>3</p>
+                          <p>{this.props.redux.quantity[0]}</p>
                         </div>
                         <div className="float-right col-1" >
                           <p className="btn btn-primary">X</p>
@@ -311,7 +314,7 @@ class Header extends React.Component<any, any> {
                         Sub-Total:
                       </div>
                       <div className="col text-end">
-                        4
+                        <p>{this.props.redux.quantity[1] * this.props.redux.quantity[0]}Rs</p>
                       </div>
                     </div>
                     <hr></hr>
@@ -321,7 +324,7 @@ class Header extends React.Component<any, any> {
                         Total:
                       </div>
                       <div className="col text-end">
-                        N 2000:00
+                        {this.props.redux.quantity[1] * this.props.redux.quantity[0]}Rs
                       </div>
                     </div>
                     {/* <div className="total">
@@ -351,7 +354,7 @@ class Header extends React.Component<any, any> {
 // export default Header;
 
 const mapStateToProps = (state: any) => {
-  // console.log(state);
+  console.log("team6", state);
 
   return {
     redux: state,

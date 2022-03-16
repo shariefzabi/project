@@ -1,62 +1,67 @@
 import './shopping_cart.css';
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import appStore from '../../state/app_store';
 import { addToCart } from './newcomponet/redux/Shopping/shopping-actions';
 import { Breadcrumb } from 'react-bootstrap';
+import { connect } from 'react-redux';
 
 class Cart extends React.Component<any, any> {
-  buttonData: any;
-  getReduxData: any;
+  
+
+  
   constructor(props: any) {
     super(props);
-    this.state = {
-      items: [],
-      DataisLaoded: false,
-      datalength: 0,
-      id: 3,
-      reduxData: '',
-      buttonData: '',
-    };
-    this.clickHandler = this.clickHandler.bind(this);
-  }
+      // let [count, setCount] = useState(1)
+       
 
-  componentDidMount() {
-    this.fetchProducts();
-    this.buttonData = appStore.getState();
-    this.setState({
-      datalength: this.buttonData.length,
-    });
-  }
-  getButtonData() {
-    this.buttonData = appStore.getState();
-    this.setState({
-      datalength: this.buttonData.length,
-    });
-  }
+  // componentDidMount() {
+  //   this.fetchProducts();
+  //   this.buttonData = appStore.getState();
+  //   this.setState({
+  //     datalength: this.buttonData.length,
+  //   });
+  // }
+  // getButtonData() {
+  //   this.buttonData = appStore.getState();
+  //   this.setState({
+  //     datalength: this.buttonData.length,
+  //   });
+  // }
 
-  fetchProducts = () => {
-    fetch('http://localhost:3005/animal/get-animal/Chennai/8')
-      // this.setState({ items: getData.payload })
-      .then((res: any) => res.json())
-      // .then((res) => console.log(res))
-      .then((res) => {
-        this.setState({ items: res.payload });
-      });
-    // console.log("++", getData);
-  };
+  // fetchProducts = () => {
+  //   fetch('http://localhost:3005/animal/get-animal/Chennai/8')
+  //     // this.setState({ items: getData.payload })
+  //     .then((res: any) => res.json())
+  //     // .then((res) => console.log(res))
+  //     .then((res) => {
+  //       this.setState({ items: res.payload });
+  //     });
+  //   // console.log("++", getData);
+  // };
 
-  clickHandler(id: any, price: any) {
-    addToCart(id, price);
-    this.buttonData = appStore.getState();
-    this.setState({
-      datalength: this.buttonData.length,
-    });
+  // clickHandler(id: any, price: any) {
+  //   addToCart(id, price);
+  //   this.buttonData = appStore.getState();
+  //   this.setState({
+  //     datalength: this.buttonData.length,
+  //   });
+  // }
+//   let countHandler = () => {
+//     let count=0;
+//     let setCount(count + 1);
+// }
+// const decrement = () => {
+//     setCount(count - 1)
+// }
+// function addToCart() {
+//     let items = [count, parseInt(`${product.price}`), product._id]
+//     props.quantity(items);
+// }
   }
 
   render() {
-    const { DataisLoaded, items, datalength, id } = this.state;
     return (
       <>
 
@@ -93,7 +98,7 @@ class Cart extends React.Component<any, any> {
             <header>
               <div className="cart_heading">
 
-                <p>Shopping Cart <span className="item_count">(1 item)</span></p>
+                <p>Shopping Cart <span className="item_count">({this.props.redux.quantity[0]} item)</span></p>
 
               </div>
 
@@ -129,27 +134,23 @@ class Cart extends React.Component<any, any> {
 
                 <tr>
 
-                  <td> <span className="first-line">ID - 900085000597636</span>
+                  <td> <span className="first-line">ID - {this.props.redux.quantity[2]}</span>
                     <span className="second-line">20/19/2019</span>
 
                   </td>
 
 
-                  <td className="rectangle ">
+                  <td>
+                  
+                            <div className="row quantity ms-0 addbtn2">
+                                <button className="btn btn-primary col"  >-</button>
+                                <p className="col m-auto">{this.props.redux.quantity[0]}</p>
+                                <button className="btn btn-primary col" onClick={() => this.setState({ count: this.state.count + 1 })} >+</button>
+                                </div>
 
-                    {/* {datalength} */}
 
-                    <p
+                      
 
-                      className="fas fa-plus incre"
-
-                      onClick={(e) =>
-
-                        this.clickHandler(items.animalId, items.price)
-
-                      }
-
-                    ></p>
 
                   </td>
 
@@ -161,7 +162,7 @@ class Cart extends React.Component<any, any> {
 
                   </td> */}
 
-                  <td>Out of Stock</td>
+                  <td>{this.props.redux.quantity[1] * this.props.redux.quantity[0]}Rs</td>
 
                   <td><span>Awaiting Payment</span></td>
 
@@ -191,5 +192,18 @@ class Cart extends React.Component<any, any> {
     );
   }
 }
+const mapStateToProps = (state: any) => {
+  console.log("team6", state);
 
-export default Cart;
+  return {
+    redux: state,
+  };
+};
+// const mapDispatchToProps = (dispatch: Function) => {
+//   return {
+
+//       quantity: (count: any) => dispatch({ type: 'itemslength', payload: count })
+//   }
+// }
+// export default Cart;
+export default connect(mapStateToProps )(Cart);

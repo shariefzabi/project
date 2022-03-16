@@ -27,9 +27,9 @@ class Deliverydetails extends React.Component<any, any>{
     }
     submitHandler = (e: any, deliveryDetails: any) => {
         e.preventDefault();
-        console.log("delivery details", deliveryDetails);
+        // console.log("delivery details", deliveryDetails);
         this.props.createOrder(deliveryDetails);
-        console.log("props in createorder", this.props);
+        // console.log("props in createorder", this.props);
         // let orderDetails1={...deliveryDetails,...this.props.products}
         // this.setState({orderDetails1});
         

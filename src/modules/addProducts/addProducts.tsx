@@ -46,7 +46,7 @@ const validateProduct = (productData: any) => {
   if (productData.sex === "Select Sex") {
     errors.sex = "Please Select Male/Female";
   }
-  if (productData.certification==="Select Certification") {
+  if (productData.certification === "Select Certification") {
     errors.certification = "Please Choose cerification";
   }
   if (productData.availability === "Select Availability") {
@@ -67,10 +67,10 @@ function AddProducts(props: any) {
   const formik = useFormik({
     initialValues: {
       file: null,
-      fileData:null,
+      fileData: null,
       quantity: "",
-      type:"Select Type",
-      sex:"Select Sex",
+      type: "Select Type",
+      sex: "Select Sex",
       weight: "",
       breed: "",
       source: "",
@@ -86,8 +86,8 @@ function AddProducts(props: any) {
       // values.preventDefault();
       // console.log(values);
       const formData = new FormData();
-        for (let key in productDetails)
-            formData.set(key, productDetails[key]);
+      for (let key in productDetails)
+        formData.set(key, productDetails[key]);
       storeProductData(formData);
       console.log("Latest Product:", formData);
       props.store_products(productDetails);
@@ -141,12 +141,12 @@ function AddProducts(props: any) {
                     type="file"
                     name="file"
                     //value={formik.values.Id}
-                    onChange={(event:any) => {
+                    onChange={(event: any) => {
                       formik.setFieldValue("fileData", event.currentTarget.files[0]);
                       formik.handleChange(event)
 
                     }}
-                  //  onChange={formik.handleChange}
+                    //  onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   ></input>
                   {formik.touched.file && formik.errors.file ? (
@@ -205,7 +205,7 @@ function AddProducts(props: any) {
                   id="quantity"
                   name="quantity"
                   className="form-control"
-                
+
                   placeholder="Enter Quantity"
                   value={formik.values.quantity}
                   onChange={formik.handleChange}
@@ -274,18 +274,18 @@ function AddProducts(props: any) {
                   ) : null}
                 </div>
                 <label className="field" htmlFor="price">
-                Price<span className="text-danger">*</span>
+                  Price<span className="text-danger">*</span>
                 </label>
-                    <input
-                      type="text"
-                      id="price"
-                      name="price"
-                      className="form-control"
-                      placeholder="Enter Price"
-                      value={formik.values.price}
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                    ></input>
+                <input
+                  type="text"
+                  id="price"
+                  name="price"
+                  className="form-control"
+                  placeholder="Enter Price"
+                  value={formik.values.price}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                ></input>
                 <div>
                   {formik.touched.price && formik.errors.price ? (
                     <span style={{ color: "red" }}>{formik.errors.price}</span>
@@ -305,7 +305,7 @@ function AddProducts(props: any) {
                     Select Certification
                   </option>
                   <option value="Certified">Certified</option>
-                  <option value= "Not Certified">Not Certified</option>
+                  <option value="Not Certified">Not Certified</option>
                 </select >
                 <div>
                   {formik.touched.certification && formik.errors.certification ? (
@@ -380,7 +380,7 @@ function AddProducts(props: any) {
                     Select Availability
                   </option>
                   <option value="In Stock">In Stock</option>
-                  <option value= "Out of Stock">Out of Stock</option>
+                  <option value="Out of Stock">Out of Stock</option>
                 </select >
                 <div>
                   {formik.touched.availability && formik.errors.availability ? (
