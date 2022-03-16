@@ -103,9 +103,9 @@ function ProductDetails(props: any) {
                     {market}
                 </Breadcrumb.Item>
             </Breadcrumb>
-            <div className="container">
-                <div className="row">
-                    <div className="locBox col-3 mt-3 p-0 bg-white">
+            <div className="container-fluid">
+                <div className=" productdetails row ">
+                    <div className="locBox col-3  mt-3 p-0 bg-white">
                         {
                             products.map((e: any, ind) => {
                                 let index = "#collapse" + ind
@@ -123,16 +123,17 @@ function ProductDetails(props: any) {
                                         </div>
 
                                     </div>
+                                   
                                 )
                             })
                         }
                     </div>
-                    <div className="col-9">
+                    <div className="productcards col-9 ">
                         <h3 id="marketHeading">{market}</h3>
                         <h4 id="locationMarketHeading">{location} {market}</h4>
                         {/* <hr /> */}
                         <div className="horizontalRule"></div>
-                        <div className="sort-filter my-5 d-flex justify-content-end">
+                        <div className="sort-filter mt-5 mb-5 d-flex justify-content-end">
                             <p className="sort d-inline pt-2">Sort by</p>
                             <select className="dropdownToggle1"
                                 onChange={sortHandler}
@@ -152,7 +153,7 @@ function ProductDetails(props: any) {
                                 <option className="dropdownItem" >3</option>
                             </select>
                         </div>
-                        <div className="card-deck row row-cols-3">
+                        <div className="card-deck row row-cols-lg-3 row-cols-md-3 row-cols-sm-2 row-cols-2">
                             {!isDisplaying &&
                                 products.map((product: any, i) => {
                                     if (sortValue === "default") {
@@ -178,8 +179,8 @@ function ProductDetails(props: any) {
 
                                                                         <p className="card-price" id={e._id}>Price:{e.price}</p>
                                                                     </div>
-                                                                    <div className="text-center">
-                                                                        <button type="button" className="btn btn-success">Add to Cart</button>
+                                                                    <div className=" text-center ">
+                                                                        <button type="button" className="addcartbtn btnbtn-success ">Add to Cart</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -216,8 +217,8 @@ function ProductDetails(props: any) {
                                                                         <p className="card-price" id={e._id}>Price:{e.price}</p>
                                                                     </div>
 
-                                                                    <div className="text-center">
-                                                                        <button type="button" className="btn btn-success" onClick={addToCart}>Add to Cart</button>
+                                                                    <div className="text-center ">
+                                                                        <button type="button" className="addcartbtn btn  btn-success" onClick={addToCart}>Add to Cart</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -251,8 +252,8 @@ function ProductDetails(props: any) {
 
                                                                         <p className="card-price" id={e._id}>Price:{e.price}</p>
                                                                     </div>
-                                                                    <div className="text-center">
-                                                                        <button type="button" className="btn btn-success">Add to Cart</button>
+                                                                    <div className=" text-center">
+                                                                        <button type="button" className="addcartbtn btn btn-success">Add to Cart</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -290,8 +291,8 @@ function ProductDetails(props: any) {
 
                                                                         <p className="card-price" id={e._id}>Price:{e.price}</p>
                                                                     </div>
-                                                                    <div className="text-center">
-                                                                        <button type="button" className="btn btn-success">Add to Cart</button>
+                                                                    <div className="  text-center">
+                                                                        <button type="button" className="addcartbtn btn btn-success">Add to Cart</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -329,8 +330,8 @@ function ProductDetails(props: any) {
 
                                                                         <p className="card-price" id={e._id}>Price:{e.price}</p>
                                                                     </div>
-                                                                    <div className="text-center">
-                                                                        <button type="button" className="btn btn-success">Add to Cart</button>
+                                                                    <div className=" text-center">
+                                                                        <button type="button" className="addcartbtn btn btn-success">Add to Cart</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -364,8 +365,8 @@ function ProductDetails(props: any) {
 
                                                                         <p className="card-price" id={e._id}>Price:{e.price}</p>
                                                                     </div>
-                                                                    <div className="text-center">
-                                                                        <button type="button" className="btn btn-success">Add to Cart</button>
+                                                                    <div className=" text-center">
+                                                                        <button type="button" className="addcartbtn btn-success">Add to Cart</button>
                                                                     </div>
                                                                 </div>
                                                             </div>

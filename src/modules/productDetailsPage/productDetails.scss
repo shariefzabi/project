@@ -1,3 +1,8 @@
+.productdetails{
+  margin-left:30px !important;
+  margin-right: 30px !important;
+}
+
 .breadCrumbs {
   text-decoration: none;
   font-style: normal;
@@ -13,7 +18,8 @@
 
 #sub {
   margin-top: 4.4375rem;
-  margin-left: 6.75rem;
+  margin-left: 44px;
+  // margin-left: 3.7vw;
   font-weight: normal;
   font-style: normal;
   font-size: 0.75rem;
@@ -200,7 +206,8 @@ hr {
 }
 
 .locBox {
-  width: 17.4vw !important;
+  // width:17.4vw;
+  width: 20vw !important;
   margin-right: 2.5rem;
   border: 2px solid #e0e0e0;
   height: 15rem;
@@ -304,14 +311,14 @@ hr {
 }
 .Image{
   
-  width: 360px;
-  height: 416px;
+  width: 22.5rem;
+  height: 26rem;
 }
 
 
 .productImage{
-  width: 225px;
-  height: 200px;
+  width: 18.5vw;
+  height: 12.5rem;
   margin-top: 5px;
   margin-bottom: 5px;
 
@@ -331,4 +338,251 @@ padding-left:4%;
 }
 .latestCards{
   padding:2%;
+}
+
+
+
+//mediaqueries for product page
+@media (min-width:1025px) and (max-width:1200px){
+  .locBox{
+    margin-right: 30px;
+  }
+  .card-id{
+    font-size: 0.7rem;
+    line-height: 1rem;
+    // margin-bottom: 0;
+  }
+  .card-price{
+    font-size: 0.75rem;
+
+  }
+}
+@media (min-width:993px) and (max-width:1024px){
+  .locBox{
+    margin-right: 0;
+  }
+  .collapse ul li{
+    margin:0 !important;
+  }
+  // .productImage{
+  //   width: 16vw;
+  //   height: 12.5rem;
+  //   margin-top: 5px;
+  //   margin-bottom: 5px;
+  // }
+  .sort{
+    font-size: 1rem;
+    line-height: 1rem;
+  }
+  .dropdownToggle1, .dropdownToggle2{
+    font-size: 1rem;
+    margin-right: 7px;
+    margin-left: 7px;
+
+  }
+  .card-id{
+    font-size: 0.62rem;
+    line-height: 1rem;
+    margin-bottom: 0;
+  }
+  .card-price{
+    font-size: 0.7rem;
+
+  }
+
+}
+@media (min-width:768px) and (max-width:992px){
+  .locBox{
+    margin-right: 0;
+  }
+  .collapse ul li{
+    
+    margin:0 !important;
+  }
+  .locbtn{
+    font-size: 0.8rem;
+  }
+  .marketButton{
+    font-size: 0.8rem;
+  }
+  .sort{
+    font-size: 0.875rem;
+    line-height: 1rem;
+  }
+  .dropdownToggle1, .dropdownToggle2{
+    font-size: 0.875rem;
+    margin-right: 7px;
+    margin-left: 7px;
+
+  }
+  .dropdownToggle1{
+    width:6.1rem;
+    padding: 0;
+  }
+  .dropdownToggle2{
+    width: 3rem;
+    padding: 0;
+  }
+  .productcards .sort-filter{
+    margin-top: 2rem !important;
+    margin-bottom: 2rem !important;
+  }
+  .productImage{
+    width: 16.5vw;
+    height: 12.5rem;
+    
+  }
+
+  .card-id{
+    font-size: 0.5rem;
+    line-height: 1rem;
+    margin-bottom: 0;
+  }
+  .card-price{
+    font-size: 0.7rem;
+
+  }
+  .addcartbtn{
+    font-size: 0.8rem !important;
+  }
+}
+@media (min-width:577px) and (max-width:768px){
+  .locBox{
+    margin-right: 0;
+    width: 100%;
+  }
+  .collapse ul li{
+    margin:0 !important;
+  }
+  .sort{
+    font-size: 0.8rem;
+    line-height: 1rem;
+  }
+  .dropdownToggle1, .dropdownToggle2{
+    font-size: 0.8rem;
+    margin-right: 5px;
+    margin-left: 5px;
+
+  }
+  .dropdownToggle1{
+    width:6.1rem;
+    padding: 0;
+  }
+  .dropdownToggle2{
+    width: 2.4rem;
+    padding: 0;
+  }
+  .productcards .sort-filter{
+    margin-top: 1.875rem !important;
+    margin-bottom: 1.875rem !important;
+  }
+  .locbtn{
+    font-size: 0.8rem;
+  }
+  .marketButton{
+    font-size: 0.65rem;
+  }
+  span ,.blue{
+   margin: 0 !important;
+  }
+  .productImage{
+    width: 24vw;
+    height: 12rem;
+    
+  }
+  .card-id{
+    font-size: 0.6rem;
+    line-height: 1rem;
+    margin-bottom: 0;
+  }
+  .card-price{
+    font-size: 0.7rem;
+
+  }
+  .addcartbtn{
+    font-size: 0.8rem !important;
+  }
+}
+@media (min-width:0px) and (max-width:576px){
+  .locBox{
+    display: none;
+  }
+  .productdetails{
+    margin: 0;
+    width: 110vw;
+  }
+  // .productcards{
+  //   margin: auto;
+    
+  //   padding: 0rem !important;
+  // }
+  #sub{
+    display: none;
+  }
+  #marketHeading{
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin: 0;
+    margin-top: 1.5rem;
+  }
+  #locationMarketHeading{
+    font-size: 0.625rem;
+    line-height: 1.5rem;
+    margin: 0;
+  }
+  .productcards .sort-filter{
+    margin-top: 1.875rem !important;
+    margin-bottom: 1.875rem !important;
+  }
+  .sort{
+    font-size: 0.6rem;
+    line-height: 0.8rem;
+   
+    
+  }
+  .dropdownToggle1, .dropdownToggle2{
+    font-size: 0.6rem;
+    height: 30px;
+    margin:0px 5px;
+    padding: 0;
+
+  }
+  .dropdownToggle1{
+    width:4.1rem;
+  }
+  .dropdownToggle2{
+    width: 2.9rem;
+  }
+  
+  .card-id{
+    font-size: 0.375rem;
+    line-height: 0.43rem;
+  }
+  .card-price{
+    font-size: 0.4rem;
+    line-height: 0.43rem;
+
+  }
+  .card-body{
+    padding: 0.75rem !important;
+  }
+  .productImage{
+    width: 30vw;
+    height: 9rem;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  .wishListButton{
+    height: 18px;
+    width: 15px;
+  }
+  .wishListImg{
+    width: 15px;
+    height: 20px;
+    padding-bottom: 9px;
+    padding-right: 2px;
+  }
+  .addcartbtn{
+    font-size: 0.55rem !important;
+  }
 }
