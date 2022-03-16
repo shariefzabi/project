@@ -105,16 +105,17 @@ router.get('/selectedProductDetails/:id', async (req, res) => {
 ////////////////// Storing product details-----Team-5///////////////////
 let cattleMarketData = {};
 let sheepMarketData = {};
-router.post("/updateDetails",upload.single('fileData'), async (req, res) => {
+router.post("/addProducts",upload.single('fileData'), async (req, res) => {
     // console.log('req', req.body);
     let prodData = req.body;
     let {file} = req;
+    
     try {
         console.log('productData', prodData);
         cattleMarketData =
         {
-            animalId: "222",
-            productCode: "c23ds",
+           
+            productCode: "cow123",
             quantity:prodData.quantity,
             availability: prodData.availability,
             type:prodData.types,
@@ -124,12 +125,12 @@ router.post("/updateDetails",upload.single('fileData'), async (req, res) => {
             weight: prodData.weight,
             breed: prodData.breed,
             source: prodData.source,
+            market:prodData.market,
             certification: prodData.certification,
         }
         sheepMarketData = {
 
-            animalId: "200",
-            productCode: "c23ds",
+            productCode: "sheep123",
             quantity:prodData.quantity,
             availability: prodData.availability,
             type:prodData.types,
@@ -139,6 +140,7 @@ router.post("/updateDetails",upload.single('fileData'), async (req, res) => {
             weight: prodData.weight,
             breed: prodData.breed,
             source: prodData.source,
+            market:prodData.market,
             certification: prodData.certification,
         }
         Location.findOne({ locationName: prodData.location }).exec(function (err, result) {
@@ -153,6 +155,13 @@ router.post("/updateDetails",upload.single('fileData'), async (req, res) => {
                 ).exec(function (err, result) {
                     return res.send({ status: "success", result })
                 })
+                // Location.updateOne({ locationName: prodData.location },
+                //     {$push:{cattleMarkets:cattleMarketData}}
+
+                    // result
+                // ).exec(function (err, result) {
+                //     return res.send({ status: "success", result })
+                // })
             } else if (prodData.market == 'Sheep Market') {
                 result.sheepMarkets.push(sheepMarketData)
                 Location.updateOne({ locationName: prodData.location },
@@ -161,7 +170,7 @@ router.post("/updateDetails",upload.single('fileData'), async (req, res) => {
                     return res.send({ status: "success", result })
                 })
             }
-            // console.log("after adding products",result);
+            console.log("after adding products",result);
             // else
             // res.send({status:"success"})
         })
@@ -171,6 +180,37 @@ router.post("/updateDetails",upload.single('fileData'), async (req, res) => {
         console.log(err)
     }
 })
+
+// router.get("/latestProducts", async (req, res) => {
+//     console.log("from /latestProducts");
+//     try {
+//         Location.find().select({image:0}).exec(function (err, result) {
+//             console.log("allDocs",result);
+//             if (err) throw err;
+//             let allDocs = result;
+//             let allProducts = [];
+//             allDocs.forEach((doc)=>{
+//                 doc.cattleMarkets.forEach(prod => {
+//                     prod.locationName = doc.locationName;
+//                     delete prod.image;
+//                     allProducts.push(prod);
+//                 })
+//                 doc.sheepMarkets.forEach(prod => {
+//                     prod.locationName = doc.locationName;
+//                     delete prod.image;
+//                     allProducts.push(prod);
+//                 })
+//             })
+//             console.log("allProducts :",allProducts);
+//             res.send(result);
+            
+//         })
+//     }
+//     catch (err) {
+//         res.send({ message: err })
+//     }
+// });
+
 
 //Fetching Particular AnimalId in particular location
 

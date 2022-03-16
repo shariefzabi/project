@@ -12,7 +12,7 @@ const fileImageSchema = new mongoose.Schema({
 });
 
 const cattleMarketSchema = new mongoose.Schema({
-  animalId: { type: String, required: [true, "Id is required"], unique: true },
+  // animalId: { type: String, required: [true, "Id is required"], unique: true },
   productCode: { type: String, required: true },
   availability: {
     type: String,
@@ -27,14 +27,16 @@ const cattleMarketSchema = new mongoose.Schema({
   weight: { type: String, required: true },
   breed: { type: String, required: true },
   source: { type: String, required: true },
+  market:{type:String},
   certification: {
     type: String,
     required: true,
     enum: ["Certified", "Not Certified"],
   },
-});
+
+},{timestamps:true});
 const sheepMarketSchema = new mongoose.Schema({
-  animalId: { type: String, required: true, unique: true },
+  // animalId: { type: String, required: true, unique: true },
   productCode: { type: String, required: true },
   availability: {
     type: String,
@@ -49,12 +51,14 @@ const sheepMarketSchema = new mongoose.Schema({
   weight: { type: String, required: true },
   breed: { type: String, required: true },
   source: { type: String, required: true },
+  market:{type:String},
   certification: {
     type: String,
     required: true,
     enum: ["Certified", "Not Certified"],
   },
-});
+
+},{timestamps:true});
 const locationSchema = new mongoose.Schema(
   {
     locationName: {
