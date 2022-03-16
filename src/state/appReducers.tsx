@@ -14,6 +14,7 @@ interface initialState {
     paymentType: any
 
     quantity: any
+    pID:any
 }
 
 const appInitialstate: initialState = {
@@ -28,6 +29,7 @@ const appInitialstate: initialState = {
     locName: null,
     productData: null,
     paymentType: null,
+    pID:null,
 
     quantity: []
 }
@@ -65,11 +67,16 @@ function appReducer(state = appInitialstate, action: any) {
             return { ...state, currentBlog: action.payload };
         case 'storeProductData':
             return { ...state, productData: action.payload };
+            case 'storeProductID':
+            return { ...state, pID: action.payload };
 
         case 'itemslength':
             return { ...state, quantity: action.payload };
         default:
             return state;
+
+
+            
     }
 }
 export default appReducer;
