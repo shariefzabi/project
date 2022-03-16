@@ -149,20 +149,22 @@ function PopUp(prop: any) {
         sx={{ overflow: 'auto' }}
       >
         <div className='location-modal-container'>
-          <div id="modal-modal-description" >
+          <div id="modal-modal-description" className="location-window">
 
 
             <div className="popUp">
               <main className="popUpContent">
+                <div className="modal-title text-center" >
                 <h3 className="locationHeading">
                   Choose&#32;your&#32;preferred&#32;location
                 </h3>
                 <article className="article">
                   This&#32;displays&#32;all&#32;products&#32;associated&#32;with&#32;the&#32;chosen&#32;address
                 </article>
+                </div>
 
 
-                {!isAdding && <div className=" addLocbtn mt-3">
+                {!isAdding && <div className="  addLocbtn justify-content-center mt-3">
                   <p className=" pLoc d-inline">Can&#39;t&#32;find&#32;your&#32;location&#63;</p>
                   <button className="btn-success btn-add ms-5" type="button" onClick={startAddingHandler}>Add&#32;Location</button>
                 </div>}
@@ -194,7 +196,7 @@ function PopUp(prop: any) {
                 </div>}
                 <p className="text-success text-center mb-0 mt-2">{newLocationAdded}</p>
 
-                <form className="needs-validation" >
+                <form className="needs-validation " >
                   <div className="dropDown " >
                     <select className="form-select dropdownToggle"
                       placeholder="Location"
@@ -204,7 +206,7 @@ function PopUp(prop: any) {
                       required>
 
 
-                      <option className="dropdownItem" disabled hidden>{selectedLocation}</option>
+                      <option className="dropdownItem " disabled hidden>{selectedLocation}</option>
                       {
                         locationNames.map(location => {
                           return (
@@ -226,10 +228,10 @@ function PopUp(prop: any) {
                   </div>
 
 
-                  {/* <Link to="/products"> */}
+                  <div className="text-center">
                   <button className="btn-success btn-cnt" type="submit" onClick={continueHandler}>Continue</button>
-                  {/* </Link> */}
-
+                  </div>
+                  
 
 
 

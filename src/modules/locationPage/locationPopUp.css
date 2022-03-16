@@ -5,11 +5,12 @@
 }
 
 .location-modal-container {
-  width: 62.27vw;
+  width: 800px;
   transform: "translate(-50%, -50%)";
   background-color: #ffffff;
   overflow: hidden;
-  border-radius: 5px;
+  border: '2px solid #000';
+  border-radius: 10px;
   margin: auto;
 }
 .buy_button {
@@ -20,61 +21,48 @@
 }
 .popUp {
   display: flex;
-  width: 62.27vw;
+  /* width: 62.27vw; */
   background-color: #fff;
   border-radius: 0.3125rem;
   font-family: "Ubuntu", sans-serif;
   margin: auto;
 }
+.location-window{
+  margin: auto;
+  padding: 30px 0px;
+  width: 500px;
+  
+   /* height: 61px; */
+}
+.location-window .modal-title{
+      color: #2078bf;
+  }
+  .location-window .modal-title h3{
+    font-weight: 700;
+  }
+  
 
 .popUpContent {
-  margin: auto;
+  margin: 0;
+  
 }
 
-.locationHeading {
-  color: #2078bf;
-  font-size: 1.5rem;
-  line-height: 1.5rem;
-  font-style: normal;
-  font-weight: bold;
-  text-align: center;
-  margin-top: 4.5rem !important;
-}
 
-.article {
-  font-weight: normal;
-  font-size: 1.125rem;
-  line-height: 1.5rem;
-  color: #2078bf;
-  margin-top: 1.875rem;
-  margin-bottom:1.875rem;
-}
 
 .pLoc {
   font-weight: normal;
   font-size: 1rem;
   line-height: 1.5rem;
   color: gray;
-  margin-left: 5rem;
+  margin-left: 3rem;
 }
-.addLocbtn {
-  margin: auto;
-  justify-content: center;
-}
+
 .dropDown {
   margin-top: 3.375rem;
   margin-bottom: 3.375rem;
 }
 
-/* .dropdown .dropdown-menu {
-  padding: 0;
-  margin: 0;
-  background-color: #fff;
-  width: 22.86vw;
-  max-height: 166px;
-  overflow-y: scroll;
-  border: 1px solid #e0e0e0;
-} */
+
 ::-webkit-scrollbar {
   width: 7px;
 }
@@ -103,33 +91,35 @@
   border: 1px solid #f1f1f1;
   box-sizing: border-box;
   border-radius: 5px;
-  width: 22.86vw;
+  width: 362px;
+  /* width: 22.86vw; */
   color: #838383;
   text-align: start;
  
 }
 
-.dropDown .dropdownItem {
+
+/* .dropDown .dropdownItem {
   font-weight: thin;
   font-style: normal;
   font-weight: normal;
   font-size: 0.875rem;
-  line-height: 1.5rem;
+  line-height: 1rem;
+  width: 300px;
   letter-spacing: 0.006rem;
   color: #838383;
   padding: 0.53125rem;
-}
+} */
 
-.dropDown .dropdownItem:hover {
+/* .dropDown .dropdownItem:hover {
   color: #fff;
   background-color: #2078bf;
-}
+} */
 
-.btn-cnt {
-  margin-bottom: 2.5rem;
+.btn-cnt {  
   width: 12.25rem;
   height: 3.125rem;
-  margin-left: 9rem;
+  
 }
 
 .btn-cnt,
@@ -156,4 +146,34 @@
   height: 40px;
   font-size: 1rem;
   padding: 0 1rem;
+}
+
+ @media (min-width:0px) and (max-width:576px){
+  .location-modal-container{
+    border-radius: 30px;
+  }
+  .location-window .modal-title h3{
+    font-weight: 700;
+    font-size: 2.5rem;
+    line-height: 3.5rem;
+  }
+  .location-window .modal-title .article{
+    font-size: 1.5rem;
+
+  }
+  .pLoc , .btn-add  {
+    font-size: 1.2rem;
+  }
+  .addLocation{
+    font-size: 1.1rem;
+  }
+  .errormsg{
+    font-size: 1.1rem;
+  }
+  .dropdownToggle{
+    font-size: 2rem;
+
+  }
+  
+  
 }
