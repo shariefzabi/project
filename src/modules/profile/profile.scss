@@ -43,7 +43,7 @@
   font-family: ubuntu;
 }
 input{
-  height: 60px;
+  height: 50px;
   padding-left: 25px;
 }
 .formContainer p{
@@ -52,7 +52,9 @@ input{
  
 }
 
-
+// form div{
+//   max-height: 100px;
+// }
 
 
 #resetButton {
@@ -112,9 +114,7 @@ input{
   
   }
   form .row {
-
     margin-bottom: 0.9rem;
-   
   }
   
 }

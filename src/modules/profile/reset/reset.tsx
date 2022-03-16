@@ -4,6 +4,7 @@ import './reset.scss'
 
 
 function Reset(props: any) {
+    const[flag,setflag]=useState(false)
     const[oldPassword,setOldPassword]=useState("")
     const[oldPasswordErrMsg,setOldPasswordErrMsg]=useState("")
     const[createPassword,setCreatePassword]=useState("")
@@ -109,9 +110,13 @@ function Reset(props: any) {
                                 <p className='text-danger'>{confirmPasswordErrMsg}</p>
                             </div>
                         </div>
-                        <div className='text-center'>
-                            <button type="submit" id="saveButton" className="btn btn-success  col-md-4">Save</button>
+                        <div className='mt-5 text-center'>
+                            <button onClick={()=>setflag(true)} type="submit" id="saveButton" className="btn btn-success  col-md-4">Save</button>
                         </div>
+                        {flag&&
+                        <p className='mt-2 text-center text-success'> Password sucessfully updated</p>
+                            }
+
                     </form>
                 </div>
             </section>

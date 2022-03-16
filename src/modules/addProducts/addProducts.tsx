@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './addProducts.css';
+import './addProducts.scss';
 // import ReactDOM from 'react-dom';
 import { useFormik } from "formik";
 import axios from "axios";
@@ -118,7 +118,7 @@ function AddProducts(props: any) {
     }
   });
   return (
-    <div>
+    <div className="addProducts-container">
       <main id="mainContent">
         <section className="productSection">
           <div className="header">

@@ -18,7 +18,7 @@ import Profile from './modules/profile/Profile';
 import Orders from './modules/orders/orders';
 import LogOut from './modules/logOut/logOut';
 // import Popup from './modules/shopping_cart/cartpopup/popup';
-// import Shoppingcart from "./modules/shopping_cart/shoppingcart";
+import Shoppingcart from "./modules/shopping_cart/shoppingcart";
 
 
 
@@ -43,9 +43,15 @@ function App() {
             <Route path="/invoice" element={<Invoice />}></Route>
             <Route path="/selectedProduct" element={<SelectedProductDetails />}></Route>
             <Route path="/logout" element={<LogOut/>}></Route>
+            <Route path='/shoppingcart' element={<Shoppingcart />}></Route>
 
           </Routes>
-          <Footer />
+
+           <Footer /> 
+           {/* <Routes>
+         
+            <Route path='/shoppingcart' element={<Shoppingcart />}></Route>
+            </Routes> */}
           {/* <Routes>
             <Route path="/" element={<Popup />}></Route>
             <Route path="/shoppingcart" element={<Shoppingcart />}></Route>
