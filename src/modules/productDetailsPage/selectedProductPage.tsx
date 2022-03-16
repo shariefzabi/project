@@ -25,6 +25,9 @@ function SelectedProductDetails(props: any) {
     let [count, setCount] = useState(1)
     let [selectedProductId, setSelectedProductId] = useState(props.state.productData)
     let [inWhishlist, setInWhishlist] = useState(false)
+
+    let [price, setPrice] = useState(0);
+    let [productId, setProductId] = useState('')
     // let [marketType, setMarketType] = useState('cattleMarkets')
 
 
@@ -55,11 +58,21 @@ function SelectedProductDetails(props: any) {
                     setProduct(response.data[0])
                 }
             )
+
+        setPrice(product.price)
+        setProductId(product._id)
+        // console.log("priceteam6", product.price);
+        // console.log("price", price);
+
+        // props.quantity(++count, price);
     }, []);
     // console.log(selectedProductId)
     product.email = props.state.user.email
 
     console.log("whislist", product)
+
+
+
 
     const setLocationHandler = (event: any) => {
         setLocation(event.target.value)
@@ -77,7 +90,13 @@ function SelectedProductDetails(props: any) {
 
     const countHandler = () => {
         setCount(count + 1)
-
+    }
+    const decrement = () => {
+        setCount(count - 1)
+    }
+    function addToCart() {
+        let items = [count, parseInt(`${price}`), productId]
+        props.quantity(items);
     }
 
     const setMarketHandler = (event: any) => {
@@ -167,6 +186,7 @@ function SelectedProductDetails(props: any) {
 
                         <img className="Image" src={imagePath} />
 
+                        {/* < img className="productImage" src={"http://localhost:3005/" +product.image.filename } /> */}
                     </div>
                     <div className="col-5 mt-3 p-0">
 
@@ -191,12 +211,13 @@ function SelectedProductDetails(props: any) {
                         <div>
                             <p className=" qty mb-1">Qty</p>
                             <div className="row quantity ms-0 addbtn2">
+                                <button className="btn btn-primary col" onClick={decrement}>-</button>
                                 <p className="col m-auto">{count}</p>
                                 <button className="btn btn-primary col" onClick={countHandler}>+</button>
                             </div>
                         </div>
                         <div>
-                            <button type="button" className="sucessbtn btn btn-success">Add to Cart</button>
+                            <button type="button" className="sucessbtn btn btn-success" onClick={addToCart} >Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -268,4 +289,12 @@ const mapStateToProps = (state: any) => {
     console.log(state);
     return { state }
 }
-export default connect(mapStateToProps)(SelectedProductDetails)
+
+const mapDispatchToProps = (dispatch: Function) => {
+    return {
+
+        quantity: (count: any) => dispatch({ type: 'itemslength', payload: count })
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SelectedProductDetails)
