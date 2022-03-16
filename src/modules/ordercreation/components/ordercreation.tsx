@@ -11,6 +11,7 @@ function BuyNow(props: any) {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
+    //  const[filteredproducts,setFilteredProducts]=useState<any[]>([]);
     const [selectdata, setSelectData] = useState<any[]>([]);
     const [type, setType] = useState("");
     const [quantity, setQuantity] = useState("");
@@ -18,6 +19,7 @@ function BuyNow(props: any) {
     const [weight, setWeight] = useState("");
     const [breed, setBreed] = useState("");
 
+    const [filters,setFilters]=useState<any[]>([]);
     const [typeerrmsg, setTypeerrmsg] = useState("");
     const [quantityerrmsg, setQuantityerrmsg] = useState("");
     const [sexerrmsg, setSexerrmsg] = useState("");
@@ -27,11 +29,11 @@ function BuyNow(props: any) {
     const [addFlag, setAddFlag] = useState(false);
     const [viewFlag, setViewFlag] = useState(false);
     const [Errmsg, setErrmsg] = useState('');
-    
+
     useEffect(() => {
         axios.get("http://localhost:3005/orders/productfilters")
             .then((res) => {
-                console.log("product details from be", res.data)
+                // console.log("product details from be", res.data)
                 setSelectData(res.data)
             })
             .catch((err) => console.log(err)
@@ -40,27 +42,33 @@ function BuyNow(props: any) {
             setOpen(false)
         }
     }, [])
-    
+
 
     const productsubmitHandler = (e: any, productDetails: any) => {
         e.preventDefault();
-        axios.post("http://localhost:3005/orders/products",productDetails)
-        .then((res) => {
-            console.log("pdetails:",res.data);
-        })
-        if (props.user != null)
-            setProductdetailsflag(false);
-       
-        if (type != '' && quantity != '' && breed != '' && weight != '' && sex != '')
-            props.storeProductdetails(productDetails);
-            setViewFlag(true);
-        // console.log("productdetails", productDetails);
+        // setFilters([...filters,productDetails]);
+        // if (type != '' && quantity != '' && breed != '' && weight != '' && sex != '') {
+            // props.storeFilterdetails(productDetails);
+            // setFilters([...filters,productDetails]);
+            // setViewFlag(true);
+            // console.log("filteredproducts", filteredproducts);
+        // }
+        console.log("props filters", filters);
+
+        axios.post("http://localhost:3005/orders/products", filters)
+            .then((res) => {
+                props.storeProductdetails(res.data);
+                if (props.user != null)
+                    setProductdetailsflag(false);
+            })
+
 
     }
     const addProduct = (products: any) => {
         setAddFlag(true);
         if (type != '' && quantity != '' && breed != '' && weight != '' && sex != '') {
-            props.storeProductdetails(products);
+            // props.storeFilterdetails(products);
+            setFilters([...filters,products])
         }
 
     }
@@ -76,7 +84,7 @@ function BuyNow(props: any) {
             setWeight("");
             setSex("");
         }
-        
+
     }
 
     function Validate(event: any) {
@@ -158,23 +166,23 @@ function BuyNow(props: any) {
                                     <p>Fill in the required information</p>
                                     {props.user === null &&
                                         <p className='text-danger text-center'>please login to your account</p>}
-                                        {
-                                          Errmsg ===   "please select all details" && 
-                                                <p className='text-danger text-center'>{Errmsg}</p>
-                                                
-                                        }
-                                        {
-                                            Errmsg === "filter added" && 
-                                            <p className='text-primary text-center'>{Errmsg}</p>
-                                        }
-                                   
+                                    {
+                                        Errmsg === "please select all details" &&
+                                        <p className='text-danger text-center'>{Errmsg}</p>
+
+                                    }
+                                    {
+                                        Errmsg === "filter added" &&
+                                        <p className='text-primary text-center'>{Errmsg}</p>
+                                    }
+
                                 </div>
                                 <div className='viewall-icon'>
                                     <button className='cart-button' onClick={() => setViewFlag(true)}><img src={require("./assets/viewallproductsicon.png")} /></button>
                                 </div>
-                              
+
                                 <form onSubmit={(e) => productsubmitHandler(e, { type, quantity, weight, sex, breed })}>
-                                   
+
 
                                     {/* {!viewFlag && */}
                                     <div className='row'>
@@ -259,22 +267,22 @@ function BuyNow(props: any) {
 
                                             </div>
                                             <div className='cart-icon'>
-                                                <button className='cart-button' type='button' onClick={(e: any) => { addProduct({ type, quantity, weight, sex, breed }); resetHandler(e) }}><img className = "plus-cart" src={require("./assets/addtocarticon.png")} /></button>
+                                                <button className='cart-button' type='button' onClick={(e: any) => { addProduct({ type, quantity, weight, sex, breed }); resetHandler(e) }}><img className="plus-cart" src={require("./assets/addtocarticon.png")} /></button>
                                             </div>
 
                                         </div>
                                     </div>
                                     <div className="mb-3">
-                                        <button className="continuebutton btn btn-success">Continue</button>
+                                        <button className="continuebutton btn btn-success" onClick={()=>setFilters([...filters,{ type, quantity, weight, sex, breed }])} >Continue</button>
                                     </div>
                                 </form>
                             </div>
 
                         </div >
                     }
-                   
-                    { !productdetailsflag  &&
-                     viewFlag &&
+
+                    {!productdetailsflag &&
+                        // viewFlag &&
 
                         <DimesionalPage></DimesionalPage>
                     }
@@ -293,6 +301,7 @@ const mapStateToProps = (state: any) => {
 }
 const mapDispatchToProps = (dispatch: Function) => {
     return {
+        storeFilterdetails: (filters: any) => dispatch({ type: 'storeFilterdetails', filters }),
         storeProductdetails: (productDetails: any) => dispatch({ type: 'store_productdetails', productDetails }),
     }
 }
