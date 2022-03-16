@@ -15,34 +15,29 @@ import ButcheryModel from "../../modules/butchery_form/butcherypopup";
 import axios from "axios";
 
 class Header extends React.Component<any, any> {
-
   componentDidMount() {
     // this.props.setToken(this.getToken)
 
-    axios.get("http://localhost:3005/users/" + this.getToken())
-      .then(res => {
-
-        if (res.data != "null") this.props.setUser(res.data)
-        else this.props.setUser(null)
+    axios
+      .get("http://localhost:3005/users/" + this.getToken())
+      .then((res) => {
+        if (res.data != "null") this.props.setUser(res.data);
+        else this.props.setUser(null);
       })
-      .catch(err => console.log("No previous user found")
-      )
-
+      .catch((err) => console.log("No previous user found"));
   }
   getToken = () => sessionStorage.getItem("token");
 
   logOut = () => {
     sessionStorage.clear();
-    this.props.setUser(null)
-  }
+    this.props.setUser(null);
+  };
   render() {
     console.log("header values::", this.props);
 
     const {
       redux: { user },
     } = this.props as any;
-
-
 
     return (
       <header className="landingpage-header d-lg-flex justify-content-end">
@@ -215,7 +210,11 @@ class Header extends React.Component<any, any> {
                   </Link>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/logout" onClick={this.logOut}>
+                  <Link
+                    className="dropdown-item"
+                    to="/logout"
+                    onClick={this.logOut}
+                  >
                     Log out
                   </Link>
                 </li>
@@ -240,7 +239,8 @@ const mapStateToProps = (state: any) => {
 const mapDispatchToProps = (dispatch: Function) => {
   return {
     // setToken : (token:any)=> dispatch({type:"setToken",payload:token})
-    setUser: (userDetails: any) => dispatch({ type: 'setUser', payload: userDetails })
+    setUser: (userDetails: any) =>
+      dispatch({ type: "setUser", payload: userDetails }),
   };
 };
 

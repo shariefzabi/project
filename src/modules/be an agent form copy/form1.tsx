@@ -36,6 +36,9 @@ class BeanAgentPopup extends React.Component<any, any> {
     this.validate(e);
     this.setState({ [e.target.name]: e.target.value });
   };
+  setToken = (token: any) => {
+    sessionStorage.setItem("token", token);
+  };
   validate = (e: any) => {
     let n = e.target.name;
     let v = e.target.value;
@@ -58,7 +61,7 @@ class BeanAgentPopup extends React.Component<any, any> {
     } else if (n === "number") {
       let re =
         // /((\+*)((0[ -]*)*|((91 )*))((\d{12})+|(\d{10})+))|\d{5}([- ]*)\d{6}/;
-        /^[0-9]{6}$/;
+        /^[0-9]{10}$/;
       if (v === "") {
         this.setState({ numberErr: "Please enter the Phone Number." });
       } else if (!re.test(v)) {
@@ -95,14 +98,15 @@ class BeanAgentPopup extends React.Component<any, any> {
     // console.log("userDetails:", userDetails);
 
     axios
-      .post("http://localhost:3005/agents/add-agents", agentDetails)
+      .post("http://localhost:3005/users/signup", agentDetails)
 
       .then((res: any) => {
         console.log(res.data);
 
-        if (res.data == "Agent created successfully!!")
-          this.props.setAgent(res.data);
-        else this.setState({ emailErrMsg: res.data });
+        if (res.data[0] == "success") {
+          this.props.setUser(res.data[1]);
+          this.setToken(res.data[1].token);
+        } else this.setState({ emailErr: res.data[1] });
       })
       .catch((err: any) => console.log(" User Form Error", err));
 
@@ -113,173 +117,192 @@ class BeanAgentPopup extends React.Component<any, any> {
     let { name, agent, number, email, conadd, busadd, city } = this.state;
 
     return (
-      <div className="be-an-agent">
-        <div className="text-center popupheading">
-          <p>Be an Agent</p>
-        </div>
-        <div className="form-paragraph">
-          <p>Fill the form below and our experts will get in touch with you.</p>
-        </div>
-        <form
-          onSubmit={(e) =>
-            this.agentSubmitHandler(e, {
-              fullName: name,
-              agent,
-              number,
-              email,
-              contactAddress: conadd,
-              businessAddress: busadd,
-              City: city,
-            })
-          }
-        >
-          <div className="mb-3">
-            <img className="form-image" src={require("./assets/human.png")} />
-            <label htmlFor="Full Name" className="col-form-label">
-              Full Name
-            </label>
-            <input
-              type="text"
-              className="form-control form-page"
-              name="name"
-              id="Full Name"
-              placeholder="Full Name"
-              onChange={this.changeHandler}
-              onBlur={this.validate}
-              required
-            />
-            <p className="mb-1 text-center text-danger">{this.state.nameErr}</p>
-          </div>
-          <div className="mb-3">
-            <label htmlFor="Agent" className="col-form-label select-label">
-              Agent
-            </label>
-            <select
-              className="form-select "
-              value={this.state.agent}
-              name="agent"
-              aria-label="Default select example"
-              onChange={this.changeHandler}
-              onBlur={this.validate}
+      <>
+        <div className="section_agent">
+          <div className="be-an-agent">
+            <div className="text-center popupheading">
+              <p>Be an Agent</p>
+            </div>
+            <div className="form-paragraph">
+              <p>
+                Fill the form below and our experts will get in touch with you.
+              </p>
+            </div>
+            <form
+              onSubmit={(e) =>
+                this.agentSubmitHandler(e, {
+                  fullName: name,
+                  agent,
+                  number,
+                  email,
+                  contactAddress: conadd,
+                  businessAddress: busadd,
+                  City: city,
+                })
+              }
             >
-              <option value="0">Individual</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
-            <p className="mb-1 text-center text-danger">
-              {this.state.agentErr}
-            </p>
+              <div className="mb-3">
+                <img
+                  className="form-image"
+                  src={require("./assets/human.png")}
+                />
+                <label htmlFor="Full Name" className="col-form-label">
+                  Full Name
+                </label>
+                <input
+                  type="text"
+                  className="form-control form-page"
+                  name="name"
+                  id="Full Name"
+                  placeholder="Full Name"
+                  onChange={this.changeHandler}
+                  onBlur={this.validate}
+                  required
+                />
+                <p className="mb-1 text-center text-danger">
+                  {this.state.nameErr}
+                </p>
+              </div>
+              <div className="mb-3">
+                <label htmlFor="Agent" className="col-form-label select-label">
+                  Agent
+                </label>
+                <select
+                  className="form-select "
+                  value={this.state.agent}
+                  name="agent"
+                  aria-label="Default select example"
+                  onChange={this.changeHandler}
+                  onBlur={this.validate}
+                >
+                  <option value="0">Individual</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+                <p className="mb-1 text-center text-danger">
+                  {this.state.agentErr}
+                </p>
+              </div>
+              <div className="mb-3">
+                <img
+                  className="form-image"
+                  src={require("./assets/mobile.png")}
+                />
+                <label htmlFor="phone" className="col-form-label">
+                  Phone
+                </label>
+                <input
+                  type="text"
+                  className="form-control form-page"
+                  name="number"
+                  id="phone"
+                  placeholder="Phone"
+                  onChange={this.changeHandler}
+                  onBlur={this.validate}
+                  required
+                />
+                <p className="ms-1 text-center text-danger">
+                  {this.state.numberErr}
+                </p>
+              </div>
+              <div className="mb-3">
+                <img
+                  className="form-image"
+                  src={require("./assets/mail.png")}
+                />
+                <label htmlFor="Email" className="col-form-label">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  className="form-control form-page"
+                  name="email"
+                  id="Email"
+                  placeholder="Email"
+                  onChange={this.changeHandler}
+                  onBlur={this.validate}
+                  required
+                />
+                <p className="ms-1 text-center text-danger">
+                  {this.state.emailErr}
+                </p>
+              </div>
+              <div className="mb-3">
+                <img
+                  className="form-image"
+                  src={require("./assets/location.png")}
+                />
+                <label htmlFor="Contact Address" className="col-form-label">
+                  Contact Address
+                </label>
+                <input
+                  type="text"
+                  className="form-control form-page"
+                  name="conadd"
+                  id="Contact Address"
+                  placeholder="Contact Address"
+                  onChange={this.changeHandler}
+                  onBlur={this.validate}
+                  required
+                />
+                <p className="ms-1 text-center text-danger">
+                  {this.state.conaddErr}
+                </p>
+              </div>
+              <div className="mb-3">
+                <img
+                  className="form-image"
+                  src={require("./assets/address1.png")}
+                />
+                <label htmlFor="Business Location" className="col-form-label">
+                  Business Location
+                </label>
+                <input
+                  type="text"
+                  className="form-control form-page"
+                  name="busadd"
+                  id="Business Location"
+                  placeholder="Business Address"
+                  onChange={this.changeHandler}
+                  onBlur={this.validate}
+                  required
+                />
+                <p className="ms-1 text-center text-danger">
+                  {this.state.busaddErr}
+                </p>
+              </div>
+              <div className="mb-3">
+                <img
+                  className="form-image"
+                  src={require("./assets/address2.png")}
+                />
+                <label htmlFor="Town/City" className="col-form-label">
+                  Town/City
+                </label>
+                <input
+                  type="text"
+                  className="form-control form-page"
+                  name="city"
+                  id="Town/City"
+                  placeholder="Contact Address"
+                  onChange={this.changeHandler}
+                  onBlur={this.validate}
+                  required
+                />
+                <p className="ms-1 text-center text-danger">
+                  {this.state.cityErr}
+                </p>
+              </div>
+              <div className="mb-3 text-center">
+                <button type="submit" className="btn btn-success sendbutton">
+                  Send
+                </button>
+              </div>
+            </form>
           </div>
-          <div className="mb-3">
-            <img className="form-image" src={require("./assets/mobile.png")} />
-            <label htmlFor="phone" className="col-form-label">
-              Phone
-            </label>
-            <input
-              type="text"
-              className="form-control form-page"
-              name="number"
-              id="phone"
-              placeholder="Phone"
-              onChange={this.changeHandler}
-              onBlur={this.validate}
-              required
-            />
-            <p className="ms-1 text-center text-danger">
-              {this.state.numberErr}
-            </p>
-          </div>
-          <div className="mb-3">
-            <img className="form-image" src={require("./assets/mail.png")} />
-            <label htmlFor="Email" className="col-form-label">
-              Email
-            </label>
-            <input
-              type="email"
-              className="form-control form-page"
-              name="email"
-              id="Email"
-              placeholder="Email"
-              onChange={this.changeHandler}
-              onBlur={this.validate}
-              required
-            />
-            <p className="ms-1 text-center text-danger">
-              {this.state.emailErr}
-            </p>
-          </div>
-          <div className="mb-3">
-            <img
-              className="form-image"
-              src={require("./assets/location.png")}
-            />
-            <label htmlFor="Contact Address" className="col-form-label">
-              Contact Address
-            </label>
-            <input
-              type="text"
-              className="form-control form-page"
-              name="conadd"
-              id="Contact Address"
-              placeholder="Contact Address"
-              onChange={this.changeHandler}
-              onBlur={this.validate}
-              required
-            />
-            <p className="ms-1 text-center text-danger">
-              {this.state.conaddErr}
-            </p>
-          </div>
-          <div className="mb-3">
-            <img
-              className="form-image"
-              src={require("./assets/address1.png")}
-            />
-            <label htmlFor="Business Location" className="col-form-label">
-              Business Location
-            </label>
-            <input
-              type="text"
-              className="form-control form-page"
-              name="busadd"
-              id="Business Location"
-              placeholder="Business Address"
-              onChange={this.changeHandler}
-              onBlur={this.validate}
-              required
-            />
-            <p className="ms-1 text-center text-danger">
-              {this.state.busaddErr}
-            </p>
-          </div>
-          <div className="mb-3">
-            <img
-              className="form-image"
-              src={require("./assets/address2.png")}
-            />
-            <label htmlFor="Town/City" className="col-form-label">
-              Town/City
-            </label>
-            <input
-              type="text"
-              className="form-control form-page"
-              name="city"
-              id="Town/City"
-              placeholder="Contact Address"
-              onChange={this.changeHandler}
-              onBlur={this.validate}
-              required
-            />
-            <p className="ms-1 text-center text-danger">{this.state.cityErr}</p>
-          </div>
-          <div className="mb-3 text-center">
-            <button type="submit" className="btn btn-success sendbutton">
-              Send
-            </button>
-          </div>
-        </form>
-      </div>
+        </div>
+      </>
     );
   }
 }
@@ -294,8 +317,8 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: Function) => {
   return {
-    setAgent: (agentDetails: any) =>
-      dispatch({ type: "setAgent", payload: agentDetails }),
+    setUser: (agentDetails: any) =>
+      dispatch({ type: "setUser", payload: agentDetails }),
   };
 };
 

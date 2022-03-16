@@ -7,7 +7,7 @@ import LandingPage from './modules/landing_page/LandingPage';
 import Aboutus from './modules/about_us/aboutus';
 import Blog from './modules/blog/blogs';
 import Blogform from './modules/addblogpage/blogform';
-import AddProducts from './modules/addProducts_page/product';
+import AddProducts from './modules/addProducts/addProducts';
 import Footer from './components/footer/footer';
 import Blogtable from './modules/blog/blogs';
 import Invoice from './modules/invoice/invoice'

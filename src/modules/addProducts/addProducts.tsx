@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./product.scss";
+import './addProducts.css';
 // import ReactDOM from 'react-dom';
 import { useFormik } from "formik";
 import axios from "axios";
@@ -14,7 +14,7 @@ const validateProduct = (productData: any) => {
   }
   if (!productData.quantity) {
     errors.quantity = "Please Enter Quantity";
-  } else if (!/^0*[1-9]\d*$/i.test(productData.quantity)) {
+  } else if (!/^0*[0-9]\d*$/i.test(productData.quantity)) {
     //accepts numbers only
     errors.quantity = "Enter a valid quantity";
   }
@@ -22,7 +22,7 @@ const validateProduct = (productData: any) => {
     errors.weight = "Please Enter Weight";
   } else if (!/^[0-9- ]+(\Bkg|Kg)$/.test(productData.weight)) {
     //accepts numbers and ends with kg
-    errors.weight = "Enter valid weight";
+    errors.weight = "Enter weight in Kg";
   }
   if (!productData.breed) {
     errors.breed = "Please Enter Breed";
@@ -30,11 +30,8 @@ const validateProduct = (productData: any) => {
     //accepts alphabets and space
     errors.breed = "Enter a valid breed";
   }
-  if (!productData.types) {
-    errors.types = "Please Enter type";
-  } else if (!/^([a-zA-Z ]{1,30})$/i.test(productData.types)) {
-    //accepts alphabets and space
-    errors.types = "Enter a valid type";
+  if (productData.type === "Select Type") {
+    errors.type = "Please Select Type";
   }
   if (!productData.source) {
     errors.source = "Please Enter Source";
@@ -72,7 +69,7 @@ function AddProducts(props: any) {
       file: null,
       fileData:null,
       quantity: "",
-      types:"",
+      type:"Select Type",
       sex:"Select Sex",
       weight: "",
       breed: "",
@@ -85,7 +82,7 @@ function AddProducts(props: any) {
     },
     validate: validateProduct,
     onSubmit: (productDetails: any) => {
-      // alert(JSON.stringify(values));
+      alert(JSON.stringify("Product Created Successfully"));
       // values.preventDefault();
       // console.log(values);
       const formData = new FormData();
@@ -99,7 +96,7 @@ function AddProducts(props: any) {
   const storeProductData = (async (prodData: any) => {
 
     try {
-      const response = await axios.post("http://localhost:3005/market/updateDetails", prodData);
+      const response = await axios.post("http://localhost:3005/market/addProducts", prodData);
       console.log('res', response);
 
     } catch (err) {
@@ -156,22 +153,25 @@ function AddProducts(props: any) {
                     <span style={{ color: "red" }}>{formik.errors.file}</span>
                   ) : null}
                 </div>
-                <label className="field" htmlFor="types">
+                <label className="field" htmlFor="type">
                   Type<span className="text-danger">*</span>
                 </label>
-                <input
-                  type="text"
-                  id="types"
-                  name="types"
-                  className="form-control"
-                  placeholder="Enter Type"
-                  value={formik.values.types}
+                <select
+                  name="type"
+                  id="type"
+                  className="form-select"
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
-                ></input>
+                >
+                  <option value={formik.values.market}>
+                    Select Type
+                  </option>
+                  <option value="Cow">Cow</option>
+                  <option value="Sheep">Sheep</option>
+                </select>
                 <div>
-                  {formik.touched.types && formik.errors.types ? (
-                    <span style={{ color: "red" }}>{formik.errors.types}</span>
+                  {formik.touched.type && formik.errors.type ? (
+                    <span style={{ color: "red" }}>{formik.errors.type}</span>
                   ) : null}
                 </div>
                 <label htmlFor="sex" className="field">
@@ -201,11 +201,11 @@ function AddProducts(props: any) {
                   Quantity<span className="text-danger">*</span>
                 </label>
                 <input
-                  type="number"
+                  type="text"
                   id="quantity"
                   name="quantity"
                   className="form-control"
-                  min="1"
+                
                   placeholder="Enter Quantity"
                   value={formik.values.quantity}
                   onChange={formik.handleChange}
