@@ -159,11 +159,63 @@ app.get("/orders/productfilters", async (req, res) => {
   let filterdetails = req.body;
   // console.log(filterdetails);
   let filtercollection = db.collection("productfilters");
+
   filtercollection.find().toArray(function (err, result) {
     console.log(result);
+
     res.send(result)
   })
 });
+let products = [];
+app.post("/orders/products",  async(req, res)=> {
+  let filterdetails = req.body;
+  products = [];
+  console.log("filterdetails:",filterdetails);
+  let filtercollection = db.collection("locationdbs");
+  filtercollection.find().toArray(function (err,result) {
+   result.forEach((ele,i) => {
+      if(filterdetails.type === "Cow"){
+
+        // let cattle = [];
+        ele.cattleMarkets.forEach((item,index) => {
+          if(item.breed === filterdetails.breed){
+            products.push(item);
+          }
+        })
+        // return cattle;
+      }
+      else if(filterdetails.type === "Goat"){
+
+        // let cattle = [];
+        ele.sheepMarkets.forEach((item,index) => {
+          if(item.breed === filterdetails.breed){
+            products.push(item);
+          }
+        })
+        // return cattle;
+      }
+      else if(filterdetails.type === "Pig"){
+
+        // let cattle = [];
+        ele.cattleMarkets.forEach((item,index) => {
+          if(item.breed === filterdetails.breed){
+            products.push(item);
+          }
+        })
+        // return cattle;
+      }
+    })
+    // console.log("result",result);
+    // console.log("products",products);
+    res.send(products)
+  })
+});
+
+app.get("/orders/filteredproducts", function(req,res) {
+      console.log("pdcts",products);
+      res.send(products)
+      
+})
 
 app.get("/orders/orderdetails", async (req, res) => {
   let orderdetails = req.body;
