@@ -27,6 +27,7 @@ function BuyNow(props: any) {
     const [addFlag, setAddFlag] = useState(false);
     const [viewFlag, setViewFlag] = useState(false);
     const [Errmsg, setErrmsg] = useState('');
+    
     useEffect(() => {
         axios.get("http://localhost:3005/orders/productfilters")
             .then((res) => {
@@ -39,44 +40,43 @@ function BuyNow(props: any) {
             setOpen(false)
         }
     }, [])
+    
 
     const productsubmitHandler = (e: any, productDetails: any) => {
         e.preventDefault();
+        axios.post("http://localhost:3005/orders/products",productDetails)
+        .then((res) => {
+            console.log("pdetails:",res.data);
+        })
         if (props.user != null)
             setProductdetailsflag(false);
-        // console.log("props in products", props);
-        // console.log("productdetails", productDetails.type);
-        // if (productDetails.type === 'Cow') {
-        //     productDetails.price = productDetails.quantity * productDetails.weight * 50000;
-        //     // setPrice(productDetails.quantity*productDetails.weight*50000);
-        // } else if (productDetails.type === 'Goat') {
-        //     productDetails.price = productDetails.quantity * productDetails.weight * 10000;
-        // } else {
-        //     productDetails.price = productDetails.quantity * productDetails.weight * 5000;
-        // }
-        // productDetails.delprice = 2000;
-        // productDetails.totalprice = productDetails.price + productDetails.delprice;
-        // productDetails.price=price;
+       
         if (type != '' && quantity != '' && breed != '' && weight != '' && sex != '')
             props.storeProductdetails(productDetails);
+            setViewFlag(true);
         // console.log("productdetails", productDetails);
+
     }
     const addProduct = (products: any) => {
         setAddFlag(true);
         if (type != '' && quantity != '' && breed != '' && weight != '' && sex != '') {
             props.storeProductdetails(products);
         }
+
     }
     const resetHandler = (e: any) => {
         if (type === '' || quantity === '' || breed === '' || weight === '' || sex === '')
             setErrmsg("please select all details")
+
         if (type != '' && quantity != '' && breed != '' && weight != '' && sex != '') {
+            setErrmsg("filter added");
             setType(" ");
             setQuantity("");
             setBreed("");
             setWeight("");
             setSex("");
         }
+        
     }
 
     function Validate(event: any) {
@@ -158,19 +158,23 @@ function BuyNow(props: any) {
                                     <p>Fill in the required information</p>
                                     {props.user === null &&
                                         <p className='text-danger text-center'>please login to your account</p>}
-                                    {Errmsg != '' &&
-                                        <p className='text-danger text-center'>{Errmsg}</p>
-                                    }
+                                        {
+                                          Errmsg ===   "please select all details" && 
+                                                <p className='text-danger text-center'>{Errmsg}</p>
+                                                
+                                        }
+                                        {
+                                            Errmsg === "filter added" && 
+                                            <p className='text-primary text-center'>{Errmsg}</p>
+                                        }
+                                   
                                 </div>
                                 <div className='viewall-icon'>
                                     <button className='cart-button' onClick={() => setViewFlag(true)}><img src={require("./assets/viewallproductsicon.png")} /></button>
                                 </div>
+                              
                                 <form onSubmit={(e) => productsubmitHandler(e, { type, quantity, weight, sex, breed })}>
-                                    {addFlag === true &&
-                                        !viewFlag &&
-                                        Errmsg === '' &&
-                                        <p className='text-primary text-center'>filter added</p>
-                                    }
+                                   
 
                                     {/* {!viewFlag && */}
                                     <div className='row'>
@@ -255,7 +259,7 @@ function BuyNow(props: any) {
 
                                             </div>
                                             <div className='cart-icon'>
-                                                <button className='cart-button' type='button' onClick={(e: any) => { addProduct({ type, quantity, weight, sex, breed }); resetHandler(e) }}><img src={require("./assets/addtocarticon.png")} /></button>
+                                                <button className='cart-button' type='button' onClick={(e: any) => { addProduct({ type, quantity, weight, sex, breed }); resetHandler(e) }}><img className = "plus-cart" src={require("./assets/addtocarticon.png")} /></button>
                                             </div>
 
                                         </div>
@@ -268,7 +272,10 @@ function BuyNow(props: any) {
 
                         </div >
                     }
+                   
                     { !productdetailsflag  &&
+                     viewFlag &&
+
                         <DimesionalPage></DimesionalPage>
                     }
                 </>
