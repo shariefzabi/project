@@ -14,7 +14,7 @@ const validateProduct = (productData: any) => {
   }
   if (!productData.quantity) {
     errors.quantity = "Please Enter Quantity";
-  } else if (!/^0*[1-9]\d*$/i.test(productData.quantity)) {
+  } else if (!/^0*[0-9]\d*$/i.test(productData.quantity)) {
     //accepts numbers only
     errors.quantity = "Enter a valid quantity";
   }
@@ -22,7 +22,7 @@ const validateProduct = (productData: any) => {
     errors.weight = "Please Enter Weight";
   } else if (!/^[0-9- ]+(\Bkg|Kg)$/.test(productData.weight)) {
     //accepts numbers and ends with kg
-    errors.weight = "Enter valid weight";
+    errors.weight = "Enter weight in Kg";
   }
   if (!productData.breed) {
     errors.breed = "Please Enter Breed";
@@ -201,11 +201,11 @@ function AddProducts(props: any) {
                   Quantity<span className="text-danger">*</span>
                 </label>
                 <input
-                  type="number"
+                  type="text"
                   id="quantity"
                   name="quantity"
                   className="form-control"
-                  min="1"
+                
                   placeholder="Enter Quantity"
                   value={formik.values.quantity}
                   onChange={formik.handleChange}
