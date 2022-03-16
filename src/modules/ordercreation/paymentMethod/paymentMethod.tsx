@@ -162,6 +162,15 @@ class PaymentMethod extends React.Component<any, any> {
         "date": date
       }
     }
+
+    // axios.post("http://localhost:3005/orders/orderdetails/:orderid", paymentStatus)
+    //   .then((result) => {
+    //     console.log("invoicedata", result.data);
+    //     // this.setState({ cost: res.data })
+    //   })
+    //   .catch(err => {
+    //     console.log("error: ", err);
+    //   })
     axios.post("http://localhost:3005/card/details", invoicedata)
       .then((result) => {
         console.log("invoicedata", result.data);
