@@ -53,6 +53,28 @@ app.get("/orders", async (req, res) => {
   })
 });
 
+app.post("/orders/orderdetails/:orderid", function (req, res) {
+  // let orderdetails = req.body;
+  let { params, body, headers } = req;
+  console.log("body", body);
+  console.log("par", params.orderid - 0);
+
+  let query = { orderId: params.orderid - 0 };
+  let status = { $set: body }
+  let ordercollection = db.collection("orders");
+  ordercollection.updateOne(query, status, function (err, result) {
+    if (!err) {
+      console.log("res", result);
+      res.send({ status: "success" });
+    }
+    if (err) {
+      console.log("err", err);
+      res.send({ status: "failure" });
+    }
+  })
+});
+
+
 // end
 
 app.use(
@@ -111,19 +133,19 @@ app.post("/users/:token", function (req, res) {
     // else res.send(result)
   })
 })
-app.post("/users/reset/:token",function(req,res){
-  console.log("reset :",req.body,req.params);
-  userDb.findOne(req.params,function(err,result){
+app.post("/users/reset/:token", function (req, res) {
+  console.log("reset :", req.body, req.params);
+  userDb.findOne(req.params, function (err, result) {
     if (err) throw err
-    console.log("result",result);
-    if (req.body.oldPassword == result.password){
-      userDb.updateOne(req.params,{$set:{password:req.body.newPassword}})
-      res.send(["success","Password updated successfully"])
+    console.log("result", result);
+    if (req.body.oldPassword == result.password) {
+      userDb.updateOne(req.params, { $set: { password: req.body.newPassword } })
+      res.send(["success", "Password updated successfully"])
 
     }
-    
+
     else
-    res.send(["failed","Incorrect password"])
+      res.send(["failed", "Incorrect password"])
   })
 })
 
@@ -133,17 +155,17 @@ app.post("/users/reset/:token",function(req,res){
 
 //team-2 
 //getting product filter details
-app.get("/orders/productfilters",  async(req, res)=> {
+app.get("/orders/productfilters", async (req, res) => {
   let filterdetails = req.body;
   // console.log(filterdetails);
   let filtercollection = db.collection("productfilters");
-  filtercollection.find().toArray(function (err,result) {
+  filtercollection.find().toArray(function (err, result) {
     console.log(result);
     res.send(result)
   })
 });
 
-app.get("/orders/orderdetails",  async(req, res)=> {
+app.get("/orders/orderdetails", async (req, res) => {
   let orderdetails = req.body;
   console.log(orderdetails);
   let ordercollection = db.collection("orders");
