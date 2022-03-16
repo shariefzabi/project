@@ -26,8 +26,8 @@ function SelectedProductDetails(props: any) {
     let [selectedProductId, setSelectedProductId] = useState(props.state.productData)
     let [inWhishlist, setInWhishlist] = useState(false)
 
-    let [price, setPrice] = useState(0);
-    let [productId, setProductId] = useState('')
+    // let [price, setPrice] = useState(0);
+    // let [productId, setProductId] = useState('')
     // let [marketType, setMarketType] = useState('cattleMarkets')
 
 
@@ -59,8 +59,8 @@ function SelectedProductDetails(props: any) {
                 }
             )
 
-        setPrice(product.price)
-        setProductId(product._id)
+        // setPrice(product.price)
+        // setProductId(product._id)
         // console.log("priceteam6", product.price);
         // console.log("price", price);
 
@@ -95,7 +95,7 @@ function SelectedProductDetails(props: any) {
         setCount(count - 1)
     }
     function addToCart() {
-        let items = [count, parseInt(`${price}`), productId]
+        let items = [count, parseInt(`${product.price}`), product._id]
         props.quantity(items);
     }
 
