@@ -19,6 +19,9 @@ function ProductDetails(props: any) {
     let [showCount, setShowCount] = useState(5)
     let [sortValue, setSortValue] = useState('default')
     let [id, setId] = useState('')
+   
+    let [productId,setProductId]=useState("")
+   
     const navigate = useNavigate();
     // let [isOpened, setIsOpened] = useState('')
     // let [marketType, setMarketType] = useState('cattleMarkets')
@@ -58,7 +61,14 @@ function ProductDetails(props: any) {
 
     const setMarketHandler = (event: any) => {
         setMarket(event.target.value)
-        setIsDisplaying(!isDisplaying)
+        if(market==="Cattle Market"){
+            setIsDisplaying(true)
+
+        }else{
+            setIsDisplaying(false)
+
+        }
+        
         // if (market === 'Cattle Market') {
         //     setMarketType('cattleMarkets')
         // } else if (market === 'Sheep Market') {
@@ -80,10 +90,25 @@ function ProductDetails(props: any) {
         alert("Added")
     }
 
-    const addtoWishlist = () => {
 
-
+     let pID={ }
+    const addtoWishlist = (p:any) => {
+        // setProductId(p)
+        // console.log(p)
+        // p.email = props.state.user.email;
+       
+        // try {
+        //     axios.post("http://localhost:3005/orders/wishlists", p)
+        // } catch (err) {
+        //     console.error(err)
+        // }
+      
+     
     }
+   
+    
+    
+
 
 
 
@@ -117,8 +142,8 @@ function ProductDetails(props: any) {
 
                                         <div className="collapse" id={index2}>
                                             <ul>
-                                                <li className="mx-4"><span className="blue mx-2">&#9679;</span><button className="marketButton " onClick={setMarketHandler} value='Cattle Market'>Cattle Market<span>({e.cattleMarkets.length})</span></button></li>
-                                                <li className="mx-4"><span className="blue mx-2">&#9679;</span><button className="marketButton " onClick={setMarketHandler} value='Sheep Market'>Sheep Market<span>({e.sheepMarkets.length})</span></button></li>
+                                                <li ><button className="marketButton " onClick={setMarketHandler} value='Cattle Market'><span className="blue mx-3">&#9679;</span>Cattle Market<span>({e.cattleMarkets.length})</span></button></li>
+                                                <li ><button className="marketButton " onClick={setMarketHandler} value='Sheep Market'><span className="blue mx-3">&#9679;</span>Sheep Market<span>({e.sheepMarkets.length})</span></button></li>
                                             </ul>
                                         </div>
 
@@ -153,12 +178,14 @@ function ProductDetails(props: any) {
                             </select>
                         </div>
                         <div className="card-deck row row-cols-3">
-                            {!isDisplaying &&
+                            {isDisplaying &&
                                 products.map((product: any, i) => {
                                     if (sortValue === "default") {
                                         if (product.locationName === location) {
                                             return (
                                                 product.cattleMarkets.map((e: any, i: any) => {
+                                                    pID=e
+                                                   
                                                     let imagePath = "";
                                                     if (typeof e.image === 'object') {
                                                         imagePath = serverUrl + e.image.filename;
@@ -168,7 +195,7 @@ function ProductDetails(props: any) {
 
                                                             <div className="card mb-4">
                                                                 <div className="card-body" id={e._id}>
-                                                                    <button className="wishListButton" onClick={addtoWishlist}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
+                                                                    <button className="wishListButton" onClick={()=>addtoWishlist(pID)}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
                                                                     <div onClick={productDataHandler}>
 
                                                                         <img className="productImage" id={e._id} src={imagePath} />
@@ -197,6 +224,7 @@ function ProductDetails(props: any) {
 
                                             return (
                                                 highToLowData.map((e: any, i: any) => {
+                                                    pID=e._id
                                                     let imagePath = "";
                                                     if (typeof e.image === 'object') {
 
@@ -207,7 +235,7 @@ function ProductDetails(props: any) {
 
                                                             <div className="card mb-4">
                                                                 <div className="card-body" id={e._id}>
-                                                                    <button className="wishListButton" onClick={addtoWishlist}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
+                                                                    <button className="wishListButton" onClick={()=>addtoWishlist(pID)}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
                                                                     <div onClick={productDataHandler}>
                                                                         < img className="productImage" id={e._id} src={imagePath} />
 
@@ -234,6 +262,7 @@ function ProductDetails(props: any) {
                                             const lowToHighData = [].concat(product.cattleMarkets).sort((a: any, b: any) => a.price < b.price ? -1 : 1)
                                             return (
                                                 lowToHighData.map((e: any, i: any) => {
+                                                    pID=e._id
                                                     let imagePath = "";
                                                     if (typeof e.image === 'object') {
                                                         imagePath = serverUrl + e.image.filename;
@@ -243,7 +272,7 @@ function ProductDetails(props: any) {
 
                                                             <div className="card mb-4">
                                                                 <div className="card-body" id={e._id}>
-                                                                    <button className="wishListButton" onClick={addtoWishlist}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
+                                                                    <button className="wishListButton" onClick={()=>addtoWishlist(pID)}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
                                                                     <div onClick={productDataHandler}>
                                                                         <img className="productImage" id={e._id} src={imagePath} />
 
@@ -267,12 +296,13 @@ function ProductDetails(props: any) {
 
                                 })
                             }
-                            {isDisplaying &&
+                            {!isDisplaying &&
                                 products.map((product: any, i) => {
                                     if (sortValue === "default") {
                                         if (product.locationName === location) {
                                             return (
                                                 product.sheepMarkets.map((e: any, i: any) => {
+                                                    pID=e._id
                                                     let imagePath = "";
                                                     if (typeof e.image === 'object') {
                                                         imagePath = serverUrl + e.image.filename;
@@ -282,7 +312,7 @@ function ProductDetails(props: any) {
 
                                                             <div className="card mb-4">
                                                                 <div className="card-body" id={e._id}>
-                                                                    <button className="wishListButton" onClick={addtoWishlist}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
+                                                                    <button className="wishListButton" onClick={()=>addtoWishlist(pID)}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
                                                                     <div onClick={productDataHandler}>
                                                                         <img className="productImage" id={e._id} src={imagePath} />
 
@@ -310,6 +340,7 @@ function ProductDetails(props: any) {
 
                                             return (
                                                 highToLowData.map((e: any, i: any) => {
+                                                    pID=e._id
                                                     let imagePath = "";
                                                     if (typeof e.image === 'object') {
                                                         imagePath = serverUrl + e.image.filename;
@@ -320,7 +351,7 @@ function ProductDetails(props: any) {
 
                                                             <div className="card mb-4">
                                                                 <div className="card-body" id={e._id}>
-                                                                    <button className="wishListButton" onClick={addtoWishlist}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
+                                                                    <button className="wishListButton" onClick={()=>addtoWishlist(pID)}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
                                                                     <div onClick={productDataHandler}>
 
                                                                         <img className="productImage" id={e._id} src={imagePath} />
@@ -347,6 +378,7 @@ function ProductDetails(props: any) {
                                             const lowToHighData = [].concat(product.sheepMarkets).sort((a: any, b: any) => a.price < b.price ? -1 : 1)
                                             return (
                                                 lowToHighData.map((e: any, i: any) => {
+                                                    pID=e._id
                                                     let imagePath = "";
                                                     if (typeof e.image === 'object') {
                                                         imagePath = serverUrl + e.image.filename;
@@ -356,7 +388,7 @@ function ProductDetails(props: any) {
 
                                                             <div className="card mb-4">
                                                                 <div className="card-body" id={e._id}>
-                                                                    <button className="wishListButton" onClick={addtoWishlist}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
+                                                                    <button className="wishListButton" onClick={()=>addtoWishlist(pID)}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
                                                                     <div onClick={productDataHandler}>
                                                                         <img className="productImage" id={e._id} src={imagePath} />
 

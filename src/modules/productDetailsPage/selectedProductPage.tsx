@@ -59,15 +59,9 @@ function SelectedProductDetails(props: any) {
                 }
             )
 
-        // setPrice(product.price)
-        // setProductId(product._id)
-        // console.log("priceteam6", product.price);
-        // console.log("price", price);
-
-        // props.quantity(++count, price);
     }, []);
-    // console.log(selectedProductId)
-    product.email = props.state.user.email
+ 
+    
 
     console.log("whislist", product)
 
@@ -115,6 +109,7 @@ function SelectedProductDetails(props: any) {
         imagePath = serverUrl + product.image.filename;
     }
     //whislist post
+    product.email = props.state.user.email
 
     const addtoWishlist = () => {
         setInWhishlist(true)
