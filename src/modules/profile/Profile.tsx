@@ -7,6 +7,7 @@ import Reset from './reset/reset'
 import Sidebar from './sidebar/sidebar'
 
 function Profile(props: any) {
+    const[flag,setflag]=useState(false)
     const [userDetails, setUserDetails] = useState(
         {
             fullName: "",
@@ -285,8 +286,11 @@ function Profile(props: any) {
                                                     <p className="text-danger">{addressErrMsg}</p>
                                                 </div>
                                                 <div className="row justify-content-center">
-                                                    <button type="submit" id="saveButton" className="btn btn-success col-md-4">Save</button>
+                                                    <button onClick={()=>setflag(true)} type="submit" id="saveButton" className="btn btn-success col-md-4">Save</button>
                                                 </div>
+                                                {flag&&
+                                                <p className='mt-5 text-center text-success'> Profile details Updated sucessfully </p>
+                                                }
                                             </form>
                                         </section>
                                     </main>
