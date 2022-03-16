@@ -5,7 +5,7 @@
     margin-right: 12vw;
     margin-top: 6%;
     box-sizing: border-box;
-  
+  }
   .productSection .headingText h2 {
     color: #2078BF;
     font-weight: bolder;
@@ -59,34 +59,33 @@
     font-size: 2.25rem;
     display: block;
     margin: 5% 35%;
-  }
-  form input {
-    border: none;
-    outline: none;
-    font-size: 1.125rem;
-    width: 100%;
-    height: 2.3em;
-  }
-}
-  
-  @media (min-width: 0px) and (max-width: 440px) {
-    .productSection {
-      margin-top: 10%;
     }
-    .productSection .headingText h2 {
-      font-size: 1.5rem;
+    form input {
+      border: none;
+      outline: none;
+      font-size: 1.125rem;
+      width: 100%;
+      height: 2.3em;
     }
-    .productSection .header {
-      margin-bottom: 6%;
+    
+    @media (min-width: 0px) and (max-width: 440px) {
+      .productSection {
+        margin-top: 10%;
+      }
+      .productSection .headingText h2 {
+        font-size: 1.5rem;
+      }
+      .productSection .header {
+        margin-bottom: 6%;
+      }
+    
+      .formContainer p {
+        width: 85%;
+        margin: 3% 0%;
+      }
+    
+      .bt button {
+        width: 70%;
+        height: 15%;
+      }
     }
-  
-    .formContainer p {
-      width: 85%;
-      margin: 3% 0%;
-    }
-  
-    .bt button {
-      width: 70%;
-      height: 15%;
-    }
-  }

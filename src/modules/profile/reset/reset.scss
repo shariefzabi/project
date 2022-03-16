@@ -4,41 +4,42 @@
     margin: 4rem auto;
     padding: 50px;
     
-}
-h3{
+
+  h3{
     color: #2078bf;
     padding-bottom: 25px;
     font-weight: 700;
     font-family: 'Ubuntu';
-}
-.formContainer{
+  }
+ .formContainer{
 
- label{
+  label{
     color: #838383;
     font-family: 'Ubuntu';
-}
+   }
 
-p{
-color: #838383;
-font-weight: 700;
-font-family: 'Ubuntu';
-}
-button{
+   p{
+   color: #838383;
+   font-weight: 700;
+   font-family: 'Ubuntu';
+   }
+   button{
     width: 196px;
     height: 50px;
-}
+   }
 
 
-input{
+   input{
     width: 900px;
     height: 50px;
     margin-bottom: 15px;
-}
-img{
+   }
+   img{
     position: absolute;
     top: 60px ;
     right: 30px;
 
    }
    
+ }
 }
