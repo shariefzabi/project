@@ -1,11 +1,12 @@
 
 const express = require('express');
-const multer  = require('multer')
+const multer = require('multer')
 const upload = multer({ dest: 'uploads/' })
 
 const expressAsyncHandler = require("express-async-handler");
 const { param } = require('express/lib/request');
 const { ObjectId } = require('mongodb');
+const mongoose = require('mongoose');
 const router = express.Router();
 const Location = require('./marketingDetailsSchema.js');
 
@@ -21,7 +22,7 @@ router.post("/marketDetails", async (req, res) => {
         const myLocation = new Location(locationdb);
         await Location.create(myLocation);
         res.send(myLocation);
-        res.send({ status: "success" })
+        // res.send({ status: "success" })
     }
     catch (err) {
         res.send({ message: err })
@@ -79,22 +80,51 @@ router.get('/locations', async (req, res) => {
 
 // fetching selected product details
 
+// router.get('/selectedProductDetails/:id', async (req, res) => {
+//     let { params } = req
+//     let totalMarketsData = [];
+//     let id = mongoose.Types.ObjectId(req.params.id);
+//     try {
+//         Location.find().exec(function (err, result) {
+//             result.map(function (e) {
+//                 e.cattleMarkets.map(item => {
+//                     totalMarketsData.push(item)
+//                 })
+//                 e.sheepMarkets.map(item => {
+//                     totalMarketsData.push(item)
+//                 })
+//             })
+//             const productData = totalMarketsData.filter(e => e._id.toString() == params.id)
+//             console.log(productData)
+//             res.send(productData)
+//         });
+//     }
+//     catch (err) {
+//         res.send({ message: err })
+//     }
+// })
+
 router.get('/selectedProductDetails/:id', async (req, res) => {
-    let { params } = req
-    let totalMarketsData = [];
+    let { params } = req;
     try {
-        Location.find().exec(function (err, result) {
-            result.map(function (e) {
-                e.cattleMarkets.map(item => {
-                    totalMarketsData.push(item)
-                })
-                e.sheepMarkets.map(item => {
-                    totalMarketsData.push(item)
-                })
-            })
-            const productData = totalMarketsData.filter(e => e.animalId === params.id);
-            res.send(productData)
+        Location.find({
+            $or: [{ "cattleMarkets._id": ObjectId(params.id) },
+            { "sheepMarkets._id": ObjectId(params.id) }]
         })
+            .exec(function (err, result) {
+                let allProducts = []
+                let product = []
+                if (!err && result.length != 0) {
+                    result[0].sheepMarkets.forEach(p => {
+                        allProducts.push(p);
+                    });
+                    result[0].cattleMarkets.forEach(p => {
+                        allProducts.push(p);
+                    });
+                    product = allProducts.filter(p => p._id.toString() == params.id)
+                }
+                res.send(product)
+            })
     }
     catch (err) {
         res.send({ message: err })
@@ -102,45 +132,47 @@ router.get('/selectedProductDetails/:id', async (req, res) => {
 })
 
 
+
+
 ////////////////// Storing product details-----Team-5///////////////////
 let cattleMarketData = {};
 let sheepMarketData = {};
-router.post("/addProducts",upload.single('fileData'), async (req, res) => {
+router.post("/addProducts", upload.single('fileData'), async (req, res) => {
     // console.log('req', req.body);
     let prodData = req.body;
-    let {file} = req;
-    
+    let { file } = req;
+
     try {
         console.log('productData', prodData);
         cattleMarketData =
         {
-           
+
             productCode: "cow123",
-            quantity:prodData.quantity,
+            quantity: prodData.quantity,
             availability: prodData.availability,
-            type:prodData.types,
-            sex:prodData.sex,
+            type: prodData.types,
+            sex: prodData.sex,
             image: file,
             price: prodData.price,
             weight: prodData.weight,
             breed: prodData.breed,
             source: prodData.source,
-            market:prodData.market,
+            market: prodData.market,
             certification: prodData.certification,
         }
         sheepMarketData = {
 
             productCode: "sheep123",
-            quantity:prodData.quantity,
+            quantity: prodData.quantity,
             availability: prodData.availability,
-            type:prodData.types,
-            sex:prodData.sex,
+            type: prodData.types,
+            sex: prodData.sex,
             image: file,
             price: prodData.price,
             weight: prodData.weight,
             breed: prodData.breed,
             source: prodData.source,
-            market:prodData.market,
+            market: prodData.market,
             certification: prodData.certification,
         }
         Location.findOne({ locationName: prodData.location }).exec(function (err, result) {
@@ -158,7 +190,7 @@ router.post("/addProducts",upload.single('fileData'), async (req, res) => {
                 // Location.updateOne({ locationName: prodData.location },
                 //     {$push:{cattleMarkets:cattleMarketData}}
 
-                    // result
+                // result
                 // ).exec(function (err, result) {
                 //     return res.send({ status: "success", result })
                 // })
@@ -170,7 +202,7 @@ router.post("/addProducts",upload.single('fileData'), async (req, res) => {
                     return res.send({ status: "success", result })
                 })
             }
-            console.log("after adding products",result);
+            console.log("after adding products", result);
             // else
             // res.send({status:"success"})
         })
@@ -203,7 +235,7 @@ router.post("/addProducts",upload.single('fileData'), async (req, res) => {
 //             })
 //             console.log("allProducts :",allProducts);
 //             res.send(result);
-            
+
 //         })
 //     }
 //     catch (err) {
