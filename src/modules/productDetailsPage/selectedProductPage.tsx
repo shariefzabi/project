@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { Accordion } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Rating } from "@mui/material";
+import { createFalse } from "typescript";
 
 
 
@@ -22,6 +23,7 @@ function SelectedProductDetails(props: any) {
     let [isDisplayingReview, setIssDisplayingReview] = useState(false)
     let [count, setCount] = useState(1)
     let [selectedProductId, setSelectedProductId] = useState(props.state.productData)
+    let [inWhishlist, setInWhishlist] = useState(false)
     // let [marketType, setMarketType] = useState('cattleMarkets')
 
 
@@ -45,7 +47,9 @@ function SelectedProductDetails(props: any) {
             )
     }, []);
     // console.log(selectedProductId)
-    console.log(product)
+    product.email=props.state.user.email
+
+    console.log("whislist",product)
 
     const setLocationHandler = (event: any) => {
         setLocation(event.target.value)
@@ -80,6 +84,34 @@ function SelectedProductDetails(props: any) {
     let imagePath = "";
     if (typeof product.image === 'object') {
     imagePath = serverUrl +product.image.filename;}
+    //whislist post
+
+    const addtoWishlist = () => {
+        setInWhishlist(true)
+
+        const products = { product }
+        try {
+          axios.post("http://localhost:3005/orders/wishlists", products)
+        } catch (err) {
+          console.error(err)
+        }
+    }
+   
+    //wishlist delete
+    
+    const deleteFromWishlist= () => {
+        setInWhishlist(false)
+        try {
+          axios.delete("http://localhost:3005/orders/wishlists/" + product._id)
+        } catch (err) {
+          console.error(err)
+        }
+    }
+
+    
+    
+        
+      
 
     return (
         <div id="productPage" className="productPage">
@@ -123,10 +155,22 @@ function SelectedProductDetails(props: any) {
                     <div className="col-4 mt-3 p-0">
                     
                         <img className="Image" src={imagePath} />
-                    {/* < img className="productImage" src={"http://localhost:3005/" +product.image.filename } /> */}
+ 
                     </div>
                     <div className="col-5 mt-3 p-0">
-                        <button className="wishListButton"><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
+                        
+                    
+                        {!inWhishlist &&
+                        <button className="wishListButton" onClick={addtoWishlist}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
+
+                        }
+                        {inWhishlist &&
+                        <button className="wishListButton"  onClick={deleteFromWishlist}><img className="wishListImg" src={require("./assets/whislistDelete.png")}></img></button>
+                            
+                        }
+
+                        
+                        
                         <h3 className="p-0" id="marketHeading">ANIMAL ID - </h3>
                         <h3 className="mb-3 p-0" id="marketHeading">{product._id}</h3>
                         <p id="text_code">Product Code: {product.productCode}</p>
