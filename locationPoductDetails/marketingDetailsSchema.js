@@ -27,14 +27,16 @@ const cattleMarketSchema = new mongoose.Schema({
   weight: { type: String, required: true },
   breed: { type: String, required: true },
   source: { type: String, required: true },
+  locationName:{type:String,required: true },
   market:{type:String},
   certification: {
     type: String,
     required: true,
     enum: ["Certified", "Not Certified"],
   },
-
+  created_on:{type:Number}
 },{timestamps:true});
+
 const sheepMarketSchema = new mongoose.Schema({
   // animalId: { type: String, required: true, unique: true },
   productCode: { type: String, required: true },
@@ -51,13 +53,14 @@ const sheepMarketSchema = new mongoose.Schema({
   weight: { type: String, required: true },
   breed: { type: String, required: true },
   source: { type: String, required: true },
+  locationName:{type:String,required: true },
   market:{type:String},
   certification: {
     type: String,
     required: true,
     enum: ["Certified", "Not Certified"],
   },
-
+  created_on:{type:Number}
 },{timestamps:true});
 const locationSchema = new mongoose.Schema(
   {

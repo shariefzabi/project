@@ -115,7 +115,7 @@ router.post("/addProducts",upload.single('fileData'), async (req, res) => {
         cattleMarketData =
         {
            
-            productCode: "cow123",
+            productCode: Math.round(Math.random() * 1000000000000),
             quantity:prodData.quantity,
             availability: prodData.availability,
             type:prodData.types,
@@ -126,11 +126,13 @@ router.post("/addProducts",upload.single('fileData'), async (req, res) => {
             breed: prodData.breed,
             source: prodData.source,
             market:prodData.market,
+            locationName:prodData.location,
             certification: prodData.certification,
+            created_on:Date.now()
         }
         sheepMarketData = {
 
-            productCode: "sheep123",
+            productCode:  Math.round(Math.random() * 1000000000000),
             quantity:prodData.quantity,
             availability: prodData.availability,
             type:prodData.types,
@@ -141,7 +143,9 @@ router.post("/addProducts",upload.single('fileData'), async (req, res) => {
             breed: prodData.breed,
             source: prodData.source,
             market:prodData.market,
+            locationName:prodData.location,
             certification: prodData.certification,
+            created_on:Date.now()
         }
         Location.findOne({ locationName: prodData.location }).exec(function (err, result) {
             // console.log("before adding products",result);
@@ -180,36 +184,40 @@ router.post("/addProducts",upload.single('fileData'), async (req, res) => {
         console.log(err)
     }
 })
-
-// router.get("/latestProducts", async (req, res) => {
-//     console.log("from /latestProducts");
-//     try {
-//         Location.find().select({image:0}).exec(function (err, result) {
-//             console.log("allDocs",result);
-//             if (err) throw err;
-//             let allDocs = result;
-//             let allProducts = [];
-//             allDocs.forEach((doc)=>{
-//                 doc.cattleMarkets.forEach(prod => {
-//                     prod.locationName = doc.locationName;
-//                     delete prod.image;
-//                     allProducts.push(prod);
-//                 })
-//                 doc.sheepMarkets.forEach(prod => {
-//                     prod.locationName = doc.locationName;
-//                     delete prod.image;
-//                     allProducts.push(prod);
-//                 })
-//             })
-//             console.log("allProducts :",allProducts);
-//             res.send(result);
+//////latest Products//////
+router.get("/latestProducts", async (req, res) => {
+    console.log("from /latestProducts");
+    try {
+        Location.find().select({image:0}).exec(function (err, result) {
+            console.log("allDocs",result);
+            if (err) throw err;
+            let allDocs = result;
+            let allProducts = [];
+            allDocs.forEach((doc)=>{
+                doc.cattleMarkets.forEach(prod => {
+                    // prod.locationName = doc.locationName;
+                    delete prod.image;
+                    allProducts.push(prod);
+                })
+                doc.sheepMarkets.forEach(prod => {
+                    // prod.locationName = doc.locationName;
+                    delete prod.image;
+                    allProducts.push(prod);
+                })
+            })
+            allProducts.sort((a,b)=>{
+                return b.created_on-a.created_on;
+            })
+            var latest = allProducts.slice(0,3)
+            console.log("allProducts :",allProducts);
+            res.send(latest);
             
-//         })
-//     }
-//     catch (err) {
-//         res.send({ message: err })
-//     }
-// });
+        })
+    }
+    catch (err) {
+        res.send({ message: err })
+    }
+});
 
 
 //Fetching Particular AnimalId in particular location
