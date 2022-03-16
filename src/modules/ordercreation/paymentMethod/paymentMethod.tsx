@@ -28,22 +28,22 @@ class PaymentMethod extends React.Component<any, any> {
 
     }
   }
-  componentDidMount() {
-    axios.get("http://localhost:3005/orders/orderdetails")
-      .then((result) => {
-        console.log("productdetails", result.data);
-        let { orderId, date } = result.data[0]
-        let { totalprice } = result.data[0].productdetails
+  // componentDidMount() {
+  //   axios.get("http://localhost:3005/orders/orderdetails")
+  //     .then((result) => {
+  //       console.log("productdetails", result.data);
+  //       let { orderId, date } = result.data[0]
+  //       let { totalprice } = result.data[0].productdetails
 
-        console.log(orderId)
-        this.setState({ orderId, date, totalprice })
-        console.log("stATE ORDERID", this.state.orderId, typeof (this.state.orderId), this.state.date)
-      })
-      .catch(err => {
-        console.log("error: ", err);
-      })
+  //       console.log(orderId)
+  //       this.setState({ orderId, date, totalprice })
+  //       console.log("stATE ORDERID", this.state.orderId, typeof (this.state.orderId), this.state.date)
+  //     })
+  //     .catch(err => {
+  //       console.log("error: ", err);
+  //     })
 
-  }
+  // }
   changeHandler = (event: any) => {
     // let { payment } = this.state;
     this.setState({ [event.target.name]: event.target.value });
@@ -120,11 +120,11 @@ class PaymentMethod extends React.Component<any, any> {
     let { payment, orderId } = this.state
     this.setState({ flag1: false })
     let paymentStatus = {
-      orderId: orderId,
-      payment: "Awaiting payment"
+      
+      paymentStatus: "Awaiting payment"
     }
     if (payment === "Pay_On_Delivery") {
-      axios.post("http://localhost:3005/payment/status", paymentStatus)
+      axios.post("http://localhost:3005/paymentstatus", paymentStatus)
         .then((result) => {
           console.log("status", result.data);
         })
@@ -185,11 +185,11 @@ class PaymentMethod extends React.Component<any, any> {
       month_year: ''
     })
     let paymentStatus = {
-      orderId: orderId,
-      payment: "payment success"
+    
+      paymentStatus: "payment success"
     }
     console.log(orderId)
-    axios.post("http://localhost:3005/payment/status", paymentStatus)
+    axios.post("http://localhost:3005/paymentstatus", paymentStatus)
       .then((result) => {
         // console.log("status", result.data);
       })
