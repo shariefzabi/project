@@ -9,6 +9,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Rating } from "@mui/material";
 
 
+
+
 function SelectedProductDetails(props: any) {
 
     let [product, setProduct] = useState<any>([])
@@ -74,6 +76,10 @@ function SelectedProductDetails(props: any) {
         // }
     }
 
+    var serverUrl = "http://localhost:3005/";
+    let imagePath = "";
+    imagePath = serverUrl + product.image.filename;
+
     return (
         <div id="productPage" className="productPage">
             <Breadcrumb id="sub">
@@ -114,7 +120,7 @@ function SelectedProductDetails(props: any) {
                         }
                     </div>
                     <div className="col-4 p-0">
-                        Image
+                    < img className="productImage" src={imagePath} />
                     </div>
                     <div className="col-5 p-0">
                         <button className="wishListButton"><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>

@@ -171,7 +171,7 @@ function ProductDetails(props: any) {
                                                                     <button className="wishListButton" onClick={addtoWishlist}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
                                                                     <div onClick={productDataHandler}>
 
-                                                                        <img className="productImage" src={imagePath} />
+                                                                        <img className="productImage" id={e._id} src={imagePath} />
                                                                         {/* <img src={`data:image/jpeg;based64,${e.image}`} /> */}
 
                                                                         <h5 className="card-id" id={e._id}>Animal ID: {e._id}</h5>
@@ -209,7 +209,7 @@ function ProductDetails(props: any) {
                                                                 <div className="card-body" id={e._id}>
                                                                     <button className="wishListButton" onClick={addtoWishlist}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
                                                                     <div onClick={productDataHandler}>
-                                                                        < img className="productImage" src={imagePath} />
+                                                                        < img className="productImage" id={e._id} src={imagePath} />
 
                                                                         <h5 className="card-id" id={e._id}>Animal ID: {e._id}</h5>
 
@@ -245,7 +245,7 @@ function ProductDetails(props: any) {
                                                                 <div className="card-body" id={e._id}>
                                                                     <button className="wishListButton" onClick={addtoWishlist}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
                                                                     <div onClick={productDataHandler}>
-                                                                        <img className="productImage" src={imagePath} />
+                                                                        <img className="productImage" id={e._id} src={imagePath} />
 
                                                                         <h5 className="card-id" id={e._id}>Animal ID: {e._id}</h5>
 
@@ -284,7 +284,7 @@ function ProductDetails(props: any) {
                                                                 <div className="card-body" id={e._id}>
                                                                     <button className="wishListButton" onClick={addtoWishlist}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
                                                                     <div onClick={productDataHandler}>
-                                                                        <img className="productImage" src={imagePath} />
+                                                                        <img className="productImage" id={e._id}  src={imagePath} />
 
                                                                         <h5 className="card-id" id={e._id}>Animal ID: {e._id}</h5>
 
@@ -323,7 +323,7 @@ function ProductDetails(props: any) {
                                                                     <button className="wishListButton" onClick={addtoWishlist}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
                                                                     <div onClick={productDataHandler}>
 
-                                                                        <img className="productImage" src={imagePath} />
+                                                                        <img className="productImage" id={e._id}  src={imagePath} />
 
                                                                         <h5 className="card-id" id={e._id}>Animal ID: {e._id}</h5>
 
@@ -358,7 +358,7 @@ function ProductDetails(props: any) {
                                                                 <div className="card-body" id={e._id}>
                                                                     <button className="wishListButton" onClick={addtoWishlist}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
                                                                     <div onClick={productDataHandler}>
-                                                                        <img className="productImage" src={imagePath} />
+                                                                        <img className="productImage" id={e._id}  src={imagePath} />
 
                                                                         <h5 className="card-id" id={e._id}>Animal ID: {e._id}</h5>
 
