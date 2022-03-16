@@ -19,27 +19,15 @@ function ProductDetails(props: any) {
     let [showCount, setShowCount] = useState(5)
     let [sortValue, setSortValue] = useState('default')
     let [id, setId] = useState('')
-    let [inWhishlist, setInWhishlist] = useState(false)
-
-
-    // if(props.state.locName){
-    //     setLocation(props.state.locName)
-        
-    // }else if(props.state.pID){
-    //     setLocation(props.state.pID)
-        
-    // }
-
-    
-
-
-
+   
+    let [productId,setProductId]=useState("")
+   
     const navigate = useNavigate();
     // let [isOpened, setIsOpened] = useState('')
     // let [marketType, setMarketType] = useState('cattleMarkets')
 
 
-   
+    console.log(location)
     useEffect(() => {
         axios.get("http://localhost:3005/market/marketDetails")
             .then(
@@ -48,7 +36,7 @@ function ProductDetails(props: any) {
                 }
             )
     }, []);
-    
+    console.log(products)
 
     const setLocationHandler = (event: any) => {
         setLocation(event.target.value)
@@ -73,14 +61,14 @@ function ProductDetails(props: any) {
 
     const setMarketHandler = (event: any) => {
         setMarket(event.target.value)
-        if (market === "Cattle Market") {
+        if(market==="Cattle Market"){
             setIsDisplaying(true)
 
-        } else {
+        }else{
             setIsDisplaying(false)
 
         }
-
+        
         // if (market === 'Cattle Market') {
         //     setMarketType('cattleMarkets')
         // } else if (market === 'Sheep Market') {
@@ -103,42 +91,23 @@ function ProductDetails(props: any) {
     }
 
 
-    //  let element={ }
-    const addtoWishlist = (product: any) => {
-        
-            setInWhishlist(true)
-
-        
+     let pID={ }
+    const addtoWishlist = (p:any) => {
+        // setProductId(p)
+        // console.log(p)
+        // p.email = props.state.user.email;
+       
+        // try {
+        //     axios.post("http://localhost:3005/orders/wishlists", p)
+        // } catch (err) {
+        //     console.error(err)
+        // }
       
-
-
-
-        product.email = props.state.user.email;
-        let ele = { product }
-
-        try {
-            axios.post("http://localhost:3005/orders/wishlists", ele)
-        } catch (err) {
-            console.error(err)
-        }
-
-
+     
     }
-    const deleteFromWishlist = (e: any) => {
-        
-        
-            setInWhishlist(false)
-
-        
-        try {
-            axios.delete("http://localhost:3005/orders/wishlists/" + e._id)
-        } catch (err) {
-            console.error(err)
-        }
-    }
-
-
-
+   
+    
+    
 
 
 
@@ -216,26 +185,18 @@ function ProductDetails(props: any) {
                                         if (product.locationName === location) {
                                             return (
                                                 product.cattleMarkets.map((e: any, i: any) => {
-
-
+                                                    pID=e
+                                                   
                                                     let imagePath = "";
                                                     if (typeof e.image === 'object') {
                                                         imagePath = serverUrl + e.image.filename;
-
                                                     }
                                                     return (
                                                         <div key={i}>
 
                                                             <div className="card mb-4">
                                                                 <div className="card-body" id={e._id}>
-                                                                    {!inWhishlist &&
-                                                                        <button className="wishListButton" onClick={() => addtoWishlist(e)}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
-
-                                                                    }
-                                                                    {inWhishlist &&
-                                                                        <button className="wishListButton" onClick={() => deleteFromWishlist(e)}><img className="wishListImg" src={require("./assets/whislistDelete.png")}></img></button>
-
-                                                                    }
+                                                                    <button className="wishListButton" onClick={()=>addtoWishlist(pID)}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
                                                                     <div onClick={productDataHandler}>
 
                                                                         <img className="productImage" id={e._id} src={imagePath} />
@@ -264,7 +225,7 @@ function ProductDetails(props: any) {
 
                                             return (
                                                 highToLowData.map((e: any, i: any) => {
-
+                                                    pID=e._id
                                                     let imagePath = "";
                                                     if (typeof e.image === 'object') {
 
@@ -275,14 +236,8 @@ function ProductDetails(props: any) {
 
                                                             <div className="card mb-4">
                                                                 <div className="card-body" id={e._id}>
-                                                                    {!inWhishlist &&
-                                                                        <button className="wishListButton" onClick={() => addtoWishlist(e)}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
-
-                                                                    }
-                                                                    {inWhishlist &&
-                                                                        <button className="wishListButton" onClick={() => deleteFromWishlist(e)}><img className="wishListImg" src={require("./assets/whislistDelete.png")}></img></button>
-
-                                                                    }                                                                    <div onClick={productDataHandler}>
+                                                                    <button className="wishListButton" onClick={()=>addtoWishlist(pID)}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
+                                                                    <div onClick={productDataHandler}>
                                                                         < img className="productImage" id={e._id} src={imagePath} />
 
                                                                         <h5 className="card-id" id={e._id}>Animal ID: {e._id}</h5>
@@ -308,7 +263,7 @@ function ProductDetails(props: any) {
                                             const lowToHighData = [].concat(product.cattleMarkets).sort((a: any, b: any) => a.price < b.price ? -1 : 1)
                                             return (
                                                 lowToHighData.map((e: any, i: any) => {
-
+                                                    pID=e._id
                                                     let imagePath = "";
                                                     if (typeof e.image === 'object') {
                                                         imagePath = serverUrl + e.image.filename;
@@ -318,14 +273,8 @@ function ProductDetails(props: any) {
 
                                                             <div className="card mb-4">
                                                                 <div className="card-body" id={e._id}>
-                                                                    {!inWhishlist &&
-                                                                        <button className="wishListButton" onClick={() => addtoWishlist(e)}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
-
-                                                                    }
-                                                                    {inWhishlist &&
-                                                                        <button className="wishListButton" onClick={() => deleteFromWishlist(e)}><img className="wishListImg" src={require("./assets/whislistDelete.png")}></img></button>
-
-                                                                    }                                                                    <div onClick={productDataHandler}>
+                                                                    <button className="wishListButton" onClick={()=>addtoWishlist(pID)}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
+                                                                    <div onClick={productDataHandler}>
                                                                         <img className="productImage" id={e._id} src={imagePath} />
 
                                                                         <h5 className="card-id" id={e._id}>Animal ID: {e._id}</h5>
@@ -354,7 +303,7 @@ function ProductDetails(props: any) {
                                         if (product.locationName === location) {
                                             return (
                                                 product.sheepMarkets.map((e: any, i: any) => {
-
+                                                    pID=e._id
                                                     let imagePath = "";
                                                     if (typeof e.image === 'object') {
                                                         imagePath = serverUrl + e.image.filename;
@@ -364,14 +313,8 @@ function ProductDetails(props: any) {
 
                                                             <div className="card mb-4">
                                                                 <div className="card-body" id={e._id}>
-                                                                    {!inWhishlist &&
-                                                                        <button className="wishListButton" onClick={() => addtoWishlist(e)}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
-
-                                                                    }
-                                                                    {inWhishlist &&
-                                                                        <button className="wishListButton" onClick={() => deleteFromWishlist(e)}><img className="wishListImg" src={require("./assets/whislistDelete.png")}></img></button>
-
-                                                                    }                                                                    <div onClick={productDataHandler}>
+                                                                    <button className="wishListButton" onClick={()=>addtoWishlist(pID)}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
+                                                                    <div onClick={productDataHandler}>
                                                                         <img className="productImage" id={e._id} src={imagePath} />
 
                                                                         <h5 className="card-id" id={e._id}>Animal ID: {e._id}</h5>
@@ -398,7 +341,7 @@ function ProductDetails(props: any) {
 
                                             return (
                                                 highToLowData.map((e: any, i: any) => {
-
+                                                    pID=e._id
                                                     let imagePath = "";
                                                     if (typeof e.image === 'object') {
                                                         imagePath = serverUrl + e.image.filename;
@@ -409,14 +352,8 @@ function ProductDetails(props: any) {
 
                                                             <div className="card mb-4">
                                                                 <div className="card-body" id={e._id}>
-                                                                    {!inWhishlist &&
-                                                                        <button className="wishListButton" onClick={() => addtoWishlist(e)}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
-
-                                                                    }
-                                                                    {inWhishlist &&
-                                                                        <button className="wishListButton" onClick={() => deleteFromWishlist(e)}><img className="wishListImg" src={require("./assets/whislistDelete.png")}></img></button>
-
-                                                                    }                                                                    <div onClick={productDataHandler}>
+                                                                    <button className="wishListButton" onClick={()=>addtoWishlist(pID)}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
+                                                                    <div onClick={productDataHandler}>
 
                                                                         <img className="productImage" id={e._id} src={imagePath} />
 
@@ -442,7 +379,7 @@ function ProductDetails(props: any) {
                                             const lowToHighData = [].concat(product.sheepMarkets).sort((a: any, b: any) => a.price < b.price ? -1 : 1)
                                             return (
                                                 lowToHighData.map((e: any, i: any) => {
-
+                                                    pID=e._id
                                                     let imagePath = "";
                                                     if (typeof e.image === 'object') {
                                                         imagePath = serverUrl + e.image.filename;
@@ -452,14 +389,8 @@ function ProductDetails(props: any) {
 
                                                             <div className="card mb-4">
                                                                 <div className="card-body" id={e._id}>
-                                                                    {!inWhishlist &&
-                                                                        <button className="wishListButton" onClick={() => addtoWishlist(e)}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
-
-                                                                    }
-                                                                    {inWhishlist &&
-                                                                        <button className="wishListButton" onClick={() => deleteFromWishlist(e)}><img className="wishListImg" src={require("./assets/whislistDelete.png")}></img></button>
-
-                                                                    }                                                                    <div onClick={productDataHandler}>
+                                                                    <button className="wishListButton" onClick={()=>addtoWishlist(pID)}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
+                                                                    <div onClick={productDataHandler}>
                                                                         <img className="productImage" id={e._id} src={imagePath} />
 
                                                                         <h5 className="card-id" id={e._id}>Animal ID: {e._id}</h5>
