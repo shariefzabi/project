@@ -1,15 +1,10 @@
-
-.be-an-agent{
-
-
-@media (min-width: 576px){
-.modal-dialog {
-    max-width: 800px !important;
-    margin: 1.75rem auto;
-}
-}
-.popupheading{
-    color: #2078BF;
+// .section_agent {
+// //   width: 100%;
+// }
+.be-an-agent {
+  width: 800px;
+  .popupheading {
+    color: #2078bf;
     margin-top: 3.81rem;
     font-family: Ubuntu;
     font-style: normal;
@@ -17,27 +12,29 @@
     font-size: 36px;
     line-height: 4.875rem;
     letter-spacing: -1.6px;
-}
-.popupheading p{
+  }
+  .popupheading p {
     margin-bottom: 0%;
-}
-.form-page,.form-select{
+  }
+  .form-page,
+  .form-select {
     width: 48.5% !important;
-    height:5.09%;
+    height: 5.09%;
     margin: auto !important;
     padding: 1.5% !important;
     /* padding-bottom: 1%; */
-}
-.col-form-label{
+  }
+  .col-form-label {
     margin-left: 13%;
     color: #838383;
     padding-bottom: 1px;
     margin-left: 24%;
-}
-::placeholder,select{
+  }
+  ::placeholder,
+  select {
     color: #dcdcdc !important;
-}
-.form-paragraph{
+  }
+  .form-paragraph {
     font-family: Ubuntu;
     font-size: 18px;
     font-style: normal;
@@ -48,23 +45,29 @@
     width: 39.4%;
     margin: auto;
     color: #838383;
-}
-.sendbutton{
-    border: 0.134rem solid #00C3FF;
+  }
+  .sendbutton {
+    border: 0.134rem solid #00c3ff;
     border-radius: 0.3125rem;
     height: 2.75rem;
-    width:11.063rem;
+    width: 11.063rem;
     margin: 2rem 2.625rem;
-}
-.form-image{
+  }
+  .form-image {
     position: relative;
-    width:1rem;
-    height:1rem;
+    width: 1rem;
+    height: 1rem;
     top: 2.5rem;
     left: 70%;
     margin-bottom: 14px;
-}
-.select-label{
+  }
+  .select-label {
     margin-left: 26%;
-}
+  }
+  @media (min-width: 576px) {
+    .modal-dialog {
+      max-width: 800px !important;
+      margin: 1.75rem auto;
+    }
+  }
 }
