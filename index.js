@@ -5,6 +5,7 @@ const cors = require("cors");
 const app = express();
 app.use(cors());
 app.use(express.static('uploads'));
+app.use(express.json())
 
 const PORT = 3005;
 var mongoClient = require("mongodb").MongoClient;
@@ -44,12 +45,16 @@ app.use("/invoicedetails", invoice);
 app.use("/invoice", InvoiceUniqueID);
 app.use("/payment", cardDetail);
 
-app.get("/orders", async (req, res) => {
-  let orderdetails = req.body;
-  console.log(orderdetails);
+app.post("/paymentstatus", async (req, res) => {
+  let {paymentStatus} = req.body;
+  console.log(req.body);
   let ordercollection = db.collection("orders");
-  ordercollection.find().sort({ "orderId": -1 }).toArray(function (err, result) {
+  ordercollection.find().sort({ _id: -1 }).limit(1) .toArray(function (err, result) {
+    orderid = result[0]["orderId"]
+    console.log(orderid)
     res.send(result)
+    ordercollection.updateOne({ orderId: orderid }, { $set: { paymentStatus: paymentStatus } })
+    
   })
 });
 
