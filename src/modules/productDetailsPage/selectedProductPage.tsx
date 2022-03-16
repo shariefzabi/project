@@ -16,6 +16,7 @@ function SelectedProductDetails(props: any) {
 
     let [product, setProduct] = useState<any>([])
     let [products, setProducts] = useState([])
+    let [latestProducts, setLatestProducts] = useState<any>([])
     let [location, setLocation] = useState(props.state.locName)
     let [market, setMarket] = useState('Cattle Market')
     let [isDisplaying, setIsDisplaying] = useState(true)
@@ -26,6 +27,15 @@ function SelectedProductDetails(props: any) {
     let [inWhishlist, setInWhishlist] = useState(false)
     // let [marketType, setMarketType] = useState('cattleMarkets')
 
+
+    useEffect(() => {
+        axios.get("http://localhost:3005/market/latestProducts")
+            .then(
+                response => {
+                    setLatestProducts(response.data)
+                }
+            )
+    }, []);
 
 
     useEffect(() => {
@@ -47,9 +57,9 @@ function SelectedProductDetails(props: any) {
             )
     }, []);
     // console.log(selectedProductId)
-    product.email=props.state.user.email
+    product.email = props.state.user.email
 
-    console.log("whislist",product)
+    console.log("whislist", product)
 
     const setLocationHandler = (event: any) => {
         setLocation(event.target.value)
@@ -83,7 +93,8 @@ function SelectedProductDetails(props: any) {
     // var serverUrl = "http://localhost:3005/";
     let imagePath = "";
     if (typeof product.image === 'object') {
-    imagePath = serverUrl +product.image.filename;}
+        imagePath = serverUrl + product.image.filename;
+    }
     //whislist post
 
     const addtoWishlist = () => {
@@ -91,27 +102,27 @@ function SelectedProductDetails(props: any) {
 
         const products = { product }
         try {
-          axios.post("http://localhost:3005/orders/wishlists", products)
+            axios.post("http://localhost:3005/orders/wishlists", products)
         } catch (err) {
-          console.error(err)
-        }
-    }
-   
-    //wishlist delete
-    
-    const deleteFromWishlist= () => {
-        setInWhishlist(false)
-        try {
-          axios.delete("http://localhost:3005/orders/wishlists/" + product._id)
-        } catch (err) {
-          console.error(err)
+            console.error(err)
         }
     }
 
-    
-    
-        
-      
+    //wishlist delete
+
+    const deleteFromWishlist = () => {
+        setInWhishlist(false)
+        try {
+            axios.delete("http://localhost:3005/orders/wishlists/" + product._id)
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
+
+
+
+
 
     return (
         <div id="productPage" className="productPage">
@@ -153,24 +164,24 @@ function SelectedProductDetails(props: any) {
                         }
                     </div>
                     <div className="col-4 mt-3 p-0">
-                    
+
                         <img className="Image" src={imagePath} />
- 
+
                     </div>
                     <div className="col-5 mt-3 p-0">
-                        
-                    
+
+
                         {!inWhishlist &&
-                        <button className="wishListButton" onClick={addtoWishlist}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
+                            <button className="wishListButton" onClick={addtoWishlist}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
 
                         }
                         {inWhishlist &&
-                        <button className="wishListButton"  onClick={deleteFromWishlist}><img className="wishListImg" src={require("./assets/whislistDelete.png")}></img></button>
-                            
+                            <button className="wishListButton" onClick={deleteFromWishlist}><img className="wishListImg" src={require("./assets/whislistDelete.png")}></img></button>
+
                         }
 
-                        
-                        
+
+
                         <h3 className="p-0" id="marketHeading">ANIMAL ID - </h3>
                         <h3 className="mb-3 p-0" id="marketHeading">{product._id}</h3>
                         <p id="text_code">Product Code: {product.productCode}</p>
@@ -191,7 +202,37 @@ function SelectedProductDetails(props: any) {
                 </div>
 
                 <div className="row">
-                    <div className="col-3"></div>
+                    {/* ///////Latest Products///// */}
+                    <div className="col-3">
+                        <h3 className="fontColor">Latest</h3>
+                        {
+                            latestProducts.map((product: any, i: any) => {
+                                let imagePath = "";
+                                if (typeof product.image === 'object') {
+                                    imagePath = serverUrl + product.image.filename;
+                                }
+                                return (
+                                    <div key={i}>
+                                        <div className="card mb-2 ">
+                                            <div className=" latestCards" id={product._id}>
+                                                {/* <button className="wishListButton" onClick={addtoWishlist}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button> */}
+                                                <div className="latestProduct d-flex">
+                                                    <div >
+                                                        <img className="latestProductImage" id={product._id} src={imagePath} />
+                                                    </div>
+                                                    <div className="latestProductDetails">
+                                                        <h5 className="card-id" id={product._id}>Animal ID: {product._id}</h5>
+                                                        <p className="card-price" id={product._id}>{product.price}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                )
+                            })}
+                    </div>
+                    {/* /////Latest Products Ending-Team 5/////  */}
                     <div className="col-9 ">
                         <button className="descripbtn" onClick={descriptionHandler}>Description</button>
                         <button className="descripbtn" onClick={reviewHandler}>Reviews(0)</button>
