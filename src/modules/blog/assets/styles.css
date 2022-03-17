@@ -38,9 +38,9 @@ h1{
     color:#ffffff;
     margin-top:1.312rem
 } 
-.blog_title:hover{
-    text-decoration: underline;
-}
+/* .blog_title:hover{
+    text-decoration: none !important;
+} */
 .main_box{
     width: 90% !important;
     /* height: 300px; */
@@ -92,7 +92,9 @@ h1{
     color: #2078BF;
     font-size: 24px;
 }
-
+a{
+    text-decoration: none !important;
+}
 .blog_title{
     width: 80%;
     margin: 0% !important;
