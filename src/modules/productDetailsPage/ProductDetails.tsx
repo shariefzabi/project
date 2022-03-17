@@ -211,196 +211,118 @@ function ProductDetails(props: any) {
                                     if (sortValue === "default") {
                                         if (product.locationName === location) {
                                             data=product.cattleMarkets;
-                                           
                                         }
                                     }// sort default end
                                     else if (sortValue === "highToLow") {
                                         if (product.locationName === location) {
                                             const highToLowData = [].concat(product.cattleMarkets).sort((a: any, b: any) => a.price < b.price ? 1 : -1)
                                             data=highToLowData;
-                                           
                                         }
                                     }//sort high to low
                                     else if (sortValue === "lowToHigh") {
                                         if (product.locationName === location) {
                                             const lowToHighData = [].concat(product.cattleMarkets).sort((a: any, b: any) => a.price < b.price ? -1 : 1)
                                             data=lowToHighData;
-                                            
+                                    
                                         }
                                     }//sort low to high
-                                     return (
-                                                data.map((e: any, i: any) => {
+                                    return (
+                                        data.map((e: any, i: any) => {
 
-                                                //  let ele=e
-                                                    let imagePath = "";
-                                                    if (typeof e.image === 'object') {
-                                                        imagePath = serverUrl + e.image.filename;
-                                                    }
+                                            let imagePath = "";
+                                            if (typeof e.image === 'object') {
+                                                imagePath = serverUrl + e.image.filename;
+                                            }
+                                            return (
+                                                <div key={i}>
 
-                                                    return (
-                                                        <div key={i}>
+                                                    <div className="card mb-4">
+                                                        <div className="card-body" id={e._id}>
+                                                            {!inWhishlist &&
+                                                                <button className="wishListButton" onClick={() => addtoWishlist(e)}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
 
-                                                            <div className="card mb-4">
-                                                                <div className="card-body" id={e._id}>
-                                                                    {!inWhishlist &&
-                                                                        <button className="wishListButton" onClick={() => addtoWishlist(e)}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
+                                                            }
+                                                            {inWhishlist &&
+                                                                <button className="wishListButton" onClick={() => deleteFromWishlist(e)}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
+                                                            }                                                                    <div onClick={productDataHandler}>
+                                                                <img className="productImage" id={e._id} src={imagePath} />
 
-                                                                    }
-                                                                    {inWhishlist &&
-                                                                        <button className="wishListButton" onClick={() => deleteFromWishlist(e)}><img className="wishListImg" src={require("./assets/whislistDelete.png")}></img></button>
-                                                                    }
+                                                                <h5 className="card-id" id={e._id}>Animal ID: {e._id}</h5>
 
-                                                                    <div onClick={productDataHandler}>
-
-                                                                        <img className="productImage" id={e._id} src={imagePath} />
-                                                                        {/* <img src={`data:image/jpeg;based64,${e.image}`} /> */}
-
-                                                                        <h5 className="card-id" id={e._id}>Animal ID: {e._id}</h5>
-
-                                                                        <p className="card-price" id={e._id}>Price:{e.price}</p>
-                                                                    </div>
-                                                                    <div className=" text-center ">
-                                                                        <button type="button" className="addcartbtn btn btn-success ">Add to Cart</button>
-                                                                    </div>
-                                                                </div>
+                                                                <p className="card-price" id={e._id}>Price:{e.price}</p>
                                                             </div>
-
+                                                            <div className=" text-center">
+                                                                <button type="button" className="addcartbtn btn btn-success">Add to Cart</button>
+                                                            </div>
                                                         </div>
-                                                    )
-                                                })
+                                                    </div>
 
+                                                </div>
                                             )
+                                        })
 
+                                    )
                                 })
                             }
                             {!sheepFlag &&
                                 products.map((product: any, i) => {
+                                    let data=[];
                                     if (sortValue === "default") {
                                         if (product.locationName === location) {
-                                            return (
-                                                product.sheepMarkets.map((e: any, i: any) => {
-
-                                                    let imagePath = "";
-                                                    if (typeof e.image === 'object') {
-                                                        imagePath = serverUrl + e.image.filename;
-                                                    }
-                                                    return (
-                                                        <div key={i}>
-
-                                                            <div className="card mb-4">
-                                                                <div className="card-body" id={e._id}>
-                                                                    {!inWhishlist &&
-                                                                        <button className="wishListButton" onClick={() => addtoWishlist(e)}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
-
-                                                                    }
-                                                                    {inWhishlist &&
-                                                                        <button className="wishListButton" onClick={() => deleteFromWishlist(e)}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
-                                                                    }                                                                    <div onClick={productDataHandler}>
-                                                                        <img className="productImage" id={e._id} src={imagePath} />
-
-                                                                        <h5 className="card-id" id={e._id}>Animal ID: {e._id}</h5>
-
-                                                                        <p className="card-price" id={e._id}>Price:{e.price}</p>
-                                                                    </div>
-                                                                    <div className="  text-center">
-                                                                        <button type="button" className="addcartbtn btn btn-success">Add to Cart</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                    )
-                                                })
-
-                                            )
+                                            data=product.sheepMarkets
+                                           
                                         }
                                     }// sort default end
                                     else if (sortValue === "highToLow") {
                                         if (product.locationName === location) {
                                             const highToLowData = [].concat(product.sheepMarkets).sort((a: any, b: any) => a.price < b.price ? 1 : -1)
-
-
-                                            return (
-                                                highToLowData.map((e: any, i: any) => {
-
-                                                    let imagePath = "";
-                                                    if (typeof e.image === 'object') {
-                                                        imagePath = serverUrl + e.image.filename;
-                                                    }
-                                                    // console.log(e)
-                                                    return (
-                                                        <div key={i}>
-
-                                                            <div className="card mb-4">
-                                                                <div className="card-body" id={e._id}>
-                                                                    {!inWhishlist &&
-                                                                        <button className="wishListButton" onClick={() => addtoWishlist(e)}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
-
-                                                                    }
-                                                                    {inWhishlist &&
-                                                                        <button className="wishListButton" onClick={() => deleteFromWishlist(e)}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
-                                                                    }                                                                    <div onClick={productDataHandler}>
-
-                                                                        <img className="productImage" id={e._id} src={imagePath} />
-
-                                                                        <h5 className="card-id" id={e._id}>Animal ID: {e._id}</h5>
-
-                                                                        <p className="card-price" id={e._id}>Price:{e.price}</p>
-                                                                    </div>
-                                                                    <div className=" text-center">
-                                                                        <button type="button" className="addcartbtn btn btn-success">Add to Cart</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                    )
-                                                })
-
-                                            )
+                                             data=highToLowData
+                                           
                                         }
                                     }//sort high to low
                                     else if (sortValue === "lowToHigh") {
                                         if (product.locationName === location) {
                                             const lowToHighData = [].concat(product.sheepMarkets).sort((a: any, b: any) => a.price < b.price ? -1 : 1)
-                                            return (
-                                                lowToHighData.map((e: any, i: any) => {
-
-                                                    let imagePath = "";
-                                                    if (typeof e.image === 'object') {
-                                                        imagePath = serverUrl + e.image.filename;
-                                                    }
-                                                    return (
-                                                        <div key={i}>
-
-                                                            <div className="card mb-4">
-                                                                <div className="card-body" id={e._id}>
-                                                                    {!inWhishlist &&
-                                                                        <button className="wishListButton" onClick={() => addtoWishlist(e)}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
-
-                                                                    }
-                                                                    {inWhishlist &&
-                                                                        <button className="wishListButton" onClick={() => deleteFromWishlist(e)}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
-                                                                    }                                                                    <div onClick={productDataHandler}>
-                                                                        <img className="productImage" id={e._id} src={imagePath} />
-
-                                                                        <h5 className="card-id" id={e._id}>Animal ID: {e._id}</h5>
-
-                                                                        <p className="card-price" id={e._id}>Price:{e.price}</p>
-                                                                    </div>
-                                                                    <div className=" text-center">
-                                                                        <button type="button" className="addcartbtn btn btn-success">Add to Cart</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                    )
-                                                })
-
-                                            )
+                                            data=lowToHighData;
+                                              
                                         }
                                     }//sort low to high
+                                    return (
+                                       data.map((e: any, i: any) => {
+
+                                            let imagePath = "";
+                                            if (typeof e.image === 'object') {
+                                                imagePath = serverUrl + e.image.filename;
+                                            }
+                                            return (
+                                                <div key={i}>
+
+                                                    <div className="card mb-4">
+                                                        <div className="card-body" id={e._id}>
+                                                            {!inWhishlist &&
+                                                                <button className="wishListButton" onClick={() => addtoWishlist(e)}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
+
+                                                            }
+                                                            {inWhishlist &&
+                                                                <button className="wishListButton" onClick={() => deleteFromWishlist(e)}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
+                                                            }                                                                    <div onClick={productDataHandler}>
+                                                                <img className="productImage" id={e._id} src={imagePath} />
+
+                                                                <h5 className="card-id" id={e._id}>Animal ID: {e._id}</h5>
+
+                                                                <p className="card-price" id={e._id}>Price:{e.price}</p>
+                                                            </div>
+                                                            <div className="  text-center">
+                                                                <button type="button" className="addcartbtn btn btn-success">Add to Cart</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            )
+                                        })
+
+                                    )
 
                                 })
                             }
