@@ -97,10 +97,11 @@ function SelectedProductDetails(props: any) {
         imagePath = serverUrl + product.image.filename;
     }
     //whislist post
-    // product.email = props.state.user.email
+  
 
     const addtoWishlist = () => {
         setInWhishlist(true);
+        product.email = props.state.user.email
 
         const products = { product };
         try {
