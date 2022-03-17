@@ -14,7 +14,7 @@ class PaymentMethod extends React.Component<any, any> {
       month_year: '',
       month: "",
       year: "",
-      date: "",
+
       orderId: 0,
       // err
       card_numberErr: '',
@@ -120,7 +120,7 @@ class PaymentMethod extends React.Component<any, any> {
     let { payment, orderId } = this.state
     this.setState({ flag1: false })
     let paymentStatus = {
-      
+
       paymentStatus: "Awaiting payment"
     }
     if (payment === "Pay_On_Delivery") {
@@ -138,7 +138,7 @@ class PaymentMethod extends React.Component<any, any> {
   submitHandler = (e: any) => {
     e.preventDefault()
     this.setState({ flag2: false })
-    let { month, year, payment, card_number, cvv_number, orderId, date } = this.state;
+    let { month, year, payment, card_number, cvv_number, orderId, } = this.state;
     this.props.setPaymentInformation(payment)
     console.log("carddetails", { month, year, card_number, cvv_number })
     // let { breed, quantity, sex, type, weight, price, delprice, totalprice } = this.props.redux.orders.productdetails;
@@ -153,13 +153,13 @@ class PaymentMethod extends React.Component<any, any> {
     console.log("originalInvoice", this.state.orderId)
     let cardDetails = {
       "cardDetails": {
-        
+
         'payment': payment,
         "cardNumber": card_number,
         "Month": month,
         "year": year,
         "CVV": cvv_number,
-        
+
       }
     }
 
@@ -184,8 +184,10 @@ class PaymentMethod extends React.Component<any, any> {
       cvv_number: '',
       month_year: ''
     })
+    const date = new Date().toJSON().slice(0, 10).split('-').reverse().join('/')
+
     let paymentStatus = {
-    
+      date: date,
       paymentStatus: "payment success"
     }
     console.log(orderId)
