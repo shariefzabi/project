@@ -322,11 +322,13 @@ app.delete("/orders/wishlists/:id", function (req, res) {
 //fetching whishlist based on username
 app.get('/orders/wishlists/:uname', async (req, res) => {
   let { params } = req
-  console.log(params.uname);
+  // console.log("email",params.uname);
   let ordercollection = db.collection("wishlists");
-  ordercollection.find({ "email": params.uname }).toArray(function (err, result) {
+  ordercollection.find({email: params.uname}).toArray(function (err, result) {
     if (err) console.log(err);
-    else res.send(result)
+    else {
+      res.send(result);
+    }
   })
 
 })
