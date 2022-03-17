@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import appStore from "../../state/app_store";
-import { addToCart } from "./newcomponet/redux/Shopping/shopping-actions";
 import { Breadcrumb } from "react-bootstrap";
 import { connect } from "react-redux";
 
@@ -74,9 +73,9 @@ class Cart extends React.Component<any, any> {
             <table className="tablecol">
               <thead>
                 <tr>
-                  <th>Product Details</th>
+                  <th className="product text-start">Product Details</th>
 
-                  <th>Quantity</th>
+                  <th className="text-start">Quantity</th>
                   <th>Price</th>
 
                   <th>Delivery Details</th>
@@ -94,7 +93,7 @@ class Cart extends React.Component<any, any> {
                   </td>
 
                   <td>
-                    <div className="row quantity ms-0 addbtn2">
+                    <div className="row quantity ms-0 addbtn2 detail">
                       <button
                         className="btn btn-primary col"
                         onClick={() =>
@@ -118,15 +117,15 @@ class Cart extends React.Component<any, any> {
                       </button>
                     </div>
                   </td>
-                  <td>
+                  <td className="detail">
                     {this.props.redux.quantity[1] * this.state.count}
                     {/* // this.props.redux.quantity[]} */}
                     Rs
                   </td>
 
-                  <td>
+                  <td className="detail">
                     <span>
-                      Delivery Date /<br></br> Pick- up date 2019-08-18
+                      Pick- up date<br></br> 2019-08-18
                     </span>
                   </td>
                 </tr>
