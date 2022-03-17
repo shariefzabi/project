@@ -9,132 +9,74 @@ function Orders(props: any) {
     const [orders, setOrders] = useState<any[]>([]);
     const [wishlists, setWishlists] = useState<any[]>([]);
     useEffect(() => {
-        const id = props.user.email;
-        axios.get("http://localhost:3005/orders/orderdetails/" + id)
+        const email = props.user.email;
+        axios.get("http://localhost:3005/orders/orderdetails/" + email)
             .then((res) => {
                 console.log("orders display get response", res.data);
                 setOrders(res.data);
             })
             .catch((err) => console.log(err)
             )
-        axios.get("http://localhost:3005/orders/wishlists/" + id)
+        axios.get("http://localhost:3005/orders/wishlists/"+email)
             .then((res) => {
                 console.log("wishlists display get response", res.data);
                 setWishlists(res.data);
             })
             .catch((err) => console.log(err)
             )
+
     }, [])
 
     return (
 
-        <>
-        <div>
-        <Sidebar> </Sidebar>
-    </div>
-        <div className='orders-dashboard'>
-           
-            <main id="mainContent">
-                <section className="order-section">
-                    <header>
-                        <div className="headingText">
-                            <h2>Orders </h2>
-                        </div>
-                    </header>
-                    <div className="orders">
-                        <table className="tabcol">
-                            <thead>
-                                <tr className="rowheader">
-                                    <th>Product Details</th>
-                                    <th>Product Code</th>
-                                    <th>Availability</th>
-                                    <th className="rowheaderstatus">Status <span className="orderrowheading">&#x25BE;</span></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {orders.map((order, i) => {
-                                    return (
-                                        <tr key={i}>
-                                            <td> <span className="first-line">ID - {order.productId}</span>
-                                                <span className="second-line">{order.date}</span></td>
-                                            <td>{order.productcode}</td>
-                                            <td>{order.availability}</td>
-                                            {order.status !== 'cancelled order' &&
-                                                <td ><button className=' button1 btn btn-primary'>{order.status}</button></td>
-                                            }
-                                            {order.status === 'cancelled order' &&
-                                                <td ><button className=' button1 btn btn-danger'>{order.status}</button></td>
-                                            }
-                                        </tr>
-                                    )
-                                })}
+        <div className='row'>
+            <div className='col-2'>
+                <Sidebar> </Sidebar>
+            </div>
+            <div className='orders-dashboard col-10'>
 
+                <main id="mainContent">
+                    <section className="order-section">
+                        <header>
+                            <div className="headingText">
+                                <h2>Orders </h2>
+                            </div>
+                        </header>
+                        <div className="orders">
+                            <table className="tabcol">
+                                <thead>
+                                    <tr className="rowheader">
+                                        <th>Product Details</th>
+                                        <th>Product Code</th>
+                                        <th>Availability</th>
+                                        <th className="rowheaderstatus">Status <span className="orderrowheading">&#x25BE;</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        orders.map((order: any, i: any) => {
+                                            const products: any = order.cartproducts;
+                                            return (
+                                                products.map((product: any, i: any) => {
+                                                    return (
+                                                        <tr key={i}>
+                                                            <td> <span className="first-line">ID - {product.productCode}</span>
+                                                                <span className="second-line">{order.date}</span></td>
+                                                            <td>{product.productCode}</td>
+                                                            <td>{product.availability}</td>
+                                                            {order.paymentStatus !== 'cancelled order' &&
+                                                                <td ><button className=' button1 btn btn-primary'>{order.paymentStatus}</button></td>
+                                                            }
+                                                            {order.paymentStatus === 'cancelled order' &&
+                                                                <td ><button className=' button1 btn btn-danger'>{order.paymentStatus}</button></td>
+                                                            }
+                                                        </tr>
+                                                    )
+                                                })
 
-                                    {/* <tr>
-                                    <td> <span className="first-line">ID - 900085000597636</span>
-                                        <span className="second-line">20/19/2019</span></td>
-                                    <td>Bunaji</td>
-                                    <td>Out of Stock</td>
-                                    <td><button className=' button1 btn btn-danger'>Cancelled Order</button></td>
-                                </tr>
-                                <tr>
-                                    <td> <span className="first-line">ID - 900085000597636</span>
-                                        <span className="second-line">20/19/2019</span></td>
-                                    <td>Bunaji</td>
-                                    <td>Out of Stock</td>
-                                    <td><button className=' button1 btn btn-primary'>Received Order</button></td>
-                                </tr>
-                                <tr>
-                                    <td> <span className="first-line">ID - 900085000597636</span>
-                                        <span className="second-line">20/19/2019</span></td>
-                                    <td>Bunaji</td>
-                                    <td>Out of Stock</td>
-                                    <td><button className=' button1 btn btn-primary'>Received Order</button></td>
-                                </tr>
-                                <tr>
-                                    <td> <span className="first-line">ID - 900085000597636</span>
-                                        <span className="second-line">20/19/2019</span></td>
-                                    <td>Bunaji</td>
-                                    <td>Out of Stock</td>
-                                    <td><button className=' button1 btn btn-danger'>Cancelled Order</button></td>
-                                </tr>
-                                <tr>
-                                    <td> <span className="first-line">ID - 900085000597636</span>
-                                        <span className="second-line">20/19/2019</span></td>
-                                    <td>Bunaji</td>
-                                    <td>Out of Stock</td>
-                                    <td><button className=' button1 btn btn-primary'>Awaiting Payment</button></td>
-                                </tr>
-                                <tr>
-                                    <td> <span className="first-line">ID - 900085000597636</span>
-                                        <span className="second-line">20/19/2019</span></td>
-                                    <td>Bunaji</td>
-                                    <td>Out of Stock</td>
-                                    <td><button className=' button1 btn btn-danger'>Cancelled Order</button></td>
-                                </tr>
-                                <tr>
-                                    <td> <span className="first-line">ID - 900085000597636</span>
-                                        <span className="second-line">20/19/2019</span></td>
-                                    <td>Bunaji</td>
-                                    <td>Out of Stock</td>
-                                    <td><button className=' button1 btn btn-primary'>Received Order</button></td>
-                                </tr>
-                                <tr>
-                                    <td> <span className="first-line">ID - 900085000597636</span>
-                                        <span className="second-line">20/19/2019</span></td>
-                                    <td>Bunaji</td>
-                                    <td>Out of Stock</td>
-                                    <td><button className=' button1 btn btn-primary'>Received Order</button></td>
-                                </tr>
-                                <tr>
-                                    <td> <span className="first-line">ID - 900085000597636</span>
-                                        <span className="second-line">20/19/2019</span></td>
-                                    <td>Bunaji</td>
-                                    <td>Out of Stock</td>
-                                    <td><button className=' button1 btn btn-danger'>Cancelled Order</button></td>
-                                </tr>*/}
-                                    <tr className="line hr-line"></tr>
-                                    <tr>
+                                            )
+                                        })}
+                                    <tr className='border-top'>
                                         <td ><span className="wish">Wishlists</span></td>
                                         <td></td>
                                         <td></td>
@@ -159,7 +101,7 @@ function Orders(props: any) {
                     </section>
                 </main>
             </div>
-        </>
+        </div>
     )
 }
 const mapStateToProps = (state: any) => {
