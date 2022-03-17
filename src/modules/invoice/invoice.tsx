@@ -17,14 +17,18 @@ function invoiceToggle(e: any) {
 function Invoice(props: any) {
     const [invoiceFlag, setinvoiceFlag] = useState(true);
     let [invoice, setInvoice] = useState([]);
+
+    let useremail = props.user.email;
     useEffect(() => {
         axios.get("http://localhost:3005/invoicedetails")
             .then((res) => {
                 let res_data = res.data
-                // console.log("data", res_data[0]["orders"][0]);
                 console.log("invoice data", res_data);
-                console.log("invoice date", res_data.date);
-                setInvoice(res_data)
+                let data = res_data.filter(function (item: any) {
+                    return item.email == useremail;
+                })
+                console.log(data);
+                setInvoice(data)
             })
             .catch(err => {
                 console.log("error: ", err);
@@ -33,6 +37,7 @@ function Invoice(props: any) {
             setinvoiceFlag(false);
         }
     }, [])
+
     return (
         <main className="row" id="mainContent">
             {
@@ -89,6 +94,9 @@ function Invoice(props: any) {
                                                         // console.log("items", item["type"]);
                                                         // let index = "#ind" + ind
                                                         // let index1 = "ind" + ind
+                                                        console.log("invoicxe data item", item)
+                                                        console.log("type", item["type"]);
+
                                                         return (
                                                             <tbody key={ind}>
                                                                 <tr className="bRow">
@@ -149,7 +157,7 @@ function Invoice(props: any) {
     )
 }
 const mapStateToProps = (state: any) => {
-    // console.log(state);
+    // console.log("email", state.user.email);
     return {
         ...state
     }
