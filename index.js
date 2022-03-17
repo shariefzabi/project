@@ -46,7 +46,7 @@ app.use("/invoice", InvoiceUniqueID);
 app.use("/payment", cardDetail);
 
 app.post("/paymentstatus", async (req, res) => {
-  let { paymentStatus,date } = req.body;
+  let { paymentStatus, date } = req.body;
   console.log(req.body);
   let ordercollection = db.collection("orders");
   ordercollection.find().sort({ _id: -1 }).limit(1).toArray(function (err, result) {
@@ -198,8 +198,8 @@ app.post("/orders/products", async (req, res) => {
           // return cattle;
         }
 
-        else if(filterdetails.type === "Sheep"){
-  
+        else if (filterdetails.type === "Sheep") {
+
           // let cattle = [];
           ele.sheepMarkets.forEach((item, index) => {
             if (item.breed === filterdetails.breed && !products.includes(item)) {
@@ -256,16 +256,19 @@ app.post("/orders/orderdetails", function (req, res) {
     }
   })
 });
+
+
 app.post("/orders/orderdetails/:orderId", async (req, res) => {
-  let {price} = req.body;
+  let { price } = req.body;
   // let deliveryprice=req.body.deliveryprice;
-  let orderid=req.params.orderId;
-  console.log(req.body,req.params);
+  let orderid = req.params.orderId - 0;
+  console.log("id", req.params.orderId - 0);
+  console.log(req.body, req.params);
   let ordercollection = db.collection("orders");
-  ordercollection.find().sort({ orderId: -1 }).limit(1) .toArray(function (err, result) {
+  ordercollection.find().sort({ orderId: -1 }).limit(1).toArray(function (err, result) {
     // orderid = result[0]["orderId"]
     // console.log(orderid)
-    ordercollection.updateOne({ orderId: orderid }, { $set: { price: price } })
+    ordercollection.updateOne({ orderId: orderid }, { $set: { totalprice: req.body.totalprice, delliveryprice: req.body.deliveryprice } })
     res.send(result)
   })
 });
