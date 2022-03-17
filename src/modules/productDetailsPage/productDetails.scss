@@ -33,7 +33,7 @@
 }
 #sub2 {
   margin-top: 4.4375rem;
-  margin-left: 52px;
+  margin-left: 4.65rem;
   // margin-left: 6.89rem;
   font-weight: normal;
   font-style: normal;
@@ -229,6 +229,7 @@ hr {
   // width:17.4vw;
   width: 20vw !important;
   margin-right: 2.5rem;
+  
   border: 2px solid #e0e0e0;
   height: 15rem;
   overflow-y:scroll;
@@ -243,8 +244,9 @@ hr {
 }
 //selectedproduct page css
 #marketHeading1 {
-  width: 15.063rem;
+  width: 12rem;
   // height: 1.5rem;
+  
   font-style: normal;
   font-weight: bold;
   font-size: 2rem;
@@ -304,11 +306,23 @@ hr {
 .locBox1 {
   width:18vw !important;
   // width: 20vw !important;
-  margin-right: 2.5rem;
+  margin-right: 1.5rem;
+  margin-left: 1rem;
   border: 2px solid #e0e0e0;
   height: 15rem;
   overflow-y:scroll;
   border-radius: 5px;
+}
+.latestblog{
+  width:18vw !important;
+  // width: 20vw !important;
+  margin-right: 1.5rem;
+  margin-left: 1rem;
+ 
+  // height: 15rem;
+  
+ 
+
 }
 .descriptionbox{
   border: 1px solid #e0e0e0;
@@ -361,7 +375,7 @@ hr {
 // }
 .Image{
   
-  width: 28vw;
+  width: 25vw;
   height: 26rem;
 }
 
@@ -712,6 +726,12 @@ padding-left:4%;
   }
   .descriptionbox{
     padding: 0.87rem;
+  }
+  .latestProductImage{
+    display: none;
+  }
+  .latestcardid{
+    font-size: 0.45rem;
   }
 }
 @media (min-width:0px) and (max-width:576px){
