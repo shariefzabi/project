@@ -4,7 +4,7 @@ import './sidebar.scss'
 import { connect } from 'react-redux';
 function Sidebar(props: any) {
     const logOut = () => {
-        sessionStorage.clear();
+        localStorage.clear();
         props.setUser(null)
     }
 

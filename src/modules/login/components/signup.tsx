@@ -27,7 +27,7 @@ class Signup extends React.Component<any, any>{
     }
 
     setToken = (token:any)=>{
-        sessionStorage.setItem("token",token);
+        localStorage.setItem("token",token);
       }
 
     validations = (e: any) => {

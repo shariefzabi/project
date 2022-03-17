@@ -13,7 +13,7 @@ function Reset(props: any) {
     const[confirmPasswordErrMsg,setComfirmPasswordErrMsg]=useState("")
     
 
-    const getToken = () => sessionStorage.getItem("token");
+    const getToken = () => localStorage.getItem("token");
     const validations = (e: any) => {
         if (e.target.name === 'oldPassword') {
             let password = e.target.value;

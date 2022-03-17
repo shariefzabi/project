@@ -31,10 +31,10 @@ class Header extends React.Component<any, any> {
       })
       .catch((err) => console.log("No previous user found"));
   }
-  getToken = () => sessionStorage.getItem("token");
+  getToken = () => localStorage.getItem("token");
 
   logOut = () => {
-    sessionStorage.clear();
+    localStorage.clear();
     this.props.setUser(null);
   };
   render() {
@@ -218,7 +218,7 @@ class Header extends React.Component<any, any> {
                 <li>
                   <Link
                     className="dropdown-item"
-                    to="/logout"
+                    to="/"
                     onClick={this.logOut}
                   >
                     Log out

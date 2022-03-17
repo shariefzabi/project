@@ -3,14 +3,10 @@ import { connect } from "react-redux";
 import Sidebar from "../profile/sidebar/sidebar";
 import "./logOut.scss";
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 // import Modal from '@mui/material/Modal';
 
  function LogOut(props:any) {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
-
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -19,7 +15,7 @@ import axios from 'axios';
   const [passwordErrMsg, setPasswordErrMsg] = useState("");
 
   const setToken = (token:any)=>{
-    sessionStorage.setItem("token",token);
+    localStorage.setItem("token",token);
   }
  
  
@@ -58,6 +54,7 @@ import axios from 'axios';
           else{
             setToken(res.data.token);
             props.setUser(res.data);
+            props.history.push("/")
             window. location. reload();
           }
         })
@@ -65,15 +62,10 @@ import axios from 'axios';
   }
 
   return (
-    <>
-    <Sidebar></Sidebar>
-    {/* <Modal
-        open={open}
-        onClose={handleClose}
-        aria-describedby="modal-modal-description"
-        sx={{overflow:'auto'}}
-        > */}
-    <main className="logout-container" id="mainContent">
+    <div className='row'>
+      <div className='col-1 mt-5 pt-5'>
+    <Sidebar></Sidebar></div>
+    <main className="logout-container col-11" id="mainContent">
       <section id="login_page">
         <div className="logout">
           <section>
@@ -95,6 +87,7 @@ import axios from 'axios';
                 </div>
 
                 <form onSubmit={(e)=>LoginSubmitHandler(e,{username:username.toLowerCase(),password})}>
+                  <p className='text-danger'>{userError}</p>
                   <div className="position-relative">
                   <label className="form-label my-3">
                     Name<span>*</span>
@@ -131,8 +124,7 @@ import axios from 'axios';
                       {/* <i className="fas fa-unlock-alt"></i> */}
                     {/* </div> */}
                 </div>
-                  
-                  <button className="btn btn-success my-5" onClick={() => { handleOpen() }}>
+                  <button className="btn btn-success my-5" >
                     Log In
                   </button>
                 </form>
@@ -144,7 +136,7 @@ import axios from 'axios';
       </section>
     </main>
     
-    </>
+    </div>
   );
 }
 const mapStateToProps = (state: any) => { return { ...state } }
