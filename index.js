@@ -278,9 +278,8 @@ app.post("/orders/orderdetails/:orderId", async (req, res) => {
 app.get('/orders/orderdetails/:uname', async (req, res) => {
   let { params } = req
   console.log(params.uname);
-  let ordercollection = db.collection("ordersdisplay");
-
-  ordercollection.find({ "username": params.uname }).toArray(function (err, result) {
+  let ordercollection = db.collection("orders");
+  ordercollection.find({ "email": params.uname }).toArray(function (err, result) {
     if (err) console.log(err);
     else res.send(result)
   })
