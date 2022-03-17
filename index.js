@@ -52,8 +52,9 @@ app.post("/paymentstatus", async (req, res) => {
   ordercollection.find().sort({ _id: -1 }).limit(1).toArray(function (err, result) {
     orderid = result[0]["orderId"]
     console.log(orderid)
-    res.send(result)
+    
     ordercollection.updateOne({ orderId: orderid }, { $set: { date: date, paymentStatus: paymentStatus } })
+    res.send("paymentstatus updated")
 
   })
 });
