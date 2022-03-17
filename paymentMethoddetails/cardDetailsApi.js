@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 router.use(express.json())
-const Invoice = require("./carddetails.cjs");
+const CardData = require("./carddetails.cjs");
 const paymentStatus = require("./paymentSchema.cjs");
 
 // router.get('/cost/:id', function (req, res) {
@@ -56,17 +56,19 @@ router.post("/details", async (req, res) => {
         tokens.push(token);
     }
     console.log(req.body)
-    const { invoicedata } = req.body;
+    const { cardDetails } = req.body;
 
     try {
-        invoicedata.token = token;
-        const myInvoice = new Invoice({ invoicedata });
-        await Invoice.create(myInvoice);
-        res.send(myInvoice);
+        cardDetails.token = token;
+        const myCardDetails = new CardData({ cardDetails });
+        await CardData.create(myCardDetails);
+        res.send(myCardDetails);
     } catch (err) {
         res.send({ message: err });
+        console.log(err)
     }
 });
+
 router.post("/status", async (req, res) => {
     
     try {

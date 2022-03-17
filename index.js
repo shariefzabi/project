@@ -39,7 +39,7 @@ let invoice = require("./invoice/invoiceapi");
 let InvoiceUniqueID = require("./invoiceUniqueId/invoiceUniqueIDApi");
 
 // let invoice = require("./invoice/invoiceapi.js")
-app.use("/product", productCost);
+
 app.use("/card", cardDetail);
 app.use("/invoicedetails", invoice);
 app.use("/invoice", InvoiceUniqueID);
@@ -57,27 +57,35 @@ app.post("/paymentstatus", async (req, res) => {
     
   })
 });
-
-app.post("/orders/orderdetails/:orderid", function (req, res) {
-  // let orderdetails = req.body;
-  let { params, body, headers } = req;
-  console.log("body", body);
-  console.log("par", params.orderid - 0);
-
-  let query = { orderId: params.orderid - 0 };
-  let status = { $set: body }
+app.get("/invoicedetails", async (req, res) => {
+  let orderdetails = req.body;
+  console.log(orderdetails);
   let ordercollection = db.collection("orders");
-  ordercollection.updateOne(query, status, function (err, result) {
-    if (!err) {
-      console.log("res", result);
-      res.send({ status: "success" });
-    }
-    if (err) {
-      console.log("err", err);
-      res.send({ status: "failure" });
-    }
+  ordercollection.find({paymentStatus:"payment success"}).sort({ "orderId": -1 }).toArray(function (err, result) {
+    res.send(result)
   })
 });
+
+// app.post("/orders/orderdetails/:orderid", function (req, res) {
+//   // let orderdetails = req.body;
+//   let { params, body, headers } = req;
+//   console.log("body", body);
+//   console.log("par", params.orderid - 0);
+
+//   let query = { orderId: params.orderid - 0 };
+//   let status = { $set: body }
+//   let ordercollection = db.collection("orders");
+//   ordercollection.updateOne(query, status, function (err, result) {
+//     if (!err) {
+//       console.log("res", result);
+//       res.send({ status: "success" });
+//     }
+//     if (err) {
+//       console.log("err", err);
+//       res.send({ status: "failure" });
+//     }
+//   })
+// });
 
 
 // end
