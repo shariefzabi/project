@@ -4,6 +4,7 @@ import { Editor } from 'primereact/editor';
 import 'primereact/resources/primereact.min.css'
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { any } from "prop-types";
 // import { idText } from "typescript";
 
 class Blogform extends React.Component<any, any>{
@@ -41,8 +42,15 @@ class Blogform extends React.Component<any, any>{
         // console.log("heifurb");
         if(this.state.topicFlag == "off" && this.state.text1.length >=100){
             console.log("hiii");
-            
-        axios.post("http://localhost:3005/addblogs", data)
+        const formData = new FormData();
+        formData.append("title",data.title)
+        formData.append("about",data.about)
+        formData.append("id",data.id)
+        formData.append("blogimage",data.blogimage)
+        formData.append("date",data.date)
+        console.log(formData);
+        
+        axios.post("http://localhost:3005/addblog", formData)
             .then((res: any) => {
                 console.log("heloo");
                 
@@ -52,6 +60,7 @@ class Blogform extends React.Component<any, any>{
                         topic: "",
                         text1: '',
                         id: '',
+                        image:null,
                         // Error Messages
                         dicErrMsg: "",
                         topicErrMsg: "",
@@ -101,11 +110,17 @@ class Blogform extends React.Component<any, any>{
             }
         }
     }
-
-
+    getFile=(e:any)=>{
+        // console.log(e.currentTarget.files);
+        this.setState({image : e.currentTarget.files[0]})
+        // console.log(this.state.image);
+        
+        
+    }
     render() {
-        let { topic, topicErrMsg, text1, topicFlag ,id ,disFlag ,dicErrMsg, finalFlag ,finalMsg} = this.state;
-        console.log("new :"+id);
+        let { topic, topicErrMsg, text1, topicFlag ,id ,disFlag ,dicErrMsg, finalFlag ,finalMsg ,image} = this.state;
+        // console.log("new :"+id);
+        // console.log(this.state.image);
         
         return (
             <>
@@ -116,7 +131,7 @@ class Blogform extends React.Component<any, any>{
                     </section>
                    <div className="container">
                         <h2>ADD BLOG</h2>
-                        <form className="needs-validation" onSubmit={(e) => { this.submitHandler(e, { "title": topic, "about": text1, "id":id  , "date":Date.now}) }}>
+                        <form className="needs-validation" onSubmit={(e) => { this.submitHandler(e, { "title": topic, "about": text1, "id":id  , "date":Date.now,"blogimage":image}) }} encType="multipart/form-data">
                             <div className="inner">
                                 <div className=" box">
                                     <p>Fields with <span className="text-danger">*</span> are required</p>
@@ -134,7 +149,7 @@ class Blogform extends React.Component<any, any>{
                                 <div className="box">
                                     <div className="mb-3">
                                         <label className="me-2"><b>Image<span className="text-danger">*</span>:</b></label>
-                                        <input type="file" className="form-control" aria-label="file example" required />
+                                        <input type="file" className="form-control" id="file" name="file" aria-label="file example" onChange={this.getFile}  required />
                                         <div className="invalid-feedback">Example invalid form file feedback</div>
                                     </div>
                                 </div>
