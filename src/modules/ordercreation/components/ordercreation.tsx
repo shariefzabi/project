@@ -250,7 +250,7 @@ function BuyNow(props: any) {
                                                     }
                                                     {
                                                         type != " " &&
-                                                        type === "Goat" &&
+                                                        type === "Sheep" &&
                                                         selectdata[0].goatbreed.map((item: any, i: any) => {
                                                             return (<option value={item} key={i}>{item}</option>)
                                                         })

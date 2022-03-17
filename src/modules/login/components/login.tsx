@@ -127,7 +127,7 @@ function Login(props:any) {
 
                 <div className='pt-3 text-center'>
                   <span className="text-success">Don't have an account ? </span>
-                  <a className="link text-decoration-none ps-2" onClick={() => setDisplaySignup(true)}> Sign up</a>
+                  <a className="link text-decoration-none ps-2 text-dark" onClick={() => setDisplaySignup(true)}> Sign up</a>
                 </div>
 
               </div>
