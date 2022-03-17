@@ -61,13 +61,6 @@ class Cart extends React.Component<any, any> {
                   <li className="cart_link">Cart</li>
                 </Link>
                 <br></br>
-
-                {/* <li className="cart_link">Home <span>/</span></li>
-                <li className="cart_link">Lagos <span>/</span></li>
-
-                <li className="cart_link">Cattle Market <span>/</span></li> */}
-
-                {/* <li className="cart_link">Cart</li><br /> */}
               </div>
             </div>
 

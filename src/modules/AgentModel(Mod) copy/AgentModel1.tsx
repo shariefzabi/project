@@ -1,8 +1,8 @@
 import "./style.scss";
-import Modal from '@mui/material/Modal';
+import Modal from "@mui/material/Modal";
 import { useState } from "react";
 import { Dialog } from "@mui/material";
-import BeanAgentPopup from '../be an agent form copy/form1'
+import BeanAgentPopup from "../be an agent form copy/form1";
 export default function AgentModel() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -10,18 +10,23 @@ export default function AgentModel() {
   const [displayForm, setDisplayForm] = useState(false);
   return (
     <>
-      <h6 className="agent_dropDown"
-        onClick={() => { handleOpen(); setDisplayForm(false) }}>Be an Agent</h6>
-      <div >
-
+      <h6
+        className="agent_dropDown"
+        onClick={() => {
+          handleOpen();
+          setDisplayForm(false);
+        }}
+      >
+        Be an Agent
+      </h6>
+      <div>
         <Dialog
           open={open}
           onClose={handleClose}
           aria-describedby="modal-modal-description"
-          sx={{ overflow: 'auto' }}
-
+          sx={{ overflow: "auto" }}
         >
-          {!displayForm &&
+          {!displayForm && (
             <div className="model-content">
               <div className="text-center pop_up_heading">
                 <p>Be an Agent</p>
@@ -40,7 +45,9 @@ export default function AgentModel() {
               </div>
               <div className="mb-3 text-center ">
                 <ul className="livestock247">
-                  <li>A Livestock247.com agent MUST be a qualified veterinary</li>
+                  <li>
+                    A Livestock247.com agent MUST be a qualified veterinary
+                  </li>
                   <li>
                     professional certified by the veterinary council of Nigeria
                     (VCN)
@@ -57,29 +64,27 @@ export default function AgentModel() {
               <div className="mb-3 text-center  ">
                 <p className="paragraph">
                   The Livestock247.com agent ordinarily has an existing
-                  relationship with a livestock producer, rancher or merchant. And
-                  as such, he/she serves as the link between the platform and the
-                  livestock owner by ensuring pre-slaughter evaluation as
-                  established by the quality assurance department of
+                  relationship with a livestock producer, rancher or merchant.
+                  And as such, he/she serves as the link between the platform
+                  and the livestock owner by ensuring pre-slaughter evaluation
+                  as established by the quality assurance department of
                   Livestock247.com
                 </p>
               </div>
               <div className="mb-3 text-center">
-                <button type="button" className="btn btn-success form_button"
-                  onClick={() => setDisplayForm(true)}>
+                <button
+                  type="button"
+                  className="btn btn-success form_button"
+                  onClick={() => setDisplayForm(true)}
+                >
                   Proceed to Form
                 </button>
               </div>
             </div>
-
-
-          }
-        
-      
-
-      {displayForm && <BeanAgentPopup></BeanAgentPopup>}
-    </Dialog>
-    </div>
+          )}
+          {displayForm && <BeanAgentPopup></BeanAgentPopup>}
+        </Dialog>
+      </div>
     </>
   );
 }

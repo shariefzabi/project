@@ -1,59 +1,48 @@
-.butchery-dialog{
-    margin-top: 15.875rem !important;
+.butchery-dialog {
+  margin-top: 15.875rem !important;
 }
-.model-body{
-    border-radius: 0.9rem;
-    border: 0%;
+.model-body {
+  border-radius: 0.9rem;
+  border: 0%;
 }
 
-.heading-butchery{
-    color:#2078BF;
-    font-family: Ubuntu;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 2.4rem;;
-    line-height: 2.5625rem;
-    letter-spacing: -1.6px;
-    margin-top:2.5rem;
+.heading-butchery {
+  color: #2078bf;
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 2.4rem;
+  line-height: 2.5625rem;
+  letter-spacing: -1.6px;
+  margin-top: 2.5rem;
 }
-.Abttoir-butchery{
-    font-family: Ubuntu;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 1.125rem;
-     line-height: 2,187rem;
-    letter-spacing: -1px;
-     color: #838383;
-     padding-top:1.187rem;
-
+.Abttoir-butchery {
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.125rem;
+  line-height: 2, 187rem;
+  letter-spacing: -1px;
+  color: #838383;
+  padding-top: 1.187rem;
 }
-.btn-butchery{
-    Width :12.25rem;
-    height:3.125rem;
-    background-color:#06864D;
-    margin-top:2.254rem;
-    margin-bottom: 3.870625rem;
+.btn-butchery {
+  width: 12.25rem;
+  height: 3.125rem;
+  background-color: #06864d;
+  margin-top: 2.254rem;
+  margin-bottom: 3.870625rem;
 }
-.butchery_dropdown{
+.butchery_dropdown {
+  text-decoration: none;
+  font-weight: 400;
+  font-family: Ubuntu;
+  line-height: 1.5rem;
+  color: #838383;
+  cursor: pointer;
+}
 
-    text-decoration: none;
-
-          font-weight: 400;
-
-          font-family: Ubuntu;
-
-          line-height: 1.5rem;
-
-          color: #838383;
-
-     cursor: pointer;
-
-  }
-
-  .butchery_dropdown:hover{
-
-    background-color: #2078BF!important;
-
-    color: white !important;
-
-  }
+.butchery_dropdown:hover {
+  background-color: #2078bf !important;
+  color: white !important;
+}
