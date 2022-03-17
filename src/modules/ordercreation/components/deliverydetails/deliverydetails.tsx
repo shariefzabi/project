@@ -12,6 +12,7 @@ class Deliverydetails extends React.Component<any, any>{
             deliveryloc: " ",
             deliveryperiod: " ",
             deliverymode: " ",
+            cartproducts : {cartproducts:this.props.cartProducts,email : this.props.user.email},
             deliverylocerr: " ",
             deliveryperioderr: " ",
             deliverymodeErr: " ",
@@ -20,6 +21,7 @@ class Deliverydetails extends React.Component<any, any>{
             Id:0
         }
     }
+    
     changeHandler = (e: any) => {
         this.setState({ [e.target.name]: e.target.value })
         
@@ -28,16 +30,21 @@ class Deliverydetails extends React.Component<any, any>{
     submitHandler = (e: any, deliveryDetails: any) => {
         e.preventDefault();
         // console.log("delivery details", deliveryDetails);
-        this.props.createOrder(deliveryDetails);
+        
         // console.log("props in createorder", this.props);
         // let orderDetails1={...deliveryDetails,...this.props.products}
         // this.setState({orderDetails1});
         
         // console.log("hello",this.state.orderDetails1);
-        // axios.post("http://localhost:3005/orders/orderdetails",this.props)
-        // .then((res)=>console.log("postresponse",res.data))
-        // .catch((err)=>console.log("posterror",err));
+        console.log("cartProductssss",this.state.cartproducts);
+
+        axios.post("http://localhost:3005/orders/orderdetails",{...this.state.cartproducts,deliveryDetails})
+        .then((res)=>{console.log("postresponse",res.data)
+        this.props.createOrder(res.data);
         this.setState({orderdisplayFlag:false})
+            })
+        .catch((err)=>console.log("posterror",err));
+       
       
     }
     validations = (e: any) => {
@@ -82,8 +89,8 @@ class Deliverydetails extends React.Component<any, any>{
             }
         }
     }
+    
     render() {
-            
         let { deliveryloc, deliveryperiod, deliverymode,orderdisplayFlag} = this.state;
         return (
             < >

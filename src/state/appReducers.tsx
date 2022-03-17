@@ -1,10 +1,10 @@
 interface initialState {
     user: any,
     products: any[],
-    orders: any[],
-    filters: [],
-    deliveryDetails: {}
 
+    orders:any[],
+    cartProducts : any[],
+    orderdetails:{}
 
     cardDetails: any
     agent: any
@@ -19,9 +19,11 @@ interface initialState {
 const appInitialstate: initialState = {
     user: null,
     products: [],
-    filters: [],
-    orders: [],
-    deliveryDetails: {},
+
+    cartProducts : [],
+    orders:[],
+    orderdetails:{},
+
     cardDetails: null,
     agent: null,
     Butchery: null,
@@ -46,13 +48,17 @@ function appReducer(state = appInitialstate, action: any) {
 
         case 'store_products':
             return { ...state, products: [...state.products, action.productDetails] };
-        case 'storeFilterdetails':
-            return { ...state, filters: [...state.filters, action.filters] }
+
+        case 'addToCart':
+            return { ...state, cartProducts: [...state.cartProducts,action.products] }
+
         case 'store_productdetails':
             return { ...state, orders: [...state.orders, ...action.productDetails] }
             return { ...state, orders: [...state.orders, action.productDetails] }
         case 'store_order':
-            return { ...state, deliveryDetails: action.payload }
+
+            return { ...state, orderdetails: action.payload} 
+
         case "storeCardDetails":
             return ({ ...state, cardDetails: action.payload })
         case "storePaymentType":

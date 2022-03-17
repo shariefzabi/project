@@ -7,25 +7,29 @@ import './dimensionalpage.scss'
 function DimesionalPage(props: any) {
     const [deliveryFlag, setDeliveryFlag] = useState(false);
     const [selectData, setSelectData] = useState([]);
-    console.log("ordersdatain 3d", props.orders);
+    const [selectedProduct,setSelectedProduct] = useState({});
+    //  console.log("ordersdatain 3d", selectedProduct);
+    
     return (
         <>
             {!deliveryFlag &&
-                <div className='order-modal'>
+                <div className='order-modal bg-light'>
                     <div className="dimesionalpage-form">
                         <div className=''>
                             <div className="heading-dimension">
                                 <p>Product Cattle market</p>
                             </div>
-                            <div className="row">
+                            <div className="row ms-5">
                             {props.orders.map((order: any, i: any) => {
                                 return (
                                         <div key={i} className="card product-cards m-3 col-3">
                                             <p>Type:{order.type}</p>
+                                            <p>Breed:{order.breed}</p>
                                             <p>Product Code:{order.productCode}</p>
                                             <p>Availability:{order.availability}</p>
                                             <p>Price:{order.price}</p>
                                             <p>Weight:{order.weight}</p>
+                                            <button className="btn btn-success add-to-cart-button"  onClick = {() => {setSelectedProduct(order);props.addToCart(order)}}>Add to Cart</button>
                                         </div>
                                    )
                             })}
@@ -49,6 +53,11 @@ function DimesionalPage(props: any) {
 const mapStateToProps = (state: any) => {
     return {
         ...state
+    }    
+}
+const mapDispatchToProps = (dispatch: Function) => {
+    return {
+        addToCart: (products: any) => dispatch({ type: 'addToCart', products })
     }
 }
-export default connect(mapStateToProps)(DimesionalPage);
+export default connect(mapStateToProps,mapDispatchToProps)(DimesionalPage);
