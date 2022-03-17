@@ -197,8 +197,9 @@ app.post("/orders/products", async (req, res) => {
           })
           // return cattle;
         }
-        else if (filterdetails.type === "Goat") {
 
+        else if(filterdetails.type === "Sheep"){
+  
           // let cattle = [];
           ele.sheepMarkets.forEach((item, index) => {
             if (item.breed === filterdetails.breed && !products.includes(item)) {
@@ -237,7 +238,7 @@ app.get("/orders/orderdetails", async (req, res) => {
 //storing order details
 app.post("/orders/orderdetails", function (req, res) {
   let orderdetails = req.body;
-  console.log("odetails", orderdetails);
+  // console.log("odetails",orderdetails);
   let ordercollection = db.collection("orders");
   ordercollection.count(function (err, result) {
     if (err) console.log(err);
@@ -255,6 +256,21 @@ app.post("/orders/orderdetails", function (req, res) {
     }
   })
 });
+app.post("/orders/orderdetails/:orderId", async (req, res) => {
+  let {price} = req.body;
+  // let deliveryprice=req.body.deliveryprice;
+  let orderid=req.params.orderId;
+  console.log(req.body,req.params);
+  let ordercollection = db.collection("orders");
+  ordercollection.find().sort({ orderId: -1 }).limit(1) .toArray(function (err, result) {
+    // orderid = result[0]["orderId"]
+    // console.log(orderid)
+    ordercollection.updateOne({ orderId: orderid }, { $set: { price: price } })
+    res.send(result)
+  })
+});
+
+
 //fetching order details based on username
 app.get('/orders/orderdetails/:uname', async (req, res) => {
   let { params } = req
@@ -305,7 +321,7 @@ app.get('/orders/wishlists/:uname', async (req, res) => {
   let { params } = req
   console.log(params.uname);
   let ordercollection = db.collection("wishlists");
-  ordercollection.find({ "username": params.uname }).toArray(function (err, result) {
+  ordercollection.find({ "email": params.uname }).toArray(function (err, result) {
     if (err) console.log(err);
     else res.send(result)
   })
