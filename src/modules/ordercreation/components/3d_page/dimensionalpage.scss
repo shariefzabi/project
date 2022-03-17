@@ -1,10 +1,19 @@
 .dimesionalpage-form{
+    .add-to-cart-button{
+        float: right;
+        margin-bottom: 4%;
+    }
     .product-cards{
         // height:150px;
         margin-left: 20px;
         width:250px;
         border-color: #838383;
         display: inline;
+        background: #FFFFFF;
+        border: 1px solid #E0E0E0;
+        box-sizing: border-box;
+        border-radius: 5px;
+        font-family: ubuntu;
     }
 .heading-dimension{
     font-family: Ubuntu;

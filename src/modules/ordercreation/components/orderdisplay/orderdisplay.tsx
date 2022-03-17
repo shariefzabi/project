@@ -7,81 +7,81 @@ import axios from 'axios';
 function Orderdisplay(props: any) {
     const [orderdata, setOrderdata] = useState({}) as any;
     const [paymentflag, setPaymentflag] = useState(false);
-    const [products,setProducts]=useState<any[]>([]);
-
+    const [products, setProducts] = useState<any[]>([]);
+    // const [productPrice, setProductPrice] = useState(0);
+    let productPrice = 0;
     useEffect(() => {
         // const orderdata={user:{...props.user},props.orders};
-        const orderdata={} as any;
-        orderdata.email=props.user.email;
-        orderdata.orders=props.orders[0];
-        orderdata.deliveryDetails=props.deliveryDetails;
-        orderdata.date=new Date();
-        // setOrderdata(orderdata);
-        // console.log("orders",orderdata);
-        
-        axios.post("http://localhost:3005/orders/orderdetails", orderdata)
-            .then((res) =>{ 
-                console.log("orderdata postresponse", res.data)
-                setOrderdata(res.data);
-                // const products=res.data.orders;
-                // setProducts(products);
-            })
-            
-            .catch((err) => console.log("posterror", err));
-        // axios.get("http://localhost:3005/orders/orderdetails")
-        //     .then((res) => {
-        //         console.log("orderdisplay get response",res.data);
-        //         setOrderdata(res.data.orders)
-        //     })
-        //     .catch((err) => console.log(err)
-        //     )
-        
+        const orderdata = {} as any;
+        orderdata.email = props.user.email;
+        orderdata.orders = props.orders[0];
+        orderdata.deliveryDetails = props.deliveryDetails;
+        orderdata.date = new Date();
 
     }, [])
-    
-    
+
+
     return (
         <>
+            {
+                console.log("order Details:", props.orderdetails)
+                
+            }
             {!paymentflag &&
-            <div className='order-modal'>
-                <div className='order-display'>
-                    {/* <div className="modal-body"> */} 
-                            <div className="modal-body-orderdisplay">
-                                 <h2 className="heading-cartpage text-center">Product Added to Cart</h2>
-                                 <h3 className="heading-cartpage-Id"> Order ID -<b>{orderdata.orderId} {orderdata.date}</b> has been placed you now have to proceed payment</h3>
-                                
+                <div className='order-modal'>
+                    <div className='order-display'>
+                        {/* <div className="modal-body"> */}
+                        <div className="modal-body-orderdisplay">
+                            <h2 className="heading-cartpage text-center">Product Added to Cart</h2>
+                            <h3 className="heading-cartpage-Id"> Order ID -<b>{props.orderdetails.orderId}</b> has been placed you now have to proceed payment</h3>
 
-                                <div className="body-card position-relative text-center">
-                                    <img src={require("../assets/Vector.png")} className="mt-3" />
-                                    <h4 className="body-head">Hello, {props.user.fullName}</h4>
-                                    <p className="body-description">Your order <span className="body-head">{props.orders[0].breed} {props.orders[0].type} </span> has been added to your basket to proceed for checkout</p>
-                                    <hr className="ruler" />
-                                    <h4 className="body-head-Product">Product Details</h4>
-                                    <ul className="body-list-items">
-                                        <li className="mt-4">Type: {props.orders[0].type} <span className="weight-items">Quantity : {props.orders[0].quantity}</span></li>
-                                        <li className="mt-3">Sex: {props.orders[0].sex} <span className="weight-items">Weight : {props.orders[0].weight}</span></li>
-                                        <li className="mt-3">Breed: {props.orders[0].breed}</li>
-                                    </ul>
-                                    <hr className="vl" />
-                                    <ul className="body-list-items-amount">
+
+                            <div className="body-card border-secondary text-center">
+                                <img src={require("../assets/Vector.png")} className="mt-3" />
+                                <h4 className="body-head">Hello, {props.user.fullName}</h4>
+                                <p className="body-description">Your order <span className="body-head">{props.orders[0].breed} {props.orders[0].type} </span> has been added to your basket to proceed for checkout</p>
+                            
+                                <div className='row border-top border-secondary mx-3'>
+                                    <div className='col-6'>
+                                        <h4 className="body-head-Product mt-3">Product Details</h4>
+                                        <div className='items-container'>
+                                            {
+
+                                                props.orderdetails.cartproducts.map((item: any, ind: any) => {
+                                                    console.log("itemss", item);
+                                                    productPrice+=Number(item.price.slice(0, item.price.length - 2))
+                                                    return (
+                                                        <ul className="body-list-items m-auto" key={ind}>
+                                                            <li className="mt-4">Type: {item.type} <span className="weight-items">Quantity : {item.quantity}</span></li>
+                                                            <li className="mt-3">Sex: {item.sex} <span className="weight-items">Weight : {item.weight}</span></li>
+                                                            <li className="mt-3">Breed: {item.breed}</li>
+                                                        </ul>
+
+                                                    )
+                                                })
+                                            }
+                                        </div>
+                                    </div>
+                                       <ul className="body-list-items-amount col-3 border-end border-secondary border-start m-auto p-2 ">
                                         <li className="product-head">Product Amount </li>
-                                        <li>Rs {Number(props.orders[0].price.slice(0,props.orders[0].price.length-2))}</li>         
+                                        <li>Rs {productPrice}</li>
                                         <li className="product-head mt-2">Delivery Amount </li>
                                         <li>Rs 2000.00</li>
                                     </ul>
-                                    <hr className="vl-right" />
-                                    <ul className="body-list-items-total">
+                                 
+                                    <ul className="body-list-items-total m-auto col-3 p-2">
                                         <li className="product-head">Total Amount</li>
-                                        <li className="quantity-style">Rs {Number(props.orders[0].price.slice(0,props.orders[0].price.length-2))+2000}.00</li>
+                                        <li className="quantity-style">Rs {productPrice + 2000}.00</li>
                                     </ul>
-                                </div> 
-                                
-                                <div className="mb-3 text-center">
-                                    <button className="btn btn-success continuebutton" onClick={() => setPaymentflag(true)}>Proceed Payment</button>
                                 </div>
                             </div>
+
+                            <div className="mb-3 text-center">
+                                <button className="btn btn-success continuebutton" onClick={() => setPaymentflag(true)}>Proceed Payment</button>
+                            </div>
                         </div>
-                        </div>
+                    </div>
+                </div>
             }
             {paymentflag &&
                 <PaymentMethod></PaymentMethod>

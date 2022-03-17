@@ -17,7 +17,7 @@ function Invoice(props: any) {
     const [invoiceFlag, setinvoiceFlag] = useState(true);
     let [invoice, setInvoice] = useState([]);
     useEffect(() => {
-        axios.get("http://localhost:3005/orders")
+        axios.get("http://localhost:3005/invoicedetails")
             .then((res) => {
                 let res_data = res.data
                 // console.log("data", res_data[0]["orders"][0]);

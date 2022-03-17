@@ -20,7 +20,7 @@ class PaymentMethod extends React.Component<any, any> {
       card_numberErr: '',
       cvv_numberErr: '',
       month_yearErr: '',
-      totalprice: 0,
+      totalprice: 200,
       cost: "",
       flag1: true,
       flag2: true,
@@ -151,15 +151,15 @@ class PaymentMethod extends React.Component<any, any> {
     // let totalAmount = this.props.redux.orders.productdetails.quantity * this.props.redux.orders.productdetails.weight * 50000 + 2000;
     this.props.setCardDetails({ month, year, card_number, cvv_number })
     console.log("originalInvoice", this.state.orderId)
-    let invoicedata = {
-      "invoicedata": {
-        "orderId": orderId,
+    let cardDetails = {
+      "cardDetails": {
+        
         'payment': payment,
         "cardNumber": card_number,
         "Month": month,
         "year": year,
         "CVV": cvv_number,
-        "date": date
+        
       }
     }
 
@@ -171,7 +171,7 @@ class PaymentMethod extends React.Component<any, any> {
     //   .catch(err => {
     //     console.log("error: ", err);
     //   })
-    axios.post("http://localhost:3005/card/details", invoicedata)
+    axios.post("http://localhost:3005/card/details", cardDetails)
       .then((result) => {
         console.log("invoicedata", result.data);
         // this.setState({ cost: res.data })
@@ -191,7 +191,7 @@ class PaymentMethod extends React.Component<any, any> {
     console.log(orderId)
     axios.post("http://localhost:3005/paymentstatus", paymentStatus)
       .then((result) => {
-        // console.log("status", result.data);
+        console.log("status", result.data);
       })
       .catch(err => {
         console.log("error: ", err);

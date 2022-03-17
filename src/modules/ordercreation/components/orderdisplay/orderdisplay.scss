@@ -58,11 +58,7 @@ letter-spacing: 0.1px;
 color: #838383;
 opacity: 0.7;
 }
-.ruler{
-    width:90%;
-    margin-left: 5%;
-    margin-right: 5%;
-}
+
 .body-head-Product{
     font-family: Ubuntu;
 font-style: normal;
@@ -75,35 +71,29 @@ opacity: 0.7;
 text-align: start !important;
 margin-left: 7%;
 }
+.items-container{
+    height:130px;
+    overflow-y: scroll;
+    scrollbar-color: #838383 !important;
+    scrollbar-width: none;
+    ::-webkit-scrollbar{ 
+        width: 2px;
+    }
+
+}
 .body-list-items{
     text-align: start !important;
     list-style-type: none;
     color: #838383;
     margin-left: 2%;
+    height : 130px;
 }
 .weight-items{
     margin-left: 14%;
 }
-.vl {
-    border-left: 1px solid green;
-    transform: rotate(90deg);
-    width: 140px;
-    position : absolute;
-    top:70%;
-    left:42%;
-  }
-.vl-right {
-    border-left: 1px solid green;
-    transform: rotate(90deg);
-    width: 140px;
-    position : absolute;
-    top:70%;
-    left:60%;
-  }  
+
+ 
 .body-list-items-amount{
-    position: absolute;
-    top:60%;
-    left:50%;
     list-style-type: none;
     color: #838383;
     font-size: 14px;
@@ -113,9 +103,7 @@ margin-left: 7%;
     text-decoration: underline;
 }
 .body-list-items-total{
-    position: absolute;
-    top:60%;
-    left:68%;
+   
     list-style-type: none;
     color: #838383;
     font-size: 14px;
