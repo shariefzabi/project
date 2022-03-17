@@ -46,22 +46,22 @@ app.use("/invoice", InvoiceUniqueID);
 app.use("/payment", cardDetail);
 
 app.post("/paymentstatus", async (req, res) => {
-  let {paymentStatus} = req.body;
+  let { paymentStatus,date } = req.body;
   console.log(req.body);
   let ordercollection = db.collection("orders");
-  ordercollection.find().sort({ _id: -1 }).limit(1) .toArray(function (err, result) {
+  ordercollection.find().sort({ _id: -1 }).limit(1).toArray(function (err, result) {
     orderid = result[0]["orderId"]
     console.log(orderid)
     res.send(result)
-    ordercollection.updateOne({ orderId: orderid }, { $set: { paymentStatus: paymentStatus } })
-    
+    ordercollection.updateOne({ orderId: orderid }, { $set: { date: date, paymentStatus: paymentStatus } })
+
   })
 });
 app.get("/invoicedetails", async (req, res) => {
   let orderdetails = req.body;
   console.log(orderdetails);
   let ordercollection = db.collection("orders");
-  ordercollection.find({paymentStatus:"payment success"}).sort({ "orderId": -1 }).toArray(function (err, result) {
+  ordercollection.find({ paymentStatus: "payment success" }).sort({ "orderId": -1 }).toArray(function (err, result) {
     res.send(result)
   })
 });
@@ -180,46 +180,46 @@ app.get("/orders/productfilters", async (req, res) => {
   })
 });
 let products = [];
-app.post("/orders/products",  async(req, res)=> {
+app.post("/orders/products", async (req, res) => {
   let filterdetails = req.body;
   products = [];
   // console.log("filterdetails:",filterdetails);
   let filtercollection = db.collection("locationdbs");
-  filtercollection.find().toArray(function (err,result) {
-    filterdetails.forEach((filterdetails)=>{
-      result.forEach((ele,i) => {
-        if(filterdetails.type === "Cow"){
+  filtercollection.find().toArray(function (err, result) {
+    filterdetails.forEach((filterdetails) => {
+      result.forEach((ele, i) => {
+        if (filterdetails.type === "Cow") {
           // let cattle = [];
-          ele.cattleMarkets.forEach((item,index) => {
-            if(item.breed === filterdetails.breed && !products.includes(item)){
+          ele.cattleMarkets.forEach((item, index) => {
+            if (item.breed === filterdetails.breed && !products.includes(item)) {
               products.push(item);
             }
           })
           // return cattle;
         }
-        else if(filterdetails.type === "Goat"){
-  
+        else if (filterdetails.type === "Goat") {
+
           // let cattle = [];
-          ele.sheepMarkets.forEach((item,index) => {
-            if(item.breed === filterdetails.breed && !products.includes(item)){
+          ele.sheepMarkets.forEach((item, index) => {
+            if (item.breed === filterdetails.breed && !products.includes(item)) {
               products.push(item);
             }
           })
           // return cattle;
         }
-        else if(filterdetails.type === "Pig"){
-  
+        else if (filterdetails.type === "Pig") {
+
           // let cattle = [];
-          ele.cattleMarkets.forEach((item,index) => {
-            if(item.breed === filterdetails.breed&& !products.includes(item)){
+          ele.cattleMarkets.forEach((item, index) => {
+            if (item.breed === filterdetails.breed && !products.includes(item)) {
               products.push(item);
             }
           })
           // return cattle;
         }
       })
-    })  
-  
+    })
+
     // console.log("result",result);
     // console.log("products",products);
     res.send(products)
@@ -237,7 +237,7 @@ app.get("/orders/orderdetails", async (req, res) => {
 //storing order details
 app.post("/orders/orderdetails", function (req, res) {
   let orderdetails = req.body;
-  console.log("odetails",orderdetails);
+  console.log("odetails", orderdetails);
   let ordercollection = db.collection("orders");
   ordercollection.count(function (err, result) {
     if (err) console.log(err);
@@ -287,16 +287,17 @@ app.post("/orders/wishlists", function (req, res) {
 app.delete("/orders/wishlists/:id", function (req, res) {
   let { params } = req;
 
-  try{
+  try {
     let ordercollection = db.collection("wishlists");
-    ordercollection.deleteOne({"product._id":(params.id.toString())
-  })
+    ordercollection.deleteOne({
+      "product._id": (params.id.toString())
+    })
 
   }
   catch (err) {
     res.send({ message: err })
-}
-  
+  }
+
 })
 
 //fetching whishlist based on username
