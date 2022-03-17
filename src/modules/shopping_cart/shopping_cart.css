@@ -1,5 +1,4 @@
 .cart_nav {
-
   /* position: absolute; */
 
   right: 75.47%;
@@ -21,13 +20,9 @@
   line-height: 1.5rem;
 
   color: #838383;
-
 }
 
-
-
 .cart_link {
-
   /* list-style-type: none;
 
   float: left;
@@ -35,25 +30,22 @@
   padding: 0.312rem;
   font-size: 1rem;
   text-decoration: none; */
-  
 
-    list-style-type: none;
+  list-style-type: none;
 
-    float: left;
+  float: left;
 
-    padding: 0.12rem;
+  padding: 0.12rem;
 
-    text-decoration: none;
+  text-decoration: none;
 
-    color: #838383;
-
+  color: #838383;
 }
 
-.hitcount{
+.hitcount {
   border-radius: 5px;
 }
 .quantity_1 {
-
   width: 5.313rem;
 
   height: 2.438rem;
@@ -63,15 +55,9 @@
   border-radius: 5px;
 
   margin-bottom: 1rem;
-
- 
-
-
-
 }
 
 .cart_heading {
-
   /* position: absolute; */
 
   left: 9.4%;
@@ -100,19 +86,13 @@
 
   padding-top: 0.937rem;
   margin-top: 2rem;
-  margin-left : -29px;
-
+  margin-left: -29px;
 }
-
-
 
 .item_count {
-
   font-size: 1rem;
-
 }
 hr {
-
   /* position: absolute; */
 
   left: 9.4%;
@@ -123,33 +103,20 @@ hr {
 
   bottom: 69.58%;
 
-  border: 1.1px solid #D5D5D5;
-
+  border: 1.1px solid #d5d5d5;
 }
 
-
-
-.tab{
-
+.tab {
   text-align: center;
   margin-top: 4rem;
-
- 
-
- 
-
 }
 
-
-
 .tablecol {
-
   left: 9.4%;
 
   bottom: 61.43%;
-
+  margin-left: 0rem !important;
   font-family: Ubuntu;
-
   font-style: normal;
 
   font-weight: normal;
@@ -162,26 +129,20 @@ hr {
 
   color: #838383;
 
-  width: 100%;
-
+  width: 72rem !important;
 }
 
-
-
 .check_btn {
-
-  right: 7.07%;  
+  right: 7.07%;
 
   float: right;
 
   margin-top: 0.25rem;
 
   margin-right: 0.5rem;
-
 }
-.incre{
-
-  background-color: #2078BF;
+.incre {
+  background-color: #2078bf;
 
   width: 1.875rem;
 
@@ -194,21 +155,20 @@ hr {
   float: right;
 
   border: none;
-
- 
-
 }
 
 .rectangle {
-
   width: 2.812vw;
 
   height: 1.25vh;
 
-  background-color:white;
+  background-color: white;
 
-  border: 1px solid #E0E0E0;
+  border: 1px solid #e0e0e0;
 
   border-radius: 2px;
-
+}
+.product {
+  text-align: start;
+  width: 50%;
 }
