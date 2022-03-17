@@ -124,15 +124,15 @@ class PaymentMethod extends React.Component<any, any> {
       paymentStatus: "Awaiting payment"
     }
     if (payment === "Pay_On_Delivery") {
-      // axios.post("http://localhost:3005/paymentstatus", paymentStatus)
-      //   .then((result) => {
-      //     console.log("status", result.data);
-      //   })
-      //   .catch(err => {
-      //     console.log("error: ", err);
-      //   })
-      // this.props.setPaymentInformation(payment)
-      // console.log(paymentStatus)
+      axios.post("http://localhost:3005/paymentstatus", paymentStatus)
+        .then((result) => {
+          console.log("status", result.data);
+        })
+        .catch(err => {
+          console.log("error: ", err);
+        })
+      this.props.setPaymentInformation(payment)
+      console.log(paymentStatus)
     }
   }
   submitHandler = (e: any) => {
@@ -189,13 +189,13 @@ class PaymentMethod extends React.Component<any, any> {
       paymentStatus: "payment success"
     }
     console.log(orderId)
-    // axios.post("http://localhost:3005/paymentstatus", paymentStatus)
-    //   .then((result) => {
-    //     // console.log("status", result.data);
-    //   })
-    //   .catch(err => {
-    //     console.log("error: ", err);
-    //   })
+    axios.post("http://localhost:3005/paymentstatus", paymentStatus)
+      .then((result) => {
+        console.log("status", result.data);
+      })
+      .catch(err => {
+        console.log("error: ", err);
+      })
 
 
   }
