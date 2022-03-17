@@ -163,7 +163,7 @@ function SelectedProductDetails(props: any) {
                                                 <button className="locbtn bg-white text-start px-3" onClick={setLocationHandler} value={e.locationName}>{e.locationName}</button>
 
                                                 <div className="collapse " id={index.slice(1)}>
-                                                    <ul>
+                                                    <ul className="d-inline">
                                                         <li className="mx-4"><span className="blue mx-2">&#9679;</span><button className="marketButton " onClick={setMarketHandler} value='Cattle Market'>Cattle Market<span>({e.cattleMarkets.length})</span></button></li>
                                                         <li className="mx-4"><span className="blue mx-2">&#9679;</span><button className="marketButton " onClick={setMarketHandler} value='Sheep Market'>Sheep Market<span>({e.sheepMarkets.length})</span></button></li>
                                                     </ul>
