@@ -242,6 +242,17 @@ hr {
   border-radius: 50px;
 }
 //selectedproduct page css
+#marketHeading1 {
+  width: 15.063rem;
+  // height: 1.5rem;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 2rem;
+  line-height: 1.5rem;
+  color: #838383;
+  margin-top: 0.8rem;
+  
+}
 
 .iconFilled {
   color: #06864d !important;
@@ -282,7 +293,23 @@ hr {
   width: 19.25rem;
   height: 3.125rem;
 }
-
+//for chrome
+.locBox1::-webkit-scrollbar{
+  display: none;
+}
+//for edge
+.locBox1{
+  -ms-overflow-style: none;
+}
+.locBox1 {
+  width:18vw !important;
+  // width: 20vw !important;
+  margin-right: 2.5rem;
+  border: 2px solid #e0e0e0;
+  height: 15rem;
+  overflow-y:scroll;
+  border-radius: 5px;
+}
 .descriptionbox{
   border: 1px solid #e0e0e0;
   border-bottom-left-radius: 5px;
@@ -615,3 +642,84 @@ padding-left:4%;
     display: none;
   }
 }
+@media (min-width:769px) and (max-width:992px){
+  .selectproduct{
+    margin-left: 25px !important;
+    margin-right: 25px !important;
+
+  }
+  
+  
+  .locBox1{
+    margin-right: 30px;
+  }
+   #marketHeading1{
+     font-size: 1.3rem;
+     margin-right:0 !important ;
+  }
+  .price{
+    font-size: 1.3rem;
+
+  }
+  // .prodetail{
+  //   width:10vw;
+  // }
+  .sucessbtn{
+    width: 15rem;
+    height: 3.125rem;
+  }
+  .descripbtn{
+    margin-top: 3rem;
+  }
+}
+@media (min-width:577px) and (max-width:768px){
+  .selectproduct{
+    margin-left: 20px !important;
+    margin-right: 25px !important;
+
+  }
+  
+  
+  .locBox1{
+    margin-right: 20px ;
+  }
+  #marketHeading1{
+    font-size: 1.1rem;
+    margin-right:0 !important ;
+    margin: 0;
+ }
+ .price{
+   font-size: 1.1rem;
+   margin: 0;
+  
+
+ }
+ .Image{
+   height: 20rem;
+ }
+ .prodetail{
+   margin-left: 12px;
+ }
+ .sucessbtn{
+   width: 12rem;
+   height: 2.75rem;
+ 
+  }
+  .descripbtn{
+    margin-top: 2.3rem;
+    width: 6rem;
+    height: 2.75rem;
+  }
+  .descriptionbox{
+    padding: 0.87rem;
+  }
+}
+@media (min-width:0px) and (max-width:576px){
+  .locBox1{
+    display: none;
+  }
+  #sub2{
+    display: none;
+  }
+}
+

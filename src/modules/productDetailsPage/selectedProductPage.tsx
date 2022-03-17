@@ -156,7 +156,7 @@ function SelectedProductDetails(props: any) {
             </Breadcrumb>
             <div className="container-fluid">
                 <div className=" row selectproduct">
-                    <div className="locBox col-lg-3 col-md-3 col-sm-3 mt-3 p-0 bg-white">
+                    <div className="locBox1 col-lg-3 col-md-3 col-sm-3 mt-3 p-0 bg-white">
                         {
                             products.map((e: any, ind) => {
                                 let index = "#ind" + ind
@@ -184,7 +184,7 @@ function SelectedProductDetails(props: any) {
 
                         {/* < img className="productImage" src={"http://localhost:3005/" +product.image.filename } /> */}
                     </div>
-                    <div className=" prodetail col-lg-5 col-md-4 col-sm-5 mt-3 p-0">
+                    <div className=" prodetail col-lg-5 col-md-4 col-sm-4 mt-3 p-0">
 
 
                         {!inWhishlist &&
@@ -198,8 +198,8 @@ function SelectedProductDetails(props: any) {
 
 
 
-                        <h3 className="p-0" id="marketHeading">ANIMAL ID - </h3>
-                        <h3 className="mb-3 p-0" id="marketHeading">{product._id}</h3>
+                        <h3 className="p-0" id="marketHeading1">ANIMAL ID - </h3>
+                        <h3 className="mb-3 p-0" id="marketHeading1">{product._id}</h3>
                         <p id="text_code">Product Code: {product.productCode}</p>
                         <p className="mb-2" id="text_code">Availability: {product.availability}</p>
                         <Rating className="iconFilled" name="half-rating-read" defaultValue={4} precision={0.5} readOnly />
