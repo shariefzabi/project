@@ -1,6 +1,10 @@
-.productdetails{
+.productdetails {
   margin-left:30px !important;
   margin-right: 30px !important;
+}
+.selectproduct{
+  margin-left:40px !important;
+  margin-right: 40px !important;
 }
 
 .breadCrumbs {
@@ -27,12 +31,23 @@
   color: #838383;
   text-align: left;
 }
+#sub2 {
+  margin-top: 4.4375rem;
+  margin-left: 52px;
+  // margin-left: 6.89rem;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 0.75rem;
+  line-height: 1.5rem;
+  color: #838383;
+  text-align: left;
+}
 #marketHeading {
   width: 15.063rem;
   // height: 1.5rem;
   font-style: normal;
   font-weight: bold;
-  font-size: 2.25rem;
+  font-size: 2rem;
   line-height: 1.5rem;
   color: #838383;
   margin-top: 0.8rem;
@@ -314,9 +329,12 @@ hr {
 .addbtn2{
   border-radius: 5px;
 }
+// .prodetail{
+//   margin-left: 10px;
+// }
 .Image{
   
-  width: 22.5rem;
+  width: 28vw;
   height: 26rem;
 }
 
@@ -589,5 +607,11 @@ padding-left:4%;
   }
   .addcartbtn{
     font-size: 0.55rem !important;
+  }
+}
+/////responsive for select product page
+@media (min-width:0px) and (max-width:576px){
+  .locBox{
+    display: none;
   }
 }

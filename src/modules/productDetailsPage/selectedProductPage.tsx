@@ -60,8 +60,8 @@ function SelectedProductDetails(props: any) {
             )
 
     }, []);
- 
-    
+
+
 
     console.log("whislist", product)
 
@@ -109,7 +109,7 @@ function SelectedProductDetails(props: any) {
         imagePath = serverUrl + product.image.filename;
     }
     //whislist post
-    product.email = props.state.user.email
+    // product.email = props.state.user.email
 
     const addtoWishlist = () => {
         setInWhishlist(true)
@@ -140,7 +140,7 @@ function SelectedProductDetails(props: any) {
 
     return (
         <div id="productPage" className="productPage">
-            <Breadcrumb id="sub">
+            <Breadcrumb id="sub2">
                 <Breadcrumb.Item>
                     <Link className="breadCrumbs" to='/'>Home</Link>
                 </Breadcrumb.Item>
@@ -154,9 +154,9 @@ function SelectedProductDetails(props: any) {
                     Animal id: {product._id}
                 </Breadcrumb.Item>
             </Breadcrumb>
-            <div className="container">
-                <div className=" row">
-                    <div className="locBox col-3 mt-3 p-0 bg-white">
+            <div className="container-fluid">
+                <div className=" row selectproduct">
+                    <div className="locBox col-lg-3 col-md-3 col-sm-3 mt-3 p-0 bg-white">
                         {
                             products.map((e: any, ind) => {
                                 let index = "#ind" + ind
@@ -175,15 +175,16 @@ function SelectedProductDetails(props: any) {
                                     </div>
                                 )
                             })
+                            
                         }
                     </div>
-                    <div className="col-4 mt-3 p-0">
+                    <div className="col-lg-4 col-md-4 col-sm-4 mt-3 p-0">
 
                         <img className="Image" src={imagePath} />
 
                         {/* < img className="productImage" src={"http://localhost:3005/" +product.image.filename } /> */}
                     </div>
-                    <div className="col-5 mt-3 p-0">
+                    <div className=" prodetail col-lg-5 col-md-4 col-sm-5 mt-3 p-0">
 
 
                         {!inWhishlist &&
@@ -217,8 +218,8 @@ function SelectedProductDetails(props: any) {
                     </div>
                 </div>
 
-                <div className="row">
-                    {/* ///////Latest Products///// */}
+                <div className="row selectproduct">
+                    {/* ///////Latest Products///// */} 
                     <div className="col-3">
                         <h3 className="fontColor">Latest</h3>
                         {
@@ -248,7 +249,7 @@ function SelectedProductDetails(props: any) {
                                 )
                             })}
                     </div>
-                    {/* /////Latest Products Ending-Team 5/////  */}
+                     {/* /////Latest Products Ending-Team 5/////  */}
                     <div className="col-9 ">
                         <button className="descripbtn" onClick={descriptionHandler}>Description</button>
                         <button className="descripbtn" onClick={reviewHandler}>Reviews(0)</button>

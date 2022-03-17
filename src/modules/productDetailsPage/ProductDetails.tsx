@@ -208,7 +208,7 @@ function ProductDetails(props: any) {
                                                                         <p className="card-price" id={e._id}>Price:{e.price}</p>
                                                                     </div>
                                                                     <div className=" text-center ">
-                                                                        <button type="button" className="addcartbtn btnbtn-success ">Add to Cart</button>
+                                                                        <button type="button" className="addcartbtn btn btn-success ">Add to Cart</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -399,7 +399,7 @@ function ProductDetails(props: any) {
                                                                         <p className="card-price" id={e._id}>Price:{e.price}</p>
                                                                     </div>
                                                                     <div className=" text-center">
-                                                                        <button type="button" className="addcartbtn btn-success">Add to Cart</button>
+                                                                        <button type="button" className="addcartbtn btn btn-success">Add to Cart</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
