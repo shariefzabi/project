@@ -114,7 +114,7 @@ function Reset(props: any) {
                             <button onClick={()=>setflag(true)} type="submit" id="saveButton" className="btn btn-success  col-md-4">Save</button>
                         </div>
                         {flag&&
-                        <p className='mt-2 text-center text-success'> Password sucessfully updated</p>
+                        <p className='mt-4 text-center text-success'> Password sucessfully updated</p>
                             }
 
                     </form>
