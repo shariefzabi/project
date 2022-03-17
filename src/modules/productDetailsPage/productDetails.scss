@@ -63,6 +63,7 @@
   text-align: start;
 
   margin-top: 1rem;
+  
 }
 hr {
   margin-right: 6.625rem;
@@ -651,12 +652,21 @@ padding-left:4%;
   }
 }
 /////responsive for select product page
-@media (min-width:0px) and (max-width:576px){
-  .locBox{
+@media (min-width:992px) and (max-width:1024px){
+  .mobileview{
     display: none;
   }
 }
+@media (min-width:1024px) and (max-width:1500px){
+  .mobileview{
+    display: none;
+  }
+}
+
 @media (min-width:769px) and (max-width:992px){
+  .mobileview{
+    display: none;
+  }
   .selectproduct{
     margin-left: 25px !important;
     margin-right: 25px !important;
@@ -687,6 +697,9 @@ padding-left:4%;
   }
 }
 @media (min-width:577px) and (max-width:768px){
+  .mobileview{
+    display: none;
+  }
   .selectproduct{
     margin-left: 20px !important;
     margin-right: 25px !important;
@@ -735,11 +748,107 @@ padding-left:4%;
   }
 }
 @media (min-width:0px) and (max-width:576px){
-  .locBox1{
+  .productPage{
     display: none;
   }
-  #sub2{
-    display: none;
+  .mobileview{
+    margin: auto;
+    // margin-left: 50px;
+    // margin-right: 50px;
+  }
+  #marketHeading2 {
+    // width: 15.063rem;
+    // height: 1.5rem;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.25rem;
+    line-height: 1.436rem;
+    color: #838383;
+    margin-top: 0.8rem;
+    // margin-left: 4rem;
+    
+  }
+  .price1{
+    letter-spacing: 0.1px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 2rem;
+    line-height: 1.6875rem;
+    color: #838383;
+    // margin-top: 1.875rem;
+    margin-bottom: 1.531rem;
+  }
+  .mobileImage{
+    width: 60vw;
+    height: 14.625rem;
+
+  }
+  .sucessbtn{
+    width: 15.2rem;
+  }
+  .product-details{
+    margin-left: 2.5rem;
+  }
+  #text_code{
+    margin-top: 5px;
+    font-size: 0.5rem;
+    line-height: 0.586rem;
+  }
+  .qtybtn{
+    margin-right: 5rem !important;
+  }
+  .qtybtn p{
+    line-height: 1.25rem;
+    font-size: 0.5rem;
+    margin-right: 5px;
+
+  }
+  .descriptionbox p{
+    font-size: 0.5rem;
+    line-height: 0.8rem;
+    text-align: start;
+
+  }
+  .descriptionbox{
+    padding: 0.8rem;
+  }
+  .descripbtn{
+    width:7.4rem;
+    height:2.06rem;
+    font-size: 0.5rem;
+    line-height: 0.8rem;
+    margin-top: 1.875rem;
+
+  }
+  .description{
+    margin-left: 6rem !important;
+    // width:70vw;
+    
+  }
+  .qtybtn .qtycount{
+    border: 1px solid #e0e0e0;
+    font-size: 0.6rem;
+    padding: 10px;
+    border-radius:5px ;
+    // width: 2rem !important;
+    // height: 25px !important;
+    background-color: #ffffff;
+  }
+  .latesthead{
+     text-align: start;
+     margin-left: 6rem;
+    margin-top: 1.625rem;
+  }
+  .latestblog{
+    margin-left: 6rem;
+  }
+  .latestCards{
+    margin-right: 0.5rem;
+  }
+  .card{
+    margin-right: 0.5rem;
+    
+
   }
 }
 
