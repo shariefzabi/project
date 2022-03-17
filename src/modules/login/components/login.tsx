@@ -29,7 +29,7 @@ function Login(props:any) {
 
 
   const setToken = (token:any)=>{
-    sessionStorage.setItem("token",token);
+    localStorage.setItem("token",token);
   }
   
   const validations = (e: any) => {

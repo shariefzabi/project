@@ -29,7 +29,7 @@ function Profile(props: any) {
     const [displayReset, setdisplayReset] = useState(false)
 
 
-    const getToken = () => sessionStorage.getItem("token");
+    const getToken = () => localStorage.getItem("token");
 
     useEffect(() => {
         axios.get("http://localhost:3005/users/" + getToken())
@@ -49,8 +49,15 @@ function Profile(props: any) {
 
 
     const changeHandler = (e: any) => {
-        if (e.target.type=="number"&& e.target.maxLength>=e.target.value.length){
+        if (e.target.name=="zipCode"){
+            let zipcodeReg = /^([0-9]){0,6}$/
+                if (zipcodeReg.test(e.target.value))
          setUserDetails({ ...userDetails, [e.target.name]: e.target.value })    
+        }
+        else if (e.target.name=="phone"){
+            let phoneReg = /^([0-9]){0,10}$/
+                if (phoneReg.test(e.target.value))
+                setUserDetails({ ...userDetails, [e.target.name]: e.target.value })  
         }
         else{
         setUserDetails({ ...userDetails, [e.target.name]: e.target.value })}
@@ -228,7 +235,7 @@ function Profile(props: any) {
                                     <main className="row box col-sm-12">
                                         <section className="col-md-12 col-sm-12  row">
                                             <div className='profile' >
-                                                <p> Fields with <span className="text-danger">*</span> are required</p><button className="btn btn-success btn-float-right col-2 " id="resetButton" type="button"
+                                                <p> Fields with <span className="text-danger">*</span> are required</p><button className="btn btn-success btn-float-right col-3 " id="resetButton" type="button"
                                                     onClick={() => {
                                                         setdisplayReset(true)
 
@@ -302,15 +309,9 @@ function Profile(props: any) {
                         </section>
                     </main>
                 }
-                
-                
-
-
-
-
             </div >
             }
-            {!props.redux.user && <div className='profile-err mt-5  text-center'><h2 className='text-danger'>** Please login and try again **</h2>
+            {!props.redux.user && <div className='profile-err mt-5 col-11 text-center'><h2 className='text-danger'>** Please login and try again **</h2>
                 </div>}
                 {displayReset &&
                                 <Reset setdisplayReset={setdisplayReset}></Reset>
