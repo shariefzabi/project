@@ -13,8 +13,24 @@ class Cart extends React.Component<any, any> {
       count: 1,
     };
   }
-
+  addProductToCart = () => {
+    const updatedQuantity = this.props.redux.quantity;
+    updatedQuantity[0] = updatedQuantity[0] + 1;
+    this.props.updateProductQuantity(updatedQuantity);
+  };
+  removeProductToCart = () => {
+    if (this.props.redux.quantity[0] > 1) {
+      const updatedQuantity = this.props.redux.quantity;
+      updatedQuantity[0] = updatedQuantity[0] - 1;
+      if (updatedQuantity[0] < 1) {
+        return;
+      } else {
+        this.props.updateProductQuantity(updatedQuantity);
+      }
+    }
+  };
   render() {
+    console.log(this.props.redux.quantity);
     return (
       <>
         <main id="mainContent" className="small-conatiner">
@@ -96,29 +112,33 @@ class Cart extends React.Component<any, any> {
                     <div className="row quantity ms-0 addbtn2 detail">
                       <button
                         className="btn btn-primary col"
-                        onClick={() =>
-                          this.setState({ count: this.state.count - 1 })
-                        }
+                        onClick={this.removeProductToCart}
+                        // {() =>
+                        // this.setState({ count: this.state.count - 1 })
+                        // }
                       >
                         -
                       </button>
 
                       <p className="col m-auto">
+                        {/* {this.state.count} */}
                         {this.props.redux.quantity[0]}
                       </p>
                       {/* {this.props.redux.quantity[0]} */}
                       <button
                         className="btn btn-primary col"
-                        onClick={() =>
-                          this.setState({ count: this.state.count + 1 })
-                        }
+                        onClick={this.addProductToCart}
+                        // {() =>
+                        //   this.setState({ count: this.state.count + 1 })
+                        // }
                       >
                         +
                       </button>
                     </div>
                   </td>
                   <td className="detail">
-                    {this.props.redux.quantity[1] * this.state.count}
+                    {this.props.redux.quantity[0] *
+                      this.props.redux.quantity[1]}
                     {/* // this.props.redux.quantity[]} */}
                     Rs
                   </td>
@@ -150,4 +170,11 @@ const mapStateToProps = (state: any) => {
     redux: state,
   };
 };
-export default connect(mapStateToProps)(Cart);
+const mapDispatchToProps = (dispatch: Function) => {
+  return {
+    updateProductQuantity: (updatedQuantity: any) =>
+      dispatch({ type: "updateProductQuantity", payload: updatedQuantity }),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);
