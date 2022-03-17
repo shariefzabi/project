@@ -5,12 +5,15 @@ import { Link } from "react-router-dom";
 import appStore from "../../state/app_store";
 import { Breadcrumb } from "react-bootstrap";
 import { connect } from "react-redux";
+import { Dialog } from "@mui/material";
+import Orderdisplay from "../ordercreation/components/orderdisplay/orderdisplay";
 
 class Cart extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
       count: 1,
+      open:false,
     };
   }
   addProductToCart = () => {
@@ -29,6 +32,8 @@ class Cart extends React.Component<any, any> {
       }
     }
   };
+   handleOpen = () => this.setState({open:true});
+   handleClose = () => this.setState({open:false});
   render() {
     console.log(this.props.redux.quantity);
     return (
@@ -132,6 +137,7 @@ class Cart extends React.Component<any, any> {
                   <td className="detail">
                     {this.props.redux.quantity[0] *
                       this.props.redux.quantity[1]}
+                    {this.props.redux.quantity[1] * this.props.redux.quantity[0] }
                     {/* // this.props.redux.quantity[]} */}
                     Rs
                   </td>
@@ -147,9 +153,20 @@ class Cart extends React.Component<any, any> {
           </div>
 
           <div className="container">
-            <button className=" btn btn-success check_btn">
+
+            <button className=" btn btn-success check_btn" onClick={this.handleOpen}>
+           
               Proceed Checkout
             </button>
+            <Dialog
+        open={this.state.open}
+        onClose={this.handleClose}
+        aria-describedby="modal-modal-description"
+        sx={{ overflow: 'auto'}}
+
+      >
+        <Orderdisplay></Orderdisplay>
+      </Dialog>
           </div>
         </main>
       </>

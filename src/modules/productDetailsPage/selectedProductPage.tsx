@@ -49,7 +49,9 @@ function SelectedProductDetails(props: any) {
       props.state.productData;
     axios.get(getProductUrl).then((response) => {
       setProduct(response.data[0]);
+    //   console.log("response", response.data[0]);
     });
+    
   }, []);
 
   console.log("whislist", product);
@@ -77,8 +79,20 @@ function SelectedProductDetails(props: any) {
     } else setCount(count - 1);
   };
   function addToCart() {
-    let items = [count, parseInt(`${product.price}`), product._id];
+    let items = [count, parseInt(`${product.price}`), product._id,product.weight,product.breed];
     props.quantity(items);
+    // console.log(props.quantity);
+    
+  }
+  const submitHandler =()=>{
+   console.log("display",product);
+   
+    axios.post("http://localhost:3005/orders/orderdetails", {cartproducts:[{...product,price:String(count*parseInt(`${product.price}`))+"Rs"}],email :props.state.user.email})
+    .then((res)=>{console.log("postresponse",res.data)
+    props.createOrder(res.data);
+    // console.log("---",res.data);
+        })
+    .catch((err)=>console.log("posterror",err));
   }
 
   const setMarketHandler = (event: any) => {
@@ -424,7 +438,9 @@ function SelectedProductDetails(props: any) {
                                         </div>
                                     </div>
                                 
-                                        <button type="button" className="sucessbtn btn btn-success" onClick={addToCart} >Add to Cart</button>
+                                        <button type="button" className="sucessbtn btn btn-success" onClick={()=>{
+                                            addToCart();
+                                        submitHandler()}} >Add to Cart</button>
                                    
                             </div>
                         </div>
@@ -470,6 +486,8 @@ const mapStateToProps = (state: any) => {
 const mapDispatchToProps = (dispatch: Function) => {
   return {
     quantity: (count: any) => dispatch({ type: "itemslength", payload: count }),
+    createOrder: (deliveryDetails: any) => dispatch({ type: 'store_order', payload:deliveryDetails })
+
   };
 };
 
