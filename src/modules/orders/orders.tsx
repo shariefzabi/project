@@ -30,10 +30,10 @@ function Orders(props: any) {
     return (
 
         <div className='row'>
-            <div className='col-2'>
+            <div className='col-1'>
                 <Sidebar> </Sidebar>
             </div>
-            <div className='orders-dashboard col-10'>
+            <div className='orders-dashboard col-11'>
 
                 <main id="mainContent">
                     <section className="order-section">
@@ -65,10 +65,11 @@ function Orders(props: any) {
                                                             <td>{product.productCode}</td>
                                                             <td>{product.availability}</td>
                                                             {order.paymentStatus !== 'cancelled order' &&
+                                                                order.paymentStatus !== undefined &&
                                                                 <td ><button className=' button1 btn btn-primary'>{order.paymentStatus}</button></td>
                                                             }
-                                                            {order.paymentStatus === 'cancelled order' &&
-                                                                <td ><button className=' button1 btn btn-danger'>{order.paymentStatus}</button></td>
+                                                            {order.paymentStatus === undefined &&
+                                                                <td ><button className=' button1 btn btn-danger'>order cancelled</button></td>
                                                             }
                                                         </tr>
                                                     )
@@ -84,12 +85,12 @@ function Orders(props: any) {
                                     </tr>
                                     {wishlists.map((wishlist, i) => {
                                         return (
-                                            <tr>
-                                                <td> <span className="first-line">ID - {wishlist.productId}</span>
-                                                    <span className="second-line">{wishlist.date}</span></td>
-                                                <td>{wishlist.productcode}</td>
-                                                <td>{wishlist.availability}</td>
-                                                <td><button className=' button1 btn btn-primary'>{wishlist.status}</button></td>
+                                            <tr key={i}>
+                                                <td> <span className="first-line">ID - {wishlist.product._id}</span>
+                                                    <span className="second-line">{wishlist.product.updatedAt}</span></td>
+                                                <td>{wishlist.product.productCode}</td>
+                                                <td>{wishlist.product.availability}</td>
+                                                <td><button className=' button1 btn btn-primary'>Awaiting Payment</button></td>
                                             </tr>
                                         )
                                     })}

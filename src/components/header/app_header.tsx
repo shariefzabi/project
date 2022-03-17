@@ -1,7 +1,7 @@
 import React from "react";
 import bar from "./asset/group2.png";
 import cross from "./asset/group35.png";
-import triangle from "./asset/Triangle.png";
+import triangle from "./asset/triangle.png";
 import { Link } from "react-router-dom";
 import "./app_header.scss";
 // import BuyNow from "../../modules/ordercreation/components/ordercreation";
@@ -13,8 +13,17 @@ import Butcherypopup from "../../modules/butchery_form_page/form2";
 import AgentModel from "../../modules/AgentModel(Mod) copy/AgentModel1";
 import ButcheryModel from "../../modules/butchery_form/butcherypopup";
 import axios from "axios";
+import Orderdisplay from "../../modules/ordercreation/components/orderdisplay/orderdisplay";
+import { Dialog } from "@mui/material";
 
 class Header extends React.Component<any, any> {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      
+      open:false,
+    };
+  }
   componentDidMount() {
     // this.props.setToken(this.getToken)
     // console.log("team6", this.props.redux.quantity[0]);
@@ -25,7 +34,7 @@ class Header extends React.Component<any, any> {
       .get("http://localhost:3005/users/" + this.getToken())
       .then((res) => {
         // console.log("app header lo:",res.data);
-        
+
         if (res.data != "null") this.props.setUser(res.data);
         else this.props.setUser(null);
       })
@@ -37,6 +46,8 @@ class Header extends React.Component<any, any> {
     localStorage.clear();
     this.props.setUser(null);
   };
+  handleOpen = () => this.setState({open:true});
+  handleClose = () => this.setState({open:false});
   render() {
     console.log("header values::", this.props);
 
@@ -338,7 +349,16 @@ class Header extends React.Component<any, any> {
                     <Link to="/shoppingcart" className="btn btn-success view">
                       View Cart
                     </Link>
-                    <button className="btn btn-success">Checkout</button>
+                    <button className="btn btn-success" onClick={this.handleOpen}>Checkout</button>
+                    <Dialog
+        open={this.state.open}
+        onClose={this.handleClose}
+        aria-describedby="modal-modal-description"
+        sx={{ overflow: 'auto'}}
+
+      >
+        <Orderdisplay></Orderdisplay>
+      </Dialog>
                   </div>
                 </div>
               </div>

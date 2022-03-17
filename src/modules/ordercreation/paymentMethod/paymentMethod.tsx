@@ -16,6 +16,7 @@ class PaymentMethod extends React.Component<any, any> {
       year: "",
       
       orderId: 0,
+      date:"",
       // err
       card_numberErr: '',
       cvv_numberErr: '',
@@ -28,24 +29,11 @@ class PaymentMethod extends React.Component<any, any> {
 
     }
   }
-  componentDidMount = () => {
+
   
-    axios.get("http://localhost:3005/orders/orderdetails")
-      .then((result) => {
-        console.log("productdetails", result.data);
-        let { totalprice } = result.data[0]
-      
-        console.log("totalprice",totalprice)
-        let { totalcost } = this.state
-        totalcost =totalprice
-        this.setState({ totalcost })
+     
 
-      })
-      .catch(err => {
-        console.log("error: ", err);
-      })
-
-  }
+  
   changeHandler = (event: any) => {
     // let { payment } = this.state;
     this.setState({ [event.target.name]: event.target.value });
@@ -118,10 +106,29 @@ class PaymentMethod extends React.Component<any, any> {
 
   }
   setPaymentInformation = () => {
+    axios.get("http://localhost:3005/orders/orderdetails")
+      .then((result) => {
+        console.log("productdetails", result.data);
+        console.log("the data", result.data)
+
+        let { totalprice } = result.data[0]
+
+        console.log("totalprice", totalprice)
+        let { totalcost } = this.state
+        totalcost = totalprice
+        this.setState({ totalcost })
+
+      })
+      .catch(err => {
+        console.log("error: ", err);
+      })
     // alert()
+    const date = new Date().toJSON().slice(0, 10).split('-').reverse().join('/')
+    this.setState({date})
     let { payment, orderId } = this.state
     this.setState({ flag1: false })
     let paymentStatus = {
+      date: date,
 
       paymentStatus: "Awaiting payment"
     }
@@ -142,15 +149,20 @@ class PaymentMethod extends React.Component<any, any> {
     this.setState({ flag2: false })
     let { month, year, payment, card_number, cvv_number, orderId, } = this.state;
     this.props.setPaymentInformation(payment)
+    let paymentStatus = {
+      date: this.state.date,
+      paymentStatus: "payment success"
+    }
+    console.log(orderId)
+    axios.post("http://localhost:3005/paymentstatus", paymentStatus)
+      .then((result) => {
+        console.log("status", result.data);
+      })
+      .catch(err => {
+        console.log("error: ", err);
+      })
     console.log("carddetails", { month, year, card_number, cvv_number })
-    // let { breed, quantity, sex, type, weight, price, delprice, totalprice } = this.props.redux.orders.productdetails;
-    // let product_amount = this.props.redux.orders.productdetails.quantity * this.props.redux.orders.productdetails.weight * 50000;
-    // let deliveryAmount = 5505;
-    // let totalAmount = 578;
-    // let orderId = 64875;
-    // let product_amount = this.props.redux.orders.productdetails.quantity * this.props.redux.orders.productdetails.weight * 50000;
-    // let deliveryAmount = this.props.redux.orders.productdetails.quantity * this.props.redux.orders.productdetails.weight * 10000;
-    // let totalAmount = this.props.redux.orders.productdetails.quantity * this.props.redux.orders.productdetails.weight * 50000 + 2000;
+  
     this.props.setCardDetails({ month, year, card_number, cvv_number })
     console.log("originalInvoice", this.state.orderId)
     let cardDetails = {
@@ -186,20 +198,9 @@ class PaymentMethod extends React.Component<any, any> {
       cvv_number: '',
       month_year: ''
     })
-    const date = new Date().toJSON().slice(0, 10).split('-').reverse().join('/')
+    
 
-    let paymentStatus = {
-      date: date,
-      paymentStatus: "payment success"
-    }
-    console.log(orderId)
-    axios.post("http://localhost:3005/paymentstatus", paymentStatus)
-      .then((result) => {
-        console.log("status", result.data);
-      })
-      .catch(err => {
-        console.log("error: ", err);
-      })
+   
 
 
   }

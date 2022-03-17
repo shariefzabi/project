@@ -58,8 +58,10 @@ function Orderdisplay(props: any) {
                             <div className="body-card border-secondary text-center">
                                 <img src={require("../assets/Vector.png")} className="mt-3" />
                                 <h4 className="body-head">Hello, {props.user.fullName}</h4>
-                                <p className="body-description">Your order <span className="body-head">{props.orders[0].breed} {props.orders[0].type} </span> has been added to your basket to proceed for checkout</p>
+                                <p className="body-description">Your order  has been added to your basket to proceed for checkout</p>
 
+                                {/* <p className="body-description">Your order <span className="body-head">{props.orders[0].breed} {props.orders[0].type} </span> has been added to your basket to proceed for checkout</p> */}
+                            
                                 <div className='row border-top border-secondary mx-3'>
                                     <div className='col-6'>
                                         <h4 className="body-head-Product mt-3">Product Details</h4>
@@ -68,7 +70,7 @@ function Orderdisplay(props: any) {
 
                                                 props.orderdetails.cartproducts.map((item: any, ind: any) => {
                                                     console.log("itemss", item);
-                                                    productPrice += Number(item.price.slice(0, item.price.length - 2))
+                                                    productPrice += parseInt(item.price);
                                                     return (
                                                         <ul className="body-list-items m-auto" key={ind}>
                                                             <li className="mt-4">Type: {item.type} <span className="weight-items">Quantity : {item.quantity}</span></li>

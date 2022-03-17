@@ -80,6 +80,20 @@ function SelectedProductDetails(props: any) {
         let items = [count, parseInt(`${product.price}`), product._id];
         props.quantity(items);
     }
+    const submitHandler =()=>{
+    console.log("qww",product);
+    
+        axios.post("http://localhost:3005/orders/orderdetails", {cartproducts:[{...product,price:(count*parseInt(`${product.price}`))}],email :props.state.user.email})
+    
+        .then((res)=>{console.log("postresponse",res.data)
+    
+        props.createOrder(res.data);
+    
+            })
+    
+        .catch((err)=>console.log("posterror",err));
+    
+      }
 
     const setMarketHandler = (event: any) => {
         setMarket(event.target.value);
@@ -101,11 +115,9 @@ function SelectedProductDetails(props: any) {
 
     const addtoWishlist = () => {
         setInWhishlist(true);
-        product.email = props.state.user.email
-
-        const products = { product };
+        const email = props.state.user.email
         try {
-            axios.post("http://localhost:3005/orders/wishlists", products);
+            axios.post("http://localhost:3005/orders/wishlists", {product:product,email:email});
         } catch (err) {
             console.error(err);
         }
@@ -245,7 +257,9 @@ function SelectedProductDetails(props: any) {
                                         </div>
                                     </div>
 
-                                    <button type="button" className="sucessbtn btn btn-success" onClick={addToCart} >Add to Cart</button>
+                                    <button type="button" className="sucessbtn btn btn-success" onClick={()=>{
+                                addToCart();
+                                submitHandler();}} >Add to Cart</button>
 
                                 </div>
                             </div>
@@ -302,7 +316,9 @@ function SelectedProductDetails(props: any) {
                             <button className="btn btn-primary " onClick={countHandler}>+</button>
                             </div>
                         </div>
-                            <button type="button" className="sucessbtn btn btn-success" onClick={addToCart} >Add to Cart</button>
+                            <button type="button" className="sucessbtn btn btn-success" onClick={()=>{
+                                addToCart();
+                                submitHandler();}} >Add to Cart</button>
                             <div className="col-8 description">
                                 <button className="descripbtn" onClick={descriptionHandler}>Description</button>
                                 <button className="descripbtn" onClick={reviewHandler}>Reviews(0)</button>
@@ -376,9 +392,11 @@ const mapStateToProps = (state: any) => {
 };
 
 const mapDispatchToProps = (dispatch: Function) => {
-    return {
-        quantity: (count: any) => dispatch({ type: "itemslength", payload: count }),
-    };
+  return {
+    quantity: (count: any) => dispatch({ type: "itemslength", payload: count }),
+    createOrder: (deliveryDetails: any) => dispatch({ type: 'store_order', payload:deliveryDetails })
+
+  };
 };
 
 export default connect(
