@@ -133,7 +133,7 @@ function SelectedProductDetails(props: any) {
     return (
         /////code for large screens/////
         <div>
-            <div id="productPage" className="productPage">
+            <div id="productPage" className="productPage1">
                 <Breadcrumb id="sub2">
                     <Breadcrumb.Item>
                         <Link className="breadCrumbs" to='/'>Home</Link>
