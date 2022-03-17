@@ -2,11 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './sidebar.scss'
 import { connect } from 'react-redux';
-function Sidebar(props:any) {
+function Sidebar(props: any) {
     const logOut = () => {
         sessionStorage.clear();
         props.setUser(null)
-      }
+    }
 
     function MenuToggler() {
         var mobileMenu = document.getElementById('mobile-menu');
@@ -20,7 +20,7 @@ function Sidebar(props:any) {
 
     return (
         <div className='sidebar-container'>
-            <nav className="sidebar position-fixed d-none d-sm-block">
+            <nav className="sidebar  d-none d-sm-block">
                 <ul className="nav flex-column fixed-left">
                     <li className="nav-item">
                         <a className="btn nav-link text-secondary active" tabIndex={1} role="button" data-mdb-toggle="popover"
@@ -147,9 +147,9 @@ function Sidebar(props:any) {
 const mapStateToProps = (state: any) => { return { ...state } }
 
 const mapDispatchToProps = (dispatch: Function) => {
-  return {
-    setUser: (userDetails: any) => dispatch({ type: 'setUser', payload: userDetails })
-  }
+    return {
+        setUser: (userDetails: any) => dispatch({ type: 'setUser', payload: userDetails })
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);

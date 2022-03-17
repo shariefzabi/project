@@ -1,7 +1,7 @@
 import React from "react";
 import bar from "./asset/group2.png";
 import cross from "./asset/group35.png";
-import triangle from "./asset/triangle.png";
+import triangle from "./asset/Triangle.png";
 import { Link } from "react-router-dom";
 import "./app_header.scss";
 // import BuyNow from "../../modules/ordercreation/components/ordercreation";
@@ -247,7 +247,7 @@ class Header extends React.Component<any, any> {
                     viewBox="0 0 28 34"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
-                    // onClick={(e) => this.getReduxData()}
+                  // onClick={(e) => this.getReduxData()}
                   >
                     <path
                       d="M13.8744 26.539H1.66016L4.21405 7.66235H23.5348L25.7556 23.763"
