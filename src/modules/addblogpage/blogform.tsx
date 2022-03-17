@@ -17,9 +17,9 @@ class Blogform extends React.Component<any, any>{
             id: '',
             // Error Messages
             dicErrMsg: "",
-            topicErrMsg: "",
+            // topicErrMsg: "",
             disFlag: true,
-            topicFlag:"",
+            // topicFlag:"",
             finalFlag:false,finalMsg:''
         }
     }

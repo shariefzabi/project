@@ -39,7 +39,7 @@ function Invoice(props: any) {
                 !props.user &&
                 <p className='text-danger text-center'>please login to your account</p>
             }
-            <div className="col-1">
+            <div className="col-1 mt-5 pt-5">
                 <Sidebar></Sidebar>
             </div>
 
@@ -98,12 +98,12 @@ function Invoice(props: any) {
                                                                     <td>{item["quantity"]}</td>
                                                                     <td>{item["weight"]}</td>
                                                                     <td>
-                                                                        <span className="first-line">&#8377; {item["price"]}</span>
+                                                                        <span className="first-line">&#8377;{data["totalprice"] - data["delliveryprice"]}</span>
                                                                         <span>0.00</span>
                                                                     </td>
-                                                                    <td className="dbl ">&#8377; {item["delprice"]}.00</td>
+                                                                    <td className="dbl ">&#8377; {data["delliveryprice"]}.00</td>
                                                                     <td>
-                                                                        <span className="first-line">&#8377;{item["totalprice"]}</span>
+                                                                        <span className="first-line">&#8377;{data["totalprice"]}</span>
                                                                         <span>0.00</span>
                                                                     </td>
                                                                 </tr>

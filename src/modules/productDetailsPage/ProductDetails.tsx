@@ -111,10 +111,6 @@ function ProductDetails(props: any) {
         setInWhishlist(true)
 
 
-
-
-
-
         product.email = props.state.user.email
         wishlistData = { product }
         try {

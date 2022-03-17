@@ -4,7 +4,7 @@ import './sidebar.scss'
 import { connect } from 'react-redux';
 function Sidebar(props: any) {
     const logOut = () => {
-        sessionStorage.clear();
+        localStorage.clear();
         props.setUser(null)
     }
 
@@ -23,8 +23,8 @@ function Sidebar(props: any) {
             <nav className="sidebar  d-none d-sm-block">
                 <ul className="nav flex-column fixed-left">
                     <li className="nav-item">
-                        <a className="btn nav-link text-secondary active" tabIndex={1} role="button" data-mdb-toggle="popover"
-                            data-mdb-trigger="focus" data-mdb-content="Overview" href="overview.html">
+                        <Link className="btn nav-link text-secondary active" tabIndex={1} role="button" data-mdb-toggle="popover"
+                            data-mdb-trigger="focus" data-mdb-content="Overview" to = "/">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 className="bi bi-house" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd"
@@ -32,7 +32,7 @@ function Sidebar(props: any) {
                                 <path fill-rule="evenodd"
                                     d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
                             </svg>
-                        </a>
+                        </Link>
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link text-secondary" to="/profile">
@@ -44,16 +44,18 @@ function Sidebar(props: any) {
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link text-secondary" href="orders.html">
+
+                        <Link className="nav-link text-secondary" to = "/orders">
+
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-bag"
                                 viewBox="0 0 16 16">
                                 <path
                                     d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
                             </svg>
-                        </a>
+                        </Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link text-secondary" href="invoice.html">
+                        <Link className="nav-link text-secondary" to="/invoice">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 className="bi bi-receipt" viewBox="0 0 16 16">
                                 <path
@@ -61,7 +63,7 @@ function Sidebar(props: any) {
                                 <path
                                     d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z" />
                             </svg>
-                        </a>
+                        </Link>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link text-secondary" href="payments.html">

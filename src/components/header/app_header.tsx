@@ -33,15 +33,17 @@ class Header extends React.Component<any, any> {
     axios
       .get("http://localhost:3005/users/" + this.getToken())
       .then((res) => {
+        // console.log("app header lo:",res.data);
+        
         if (res.data != "null") this.props.setUser(res.data);
         else this.props.setUser(null);
       })
       .catch((err) => console.log("No previous user found"));
   }
-  getToken = () => sessionStorage.getItem("token");
+  getToken = () => localStorage.getItem("token");
 
   logOut = () => {
-    sessionStorage.clear();
+    localStorage.clear();
     this.props.setUser(null);
   };
   handleOpen = () => this.setState({open:true});
@@ -227,7 +229,7 @@ class Header extends React.Component<any, any> {
                 <li>
                   <Link
                     className="dropdown-item"
-                    to="/logout"
+                    to="/"
                     onClick={this.logOut}
                   >
                     Log out
