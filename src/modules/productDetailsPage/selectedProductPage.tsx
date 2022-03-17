@@ -83,7 +83,7 @@ function SelectedProductDetails(props: any) {
     const submitHandler =()=>{
     console.log("qww",product);
     
-        axios.post("http://localhost:3005/orders/orderdetails", {cartproducts:[{...product,price:String(count*parseInt(`${product.price}`))+"Rs"}],email :props.state.user.email})
+        axios.post("http://localhost:3005/orders/orderdetails", {cartproducts:[{...product,price:(count*parseInt(`${product.price}`))}],email :props.state.user.email})
     
         .then((res)=>{console.log("postresponse",res.data)
     
@@ -115,11 +115,9 @@ function SelectedProductDetails(props: any) {
 
     const addtoWishlist = () => {
         setInWhishlist(true);
-        product.email = props.state.user.email
-
-       
+        const email = props.state.user.email
         try {
-            axios.post("http://localhost:3005/orders/wishlists", product);
+            axios.post("http://localhost:3005/orders/wishlists", {product:product,email:email});
         } catch (err) {
             console.error(err);
         }

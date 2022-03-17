@@ -70,7 +70,7 @@ function Orderdisplay(props: any) {
 
                                                 props.orderdetails.cartproducts.map((item: any, ind: any) => {
                                                     console.log("itemss", item);
-                                                    productPrice += Number(item.price.slice(0, item.price.length - 2))
+                                                    productPrice += parseInt(item.price);
                                                     return (
                                                         <ul className="body-list-items m-auto" key={ind}>
                                                             <li className="mt-4">Type: {item.type} <span className="weight-items">Quantity : {item.quantity}</span></li>
