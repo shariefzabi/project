@@ -12,13 +12,27 @@ function Orderdisplay(props: any) {
     let productPrice = 0;
     useEffect(() => {
         // const orderdata={user:{...props.user},props.orders};
-        const orderdata = {} as any;
-        orderdata.email = props.user.email;
-        orderdata.orders = props.orders[0];
-        orderdata.deliveryDetails = props.deliveryDetails;
-        orderdata.date = new Date();
+        
+        // const orderId=props.orderdetails.orderId;
+        // axios.patch("http://localhost:3005/orders/orderdetails/"+{orderId},)
 
     }, [])
+    const updateprice=(price:any)=>{
+        const orderId=props.orderdetails.orderId;
+        props.orderdetails.totalprice=price;
+        props.orderdetails.deliveryprice=2000;
+        price={
+            totalprice: props.orderdetails.totalprice,
+            deliveryprice: props.orderdetails.deliveryprice
+        }
+        const orderid=props.orderdetails.orderId;
+        console.log("props",props.orderdetails);   
+        axios.post("http://localhost:3005/orders/orderdetails/"+orderid,price)
+        .then((res)=>console.log("price obj response",res.data))
+        .catch((err)=>console.log(err)
+        )
+        setPaymentflag(true)
+    }
 
 
     return (
@@ -77,7 +91,7 @@ function Orderdisplay(props: any) {
                             </div>
 
                             <div className="mb-3 text-center">
-                                <button className="btn btn-success continuebutton" onClick={() => setPaymentflag(true)}>Proceed Payment</button>
+                                <button className="btn btn-success continuebutton" onClick={() =>{updateprice(productPrice);}}>Proceed Payment</button>
                             </div>
                         </div>
                     </div>
