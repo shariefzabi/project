@@ -20,7 +20,7 @@ function ProductDetails(props: any) {
     let [sortValue, setSortValue] = useState('default')
     let [id, setId] = useState('')
    
-    let [productId,setProductId]=useState("")
+    // let [productId,setProductId]=useState("")
    
     const navigate = useNavigate();
     // let [isOpened, setIsOpened] = useState('')
@@ -33,10 +33,11 @@ function ProductDetails(props: any) {
             .then(
                 response => {
                     setProducts(response.data)
+                    setLocation(props.state.locName)
                 }
             )
-    }, []);
-    console.log(products)
+    }, [props.state.locName]);
+    
 
     const setLocationHandler = (event: any) => {
         setLocation(event.target.value)
@@ -62,10 +63,10 @@ function ProductDetails(props: any) {
     const setMarketHandler = (event: any) => {
         setMarket(event.target.value)
         if(market==="Cattle Market"){
-            setIsDisplaying(true)
+            setIsDisplaying(!isDisplaying )
 
         }else{
-            setIsDisplaying(false)
+            setIsDisplaying(isDisplaying )
 
         }
         
@@ -179,7 +180,7 @@ function ProductDetails(props: any) {
                             </select>
                         </div>
                         <div className="card-deck row row-cols-lg-3 row-cols-md-3 row-cols-sm-2 row-cols-2">
-                            {!isDisplaying &&
+                            {isDisplaying &&
                                 products.map((product: any, i) => {
                                     if (sortValue === "default") {
                                         if (product.locationName === location) {
