@@ -39,7 +39,7 @@ function Invoice(props: any) {
                 !props.user &&
                 <p className='text-danger text-center'>please login to your account</p>
             }
-            <div className="col-1">
+            <div className="col-1 mt-5 pt-5">
                 <Sidebar></Sidebar>
             </div>
 

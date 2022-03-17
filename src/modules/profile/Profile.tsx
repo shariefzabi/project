@@ -203,11 +203,12 @@ function Profile(props: any) {
         // // resetBlock.style.display = "block"
     }
     return (
-        <div>
-            <Sidebar></Sidebar>
+        <div className='row'>
+            <div className='col-1 mt-5 pt-5'><Sidebar></Sidebar></div>
+            
 
             {props.redux.user &&
-            <div className='profile-container'>
+            <div className='profile-container col-11'>
 
                 
                 <header>
