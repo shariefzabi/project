@@ -6,12 +6,13 @@ import './newStyle.css'
 import { Link } from 'react-router-dom';
 
 const User = () => {
-    const [newUser, setNewUser] = useState(
+    const [newBlog, setNewBlog] = useState(
         {
             topic: '',
             date: Date(),
             photo: '',
-            about: ''
+            about: '',
+            id:''
         }
     );
     const [topicMain, setTopicmain] = useState({
@@ -27,12 +28,12 @@ const User = () => {
         errMsg: ""
     })
     const validate = () => {
-        if (newUser.about == "" || newUser.about.length === 0) {
+        if (newBlog.about == "" || newBlog.about.length === 0) {
             setAboutmain({ errMsg: "Please enter the Description.", flag: true })
             // console.log("errr");
 
         } else {
-            if (newUser.about.length < 150) {
+            if (newBlog.about.length < 150) {
                 setAboutmain({ errMsg: "the Entered the Description in below 150 words ", flag: true })
             }
             else {
@@ -43,11 +44,11 @@ const User = () => {
     }
 
     const validations = () => {
-        if (newUser.topic == undefined || newUser.topic.length === 0) {
+        if (newBlog.topic == undefined || newBlog.topic.length === 0) {
             setTopicmain({ errMsg: "Please enter the title.", flag: "on" })
         } else {
             // let nameReg =  /^([a-zA-Z0-9 ]{4,15})$/
-            if (newUser.topic.length <= 9) {
+            if (newBlog.topic.length <= 9) {
                 setTopicmain({ errMsg: "Accepts Alphabets, space & Min 10 to Max 100 Char", flag: "on" })
             } else {
                 setTopicmain({ errMsg: "", flag: "off" })
@@ -60,40 +61,39 @@ const User = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (topicMain.flag === "off" && newUser.about.length >= 100) {
+        if (topicMain.flag === "off" && newBlog.about.length >= 100) {
             const formData = new FormData();
-            formData.append('photo', newUser.photo);
-            formData.append('date', newUser.date);
-            formData.append('topic', newUser.topic);
-            formData.append('about', newUser.about);
+            formData.append('photo', newBlog.photo);
+            formData.append('date', newBlog.date);
+            formData.append('topic', newBlog.topic);
+            formData.append('about', newBlog.about);
+            formData.append('id', newBlog.id);
 
             axios.post('http://localhost:5000/users/add/', formData)
                 .then(res => {
                     console.log(res);
+                    setNewBlog({
+                        topic: '',
+                        date: Date(),
+                        photo: '',
+                        about: ''
+                    })
+                    setTopicmain({
+                        flag: true,
+                        errMsg: ""
+                    })
+                    setAboutmain({
+                        flag: "",
+                        errMsg: ""
+                    })
+                    setFinal({
+                        flag: true,
+                        errMsg: "Blog Added in Blog List, click here for Blogs"
+                    })
                 })
                 .catch(err => {
                     console.log(err);
                 });
-            setNewUser({
-                topic: '',
-                date: Date(),
-                photo: '',
-                about: ''
-            })
-            setTopicmain({
-                flag: true,
-                errMsg: ""
-            })
-            setAboutmain({
-                flag: "",
-                errMsg: ""
-            })
-            setFinal({
-                flag: true,
-                errMsg: "Blog Added in Blog List, click here for Blogs"
-            })
-
-
         } else {
             validate();
             validations();
@@ -101,13 +101,19 @@ const User = () => {
 
     }
     const handleChange = (e) => {
-        setNewUser({ ...newUser, [e.target.name]: e.target.value });
+        setNewBlog({ ...newBlog, [e.target.name]: e.target.value });
     }
 
     const handlePhoto = (e) => {
-        setNewUser({ ...newUser, photo: e.target.files[0] });
+        setNewBlog({ ...newBlog, photo: e.target.files[0] });
     }
-
+    useEffect (()=>{
+        axios.get("http://localhost:3005/blogs")
+            .then(res => {
+                setNewBlog({ ...newBlog, id: res.data.length +1 })
+                // console.log(newBlog.id);
+            })
+      },[])
     return (<>
 
         <section className="aboutus">
@@ -138,7 +144,7 @@ const User = () => {
                         className='form-control'
                         placeholder="topic"
                         name="topic"
-                        value={newUser.topic}
+                        value={newBlog.topic}
                         onChange={handleChange}
                         onBlur={validations}
                     />
@@ -149,8 +155,8 @@ const User = () => {
                     <label className="me-3 mt-3"><b>Description<span className="text-danger">*</span></b></label>
                     <Editor
                         style={{ height: '320px' }}
-                        value={newUser.about}
-                        onTextChange={(e) => { setNewUser({ ...newUser, about: e.textValue }) }} />
+                        value={newBlog.about}
+                        onTextChange={(e) => { setNewBlog({ ...newBlog, about: e.textValue }) }} />
                     {aboutMain.flag &&
                         <p className="text-danger">{aboutMain.errMsg}</p>}
                 </div>
