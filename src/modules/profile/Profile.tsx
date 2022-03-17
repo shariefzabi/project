@@ -64,7 +64,7 @@ function Profile(props: any) {
                 setfullNameErrMsg("Please enter the Associate Name.")
                 e.target.classList.add("field-error")
             } else {
-                let nameReg = /^([a-zA-Z ]{4,15})$/
+                let nameReg = /^([a-zA-Z0-9 ]){4,15}$/
                 console.log(nameReg.test(fullName));
                 if (!nameReg.test(fullName)) {
                     setfullNameErrMsg("Accepts Alphabets, space & Min 3 to Max 15 Char")
@@ -203,11 +203,12 @@ function Profile(props: any) {
         // // resetBlock.style.display = "block"
     }
     return (
-        <div>
-            <Sidebar></Sidebar>
+        <div className='row'>
+            <div className='col-1 mt-5 pt-5'><Sidebar></Sidebar></div>
+            
 
             {props.redux.user &&
-            <div className='profile-container'>
+            <div className='profile-container col-11'>
 
                 
                 <header>
@@ -248,7 +249,7 @@ function Profile(props: any) {
                                                 </div>
                                                 <div className="my-4 position-relative text-start">
                                                     <label htmlFor="phone">Phone<span className="text-danger">*</span></label>
-                                                    <input maxLength={10}  type="tel" id="phone" name="phone" value={userDetails.phone} onChange={changeHandler} className="form-control " placeholder="Enter Number"
+                                                    <input  type="tel" maxLength={10}  id="phone" name="phone" value={userDetails.phone} onChange={changeHandler} className="form-control " placeholder="Enter Number"
                                                         //   onChange={this.changeHandler}
                                                         onBlur={validations} required />
 
@@ -289,7 +290,7 @@ function Profile(props: any) {
                                                     <button onClick={()=>setflag(true)} type="submit" id="saveButton" className="btn btn-success col-md-4">Save</button>
                                                 </div>
                                                 {flag&&
-                                                <p className='mt-5 text-center text-success'> Profile details Updated sucessfully </p>
+                                                <p className='mt-2 text-center text-success'> Profile details Updated sucessfully </p>
                                                 }
                                             </form>
                                         </section>

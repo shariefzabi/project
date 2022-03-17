@@ -1,9 +1,5 @@
-.model-content{
-
-
-
+.model-content {
   width: 940px !important  ;
-  
 }
 .pop_up_heading {
   color: #2078bf;
@@ -56,29 +52,21 @@
     max-width: 800px !important;
     margin: 1.75rem auto;
   }
-
 }
-.agent_dropDown{
+.agent_dropDown {
   text-decoration: none;
-        font-weight: 400;
-        font-family: Ubuntu;
-        // font-size: 1.375rem;
-        line-height: 1.5rem;
-        color: #838383;
-        ;
-        // display: block;
-        // margin-top: 3.187rem;
-        cursor: pointer;
+  font-weight: 400;
+  font-family: Ubuntu;
+  line-height: 1.5rem;
+  color: #838383;
+  cursor: pointer;
 }
-.agent_dropDown:hover{
-  background-color: #2078BF!important;
+.agent_dropDown:hover {
+  background-color: #2078bf !important;
   color: white !important;
 }
 
-
-
-.css-1t1j96h-MuiPaper-root-MuiDialog-paper
-{
+.css-1t1j96h-MuiPaper-root-MuiDialog-paper {
   overflow-y: visible !important;
   max-height: none !important;
   max-width: none !important;

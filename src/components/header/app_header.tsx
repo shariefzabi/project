@@ -24,6 +24,8 @@ class Header extends React.Component<any, any> {
     axios
       .get("http://localhost:3005/users/" + this.getToken())
       .then((res) => {
+        // console.log("app header lo:",res.data);
+        
         if (res.data != "null") this.props.setUser(res.data);
         else this.props.setUser(null);
       })
@@ -247,7 +249,7 @@ class Header extends React.Component<any, any> {
                     viewBox="0 0 28 34"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
-                    // onClick={(e) => this.getReduxData()}
+                  // onClick={(e) => this.getReduxData()}
                   >
                     <path
                       d="M13.8744 26.539H1.66016L4.21405 7.66235H23.5348L25.7556 23.763"

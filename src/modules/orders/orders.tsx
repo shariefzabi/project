@@ -1,22 +1,23 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import Sidebar from '../profile/sidebar/sidebar';
 import "./orders.scss";
 
 
-function Orders(props:any) {
+function Orders(props: any) {
     const [orders, setOrders] = useState<any[]>([]);
     const [wishlists, setWishlists] = useState<any[]>([]);
     useEffect(() => {
-        const id=props.user._id;
-        axios.get("http://localhost:3005/orders/orderdetails/"+id)
+        const id = props.user.email;
+        axios.get("http://localhost:3005/orders/orderdetails/" + id)
             .then((res) => {
                 console.log("orders display get response", res.data);
                 setOrders(res.data);
             })
             .catch((err) => console.log(err)
             )
-        axios.get("http://localhost:3005/orders/wishlists/"+id)
+        axios.get("http://localhost:3005/orders/wishlists/" + id)
             .then((res) => {
                 console.log("wishlists display get response", res.data);
                 setWishlists(res.data);
@@ -26,7 +27,13 @@ function Orders(props:any) {
     }, [])
 
     return (
+
+        <>
+        <div>
+        <Sidebar> </Sidebar>
+    </div>
         <div className='orders-dashboard'>
+           
             <main id="mainContent">
                 <section className="order-section">
                     <header>
@@ -62,7 +69,8 @@ function Orders(props:any) {
                                     )
                                 })}
 
-                                {/* <tr>
+
+                                    {/* <tr>
                                     <td> <span className="first-line">ID - 900085000597636</span>
                                         <span className="second-line">20/19/2019</span></td>
                                     <td>Bunaji</td>
@@ -125,32 +133,33 @@ function Orders(props:any) {
                                     <td>Out of Stock</td>
                                     <td><button className=' button1 btn btn-danger'>Cancelled Order</button></td>
                                 </tr>*/}
-                                <tr className="line hr-line"></tr>
-                                <tr>
-                                    <td ><span className="wish">Wishlists</span></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td ><span className="orderrowheading">&#x1D14F;</span></td>
-                                </tr>
-                                {wishlists.map((wishlist, i) => {
-                                    return (
-                                        <tr>
-                                            <td> <span className="first-line">ID - {wishlist.productId}</span>
-                                                <span className="second-line">{wishlist.date}</span></td>
-                                            <td>{wishlist.productcode}</td>
-                                            <td>{wishlist.availability}</td>
-                                            <td><button className=' button1 btn btn-primary'>{wishlist.status}</button></td>
-                                        </tr>
-                                    )
-                                })}
+                                    <tr className="line hr-line"></tr>
+                                    <tr>
+                                        <td ><span className="wish">Wishlists</span></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td ><span className="orderrowheading">&#x1D14F;</span></td>
+                                    </tr>
+                                    {wishlists.map((wishlist, i) => {
+                                        return (
+                                            <tr>
+                                                <td> <span className="first-line">ID - {wishlist.productId}</span>
+                                                    <span className="second-line">{wishlist.date}</span></td>
+                                                <td>{wishlist.productcode}</td>
+                                                <td>{wishlist.availability}</td>
+                                                <td><button className=' button1 btn btn-primary'>{wishlist.status}</button></td>
+                                            </tr>
+                                        )
+                                    })}
 
 
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-            </main>
-        </div>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </>
     )
 }
 const mapStateToProps = (state: any) => {
