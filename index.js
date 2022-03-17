@@ -166,7 +166,7 @@ app.get("/orders/productfilters", async (req, res) => {
   let filtercollection = db.collection("productfilters");
 
   filtercollection.find().toArray(function (err, result) {
-    console.log(result);
+    // console.log(result);
 
     res.send(result)
   })
@@ -175,7 +175,7 @@ let products = [];
 app.post("/orders/products",  async(req, res)=> {
   let filterdetails = req.body;
   products = [];
-  console.log("filterdetails:",filterdetails);
+  // console.log("filterdetails:",filterdetails);
   let filtercollection = db.collection("locationdbs");
   filtercollection.find().toArray(function (err,result) {
     filterdetails.forEach((filterdetails)=>{
@@ -213,14 +213,14 @@ app.post("/orders/products",  async(req, res)=> {
     })  
   
     // console.log("result",result);
-    console.log("products",products);
+    // console.log("products",products);
     res.send(products)
   })
 });
 
 app.get("/orders/orderdetails", async (req, res) => {
   let orderdetails = req.body;
-  console.log(orderdetails);
+  // console.log(orderdetails);
   let ordercollection = db.collection("orders");
   ordercollection.find().sort({ "orderId": -1 }).limit(1).toArray(function (err, result) {
     res.send(result)
@@ -229,7 +229,7 @@ app.get("/orders/orderdetails", async (req, res) => {
 //storing order details
 app.post("/orders/orderdetails", function (req, res) {
   let orderdetails = req.body;
-  console.log(orderdetails);
+  console.log("odetails",orderdetails);
   let ordercollection = db.collection("orders");
   ordercollection.count(function (err, result) {
     if (err) console.log(err);
