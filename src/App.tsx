@@ -19,6 +19,7 @@ import Orders from './modules/orders/orders';
 import LogOut from './modules/logOut/logOut';
 // import Popup from './modules/shopping_cart/cartpopup/popup';
 import Shoppingcart from "./modules/shopping_cart/shoppingcart";
+import User from './modules/addblogpage/upload';
 
 
 
@@ -32,6 +33,7 @@ function App() {
           <Routes>
 
             <Route path="/" element={<LandingPage />}></Route>
+            <Route path="/new" element={<User />}></Route>
             <Route path="/aboutus" element={<Aboutus />}></Route>
             <Route path="/blog" element={<Blogtable />}></Route>
             <Route path="/addblogs" element={<Blogform />}></Route>
