@@ -63,7 +63,7 @@ function SelectedProductDetails(props: any) {
  
     
 
-    console.log("whislist", product)
+    
 
 
 
@@ -92,10 +92,18 @@ function SelectedProductDetails(props: any) {
         let items = [count, parseInt(`${product.price}`), product._id]
         props.quantity(items);
     }
+    const pidHandler=(e:any)=>{
+        props.setPID(e.locationName)
+        console.log("props",e.locationName)
+
+    }
 
     const setMarketHandler = (event: any) => {
         setMarket(event.target.value)
         setIsDisplaying(!isDisplaying)
+
+        
+
         // if (market === 'Cattle Market') {
         //     setMarketType('cattleMarkets')
         // } else if (market === 'Sheep Market') {
@@ -103,7 +111,7 @@ function SelectedProductDetails(props: any) {
         // }
     }
 
-    // var serverUrl = "http://localhost:3005/";
+  
     let imagePath = "";
     if (typeof product.image === 'object') {
         imagePath = serverUrl + product.image.filename;
@@ -166,10 +174,14 @@ function SelectedProductDetails(props: any) {
                                         <button className="locbtn bg-white text-start px-3" onClick={setLocationHandler} value={e.locationName}>{e.locationName}</button>
 
                                         <div className="collapse " id={index.slice(1)}>
-                                            <ul>
-                                                <li className="mx-4"><span className="blue mx-2">&#9679;</span><button className="marketButton " onClick={setMarketHandler} value='Cattle Market'>Cattle Market<span>({e.cattleMarkets.length})</span></button></li>
-                                                <li className="mx-4"><span className="blue mx-2">&#9679;</span><button className="marketButton " onClick={setMarketHandler} value='Sheep Market'>Sheep Market<span>({e.sheepMarkets.length})</span></button></li>
-                                            </ul>
+                                        <ul onClick={()=>pidHandler(e)}>
+                                            <Link to="/products">
+                                            <li ><button className="marketButton " ><span className="blue mx-3">&#9679;</span>Cattle Market<span>({e.cattleMarkets.length})</span></button></li>
+                                             <li ><button className="marketButton " ><span className="blue mx-3">&#9679;</span>Sheep Market<span>({e.sheepMarkets.length})</span></button></li>
+                                            
+
+                                            </Link>
+                                              </ul>
                                         </div>
 
                                     </div>
@@ -288,7 +300,9 @@ const mapStateToProps = (state: any) => {
 const mapDispatchToProps = (dispatch: Function) => {
     return {
 
-        quantity: (count: any) => dispatch({ type: 'itemslength', payload: count })
+        quantity: (count: any) => dispatch({ type: 'itemslength', payload: count }),
+        setPID: (pID: any) => dispatch({ type: 'storeProductID', payload: pID })   
+           
     }
 }
 
