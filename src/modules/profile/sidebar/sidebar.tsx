@@ -23,8 +23,8 @@ function Sidebar(props: any) {
             <nav className="sidebar  d-none d-sm-block">
                 <ul className="nav flex-column fixed-left">
                     <li className="nav-item">
-                        <a className="btn nav-link text-secondary active" tabIndex={1} role="button" data-mdb-toggle="popover"
-                            data-mdb-trigger="focus" data-mdb-content="Overview" href="overview.html">
+                        <Link className="btn nav-link text-secondary active" tabIndex={1} role="button" data-mdb-toggle="popover"
+                            data-mdb-trigger="focus" data-mdb-content="Overview" to = "/">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 className="bi bi-house" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd"
@@ -32,7 +32,7 @@ function Sidebar(props: any) {
                                 <path fill-rule="evenodd"
                                     d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
                             </svg>
-                        </a>
+                        </Link>
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link text-secondary" to="/profile">
@@ -44,7 +44,9 @@ function Sidebar(props: any) {
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link text-secondary" to="/orders">
+
+                        <Link className="nav-link text-secondary" to = "/orders">
+
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-bag"
                                 viewBox="0 0 16 16">
                                 <path

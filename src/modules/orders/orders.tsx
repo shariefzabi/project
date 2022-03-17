@@ -27,45 +27,48 @@ function Orders(props: any) {
     }, [])
 
     return (
-        <div className='row'>
-            <div className='col-1 mt-5 pt-5'>
-                <Sidebar />
-            </div>
-            <div className='col-11 orders-dashboard'>
-                <main id="mainContent">
-                    <section className="order-section">
-                        <header>
-                            <div className="headingText">
-                                <h2>Orders </h2>
-                            </div>
-                        </header>
-                        <div className="orders">
-                            <table className="tabcol">
-                                <thead>
-                                    <tr className="rowheader">
-                                        <th>Product Details</th>
-                                        <th>Product Code</th>
-                                        <th>Availability</th>
-                                        <th className="rowheaderstatus">Status <span className="orderrowheading">&#x25BE;</span></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {orders.map((order, i) => {
-                                        return (
-                                            <tr key={i}>
-                                                <td> <span className="first-line">ID - {order.productId}</span>
-                                                    <span className="second-line">{order.date}</span></td>
-                                                <td>{order.productcode}</td>
-                                                <td>{order.availability}</td>
-                                                {order.status !== 'cancelled order' &&
-                                                    <td ><button className=' button1 btn btn-primary'>{order.status}</button></td>
-                                                }
-                                                {order.status === 'cancelled order' &&
-                                                    <td ><button className=' button1 btn btn-danger'>{order.status}</button></td>
-                                                }
-                                            </tr>
-                                        )
-                                    })}
+
+        <>
+        <div>
+        <Sidebar> </Sidebar>
+    </div>
+        <div className='orders-dashboard'>
+           
+            <main id="mainContent">
+                <section className="order-section">
+                    <header>
+                        <div className="headingText">
+                            <h2>Orders </h2>
+                        </div>
+                    </header>
+                    <div className="orders">
+                        <table className="tabcol">
+                            <thead>
+                                <tr className="rowheader">
+                                    <th>Product Details</th>
+                                    <th>Product Code</th>
+                                    <th>Availability</th>
+                                    <th className="rowheaderstatus">Status <span className="orderrowheading">&#x25BE;</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {orders.map((order, i) => {
+                                    return (
+                                        <tr key={i}>
+                                            <td> <span className="first-line">ID - {order.productId}</span>
+                                                <span className="second-line">{order.date}</span></td>
+                                            <td>{order.productcode}</td>
+                                            <td>{order.availability}</td>
+                                            {order.status !== 'cancelled order' &&
+                                                <td ><button className=' button1 btn btn-primary'>{order.status}</button></td>
+                                            }
+                                            {order.status === 'cancelled order' &&
+                                                <td ><button className=' button1 btn btn-danger'>{order.status}</button></td>
+                                            }
+                                        </tr>
+                                    )
+                                })}
+
 
                                     {/* <tr>
                                     <td> <span className="first-line">ID - 900085000597636</span>
@@ -156,7 +159,7 @@ function Orders(props: any) {
                     </section>
                 </main>
             </div>
-        </div>
+        </>
     )
 }
 const mapStateToProps = (state: any) => {
