@@ -118,6 +118,7 @@ function AddProducts(props: any) {
     }
   });
   return (
+    <div className="addproducts-container">
       <main id="mainContent">
         <section className="productSection">
           <div className="header">
@@ -407,6 +408,7 @@ function AddProducts(props: any) {
           </main>
         </section>
       </main>
+      </div>
   );
 }
 
