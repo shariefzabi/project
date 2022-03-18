@@ -17,27 +17,45 @@ function invoiceToggle(e: any) {
 function Invoice(props: any) {
     const [invoiceFlag, setinvoiceFlag] = useState(true);
     let [invoice, setInvoice] = useState([]);
-    // let [totalAmmount, setTotalAmmount] = useState<any>(0)
 
-    let useremail = props.user.email;
+
+    const [userDetails, setUserDetails] = useState(
+        {
+            email: "",
+        })
+
+    let useremail = userDetails.email;
+    console.log("email", useremail);
     useEffect(() => {
-        axios.get("http://localhost:3005/invoicedetails")
-            .then((res) => {
-                let res_data = res.data
-                console.log("invoice data", res_data);
-                let data = res_data.filter(function (item: any) {
-                    return item.email == useremail;
-                })
-                console.log(data);
-                setInvoice(data)
+        const getToken = () => localStorage.getItem("token");
+        axios.get("http://localhost:3005/users/" + getToken())
+            .then(res => {
+                if (res.data != "null") {
+                    props.setUser(res.data)
+                    let { fullName, email } = res.data
+                    setUserDetails({ ...userDetails, email })
+                    if (res.data?.phone != undefined) {
+                        setUserDetails(res.data)
+                    }
+                }
             })
-            .catch(err => {
-                console.log("error: ", err);
-            })
+            .catch(err => console.log("No previous user found")
+            )
         if (props.user == null) {
             setinvoiceFlag(false);
         }
     }, [])
+    useEffect(() => {
+        axios.get("http://localhost:3005/invoicedetails/" + useremail)
+            .then((res) => {
+                let res_data = res.data
+                setInvoice(res_data)
+            })
+            .catch(err => {
+                console.log("error: ", err);
+            })
+    }, [useremail])
+
 
     return (
         <main className="row" id="mainContent">
@@ -48,7 +66,6 @@ function Invoice(props: any) {
             <div className="col-1 mt-5 pt-5">
                 <Sidebar></Sidebar>
             </div>
-
             {props.user && <div className="col-11">
                 < section className="invoiceSection">
                     <header >
@@ -60,7 +77,7 @@ function Invoice(props: any) {
                         <h3 className="invoice-heading invoice-border mb-0">Product Details</h3>
                         {
                             invoice.map((data, ind) => {
-                                console.log("invoicxe data", data)
+                                // console.log("invoicxe data", data)
                                 let cartproducts: any = data["cartproducts"];
                                 let index = "#ind" + ind;
                                 let totalAmmount = 0;
@@ -92,17 +109,11 @@ function Invoice(props: any) {
                                                 </thead>
                                                 {
                                                     cartproducts.map((item: any, ind: any) => {
-                                                        // console.log("item", item);
-                                                        // console.log("items", item["type"]);
-                                                        // let index = "#ind" + ind
-                                                        // let index1 = "ind" + ind
-                                                        console.log("invoicxe data item", item)
-                                                        console.log("type", item["type"]);
-                                                        console.log("total", totalAmmount = totalAmmount + parseInt(item["price"]) + data["delliveryprice"]);
+                                                        // console.log("invoicxe data item", item)
+                                                        // console.log("type", item["type"]);
+                                                        totalAmmount = totalAmmount + parseInt(item["price"]) + data["delliveryprice"];
                                                         // setTotalAmmount(totalAmmount)
-                                                        console.log(typeof (item["price"]));
-
-
+                                                        // console.log(typeof (item["price"]));
                                                         return (
                                                             <tbody key={ind}>
                                                                 <tr className="bRow">
@@ -125,7 +136,6 @@ function Invoice(props: any) {
                                                         )
                                                     })
                                                 }
-
                                                 <tfoot className="tableFooter">
                                                     <tr>
                                                         <td className="right text-end" colSpan={7} >Total Ammount:</td>
@@ -172,4 +182,10 @@ const mapStateToProps = (state: any) => {
         ...state
     }
 }
-export default connect(mapStateToProps)(Invoice);
+
+const mapDispatchToProps = (dispatch: Function) => {
+    return {
+        setUser: (userDetails: any) => dispatch({ type: 'setUser', payload: userDetails })
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Invoice);
