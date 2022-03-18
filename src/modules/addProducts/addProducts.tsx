@@ -93,11 +93,14 @@ function AddProducts(props: any) {
       props.store_products(productDetails);
     }
   });
+  
+  
   const storeProductData = (async (prodData: any) => {
 
     try {
       const response = await axios.post("http://localhost:3005/market/addProducts", prodData);
-      console.log('res', response);
+      axios.post("http://localhost:3005/orders/productfilters",formik.values)
+      // console.log('res', response);
 
     } catch (err) {
 

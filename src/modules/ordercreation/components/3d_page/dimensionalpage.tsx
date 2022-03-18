@@ -28,13 +28,13 @@ function DimesionalPage(props: any) {
                                 }
                                 return (
                                         <div key={i} className="card product-cards m-3 col-3">
-                                            <img className="" src={imgPath} height="150px" width="150px"></img>
-                                            <p>Type:{order.type}</p>
-                                            <p>Breed:{order.breed}</p>
-                                            <p>Product Code:{order.productCode}</p>
-                                            <p>Availability:{order.availability}</p>
-                                            <p>Price:{order.price}</p>
-                                            <p>Weight:{order.weight}</p>
+                                            <img className="" src={imgPath} height="150px" width="100%"></img>
+                                            <p><b>Type:</b>{order.type}</p>
+                                            <p><b>Breed:</b>{order.breed}</p>
+                                            <p><b>Product Code:</b>{order.productCode}</p>
+                                            <p><b>Availability:</b>{order.availability}</p>
+                                            <p><b>Price:</b>{order.price}</p>
+                                            <p><b>Weight:</b>{order.weight}</p>
                                             <button className="btn btn-success add-to-cart-button"  onClick = {() => {setSelectedProduct(order);props.addToCart(order)}}>Add to Cart</button>
                                         </div>
                                    )
@@ -43,7 +43,7 @@ function DimesionalPage(props: any) {
                             
 
                             <div>
-                                <button type="button" className="btn btn-success continuebutton" onClick={() => setDeliveryFlag(true)}>continue</button>
+                                <button type="button" className="btn btn-success text-center continuebutton" onClick={() => setDeliveryFlag(true)}>continue</button>
                             </div>
                         </div>
                     </div>
