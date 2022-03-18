@@ -1,9 +1,10 @@
 import React from "react";
 import arrow from "./assets/img/Icon (1).png";
 import axios from "axios"
-import './assets/styles.css'
+import './assets/blog.css'
 import { Link } from "react-router-dom";
 import { array } from "yargs";
+import { url } from "inspector";
 
 
 
@@ -14,6 +15,7 @@ class Blogtable extends React.Component<any, any> {
             blogs: [],
             arrayOne: [],
             // arrayTwo:[]
+            url:'http://localhost:3005/'
         }
     }
     componentDidMount() {
@@ -28,7 +30,7 @@ class Blogtable extends React.Component<any, any> {
                 let end = this.state.blogs.length
                 // console.log("vlogs",blogs);
 
-                if (this.state.blogs.length > 18) {
+                if (this.state.blogs.length > 18 ) {
                     this.setState({ arrayOne: [this.state.blogs.splice(mid, end), this.state.blogs.splice(0, mid)] })
                 } else {
                     this.setState({ arrayOne: [...this.state.arrayOne , this.state.blogs] })
@@ -67,24 +69,27 @@ class Blogtable extends React.Component<any, any> {
                                     <div className="carousel-item active ">
                                         <div className="main_box">
                                         {e.map((x: any, y: any) => {
-                                            console.log(x);
+                                            // console.log(x);
                                             
                                             if (ind % 5 === 0) {
                                                 ind++
                                                 total++
                                                 // console.log(i);
-                                                return (<Link to={"/blogContent?id="+x.id}><div className="first_box" key={y} >
+                                                return (<Link to={"/blogContent?id="+x.id}><div className="first_box" style={{background: this.state.url +e.photo}}key={x.id} >
                                                     <img className="first_box" src={"http://localhost:3005/"+x.photo} />
                                                     <p className="blog_title">{x.topic}</p>
                                                 </div></Link>)
                                             } else if (ind === 6) {
-                                                ind = 1; return (<Link to={"/blogContent?id="+x.id}><div className="first_box" key={y} >
+                                                ind = 1; 
+                                                return (<Link to={"/blogContent?id="+x.id}><div className="first_box" key={x.id} >
+                                                    <img className="first_box" src={"http://localhost:3005/"+x.photo} />
                                                     <p className="blog_title">{x.topic}</p>
                                                 </div></Link>)
                                             } else {
                                                 // console.log(i);
                                                 ind++
-                                                return (<Link to={"/blogContent?id="+x.id}><div className="second_box" key={y} >
+                                                return (<Link to={"/blogContent?id="+x.id}><div className="second_box" key={x.id} >
+                                                    <img className="second_box" src={"http://localhost:3005/"+x.photo} />
                                                     <p className="blog_title" >{x.topic}</p>
                                                 </div></Link>)
                                             }
@@ -101,17 +106,20 @@ class Blogtable extends React.Component<any, any> {
                                             if (ind % 5 === 0) {
                                                 ind++
                                                 // console.log(i);
-                                                return (<Link to={"/blogContent?id=" + x.id}><div className="first_box" key={y} >
+                                                return (<Link to={"/blogContent?id=" + x.id}><div className="first_box" key={x.id} >
+                                                     <img className="first_box" src={"http://localhost:3005/"+x.photo} />
                                                     <p className="blog_title">{x.title}</p>
                                                 </div></Link>)
                                             } else if (ind === 6) {
-                                                ind = 1; return (<Link to={"/blogContent?id=" + x.id}><div className="first_box" key={y} >
+                                                ind = 1; return (<Link to={"/blogContent?id=" + x.id}><div className="first_box" key={x.id} >
+                                                     <img className="first_box" src={"http://localhost:3005/"+x.photo} />
                                                     <p className="blog_title">{x.title}</p>
                                                 </div></Link>)
                                             } else {
                                                 // console.log(i);
                                                 ind++
-                                                return (<Link to={"/blogContent?id=" + x.id}><div className="second_box" key={y} >
+                                                return (<Link to={"/blogContent?id=" + x.id}><div className="second_box" key={x.id} >
+                                                    <img className="second_box" src={"http://localhost:3005/"+x.photo} />
                                                     <p className="blog_title" >{x.title}</p>
                                                 </div></Link>)
                                             }

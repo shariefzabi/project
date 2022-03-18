@@ -71,7 +71,7 @@ const AddBlog = () => {
 
             axios.post('http://localhost:3005/blogs/add', formData)
                 .then(res => {
-                    console.log(res);
+                    // console.log(res);
                     setNewBlog({
                         topic: '',
                         date: Date(),
@@ -118,7 +118,7 @@ const AddBlog = () => {
         axios.get("http://localhost:3005/blogs")
             .then(res => {
                 setNewBlog({ ...newBlog, id: res.data.length +1 })
-                console.log(newBlog.id);
+                // console.log(newBlog.id);
             })
       },[final])
     return (<>

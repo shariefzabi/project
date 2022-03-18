@@ -71,11 +71,8 @@ h1{
     margin-right: 20px;
     border-radius: 0.625rem;
     cursor: pointer;
-    z-index: -1;
 }
-img{
-    z-index: -1;
-}
+
 .second_box {
     width: 326px !important;
     height: 30rem;
@@ -97,6 +94,7 @@ img{
     font-size: 24px;
 }
 a{
+    height: 30rem;
     text-decoration: none !important;
 }
 .blog_title{
@@ -108,6 +106,9 @@ a{
     padding-top: 50px;
     padding-left:20px;
     text-transform: uppercase;
+    position: relative;
+    top:-516px;
+    left: 16px;
 }
 
 @media(max-width:376px){
@@ -159,6 +160,10 @@ a{
         padding-top: 23px;
         padding-left:14px;
         text-transform: uppercase;
+    }
+    a{
+        height: 7rem;
+        text-decoration: none !important;
     }
 
 } 
