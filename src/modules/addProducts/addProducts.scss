@@ -18,58 +18,56 @@
   height: 2.8125rem;
  }
  .field{
-  margin-top:5%;
+  margin-top:7%;
  }
 }
- .formContainer {
+.formContainer {
   width: 100%;
   margin: 0;
-  padding: 0% 12%;
   background: #FFFFFF;
   box-shadow: 0rem 1.875rem 2.5rem #E3F3FF;
   border-radius: 0.625rem;
   box-sizing: border-box;
- }
- .formContainer p {
-  /* width: 12.553rem; */
-  height: 1.505rem;
-  margin-top: 2.575rem;
-  margin-bottom: 2rem;
-  font-family: ubuntu;
-  font-weight: bold;
-  font-size: 1.125rem;
-  line-height: 1rem;
-  text-align: center;
-  letter-spacing: -0.063rem;
-  display: inline-block;
-  color: #838383;
- }
-
-  form label {
-  color: #838383;
-  font-size: 1.125rem;
-  margin-bottom: 1.625rem;
-  font-family: ubuntu;
-  line-height: 1rem;
-  letter-spacing: 0.025rem;
- }
-
- form button {
-  width: 28%;
-  height: 10%;
-  font-size: 2.25rem;
-  display: block;
-  margin: 5% 35%;
- }
- form input {
-  border: none;
-  outline: none;
-  font-size: 1.125rem;
-  width: 100%;
-  height: 2.3em;
- }
-
-
+ 
+ .productForm {
+  padding: 0% 6%;
+   p {
+    /* width: 12.553rem; */
+    height: 1.505rem;
+    margin-top: 2.575rem;
+    margin-bottom: 2rem;
+    font-family: ubuntu;
+    font-weight: bold;
+    font-size: 1.125rem;
+    line-height: 1rem;
+    text-align: center;
+    letter-spacing: -0.063rem;
+    display: inline-block;
+    color: #838383;
+   }
+   form {
+     label {
+     color: #838383;
+     font-size: 1.125rem;
+     margin-bottom: 1.625rem;
+     font-family: ubuntu;
+     line-height: 1rem;
+     letter-spacing: 0.025rem;
+     }
+     input {
+     outline: none;
+     font-size: 1.125rem;
+     width: 100%;
+     height: 2.3em;
+     }
+     button {
+     width: 28%;
+     height: 10%;
+     margin: 5% 35%;
+     }
+    }
+  }
+}
 @media (min-width: 0px) and (max-width: 440px) {
   .productSection {
     margin-top: 10%;
