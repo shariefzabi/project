@@ -36,7 +36,7 @@ class Blogcontent extends React.Component {
             }
         } else {
             if (this.state.id === 1) {
-                this.setState({ id: this.state.blogs.length - 1 })
+                this.setState({ id: this.state.blogs.length})
             } else {
                 this.setState({ id: this.state.id - 1 })
             }
@@ -62,8 +62,8 @@ class Blogcontent extends React.Component {
                             <div className="main-box">
                                <img className="main-img" src={this.state.url + e.photo} ></img>
                                 <div className="top-buttons">
-                                    <button type="button" className="btn-success left-carousel " onClick={() => { this.carousel(false) }}></button>
-                                    <button type="button" className="btn-primary right-carousel " onClick={() => { this.carousel(true) }}></button>
+                                    <button type="button" className="btn-success left-carousel " onClick={() => { this.carousel(false) }}/>
+                                    <button type="button" className="btn-primary right-carousel " onClick={() => { this.carousel(true) }}/>
                                 </div>
                             </div>
                             <div className="contenttitle">
