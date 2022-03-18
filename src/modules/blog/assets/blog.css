@@ -151,20 +151,30 @@ h1{
         flex-wrap: wrap;
     }
     .first_box,.second_box {
-        width: 100% !important;
+        width: 300px !important;
         height: 5.889rem;
+        margin-left:25px;
         margin-bottom: 0.875rem;
         border-radius: 0.625rem;
+    }
+    .blog-component a{
+        height: 5.889rem;
+        text-decoration: none !important;
+        margin-top: 15px;
+        /* z-index: 10; */
     }
     .blog_title{
         width: 80%;
         margin: 0%;
         font-weight: 700;
         font-size: 10px;
-        color: white;
-        padding-top: 23px;
-        padding-left:14px;
+        color: rgb(194, 219, 243);
+        /* padding-top: 23px; */
+        /* padding-left:14px; */
         text-transform: uppercase;
+        position: relative !important;
+        top:-80px;
+        left: 30px;
     }
     a{
         height: 7rem;
