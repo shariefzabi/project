@@ -2,8 +2,9 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import Deliverydetails from "../deliverydetails/deliverydetails";
-
 import './dimensionalpage.scss'
+
+var serverUrl = "http://localhost:3005/";
 function DimesionalPage(props: any) {
     const [deliveryFlag, setDeliveryFlag] = useState(false);
     const [selectData, setSelectData] = useState([]);
@@ -21,8 +22,13 @@ function DimesionalPage(props: any) {
                             </div>
                             <div className="row ms-5">
                             {props.orders.map((order: any, i: any) => {
+                                let imgPath=" ";
+                                if(typeof(order.image) === 'object'){
+                                    imgPath=serverUrl+order.image.filename;
+                                }
                                 return (
                                         <div key={i} className="card product-cards m-3 col-3">
+                                            <img className="" src={imgPath} height="150px" width="150px"></img>
                                             <p>Type:{order.type}</p>
                                             <p>Breed:{order.breed}</p>
                                             <p>Product Code:{order.productCode}</p>
