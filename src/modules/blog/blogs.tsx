@@ -69,26 +69,26 @@ class Blogtable extends React.Component<any, any> {
                                     <div className="carousel-item active ">
                                         <div className="main_box">
                                         {e.map((x: any, y: any) => {
-                                            console.log(x);
+                                            // console.log(x);
                                             
                                             if (ind % 5 === 0) {
                                                 ind++
                                                 total++
                                                 // console.log(i);
-                                                return (<Link to={"/blogContent?id="+x.id}><div className="first_box" style={{background: this.state.url +e.photo}}key={y} >
+                                                return (<Link to={"/blogContent?id="+x.id}><div className="first_box" style={{background: this.state.url +e.photo}}key={x.id} >
                                                     <img className="first_box" src={"http://localhost:3005/"+x.photo} />
                                                     <p className="blog_title">{x.topic}</p>
                                                 </div></Link>)
                                             } else if (ind === 6) {
                                                 ind = 1; 
-                                                return (<Link to={"/blogContent?id="+x.id}><div className="first_box" key={y} >
+                                                return (<Link to={"/blogContent?id="+x.id}><div className="first_box" key={x.id} >
                                                     <img className="first_box" src={"http://localhost:3005/"+x.photo} />
                                                     <p className="blog_title">{x.topic}</p>
                                                 </div></Link>)
                                             } else {
                                                 // console.log(i);
                                                 ind++
-                                                return (<Link to={"/blogContent?id="+x.id}><div className="second_box" key={y} >
+                                                return (<Link to={"/blogContent?id="+x.id}><div className="second_box" key={x.id} >
                                                     <img className="second_box" src={"http://localhost:3005/"+x.photo} />
                                                     <p className="blog_title" >{x.topic}</p>
                                                 </div></Link>)
@@ -106,19 +106,19 @@ class Blogtable extends React.Component<any, any> {
                                             if (ind % 5 === 0) {
                                                 ind++
                                                 // console.log(i);
-                                                return (<Link to={"/blogContent?id=" + x.id}><div className="first_box" key={y} >
+                                                return (<Link to={"/blogContent?id=" + x.id}><div className="first_box" key={x.id} >
                                                      <img className="first_box" src={"http://localhost:3005/"+x.photo} />
                                                     <p className="blog_title">{x.title}</p>
                                                 </div></Link>)
                                             } else if (ind === 6) {
-                                                ind = 1; return (<Link to={"/blogContent?id=" + x.id}><div className="first_box" key={y} >
+                                                ind = 1; return (<Link to={"/blogContent?id=" + x.id}><div className="first_box" key={x.id} >
                                                      <img className="first_box" src={"http://localhost:3005/"+x.photo} />
                                                     <p className="blog_title">{x.title}</p>
                                                 </div></Link>)
                                             } else {
                                                 // console.log(i);
                                                 ind++
-                                                return (<Link to={"/blogContent?id=" + x.id}><div className="second_box" key={y} >
+                                                return (<Link to={"/blogContent?id=" + x.id}><div className="second_box" key={x.id} >
                                                     <img className="second_box" src={"http://localhost:3005/"+x.photo} />
                                                     <p className="blog_title" >{x.title}</p>
                                                 </div></Link>)

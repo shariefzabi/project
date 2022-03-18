@@ -44,7 +44,7 @@ class Blogcontent extends React.Component {
     }
     render() {
         let { blogs, id } = this.state
-        console.log("blog id :" + id);
+        // console.log("blog id :" + id);
         return (
 
             <div>
