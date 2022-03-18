@@ -36,7 +36,7 @@ mongoClient.connect(dburl, function (err, client) {
 let productCost = require("./paymentMethoddetails/cardDetailsApi.js");
 let cardDetail = require("./paymentMethoddetails/cardDetailsApi.js");
 let invoice = require("./invoice/invoiceapi");
-let InvoiceUniqueID = require("./invoiceUniqueId/invoiceUniqueIDApi");
+// let InvoiceUniqueID = require("./invoiceUniqueId/invoiceUniqueIDApi");
 
 // let invoice = require("./invoice/invoiceapi.js")
 
