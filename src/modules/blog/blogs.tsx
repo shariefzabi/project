@@ -31,7 +31,7 @@ class Blogtable extends React.Component<any, any> {
                 if (this.state.blogs.length > 18) {
                     this.setState({ arrayOne: [this.state.blogs.splice(mid, end), this.state.blogs.splice(0, mid)] })
                 } else {
-                    this.setState({ arrayOne: this.state.blogs })
+                    this.setState({ arrayOne: [...this.state.arrayOne , this.state.blogs] })
                 }
                 // console.log(array); 
             })
@@ -39,7 +39,7 @@ class Blogtable extends React.Component<any, any> {
     render() {
 
         // let len = this.state.blogs.length ;
-        console.log(this.state.arrayOne);
+        // console.log(this.state.arrayOne);
 
         return (
 
@@ -58,6 +58,8 @@ class Blogtable extends React.Component<any, any> {
                     </div>
                     <div className="carousel-inner">
                         {this.state.arrayOne.map((e: any, i: any) => {
+                            // console.log(e);
+                            
                             let ind = 0;
                             let total = 0;
                             if (i === 0) {
@@ -65,22 +67,24 @@ class Blogtable extends React.Component<any, any> {
                                     <div className="carousel-item active ">
                                         <div className="main_box">
                                         {e.map((x: any, y: any) => {
+                                            console.log(x);
+                                            
                                             if (ind % 5 === 0) {
                                                 ind++
                                                 total++
                                                 // console.log(i);
-                                                return (<Link to={"/blogContent?id=" + x.id}><div className="first_box" key={y} >
-                                                    <p className="blog_title">{x.title}</p>
+                                                return (<Link to={"/blogContent?id="+x.id}><div className="first_box" key={y} >
+                                                    <p className="blog_title">{x.topic}</p>
                                                 </div></Link>)
                                             } else if (ind === 6) {
-                                                ind = 1; return (<Link to={"/blogContent?id=" + x.id}><div className="first_box" key={y} >
-                                                    <p className="blog_title">{x.title}</p>
+                                                ind = 1; return (<Link to={"/blogContent?id="+x.id}><div className="first_box" key={y} >
+                                                    <p className="blog_title">{x.topic}</p>
                                                 </div></Link>)
                                             } else {
                                                 // console.log(i);
                                                 ind++
-                                                return (<Link to={"/blogContent?id=" + x.id}><div className="second_box" key={y} >
-                                                    <p className="blog_title" >{x.title}</p>
+                                                return (<Link to={"/blogContent?id="+x.id}><div className="second_box" key={y} >
+                                                    <p className="blog_title" >{x.topic}</p>
                                                 </div></Link>)
                                             }
                                         })
