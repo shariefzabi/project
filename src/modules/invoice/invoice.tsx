@@ -83,7 +83,7 @@ function Invoice(props: any) {
                                 let totalAmmount = 0;
                                 return (
                                     <div key={ind} >
-                                        <p className="invoice-id invoice-border">ID - {data["orderId"]}<img data-bs-toggle="collapse" data-bs-target={index} aria-expanded="false" aria-controls="collapseExample" className="text-end" id={`${ind}`} onClick={(e) => invoiceToggle(e)} src={upArrow}></img></p>
+                                        <p className="invoice-id invoice-border">ID - {data["invoiceId"]}<img data-bs-toggle="collapse" data-bs-target={index} aria-expanded="false" aria-controls="collapseExample" className="text-end" id={`${ind}`} onClick={(e) => invoiceToggle(e)} src={upArrow}></img></p>
                                         <div className=" invoice-border table collapse mb-0" id={index.slice(1)}>
                                             <table className="mt-4" key={ind}>
                                                 <thead>
