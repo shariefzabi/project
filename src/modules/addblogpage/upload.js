@@ -27,6 +27,7 @@ const AddBlog = () => {
         flag: false,
         errMsg: ""
     })
+    const [counter,setCounter]=useState(0)
     const validate = () => {
         if (newBlog.about == "" || newBlog.about.length === 0) {
             setAboutmain({ errMsg: "Please enter the Description.", flag: true })
@@ -90,6 +91,7 @@ const AddBlog = () => {
                         flag: true,
                         errMsg: "Blog Added in Blog List, click here for Blogs"
                     })
+                    setCounter(counter+1)
                 })
                 .catch(err => {
                     console.log(err);
@@ -120,7 +122,8 @@ const AddBlog = () => {
                 setNewBlog({ ...newBlog, id: res.data.length +1 })
                 // console.log(newBlog.id);
             })
-      },[final])
+      },[counter])
+    //   console.log(newBlog.id);
     return (<>
 
         <section className="aboutus">
