@@ -137,7 +137,8 @@ class Cart extends React.Component<any, any> {
                   <td className="detail">
                     {this.props.redux.quantity[0] *
                       this.props.redux.quantity[1]}
-                    {this.props.redux.quantity[1] * this.props.redux.quantity[0] }
+                    {this.props.redux.quantity[1] *
+                      this.props.redux.quantity[0]}
                     {/* // this.props.redux.quantity[]} */}
                     Rs
                   </td>
@@ -153,20 +154,22 @@ class Cart extends React.Component<any, any> {
           </div>
 
           <div className="container">
-
-            <button className=" btn btn-success check_btn" onClick={this.handleOpen}>
-           
+            <button
+              className=" btn btn-success check_btn"
+              onClick={this.handleOpen}
+            >
               Proceed Checkout
             </button>
-            <Dialog
-        open={this.state.open}
-        onClose={this.handleClose}
-        aria-describedby="modal-modal-description"
-        sx={{ overflow: 'auto'}}
-
-      >
-        <Orderdisplay></Orderdisplay>
-      </Dialog>
+            <div className="pay">
+              <Dialog
+                open={this.state.open}
+                onClose={this.handleClose}
+                aria-describedby="modal-modal-description"
+                sx={{ overflow: "auto" }}
+              >
+                <Orderdisplay></Orderdisplay>
+              </Dialog>
+            </div>
           </div>
         </main>
       </>
