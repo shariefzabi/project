@@ -141,7 +141,7 @@ router.post("/addProducts", upload.single('fileData'), async (req, res) => {
     // console.log('req', req.body);
     let prodData = req.body;
     let { file } = req;
-
+    
     try {
         console.log('productData', prodData);
         cattleMarketData =

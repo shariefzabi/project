@@ -178,10 +178,31 @@ app.get("/orders/productfilters", async (req, res) => {
 
   filtercollection.find().toArray(function (err, result) {
     // console.log(result);
-
     res.send(result)
   })
 });
+app.post("/orders/productfilters",async(req,res)=>{
+  let filterdetails= req.body;
+  // console.log("formik",filterdetails);
+  let filtercollection = db.collection("productfilters");
+  filtercollection.find().toArray(function (err, result){
+    console.log(result);
+    if(!result[0].Types.includes(filterdetails.type)){
+      result[0].Types.push(filterdetails.type);
+    }
+    if(filterdetails.type==="Cow"){
+      if(!result[0].cowbreed.includes(filterdetails.breed))
+          result[0].cowbreed.push(filterdetails.breed)
+    }
+    if(filterdetails.type==="Sheep"){
+      if(!result[0].goatbreed.includes(filterdetails.breed))
+          result[0].goatbreed.push(filterdetails.breed)
+    }
+    filtercollection.updateOne({},{$set:{Types:result[0].Types,cowbreed:result[0].cowbreed,goatbreed:result[0].goatbreed}})
+  })
+  // if(filterdetails.type)
+
+})
 let products = [];
 app.post("/orders/products", async (req, res) => {
   let filterdetails = req.body;
@@ -278,11 +299,11 @@ app.post("/orders/orderdetails/:orderId", async (req, res) => {
 
 
 //fetching order details based on username
-app.get('/orders/orderdetails/:uname', async (req, res) => {
+app.get('/orders/orderdetails/:token', async (req, res) => {
   let { params } = req
   console.log(params.uname);
   let ordercollection = db.collection("orders");
-  ordercollection.find({ "email": params.uname }).toArray(function (err, result) {
+  ordercollection.find({ "token": params.token }).toArray(function (err, result) {
     if (err) console.log(err);
     else res.send(result)
   })
@@ -291,7 +312,7 @@ app.get('/orders/orderdetails/:uname', async (req, res) => {
 //storing wishlists
 app.post("/orders/wishlists", function (req, res) {
   let wishlistdetails = req.body;
-  // console.log(wishlistdetails);
+  console.log(wishlistdetails);
   let wishlistcollection = db.collection("wishlists");
   wishlistcollection.count(function (err, result) {
     if (err) console.log(err);
@@ -322,11 +343,11 @@ app.delete("/orders/wishlists/:id", function (req, res) {
 })
 
 //fetching whishlist based on username
-app.get('/orders/wishlists/:uname', async (req, res) => {
+app.get('/orders/wishlists/:token', async (req, res) => {
   let { params } = req
   // console.log("email",params.uname);
   let ordercollection = db.collection("wishlists");
-  ordercollection.find({ email: params.uname }).toArray(function (err, result) {
+  ordercollection.find({token: params.token}).toArray(function (err, result) {
     if (err) console.log(err);
     else {
       res.send(result);
