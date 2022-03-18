@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 router.use(express.json())
 const CardData = require("./carddetails.cjs");
-const paymentStatus = require("./paymentSchema.cjs");
+// const paymentStatus = require("./paymentSchema.cjs");
 
 // router.get('/cost/:id', function (req, res) {
 //     let { params } = req;
@@ -69,21 +69,21 @@ router.post("/details", async (req, res) => {
     }
 });
 
-router.post("/status", async (req, res) => {
+// router.post("/status", async (req, res) => {
     
-    try {
+//     try {
     
-        const myPaymentStatus = new paymentStatus(req.body);
-        await paymentStatus.create(myPaymentStatus);
-        res.send(myPaymentStatus);
-        console.log(myPaymentStatus)
-    } catch (err) {
-        res.send({ message: err });
-    }
+//         const myPaymentStatus = new paymentStatus(req.body);
+//         await paymentStatus.create(myPaymentStatus);
+//         res.send(myPaymentStatus);
+//         console.log(myPaymentStatus)
+//     } catch (err) {
+//         res.send({ message: err });
+//     }
     
 
     
-})
+// })
     
 
 

@@ -41,19 +41,19 @@ let InvoiceUniqueID = require("./invoiceUniqueId/invoiceUniqueIDApi");
 // let invoice = require("./invoice/invoiceapi.js")
 
 app.use("/card", cardDetail);
-app.use("/invoicedetails", invoice);
-app.use("/invoice", InvoiceUniqueID);
-app.use("/payment", cardDetail);
+// app.use("/invoicedetails", invoice);
+// app.use("/invoice", InvoiceUniqueID);
+// app.use("/payment", cardDetail);
 
 app.post("/paymentstatus", async (req, res) => {
-  let { paymentStatus, date } = req.body;
+  let { paymentStatus, date, invoiceId } = req.body;
   console.log(req.body);
   let ordercollection = db.collection("orders");
   ordercollection.find().sort({ _id: -1 }).limit(1).toArray(function (err, result) {
     orderid = result[0]["orderId"]
     console.log(orderid)
 
-    ordercollection.updateOne({ orderId: orderid }, { $set: { date: date, paymentStatus: paymentStatus } })
+    ordercollection.updateOne({ orderId: orderid }, { $set: { date: date, paymentStatus: paymentStatus, invoiceId: invoiceId } })
     res.send("paymentstatus updated")
 
   })
