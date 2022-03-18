@@ -66,7 +66,7 @@ function Profile(props: any) {
     const validations = (e: any) => {
         if (e.target.name === 'fullName') {
             let fullName = e.target.value;
-            let fullNameErrMsg = '';
+
             if (fullName == undefined || fullName.length === 0) {
                 setfullNameErrMsg("Please enter the Associate Name.")
                 e.target.classList.add("field-error")
@@ -91,7 +91,7 @@ function Profile(props: any) {
         //  phone no
         if (e.target.name === 'phone') {
             let phone = e.target.value;
-            let phoneErrMsg = '';
+
             if (phone == undefined || phone.length === 0) {
                 setphoneErrMsg("Please enter the phone number.")
 
@@ -111,7 +111,7 @@ function Profile(props: any) {
         // email
         if (e.target.name === 'email') {
             let email = e.target.value;
-            let emailErrMsg = '';
+
             if (email == undefined || email.length === 0) {
                 setemailErrMsg("Please enter the email.")
 
@@ -133,7 +133,7 @@ function Profile(props: any) {
 
         if (e.target.name === 'location') {
             let location = e.target.value;
-            let locationErrMsg = '';
+
             if (location == undefined || location.length === 0) {
                 setlocationErrMsg("Please enter the location.")
 
@@ -155,7 +155,6 @@ function Profile(props: any) {
 
         if (e.target.name === 'zipCode') {
             let zipcode = e.target.value;
-            let zipcodeErrMsg = '';
             if (zipcode == undefined || zipcode.length === 0) {
                 setzipcodeErrMsg("Please enter the zipcode.")
 
@@ -176,7 +175,7 @@ function Profile(props: any) {
         // address
         if (e.target.name === 'address') {
             let address = e.target.value;
-            let addressErrMsg = '';
+
             if (address == undefined || address.length === 0) {
                 setaddressErrMsg("Please enter the address.")
 
@@ -309,13 +308,15 @@ function Profile(props: any) {
                         </section>
                     </main>
                 }
-            </div >
-            }
-            {!props.redux.user && <div className='profile-err mt-5 col-11 text-center'><h2 className='text-danger'>** Please login and try again **</h2>
-                </div>}
                 {displayReset &&
                                 <Reset setdisplayReset={setdisplayReset}></Reset>
                                 }
+            </div >
+            }
+            
+            {!props.redux.user && <div className='profile-err mt-5 col-11 text-center'><h2 className='text-danger'>** Please login and try again **</h2>
+                </div>}
+                
 
         </div>
     )
