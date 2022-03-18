@@ -3,80 +3,81 @@ import "./assets/blogContent.css"
 import axios from "axios"
 import Comment from "../comments/comments"
 import Form from "../comment_form/form"
-// import { connect } from "react-redux";
-// import { URLSearchParams } from 'Url';
 
-
-
-// import { Form } from "formik"
-
-class Blogcontent extends React.Component{
+class Blogcontent extends React.Component {
     constructor() {
         super()
         this.state = {
-            blogs:[],
+            blogs: [],
             id: 0,
-
+            url:'http://localhost:3005/'
         }
-
     }
-    componentDidMount(){
+    componentDidMount() {
         axios.get("http://localhost:3005/blogs")
             .then(res => {
                 // console.log(res.data);
-                this.setState({ blogs:res.data })
+                this.setState({ blogs: res.data })
                 // console.log(this.state.blogs);
             })
-            let params = (new URL(document.location)).searchParams;
-            // console.log(params.get('id'));
-            const id = params.get('id');
-            const num =+ id
-            this.setState({id : num})
-    }
-    carousel(v){
         let params = (new URL(document.location)).searchParams;
-        if(v){
-            if(this.state.id === this.state.blogs.length -1 ){
-                this.setState({id:0})
-            }else{
-                this.setState({id:this.state.id + 1})
+        // console.log(params.get('id'));
+        const id = params.get('id');
+        const num = + id
+        this.setState({ id: num })
+    }
+    carousel(v) {
+        // let params = (new URL(document.location)).searchParams;
+        if (v) {
+            if (this.state.id === this.state.blogs.length - 1) {
+                this.setState({ id: 0 })
+            } else {
+                this.setState({ id: this.state.id + 1 })
             }
-        }else{
-            if(this.state.id === 0 ){
-                this.setState({id:this.state.blogs.length -1})
-            }else{
-                this.setState({id:this.state.id -1})
+        } else {
+            if (this.state.id === 0) {
+                this.setState({ id: this.state.blogs.length - 1 })
+            } else {
+                this.setState({ id: this.state.id - 1 })
             }
         }
     }
     render() {
-        let {blogs, id}=this.state
-        console.log("blog id :"+id);
+        let { blogs, id } = this.state
+        console.log("blog id :" + id);
         return (
 
-            <div> 
-                <div className="main-box">
+            <div>
+                {/* <div className="main-box">
                     <div className="top-buttons">
-                        <button type="button" className="btn-success left-carousel " onClick={()=>{this.carousel(false)}}></button>
-                        <button type="button" className="btn-primary right-carousel " onClick={()=>{this.carousel(true)}}></button>
+                        <button type="button" className="btn-success left-carousel " onClick={() => { this.carousel(false) }}></button>
+                        <button type="button" className="btn-primary right-carousel " onClick={() => { this.carousel(true) }}></button>
                     </div>
-                </div>
-               {blogs.map((e,i)=>{
-                   if(e.id == id)
-                           
-                           return(<div key={i}>
-                           <div className="contenttitle">
-                                <p className="title">{e.title}</p>
-                                <p className="blogdate">{e.date.slice(0,10)}</p> 
-                           </div>
-                           <div className="discription">
-                            <p className="txt">{e.about}</p>
-                           </div>
-                           </div>)
-                       
-                   }
-               )}
-            
+                </div> */}
+                {blogs.map((e, i) => {
+                    if (e.id == id)
+
+                        return (
+                        <div key={i}>
+                            <div className="main-box">
+                               <img className="main-img" src={this.state.url + e.photo} />
+                                <div className="top-buttons">
+                                    <button type="button" className="btn-success left-carousel " onClick={() => { this.carousel(false) }}></button>
+                                    <button type="button" className="btn-primary right-carousel " onClick={() => { this.carousel(true) }}></button>
+                                </div>
+                            </div>
+                            <div className="contenttitle">
+                                <p className="title">{e.topic}</p>
+                                <p className="blogdate">{e.date.slice(0, 10)}</p>
+                            </div>
+                            <div className="discription">
+                                <p className="txt">{e.about}</p>
+                            </div>
+                        </div>)
+
+                }
+                )}
+
                 {/* <section>
                     <div className="contenttitle">
                         <p className="title1">THE MERIT OF RUNNING AN AGRICULTURAL BUSINESS IN NIGERIA 2019</p>
@@ -121,7 +122,7 @@ class Blogcontent extends React.Component{
         )
     }
 
-    
+
 }
-  export default (Blogcontent);
+export default (Blogcontent);
 // export default Blogcontent;

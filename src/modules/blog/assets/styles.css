@@ -61,7 +61,7 @@ h1{
 }
 .first_box{
     /* background-color: black; */
-    background-image: url('./img/Rectangle.png');
+    /* background-image: url('./img/Rectangle.png'); */
     background-repeat: no-repeat;
     background-size: cover;
     display: inline-block;
@@ -71,6 +71,10 @@ h1{
     margin-right: 20px;
     border-radius: 0.625rem;
     cursor: pointer;
+    z-index: -1;
+}
+img{
+    z-index: -1;
 }
 .second_box {
     width: 326px !important;

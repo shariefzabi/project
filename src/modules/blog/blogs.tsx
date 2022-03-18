@@ -74,6 +74,7 @@ class Blogtable extends React.Component<any, any> {
                                                 total++
                                                 // console.log(i);
                                                 return (<Link to={"/blogContent?id="+x.id}><div className="first_box" key={y} >
+                                                    <img className="first_box" src={"http://localhost:3005/"+x.photo} />
                                                     <p className="blog_title">{x.topic}</p>
                                                 </div></Link>)
                                             } else if (ind === 6) {

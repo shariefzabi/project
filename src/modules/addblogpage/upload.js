@@ -114,6 +114,13 @@ const AddBlog = () => {
                 // console.log(newBlog.id);
             })
       },[])
+      useEffect (()=>{
+        axios.get("http://localhost:3005/blogs")
+            .then(res => {
+                setNewBlog({ ...newBlog, id: res.data.length +1 })
+                console.log(newBlog.id);
+            })
+      },[final])
     return (<>
 
         <section className="aboutus">
