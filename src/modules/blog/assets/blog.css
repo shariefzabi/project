@@ -62,8 +62,8 @@ h1{
 }
 .carousel-indicators{
     margin-left: 49% !important;
-    margin-top: 30px !important;
-    margin-bottom: 0% !important;
+    /* margin-top: 30px !important; */
+    /* margin-bottom: 0% !important; */
     background-color: rgba(127, 214, 255, 0.808);
     width: 65px !important;
     border-radius: 5px;
@@ -123,6 +123,16 @@ h1{
         background-size:cover;
         height: 10.625rem;
      }
+     .carousel-indicators{
+        margin-left: 45% !important;
+        /* margin-top: 30px !important; */
+        /* margin-bottom: 0% !important; */
+        background-color: rgba(127, 214, 255, 0.808);
+        width: 65px !important;
+        border-radius: 5px;
+        position: absolute;
+        bottom: -81px !important;
+    }
      h1{
         font-weight:700;
         font-size:1.25rem;
