@@ -30,12 +30,12 @@ class Blogcontent extends React.Component {
         // let params = (new URL(document.location)).searchParams;
         if (v) {
             if (this.state.id === this.state.blogs.length - 1) {
-                this.setState({ id: 0 })
+                this.setState({ id: 1 })
             } else {
                 this.setState({ id: this.state.id + 1 })
             }
         } else {
-            if (this.state.id === 0) {
+            if (this.state.id === 1) {
                 this.setState({ id: this.state.blogs.length - 1 })
             } else {
                 this.setState({ id: this.state.id - 1 })
@@ -60,7 +60,7 @@ class Blogcontent extends React.Component {
                         return (
                         <div key={i}>
                             <div className="main-box">
-                               <img className="main-img" src={this.state.url + e.photo} />
+                               <img className="main-img" src={this.state.url + e.photo} ></img>
                                 <div className="top-buttons">
                                     <button type="button" className="btn-success left-carousel " onClick={() => { this.carousel(false) }}></button>
                                     <button type="button" className="btn-primary right-carousel " onClick={() => { this.carousel(true) }}></button>
