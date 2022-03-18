@@ -388,7 +388,7 @@ app.use("/agents", agentAPI);
 const Comments = require("./comments/comschema.cjs");
 require('dotenv').config();
 const blogRouter = require('./blogs/blogs');
-app.use('/blog', blogRouter);
+app.use('/blogs', blogRouter);
 
 
 
