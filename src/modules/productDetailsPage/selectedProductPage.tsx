@@ -114,13 +114,14 @@ function SelectedProductDetails(props: any) {
   
 
     const addtoWishlist = () => {
-        setInWhishlist(true);
+        
         const email = props.state.user.email
         try {
             axios.post("http://localhost:3005/orders/wishlists", {product:product,email:email});
         } catch (err) {
             console.error(err);
         }
+        setInWhishlist(true);
     };
 
     //wishlist delete
