@@ -384,35 +384,17 @@ app.use("/agents", agentAPI);
 //team 6 end
 
 // team 7
-const Blog = require("./Blogs/schema.cjs");
-const Comments = require("./Blogs/comschema.cjs");
 
+const Comments = require("./comments/comschema.cjs");
+require('dotenv').config();
+const blogRouter = require('./blogs/blogs');
+app.use('/blogs', blogRouter);
 
 app.get("/comments/:id", async (req, res) => {
   try {
     let { params } = req;
     console.log(Comments.find({ "id": params.id }));
     const data = await Comments.find({ "id": params.id });
-    res.json(data);
-  } catch (err) {
-    res.send("Error" + err);
-  }
-});
-// app.get("/blogs/:id", async (req, res) => {
-//   try {
-//     let { params } = req;
-//     // console.log(params.id);
-//     const data = await Blog.find({ "id": params.id });
-//     res.json(data);
-//   } catch (err) {
-//     res.send("Error" + err);
-//   }
-// });
-app.get("/blogs/:id", async (req, res) => {
-  try {
-    let { params } = req;
-    console.log(Blog.find({ "id": params.id }));
-    const data = await Blog.find({ "id": params.id });
     res.json(data);
   } catch (err) {
     res.send("Error" + err);
@@ -426,33 +408,6 @@ app.get("/comments", async (req, res) => {
   } catch (err) {
     res.send("Error" + err);
   }
-});
-app.get("/blogs", async (req, res) => {
-  try {
-    const data = await Blog.find({});
-    res.json(data);
-  } catch (err) {
-    res.send("Error" + err);
-  }
-});
-
-
-// app.post("/addblogs", async (req, res) => {
-//   const { blogs } = req.body;
-//   try {
-//     const myBlog = new Blog({ blogs });
-//     await Blog.create(myBlog);
-//     res.send(myBlog);
-//   } catch (err) {
-//     res.send({ message: err });
-//   }
-// });
-
-app.post("/addblogs", function (req, res) {
-  console.log("adding blog", req.body);
-  let blogDb = db.collection("blogs");
-  blogDb.insert(req.body);
-  res.send("success");
 });
 app.post("/addcomment", function (req, res) {
   console.log("adding comment", req.body);
