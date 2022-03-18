@@ -52,17 +52,19 @@ app.post("/paymentstatus", async (req, res) => {
   ordercollection.find().sort({ _id: -1 }).limit(1).toArray(function (err, result) {
     orderid = result[0]["orderId"]
     console.log(orderid)
-    
+
     ordercollection.updateOne({ orderId: orderid }, { $set: { date: date, paymentStatus: paymentStatus } })
     res.send("paymentstatus updated")
 
   })
 });
-app.get("/invoicedetails", async (req, res) => {
-  let orderdetails = req.body;
-  console.log(orderdetails);
+
+app.get("/invoicedetails/:useremail", async (req, res) => {
+  let { useremail } = req.params;
+  console.log(useremail);
+
   let ordercollection = db.collection("orders");
-  ordercollection.find({ paymentStatus: "payment success" }).sort({ "orderId": -1 }).toArray(function (err, result) {
+  ordercollection.find({ paymentStatus: "payment success", email: useremail }).sort({ "_id": -1 }).toArray(function (err, result) {
     res.send(result)
   })
 });
@@ -324,7 +326,7 @@ app.get('/orders/wishlists/:uname', async (req, res) => {
   let { params } = req
   // console.log("email",params.uname);
   let ordercollection = db.collection("wishlists");
-  ordercollection.find({email: params.uname}).toArray(function (err, result) {
+  ordercollection.find({ email: params.uname }).toArray(function (err, result) {
     if (err) console.log(err);
     else {
       res.send(result);
