@@ -5,7 +5,7 @@ import 'primereact/resources/primereact.min.css'
 import './newStyle.css'
 import { Link } from 'react-router-dom';
 
-const User = () => {
+const AddBlog = () => {
     const [newBlog, setNewBlog] = useState(
         {
             topic: '',
@@ -69,7 +69,7 @@ const User = () => {
             formData.append('about', newBlog.about);
             formData.append('id', newBlog.id);
 
-            axios.post('http://localhost:5000/users/add/', formData)
+            axios.post('http://localhost:3005/blogs/add', formData)
                 .then(res => {
                     console.log(res);
                     setNewBlog({
@@ -174,4 +174,4 @@ const User = () => {
     );
 }
 
-export default User;
+export default AddBlog;
