@@ -1,3 +1,4 @@
+
 @font-face {
     font-family: ubuntu;
     src: url("./Fonts/Ubuntu/Ubuntu-Regular.ttf");
@@ -93,7 +94,7 @@ h1{
     color: #2078BF;
     font-size: 24px;
 }
-a{
+.blog-component a{
     height: 30rem;
     text-decoration: none !important;
 }

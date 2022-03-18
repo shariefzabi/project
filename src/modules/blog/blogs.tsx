@@ -45,7 +45,7 @@ class Blogtable extends React.Component<any, any> {
 
         return (
 
-            <div>
+            <div className="blog-component">
                 <section className="blog text-center">
                     <h1 >Blog</h1>
                     <span className="aboutus-content ">Home/Blog</span>
