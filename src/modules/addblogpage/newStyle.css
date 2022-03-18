@@ -38,3 +38,25 @@
     margin-bottom:3rem;
     /* margin-right: 50%; */
 }
+
+@media(max-width:731px){
+
+    .aboutus{
+
+        background-image: url("./img/Rectangle.png");
+        width: 100%;
+        background-size:cover;
+        height: 20.75rem;
+    }
+
+    .aboutus h1{
+        font-weight:400;
+        font-size:1.5rem;
+        color:black;
+        line-height:4.875rem;
+        padding-top: 6.4375rem;
+     /* padding-left: 23.562rem; */
+        padding-bottom: 0rem;
+     }
+
+}

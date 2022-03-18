@@ -31,8 +31,8 @@
     height: 151px;
     border-radius: 0.5px;
     position: absolute;
-    top: 400px;
-    left: 1278px; 
+    top: 70%;
+    left: 80%; 
 }
 .right-carousel{
     width: 115.5px;
@@ -135,27 +135,31 @@
     }
     .main-box{
         width: 376px;
-        height: 170px;
-        background-image: url('./rectangle.png');
-        background-size: cover;
+        height: 70px;
+        /* background-image: url('./rectangle.png');
+        background-size: cover; */
+    }
+    .main-img{
+        width:20rem;
+        height:20rem;
     }
      .contenttitle{
         width: 222px;
         height: auto;
         margin-left: 42px;
-        margin-top: 27px ;
+        margin-top: 10rem;
         /* top: 258px;
         left: 20px; */   
     }
     .title{
-        width: 222px;
-        height: auto;
+        width: 500px;
+        height: 2rem;
         /* top: 258px;
         left: 42px; */
         color:#2078BF;
         font-weight: 700 bold;
         font-size: 10px;
-        margin-top: 0px; 
+        margin-top: 20rem; 
     }
     .blogdate{
         width: 33px;
@@ -164,9 +168,10 @@
         left: 42px; */
         font-size: 6px;
         line-height: 7px;
+        margin-top: 0rem; 
     }
     .discription{
-        margin-left:44px;
+        margin-left:20px;
         margin-top:19px;
         width:285px;
         /* margin-right:13.3125rem; */
@@ -181,8 +186,33 @@
         font-weight: 400;
         line-height: 13px;
         letter-spacing: 0px;
-        text-align: left;
+        text-align: center;
     }
+    .top-buttons{
+        width: 15px !important;
+        height: 30px !important;
+        border-radius: 0.5px;
+        /* position: absolute; */
+        top: 50%;
+        left: 80%; 
+    }
+    .right-carousel{
+        width: 45.5px;
+        height: 25.81px;
+        background-image: url('./rightArrow.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 0.5px;
+    }
+    .left-carousel{
+        width: 45.5px;
+        height: 25.81px;
+        background-image: url('./leftArrow.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 0.5px;
+    }
+   
 
 }
 
