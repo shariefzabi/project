@@ -76,20 +76,20 @@ class Blogtable extends React.Component<any, any> {
                                                 total++
                                                 // console.log(i);
                                                 return (<Link to={"/blogContent?id="+x.id}><div className="first_box" style={{background: this.state.url +e.photo}}key={x.id} >
-                                                    <img className="first_box" src={"http://localhost:3005/"+x.photo} />
+                                                    <img className="blogImg" src={"http://localhost:3005/"+x.photo} />
                                                     <p className="blog_title">{x.topic}</p>
                                                 </div></Link>)
                                             } else if (ind === 6) {
                                                 ind = 1; 
                                                 return (<Link to={"/blogContent?id="+x.id}><div className="first_box" key={x.id} >
-                                                    <img className="first_box" src={"http://localhost:3005/"+x.photo} />
+                                                    <img className="blogImg" src={"http://localhost:3005/"+x.photo} />
                                                     <p className="blog_title">{x.topic}</p>
                                                 </div></Link>)
                                             } else {
                                                 // console.log(i);
                                                 ind++
-                                                return (<Link to={"/blogContent?id="+x.id}><div className="second_box" key={x.id} >
-                                                    <img className="second_box" src={"http://localhost:3005/"+x.photo} />
+                                                return (<Link to={"/blogContent?id=" + x.id}><div className="second_box" key={x.id} >
+                                                    <img className="blogImg"  src={"http://localhost:3005/"+x.photo} />
                                                     <p className="blog_title" >{x.topic}</p>
                                                 </div></Link>)
                                             }
@@ -108,19 +108,19 @@ class Blogtable extends React.Component<any, any> {
                                                 // console.log(i);
                                                 return (<Link to={"/blogContent?id=" + x.id}><div className="first_box" key={x.id} >
                                                      <img className="first_box" src={"http://localhost:3005/"+x.photo} />
-                                                    <p className="blog_title">{x.title}</p>
+                                                    <p className="blog_title">{x.topic}</p>
                                                 </div></Link>)
                                             } else if (ind === 6) {
                                                 ind = 1; return (<Link to={"/blogContent?id=" + x.id}><div className="first_box" key={x.id} >
                                                      <img className="first_box" src={"http://localhost:3005/"+x.photo} />
-                                                    <p className="blog_title">{x.title}</p>
+                                                    <p className="blog_title">{x.topic}</p>
                                                 </div></Link>)
                                             } else {
                                                 // console.log(i);
                                                 ind++
                                                 return (<Link to={"/blogContent?id=" + x.id}><div className="second_box" key={x.id} >
-                                                    <img className="second_box" src={"http://localhost:3005/"+x.photo} />
-                                                    <p className="blog_title" >{x.title}</p>
+                                                    <img style={{zIndex:-1}} src={"http://localhost:3005/"+x.photo} />
+                                                    <p className="blog_title" >{x.topic}</p>
                                                 </div></Link>)
                                             }
                                         })
