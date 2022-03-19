@@ -1,6 +1,7 @@
 import React from "react";
 import './styles.css'
 import axios from "axios";
+import Comment from "../comments/comments";
 
 
 class Form extends React.Component<any, any> {
@@ -19,7 +20,7 @@ class Form extends React.Component<any, any> {
             commentErr: "",
             commentFlag:false,
             emailFlag:false,
-            nameFlag:false,err:''
+            nameFlag:false,err:'',count:0
         }
 
     }
@@ -51,7 +52,8 @@ class Form extends React.Component<any, any> {
                         commentErr: "",
                         commentFlag:false,
                         emailFlag:false,
-                        nameFlag:false,err:''
+                        nameFlag:false,err:'',
+                        count: this.state.count +1
                         })
                 }
                 else
@@ -105,8 +107,9 @@ class Form extends React.Component<any, any> {
 
     }
     render() {
-        let { name, email, comment } = this.state;
+        let { name, email, comment ,count} = this.state;
         // console.log("comments put id :"+this.props.id);
+        // console.log(count);
         
         return (
 
@@ -149,7 +152,8 @@ class Form extends React.Component<any, any> {
                         </div>
                     </form>
                 </section>
-
+                <Comment id={this.props.id}  count={this.state.count}/>
+                
             </div>
         )
     }

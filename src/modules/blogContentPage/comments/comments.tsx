@@ -8,15 +8,25 @@ class Comment extends React.Component<any, any> {
         super(props);
         this.state = {
             comments: [],
+            // count:0
         }
 
     }
-    componentDidUpdate(prevProps:any) {
-        if(prevProps.id !== this.props.id){
+    componentDidMount(){
         axios.get("http://localhost:3005/comments/"+this.props.id)
             .then(res => {
                 // console.log(res.data)
                 this.setState({ comments: res.data })
+
+            })
+    }
+    componentDidUpdate(prevProps:any) {
+        if(prevProps.id !== this.props.id || prevProps.count !== this.props.count){
+        axios.get("http://localhost:3005/comments/"+this.props.id)
+            .then(res => {
+                // console.log(res.data)
+                this.setState({ comments: res.data})
+
             })}
     }
     render() {
@@ -30,8 +40,11 @@ class Comment extends React.Component<any, any> {
         //         //     this.setState({ comments: [...this.state.comments, e.comments] })
         //         // })
         //     })
-        let total = 0
+        // let total = 0
+        console.log(this.props.count)
         return (
+            
+            
             <section className="clients">
                 <div className=" head-part">
                     <h2>Satisfied Client Comments</h2>

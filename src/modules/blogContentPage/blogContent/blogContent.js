@@ -117,7 +117,6 @@ class Blogcontent extends React.Component {
                         original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
                 </section> */}
                 <Form id={this.state.id}></Form>
-                <Comment id={this.state.id} />
             </div>
         )
     }
