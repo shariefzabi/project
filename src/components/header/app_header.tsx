@@ -20,8 +20,8 @@ class Header extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
-      
-      open:false,
+
+      open: false,
     };
   }
   componentDidMount() {
@@ -46,8 +46,8 @@ class Header extends React.Component<any, any> {
     localStorage.clear();
     this.props.setUser(null);
   };
-  handleOpen = () => this.setState({open:true});
-  handleClose = () => this.setState({open:false});
+  handleOpen = () => this.setState({ open: true });
+  handleClose = () => this.setState({ open: false });
   render() {
     console.log("header values::", this.props);
 
@@ -107,7 +107,61 @@ class Header extends React.Component<any, any> {
                       Blog
                     </Link>
                     <button className="buy_button">Buy Now</button>
-                    <button className=" log_button">Login</button>
+                    {!user && (
+                      <div className="menu_btn text-center">
+                        <Login />
+                      </div>
+                    )}
+                    {user && (
+                      <div className="user-profile">
+                        <a
+                          className="btn text-white dropdown-toggle"
+                          href="#"
+                          role="button"
+                          id="dropdownMenuLink"
+                          data-bs-toggle="dropdown"
+                          aria-expanded="false"
+                        >
+                          {user.fullName}
+                        </a>
+                        <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                          <li>
+                            <Link className="dropdown-item" to="/profile">
+                              My Profile
+                            </Link>
+                          </li>
+                          <li>
+                            <Link className="dropdown-item" to="/orders">
+                              Orders
+                            </Link>
+                          </li>
+                          <li>
+                            <Link className="dropdown-item" to="invoice">
+                              Invoice
+                            </Link>
+                          </li>
+                          <li>
+                            <Link className="dropdown-item" to="payments">
+                              Payment
+                            </Link>
+                          </li>
+                          <li>
+                            <Link className="dropdown-item" to="trackOrder">
+                              Track Order
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              className="dropdown-item"
+                              to="/"
+                              onClick={this.logOut}
+                            >
+                              Log out
+                            </Link>
+                          </li>
+                        </ul>
+                      </div>
+                    )}
                   </div>
                   <div className="menu_bottom d-flex justify-content-between">
                     <p className="menu_faqs">FAQ</p>
@@ -351,14 +405,14 @@ class Header extends React.Component<any, any> {
                     </Link>
                     <button className="btn btn-success" onClick={this.handleOpen}>Checkout</button>
                     <Dialog
-        open={this.state.open}
-        onClose={this.handleClose}
-        aria-describedby="modal-modal-description"
-        sx={{ overflow: 'auto'}}
+                      open={this.state.open}
+                      onClose={this.handleClose}
+                      aria-describedby="modal-modal-description"
+                      sx={{ overflow: 'auto' }}
 
-      >
-        <Orderdisplay></Orderdisplay>
-      </Dialog>
+                    >
+                      <Orderdisplay></Orderdisplay>
+                    </Dialog>
                   </div>
                 </div>
               </div>

@@ -1,3 +1,4 @@
+.addblogpage-container{
 .aboutus{
     background-image: url("./img/Rectangle.png"); 
     width: 93.75rem;
@@ -38,9 +39,9 @@
     margin-bottom:3rem;
     /* margin-right: 50%; */
 }
-
+}
 @media(max-width:731px){
-
+.addblogpage-container{
     .aboutus{
 
         background-image: url("./img/Rectangle.png");
@@ -59,4 +60,4 @@
         padding-bottom: 0rem;
      }
 
-}
+}}

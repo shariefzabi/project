@@ -23,7 +23,7 @@ import { useNavigate } from 'react-router-dom';
 
     if (e.target.name === 'username') {
       let enteredUsername = e.target.value;
-      if (enteredUsername == undefined || enteredUsername.length === 0) {
+      if (enteredUsername === undefined || enteredUsername.length === 0) {
         setUsernameErrMsg("Please enter the Associate Name.")
         e.target.classList.add("field-error")
       } else {
@@ -34,7 +34,7 @@ import { useNavigate } from 'react-router-dom';
 
     if (e.target.name === 'password') {
       let enteredPassword = e.target.value;
-      if (enteredPassword == undefined || enteredPassword.length === 0) {
+      if (enteredPassword === undefined || enteredPassword.length === 0) {
         setPasswordErrMsg("Please enter the password.")
         e.target.classList.add("field-error")
       } else {
@@ -50,7 +50,7 @@ import { useNavigate } from 'react-router-dom';
         .then( (res:any)=>{
           console.log("result from client:",res.data);
           
-          if (res.data == "Invalid credentials")setUserError(res.data)
+          if (res.data === "Invalid credentials")setUserError(res.data)
           else{
             setToken(res.data.token);
             props.setUser(res.data);
@@ -91,7 +91,7 @@ import { useNavigate } from 'react-router-dom';
                   <label className="form-label my-3">
                     Name<span>*</span>
                   </label>
-                  <img className="user-icon" src={require("./assets/user.png")}></img>
+                  <img className="user-icon" src={require("./assets/user.png")} alt=""></img>
                   
                     
                       <input type="text" name="username"
@@ -110,7 +110,7 @@ import { useNavigate } from 'react-router-dom';
                   <label>
                     Password<span>*</span>
                   </label>
-                  <img className="lock-icon" src={require("./assets/lock.png")}></img>
+                  <img className="lock-icon" src={require("./assets/lock.png")} alt=""></img>
                   
                     
                       <input className="form-control" type="password" name="password"

@@ -10,7 +10,7 @@ body{
     background-color: #F5FBFF;
     overflow-x:hidden;
 }
-
+.blog-component{
 .di{
     background-color: #2078BF;
 }
@@ -99,7 +99,7 @@ h1{
     cursor: pointer;
 } 
 
-.blog-component a{
+ a{
     height: 30rem;
     text-decoration: none !important;
     margin-top: 15px;
@@ -115,8 +115,9 @@ h1{
     top:-443px;
     left: 55px;
 }
-
+}
 @media(max-width:376px){
+.blog-component{
      .blog{
         background-image: url("./img/Rectangle\ 3.png"); 
         width: 100%;
@@ -167,7 +168,7 @@ h1{
         margin-bottom: 0.875rem;
         border-radius: 0.625rem;
     }
-    .blog-component a{
+     a{
         height: 5.889rem;
         text-decoration: none !important;
         margin-top: 15px;
@@ -192,3 +193,4 @@ h1{
     }
 
 } 
+}

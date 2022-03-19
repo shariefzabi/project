@@ -1,7 +1,7 @@
 import React from "react";
 import arrow from "./assets/img/Icon (1).png";
 import axios from "axios"
-import './assets/blog.css'
+import './assets/blog.scss'
 import { Link } from "react-router-dom";
 import { array } from "yargs";
 import { url } from "inspector";

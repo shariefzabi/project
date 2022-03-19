@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Editor } from 'primereact/editor';
 import 'primereact/resources/primereact.min.css'
-import './newStyle.css'
+import './newStyle.scss'
 import { Link } from 'react-router-dom';
 
 const AddBlog = () => {
@@ -124,7 +124,8 @@ const AddBlog = () => {
             })
       },[counter])
     //   console.log(newBlog.id);
-    return (<>
+    return (
+    <div className='addblogpage-container'>
 
         <section className="aboutus">
             <h1>ADD BLOG</h1>
@@ -180,7 +181,7 @@ const AddBlog = () => {
                     >submit</button></div>
 
             </form></div>
-    </>
+    </div>
     );
 }
 

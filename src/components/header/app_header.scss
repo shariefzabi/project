@@ -84,6 +84,12 @@ border-left: 8px solid transparent;
 
 
 @media(max-width:990px){
+    .user-profile{
+        padding-right: 0!important;
+        a{
+            height: 30px;
+        }
+    }
     .big_bar{
         display: none !important;
     }
@@ -95,7 +101,7 @@ border-left: 8px solid transparent;
     header{
         width: 100%;
         height: 3.8125rem;
-        background-color: #2078BF; 
+        // background-color: #2078BF; 
     }
     .bar_img{
         width: 0.687rem;
