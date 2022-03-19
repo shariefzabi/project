@@ -24,6 +24,7 @@ function SelectedProductDetails(props: any) {
         props.state.productData
     );
     let [inWhishlist, setInWhishlist] = useState(false);
+    let [wishlistDB,setWishlistDB]=useState([])
 
     // let [price, setPrice] = useState(0);
     // let [productId, setProductId] = useState('')
@@ -43,6 +44,8 @@ function SelectedProductDetails(props: any) {
         });
     }, []);
 
+   
+
     useEffect(() => {
         let getProductUrl =
             "http://localhost:3005/market/selectedProductDetails/" +
@@ -52,7 +55,7 @@ function SelectedProductDetails(props: any) {
         });
     }, []);
 
-    console.log("whislist", product);
+    
 
     const setLocationHandler = (event: any) => {
         setLocation(event.target.value);
@@ -127,13 +130,54 @@ function SelectedProductDetails(props: any) {
     //wishlist delete
 
     const deleteFromWishlist = () => {
-        setInWhishlist(false);
+        
         try {
             axios.delete("http://localhost:3005/orders/wishlists/" + product._id);
         } catch (err) {
             console.error(err);
         }
+        setInWhishlist(false);
     };
+
+
+
+    // app.get('/orders/wishlists/:token', async (req, res) => {
+    //     let { params } = req
+    //     // console.log("email",params.uname);
+    //     let ordercollection = db.collection("wishlists");
+    //     ordercollection.find({token: params.token}).toArray(function (err, result) {
+    //       if (err) console.log(err);
+    //       else {
+    //         res.send(result);
+    //       }
+    //     })
+      
+    //   })
+ 
+   
+
+      useEffect(() => {
+        let getProductUrl =
+            "http://localhost:3005/orders/wishlists/" +
+            props.state.user.token;
+            axios.get( getProductUrl)
+            .then((res) => {
+                console.log("wishlists display get response", res.data);
+                setWishlistDB(res.data);
+            })
+            .catch((err) => console.log(err)
+            )
+
+    },
+        
+    
+     [setWishlistDB]);
+    console.log("wish",wishlistDB)
+
+    
+
+
+
 
    
     
@@ -176,9 +220,9 @@ function SelectedProductDetails(props: any) {
                                                 <button className="locbtn bg-white text-start px-3" onClick={setLocationHandler} value={e.locationName}>{e.locationName}</button>
 
                                                 <div className="collapse " id={index.slice(1)}>
-                                                    <ul className="d-inline">
-                                                        <li className="mx-4"><span className="blue mx-2">&#9679;</span><button className="marketButton " onClick={setMarketHandler} value='Cattle Market'>Cattle Market<span>({e.cattleMarkets.length})</span></button></li>
-                                                        <li className="mx-4"><span className="blue mx-2">&#9679;</span><button className="marketButton " onClick={setMarketHandler} value='Sheep Market'>Sheep Market<span>({e.sheepMarkets.length})</span></button></li>
+                                                    <ul className="">
+                                                        <li className="d-flex mx-4"><span className="blue mx-2">&#9679;</span><button className="marketButton " onClick={setMarketHandler} value='Cattle Market'>Cattle Market<span>({e.cattleMarkets.length})</span></button></li>
+                                                        <li className="d-flex mx-4"><span className="blue mx-2">&#9679;</span><button className="marketButton " onClick={setMarketHandler} value='Sheep Market'>Sheep Market<span>({e.sheepMarkets.length})</span></button></li>
                                                     </ul>
                                                 </div>
 
