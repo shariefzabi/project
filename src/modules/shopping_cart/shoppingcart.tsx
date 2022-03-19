@@ -6,6 +6,7 @@ import appStore from "../../state/app_store";
 import { Breadcrumb } from "react-bootstrap";
 import { connect } from "react-redux";
 import { Dialog } from "@mui/material";
+import Modal from "@mui/material/Modal";
 import Orderdisplay from "../ordercreation/components/orderdisplay/orderdisplay";
 
 class Cart extends React.Component<any, any> {
@@ -13,7 +14,7 @@ class Cart extends React.Component<any, any> {
     super(props);
     this.state = {
       count: 1,
-      open:false,
+      open: false,
     };
   }
   addProductToCart = () => {
@@ -32,8 +33,8 @@ class Cart extends React.Component<any, any> {
       }
     }
   };
-   handleOpen = () => this.setState({open:true});
-   handleClose = () => this.setState({open:false});
+  handleOpen = () => this.setState({ open: true });
+  handleClose = () => this.setState({ open: false });
   render() {
     console.log(this.props.redux.quantity);
     return (
@@ -70,105 +71,104 @@ class Cart extends React.Component<any, any> {
             </div>
 
             {/* <header> */}
-              <div className="cart_heading">
-                <p>
-                  Shopping Cart{" "}
-                  <span className="item_count">
-                    ({this.props.redux.quantity[0]} item)
-                  </span>
-                </p>
-              </div>
+            <div className="cart_heading">
+              <p>
+                Shopping Cart{" "}
+                <span className="item_count">
+                  ({this.props.redux.quantity[0]} item)
+                </span>
+              </p>
+            </div>
             {/* </header> */}
 
             <hr />
           </section>
-<div className="table_res">
-          <div className="container tab">
-            <table className="tablecol">
-              <thead>
-                <tr >
-                  <th className="product text-start">Product Details</th>
+          <div className="table_res">
+            <div className="container tab">
+              <table className="tablecol">
+                <thead>
+                  <tr>
+                    <th className="product text-start">Product Details</th>
 
-                  <th className="text-start">Quantity</th>
-                  <th>Price</th>
+                    <th className="text-start">Quantity</th>
+                    <th>Price</th>
 
-                  <th>Delivery Details</th>
-                </tr>
-              </thead>
+                    <th>Delivery Details</th>
+                  </tr>
+                </thead>
 
-              <tbody>
-                <tr>
-                  <td>
-                    {" "}
-                    <span className="first-line">
-                      ID - {this.props.redux.quantity[2]}
-                    </span>
-                    {/* <span className="second-line">20/19/2019</span> */}
-                  </td>
+                <tbody>
+                  <tr>
+                    <td>
+                      {" "}
+                      <span className="first-line">
+                        ID - {this.props.redux.quantity[2]}
+                      </span>
+                      {/* <span className="second-line">20/19/2019</span> */}
+                    </td>
 
-                  <td>
-                    <div className="row quantity ms-0 addbtn2 detail">
-                      <button
-                        className="btn btn-primary col"
-                        onClick={this.removeProductToCart}
-                        // {() =>
-                        // this.setState({ count: this.state.count - 1 })
-                        // }
-                      >
-                        -
-                      </button>
+                    <td>
+                      <div className="row quantity ms-0 addbtn2 detail">
+                        <button
+                          className="btn btn-primary col"
+                          onClick={this.removeProductToCart}
+                          // {() =>
+                          // this.setState({ count: this.state.count - 1 })
+                          // }
+                        >
+                          -
+                        </button>
 
-                      <p className="col m-auto">
-                        {/* {this.state.count} */}
-                        {this.props.redux.quantity[0]}
-                      </p>
-                      {/* {this.props.redux.quantity[0]} */}
-                      <button
-                        className="btn btn-primary col"
-                        onClick={this.addProductToCart}
-                        // {() =>
-                        //   this.setState({ count: this.state.count + 1 })
-                        // }
-                      >
-                        +
-                      </button>
-                    </div>
-                  </td>
-                  <td className="detail">
-                    {this.props.redux.quantity[0] *
-                      this.props.redux.quantity[1]}
-                   
-                    {/* // this.props.redux.quantity[]} */}
-                    Rs
-                  </td>
+                        <p className="col m-auto">
+                          {/* {this.state.count} */}
+                          {this.props.redux.quantity[0]}
+                        </p>
+                        {/* {this.props.redux.quantity[0]} */}
+                        <button
+                          className="btn btn-primary col"
+                          onClick={this.addProductToCart}
+                          // {() =>
+                          //   this.setState({ count: this.state.count + 1 })
+                          // }
+                        >
+                          +
+                        </button>
+                      </div>
+                    </td>
+                    <td className="detail">
+                      {this.props.redux.quantity[0] *
+                        this.props.redux.quantity[1]}
+                      {/* // this.props.redux.quantity[]} */}
+                      Rs
+                    </td>
 
-                  <td className="detail">
-                    <span>
-                      Pick- up date<br></br> 2019-08-18
-                    </span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+                    <td className="detail">
+                      <span>
+                        Pick- up date<br></br> 2019-08-18
+                      </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-          <div className="container">
-            <button
-              className=" btn btn-success check_btn"
-              onClick={this.handleOpen}
-            >
-              Proceed Checkout
-            </button>
+            <div className="container">
+              <button
+                className=" btn btn-success check_btn"
+                onClick={this.handleOpen}
+              >
+                Proceed Checkout
+              </button>
             </div>
             <div className="pay">
-              <Dialog
+              <Modal
                 open={this.state.open}
                 onClose={this.handleClose}
                 aria-describedby="modal-modal-description"
                 sx={{ overflow: "auto" }}
               >
                 <Orderdisplay></Orderdisplay>
-              </Dialog>
+              </Modal>
             </div>
           </div>
         </main>
