@@ -30,18 +30,19 @@
 .top-buttons{
     width: 115px;
     height: 151px;
-    border-radius: 0.5px;
     position: absolute;
     top: 513px;
-    left: 85%; 
+    left: 85%;
+    line-height: 99%; 
 }
 .right-carousel{
     width: 115.5px;
     height: 50%;
+    border-radius:  5px;
     background-image: url('./rightArrow.png');
     background-position: center;
     background-repeat: no-repeat;
-    border-radius: 0.5px;
+    /* border-radius: 0.5px; */
 }
 .left-carousel{
     width: 115.5px;
@@ -49,7 +50,7 @@
     background-image: url('./leftArrow.png');
     background-position: center;
     background-repeat: no-repeat;
-    border-radius: 0.5px;
+    border-radius: 5px;
 }
 .title{
     width:54.437rem;
