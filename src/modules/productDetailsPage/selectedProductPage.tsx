@@ -44,6 +44,8 @@ function SelectedProductDetails(props: any) {
         });
     }, []);
 
+   
+
     useEffect(() => {
         let getProductUrl =
             "http://localhost:3005/market/selectedProductDetails/" +
@@ -53,7 +55,7 @@ function SelectedProductDetails(props: any) {
         });
     }, []);
 
-    console.log("whislist", product);
+    
 
     const setLocationHandler = (event: any) => {
         setLocation(event.target.value);
@@ -151,16 +153,25 @@ function SelectedProductDetails(props: any) {
     //     })
       
     //   })
+ 
+   
 
       useEffect(() => {
         let getProductUrl =
-            "http://localhost:3005//orders/wishlists/" +
+            "http://localhost:3005/orders/wishlists/" +
             props.state.user.token;
-        axios.get(getProductUrl).then((response) => {
-            setWishlistDB(response.data);
+            axios.get( getProductUrl)
+            .then((res) => {
+                console.log("wishlists display get response", res.data);
+                setWishlistDB(res.data);
+            })
+            .catch((err) => console.log(err)
+            )
 
-        });
-    }, []);
+    },
+        
+    
+     [setWishlistDB]);
     console.log("wish",wishlistDB)
 
     
