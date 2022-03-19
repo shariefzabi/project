@@ -117,7 +117,7 @@ function SelectedProductDetails(props: any) {
   }
   //whislist post
 
-  const addtoWishlist = () => {
+  const addtoWishlist = (p:any) => {
     const email = props.state.user.email;
     try {
       axios.post("http://localhost:3005/orders/wishlists", {
@@ -129,6 +129,11 @@ function SelectedProductDetails(props: any) {
       console.error(err);
     }
     setInWhishlist(true);
+    
+    
+
+   
+    
   };
 
   //wishlist delete
@@ -165,8 +170,20 @@ function SelectedProductDetails(props: any) {
         setWishlistDB(res.data);
       })
       .catch((err) => console.log(err));
-  }, [setWishlistDB]);
+  }, [wishlistDB]);
+
+  let wishlistIDS=wishlistDB.map((ele:any)=>{
+      return(
+          ele.product._id
+      )
+
+  })
+  console.log("fghjhvhj",wishlistIDS)
+
+
+
   console.log("wish", wishlistDB);
+  console.log(product)
 
   return (
     /////code for large screens/////
@@ -288,25 +305,28 @@ function SelectedProductDetails(props: any) {
                   {/* < img className="productImage" src={"http://localhost:3005/" +product.image.filename } /> */}
                 </div>
                 <div className=" prodetail col-lg-7 col-md-7 col-sm-7  p-0 ">
-                  {!inWhishlist && (
+
+
+                  { !(wishlistIDS.includes(product._id)) && 
+                  
                     <button className="wishListButton" onClick={addtoWishlist}>
                       <img
                         className="wishListImg"
                         src={require("./assets/wishlistimage.png")}
                       ></img>
                     </button>
-                  )}
-                  {inWhishlist && (
-                    <button
-                      className="wishListButton"
-                      onClick={deleteFromWishlist}
-                    >
+                  }
+
+
+
+                  {(wishlistIDS.includes(product._id)) && 
+                    <button className="wishListButton" onClick={deleteFromWishlist}>
                       <img
                         className="wishListImg"
                         src={require("./assets/whislistDelete.png")}
                       ></img>
                     </button>
-                  )}
+                  }
 
                   <h3 className="p-0" id="marketHeading1">
                     ANIMAL ID -{" "}
