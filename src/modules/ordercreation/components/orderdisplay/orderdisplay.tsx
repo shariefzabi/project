@@ -8,72 +8,49 @@ function Orderdisplay(props: any) {
     const [orderdata, setOrderdata] = useState({}) as any;
     const [paymentflag, setPaymentflag] = useState(false);
     const [products, setProducts] = useState<any[]>([]);
-    // const [productPrice, setProductPrice] = useState(0);
     let productPrice = 0;
-    useEffect(() => {
-        // const orderdata={user:{...props.user},props.orders};
-
-        // const orderId=props.orderdetails.orderId;
-        // axios.patch("http://localhost:3005/orders/orderdetails/"+{orderId},)
-
-    }, [])
     const updateprice = (price: any) => {
         const orderId = props.orderdetails.orderId;
         props.orderdetails.totalprice = price;
         props.orderdetails.deliveryprice = 2000;
 
-        let ammount = {
+        let amount = {
             totalprice: props.orderdetails.totalprice,
             deliveryprice: props.orderdetails.deliveryprice
         }
-
         const orderid = props.orderdetails.orderId;
         console.log("orderId", orderid);
-        console.log("orderId", ammount);
-
+        console.log("orderId", amount);
         console.log("props", props.orderdetails);
-        axios.post("http://localhost:3005/orders/orderdetails/" + orderid, ammount)
+        axios.post("http://localhost:3005/orders/orderdetails/" + orderid, amount)
             .then((res) => console.log("price obj response", res.data))
             .catch((err) => console.log(err)
             )
         setPaymentflag(true)
     }
-
-
     return (
         <>
-            {
-                console.log("order Details:", props.orderdetails)
-
-            }
             {!paymentflag &&
                 <div className='order-modal'>
                     <div className='order-display'>
-                        {/* <div className="modal-body"> */}
                         <div className="modal-body-orderdisplay">
                             <h2 className="heading-cartpage text-center">Product Added to Cart</h2>
                             <h3 className="heading-cartpage-Id"> Order ID -<b>{props.orderdetails.orderId}</b> has been placed you now have to proceed payment</h3>
-
-
                             <div className="body-card border-secondary text-center">
                                 <img src={require("../assets/Vector.png")} className="mt-3" />
                                 <h4 className="body-head">Hello, {props.user.fullName}</h4>
-                                <p className="body-description">Your order  has been added to your basket to proceed for checkout</p>
-
-                                {/* <p className="body-description">Your order <span className="body-head">{props.orders[0].breed} {props.orders[0].type} </span> has been added to your basket to proceed for checkout</p> */}
-                            
+                                <p className="body-description">Your order  has been added to your basket to proceed for checkout</p> 
                                 <div className='row border-top border-secondary mx-3'>
                                     <div className='col-6'>
                                         <h4 className="body-head-Product mt-3">Product Details</h4>
                                         <div className='items-container'>
                                             {
-
                                                 props.orderdetails.cartproducts.map((item: any, ind: any) => {
                                                     console.log("itemss", item);
-                                                    productPrice += parseInt(item.price);
+                                                    productPrice += parseInt(item.price)*parseInt(props.quantityarr[ind]);
                                                     return (
                                                         <ul className="body-list-items m-auto" key={ind}>
-                                                            <li className="mt-4">Type: {item.type} <span className="weight-items">Quantity : {item.quantity}</span></li>
+                                                            <li className="mt-4">Type: {item.type} <span className="weight-items">Quantity : {props.quantityarr[ind]}</span></li>
                                                             <li className="mt-3">Sex: {item.sex} <span className="weight-items">Weight : {item.weight}</span></li>
                                                             <li className="mt-3">Breed: {item.breed}</li>
                                                         </ul>
@@ -107,10 +84,7 @@ function Orderdisplay(props: any) {
             {paymentflag &&
                 <PaymentMethod></PaymentMethod>
             }
-            {/* <PaymentMethod2></PaymentMethod2> */}
-
         </>
-
     )
 }
 // export default Orderdisplay

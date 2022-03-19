@@ -20,38 +20,25 @@ class Deliverydetails extends React.Component<any, any>{
             orderDetails:props.orders,
             Id:0
         }
-    }
-//  getToken = () => localStorage.getItem("token");
+    } 
     changeHandler = (e: any) => {
         this.setState({ [e.target.name]: e.target.value })
-        
-        // console.log(e.target.value);
+        console.log("this.props.quantityarr",this.props.quantityarr);
     }
     submitHandler = (e: any, deliveryDetails: any) => {
         e.preventDefault();
-        // console.log("delivery details", deliveryDetails);
-        // this.setState({token:this.getToken()})
-        // console.log("props in createorder", this.props);
-        // let orderDetails1={...deliveryDetails,...this.props.products}
-        // this.setState({orderDetails1});
-        
-        // console.log("hello",this.state.orderDetails1);
-        console.log("cartProductssss",this.state.cartproducts);
-
+        // console.log("cartProductssss",this.state.cartproducts);
         axios.post("http://localhost:3005/orders/orderdetails",{...this.state.cartproducts,deliveryDetails})
         .then((res)=>{console.log("postresponse",res.data)
         this.props.createOrder(res.data);
         this.setState({orderdisplayFlag:false})
             })
         .catch((err)=>console.log("posterror",err));
-       
-      
     }
     validations = (e: any) => {
         let name = e.target.name;
         let value = e.target.value;
         console.log(name, value);
-
         if (name === 'deliveryloc') {
             let deliverylocerr = '';
             if (value == undefined || value.length === 0) {
@@ -89,7 +76,6 @@ class Deliverydetails extends React.Component<any, any>{
             }
         }
     }
-    
     render() {
         let { deliveryloc, deliveryperiod, deliverymode,orderdisplayFlag} = this.state;
         return (
@@ -118,9 +104,8 @@ class Deliverydetails extends React.Component<any, any>{
                         </div>
                         <div className="mb-3">
                             <label htmlFor="Agent" className="col-form-label select-label">Delivery Mode</label>
-
                             <select className="form-select" name="deliverymode" required value={this.state.deliverymode} aria-label="Default select example" onBlur={this.validations} onChange={(e) => { this.changeHandler(e); this.validations(e) }}>
-                                <option hidden value="">Delivery Mode</option>
+                                <option hidden value="" style={{color:"#dcdcdc"}}>Delivery Mode</option>
                                 <option value="Prime">Prime</option>
                                 <option value="Non-Prime">Non-Prime</option>
                             </select>
@@ -129,18 +114,15 @@ class Deliverydetails extends React.Component<any, any>{
                         <div className="mb-3 text-center">
                             <button type="submit" role="button" className="btn btn-success continuebutton">Continue</button>
                         </div>
-
                     </form>
                 </div>
-            </div>
-            
+            </div>   
             </div>
             }
             {!orderdisplayFlag  &&
                 <Orderdisplay></Orderdisplay>
             }
-            </>
-            
+            </>  
         )
     }
 }

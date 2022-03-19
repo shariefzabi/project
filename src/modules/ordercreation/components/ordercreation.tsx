@@ -18,6 +18,7 @@ function BuyNow(props: any) {
     const [sex, setSex] = useState("");
     const [weight, setWeight] = useState("");
     const [breed, setBreed] = useState("");
+    // const [quantityArr,setQuantityArr]=useState<any[]>([]);
 
     const [filters, setFilters] = useState<any[]>([]);
     const [typeerrmsg, setTypeerrmsg] = useState("");
@@ -57,19 +58,25 @@ function BuyNow(props: any) {
         // console.log("props filters", filters);
         axios.post("http://localhost:3005/orders/products", filters)
             .then((res) => {
+                console.log("hello",res.data);
+                
                 props.storeProductdetails(res.data);
                 if (props.user != null)
                     setProductdetailsflag(false);
             })
+            // props.storeFilterdetails(productDetails);
     }
     const addProduct = (products: any) => {
         setAddFlag(true);
         if (type != '' && quantity != '' && breed != '' && weight != '' && sex != '') {
             // props.storeFilterdetails(products);
-            setFilters([...filters, products])
+            console.log(props.filters);
+            setFilters([...filters, products]);
         }
 
     }
+    // console.log("quantityArr",quantityArr);
+    
     const resetHandler = (e: any) => {
         if (type === '' || quantity === '' || breed === '' || weight === '' || sex === '')
             setErrmsg("please select all details")
@@ -152,9 +159,9 @@ function BuyNow(props: any) {
                         <div className='order-modal'>
                             <div className='ordercreation-container position-relative'>
                                 <div className="text-center popupheading">
-                                    <p>Yor are one step closer to buying your livestock</p>
+                                    <p>You are one step closer to buying your livestock</p>
                                 </div>
-                                <div className="form-paragraph  ">
+                                <div className="form-paragraph text-center">
                                     <p>Fill in the required information</p>
                                     {props.user === null &&
                                         <p className='text-danger text-center'>please login to your account</p>}
@@ -218,11 +225,11 @@ function BuyNow(props: any) {
                                             <div className="dropdown">
                                                 <select name="Weight" required value={weight} onChange={(event) => Validate(event)} onBlur={(event) => Validate(event)} className="form-select" >
                                                     <option hidden value="">Weight</option>
-                                                    <option value="1">1 KG</option>
-                                                    <option value="2">2 KG</option>
-                                                    <option value="3">3 KG</option>
-                                                    <option value="4">4 KG</option>
-                                                    <option value="5">5 KG</option>
+                                                    <option value="70">70 KG</option>
+                                                    <option value="75">75 KG</option>
+                                                    <option value="80">80 KG</option>
+                                                    <option value="90">90 KG</option>
+                                                    <option value="100">100 KG</option>
                                                 </select>
                                                 <p className='text-danger'>{weighterrmsg}</p>
                                             </div>
@@ -262,8 +269,8 @@ function BuyNow(props: any) {
 
                                         </div>
                                     </div>
-                                    <div className="mb-3">
-                                        <button className="continuebutton btn btn-success" onClick={() => setFilters([...filters, { type, quantity, weight, sex, breed }])} >Continue</button>
+                                    <div className=" text-center">
+                                        <button className="continuebutton mb-5 btn btn-success" onClick={() => setFilters([...filters, { type, quantity, weight, sex, breed }])} >Continue</button>
                                     </div>
                                 </form>
                             </div>
@@ -274,7 +281,7 @@ function BuyNow(props: any) {
                     {!productdetailsflag &&
                         // viewFlag &&
 
-                        <DimesionalPage></DimesionalPage>
+                        <DimesionalPage {...props.quantityArr}></DimesionalPage>
                     }
                 </>
             </Modal>
@@ -291,7 +298,7 @@ const mapStateToProps = (state: any) => {
 }
 const mapDispatchToProps = (dispatch: Function) => {
     return {
-        storeFilterdetails: (filters: any) => dispatch({ type: 'storeFilterdetails', filters }),
+        // storeFilterdetails: (filters: any) => dispatch({ type: 'storeFilterdetails', filters }),
         storeProductdetails: (productDetails: any) => dispatch({ type: 'store_productdetails', productDetails }),
     }
 }

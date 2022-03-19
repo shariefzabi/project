@@ -4,7 +4,6 @@
         margin-bottom: 4%;
     }
     .product-cards{
-        // height:150px;
         p{
             margin: 0px;
         }
@@ -18,47 +17,39 @@
         border-radius: 5px;
         font-family: ubuntu;
     }
-.heading-dimension{
-    font-family: Ubuntu;
-    font-style: normal;
-    font-weight: 400;
-    text-align: center !important;
-    width: 550px;
-    color:  #2078BF;
-    // margin-top: 3.81rem;
-    padding-top: 30px;
-    font-family: Ubuntu;
-    font-style: normal;
-    font-weight: bold !important;
-    font-size: 25px;
-    margin: auto;
-    margin-bottom: 1%;
-}
-.dimesional-description{
-    margin-left: 100px;
-    margin-right: 50px;
-    // position: absolute;
-    // left: 780px;
-    // right: 50px;
-}
-.hint-heading{
-    width: 228px;
-    height: 24px;
-    font-family: Ubuntu;
-    font-style: italic;
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 24px;
-    color: #838383;
-}
-
-.continuebutton{
-    border: 0.134rem solid #00C3FF;
-    border-radius: 0.3125rem;
-    height: 2.75rem;
-    width:11.063rem;
-    // margin: auto;
-    margin: 2rem 28.625rem;
-    // margin-top: 0px;
-}
+    .heading-dimension{
+        font-family: Ubuntu;
+        font-style: normal;
+        font-weight: 400;
+        text-align: center !important;
+        width: 550px;
+        color:  #2078BF;
+        padding-top: 30px;
+        font-family: Ubuntu;
+        font-style: normal;
+        font-weight: bold !important;
+        font-size: 25px;
+        margin: auto;
+        margin-bottom: 1%;
+    }
+    .dimesional-description{
+        margin-left: 100px;
+        margin-right: 50px;
+    }
+    .hint-heading{
+        width: 228px;
+        height: 24px;
+        font-family: Ubuntu;
+        font-style: italic;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 24px;
+        color: #838383;
+    }
+    .continuebutton{
+        border: 0.134rem solid #00C3FF;
+        border-radius: 0.3125rem;
+        height: 2.75rem;
+        width:11.063rem;
+    }
 }
