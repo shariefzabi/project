@@ -1,13 +1,11 @@
-// input[type=number]::-webkit-inner-spin-button,
-// input[type=number]::-webkit-outer-spin-button {
-// 	-webkit-appearance: none;
-// }
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+}
 .paymentmethod {
-  //   width: 38%;
-  //   width: 450px;
+  width: 38% ;
   padding: 10px;
   margin: 7% auto;
-
   .payment {
     margin-top: 4%;
   }
