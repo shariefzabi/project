@@ -137,8 +137,7 @@ class Cart extends React.Component<any, any> {
                   <td className="detail">
                     {this.props.redux.quantity[0] *
                       this.props.redux.quantity[1]}
-                    {this.props.redux.quantity[1] *
-                      this.props.redux.quantity[0]}
+                   
                     {/* // this.props.redux.quantity[]} */}
                     Rs
                   </td>
