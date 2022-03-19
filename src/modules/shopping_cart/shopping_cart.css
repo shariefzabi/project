@@ -56,7 +56,15 @@ hr {
 .tab {
   text-align: center;
   margin-top: 4rem;
+  
+  /* overflow-x: auto; */
 }
+/* .table_res{
+  overflow-x: auto;
+  width:100%;
+
+
+} */
 
 .tablecol {
   left: 9.4%;
@@ -77,6 +85,9 @@ hr {
   float: right;
   margin-top: 0.25rem;
   margin-right: 0.5rem;
+  /* position: relative; */
+
+
 }
 .incre {
   background-color: #2078bf;
@@ -101,4 +112,67 @@ hr {
 }
 .pay {
   width: 80%;
+}
+@media (max-width: 576px){
+  /* .check_btn{
+    float: right;
+  }
+  .tab{
+    width:100%;
+  } */
+  .table_res{
+    overflow-x: auto;
+    margin-bottom: -9rem;
+    font-size: 1rem;
+   }
+  .check_btn{
+    float:right;
+    margin-right:-51rem;
+    margin-top:2rem;
+    margin-bottom: 1rem;
+  }
+
+  /* .product{
+    font-size: 0.75rem;
+  } */
+ 
+
+}
+
+@media (min-width: 577px) and (max-width: 768px){
+  .table_res{
+    overflow-x: auto;
+    margin-bottom: -9rem;
+    font-size: 1rem;
+   }
+  .check_btn{
+    float:right;
+    margin-right:-27rem;
+    margin-top:2rem;
+    margin-bottom: 1rem;
+  }
+
+  /* .product{
+    font-size: 0.75rem;
+  } */
+
+}
+@media (min-width: 769px) and (max-width: 1024px){
+  .table_res{
+    overflow-x: auto;
+    margin-bottom: -9rem;
+ }
+  .check_btn{
+    float:right;
+    margin-right:-27rem;
+    margin-top:2rem;
+    margin-bottom:1rem;
+  }
+ 
+  /* .product{
+    font-size: 0.75rem;
+  } */
+
+  
+
 }

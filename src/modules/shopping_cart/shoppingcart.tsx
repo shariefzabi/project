@@ -69,7 +69,7 @@ class Cart extends React.Component<any, any> {
               </div>
             </div>
 
-            <header>
+            {/* <header> */}
               <div className="cart_heading">
                 <p>
                   Shopping Cart{" "}
@@ -78,15 +78,15 @@ class Cart extends React.Component<any, any> {
                   </span>
                 </p>
               </div>
-            </header>
+            {/* </header> */}
 
             <hr />
           </section>
-
+<div className="table_res">
           <div className="container tab">
             <table className="tablecol">
               <thead>
-                <tr>
+                <tr >
                   <th className="product text-start">Product Details</th>
 
                   <th className="text-start">Quantity</th>
@@ -160,6 +160,7 @@ class Cart extends React.Component<any, any> {
             >
               Proceed Checkout
             </button>
+            </div>
             <div className="pay">
               <Dialog
                 open={this.state.open}
