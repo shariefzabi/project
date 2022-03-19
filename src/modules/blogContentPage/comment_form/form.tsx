@@ -36,11 +36,11 @@ class Form extends React.Component<any, any> {
             emailFlag,
             nameFlag}=this.state
         if(commentFlag && emailFlag && nameFlag){
-            console.log(data);
+            // console.log(data);
             axios.post("http://localhost:3005/addcomment", data)
             .then((res: any) => {
                 if (res.data == "success") {
-                    console.log(res.data);
+                    // console.log(res.data);
                     this.setState({ 
                         name: "",
                         email: "",
@@ -106,7 +106,7 @@ class Form extends React.Component<any, any> {
     }
     render() {
         let { name, email, comment } = this.state;
-        console.log("comments put id :"+this.props.id);
+        // console.log("comments put id :"+this.props.id);
         
         return (
 

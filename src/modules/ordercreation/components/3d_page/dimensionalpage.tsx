@@ -2,8 +2,9 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import Deliverydetails from "../deliverydetails/deliverydetails";
-
 import './dimensionalpage.scss'
+
+var serverUrl = "http://localhost:3005/";
 function DimesionalPage(props: any) {
     const [deliveryFlag, setDeliveryFlag] = useState(false);
     const [selectData, setSelectData] = useState([]);
@@ -21,14 +22,19 @@ function DimesionalPage(props: any) {
                             </div>
                             <div className="row ms-5">
                             {props.orders.map((order: any, i: any) => {
+                                let imgPath=" ";
+                                if(typeof(order.image) === 'object'){
+                                    imgPath=serverUrl+order.image.filename;
+                                }
                                 return (
                                         <div key={i} className="card product-cards m-3 col-3">
-                                            <p>Type:{order.type}</p>
-                                            <p>Breed:{order.breed}</p>
-                                            <p>Product Code:{order.productCode}</p>
-                                            <p>Availability:{order.availability}</p>
-                                            <p>Price:{order.price}</p>
-                                            <p>Weight:{order.weight}</p>
+                                            <img className="" src={imgPath} height="150px" width="100%"></img>
+                                            <p><b>Type:</b>{order.type}</p>
+                                            <p><b>Breed:</b>{order.breed}</p>
+                                            <p><b>Product Code:</b>{order.productCode}</p>
+                                            <p><b>Availability:</b>{order.availability}</p>
+                                            <p><b>Price:</b>{order.price}</p>
+                                            <p><b>Weight:</b>{order.weight}</p>
                                             <button className="btn btn-success add-to-cart-button"  onClick = {() => {setSelectedProduct(order);props.addToCart(order)}}>Add to Cart</button>
                                         </div>
                                    )
@@ -37,7 +43,7 @@ function DimesionalPage(props: any) {
                             
 
                             <div>
-                                <button type="button" className="btn btn-success continuebutton" onClick={() => setDeliveryFlag(true)}>continue</button>
+                                <button type="button" className="btn btn-success text-center continuebutton" onClick={() => setDeliveryFlag(true)}>continue</button>
                             </div>
                         </div>
                     </div>

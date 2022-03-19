@@ -93,11 +93,14 @@ function AddProducts(props: any) {
       props.store_products(productDetails);
     }
   });
+  
+  
   const storeProductData = (async (prodData: any) => {
 
     try {
       const response = await axios.post("http://localhost:3005/market/addProducts", prodData);
-      console.log('res', response);
+      axios.post("http://localhost:3005/orders/productfilters",formik.values)
+      // console.log('res', response);
 
     } catch (err) {
 
@@ -118,15 +121,15 @@ function AddProducts(props: any) {
     }
   });
   return (
-      <main id="mainContent">
+      <main id="mainContent" className="addproducts-container">
         <section className="productSection">
           <div className="header">
             <div className="headingText">
               <h2>Product Catalogue</h2>
             </div>
           </div>
-          <main className="formContainer container-fluid " id="productBlock">
-            <section className="container">
+          <section className="formContainer container-fluid " id="productBlock">
+            <section className="container productForm">
               <form onSubmit={formik.handleSubmit}>
                 <p>
                   Fields with <span className="text-danger">*</span> are
@@ -352,7 +355,7 @@ function AddProducts(props: any) {
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 >
-                  <option value={formik.values.market}>
+                  <option value={formik.values.market} >
                     Select Market
                   </option>
                   <option value="Cattle Market">Cattle Market</option>
@@ -395,16 +398,13 @@ function AddProducts(props: any) {
                     name="create"
                     id="createButton"
                     className="btn btn-primary"
-                  // onClick={() => {
-                  //   props.store_productdetails(productDetails);
-                  // }}
                   >
                     Create
                   </button>
                 </div>
               </form>
             </section>
-          </main>
+          </section>
         </section>
       </main>
   );

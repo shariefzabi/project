@@ -9,15 +9,17 @@ function Orders(props: any) {
     const [orders, setOrders] = useState<any[]>([]);
     const [wishlists, setWishlists] = useState<any[]>([]);
     useEffect(() => {
-        const email = props.user.email;
-        axios.get("http://localhost:3005/orders/orderdetails/" + email)
+        // const email = props.user.email;
+        // const token=props.user.token;
+        const getToken = () => localStorage.getItem("token");
+        axios.get("http://localhost:3005/orders/orderdetails/" + getToken())
             .then((res) => {
                 console.log("orders display get response", res.data);
                 setOrders(res.data);
             })
             .catch((err) => console.log(err)
             )
-        axios.get("http://localhost:3005/orders/wishlists/"+email)
+        axios.get("http://localhost:3005/orders/wishlists/"+getToken())
             .then((res) => {
                 console.log("wishlists display get response", res.data);
                 setWishlists(res.data);

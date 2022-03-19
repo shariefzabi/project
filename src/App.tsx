@@ -5,8 +5,6 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Header from "./components/header/app_header";
 import LandingPage from "./modules/landing_page/LandingPage";
 import Aboutus from "./modules/about_us/aboutus";
-import Blog from "./modules/blog/blogs";
-import Blogform from "./modules/addblogpage/blogform";
 import AddProducts from "./modules/addProducts/addProducts";
 import Footer from "./components/footer/footer";
 import Blogtable from "./modules/blog/blogs";
@@ -19,7 +17,7 @@ import Orders from "./modules/orders/orders";
 import LogOut from "./modules/logOut/logOut";
 // import Popup from './modules/shopping_cart/cartpopup/popup';
 import Shoppingcart from "./modules/shopping_cart/shoppingcart";
-import User from './modules/addblogpage/upload';
+import AddBlog from "./modules/addblogpage/upload";
 
 function App() {
   return (
@@ -30,10 +28,9 @@ function App() {
 
           <Routes>
             <Route path="/" element={<LandingPage />}></Route>
-            <Route path="/new" element={<User />}></Route>
             <Route path="/aboutus" element={<Aboutus />}></Route>
             <Route path="/blog" element={<Blogtable />}></Route>
-            <Route path="/addblogs" element={<Blogform />}></Route>
+            <Route path="/addblogs" element={<AddBlog />}></Route>
             <Route path="/addproducts" element={<AddProducts />}></Route>
             <Route path="/products" element={<ProductDetails />}></Route>
             <Route path="/blogcontent" element={<Blogcontent />}></Route>

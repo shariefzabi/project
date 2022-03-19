@@ -12,7 +12,7 @@ class Deliverydetails extends React.Component<any, any>{
             deliveryloc: " ",
             deliveryperiod: " ",
             deliverymode: " ",
-            cartproducts : {cartproducts:this.props.cartProducts,email : this.props.user.email},
+            cartproducts : {cartproducts:this.props.cartProducts,email : this.props.user.email,token:localStorage.getItem("token")},
             deliverylocerr: " ",
             deliveryperioderr: " ",
             deliverymodeErr: " ",
@@ -21,7 +21,7 @@ class Deliverydetails extends React.Component<any, any>{
             Id:0
         }
     }
-    
+//  getToken = () => localStorage.getItem("token");
     changeHandler = (e: any) => {
         this.setState({ [e.target.name]: e.target.value })
         
@@ -30,7 +30,7 @@ class Deliverydetails extends React.Component<any, any>{
     submitHandler = (e: any, deliveryDetails: any) => {
         e.preventDefault();
         // console.log("delivery details", deliveryDetails);
-        
+        // this.setState({token:this.getToken()})
         // console.log("props in createorder", this.props);
         // let orderDetails1={...deliveryDetails,...this.props.products}
         // this.setState({orderDetails1});

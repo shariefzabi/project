@@ -19,7 +19,7 @@ function BuyNow(props: any) {
     const [weight, setWeight] = useState("");
     const [breed, setBreed] = useState("");
 
-    const [filters,setFilters]=useState<any[]>([]);
+    const [filters, setFilters] = useState<any[]>([]);
     const [typeerrmsg, setTypeerrmsg] = useState("");
     const [quantityerrmsg, setQuantityerrmsg] = useState("");
     const [sexerrmsg, setSexerrmsg] = useState("");
@@ -38,6 +38,7 @@ function BuyNow(props: any) {
             })
             .catch((err) => console.log(err)
             )
+
         return () => {
             setOpen(false)
         }
@@ -48,27 +49,24 @@ function BuyNow(props: any) {
         e.preventDefault();
         // setFilters([...filters,productDetails]);
         // if (type != '' && quantity != '' && breed != '' && weight != '' && sex != '') {
-            // props.storeFilterdetails(productDetails);
-            // setFilters([...filters,productDetails]);
-            // setViewFlag(true);
-            // console.log("filteredproducts", filteredproducts);
+        // props.storeFilterdetails(productDetails);
+        // setFilters([...filters,productDetails]);
+        // setViewFlag(true);
+        // console.log("filteredproducts", filteredproducts);
         // }
-        console.log("props filters", filters);
-
+        // console.log("props filters", filters);
         axios.post("http://localhost:3005/orders/products", filters)
             .then((res) => {
                 props.storeProductdetails(res.data);
                 if (props.user != null)
                     setProductdetailsflag(false);
             })
-
-
     }
     const addProduct = (products: any) => {
         setAddFlag(true);
         if (type != '' && quantity != '' && breed != '' && weight != '' && sex != '') {
             // props.storeFilterdetails(products);
-            setFilters([...filters,products])
+            setFilters([...filters, products])
         }
 
     }
@@ -90,11 +88,7 @@ function BuyNow(props: any) {
     function Validate(event: any) {
         let name = event.target.name;
         let value = event.target.value;
-        // console.log(name); 
-        // console.log(value);
         if (name === "Type") {
-            console.log(value);
-
             if (value === "") {
                 setTypeerrmsg("please select the type*")
                 event.target.classList.add("field-error")
@@ -102,8 +96,6 @@ function BuyNow(props: any) {
                 event.target.classList.remove("field-error")
                 setTypeerrmsg("");
                 setType(value);
-                // console.log(value);
-
             }
         }
         else if (name === "Quantity") {
@@ -177,14 +169,12 @@ function BuyNow(props: any) {
                                     }
 
                                 </div>
-                                <div className='viewall-icon'>
-                                    <button className='cart-button' onClick={() => setViewFlag(true)}><img src={require("./assets/viewallproductsicon.png")} /></button>
-                                </div>
 
                                 <form onSubmit={(e) => productsubmitHandler(e, { type, quantity, weight, sex, breed })}>
-
-
                                     {/* {!viewFlag && */}
+                                    <div className='viewall-icon'>
+                                        <button className='cart-button' onClick={() => { setFilters([...filters, { type, quantity, weight, sex, breed }]); }}><img src={require("./assets/viewallproductsicon.png")} /></button>
+                                    </div>
                                     <div className='row'>
                                         <div className="col-md-2 productype-dropdown" >
                                             <div className="dropdown" >
@@ -273,7 +263,7 @@ function BuyNow(props: any) {
                                         </div>
                                     </div>
                                     <div className="mb-3">
-                                        <button className="continuebutton btn btn-success" onClick={()=>setFilters([...filters,{ type, quantity, weight, sex, breed }])} >Continue</button>
+                                        <button className="continuebutton btn btn-success" onClick={() => setFilters([...filters, { type, quantity, weight, sex, breed }])} >Continue</button>
                                     </div>
                                 </form>
                             </div>

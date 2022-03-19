@@ -5,7 +5,7 @@ import 'primereact/resources/primereact.min.css'
 import './newStyle.css'
 import { Link } from 'react-router-dom';
 
-const User = () => {
+const AddBlog = () => {
     const [newBlog, setNewBlog] = useState(
         {
             topic: '',
@@ -27,6 +27,7 @@ const User = () => {
         flag: false,
         errMsg: ""
     })
+    const [counter,setCounter]=useState(0)
     const validate = () => {
         if (newBlog.about == "" || newBlog.about.length === 0) {
             setAboutmain({ errMsg: "Please enter the Description.", flag: true })
@@ -69,9 +70,9 @@ const User = () => {
             formData.append('about', newBlog.about);
             formData.append('id', newBlog.id);
 
-            axios.post('http://localhost:5000/users/add/', formData)
+            axios.post('http://localhost:3005/blogs/add', formData)
                 .then(res => {
-                    console.log(res);
+                    // console.log(res);
                     setNewBlog({
                         topic: '',
                         date: Date(),
@@ -90,6 +91,7 @@ const User = () => {
                         flag: true,
                         errMsg: "Blog Added in Blog List, click here for Blogs"
                     })
+                    setCounter(counter+1)
                 })
                 .catch(err => {
                     console.log(err);
@@ -114,6 +116,14 @@ const User = () => {
                 // console.log(newBlog.id);
             })
       },[])
+      useEffect (()=>{
+        axios.get("http://localhost:3005/blogs")
+            .then(res => {
+                setNewBlog({ ...newBlog, id: res.data.length +1 })
+                // console.log(newBlog.id);
+            })
+      },[counter])
+    //   console.log(newBlog.id);
     return (<>
 
         <section className="aboutus">
@@ -174,4 +184,4 @@ const User = () => {
     );
 }
 
-export default User;
+export default AddBlog;

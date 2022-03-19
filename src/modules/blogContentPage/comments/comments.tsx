@@ -15,12 +15,12 @@ class Comment extends React.Component<any, any> {
         if(prevProps.id !== this.props.id){
         axios.get("http://localhost:3005/comments/"+this.props.id)
             .then(res => {
-                console.log(res.data)
+                // console.log(res.data)
                 this.setState({ comments: res.data })
             })}
     }
     render() {
-        console.log("comments get :"+this.props.id);
+        // console.log("comments get :"+this.props.id);
         
         // axios.get("http://localhost:3005/comments/" + this.props.id)
         //     .then(res => {

@@ -5,6 +5,9 @@
     }
     .product-cards{
         // height:150px;
+        p{
+            margin: 0px;
+        }
         margin-left: 20px;
         width:250px;
         border-color: #838383;
@@ -29,7 +32,7 @@
     font-weight: bold !important;
     font-size: 25px;
     margin: auto;
-    margin-bottom: 100px;
+    margin-bottom: 1%;
 }
 .dimesional-description{
     margin-left: 100px;
@@ -54,7 +57,8 @@
     border-radius: 0.3125rem;
     height: 2.75rem;
     width:11.063rem;
+    // margin: auto;
     margin: 2rem 28.625rem;
-    margin-top: 0px;
+    // margin-top: 0px;
 }
 }

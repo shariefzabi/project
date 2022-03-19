@@ -73,11 +73,6 @@ function ProductDetails(props: any) {
         // setIsDisplaying(isDisplaying )
 
 
-
-
-
-
-
     }
     const sheepMarketHandler = () => {
 
@@ -205,27 +200,50 @@ function ProductDetails(props: any) {
                             </select>
                         </div>
                         <div className="card-deck row row-cols-lg-3 row-cols-md-3 row-cols-sm-2 row-cols-2">
-                            {cattleFlag &&
+                            {
                                 products.map((product: any, i) => {
                                     let data=[];
-                                    if (sortValue === "default") {
+                                    if ((sortValue === "default") &&  (cattleFlag)) {
                                         if (product.locationName === location) {
                                             data=product.cattleMarkets;
                                         }
-                                    }// sort default end
-                                    else if (sortValue === "highToLow") {
+                                    }
+                                   else if ((sortValue === "default") && (!sheepFlag)) {
+                                        if (product.locationName === location) {
+                                            data=product.sheepMarkets
+                                           
+                                        }
+                                    }
+                                  
+                                    else if ((sortValue === "highToLow") && (cattleFlag)) {
                                         if (product.locationName === location) {
                                             const highToLowData = [].concat(product.cattleMarkets).sort((a: any, b: any) => a.price < b.price ? 1 : -1)
                                             data=highToLowData;
                                         }
-                                    }//sort high to low
-                                    else if (sortValue === "lowToHigh") {
+                                    }
+                                    else if ((sortValue === "highToLow") && (!sheepFlag)) {
+                                        if (product.locationName === location) {
+                                            const highToLowData = [].concat(product.sheepMarkets).sort((a: any, b: any) => a.price < b.price ? 1 : -1)
+                                             data=highToLowData
+                                           
+                                        }
+                                    }
+                                  
+                                    else if ((sortValue === "lowToHigh") && (cattleFlag)) {
                                         if (product.locationName === location) {
                                             const lowToHighData = [].concat(product.cattleMarkets).sort((a: any, b: any) => a.price < b.price ? -1 : 1)
                                             data=lowToHighData;
                                     
                                         }
-                                    }//sort low to high
+                                    }
+                                    else if ((sortValue === "lowToHigh") && (!sheepFlag)) {
+                                        if (product.locationName === location) {
+                                            const lowToHighData = [].concat(product.sheepMarkets).sort((a: any, b: any) => a.price < b.price ? -1 : 1)
+                                            data=lowToHighData;
+                                              
+                                        }
+                                    }
+                                 
                                     return (
                                         data.map((e: any, i: any) => {
 
@@ -264,68 +282,7 @@ function ProductDetails(props: any) {
                                     )
                                 })
                             }
-                            {!sheepFlag &&
-                                products.map((product: any, i) => {
-                                    let data=[];
-                                    if (sortValue === "default") {
-                                        if (product.locationName === location) {
-                                            data=product.sheepMarkets
-                                           
-                                        }
-                                    }// sort default end
-                                    else if (sortValue === "highToLow") {
-                                        if (product.locationName === location) {
-                                            const highToLowData = [].concat(product.sheepMarkets).sort((a: any, b: any) => a.price < b.price ? 1 : -1)
-                                             data=highToLowData
-                                           
-                                        }
-                                    }//sort high to low
-                                    else if (sortValue === "lowToHigh") {
-                                        if (product.locationName === location) {
-                                            const lowToHighData = [].concat(product.sheepMarkets).sort((a: any, b: any) => a.price < b.price ? -1 : 1)
-                                            data=lowToHighData;
-                                              
-                                        }
-                                    }//sort low to high
-                                    return (
-                                       data.map((e: any, i: any) => {
-
-                                            let imagePath = "";
-                                            if (typeof e.image === 'object') {
-                                                imagePath = serverUrl + e.image.filename;
-                                            }
-                                            return (
-                                                <div key={i}>
-
-                                                    <div className="card mb-4">
-                                                        <div className="card-body" id={e._id}>
-                                                            {!inWhishlist &&
-                                                                <button className="wishListButton" onClick={() => addtoWishlist(e)}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
-
-                                                            }
-                                                            {inWhishlist &&
-                                                                <button className="wishListButton" onClick={() => deleteFromWishlist(e)}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
-                                                            }                                                                    <div onClick={productDataHandler}>
-                                                                <img className="productImage" id={e._id} src={imagePath} />
-
-                                                                <h5 className="card-id" id={e._id}>Animal ID: {e._id}</h5>
-
-                                                                <p className="card-price" id={e._id}>Price:{e.price}</p>
-                                                            </div>
-                                                            <div className="  text-center">
-                                                                <button type="button" className="addcartbtn btn btn-success">Add to Cart</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            )
-                                        })
-
-                                    )
-
-                                })
-                            }
+                          
                         </div>
                     </div>
                 </div>
