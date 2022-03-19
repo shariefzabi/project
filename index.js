@@ -204,9 +204,11 @@ app.post("/orders/productfilters",async(req,res)=>{
 
 })
 let products = [];
+let quantityArr=[];
 app.post("/orders/products", async (req, res) => {
   let filterdetails = req.body;
   products = [];
+  quantityArr=[];
   // console.log("filterdetails:",filterdetails);
   let filtercollection = db.collection("locationdbs");
   filtercollection.find().toArray(function (err, result) {
@@ -217,6 +219,7 @@ app.post("/orders/products", async (req, res) => {
           ele.cattleMarkets.forEach((item, index) => {
             if (item.breed === filterdetails.breed && !products.includes(item)) {
               products.push(item);
+              quantityArr.push(filterdetails.quantity);
             }
           })
           // return cattle;
@@ -228,6 +231,7 @@ app.post("/orders/products", async (req, res) => {
           ele.sheepMarkets.forEach((item, index) => {
             if (item.breed === filterdetails.breed && !products.includes(item)) {
               products.push(item);
+              quantityArr.push(filterdetails.quantity);
             }
           })
           // return cattle;
@@ -238,6 +242,7 @@ app.post("/orders/products", async (req, res) => {
           ele.cattleMarkets.forEach((item, index) => {
             if (item.breed === filterdetails.breed && !products.includes(item)) {
               products.push(item);
+              quantityArr.push(filterdetails.quantity);
             }
           })
           // return cattle;
@@ -247,7 +252,7 @@ app.post("/orders/products", async (req, res) => {
 
     // console.log("result",result);
     // console.log("products",products);
-    res.send(products)
+    res.send([products,quantityArr])
   })
 });
 
