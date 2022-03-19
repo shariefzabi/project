@@ -24,6 +24,7 @@ function SelectedProductDetails(props: any) {
         props.state.productData
     );
     let [inWhishlist, setInWhishlist] = useState(false);
+    let [wishlistDB,setWishlistDB]=useState([])
 
     // let [price, setPrice] = useState(0);
     // let [productId, setProductId] = useState('')
@@ -127,13 +128,45 @@ function SelectedProductDetails(props: any) {
     //wishlist delete
 
     const deleteFromWishlist = () => {
-        setInWhishlist(false);
+        
         try {
             axios.delete("http://localhost:3005/orders/wishlists/" + product._id);
         } catch (err) {
             console.error(err);
         }
+        setInWhishlist(false);
     };
+
+
+
+    // app.get('/orders/wishlists/:token', async (req, res) => {
+    //     let { params } = req
+    //     // console.log("email",params.uname);
+    //     let ordercollection = db.collection("wishlists");
+    //     ordercollection.find({token: params.token}).toArray(function (err, result) {
+    //       if (err) console.log(err);
+    //       else {
+    //         res.send(result);
+    //       }
+    //     })
+      
+    //   })
+
+      useEffect(() => {
+        let getProductUrl =
+            "http://localhost:3005//orders/wishlists/" +
+            props.state.user.token;
+        axios.get(getProductUrl).then((response) => {
+            setWishlistDB(response.data);
+
+        });
+    }, []);
+    console.log("wish",wishlistDB)
+
+    
+
+
+
 
    
     
