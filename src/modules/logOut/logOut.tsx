@@ -3,8 +3,7 @@ import { connect } from "react-redux";
 import Sidebar from "../profile/sidebar/sidebar";
 import "./logOut.scss";
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-// import Modal from '@mui/material/Modal';
+import { useNavigate } from 'react-router-dom';
 
  function LogOut(props:any) {
 
@@ -13,6 +12,7 @@ import { Link } from 'react-router-dom';
   const [userError, setUserError] = useState("");
   const [usernameErrMsg, setUsernameErrMsg] = useState("");
   const [passwordErrMsg, setPasswordErrMsg] = useState("");
+  const navigate = useNavigate()
 
   const setToken = (token:any)=>{
     localStorage.setItem("token",token);
@@ -54,8 +54,7 @@ import { Link } from 'react-router-dom';
           else{
             setToken(res.data.token);
             props.setUser(res.data);
-            props.history.push("/")
-            window. location. reload();
+            navigate("/")
           }
         })
         .catch((err:any)=>console.log(" User Login up Error",err));
