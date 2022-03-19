@@ -258,8 +258,8 @@ function SelectedProductDetails(props: any) {
                   );
                 })}
               </div>
-              <div className="latestblog">
-                <h3 className="fontColor">Latest</h3>
+              <div className="latestblog mt-5">
+                <h3 className="latesthead">Latest</h3>
                 {latestProducts.map((product: any, i: any) => {
                   let imagePath = "";
                   if (typeof product.image === "object") {
@@ -270,15 +270,15 @@ function SelectedProductDetails(props: any) {
                       <div className="card mb-2 ">
                         <div className=" latestCards" id={product._id}>
                           {/* <button className="wishListButton" onClick={addtoWishlist}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button> */}
-                          <div className="latestProduct d-flex">
-                            <div>
+                          <div className="latestProduct row">
+                            <div className="col col-xl-4 col-md-4 col-sm-4">
                               <img
                                 className="latestProductImage"
                                 id={product._id}
                                 src={imagePath}
                               />
                             </div>
-                            <div className="latestProductDetails">
+                            <div className="latestProductDetails col col-xl-7 col-md-6 col-sm-6 mt-2 px-0">
                               <h5
                                 className="card-id latestcardid"
                                 id={product._id}
@@ -476,7 +476,7 @@ function SelectedProductDetails(props: any) {
 
               {isDisplayingReview && <div className="review">Review</div>}
             </div>
-            <h3 className="latesthead fontColor">Latest</h3>
+            <h3 className="latesthead">Latest</h3>
             <div className="latestblog col-12 d-flex">
               {latestProducts.map((product: any, i: any) => {
                 let imagePath = "";

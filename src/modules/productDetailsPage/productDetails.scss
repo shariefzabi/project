@@ -492,11 +492,7 @@ hr {
   overflow-y:scroll;
   border-radius: 5px;
 }
-.latestblog{
-  width: 20vw !important;
-  margin-right: 1.5rem;
-  margin-left: 1rem;
-}
+
 .descriptionbox{
   border: 1px solid #e0e0e0;
   border-bottom-left-radius: 5px;
@@ -547,20 +543,28 @@ hr {
   height: 26rem;
 }
 
-.fontColor{
+.latesthead{
   font-weight: bold;
   color: #838383;
 }
+
+/////latest Cards/////
+.latestblog{
+  width: 20vw !important;
+  margin-right: 1.5rem;
+  margin-left: 1rem;
+}
 .latestProductImage{
-  width: 100%;
-  height: 100%;
+  width:100%;
+  height:100%;
+  padding:4%;
 }
 .latestProductDetails{
 padding-left:4%;
+
 }
-.latestCards{
-  padding:2%;
-}
+
+
 /////responsive for select product page
 @media (min-width:992px) and (max-width:1024px){
   .mobileview{
@@ -640,12 +644,6 @@ padding-left:4%;
   .descriptionbox{
     padding: 0.87rem;
   }
-  .latestProductImage{
-    display: none;
-  }
-  .latestcardid{
-    font-size: 0.45rem;
-  }
 }
 @media (min-width:0px) and (max-width:576px){
   .productPage1{
@@ -721,18 +719,32 @@ padding-left:4%;
   }
   .latesthead{
      text-align: start;
-     margin-left: 5rem;
+     margin-left: 14%;
     margin-top: 1.625rem;
   }
+.latestProduct{
+  display:flex;
+  flex-wrap:wrap;
+}
   .latestblog{
-    margin-left: 5rem;
+    margin-left:13%;
+  }
+  .latestProductDetails{
+    margin-top: 5%;
+    margin-right: 0.5rem;
+  }
+  .latestProductImage{
+    width:80px;
+    height:50px;
+    padding: 0%;
   }
   .latestCards{
-    margin-right: 0.5rem;
+    padding: 4%;
   }
   .card{
     margin-right: 0.5rem;
   }
+  
 }
 /////styles for selectedproduct page ends here//////////
 
