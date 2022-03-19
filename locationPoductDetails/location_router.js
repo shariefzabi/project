@@ -254,48 +254,48 @@ router.get("/latestProducts", async (req, res) => {
 
 //Fetching Particular AnimalId in particular location
 
-router.get(
-    "/get-animal/:locationName/:animalId",
-    expressAsyncHandler(async (req, res) => {
-        console.log(res);
-        let locationName = req.params.locationName;
-        let animalId = req.params.animalId;
-        //   console.log(animalId);
-        let locationdbs = await Location.findOne({ locationName: locationName });
-        console.log(locationdbs);
-        if (locationdbs == null) {
-            res
-                .status(200)
-                .send({ message: "location does not exist with this location name" });
-        } else {
+// router.get(
+//     "/get-animal/:locationName/:animalId",
+//     expressAsyncHandler(async (req, res) => {
+//         console.log(res);
+//         let locationName = req.params.locationName;
+//         let animalId = req.params.animalId;
+//         //   console.log(animalId);
+//         let locationdbs = await Location.findOne({ locationName: locationName });
+//         console.log(locationdbs);
+//         if (locationdbs == null) {
+//             res
+//                 .status(200)
+//                 .send({ message: "location does not exist with this location name" });
+//         } else {
 
-            let animalData = locationdbs.cattleMarkets.find(
-                (animal) => animal.animalId == animalId
-            );
-            if (animalData == null) {
-                res.status(200).send({
-                    message: "Animal data doesn't exist with this animal Id!!",
-                });
-            } else {
-                data = {
-                    price: animalData.price,
-                    animalId: animalData.animalId,
-                    weight: animalData.weight,
-                    image: animalData.image,
-                    breed: animalData.breed,
-                    availability: animalData.availability,
-                    certification: animalData.certification,
-                    source: animalId.source
-                };
-                res.status(200).send({
-                    message: "Animal data fetched successfully!!",
-                    payload: data,
-                });
-                console.log(animalData);
-            }
-        }
-    })
-);
+//             let animalData = locationdbs.cattleMarkets.find(
+//                 (animal) => animal.animalId == animalId
+//             );
+//             if (animalData == null) {
+//                 res.status(200).send({
+//                     message: "Animal data doesn't exist with this animal Id!!",
+//                 });
+//             } else {
+//                 data = {
+//                     price: animalData.price,
+//                     animalId: animalData.animalId,
+//                     weight: animalData.weight,
+//                     image: animalData.image,
+//                     breed: animalData.breed,
+//                     availability: animalData.availability,
+//                     certification: animalData.certification,
+//                     source: animalId.source
+//                 };
+//                 res.status(200).send({
+//                     message: "Animal data fetched successfully!!",
+//                     payload: data,
+//                 });
+//                 console.log(animalData);
+//             }
+//         }
+//     })
+// );
 
 
 
