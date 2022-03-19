@@ -736,6 +736,19 @@ padding-left:4%;
 }
 /////styles for selectedproduct page ends here//////////
 
+///pagination styling/////
+.pageNumbers{
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+.pageNumbers li{
+  padding: 10px;
+  
+  cursor: pointer;
+}
+
+
 
 
 

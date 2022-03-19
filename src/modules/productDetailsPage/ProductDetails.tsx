@@ -19,17 +19,36 @@ function ProductDetails(props: any) {
     let [cattleFlag, setCattleFlag] = useState(true)
     let [sheepFlag, setSheepFlag] = useState(true)
     let [showCount, setShowCount] = useState(5)
+    let [currentPage, setCurrentPage] = useState(1)
     let [sortValue, setSortValue] = useState('default')
     let [id, setId] = useState('')
-
     let [productId, setProductId] = useState("")
-
     let [inWhishlist, setInWhishlist] = useState(false)
-
-
     const navigate = useNavigate();
     // let [isOpened, setIsOpened] = useState('')
     // let [marketType, setMarketType] = useState('cattleMarkets')
+
+
+
+    //////pagination starts here/////
+    const handleClick=(event:any)=>{
+        setCurrentPage(Number(event.target.id))
+    }
+    let pages = [1, 2, 3];
+    const renderPageNumbers = pages.map((number: any) => {
+        return (
+            <li className="blue " key={number} id={number} onClick={handleClick}>
+                &#9679;
+            </li>
+        )
+    })
+    let indexOfLastItem= currentPage * showCount;
+    let indexOfFirstItem = indexOfLastItem - showCount;
+
+
+
+    //////pagination ends here/////
+
 
 
     console.log(location)
@@ -42,13 +61,9 @@ function ProductDetails(props: any) {
                 }
             )
     }, [props.state.locName]);
-
-
     const setLocationHandler = (event: any) => {
         setLocation(event.target.value)
         // setId('opened')
-
-
         if (event.target.id === "") {
             event.target.id = 'opened'
         } else if (event.target.id === "opened") {
@@ -64,18 +79,14 @@ function ProductDetails(props: any) {
         // setSelectedProduct(e.target.id)
         // console.log('sdfghj',selectedProduct)
     }
-
     const cattleMarkettHandler = () => {
         setCattleFlag(true)
         setSheepFlag(true)
 
         setMarket("Cattle Market")
         // setIsDisplaying(isDisplaying )
-
-
     }
     const sheepMarketHandler = () => {
-
         setMarket("Sheep Market")
 
         setCattleFlag(false)
@@ -90,7 +101,7 @@ function ProductDetails(props: any) {
 
     const showHandler = (event: any) => {
         setShowCount(event.target.value)
-        console.log(market)
+       
     }
 
     const addToCart = () => {
@@ -101,7 +112,7 @@ function ProductDetails(props: any) {
     let wishlistData = {}
 
     const addtoWishlist = (product: any) => {
-        
+
 
         setInWhishlist(true)
 
@@ -125,16 +136,6 @@ function ProductDetails(props: any) {
             console.error(err)
         }
     }
-
-
-
-
-
-
-
-
-
-
 
     return (
         <div id="productPage" className="productPage">
@@ -195,57 +196,61 @@ function ProductDetails(props: any) {
                                 onChange={showHandler}
                                 required>
                                 <option className="dropdownItem" selected>5</option>
-                                <option className="dropdownItem" >4</option>
-                                <option className="dropdownItem" >3</option>
+                                <option className="dropdownItem" >10</option>
+                                <option className="dropdownItem" >50</option>
                             </select>
                         </div>
                         <div className="card-deck row row-cols-lg-3 row-cols-md-3 row-cols-sm-2 row-cols-2">
                             {
                                 products.map((product: any, i) => {
-                                    let data=[];
-                                    if ((sortValue === "default") &&  (cattleFlag)) {
+                                    let data = [];
+                                    if ((sortValue === "default") && (cattleFlag)) {
                                         if (product.locationName === location) {
-                                            data=product.cattleMarkets;
+                                            data = product.cattleMarkets;
+
                                         }
                                     }
-                                   else if ((sortValue === "default") && (!sheepFlag)) {
+
+                                    else if ((sortValue === "default") && (!sheepFlag)) {
                                         if (product.locationName === location) {
-                                            data=product.sheepMarkets
-                                           
+                                            data = product.sheepMarkets
+
                                         }
                                     }
-                                  
+
                                     else if ((sortValue === "highToLow") && (cattleFlag)) {
                                         if (product.locationName === location) {
                                             const highToLowData = [].concat(product.cattleMarkets).sort((a: any, b: any) => a.price < b.price ? 1 : -1)
-                                            data=highToLowData;
+                                            data = highToLowData;
                                         }
                                     }
                                     else if ((sortValue === "highToLow") && (!sheepFlag)) {
                                         if (product.locationName === location) {
                                             const highToLowData = [].concat(product.sheepMarkets).sort((a: any, b: any) => a.price < b.price ? 1 : -1)
-                                             data=highToLowData
-                                           
+                                            data = highToLowData
+
                                         }
                                     }
-                                  
+
                                     else if ((sortValue === "lowToHigh") && (cattleFlag)) {
                                         if (product.locationName === location) {
                                             const lowToHighData = [].concat(product.cattleMarkets).sort((a: any, b: any) => a.price < b.price ? -1 : 1)
-                                            data=lowToHighData;
-                                    
+                                            data = lowToHighData;
+
                                         }
                                     }
                                     else if ((sortValue === "lowToHigh") && (!sheepFlag)) {
                                         if (product.locationName === location) {
                                             const lowToHighData = [].concat(product.sheepMarkets).sort((a: any, b: any) => a.price < b.price ? -1 : 1)
-                                            data=lowToHighData;
-                                              
+                                            data = lowToHighData;
+
                                         }
                                     }
-                                 
+                                    let currentItems= data.slice(indexOfFirstItem , indexOfLastItem)
+
+
                                     return (
-                                        data.map((e: any, i: any) => {
+                                        currentItems.map((e: any, i: any) => {
 
                                             let imagePath = "";
                                             if (typeof e.image === 'object') {
@@ -282,15 +287,22 @@ function ProductDetails(props: any) {
                                     )
                                 })
                             }
-                          
+
+                           
                         </div>
+                        <ul className="pageNumbers ">
+                        {renderPageNumbers}
+                    </ul>
                     </div>
+
                 </div>
+
 
             </div>
 
 
         </div >
+
     )
 }
 const mapStateToProps = (state: any) => {
