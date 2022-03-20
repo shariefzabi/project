@@ -5,33 +5,33 @@
 }
 .clients .card{
     /* width: 570px; */
-    border-radius:10px;
+    border-radius:0.625rem;
     /* justify-content: space-between; */
 
 }
 .clients .carousel-description{
-    font-weight:400px;
-    font-size:14px;
-    line-height: 20px;
+    font-weight:25rem;
+    font-size:0.875rem;
+    line-height: 1.25rem;
     font-family: ubuntu;
-    width:264px;
+    width:16.5rem;
     
     
 }
 .clients .carousel-radio{
-    width:35px;
-    height:35px;
-    left: 180.96px;
+    width:2.187rem;
+    height:2.187rem;
+    left: 11.31rem;
 }
 .clients .client-details{
     /* top: calc(50% - 16px/2 + 2436.27px); */
     font-family: Ubuntu;
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
-    line-height: 16px;
-    margin: 5px !important;
-    letter-spacing: 0.4px;
+    font-size: 0.875rem;
+    line-height: 1rem;
+    margin: 0.312rem !important;
+    letter-spacing: 0.025rem;
 }
 .clients label{
     color: #06864D;
@@ -43,25 +43,25 @@
 @media (max-width:380px){
     .clients{
         margin: auto;
-        margin-top: 20px;
-        width: 285px;
+        margin-top: 1.25rem;
+        width: 17.812rem;
     }
     .clients h2{
-        font-size: 15px;
+        font-size: 0.937rem;
         line-height: 120%;
         margin: 0%;
         /* margin-left: 30PX; */
     }
     .clients .card{
         width: 100%;
-        border-radius:10px;
+        border-radius:0.625rem;
         /* justify-content: space-between; */
     
     }
     .clients .carousel-description{
-        font-weight:400px;
-        font-size:10px;
-        line-height: 20px;
+        font-weight:25rem;
+        font-size:0.625rem;
+        line-height: 1.25rem;
         font-family: ubuntu;
         width:80%;
     }
@@ -71,10 +71,10 @@
         font-family: Ubuntu;
         font-style: normal;
         font-weight: normal;
-        font-size: 10px;
-        line-height: 16px;
+        font-size: 0.625rem;
+        line-height: 1rem;
         /* margin: 5px !important; */
-        letter-spacing: 0.4px;
+        letter-spacing: 0.025rem;
     }.head-part{
         margin-bottom: 0% !important;
     }

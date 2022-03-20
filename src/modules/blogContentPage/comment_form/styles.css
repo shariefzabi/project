@@ -52,21 +52,21 @@ label{
 }
 @media (max-width:380px){
     .landingpage-header{
-        height: 61px;
+        height: 3.8125rem;
     }
     .form{
         
         margin: auto;
         /* padding-left: 44px; */
         margin-top: 3rem;
-        width: 285px;
+        width: 17.81rem;
     
     }
     .commentheading{
         width: 100%;
         margin-left: 0px;
         padding: 0%;
-        font-size: 15px;
+        font-size: 0.937rem;
         font-style: normal;
         font-weight: 700;
         /* line-height: 11px; */
@@ -74,27 +74,27 @@ label{
     .fullname , .Email, .commenttitle{
         width: 100%;
         color: #838383;
-        margin-bottom: 16px;
-        font-size: 10px !important;
+        margin-bottom: 1rem;
+        font-size: 0.625rem !important;
         /* margin-left: 44px; */
     }
     .fullnameinput{
-        width: 236px !important;
-        height: 39px;
+        width: 14.75rem !important;
+        height:2.437rem;
         margin: auto;
-        font-size: 8px;
+        font-size: 0.5rem;
         /* border-radius: 0.5px; */
     }
     .emailinput{
-        width: 236px !important;
-        height: 39px;
-        font-size: 8px;
-        margin-bottom: 0px;
+        width: 14.75rem !important;
+        height: 2.437rem;
+        font-size: 0.5rem;
+        margin-bottom: 0rem;
     }
     .commentinput{
-        width: 236px !important;
-       font-size: 8px;
-        margin-bottom: 1px !important;
+        width: 14.75rem !important;
+       font-size: 0.5rem;
+        margin-bottom: 0.0625rem !important;
         
     }
      .sbutton{
@@ -102,11 +102,11 @@ label{
         
     } 
     .doneBtn{
-        width: 88.5px !important;
-        height: 30px !important;
+        width: 5.531rem !important;
+        height: 1.875rem !important;
         /* text-align: center !important; */
-        font-size: 10px !important;
-        padding-left: 44px;
+        font-size: 0.625rem !important;
+        padding-left: 2.75rem;
     }
 
 }
