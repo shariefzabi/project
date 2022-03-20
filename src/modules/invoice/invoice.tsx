@@ -50,21 +50,7 @@ function Invoice(props: any) {
                 console.log("error: ", err);
             })
     }, [useremail])
-    // useEffect(() => {
-    //     if (window.innerWidth <= 450) {
-    //         setCol_Span(5)
-    //     }
-    //     else {
-    //         setCol_Span(7)
-    //     }
-    // }, [col_Span])
     function invoiceToggle(e: any) {
-        if (window.innerWidth <= 450) {
-            setCol_Span(5)
-        }
-        else {
-            setCol_Span(7)
-        }
         if (e.target.src == upArrow) {
             e.target.src = downArrow;
         }
