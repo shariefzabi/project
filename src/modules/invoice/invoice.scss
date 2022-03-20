@@ -85,7 +85,7 @@
   }
   .invoice-id img{
    float: right;
-    padding: 0.5rem 3rem 0.6rem 39vw;
+   padding: 0.5rem 3rem 0.6rem 58vw;
     cursor: pointer;
   }
   .hr-line{
@@ -100,10 +100,7 @@
   }
   
   .table {
-
     font-size: 0.8rem;
-    
-    
   }
   .table table, .table th, .table td {
     border: 1px solid #E0E0E0;
@@ -140,15 +137,11 @@
       .invoiceSection header {
       margin-bottom: 0;
     }
-    .invoiceSection, .id-no, .invoice-id, .head i, .inv-bd-lp {
-      font-size: 0.6rem;
-    }
-    
-  
+    // .invoiceSection, .id-no, .invoice-id, .head i, .inv-bd-lp {
+    //   font-size: 0.6rem;
+    // }
     .table table, th, td {
-      /* text-align: center; */
-      padding: 0.07vw;
-      font-size: 0.6rem;
+      font-size: 0.4rem;
     }
     table{
       height:60px;
@@ -157,21 +150,37 @@
     .head span i{
       font-size: 0.6rem;
     }
-  
-  
-    .invoice-heading, .head h3 {
-      font-size: 0.7rem;
-    }
-  
-    .dbl, .inv-vr {
+    // .invoice-heading, .head h3 {
+    //   font-size: 0.7rem;
+    // }
+    .tableHeader, .inv-vr {
       display: none;
+      
+    }
+    .tableFooter>tr>td {
+      // color: #838383;
+      font-size: 0.5rem;
+      font-weight: bolder;
+      // padding:1% 3% 1% 0%;
+      // border-bottom: 1.5px solid #E0E0E0;
     }
   
     .inv-bd-lp {
       margin-right: 1rem;
+      
     }
+    .dbl{
+      width: calc(100%/8);
+      height: 2% !important;
+    }
+    .table {
+      font-size: 0.8rem;
+    }
+    .invoice-id img{ 
+      padding: 0.5rem 3rem 0.6rem 30vw;
+     }
   }
-  
+ 
   
   @media (min-width: 577px) and (max-width: 768px) {
     .invoiceSection{
@@ -183,9 +192,9 @@
       .invoiceSection header {
       margin-bottom: 1.5rem;
     }
-    .invoiceSection, .id-no, .invoice-id, .head i, .inv-bd-lp {
-      font-size: 0.6rem;
-    }
+    // .invoiceSection, .id-no, .invoice-id, .head i, .inv-bd-lp {
+    //   font-size: 0.6rem;
+    // }
   
     .table table, th, td {
      
@@ -196,11 +205,12 @@
     table{
       height: 80px;
     }
-     
-  
-    .invoice-heading, .head h3 {
-      font-size: 0.803rem;
-    }
+    // .invoice-heading, .head h3 {
+    //   font-size: 0.803rem;
+    // }
+    .invoice-id img{ 
+      padding: 0.5rem 3rem 0.6rem 44vw;
+     }
   
    
   }
@@ -214,9 +224,9 @@
       .invoiceSection header {
       margin-bottom: 1.5rem;
     }
-    .invoiceSection, .id-no, .invoice-id, .head i, .inv-bd-lp {
-      font-size: 0.6rem;
-    }
+    // .invoiceSection, .id-no, .invoice-id, .head i, .inv-bd-lp {
+    //   font-size: 0.6rem;
+    // }
   
     .table table, th, td {
       /* text-align: center; */
@@ -227,15 +237,17 @@
       height:100px;
     }
   
-    /* .Brow td {
-      padding: 2vw 0.1vw;
-    } */
+    .invoice-id img{ 
+      padding: 0.5rem 3rem 0.6rem 47vw;
+     }
   }
   @media (min-width: 993px) and (max-width: 1200px) {
     .table table, th, td {
-      /* text-align: center; */
       padding: 0.1vw;
       font-size: 0.8rem;
     }
+    .invoice-id img{ 
+      padding: 0.5rem 3rem 0.6rem 52vw;
+     }
   }
   

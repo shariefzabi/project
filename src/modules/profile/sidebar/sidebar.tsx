@@ -24,7 +24,7 @@ function Sidebar(props: any) {
                 <ul className="nav flex-column fixed-left">
                     <li className="nav-item">
                         <Link className="btn nav-link text-secondary active" tabIndex={1} role="button" data-mdb-toggle="popover"
-                            data-mdb-trigger="focus" data-mdb-content="Overview" to = "/">
+                            data-mdb-trigger="focus" data-mdb-content="Overview" to="/">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 className="bi bi-house" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd"
@@ -45,7 +45,7 @@ function Sidebar(props: any) {
                     </li>
                     <li className="nav-item">
 
-                        <Link className="nav-link text-secondary" to = "/orders">
+                        <Link className="nav-link text-secondary" to="/orders">
 
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-bag"
                                 viewBox="0 0 16 16">
@@ -101,8 +101,8 @@ function Sidebar(props: any) {
                 </ul>
             </nav>
 
-            <nav>
-                <div className="d-sm-none position-fixed">
+            {/* <nav>
+                <div className="d-sm-none ">
                     <a className="btn-togglemenu" type="button" onClick={MenuToggler}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-list"
                             viewBox="0 0 16 16">
@@ -141,7 +141,7 @@ function Sidebar(props: any) {
                         <a className="text-light text-decoration-none" href="#">TERMS&nbsp;&amp;&nbsp;CONDITIONS</a>
                     </footer>
                 </section >
-            </nav >
+            </nav > */}
         </div >
 
     )

@@ -7,18 +7,11 @@ import upArrow from "./assets/img/uptriangle.png";
 import downArrow from "./assets/img/downtriangle.png";
 import Sidebar from "../profile/sidebar/sidebar";
 
-function invoiceToggle(e: any) {
-    if (e.target.src == upArrow) {
-        e.target.src = downArrow;
-    }
-    else
-        e.target.src = upArrow;
-}
+
+
 function Invoice(props: any) {
     const [invoiceFlag, setinvoiceFlag] = useState(true);
     let [invoice, setInvoice] = useState([]);
-
-
     const [userDetails, setUserDetails] = useState(
         {
             email: "",
@@ -44,6 +37,8 @@ function Invoice(props: any) {
         if (props.user == null) {
             setinvoiceFlag(false);
         }
+
+
     }, [])
     useEffect(() => {
         axios.get("http://localhost:3005/invoicedetails/" + useremail)
@@ -55,7 +50,28 @@ function Invoice(props: any) {
                 console.log("error: ", err);
             })
     }, [useremail])
-
+    // useEffect(() => {
+    //     if (window.innerWidth <= 450) {
+    //         setCol_Span(5)
+    //     }
+    //     else {
+    //         setCol_Span(7)
+    //     }
+    // }, [col_Span])
+    function invoiceToggle(e: any) {
+        if (window.innerWidth <= 450) {
+            setCol_Span(5)
+        }
+        else {
+            setCol_Span(7)
+        }
+        if (e.target.src == upArrow) {
+            e.target.src = downArrow;
+        }
+        else
+            e.target.src = upArrow;
+    }
+    console.log(window.innerWidth);
 
     return (
         <main className="row" id="mainContent">
@@ -63,10 +79,10 @@ function Invoice(props: any) {
                 !props.user &&
                 <p className='text-danger text-center'>please login to your account</p>
             }
-            <div className="col-1 mt-5 pt-5">
+            <div className="col-0 col-sm-1 col-xl-1 col-md-1 col-lg-1">
                 <Sidebar></Sidebar>
             </div>
-            {props.user && <div className="col-11">
+            {props.user && <div className="col-12 col-sm-11 col-lg-11 col-xl-11 col-md-11">
                 < section className="invoiceSection">
                     <header >
                         <div className="headingText ">
@@ -78,6 +94,8 @@ function Invoice(props: any) {
                         {
                             invoice.map((data, ind) => {
                                 // console.log("invoicxe data", data)
+
+
                                 let cartproducts: any = data["cartproducts"];
                                 let index = "#ind" + ind;
                                 let totalAmmount = 0;
@@ -89,7 +107,7 @@ function Invoice(props: any) {
                                                 <thead>
                                                     <tr className="Hrow">
                                                         <th className="dbl">Type</th>
-                                                        <th className="dbl">Sex</th>
+                                                        <th className="dbl ">Sex</th>
                                                         <th className="dbl">Date</th>
                                                         <th className="dbl">Quantity</th>
                                                         <th className="dbl">Weight</th>
@@ -97,7 +115,7 @@ function Invoice(props: any) {
                                                             <span className="first-line">Product</span>
                                                             <span>Amount</span>
                                                         </th >
-                                                        <th className="dbl">
+                                                        <th className="dbl ">
                                                             <span className="first-line">Delivery</span>
                                                             <span>Amount</span>
                                                         </th >
@@ -138,7 +156,8 @@ function Invoice(props: any) {
                                                 }
                                                 <tfoot className="tableFooter">
                                                     <tr>
-                                                        <td className="right text-end" colSpan={7} >Total Ammount:</td>
+
+                                                        <td className="right text-end" colSpan={7}>Total Ammount:</td>
                                                         <td className="right p-0">&#8377;{totalAmmount}</td>
                                                     </tr>
                                                 </tfoot>

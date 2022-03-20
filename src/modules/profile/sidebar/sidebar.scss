@@ -1,5 +1,5 @@
 .sidebar-container{
-
+  
 
 .sidebar li svg{
 
@@ -7,6 +7,8 @@
   height: 1.54rem;
 }
 .sidebar {
+  padding-top: 6rem;
+  padding-bottom: 50vh;
     width: 4.375rem;
     height: 100%;
     // z-index: 9999;
@@ -104,6 +106,9 @@
     margin-left: 4.375rem;
     padding-top: 7.5rem;
   }
+  
+   
+  
 
   @media (max-width: 576px) {
     #mainContent {
@@ -112,17 +117,17 @@
     }
   }
   @media (min-width: 577px) and (max-width: 768px) {
-    .sidebar {
-      margin-top: 6rem;
-    }
+    // .sidebar {
+    //   margin-top: 6rem;
+    // }
     #mainContent{
       padding-top: 6rem;
     }
   }
   @media (min-width: 769px) and (max-width: 1024px) {
-    .sidebar {
-      margin-top: 6rem;
-    }
+    // .sidebar {
+    //   margin-top: 6rem;
+    // }
     #mainContent{
       padding-top: 6rem;
     }
