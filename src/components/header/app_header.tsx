@@ -14,7 +14,7 @@ import AgentModel from "../../modules/AgentModel(Mod) copy/AgentModel1";
 import ButcheryModel from "../../modules/butchery_form/butcherypopup";
 import axios from "axios";
 import Orderdisplay from "../../modules/ordercreation/components/orderdisplay/orderdisplay";
-import { Dialog } from "@mui/material";
+import Modal from "@mui/material/Modal";
 
 class Header extends React.Component<any, any> {
   constructor(props: any) {
@@ -404,7 +404,7 @@ class Header extends React.Component<any, any> {
                       View Cart
                     </Link>
                     <button className="btn btn-success" onClick={this.handleOpen}>Checkout</button>
-                    <Dialog
+                    <Modal
                       open={this.state.open}
                       onClose={this.handleClose}
                       aria-describedby="modal-modal-description"
@@ -412,7 +412,7 @@ class Header extends React.Component<any, any> {
 
                     >
                       <Orderdisplay></Orderdisplay>
-                    </Dialog>
+                    </Modal>
                   </div>
                 </div>
               </div>

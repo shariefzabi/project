@@ -151,7 +151,7 @@ function Invoice(props: any) {
                                             <div className="head">
                                                 <h3>
                                                     <span className="first-line">Payment Information</span>
-                                                    <span><i>Via </i></span>
+                                                    <span><i>Via Ravepay </i></span>
                                                     {/* <span><i>Via {data["invoicedata"]["payment"]}</i></span> */}
                                                 </h3>
                                                 <div className="row mb-0">
