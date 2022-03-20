@@ -217,7 +217,7 @@ app.post("/orders/products", async (req, res) => {
         if (filterdetails.type === "Cow") {
           // let cattle = [];
           ele.cattleMarkets.forEach((item, index) => {
-            if (item.breed === filterdetails.breed && !products.includes(item)) {
+            if (item.breed.toLowerCase() === filterdetails.breed.toLowerCase() && !products.includes(item)) {
               products.push(item);
               quantityArr.push(filterdetails.quantity);
             }
@@ -229,7 +229,7 @@ app.post("/orders/products", async (req, res) => {
 
           // let cattle = [];
           ele.sheepMarkets.forEach((item, index) => {
-            if (item.breed === filterdetails.breed && !products.includes(item)) {
+            if (item.breed.toLowerCase() === filterdetails.breed.toLowerCase() && !products.includes(item)) {
               products.push(item);
               quantityArr.push(filterdetails.quantity);
             }
@@ -240,7 +240,7 @@ app.post("/orders/products", async (req, res) => {
 
           // let cattle = [];
           ele.cattleMarkets.forEach((item, index) => {
-            if (item.breed === filterdetails.breed && !products.includes(item)) {
+            if (item.breed.toLowerCase() === filterdetails.breed.toLowerCase() && !products.includes(item)) {
               products.push(item);
               quantityArr.push(filterdetails.quantity);
             }
