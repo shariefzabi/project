@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import './sidebar.scss'
 import { connect } from 'react-redux';
 function Sidebar(props: any) {
@@ -23,7 +23,7 @@ function Sidebar(props: any) {
             <nav className="sidebar  d-none d-sm-block">
                 <ul className="nav flex-column fixed-left">
                     <li className="nav-item">
-                        <Link className="btn nav-link text-secondary active" tabIndex={1} role="button" data-mdb-toggle="popover"
+                        <NavLink className="btn nav-link text-secondary" tabIndex={1} role="button" data-mdb-toggle="popover"
                             data-mdb-trigger="focus" data-mdb-content="Overview" to="/">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 className="bi bi-house" viewBox="0 0 16 16">
@@ -32,30 +32,30 @@ function Sidebar(props: any) {
                                 <path fill-rule="evenodd"
                                     d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
                             </svg>
-                        </Link>
+                        </NavLink>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link text-secondary" to="/profile">
+                        <NavLink className="nav-link text-secondary" to="/profile">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 className="bi bi-person" viewBox="0 0 16 16">
                                 <path
                                     d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
                             </svg>
-                        </Link>
+                        </NavLink>
                     </li>
                     <li className="nav-item">
 
-                        <Link className="nav-link text-secondary" to="/orders">
+                        <NavLink className="nav-link text-secondary" to="/orders">
 
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-bag"
                                 viewBox="0 0 16 16">
                                 <path
                                     d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
                             </svg>
-                        </Link>
+                        </NavLink>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link text-secondary" to="/invoice">
+                        <NavLink className="nav-link text-secondary" to="/invoice">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 className="bi bi-receipt" viewBox="0 0 16 16">
                                 <path
@@ -63,7 +63,7 @@ function Sidebar(props: any) {
                                 <path
                                     d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z" />
                             </svg>
-                        </Link>
+                        </NavLink>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link text-secondary" href="payments.html">
@@ -88,7 +88,7 @@ function Sidebar(props: any) {
                         </a>
                     </li>
                     <li className="nav-item">
-                        <Link onClick={logOut} className="nav-link text-secondary" to="/logout">
+                        <NavLink onClick={logOut} className="nav-link text-secondary" to="/logout">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 className="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd"
@@ -96,7 +96,7 @@ function Sidebar(props: any) {
                                 <path fill-rule="evenodd"
                                     d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
                             </svg>
-                        </Link>
+                        </NavLink>
                     </li>
                 </ul>
             </nav>
