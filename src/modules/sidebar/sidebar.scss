@@ -113,11 +113,17 @@
       margin: 0;
       padding-top: 4rem;
     }
+    .sidebar-container{
+      display: none;
+    }
   }
   @media (min-width: 577px) and (max-width: 768px) {
     // .sidebar {
     //   margin-top: 6rem;
     // }
+    .sidebar-container{
+      display: none;
+    }
     #mainContent{
       padding-top: 6rem;
     }

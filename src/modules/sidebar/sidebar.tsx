@@ -19,7 +19,7 @@ function Sidebar(props: any) {
     }
 
     return (
-        <div className='sidebar-container'>
+        <div className='sidebar-container d-sm-none d-md-block'>
             <nav className="sidebar  d-none d-sm-block">
                 <ul className="nav flex-column fixed-left">
                     <li className="nav-item">

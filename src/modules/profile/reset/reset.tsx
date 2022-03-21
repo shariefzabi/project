@@ -84,12 +84,11 @@ function Reset(props: any) {
 
     return (
         <div>
-
             <section className="resetSection">
-                <span  onClick={()=>props.setdisplayReset(false)}> <i className="pb-4 fa fa-long-arrow-left"></i></span>
+                <span  onClick={()=>props.setdisplayReset(false)}> <i title='Go back' className="pb-4 fa fa-long-arrow-left pt-2 ps-3 ps-lg-5 pt-lg-3"></i></span>
                 <div className='formContainer resetpage'><h3>Reset Password</h3>
-                    <form onSubmit={submitHandler}>
-                        <p> Fields with <span className="text-danger">*</span> are required</p>
+                    <form  onSubmit={submitHandler}>
+                        <p className='pb-3'> Fields with <span className="text-danger">*</span> are required</p>
                         <div >
                             <div className='position-relative'>
                                 <label htmlFor="name">Old Password<span className="text-danger">*</span></label>

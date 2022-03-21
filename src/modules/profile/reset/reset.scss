@@ -2,7 +2,6 @@
     width: 1000px;
     background-color: #fff;
     margin: 4rem auto;
-    padding: 50px;
     
 
   h3{
@@ -10,6 +9,9 @@
     padding-bottom: 25px;
     font-weight: 700;
     font-family: 'Ubuntu';
+  }
+  .resetpage{
+    padding-top: 0px;
   }
  .formContainer{
 
@@ -41,5 +43,26 @@
 
    }
    
+   
  }
+ @media (max-width:576px){
+   width: 100vw;
+    margin: 0px;
+    .resetpage{
+      padding-top: 0px;
+
+      form {
+        input{
+          padding: 10px;
+        }
+        img{
+        top: 40px ;
+    right: 15px;
+      }}
+    }
+    h3{
+      padding-bottom: 0px;
+    }
+  }
+
 }

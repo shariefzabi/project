@@ -210,16 +210,16 @@ function Profile(props: any) {
     }
     return (
         <div className='row'>
-            <div className='col-1 mt-5 pt-5'><Sidebar></Sidebar></div>
+            <div className='col-lg-1 mt-lg-5 pt-lg-5'><Sidebar></Sidebar></div>
             
 
             {props.redux.user &&
-            <div className='profile-container col-11'>
+            <div className='profile-container col-lg-11'>
 
                 
                 <header>
 
-                <div className="headingText">
+                <div className="headingText ">
                     <h2>Profile</h2>
                 </div>
                 </header>
@@ -231,14 +231,16 @@ function Profile(props: any) {
                                 <div className="formContainer  " id='profileBlock'>
                                     
                                     
-                                    <main className="row box col-sm-12">
-                                        <section className="col-md-12 col-sm-12  row">
-                                            <div className='profile' >
-                                                <p> Fields with <span className="text-danger">*</span> are required</p><button className="btn btn-success btn-float-right col-3 " id="resetButton" type="button"
+                                    <main className="box">
+                                        <section>
+                                            <div className='profile row' >
+                                                <p className='col-6'> Fields with <span className="text-danger">*</span> are required</p>
+                                                <div className='col-6'>
+                                                <button className="btn btn-success btn-float-right " id="resetButton" type="button"
                                                     onClick={() => {
                                                         setdisplayReset(true)
 
-                                                    }}> Reset Password</button>
+                                                    }}> Reset Password</button></div>
 
 
                                             </div>
