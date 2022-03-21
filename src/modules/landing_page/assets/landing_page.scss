@@ -225,6 +225,45 @@ ul {
     .sell-livestock aside{
         display: none;
     }
+    .order-livestock{
+        padding: 0;
+    }
+    .order-livestock .heading{
+        font-size:20px;
+        /* font-weight: 700; */
+    }
+    .order-livestock article{
+        margin: 0px 40px;
+        padding: 50px 0px;
+        max-width:250px;
+    }
+    .order-livestock .features{
+        margin-bottom: 19px;
+        font-size: 8px;
+        max-width: 190px;
+        list-style-type: "-";
+        line-height: 12.8px;
+    }
+    .order-livestock .features li{
+        padding-left: 3px;
+    }
+    .order-livestock button{
+        width:88px;
+        height: 30px;
+        font-size: 10px;
+        border-radius: 0.3125rem;
+    }
+    .order-livestock .buynow-btn{
+        border: 1px solid white;
+        margin-left: 9.5px;
+    }
+    .order-livestock aside{
+        display: none;
+    }
+    .landingpage-header{
+        height: 3.8125rem;
+    }
+
 }
 /* End of Sell LiveStock */
 
