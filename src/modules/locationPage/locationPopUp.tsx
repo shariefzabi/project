@@ -95,14 +95,14 @@ function PopUp(prop: any) {
     console.log(newLocation)
   }
 
-  useEffect(() => {
+  const fetchLocations = () => {
     axios.get("http://localhost:3005/market/Locations")
       .then(
         response => {
           setLocationNames(response.data)
         }
       )
-  }, [locationNames]);
+  };
 
   const addNewLocation = () => {
     const location = { locationName: newLocation }
@@ -203,7 +203,7 @@ function PopUp(prop: any) {
                     <select className="form-select dropdownToggle"
                       placeholder="Location"
                       onChange={locationHandler}
-                      onClick={() => setNewLocationAdded('')}
+                      onClick={() => { setNewLocationAdded(''); fetchLocations() }}
                       defaultValue={selectedLocation}
                       required>
 

@@ -14,7 +14,7 @@ function ProductDetails(props: any) {
 
     let [products, setProducts] = useState([])
     let [location, setLocation] = useState(props.state.locName)
-    let [market, setMarket] = useState('Cattle Market')
+    let [market, setMarket] = useState(props.state.marketType)
     // let [isDisplaying, setIsDisplaying] = useState(true)
     let [cattleFlag, setCattleFlag] = useState(true)
     let [sheepFlag, setSheepFlag] = useState(true)
@@ -31,18 +31,19 @@ function ProductDetails(props: any) {
 
 
     //////pagination starts here/////
-    const handleClick=(event:any)=>{
+    const handleClick = (event: any) => {
         setCurrentPage(Number(event.target.id))
     }
     let pages = [1, 2, 3];
     const renderPageNumbers = pages.map((number: any) => {
         return (
-            <li className="blue " key={number} id={number} onClick={handleClick}>
-                &#9679;
+            <li>
+                <button className="blue page_dots" key={number} id={number} onClick={handleClick}>
+                </button>
             </li>
         )
     })
-    let indexOfLastItem= currentPage * showCount;
+    let indexOfLastItem = currentPage * showCount;
     let indexOfFirstItem = indexOfLastItem - showCount;
 
 
@@ -75,7 +76,9 @@ function ProductDetails(props: any) {
     const productDataHandler = (e: any) => {
         e.preventDefault();
         navigate("/selectedProduct");
-        props.setProductDetails(e.target.id)
+        props.setProductDetails(e.target.id);
+        props.setMarketType(market)
+        props.setLocationName(location)
         // setSelectedProduct(e.target.id)
         // console.log('sdfghj',selectedProduct)
     }
@@ -101,7 +104,7 @@ function ProductDetails(props: any) {
 
     const showHandler = (event: any) => {
         setShowCount(event.target.value)
-       
+
     }
 
     const addToCart = () => {
@@ -246,7 +249,7 @@ function ProductDetails(props: any) {
 
                                         }
                                     }
-                                    let currentItems= data.slice(indexOfFirstItem , indexOfLastItem)
+                                    let currentItems = data.slice(indexOfFirstItem, indexOfLastItem)
 
 
                                     return (
@@ -288,11 +291,11 @@ function ProductDetails(props: any) {
                                 })
                             }
 
-                           
+
                         </div>
                         <ul className="pageNumbers ">
-                        {renderPageNumbers}
-                    </ul>
+                            {renderPageNumbers}
+                        </ul>
                     </div>
 
                 </div>
@@ -311,8 +314,9 @@ const mapStateToProps = (state: any) => {
 }
 const mapDispatchToProps = (dispatch: Function) => {
     return {
-
-        setProductDetails: (productData: any) => dispatch({ type: 'storeProductData', payload: productData })
+        setLocationName: (locName: any) => dispatch({ type: 'storeLocname', payload: locName }),
+        setProductDetails: (productData: any) => dispatch({ type: 'storeProductData', payload: productData }),
+        setMarketType: (marketType: any) => dispatch({ type: 'storeMarketType', payload: marketType })
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(ProductDetails)
