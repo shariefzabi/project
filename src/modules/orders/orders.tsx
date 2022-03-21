@@ -26,7 +26,6 @@ function Orders(props: any) {
             })
             .catch((err) => console.log(err)
             )
-
     }, [])
 
     return (
@@ -62,7 +61,7 @@ function Orders(props: any) {
                                                 products.map((product: any, i: any) => {
                                                     return (
                                                         <tr key={i}>
-                                                            <td> <span className="first-line">ID - {product.productCode}</span>
+                                                            <td> <span className="first-line">ID - {product._id}</span>
                                                                 <span className="second-line">{order.date}</span></td>
                                                             <td>{product.productCode}</td>
                                                             <td>{product.availability}</td>
