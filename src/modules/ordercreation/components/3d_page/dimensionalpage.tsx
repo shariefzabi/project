@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { connect } from "react-redux";
+import { validate } from "schema-utils";
 import Deliverydetails from "../deliverydetails/deliverydetails";
 import './dimensionalpage.scss'
 
@@ -8,6 +9,7 @@ var serverUrl = "http://localhost:3005/";
 function DimesionalPage(props: any) {
     const [deliveryFlag, setDeliveryFlag] = useState(false);
     const [selectedProduct,setSelectedProduct] = useState({});
+    const [cartErrMsg,setcartErrMsg] = useState("");
     let quantityarr =props.orders[1];
     //  console.log("ordersdatain 3d", selectedProduct);
     // console.log("dpage",props.orders[1]);
@@ -41,12 +43,13 @@ function DimesionalPage(props: any) {
                                             <p><b>Availability:</b>{order.availability}</p>
                                             <p><b>Price:</b>{order.price}</p>
                                             <p><b>Weight:</b>{order.weight}</p>
-                                            <button className="btn btn-success add-to-cart-button" type="button"  onClick = {() => {setSelectedProduct(order);props.addQuantity(quantityarr[i]);props.addToCart(order)}}>Add to Cart</button>
+                                            <button className="btn btn-success add-to-cart-button" type="button"  onClick = {() => {setSelectedProduct(order);props.addQuantity(quantityarr[i]);props.addToCart(order);setcartErrMsg("Added to cart,Click on continue to proceed")}}>Add to Cart</button>
                                         </div>
                                    )
                             })}
                             </div>
                             <div className="text-center">
+                                <p className="text-primary">{cartErrMsg}</p>
                                 <button type="button" className="btn btn-success text-center continuebutton mb-5" onClick={() => setDeliveryFlag(true)}>continue</button>
                             </div>
                         </div>
