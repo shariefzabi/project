@@ -5,7 +5,7 @@ const CardData = new mongoose.Schema({
 
         payment: { type: String, required: [true, "Id is required"] },
 
-        token: { type: Number },
+        token: { type: String },
         cardNumber: { type: Number, required: true, min: 100000000000, max: 999999999999, },
         Month: { type: Number, required: true, min: 1, max: 12 },
         year: { type: Number, required: true, min: 22 },

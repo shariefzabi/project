@@ -2,23 +2,8 @@ const express = require('express');
 const router = express.Router();
 router.use(express.json())
 const CardData = require("./carddetails.cjs");
-
-
-
-
-let tokens = [];
-
 router.post("/details", async (req, res) => {
-    let token;
-    token = Math.round(Math.random() * 1000000000000);
-    console.log(tokens);
-    if (tokens.includes(token)) {
-        token = Math.round(Math.random() * 1000000000000);
-        tokens.push(token);
-    }
-    else {
-        tokens.push(token);
-    }
+    let token = new Date().getTime().toString() + Math.round(Math.random() * 100)
     console.log(req.body)
     const { cardDetails } = req.body;
 
@@ -34,7 +19,7 @@ router.post("/details", async (req, res) => {
 });
 
 
-    
+
 
 
 module.exports = router;
