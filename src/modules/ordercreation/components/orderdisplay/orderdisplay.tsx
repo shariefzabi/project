@@ -8,7 +8,6 @@ function Orderdisplay(props: any) {
     const [paymentflag, setPaymentflag] = useState(false);
     let productPrice = 0;
     const updateprice = (price: any) => {
-        const orderId = props.orderdetails.orderId;
         props.orderdetails.totalprice = price;
         props.orderdetails.deliveryprice = 2000;
 
