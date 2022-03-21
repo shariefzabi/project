@@ -143,6 +143,9 @@
     .table table, th, td {
       font-size: 0.4rem;
     }
+    .bRow{
+      height: 2.5rem;
+    }
     table{
       height:60px;
     }
@@ -156,6 +159,10 @@
     .tableHeader, .inv-vr {
       display: none;
       
+    }
+    .inv-bd-lp {
+      font-size: 0.875rem;
+      margin: 2rem 0rem 0.163rem;
     }
     .tableFooter>tr>td {
       // color: #838383;
