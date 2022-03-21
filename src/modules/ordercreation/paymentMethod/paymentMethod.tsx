@@ -104,10 +104,13 @@ class PaymentMethod extends React.Component<any, any> {
         console.log("the data", result.data);
 
         let { totalprice } = result.data[0];
+        let { delliveryprice } = result.data[0];
+        console.log("del", delliveryprice);
 
-        console.log("totalprice", totalprice);
+
+        console.log("totalprice", totalprice + delliveryprice);
         let { totalcost } = this.state;
-        totalcost = totalprice;
+        totalcost = totalprice + delliveryprice;
         this.setState({ totalcost });
       })
       .catch((err) => {
