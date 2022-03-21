@@ -22,12 +22,12 @@ mongoClient.connect(dburl, function (err, client) {
     userDb = db.collection("users");
     locationdbs = db.collection("locationdbs");
     let carddetails = db.collection("carddetails");
-    let invoiceCollection = db.collection("invoicedatas");
+    let ordercollection = db.collection("orders");
     let orderDetails = db.collection("invoicedatas");
     app.set("carddetails", carddetails);
     app.set("locationCollection", locationdbs);
     app.set("");
-    app.set("invoiceCollection", invoiceCollection);
+    app.set("ordercollection", ordercollection);
     console.log("connected to db");
   }
 });
@@ -41,54 +41,23 @@ let invoice = require("./invoice/invoiceapi");
 // let invoice = require("./invoice/invoiceapi.js")
 
 app.use("/card", cardDetail);
-// app.use("/invoicedetails", invoice);
-// app.use("/invoice", InvoiceUniqueID);
-// app.use("/payment", cardDetail);
+app.use("/invoicedetails", invoice)
+
 
 app.post("/paymentstatus", async (req, res) => {
   let { paymentStatus, date, invoiceId } = req.body;
-  console.log(req.body);
   let ordercollection = db.collection("orders");
   ordercollection.find().sort({ _id: -1 }).limit(1).toArray(function (err, result) {
     orderid = result[0]["orderId"]
-    console.log(orderid)
-
     ordercollection.updateOne({ orderId: orderid }, { $set: { date: date, paymentStatus: paymentStatus, invoiceId: invoiceId } })
     res.send("paymentstatus updated")
 
   })
 });
 
-app.get("/invoicedetails/:useremail", async (req, res) => {
-  let { useremail } = req.params;
-  console.log(useremail);
 
-  let ordercollection = db.collection("orders");
-  ordercollection.find({ paymentStatus: "payment success", email: useremail }).sort({ "_id": -1 }).toArray(function (err, result) {
-    res.send(result)
-  })
-});
 
-// app.post("/orders/orderdetails/:orderid", function (req, res) {
-//   // let orderdetails = req.body;
-//   let { params, body, headers } = req;
-//   console.log("body", body);
-//   console.log("par", params.orderid - 0);
 
-//   let query = { orderId: params.orderid - 0 };
-//   let status = { $set: body }
-//   let ordercollection = db.collection("orders");
-//   ordercollection.updateOne(query, status, function (err, result) {
-//     if (!err) {
-//       console.log("res", result);
-//       res.send({ status: "success" });
-//     }
-//     if (err) {
-//       console.log("err", err);
-//       res.send({ status: "failure" });
-//     }
-//   })
-// });
 
 
 // end
