@@ -84,8 +84,6 @@ function Login(props:any) {
         aria-describedby="modal-modal-description"
         sx={{overflow:'auto'}}
         >
-
-
         <div className='login-modal-container'>
           <div id="modal-modal-description" className='login-window' >
             {!displaySignup &&
