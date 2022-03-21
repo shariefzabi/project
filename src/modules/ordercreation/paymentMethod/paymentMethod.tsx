@@ -140,7 +140,22 @@ class PaymentMethod extends React.Component<any, any> {
       this.props.setPaymentInformation(payment);
       console.log(paymentStatus);
     }
-  };
+
+  
+
+    else {
+
+      const paymentMethod: any = document.querySelector(".paymentmethod")
+
+      // const ravPayFormWidth: any = document.querySelector(".RavepayForm")
+
+
+
+      paymentMethod.style.width = "320px"
+
+    }
+  }
+
   submitHandler = (e: any) => {
     e.preventDefault();
     this.setState({ flag2: false });
