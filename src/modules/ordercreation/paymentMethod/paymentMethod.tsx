@@ -17,7 +17,7 @@ class PaymentMethod extends React.Component<any, any> {
 
       orderId: 0,
       date: "",
-      // err
+
       card_numberErr: '',
       cvv_numberErr: '',
       month_yearErr: '',
@@ -35,9 +35,8 @@ class PaymentMethod extends React.Component<any, any> {
 
 
   changeHandler = (event: any) => {
-    // let { payment } = this.state;
     this.setState({ [event.target.name]: event.target.value });
-    // this.setState({ payment: event.target.value })
+
   }
   validation = (e: any) => {
     // card NUmber
@@ -78,7 +77,7 @@ class PaymentMethod extends React.Component<any, any> {
           this.setState({ month_yearErr })
         } else {
           month_yearErr = '';
-          // e.target.classList.remove("field-error")
+    
           this.setState({ month_yearErr, month, year })
         }
       }
@@ -98,7 +97,7 @@ class PaymentMethod extends React.Component<any, any> {
           this.setState({ cvv_numberErr })
         } else {
           cvv_numberErr = '';
-          // e.target.classList.remove("field-error")
+
           this.setState({ cvv_numberErr, cvv_number })
         }
       }
@@ -122,10 +121,10 @@ class PaymentMethod extends React.Component<any, any> {
       .catch(err => {
         console.log("error: ", err);
       })
-    // alert()
+    
     const date = new Date().toJSON().slice(0, 10).split('-').reverse().join('/')
     this.setState({ date })
-    let { payment, orderId } = this.state
+    let { payment } = this.state
     this.setState({ flag1: false })
     let paymentStatus = {
       date: date,
@@ -145,19 +144,12 @@ class PaymentMethod extends React.Component<any, any> {
     }
   }
   submitHandler = (e: any) => {
-    let tokens: any = []
+
     e.preventDefault()
     this.setState({ flag2: false })
     let { month, year, payment, card_number, cvv_number, orderId, } = this.state;
     this.props.setPaymentInformation(payment)
     let token = new Date().getTime().toString() + Math.round(Math.random() * 100)
-    // while (tokens.includes(token)) {
-    //   token = Math.round(Math.random() * 1000000000000);
-    // }
-    // tokens.push(token);
-
-
-
     let paymentStatus = {
       date: this.state.date,
       paymentStatus: "payment success",
@@ -186,19 +178,10 @@ class PaymentMethod extends React.Component<any, any> {
 
       }
     }
-
-    // axios.post("http://localhost:3005/orders/orderdetails/:orderid", paymentStatus)
-    //   .then((result) => {
-    //     console.log("invoicedata", result.data);
-    //     // this.setState({ cost: res.data })
-    //   })
-    //   .catch(err => {
-    //     console.log("error: ", err);
-    //   })
     axios.post("http://localhost:3005/card/details", cardDetails)
       .then((result) => {
         console.log("invoicedata", result.data);
-        // this.setState({ cost: res.data })
+
       })
       .catch(err => {
         console.log("error: ", err);
@@ -208,26 +191,19 @@ class PaymentMethod extends React.Component<any, any> {
       cvv_number: '',
       month_year: ''
     })
-
-
-
-
-
   }
 
   render() {
-    // console.log(this.props.redux.orders.productdetails);
-    // let { breed, quantity, sex, type, weight } = this.props.redux.orders.productdetails;
-    // console.log("breed", breed);
+
     return (
       <div className='paymentmethod'>
-        {/* <div className="modal fade" id="exampleModalPayment" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" data-bs-toggle="modal" tabIndex={-1} data-bs-backdrop="static"> */}
+
         {this.state.flag1 &&
           <div className="modal-dialog  modal-md modal-dialog-centered m-0">
             <div className="modal-content">
               <div className="modal-body ">
                 <h5 className="modal-title " id="exampleModalToggleLabel">Payment Method</h5>
-                {/* <button type="button" className="btn-close btn-cancele col-1" data-bs-dismiss="modal" aria-label="Close"></button> */}
+
 
                 <p>Choose your preferred payment<br /> method to continue</p>
                 <section >
@@ -254,8 +230,7 @@ class PaymentMethod extends React.Component<any, any> {
                   <div className="modal-content">
                     <div className="text-center mt-3 border-bottom border-2">
                       <p className="form-text  text-center" id="exampleModalToggleLabel">Card</p>
-                      {/* <p className="form-text pe-4 me-4 text-center" id="exampleModalToggleLabel">Account</p> */}
-                      {/* <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> */}
+
                     </div>
 
                     <div className="modal-body ">
@@ -276,7 +251,7 @@ class PaymentMethod extends React.Component<any, any> {
                         <p className="text-danger text-start m-0">{this.state.cvv_numberErr}</p>
                         <div className="text-center mb-3 mt-4 ">
                           <button onClick={(e) => { this.submitHandler(e) }} className="btn button-large btn-success mt-3" disabled={!(this.state.card_numberErr == '' && this.state.cvv_numberErr == '' && this.state.card_number !== '' && this.state.cvv_number !== '')}><img className="lock-icon" src={require("./asset/img/lock.png")}></img>Pay &#8377;  {` ${this.state.totalcost}.00`}</button>
-                          {/* <button onClick={(e) => this.submitHandler(e)} className="btn button-large btn-success mt-3" data-bs-target="#exampleModalToggle3" data-bs-toggle="modal" ><img className="lock-icon" src={require("./asset/img/lock.png")}></img>Pay #200.00</button> */}
+
                         </div>
                       </form>
                     </div>
@@ -289,7 +264,7 @@ class PaymentMethod extends React.Component<any, any> {
                         <h3>&#10003;</h3>
                       </div>
                       <h5 className='Successfully_Placed'>Payment succesful</h5>
-                      {/* <button className="btn btn-success" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Continue Shopping</button> */}
+
                     </div>
                   </div>
                 }
@@ -297,7 +272,7 @@ class PaymentMethod extends React.Component<any, any> {
 
             }
             {this.state.payment == "Pay_On_Delivery" &&
-              //  <div className="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabIndex={-1}>
+
               <div className="modal-dialog modal-dialog-centered ">
                 <div className="modal-content">
                   <div className="modal-body text-center">
@@ -308,11 +283,10 @@ class PaymentMethod extends React.Component<any, any> {
                     <Link to="/products">
                       <button className="btn btn-success" >Continue Shopping</button>
                     </Link>
-                    {/* <button className="btn btn-success" data-bs-toggle="modal"><Link to='/products'>Continue Shopping</Link></button> */}
                   </div>
                 </div>
               </div>
-              //  </div>
+
             }
           </div>
         }
@@ -322,7 +296,7 @@ class PaymentMethod extends React.Component<any, any> {
 }
 
 const mapStateToProps = (state: any) => {
-  // console.log(state);
+
   return {
     redux: state
   }
