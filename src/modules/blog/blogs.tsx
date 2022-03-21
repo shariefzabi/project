@@ -1,11 +1,21 @@
+// for geting the image in the blogs pls uncomment line number 89,95,102,120,125,132 and in scss uncomment 57-62,116-117,188-189,
+
+
+
+
+
+
+
+
+
+
+
+
+
 import React from "react";
-import arrow from "./assets/img/Icon (1).png";
 import axios from "axios"
 import './assets/blog.scss'
 import { Link } from "react-router-dom";
-import { array } from "yargs";
-import { url } from "inspector";
-
 
 
 class Blogtable extends React.Component<any, any> {
@@ -64,7 +74,7 @@ class Blogtable extends React.Component<any, any> {
                             
                             let ind = 0;
                             let total = 0;
-                            if (i !== 0) {
+                            if (i === 0) {
                                 return (
                                     <div className="carousel-item active ">
                                         <div className="main_box">
@@ -76,20 +86,20 @@ class Blogtable extends React.Component<any, any> {
                                                 total++
                                                 // console.log(i);
                                                 return (<Link to={"/blogContent?id="+x.id}><div className="first_box" style={{background: this.state.url +e.photo}}key={x.id} >
-                                                    <img className="blogImg" src={"http://localhost:3005/"+x.photo} />
+                                                    {/* <img className="blogImg" src={"http://localhost:3005/"+x.photo} /> */}
                                                     <p className="blog_title">{x.topic}</p>
                                                 </div></Link>)
                                             } else if (ind === 6) {
                                                 ind = 1; 
                                                 return (<Link to={"/blogContent?id="+x.id}><div className="first_box" key={x.id} >
-                                                    <img className="blogImg" src={"http://localhost:3005/"+x.photo} />
+                                                    {/* <img className="blogImg" src={"http://localhost:3005/"+x.photo} /> */}
                                                     <p className="blog_title">{x.topic}</p>
                                                 </div></Link>)
                                             } else {
                                                 // console.log(i);
                                                 ind++
                                                 return (<Link to={"/blogContent?id=" + x.id}><div className="second_box" key={x.id} >
-                                                    <img className="blogImg"  src={"http://localhost:3005/"+x.photo} />
+                                                    {/* <img className="blogImg"  src={"http://localhost:3005/"+x.photo} /> */}
                                                     <p className="blog_title" >{x.topic}</p>
                                                 </div></Link>)
                                             }
@@ -107,19 +117,19 @@ class Blogtable extends React.Component<any, any> {
                                                 ind++
                                                 // console.log(i);
                                                 return (<Link to={"/blogContent?id=" + x.id}><div className="first_box" key={x.id} >
-                                                     <img className="blogImg" src={"http://localhost:3005/"+x.photo} />
+                                                     {/* <img className="blogImg" src={"http://localhost:3005/"+x.photo} /> */}
                                                     <p className="blog_title">{x.topic}</p>
                                                 </div></Link>)
                                             } else if (ind === 6) {
                                                 ind = 1; return (<Link to={"/blogContent?id=" + x.id}><div className="first_box" key={x.id} >
-                                                     <img className="blogImg" src={"http://localhost:3005/"+x.photo} />
+                                                     {/* <img className="blogImg" src={"http://localhost:3005/"+x.photo} /> */}
                                                     <p className="blog_title">{x.topic}</p>
                                                 </div></Link>)
                                             } else {
                                                 // console.log(i);
                                                 ind++
                                                 return (<Link to={"/blogContent?id=" + x.id}><div className="second_box" key={x.id} >
-                                                    <img className="blogImg" src={"http://localhost:3005/"+x.photo} />
+                                                    {/* <img className="blogImg" src={"http://localhost:3005/"+x.photo} /> */}
                                                     <p className="blog_title" >{x.topic}</p>
                                                 </div></Link>)
                                             }

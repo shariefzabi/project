@@ -27,10 +27,13 @@ class Form extends React.Component<any, any> {
     changeHandler = (e: any) => {
         this.validate(e);
         this.setState({ [e.target.name]: e.target.value });
-
     }
 
-
+    componentDidUpdate(prevProps:any){
+        if(prevProps.id !== this.props.id){
+            this.setState({count :0})
+        }
+    }
     submitHandler = (e: any, data: any) => {
         e.preventDefault();
         let{commentFlag,
@@ -109,7 +112,7 @@ class Form extends React.Component<any, any> {
     render() {
         let { name, email, comment ,count} = this.state;
         // console.log("comments put id :"+this.props.id);
-        // console.log(count);
+        console.log(count);
         
         return (
 
