@@ -66,7 +66,6 @@ class Cart extends React.Component<any, any> {
               </div>
             </div>
 
-            {/* <header> */}
             <div className="cart_heading">
               <p>
                 Shopping Cart{" "}
@@ -75,7 +74,6 @@ class Cart extends React.Component<any, any> {
                 </span>
               </p>
             </div>
-            {/* </header> */}
 
             <hr />
           </section>
