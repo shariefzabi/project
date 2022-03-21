@@ -1,5 +1,3 @@
-
-
 .order-display .modal-body-orderdisplay{
 .heading-cartpage{
     font-family: Ubuntu;
@@ -36,40 +34,37 @@
     margin-bottom: 5%;
 }
 .body-head{
-font-family: Ubuntu;
-font-style: normal;
-font-weight: bold;
-font-size: 20px;
-line-height: 24px;
-letter-spacing: 0.1px;
-color: #838383;
-opacity: 0.7;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0.1px;
+    color: #838383;
+    opacity: 0.7;
 }
-.body-description{
-    
-font-family: Ubuntu;
-font-style: normal;
-font-weight: normal;
-font-size: 18px;
-line-height: 24px;
-/* or 133% */
-text-align: center;
-letter-spacing: 0.1px;
-color: #838383;
-opacity: 0.7;
+.body-description{   
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: 0.1px;
+    color: #838383;
+    opacity: 0.7;
 }
 
 .body-head-Product{
     font-family: Ubuntu;
-font-style: normal;
-font-weight: bold;
-font-size: 22px;
-line-height: 24px;
-/* identical to box height, or 109% */
-color: #838383;
-opacity: 0.7;
-text-align: start !important;
-margin-left: 7%;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 24px;
+    color: #838383;
+    opacity: 0.7;
+    text-align: start !important;
+    margin-left: 7%;
 }
 .items-container{
     height:130px;
@@ -79,7 +74,6 @@ margin-left: 7%;
     ::-webkit-scrollbar{ 
         width: 2px;
     }
-
 }
 .body-list-items{
     text-align: start !important;
@@ -90,9 +84,7 @@ margin-left: 7%;
 }
 .weight-items{
     margin-left: 14%;
-}
-
- 
+} 
 .body-list-items-amount{
     list-style-type: none;
     color: #838383;
@@ -103,31 +95,36 @@ margin-left: 7%;
     text-decoration: underline;
 }
 .body-list-items-total{
-   
     list-style-type: none;
     color: #838383;
     font-size: 14px;
     line-height: 24px;
 }
 .quantity-style{
-font-family: Ubuntu;
-font-style: normal;
-font-weight: bold;
-font-size: 23px;
-line-height: 24px;
-/* identical to box height, or 104% */
-text-align: center;
-color: #06864D;
-
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 23px;
+    line-height: 24px;
+    text-align: center;
+    color: #06864D;
 }
 .continuebutton{
     background: #06864D;
     border-radius: 5px;
-    // position: absolute;
     color:#fff;
-    // top:94%;
-    // left:40%;
     width:160px;
     margin-bottom: 40px !important;
+}
+@media(max-width:400px){
+    .continuebutton{
+        width:100px;
+    }
+    .quantity-style{
+        font-size: 15px;
+        line-height: 19px;
+        text-align: center;
+        color: #06864D;
+    }
 }
 }

@@ -43,11 +43,11 @@ function Orderdisplay(props: any) {
                                         <div className='items-container'>
                                             {
                                                 props.orderdetails.cartproducts.map((item: any, ind: any) => {
-                                                    console.log("itemss", item);
-                                                    productPrice += parseInt(item.price)*parseInt(props.quantityarr[ind]);
+                                                    // console.log("itemss", item);
+                                                    productPrice += parseInt(item.price)*parseInt(item.quantity);
                                                     return (
                                                         <ul className="body-list-items m-auto" key={ind}>
-                                                            <li className="mt-4">Type: {item.type} <span className="weight-items">Quantity : {props.quantityarr[ind]}</span></li>
+                                                            <li className="mt-4">Type: {item.type} <span className="weight-items">Quantity : {item.quantity}</span></li>
                                                             <li className="mt-3">Sex: {item.sex} <span className="weight-items">Weight : {item.weight}</span></li>
                                                             <li className="mt-3">Breed: {item.breed}</li>
                                                         </ul>

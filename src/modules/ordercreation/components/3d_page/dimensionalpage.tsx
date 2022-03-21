@@ -11,7 +11,9 @@ function DimesionalPage(props: any) {
     const [selectedProduct,setSelectedProduct] = useState({});
     const [cartErrMsg,setcartErrMsg] = useState("");
     let quantityarr =props.orders[1];
-    //  console.log("ordersdatain 3d", selectedProduct);
+    const [buttonFlag,setButtonFlag]=useState(false);
+    let size=Object.keys(selectedProduct).length;
+    //  console.log("ordersdatain 3d", size);
     // console.log("dpage",props.orders[1]);
     // const addquantity=(i:any)=>{
     //     quantityData.push(quantityarr[i])
@@ -27,7 +29,7 @@ function DimesionalPage(props: any) {
                             <div className="heading-dimension">
                                 <p>Product Cattle market</p>
                             </div>
-                            <div className="d-flex ms-5">
+                            <div className="row row-cols-md-1 row-cols-xl-2 row-cols-lg-3 ms-5">
                             {
                             props.orders[0].map((order: any, i: any) => {
                                 let imgPath=" ";
@@ -35,7 +37,7 @@ function DimesionalPage(props: any) {
                                     imgPath=serverUrl+order.image.filename;
                                 }
                                 return (
-                                        <div key={i} className="card product-cards m-3">
+                                        <div key={i} className="card product-cards m-3 col-4">
                                             <img className="" src={imgPath} height="150px" width="100%"></img>
                                             <p><b>Type:</b>{order.type}</p>
                                             <p><b>Quantity:</b>{quantityarr[i]}</p>
@@ -44,14 +46,14 @@ function DimesionalPage(props: any) {
                                             <p><b>Availability:</b>{order.availability}</p>
                                             <p><b>Price:</b>{order.price}</p>
                                             <p><b>Weight:</b>{order.weight}</p>
-                                            <button className="btn btn-success add-to-cart-button" type="button"  onClick = {() => {setSelectedProduct(order);props.addQuantity(quantityarr[i]);order.quantity=quantityarr[i];props.addToCart(order);setcartErrMsg("Added to cart,Click on continue to proceed")}}>Add to Cart</button>
+                                            <button className="btn btn-success add-to-cart-button" type="button"  onClick = {() => {setSelectedProduct(order);order.quantity=quantityarr[i];props.addToCart(order);setButtonFlag(true);setcartErrMsg("Added to cart,Click on continue to proceed")}}>Add to Cart</button>
                                         </div>
                                    )
                             })}
                             </div>
                             <div className="text-center">
                                 <p className="text-primary">{cartErrMsg}</p>
-                                <button type="button" className="btn btn-success text-center continuebutton mb-5" onClick={() => setDeliveryFlag(true)}>continue</button>
+                                <button type="button" className="btn btn-success text-center continuebutton mb-5" disabled={!buttonFlag} onClick={() => setDeliveryFlag(true)}>continue</button>
                             </div>
                         </div>
                     </div>
@@ -71,7 +73,7 @@ const mapStateToProps = (state: any) => {
 }
 const mapDispatchToProps = (dispatch: Function) => {
     return {
-        addQuantity: (quantity: any)=>dispatch({type: 'addQuantity',payload:quantity}),
+        // addQuantity: (quantity: any)=>dispatch({type: 'addQuantity',payload:quantity}),
         addToCart: (products: any) => dispatch({ type: 'addToCart', products })
     }
 }

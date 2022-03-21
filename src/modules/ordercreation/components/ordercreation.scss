@@ -54,42 +54,6 @@
    .product-dropdown{
        margin-left: 9% !important;
    }
-//    .heading-page{
-//         font-family: Ubuntu;
-//         font-style: normal;
-//         font-weight: bold;
-//         text-align: center;
-//         color:#2078BF;
-//         position: absolute;
-//         width: 700px;
-//         left: 484px;
-//     }
-//     .head-2{
-//         position: absolute;
-//         width: 228px;
-//         height: 24px;
-//         left: 1150.01px;
-//         top: 200.43px;
-//         font-family: Ubuntu;
-//         font-style: italic;
-//         font-weight: bold;
-//         font-size: 18px;
-//         line-height: 24px;
-//         color: #838383;
-//     }
-//     .description{
-//         position: absolute;
-//         width: 237.11px;
-//         height: 48px;
-//         left: 1150.01px;
-//         top: 250.43px; 
-//         font-family: Ubuntu;
-//         font-style: italic;
-//         font-weight: normal;
-//         font-size: 12px;
-//         line-height: 24px;
-//         color: #838383;
-//     }
     .continuebutton{
         border: 0.134rem solid #00C3FF;
         border-radius: 0.3125rem;
@@ -103,6 +67,58 @@
     @media(max-width:400px){
         .dropdown{
             margin:auto;
+        }
+        .popupheading{
+            color: #2078BF;
+            padding-top: 30px;
+            font-family: Ubuntu;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 15px;
+            line-height: 20px;
+            margin-top: 5rem;
+        }
+        .form-paragraph{
+            color: #2078BF;
+            height: 24px;
+            font-family: Ubuntu; 
+            font-style: normal; 
+            font-weight: normal;
+            font-size: 10px;
+            line-height: 10px;
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+        }
+        .form-select{
+            width: 80%;
+            height: 40px;
+        }
+        .viewall-icon{
+            position: absolute;
+            left:87%;
+            top:15%;
+            img{
+                width: 50px;
+                height: 50px;
+            }
+        
+        }
+        .cart-button{
+            position: absolute;
+            // left:70%;
+            right: 30%;
+            // bottom:15%;
+            img{
+                width: 50px;
+                height: 50px;
+            }
+        }
+        .continuebutton{
+            border: 0.134rem solid #00C3FF;
+            border-radius: 0.3125rem;
+            font-size: 13px;
+            height: 2rem;
+            width:5.063rem;
         }
     }
 }

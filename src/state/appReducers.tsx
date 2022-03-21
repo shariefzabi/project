@@ -5,7 +5,7 @@ interface initialState {
   orders: any[];
   cartProducts: any[];
   orderdetails: {};
-  quantityarr: any[];
+  // quantityarr: any[];
   // filters:any[]
 
   cardDetails: any;
@@ -26,7 +26,7 @@ const appInitialstate: initialState = {
   cartProducts: [],
   orders: [],
   orderdetails: {},
-  quantityarr: [],
+  // quantityarr: [],
   // filters:[],
 
   cardDetails: null,
@@ -59,8 +59,8 @@ function appReducer(state = appInitialstate, action: any) {
       return { ...state, cartProducts: [...state.cartProducts, action.products] };
     // case "storeFilterdetails":
     //   return { ...state, filters: [...state.filters, action.filters] };
-    case "addQuantity":
-      return { ...state, quantityarr: [...state.quantityarr, action.payload] };
+    // case "addQuantity":
+    //   return { ...state, quantityarr: [...state.quantityarr, action.payload] };
     case "store_productdetails":
       return { ...state, orders: [...state.orders, ...action.productDetails] };
     case "store_order":

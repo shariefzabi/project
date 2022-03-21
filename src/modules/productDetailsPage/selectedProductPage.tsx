@@ -83,7 +83,8 @@ function SelectedProductDetails(props: any) {
     }
     const submitHandler = () => {
         console.log("qww", product);
-        props.addQuantity(count);
+        // props.addQuantity(count);
+        product.quantity=count;
         axios
             .post("http://localhost:3005/orders/orderdetails", {
                 cartproducts: [
@@ -539,7 +540,7 @@ const mapStateToProps = (state: any) => {
 const mapDispatchToProps = (dispatch: Function) => {
     return {
         quantity: (count: any) => dispatch({ type: "itemslength", payload: count }),
-        addQuantity: (quantity: any) => dispatch({ type: 'addQuantity', payload: quantity }),
+        // addQuantity: (quantity: any) => dispatch({ type: 'addQuantity', payload: quantity }),
         setLocationName: (locName: any) => dispatch({ type: 'storeLocname', payload: locName }),
         setMarketType: (marketType: any) => dispatch({ type: 'storeMarketType', payload: marketType }),
         createOrder: (deliveryDetails: any) =>

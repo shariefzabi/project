@@ -44,14 +44,6 @@ function BuyNow(props: any) {
             setOpen(false);
         }
     }, [])
-    useEffect(() => {
-      
-    
-      return () => {
-      
-      }
-    }, [])
-    
 
     const productsubmitHandler = (e: any, productDetails: any) => {
         e.preventDefault();
@@ -65,8 +57,7 @@ function BuyNow(props: any) {
         // console.log("props filters", filters);
         axios.post("http://localhost:3005/orders/products", filters)
             .then((res) => {
-                console.log("hello",res.data);
-                
+                // console.log("hello",res.data); 
                 props.storeProductdetails(res.data);
                 if (props.user != null)
                     setProductdetailsflag(false);
@@ -77,7 +68,7 @@ function BuyNow(props: any) {
         setAddFlag(true);
         if (type != '' && quantity != '' && breed != '' && weight != '' && sex != '') {
             // props.storeFilterdetails(products);
-            console.log(props.filters);
+            // console.log(props.filters);
             setFilters([...filters, products]);
         }
 
@@ -268,12 +259,10 @@ function BuyNow(props: any) {
                                                     }
                                                 </select>
                                                 <p className='text-danger'>{breederrmsg}</p>
-
                                             </div>
                                             <div className='cart-icon'>
                                                 <button className='cart-button' type='button' onClick={(e: any) => { addProduct({ type, quantity, weight, sex, breed }); resetHandler(e) }}><img className="plus-cart" src={require("./assets/addtocarticon.png")} /></button>
                                             </div>
-
                                         </div>
                                     </div>
                                     <div className=" text-center">
