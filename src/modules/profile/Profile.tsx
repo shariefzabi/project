@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import './profile.scss'
 import Reset from './reset/reset'
 // import './sidebar.scss'
-import Sidebar from './sidebar/sidebar'
+import Sidebar from '../sidebar/sidebar'
 
 function Profile(props: any) {
     const[flag,setflag]=useState(false)

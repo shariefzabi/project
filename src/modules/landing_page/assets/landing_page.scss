@@ -221,6 +221,11 @@ ul {
     position: absolute;
     left:46rem;
 }
+@media (max-width:576px){
+    .sell-livestock aside{
+        display: none;
+    }
+}
 /* End of Sell LiveStock */
 
 /* Start of Track LiveStock */

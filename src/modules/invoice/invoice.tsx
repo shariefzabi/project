@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 import axios from "axios"
 import upArrow from "./assets/img/uptriangle.png";
 import downArrow from "./assets/img/downtriangle.png";
-import Sidebar from "../profile/sidebar/sidebar";
+import Sidebar from "../sidebar/sidebar";
 
 
 

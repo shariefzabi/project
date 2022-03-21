@@ -37,7 +37,7 @@ function Login(props:any) {
     if (e.target.name === 'username') {
       let enteredUsername = e.target.value;
       if (enteredUsername == undefined || enteredUsername.length === 0) {
-        setUsernameErrMsg("Please enter the Associate Name.")
+        setUsernameErrMsg("Please enter your Email.")
         e.target.classList.add("field-error")
       } else {
         e.target.classList.remove("field-error")
@@ -67,7 +67,6 @@ function Login(props:any) {
           else{
             setToken(res.data.token);
             props.setUser(res.data);
-            window. location. reload();
           }
         })
         .catch((err:any)=>console.log(" User Login up Error",err));
@@ -99,13 +98,13 @@ function Login(props:any) {
 
                 <form onSubmit={(e)=>LoginSubmitHandler(e,{username:username.toLowerCase(),password})}>
                   <div className="mb-3 position-relative text-start">
-                    <label htmlFor="uname" className="form-label">Name</label>
+                    <label htmlFor="uname" className="form-label">Email</label>
                     <img className="user-icon" src={require("./assets/user.png")}></img>
                     <input type="text" name="username"
                       value={username}
                       className="form-control"
                       onChange={(e) => setUsername(e.target.value)}
-                      onBlur={(e)=>validations(e)} id="uname" placeholder="Name" required/>
+                      onBlur={(e)=>validations(e)} id="uname" placeholder="Email" required/>
                     <p className="text-danger">{usernameErrMsg}</p>
                   </div>
                   <div className="mb-3 position-relative text-start">

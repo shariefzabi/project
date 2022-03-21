@@ -74,6 +74,14 @@
         margin: auto;
         padding: 30px 0px;
         width: 80%;
+        input{
+            padding-right: 30px;
+        }
+        .user-icon{
+            position: absolute;
+            right: 0.4rem;
+            top: 2.6rem;
+        }
         
     }
 }

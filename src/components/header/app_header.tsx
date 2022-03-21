@@ -20,7 +20,7 @@ class Header extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
-
+      displayMenu : "none",
       open: false,
     };
   }
@@ -49,10 +49,6 @@ class Header extends React.Component<any, any> {
   handleOpen = () => this.setState({ open: true });
   handleClose = () => this.setState({ open: false });
 
-  closeModal = ()=>{
-
-  }
-
   render() {
     console.log("header values::", this.props);
 
@@ -61,7 +57,114 @@ class Header extends React.Component<any, any> {
     } = this.props as any;
     return (
       <header className="landingpage-header d-lg-flex justify-content-end">
+        {/* Mobile Version */}
         <div className="small_bar">
+        <img
+            className="bar_img"
+            src={bar}
+            onClick={()=>this.setState({displayMenu:"block"})}
+          />
+          <div className="small_menu menu-popup" style={{display:this.state.displayMenu}}>
+                  <img
+                    className="close"
+                    onClick={()=>this.setState({displayMenu:"none"})}
+                    src={cross}
+                  />
+                  <div className="text-center">
+                    <Link
+                      to="/"
+                      className="menu_content_small"
+                      onClick={()=>this.setState({displayMenu:"none"})}
+                    >
+                      Home
+                    </Link>
+                    <Link to="/aboutus" className="menu_content_small" onClick={()=>this.setState({displayMenu:"none"})}>
+                      About Us
+                    </Link>
+                    <Link to="/" className="menu_content_small ">
+                      Be a Partner
+                      <img src={triangle} />
+                    </Link>
+                    <Link to="/" className="menu_content_small sub">
+                      Be an Agent
+                    </Link>
+                    <Link to="/" className="menu_content_small sub">
+                      Butchery & Abarttoir
+                    </Link>
+                    <Link to="/blog" className="menu_content_small" onClick={()=>this.setState({displayMenu:"none"})}>
+                      Blog
+                    </Link>
+                    {user && (
+                    <Link to="/addblogs" className="menu_content_small" onClick={()=>this.setState({displayMenu:"none"})}>
+                      Add Blogs
+                    </Link>
+                   )}
+                    <button className="buy_button">Buy Now</button>
+                    {!user && (
+                      <div className="menu_btn text-center" >
+                        <Login />
+                      </div>
+                    )}
+                    {user && (
+                      <div className="user-profile">
+                        <a
+                          className="btn text-white dropdown-toggle"
+                          href="#"
+                          role="button"
+                          id="dropdownMenuLink"
+                          data-bs-toggle="dropdown"
+                          aria-expanded="false"
+                        >
+                          {user.fullName}
+                        </a>
+                        <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                          <li>
+                            <Link className="dropdown-item" to="/profile" onClick={()=>this.setState({displayMenu:"none"})}>
+                              My Profile
+                            </Link>
+                          </li>
+                          <li>
+                            <Link className="dropdown-item" to="/orders" onClick={()=>this.setState({displayMenu:"none"})}>
+                              Orders
+                            </Link>
+                          </li>
+                          <li>
+                            <Link className="dropdown-item" to="invoice" onClick={()=>this.setState({displayMenu:"none"})}>
+                              Invoice
+                            </Link>
+                          </li>
+                          <li>
+                            <Link className="dropdown-item" to="payments" onClick={()=>this.setState({displayMenu:"none"})}>
+                              Payment
+                            </Link>
+                          </li>
+                          <li>
+                            <Link className="dropdown-item" to="trackOrder" onClick={()=>this.setState({displayMenu:"none"})}>
+                              Track Order
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              className="dropdown-item"
+                              to="/"
+                              onClick={()=>{this.logOut(); this.setState({displayMenu:"none"})}}
+                            >
+                              Log out
+                            </Link>
+                          </li>
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                  <div className="menu_bottom d-flex justify-content-between">
+                    <p className="menu_faqs">FAQ</p>
+                    <p className="menu_faqs">Privacy</p>
+                    <p className="menu_faqs">Terms & Conditions</p>
+                  </div>
+                </div>
+          </div>
+
+        {/* <div className="small_bar">
           <img
             className="bar_img"
             data-bs-toggle="modal"
@@ -112,7 +215,7 @@ class Header extends React.Component<any, any> {
                     </Link>
                     <button className="buy_button">Buy Now</button>
                     {!user && (
-                      <div className="menu_btn text-center" onClick={this.closeModal}>
+                      <div className="menu_btn text-center" >
                         <Login />
                       </div>
                     )}
@@ -176,7 +279,9 @@ class Header extends React.Component<any, any> {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
+
+        {/* Desktop Version */}
         <div className=" d-lg-flex justify-content-end big_bar">
           <div className="home">
             <Link to="/" className="menu_content">

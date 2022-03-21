@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import Sidebar from '../profile/sidebar/sidebar';
+import Sidebar from '../sidebar/sidebar';
 import "./orders.scss";
 
 
