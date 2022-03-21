@@ -65,11 +65,11 @@ function ProductDetails(props: any) {
     const setLocationHandler = (event: any) => {
         setLocation(event.target.value)
         // setId('opened')
-        if (event.target.id === "") {
-            event.target.id = 'opened'
-        } else if (event.target.id === "opened") {
-            event.target.id = ''
-        }
+        // if (event.target.id === "") {
+        //     event.target.id = 'opened'
+        // } else if (event.target.id === "opened") {
+        //     event.target.id = ''
+        // }
         // class_name = 'opened'
         // setIsOpened(class_name)
     }
