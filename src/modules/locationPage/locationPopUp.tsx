@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { connect } from "react-redux";
-import "./locationPopUp.css";
+// import "./locationPopUp.scss";
 
 
 
@@ -150,8 +150,8 @@ function PopUp(prop: any) {
         aria-describedby="modal-modal-description"
         sx={{ overflow: 'auto' }}
       >
-        <div className='location-modal-container'>
-          <div id="modal-modal-description" className="location-window text-center">
+        <div className='locationPopUp-modal-container'>
+          <div id="modal-modal-description" className="locationPopUp-window text-center">
 
 
             <div className="popUp">
