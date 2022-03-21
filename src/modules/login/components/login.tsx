@@ -83,6 +83,7 @@ function Login(props:any) {
         onClose={handleClose}
         aria-describedby="modal-modal-description"
         sx={{overflow:'auto'}}
+        disableEnforceFocus
         >
         <div className='login-modal-container'>
           <div id="modal-modal-description" className='login-window' >
