@@ -150,11 +150,11 @@ class PaymentMethod extends React.Component<any, any> {
     this.setState({ flag2: false })
     let { month, year, payment, card_number, cvv_number, orderId, } = this.state;
     this.props.setPaymentInformation(payment)
-    let token = Math.round(Math.random() * 1000000000000);
-    while (tokens.includes(token)) {
-      token = Math.round(Math.random() * 1000000000000);
-    }
-    tokens.push(token);
+    let token = new Date().getTime().toString() + Math.round(Math.random() * 100)
+    // while (tokens.includes(token)) {
+    //   token = Math.round(Math.random() * 1000000000000);
+    // }
+    // tokens.push(token);
 
 
 
