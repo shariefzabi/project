@@ -2,10 +2,15 @@
     .add-to-cart-button{
         float: right;
         margin-bottom: 4%;
+        margin-right: 4%;
     }
     .product-cards{
         p{
             margin: 0px;
+            font-family: ubuntu;
+            letter-spacing: 1px;
+            margin-top:3px;
+            margin-left:5px;
         }
         margin-left: 20px;
         width:250px;
@@ -15,7 +20,7 @@
         border: 1px solid #E0E0E0;
         box-sizing: border-box;
         border-radius: 5px;
-        font-family: ubuntu;
+       
     }
     .heading-dimension{
         font-family: Ubuntu;
