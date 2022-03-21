@@ -5,9 +5,7 @@ import PaymentMethod from '../../paymentMethod/paymentMethod'
 import axios from 'axios';
 
 function Orderdisplay(props: any) {
-    const [orderdata, setOrderdata] = useState({}) as any;
     const [paymentflag, setPaymentflag] = useState(false);
-    const [products, setProducts] = useState<any[]>([]);
     let productPrice = 0;
     const updateprice = (price: any) => {
         const orderId = props.orderdetails.orderId;
@@ -19,9 +17,9 @@ function Orderdisplay(props: any) {
             deliveryprice: props.orderdetails.deliveryprice
         }
         const orderid = props.orderdetails.orderId;
-        console.log("orderId", orderid);
-        console.log("orderId", amount);
-        console.log("props", props.orderdetails);
+        // console.log("orderId", orderid);
+        // console.log("orderId", amount);
+        // console.log("props", props.orderdetails);
         axios.post("http://localhost:3005/orders/orderdetails/" + orderid, amount)
             .then((res) => console.log("price obj response", res.data))
             .catch((err) => console.log(err)
@@ -54,7 +52,6 @@ function Orderdisplay(props: any) {
                                                             <li className="mt-3">Sex: {item.sex} <span className="weight-items">Weight : {item.weight}</span></li>
                                                             <li className="mt-3">Breed: {item.breed}</li>
                                                         </ul>
-
                                                     )
                                                 })
                                             }

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import './deliverydetails.scss'
 import { connect } from "react-redux";
 import axios from 'axios'
-// import PaymentMethod2 from '../../paymentMethod/paymentMethod'
 import Orderdisplay from "../orderdisplay/orderdisplay";
 
 class Deliverydetails extends React.Component<any, any>{
@@ -23,7 +22,7 @@ class Deliverydetails extends React.Component<any, any>{
     } 
     changeHandler = (e: any) => {
         this.setState({ [e.target.name]: e.target.value })
-        console.log("this.props.quantityarr",this.props.quantityarr);
+        // console.log("this.props.quantityarr",this.props.quantityarr);
     }
     submitHandler = (e: any, deliveryDetails: any) => {
         e.preventDefault();

@@ -7,7 +7,6 @@ import './dimensionalpage.scss'
 var serverUrl = "http://localhost:3005/";
 function DimesionalPage(props: any) {
     const [deliveryFlag, setDeliveryFlag] = useState(false);
-    const [quantityData, setQuantityData] = useState<any[]>([]);
     const [selectedProduct,setSelectedProduct] = useState({});
     let quantityarr =props.orders[1];
     //  console.log("ordersdatain 3d", selectedProduct);
@@ -42,7 +41,7 @@ function DimesionalPage(props: any) {
                                             <p><b>Availability:</b>{order.availability}</p>
                                             <p><b>Price:</b>{order.price}</p>
                                             <p><b>Weight:</b>{order.weight}</p>
-                                            <button className="btn btn-success add-to-cart-button"  onClick = {() => {setSelectedProduct(order);props.addQuantity(quantityarr[i]);props.addToCart(order)}}>Add to Cart</button>
+                                            <button className="btn btn-success add-to-cart-button" type="button"  onClick = {() => {setSelectedProduct(order);props.addQuantity(quantityarr[i]);props.addToCart(order)}}>Add to Cart</button>
                                         </div>
                                    )
                             })}
