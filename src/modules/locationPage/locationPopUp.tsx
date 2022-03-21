@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { connect } from "react-redux";
-import "./locationPopUp.scss";
+// import "./locationPopUp.scss";
 
 
 

@@ -31,10 +31,10 @@ function Orders(props: any) {
     return (
 
         <div className='row'>
-            <div className='col-1'>
+            <div className='col-0 col-sm-1 col-md-1 col-lg-1 col-xl-1'>
                 <Sidebar> </Sidebar>
             </div>
-            <div className='orders-dashboard col-11'>
+            <div className='orders-dashboard col-12 col-sm-11 col-md-11 col-lg-11 col-xl-11'>
 
                 <main id="mainContent">
                     <section className="order-section">

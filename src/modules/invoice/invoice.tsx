@@ -10,6 +10,7 @@ import Sidebar from "../sidebar/sidebar";
 
 
 function Invoice(props: any) {
+
     const [invoiceFlag, setinvoiceFlag] = useState(true);
     let [invoice, setInvoice] = useState([]);
     const [userDetails, setUserDetails] = useState(
@@ -18,7 +19,7 @@ function Invoice(props: any) {
         })
 
     let useremail = userDetails.email;
-    console.log("email", useremail);
+    // console.log("email", useremail);
     useEffect(() => {
         const getToken = () => localStorage.getItem("token");
         axios.get("http://localhost:3005/users/" + getToken())
@@ -51,13 +52,15 @@ function Invoice(props: any) {
             })
     }, [useremail])
     function invoiceToggle(e: any) {
-        if (e.target.src == upArrow) {
-            e.target.src = downArrow;
+        console.log(e.target.childNodes[2])
+        
+        if (e.target.childNodes[2].src == upArrow) {
+            e.target.childNodes[2].src = downArrow;
         }
         else
-            e.target.src = upArrow;
+            e.target.childNodes[2].src = upArrow;
     }
-    console.log(window.innerWidth);
+    // console.log(window.innerWidth);
 
     return (
         <main className="row" id="mainContent">
@@ -78,8 +81,11 @@ function Invoice(props: any) {
                     <main className="invoice-body">
                         <h3 className="invoice-heading invoice-border mb-0">Product Details</h3>
                         {
-                            invoice.map((data, ind) => {
+                            invoice.map((data: any, ind) => {
                                 // console.log("invoicxe data", data)
+
+
+
 
 
                                 let cartproducts: any = data["cartproducts"];
@@ -87,7 +93,7 @@ function Invoice(props: any) {
                                 let totalAmmount = 0;
                                 return (
                                     <div key={ind} >
-                                        <p className="invoice-id invoice-border">ID - {data["invoiceId"]}<img data-bs-toggle="collapse" data-bs-target={index} aria-expanded="false" aria-controls="collapseExample" className="text-end" id={`${ind}`} onClick={(e) => invoiceToggle(e)} src={upArrow}></img></p>
+                                        <p data-bs-toggle="collapse" data-bs-target={index} aria-expanded="false" aria-controls="collapseExample" onClick={(e) => invoiceToggle(e)} className="invoice-id invoice-border">ID - {data["invoiceId"]}<img  className="text-end" id={`${ind}`} src={upArrow}></img></p>
                                         <div className=" invoice-border table collapse mb-0" id={index.slice(1)}>
                                             <table className="mt-4" key={ind}>
                                                 <thead>

@@ -41,10 +41,17 @@ function BuyNow(props: any) {
             )
 
         return () => {
-            setOpen(false)
+            setOpen(false);
         }
     }, [])
-
+    useEffect(() => {
+      
+    
+      return () => {
+      
+      }
+    }, [])
+    
 
     const productsubmitHandler = (e: any, productDetails: any) => {
         e.preventDefault();
@@ -182,8 +189,8 @@ function BuyNow(props: any) {
                                     <div className='viewall-icon'>
                                         <button className='cart-button' onClick={() => { setFilters([...filters, { type, quantity, weight, sex, breed }]); }}><img src={require("./assets/viewallproductsicon.png")} /></button>
                                     </div>
-                                    <div className='row'>
-                                        <div className="col-md-2 productype-dropdown" >
+                                    <div className='row product-dropdown'>
+                                        <div className="col-md-2" >
                                             <div className="dropdown" >
                                                 <select name="Type" required value={type} onChange={(event) => Validate(event)} onBlur={(event) => Validate(event)} className="form-select" >
                                                     <option hidden value="">Type</option>

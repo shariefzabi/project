@@ -48,8 +48,8 @@ input[type=number]::-webkit-outer-spin-button {
     border: 5px solid green;
     border-radius: 50%;
     margin: auto;
-    margin-bottom: 38px;
-    margin-top: 66px;
+    margin-bottom: 2.375rem;
+    margin-top: 4.125rem;
   }
   .Successfully_Placed_box > h3 {
     font-size: 3.813rem;
@@ -63,9 +63,9 @@ input[type=number]::-webkit-outer-spin-button {
     font-size: 24px;
     line-height: 28px;
     text-align: center;
-    margin-top: 65px;
+    margin-top: 4.063rem;
     color: #838383;
-    margin-bottom: 48px;
+    margin-bottom: 7.375rem;
   }
 
   .payment_label {
@@ -122,6 +122,9 @@ input[type=number]::-webkit-outer-spin-button {
     }
     button {
       margin: 0rem 0 0 0 !important;
+    } 
+     .Successfully_Placed {
+      margin-bottom: 40px !important;
     }
 }
 @media (min-width: 577px) and (max-width: 768px) {

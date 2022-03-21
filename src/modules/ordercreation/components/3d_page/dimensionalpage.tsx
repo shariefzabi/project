@@ -38,12 +38,13 @@ function DimesionalPage(props: any) {
                                         <div key={i} className="card product-cards m-3">
                                             <img className="" src={imgPath} height="150px" width="100%"></img>
                                             <p><b>Type:</b>{order.type}</p>
+                                            <p><b>Quantity:</b>{quantityarr[i]}</p>
                                             <p><b>Breed:</b>{order.breed}</p>
                                             <p><b>Product Code:</b>{order.productCode}</p>
                                             <p><b>Availability:</b>{order.availability}</p>
                                             <p><b>Price:</b>{order.price}</p>
                                             <p><b>Weight:</b>{order.weight}</p>
-                                            <button className="btn btn-success add-to-cart-button" type="button"  onClick = {() => {setSelectedProduct(order);props.addQuantity(quantityarr[i]);props.addToCart(order);setcartErrMsg("Added to cart,Click on continue to proceed")}}>Add to Cart</button>
+                                            <button className="btn btn-success add-to-cart-button" type="button"  onClick = {() => {setSelectedProduct(order);props.addQuantity(quantityarr[i]);order.quantity=quantityarr[i];props.addToCart(order);setcartErrMsg("Added to cart,Click on continue to proceed")}}>Add to Cart</button>
                                         </div>
                                    )
                             })}

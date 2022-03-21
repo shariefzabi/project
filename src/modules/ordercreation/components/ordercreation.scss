@@ -9,7 +9,7 @@
     width: 90%;
     transform: 'translate(-50%, -50%)';
     background-color: #ffffff;
-    margin: 100px auto;
+    margin: 10% auto;
 }
 .ordercreation-container{  
     .cart-button{
@@ -51,8 +51,8 @@
     left:84%;
     top:19%;
    }
-   .productype-dropdown{
-       margin-left: 60px !important;
+   .product-dropdown{
+       margin-left: 9% !important;
    }
 //    .heading-page{
 //         font-family: Ubuntu;
@@ -99,5 +99,10 @@
     }
     .field-error{
         border: 2px solid red;
+    }
+    @media(max-width:400px){
+        .dropdown{
+            margin:auto;
+        }
     }
 }
