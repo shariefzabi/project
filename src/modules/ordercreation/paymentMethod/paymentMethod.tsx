@@ -77,7 +77,7 @@ class PaymentMethod extends React.Component<any, any> {
           this.setState({ month_yearErr })
         } else {
           month_yearErr = '';
-    
+
           this.setState({ month_yearErr, month, year })
         }
       }
@@ -121,7 +121,7 @@ class PaymentMethod extends React.Component<any, any> {
       .catch(err => {
         console.log("error: ", err);
       })
-    
+
     const date = new Date().toJSON().slice(0, 10).split('-').reverse().join('/')
     this.setState({ date })
     let { payment } = this.state
@@ -141,6 +141,17 @@ class PaymentMethod extends React.Component<any, any> {
         })
       this.props.setPaymentInformation(payment)
       console.log(paymentStatus)
+    }
+    else {
+
+      const paymentMethod: any = document.querySelector(".paymentmethod")
+
+      // const ravPayFormWidth: any = document.querySelector(".RavepayForm")
+
+
+
+      paymentMethod.style.width = "320px"
+
     }
   }
   submitHandler = (e: any) => {
@@ -225,7 +236,7 @@ class PaymentMethod extends React.Component<any, any> {
         {!this.state.flag1 &&
           <div >
             {this.state.payment == "Ravepay" &&
-              <div className="modal-dialog modal-sm modal-dialog-centered mt-0">
+              <div className="modal-dialog modal-sm modal-dialog-centered m-0">
                 {this.state.flag2 &&
                   <div className="modal-content">
                     <div className="text-center mt-3 border-bottom border-2">
@@ -273,7 +284,7 @@ class PaymentMethod extends React.Component<any, any> {
             }
             {this.state.payment == "Pay_On_Delivery" &&
 
-              <div className="modal-dialog modal-dialog-centered ">
+              <div className="modal-dialog modal-dialog-centered mt-0">
                 <div className="modal-content">
                   <div className="modal-body text-center">
                     <div className="Successfully_Placed_box">
