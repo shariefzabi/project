@@ -1,11 +1,7 @@
 import "./shopping_cart.css";
-import React, { useState } from "react";
-import axios from "axios";
+import React from "react";
 import { Link } from "react-router-dom";
-import appStore from "../../state/app_store";
-import { Breadcrumb } from "react-bootstrap";
 import { connect } from "react-redux";
-import { Dialog } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import Orderdisplay from "../ordercreation/components/orderdisplay/orderdisplay";
 
@@ -144,7 +140,8 @@ class Cart extends React.Component<any, any> {
 
                     <td className="detail">
                       <span>
-                        Pick- up date<br></br> 2019-08-18
+                        Pick- up date
+                        <br /> 2022-03-31
                       </span>
                     </td>
                   </tr>
