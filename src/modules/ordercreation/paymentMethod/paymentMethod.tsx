@@ -335,8 +335,10 @@ class PaymentMethod extends React.Component<any, any> {
                               !(
                                 this.state.card_numberErr == "" &&
                                 this.state.cvv_numberErr == "" &&
+                                this.state.month_yearErr == "" &&
                                 this.state.card_number !== "" &&
-                                this.state.cvv_number !== ""
+                                this.state.cvv_number !== "" &&
+                                this.state.month_year !== ""
                               )
                             }
                           >

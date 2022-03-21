@@ -18,7 +18,7 @@ function Invoice(props: any) {
         })
 
     let useremail = userDetails.email;
-    console.log("email", useremail);
+    // console.log("email", useremail);
     useEffect(() => {
         const getToken = () => localStorage.getItem("token");
         axios.get("http://localhost:3005/users/" + getToken())
@@ -57,7 +57,7 @@ function Invoice(props: any) {
         else
             e.target.src = upArrow;
     }
-    console.log(window.innerWidth);
+    // console.log(window.innerWidth);
 
     return (
         <main className="row" id="mainContent">
