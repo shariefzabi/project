@@ -57,4 +57,13 @@
         height: 2.75rem;
         width:7.063rem;
     }
+    @media (max-width:500px) {
+        .row{
+            margin-left: 10px!important;
+        } 
+        .heading-dimension
+        {
+            width: 60%;
+        }
+    }
 }
