@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 router.use(express.json())
-router.get("/:useremail", async (req, res) => {
-    let { useremail } = req.params;
-    console.log(useremail);
+router.get("/details", async (req, res) => {
+    let { useremail } = req.query;
+    // console.log(useremail);
     const ordercollection = req.app.get('ordercollection')
 
     // let ordercollection = db.collection("orders");
