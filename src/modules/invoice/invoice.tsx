@@ -42,7 +42,7 @@ function Invoice(props: any) {
 
     }, [])
     useEffect(() => {
-        axios.get("http://localhost:3005/invoicedetails/", { params: { useremail: useremail } })
+        axios.get("http://localhost:3005/invoicedetails/details", { params: { useremail: useremail } })
             .then((res) => {
                 let res_data = res.data
                 setInvoice(res_data)
