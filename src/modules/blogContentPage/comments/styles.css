@@ -44,10 +44,13 @@
 }
 
 @media (max-width:380px){
+    
+    
     .clients{
         margin: auto;
         margin-top: 1.25rem;
         width: 17.812rem;
+        margin-bottom: 161px;
     }
     .clients h2{
         font-size: 0.937rem;
