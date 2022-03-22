@@ -21,9 +21,7 @@ class Footer extends React.Component{
                                 <img src={require("./assets/img/Appstore.png")} alt="apple" height="50px" width="130px" />
                             </div>
                         </article>
-                        <div className="mobile">
-                            <img src={require("./assets/img/Group 2.png")} />
-                        </div>
+                        
                     </section>
                     <section className="d-flex subscribe-block">
                         <div className="heading text-white">

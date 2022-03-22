@@ -19,7 +19,7 @@ class LandingPage extends React.Component<any, any>{
 
             <>
                 
-                      <main>
+                      <main className="position-relative">
                         <section className="d-flex order-livestock">
                             <article>
 
@@ -418,12 +418,15 @@ class LandingPage extends React.Component<any, any>{
                             </div>
 
                         </section>
+                        <div className="mobile">
+                            <img src={require("./assets/Img/Group 2.png")} />
+                        </div>
                     </main>
                 
                 
                      
                 
-
+                    
                 {/* <footer className="landing-footer">
                     <section >
                         <article className="app-benefits">

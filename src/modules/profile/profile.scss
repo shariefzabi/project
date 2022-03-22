@@ -4,7 +4,7 @@
   margin-bottom: 500px;
 }
  .profile-container{ 
-  
+  margin-bottom: 15rem;
 .profileSection {
   margin: 0;
   padding: 0;
@@ -41,7 +41,14 @@
   box-sizing: border-box;
   padding: 50px;
   font-family: ubuntu;
+
+  
+
 }
+#saveButton{
+    width: 196px;
+    height: 50px;
+  }
 input{
   height: 50px;
   padding-left: 25px;

@@ -15,6 +15,7 @@ import ButcheryModel from "../../modules/butchery_form/butcherypopup";
 import axios from "axios";
 import Orderdisplay from "../../modules/ordercreation/components/orderdisplay/orderdisplay";
 import Modal from "@mui/material/Modal";
+import { NavLink } from "react-router-dom";
 
 class Header extends React.Component<any, any> {
   constructor(props: any) {
@@ -164,134 +165,17 @@ class Header extends React.Component<any, any> {
                 </div>
           </div>
 
-        {/* <div className="small_bar">
-          <img
-            className="bar_img"
-            data-bs-toggle="modal"
-            data-bs-target="#staticBackdrop"
-            src={bar}
-          />
-          <div
-            className="modal fade"
-            id="staticBackdrop"
-            data-bs-backdrop="static"
-            data-bs-keyboard="false"
-            tabIndex={-1}
-            aria-labelledby="staticBackdropLabel"
-            aria-hidden="true"
-          >
-            <div className="modal-dialog modal-fullscreen-sm-down">
-              <div className="modal-content ">
-                <div className="modal-body small_menu">
-                  <img
-                    className="close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                    src={cross}
-                  />
-                  <div className="text-center">
-                    <Link
-                      to="/"
-                      className="menu_content_small"
-                      onClick={() => alert("cgh")}
-                    >
-                      Home
-                    </Link>
-                    <Link to="/aboutus" className="menu_content_small">
-                      About Us
-                    </Link>
-                    <Link to="/" className="menu_content_small ">
-                      Be a Partner
-                      <img src={triangle} />
-                    </Link>
-                    <Link to="/" className="menu_content_small sub">
-                      Be an Agent
-                    </Link>
-                    <Link to="/" className="menu_content_small sub">
-                      Butchery & Abarttoir
-                    </Link>
-                    <Link to="/" className="menu_content_small">
-                      Blog
-                    </Link>
-                    <button className="buy_button">Buy Now</button>
-                    {!user && (
-                      <div className="menu_btn text-center" >
-                        <Login />
-                      </div>
-                    )}
-                    {user && (
-                      <div className="user-profile">
-                        <a
-                          className="btn text-white dropdown-toggle"
-                          href="#"
-                          role="button"
-                          id="dropdownMenuLink"
-                          data-bs-toggle="dropdown"
-                          aria-expanded="false"
-                        >
-                          {user.fullName}
-                        </a>
-                        <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                          <li>
-                            <Link className="dropdown-item" to="/profile">
-                              My Profile
-                            </Link>
-                          </li>
-                          <li>
-                            <Link className="dropdown-item" to="/orders">
-                              Orders
-                            </Link>
-                          </li>
-                          <li>
-                            <Link className="dropdown-item" to="invoice">
-                              Invoice
-                            </Link>
-                          </li>
-                          <li>
-                            <Link className="dropdown-item" to="payments">
-                              Payment
-                            </Link>
-                          </li>
-                          <li>
-                            <Link className="dropdown-item" to="trackOrder">
-                              Track Order
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              className="dropdown-item"
-                              to="/"
-                              onClick={this.logOut}
-                            >
-                              Log out
-                            </Link>
-                          </li>
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-                  <div className="menu_bottom d-flex justify-content-between">
-                    <p className="menu_faqs">FAQ</p>
-                    <p className="menu_faqs">Privacy</p>
-                    <p className="menu_faqs">Terms & Conditions</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> */}
-
         {/* Desktop Version */}
         <div className=" d-lg-flex justify-content-end big_bar">
           <div className="home">
-            <Link to="/" className="menu_content">
+            <NavLink to="/" className="menu_content">
               Home
-            </Link>
+            </NavLink>
           </div>
           <div className="home">
-            <Link to="/aboutus" className="menu_content">
+            <NavLink to="/aboutus" className="menu_content">
               About Us
-            </Link>
+            </NavLink>
           </div>
           {!user && (
             <div className="home">
@@ -303,9 +187,9 @@ class Header extends React.Component<any, any> {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  <Link to="/" className="text-white text-decoration-none">
+                  <NavLink to="/" className="text-white text-decoration-none">
                     Be a Partner
-                  </Link>
+                  </NavLink>
                 </div>
                 {/* <img className="inverted_tri" aria-labelledby="dropdownMenuLink" src={triangle}/> */}
                 <ul
@@ -324,22 +208,22 @@ class Header extends React.Component<any, any> {
             </div>
           )}
           <div className="home">
-            <Link to="/blog" className="menu_content">
+            <NavLink to="/blog" className="menu_content">
               Blog
-            </Link>
+            </NavLink>
           </div>
           {user && (
             <div className="home">
-              <Link to="/addblogs" className="menu_content">
+              <NavLink to="/addblogs" className="menu_content">
                 Add Blogs
-              </Link>
+              </NavLink>
             </div>
           )}
           {user && (
             <div className="home">
-              <Link to="/addproducts" className="menu_content">
+              <NavLink to="/addproducts" className="menu_content">
                 Add Products
-              </Link>
+              </NavLink>
             </div>
           )}
           <div className="menu_btn">
@@ -365,29 +249,29 @@ class Header extends React.Component<any, any> {
               </a>
               <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <li>
-                  <Link className="dropdown-item" to="/profile">
+                  <NavLink className="dropdown-item" to="/profile">
                     My Profile
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/orders">
+                  <NavLink className="dropdown-item" to="/orders">
                     Orders
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="invoice">
+                  <NavLink className="dropdown-item" to="invoice">
                     Invoice
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="payments">
+                  <NavLink className="dropdown-item" to="payments">
                     Payment
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="trackOrder">
+                  <NavLink className="dropdown-item" to="trackOrder">
                     Track Order
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
                   <Link
@@ -403,7 +287,7 @@ class Header extends React.Component<any, any> {
           )}
           {/* team6 */}
           {user && (
-            <div>
+            <div >
               <a
                 className="edit-toggler text-secondary popHover"
                 type="button"
@@ -411,7 +295,7 @@ class Header extends React.Component<any, any> {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <view className="add-to-cart" style={{ flexDirection: "row" }}>
+                <div className="add-to-cart" style={{ flexDirection: "row" }}>
                   <div className="cart-count">
                     {/* <text style={{}}>{datalength}</text> */}
                     <p>{this.props.redux.quantity[0]}</p>
@@ -449,7 +333,7 @@ class Header extends React.Component<any, any> {
                     />
                     {/* <path d="M17.7686 24.4524C17.9684 24.3697 18.1751 24.2767 18.3887 24.1733C18.6091 24.0631 18.8227 23.946 19.0294 23.8219C19.2361 23.691 19.4325 23.5567 19.6185 23.4189C19.8115 23.2742 19.9837 23.1226 20.1353 22.9641H21.2102V30.1264H19.6702V24.9691C19.4635 25.1069 19.2327 25.2344 18.9778 25.3515C18.7228 25.4618 18.4748 25.5582 18.2336 25.6409L17.7686 24.4524Z" fill="#2078BF" /> */}
                   </svg>
-                </view>
+                </div>
               </a>
               <div
                 className="dropdown-menu  cartPopUp "

@@ -213,10 +213,7 @@ function Profile(props: any) {
             <div className='col-lg-1'><Sidebar></Sidebar></div>
             {props.redux.user &&
             <div className='profile-container col-lg-11'>
-
-                
                 <header>
-
                 <div className="headingText ">
                     <h2>Profile</h2>
                 </div>
@@ -293,7 +290,7 @@ function Profile(props: any) {
                                                     <p className="text-danger">{addressErrMsg}</p>
                                                 </div>
                                                 <div className="row justify-content-center">
-                                                    <button onClick={()=>setflag(true)} type="submit" id="saveButton" className="btn btn-success col-md-4">Save</button>
+                                                    <button onClick={()=>setflag(true)} type="submit" id="saveButton" className="btn btn-success">Save</button>
                                                 </div>
                                                 {flag&&
                                                 <p className='mt-2 text-center text-success'> Profile details Updated sucessfully </p>

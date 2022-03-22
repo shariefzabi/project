@@ -622,7 +622,7 @@ ul {
     background-repeat: no-repeat;
     width: 100%;
     position: relative;
-    margin-top: 15rem;
+    // margin-top: 15rem;
 } 
 .landing-footer .app-benefits{
  width: 19rem;
@@ -633,9 +633,9 @@ ul {
 .landing-footer .app-benefits h3{
     font-weight: 400;
 }
-.landing-footer .mobile{
+.mobile{
     left: 50.868rem;
-    top:-8rem;
+    bottom: -48rem;
     position: absolute;
     z-index: 1;
   }

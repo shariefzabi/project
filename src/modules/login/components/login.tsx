@@ -67,6 +67,9 @@ function Login(props:any) {
           else{
             setToken(res.data.token);
             props.setUser(res.data);
+            if (window.location.pathname!=="/"){
+              window.location.reload();
+            }
           }
         })
         .catch((err:any)=>console.log(" User Login up Error",err));
