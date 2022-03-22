@@ -16,11 +16,11 @@ const AddBlog = () => {
         }
     );
     const [topicMain, setTopicmain] = useState({
-        flag: true,
+        flag: "",
         errMsg: ""
     })
     const [aboutMain, setAboutmain] = useState({
-        flag: "",
+        flag: true,
         errMsg: ""
     })
     const [final, setFinal] = useState({
@@ -59,7 +59,7 @@ const AddBlog = () => {
         }
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e:any) => {
         e.preventDefault();
 
         if (topicMain.flag === "off" && newBlog.about.length >= 100) {
@@ -77,14 +77,14 @@ const AddBlog = () => {
                         topic: '',
                         date: Date(),
                         photo: '',
-                        about: ''
+                        about: '',id:''
                     })
                     setTopicmain({
-                        flag: true,
+                        flag: "",
                         errMsg: ""
                     })
                     setAboutmain({
-                        flag: "",
+                        flag: true,
                         errMsg: ""
                     })
                     setFinal({
@@ -102,11 +102,11 @@ const AddBlog = () => {
         }
 
     }
-    const handleChange = (e) => {
+    const handleChange = (e:any) => {
         setNewBlog({ ...newBlog, [e.target.name]: e.target.value });
     }
 
-    const handlePhoto = (e) => {
+    const handlePhoto = (e:any) => {
         setNewBlog({ ...newBlog, photo: e.target.files[0] });
     }
     useEffect (()=>{
