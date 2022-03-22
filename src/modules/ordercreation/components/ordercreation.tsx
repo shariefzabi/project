@@ -44,7 +44,12 @@ function BuyNow(props: any) {
             setOpen(false);
         }
     }, [])
-
+    useEffect(() => {
+      return () => {
+        
+      }
+    }, [])
+    
     const productsubmitHandler = (e: any, productDetails: any) => {
         e.preventDefault();
         // setFilters([...filters,productDetails]);
@@ -59,10 +64,19 @@ function BuyNow(props: any) {
             .then((res) => {
                 // console.log("hello",res.data); 
                 props.storeProductdetails(res.data);
-                if (props.user != null)
+                if (props.user != null){
                     setProductdetailsflag(false);
+                    setFilters([]);
+                    setType("");
+                    setQuantity("");
+                    setSex("");
+                    setBreed("");
+                    setWeight("");  
+                }
+                  
             })
-            // props.storeFilterdetails(productDetails);
+            // props.storeFilterdetails(productDetails);  
+           
     }
     const addProduct = (products: any) => {
         setAddFlag(true);
@@ -281,7 +295,7 @@ function BuyNow(props: any) {
                     }
                 </>
             </Modal>
-            <button className="buy-button text-white" onClick={() => { handleOpen(); setProductdetailsflag(true) }} >Buy Now</button>
+            <button className="buy-button text-white" onClick={() => { handleOpen(); setProductdetailsflag(true); props.clearOrders()}} >Buy Now</button>
         </div >
 
     )
@@ -296,6 +310,7 @@ const mapDispatchToProps = (dispatch: Function) => {
     return {
         // storeFilterdetails: (filters: any) => dispatch({ type: 'storeFilterdetails', filters }),
         storeProductdetails: (productDetails: any) => dispatch({ type: 'store_productdetails', productDetails }),
+        clearOrders:()=>dispatch({type:'clearOrders'})
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(BuyNow);

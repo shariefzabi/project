@@ -12,14 +12,6 @@ function DimesionalPage(props: any) {
     const [cartErrMsg,setcartErrMsg] = useState("");
     let quantityarr =props.orders[1];
     const [buttonFlag,setButtonFlag]=useState(false);
-    let size=Object.keys(selectedProduct).length;
-    //  console.log("ordersdatain 3d", size);
-    // console.log("dpage",props.orders[1]);
-    // const addquantity=(i:any)=>{
-    //     quantityData.push(quantityarr[i])
-    //     setQuantityData(quantityData);
-    //     // console.log("quantityData",quantityData);
-    // }
     return (
         <>
             {!deliveryFlag &&
@@ -74,7 +66,8 @@ const mapStateToProps = (state: any) => {
 const mapDispatchToProps = (dispatch: Function) => {
     return {
         // addQuantity: (quantity: any)=>dispatch({type: 'addQuantity',payload:quantity}),
-        addToCart: (products: any) => dispatch({ type: 'addToCart', products })
+        addToCart: (products: any) => dispatch({ type: 'addToCart', products }),
+        
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(DimesionalPage);

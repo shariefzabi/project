@@ -64,7 +64,7 @@
     .field-error{
         border: 2px solid red;
     }
-    @media(max-width:400px){
+    @media(max-width:500px){
         .dropdown{
             margin:auto;
         }
@@ -91,7 +91,7 @@
         }
         .form-select{
             width: 80%;
-            height: 40px;
+            // margin-left: 100px;
         }
         .viewall-icon{
             position: absolute;
@@ -114,11 +114,11 @@
             }
         }
         .continuebutton{
-            border: 0.134rem solid #00C3FF;
-            border-radius: 0.3125rem;
-            font-size: 13px;
-            height: 2rem;
-            width:5.063rem;
+            height: 2.75rem;
+            width:7.063rem;
+        }
+        option{
+            width: 20px !important;
         }
     }
 }

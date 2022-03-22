@@ -47,8 +47,8 @@ function Orderdisplay(props: any) {
                                                     productPrice += parseInt(item.price)*parseInt(item.quantity);
                                                     return (
                                                         <ul className="body-list-items m-auto" key={ind}>
-                                                            <li className="mt-4">Type: {item.type} <span className="weight-items">Quantity : {item.quantity}</span></li>
-                                                            <li className="mt-3">Sex: {item.sex} <span className="weight-items">Weight : {item.weight}</span></li>
+                                                            <li className="mt-4">Type: {item.type} <span className="weight-items d-sm-block">Quantity : {item.quantity}</span></li>
+                                                            <li className="mt-3">Sex: {item.sex} <span className="weight-items  d-sm-block">Weight : {item.weight}</span></li>
                                                             <li className="mt-3">Breed: {item.breed}</li>
                                                         </ul>
                                                     )

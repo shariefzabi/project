@@ -63,6 +63,8 @@ function appReducer(state = appInitialstate, action: any) {
     //   return { ...state, quantityarr: [...state.quantityarr, action.payload] };
     case "store_productdetails":
       return { ...state, orders: [...state.orders, ...action.productDetails] };
+    case "clearOrders":
+      return {...state, orders:[]};
     case "store_order":
       return { ...state, orderdetails: action.payload };
 
