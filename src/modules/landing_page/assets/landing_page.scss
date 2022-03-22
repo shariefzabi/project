@@ -1,695 +1,660 @@
 @font-face {
-    font-family: ubuntu;
-    src: url("./Fonts/Ubuntu/Ubuntu-Regular.ttf");
-  }
-body{
-    overflow-x:hidden;
-    background-color: #F5FBFF!important;
-    font-family: ubuntu;  
+  font-family: ubuntu;
+  src: url("./Fonts/Ubuntu/Ubuntu-Regular.ttf");
+}
+body {
+  overflow-x: hidden;
+  background-color: #f5fbff !important;
+  font-family: ubuntu;
 }
 ul {
-    list-style-type:none;
-    padding-left: 0px!important;
+  list-style-type: none;
+  padding-left: 0px !important;
 }
 
 /* Header Part Start */
 
-.landingpage-header{
-    background-color: #2078BF;
+.landingpage-header {
+  background-color: #2078bf;
 }
-.landingpage-header .active{
-    text-decoration: underline solid white;
+.landingpage-header .active {
+  text-decoration: underline solid white;
 }
-.landingpage-header .nav-item{
-    margin-left: 2.93rem;
+.landingpage-header .nav-item {
+  margin-left: 2.93rem;
 }
-.landingpage-header .nav-item::after{
-    text-decoration: underline solid white;
+.landingpage-header .nav-item::after {
+  text-decoration: underline solid white;
+}
 
+.landingpage-header .nav-link {
+  font-size: 16px;
 }
-
-.landingpage-header .nav-link{
-    font-size: 16px;
-}
-.landingpage-header .dropdown-menu{
-    padding: 0rem;
-    margin: 0rem;
-    border-radius: 00.3125rem;
-    font-family: sans-serif;
+.landingpage-header .dropdown-menu {
+  padding: 0rem;
+  margin: 0rem;
+  border-radius: 00.3125rem;
+  font-family: sans-serif;
 }
 .landingpage-header .triangle-up {
-	border-left: 8px solid transparent;
-	border-right: 8px solid transparent;
-	border-bottom: 11px solid #fff;
-    position: absolute;
-    top : -11px;
-    left: 93px;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 11px solid #fff;
+  position: absolute;
+  top: -11px;
+  left: 93px;
 }
-.landingpage-header .dropdown-menu .dropdown-item{
-    color: #838383!important;
-    padding-left: 5px;
+.landingpage-header .dropdown-menu .dropdown-item {
+  color: #838383 !important;
+  padding-left: 5px;
 }
-.landingpage-header .dropdown-menu .dropdown-item:hover{
-    background-color: #2078BF;
-    color: #fff!important;
+.landingpage-header .dropdown-menu .dropdown-item:hover {
+  background-color: #2078bf;
+  color: #fff !important;
 }
-.landingpage-header .buynow{
-    border: 0.134rem solid #00C3FF!important;
-    border-radius: 0.3125rem!important;
-    height: 3.75rem;
-    width:11.063rem;
-    margin-right: 2.625rem;
-    margin-left: 2.625rem;
+.landingpage-header .buynow {
+  border: 0.134rem solid #00c3ff !important;
+  border-radius: 0.3125rem !important;
+  height: 3.75rem;
+  width: 11.063rem;
+  margin-right: 2.625rem;
+  margin-left: 2.625rem;
 }
-.landingpage-header .login{
-    height: 3.75rem;
-    width:11.063rem;
-    margin-right: 6.55rem;
+.landingpage-header .login {
+  height: 3.75rem;
+  width: 11.063rem;
+  margin-right: 6.55rem;
 }
-.landingpage-header .collapse{
-    padding-top: 1rem;
-    padding-right: 1rem;
+.landingpage-header .collapse {
+  padding-top: 1rem;
+  padding-right: 1rem;
 }
-
-
-
-
-
-
 
 /* Header Part End */
 
-
 /* Order your livestock Start */
 
-.order-livestock{
-    background-color: #003966;
-    /* height:53.75rem; */
+.order-livestock {
+  background-color: #003966;
+  /* height:53.75rem; */
 }
-.order-livestock article{
-    margin:12rem 5rem 7rem 7.625rem;
-    width:38.56rem;
+.order-livestock article {
+  margin: 12rem 5rem 7rem 7.625rem;
+  width: 38.56rem;
 }
-.order-livestock .heading{
-    font-size:56px;
-    font-family: Ubuntu;
-    width: 100%;
+.order-livestock .heading {
+  font-size: 56px;
+  font-family: Ubuntu;
+  width: 100%;
 }
-.order-livestock .livestock-title{
-    color: #2078BF;
-    font-weight: 700;
+.order-livestock .livestock-title {
+  color: #2078bf;
+  font-weight: 700;
 }
-.order-livestock .features{
-    margin-bottom: 3.6875rem;
-    margin-left: 0.5rem;
+.order-livestock .features {
+  margin-bottom: 3.6875rem;
+  margin-left: 0.5rem;
 }
-.order-livestock .features li{
-    list-style-type: "-";
-    padding-left: 2px;
+.order-livestock .features li {
+  list-style-type: "-";
+  padding-left: 2px;
 }
-.order-livestock button{
-    height: 3.75rem;
-    width:11.063rem;
-    border-radius: 0.3125rem;
+.order-livestock button {
+  height: 3.75rem;
+  width: 11.063rem;
+  border-radius: 0.3125rem;
 }
 
-.order-livestock .buynow-btn{
-    border: 0.134rem solid white;
-    margin-left: 1.625rem;
+.order-livestock .buynow-btn {
+  border: 0.134rem solid white;
+  margin-left: 1.625rem;
 }
-.order-livestock .checkboard{
-     max-width:31rem;
-     height:26.375rem;
-     margin-top: 13.5625rem;
+.order-livestock .checkboard {
+  max-width: 31rem;
+  height: 26.375rem;
+  margin-top: 13.5625rem;
 }
-@media (min-width:375px)and (max-width:480px){
-    .order-livestock{
-        padding: 0;
-    }
-    .order-livestock .heading{
-        font-size:20px;
-        /* font-weight: 700; */
-    }
-    .order-livestock article{
-        margin: 0px 40px;
-        padding: 50px 0px;
-        max-width:250px;
-    }
-    .order-livestock .features{
-        margin-bottom: 19px;
-        font-size: 8px;
-        max-width: 190px;
-        list-style-type: "-";
-        line-height: 12.8px;
-    }
-    .order-livestock .features li{
-        padding-left: 3px;
-    }
-    .order-livestock button{
-        width:88px;
-        height: 30px;
-        font-size: 10px;
-        border-radius: 0.3125rem;
-    }
-    .order-livestock .buynow-btn{
-        border: 1px solid white;
-        margin-left: 9.5px;
-    }
-    .order-livestock aside{
-        display: none;
-    }
+@media (min-width: 375px) and (max-width: 480px) {
+  .order-livestock {
+    padding: 0;
+  }
+  .order-livestock .heading {
+    font-size: 20px;
+    /* font-weight: 700; */
+  }
+  .order-livestock article {
+    margin: 0px 40px;
+    padding: 50px 0px;
+    max-width: 250px;
+  }
+  .order-livestock .features {
+    margin-bottom: 19px;
+    font-size: 8px;
+    max-width: 190px;
+    list-style-type: "-";
+    line-height: 12.8px;
+  }
+  .order-livestock .features li {
+    padding-left: 3px;
+  }
+  .order-livestock button {
+    width: 88px;
+    height: 30px;
+    font-size: 10px;
+    border-radius: 0.3125rem;
+  }
+  .order-livestock .buynow-btn {
+    border: 1px solid white;
+    margin-left: 9.5px;
+  }
+  .order-livestock aside {
+    display: none;
+  }
 }
 /* Order your livestock End */
 
-
-
 /* Start of Sell LiveStock */
 
-.sell-livestock{
-    background-color: #2078BF;
-    width:47.06rem;
-    height:48.841rem;
-    margin-top:6.25rem;
-    margin-left: 5.606rem;
-    border-radius: 0.625rem;
-    margin-bottom:6.875rem;
+.sell-livestock {
+  background-color: #2078bf;
+  width: 47.06rem;
+  height: 48.841rem;
+  margin-top: 6.25rem;
+  margin-left: 5.606rem;
+  border-radius: 0.625rem;
+  margin-bottom: 6.875rem;
 }
-.sell-livestock article{
-    padding-left:4.937rem;
-    margin:0rem;
-    padding-top:6.0293rem;
+.sell-livestock article {
+  padding-left: 4.937rem;
+  margin: 0rem;
+  padding-top: 6.0293rem;
 }
-.sell-livestock .heading{
-    width:41rem;
-    height:11rem;
-    margin-bottom:3rem;
+.sell-livestock .heading {
+  width: 41rem;
+  height: 11rem;
+  margin-bottom: 3rem;
 }
-.sell-livestock .heading li{
-    font-weight: 700;
-    font-size:2.25rem;
-    padding-bottom: 35px;
+.sell-livestock .heading li {
+  font-weight: 700;
+  font-size: 2.25rem;
+  padding-bottom: 35px;
 }
 .sell-livestock .description {
-    width:31.05rem;
-    height:6.56rem;
-    margin-bottom:2.25rem;
+  width: 31.05rem;
+  height: 6.56rem;
+  margin-bottom: 2.25rem;
 }
-.sell-livestock .description li{
-    font-size:1.125rem;
-    font-weight:400;
+.sell-livestock .description li {
+  font-size: 1.125rem;
+  font-weight: 400;
 }
-.sell-livestock .questions{
-    width:29.687rem;
-    height:10.375rem;
+.sell-livestock .questions {
+  width: 29.687rem;
+  height: 10.375rem;
 }
-.sell-livestock .questions li{
-    font-size: 1.125rem!important;
-    font-weight: 700;
-    padding-bottom: 20px;
-
-} 
-.sell-livestock button{
-    height: 3.75rem;
-    width:11.063rem;
-    background-color: #06864D;
+.sell-livestock .questions li {
+  font-size: 1.125rem !important;
+  font-weight: 700;
+  padding-bottom: 20px;
 }
-.sell-livestock .chessboard{
-    width:42.36rem;
-    height:36rem;
-    margin-top:6.67rem;
-    padding-right:6.436rem;
-    position: absolute;
-    left:46rem;
+.sell-livestock button {
+  height: 3.75rem;
+  width: 11.063rem;
+  background-color: #06864d;
 }
-@media (max-width:576px){
-    .sell-livestock aside{
-        display: none;
-    }
-    .order-livestock{
-        padding: 0;
-    }
-    .order-livestock .heading{
-        font-size:20px;
-        /* font-weight: 700; */
-    }
-    .order-livestock article{
-        margin: 0px 40px;
-        padding: 50px 0px;
-        max-width:250px;
-    }
-    .order-livestock .features{
-        margin-bottom: 19px;
-        font-size: 8px;
-        max-width: 190px;
-        list-style-type: "-";
-        line-height: 12.8px;
-    }
-    .order-livestock .features li{
-        padding-left: 3px;
-    }
-    .order-livestock button{
-        width:88px;
-        height: 30px;
-        font-size: 10px;
-        border-radius: 0.3125rem;
-    }
-    .order-livestock .buynow-btn{
-        border: 1px solid white;
-        margin-left: 9.5px;
-    }
-    .order-livestock aside{
-        display: none;
-    }
-    .landingpage-header{
-        height: 3.8125rem;
-    }
-
+.sell-livestock .chessboard {
+  width: 42.36rem;
+  height: 36rem;
+  margin-top: 6.67rem;
+  padding-right: 6.436rem;
+  position: absolute;
+  left: 46rem;
+}
+@media (max-width: 576px) {
+  .sell-livestock aside {
+    display: none;
+  }
+  .order-livestock {
+    padding: 0;
+  }
+  .order-livestock .heading {
+    font-size: 20px;
+    /* font-weight: 700; */
+  }
+  .order-livestock article {
+    margin: 0px 40px;
+    padding: 50px 0px;
+    max-width: 250px;
+  }
+  .order-livestock .features {
+    margin-bottom: 19px;
+    font-size: 8px;
+    max-width: 190px;
+    list-style-type: "-";
+    line-height: 12.8px;
+  }
+  .order-livestock .features li {
+    padding-left: 3px;
+  }
+  .order-livestock button {
+    width: 88px;
+    height: 30px;
+    font-size: 10px;
+    border-radius: 0.3125rem;
+  }
+  .order-livestock .buynow-btn {
+    border: 1px solid white;
+    margin-left: 9.5px;
+  }
+  .order-livestock aside {
+    display: none;
+  }
+  .landingpage-header {
+    height: 3.8125rem;
+  }
 }
 /* End of Sell LiveStock */
 
 /* Start of Track LiveStock */
-.track-livestock{
-    height:22.847rem;
-    background-color:#2078BF;
-    position: relative;
+.track-livestock {
+  height: 22.847rem;
+  background-color: #2078bf;
+  position: relative;
 }
-.track-livestock article{
-    margin-left:12.625rem;
+.track-livestock article {
+  margin-left: 12.625rem;
 }
-.track-livestock .heading{
-    max-width:27.81rem;
-    line-height: 3.625rem;
-    font-size:2.25rem;
-    font-weight: bold;
-    margin-top:4.5625rem;
+.track-livestock .heading {
+  max-width: 27.81rem;
+  line-height: 3.625rem;
+  font-size: 2.25rem;
+  font-weight: bold;
+  margin-top: 4.5625rem;
 }
-.track-livestock .description{
-    max-width:31.81rem;
-    margin-top:0.875rem;
-    font-size:1.125rem;
-    line-height:2.1875rem;
+.track-livestock .description {
+  max-width: 31.81rem;
+  margin-top: 0.875rem;
+  font-size: 1.125rem;
+  line-height: 2.1875rem;
 }
-.track-livestock .search-livestock{
-    margin-top:7.5rem;
-    margin-left:9rem;
+.track-livestock .search-livestock {
+  margin-top: 7.5rem;
+  margin-left: 9rem;
 }
-.track-livestock .searchbar-heading{
-    width:16.125rem;
-    height:2.1875rem;
-    font-size:1.6875rem;
-    font-weight:43.75rem;
+.track-livestock .searchbar-heading {
+  width: 16.125rem;
+  height: 2.1875rem;
+  font-size: 1.6875rem;
+  font-weight: 43.75rem;
 }
-.track-livestock input{
-    height:4.25rem;
-    width:22.745rem;
-    border-radius: 0.3125rem;
-    padding-left: 21.92px;
-    
+.track-livestock input {
+  height: 4.25rem;
+  width: 22.745rem;
+  border-radius: 0.3125rem;
+  padding-left: 21.92px;
 }
-.track-livestock input::placeholder{
-    color:  #D7D7D7;
+.track-livestock input::placeholder {
+  color: #d7d7d7;
 }
-.goat-left{
-    width: 140px;
-    height: 121.53px;
-    position: absolute;
-    top: 71.93%;
-    left:0%;
+.goat-left {
+  width: 140px;
+  height: 121.53px;
+  position: absolute;
+  top: 71.93%;
+  left: 0%;
 }
-.goat-right{
-    width: 112.78px;
-    height: 97.9px;
-    position: absolute;
-    top: -6%;
-    left:74%;
-    transform: rotate(172.01deg);
+.goat-right {
+  width: 112.78px;
+  height: 97.9px;
+  position: absolute;
+  top: -6%;
+  left: 74%;
+  transform: rotate(172.01deg);
 }
-.goat-mid{
-   
-    width: 109px;
-    height: 94.62px;
-    position: absolute;
-    top: 78.93%;
-    left: 49%;
-    transform: rotate(-20.35deg);
+.goat-mid {
+  width: 109px;
+  height: 94.62px;
+  position: absolute;
+  top: 78.93%;
+  left: 49%;
+  transform: rotate(-20.35deg);
 }
-.cow-left{
-    position: absolute;
-    left: -60px;
-    top: -74px;
-    transform: rotate(247deg);
+.cow-left {
+  position: absolute;
+  left: -60px;
+  top: -74px;
+  transform: rotate(247deg);
 }
-.cow-mid{
-    position: absolute;
-    top: -54px;
-    left: 656.55px;
+.cow-mid {
+  position: absolute;
+  top: -54px;
+  left: 656.55px;
 }
-.cow-right{
-    position: absolute;
-    right: -20px;
-    top: 264px;
-    transform: rotate(194deg);
+.cow-right {
+  position: absolute;
+  right: -20px;
+  top: 264px;
+  transform: rotate(194deg);
 }
 
 /* End of Track LiveStock */
 
 /* Start of About Us */
-.about-us-bluerectangle{
-    padding-left: 12.37rem;
-    padding-top: 8.25rem;
+.about-us-bluerectangle {
+  padding-left: 12.37rem;
+  padding-top: 8.25rem;
 }
-.about-us-bluerectangle .chessboard{
-    padding-top: 7.65rem;
-    padding-left: 7.79rem;
+.about-us-bluerectangle .chessboard {
+  padding-top: 7.65rem;
+  padding-left: 7.79rem;
 }
-.about-us article{
-    
-    padding-top: 10.09rem;
-    margin-left: 4.88rem;
-    max-width: 33.68rem;
-    
+.about-us article {
+  padding-top: 10.09rem;
+  margin-left: 4.88rem;
+  max-width: 33.68rem;
 }
-.about-us h2{
-    color: #2078BF;
-    font-weight: 700;
-    padding-left: 2rem;
-
+.about-us h2 {
+  color: #2078bf;
+  font-weight: 700;
+  padding-left: 2rem;
 }
-.about-us .description{
-    color: #838383;
-    font-size: 1.12rem;
-    list-style-type: none;
-    font-size: 1.125rem;
-    line-height:169.23%; 
-    padding-left: 2rem;
-    
+.about-us .description {
+  color: #838383;
+  font-size: 1.12rem;
+  list-style-type: none;
+  font-size: 1.125rem;
+  line-height: 169.23%;
+  padding-left: 2rem;
 }
-.about-us .description .top-part{
-    padding-top: 3.56rem;
-    list-style-type: none;
+.about-us .description .top-part {
+  padding-top: 3.56rem;
+  list-style-type: none;
 }
-.about-us .description .bottom-part{
-    padding-top: 1.7rem;
-    list-style-type: none;
+.about-us .description .bottom-part {
+  padding-top: 1.7rem;
+  list-style-type: none;
 }
-.about-us-menu{
-    padding: 2.93rem 0 0 1rem;
+.about-us-menu {
+  padding: 2.93rem 0 0 1rem;
 }
-.about-us-menu figure{
-    font-size: 0.7rem;
-    width: 6rem;
-    color: #838383;
-    text-align: center;
+.about-us-menu figure {
+  font-size: 0.7rem;
+  width: 6rem;
+  color: #838383;
+  text-align: center;
 }
-.about-us .btn{
-    width: 11.06rem;
-    height: 3.75rem;
-    font-size: 1.375rem;
-    margin-left: 2rem;
-    margin-top: 3.58rem; 
+.about-us .btn {
+  width: 11.06rem;
+  height: 3.75rem;
+  font-size: 1.375rem;
+  margin-left: 2rem;
+  margin-top: 3.58rem;
 }
 /* End of About Us */
 
 /* Start of Be a Partner */
 
-.be-a-partner{
-    margin-top :4.07rem;
-    padding-top: 10.062rem;
-    width: 1137px;
-    margin:auto;
+.be-a-partner {
+  margin-top: 4.07rem;
+  padding-top: 10.062rem;
+  width: 1137px;
+  margin: auto;
 }
-.be-a-partner header{
-        font-weight:bold;
-        font-size: 2.25rem;
-        max-width :14.43rem;
-        height :2.5rem;
-        color:#2078BF;
-        margin-bottom: 65.25px;
+.be-a-partner header {
+  font-weight: bold;
+  font-size: 2.25rem;
+  max-width: 14.43rem;
+  height: 2.5rem;
+  color: #2078bf;
+  margin-bottom: 65.25px;
 }
-.be-a-partner-image{
-    width:33.75rem;
-    height: 33.75rem;
-    top: 222.453rem;
-    left: 11.677rem;
-    right: 48.322rem;
-    
+.be-a-partner-image {
+  width: 33.75rem;
+  height: 33.75rem;
+  top: 222.453rem;
+  left: 11.677rem;
+  right: 48.322rem;
 }
-.be-a-partner .agent-checkbox{
-    padding-right :3.58rem;
+.be-a-partner .agent-checkbox {
+  padding-right: 3.58rem;
 }
-.be-a-partner .content-heading{
-    color :#2078BF;
-    width:16.78rem;
-    height: 3.75rem;
-    font-size:1.5rem;
-    line-height: 4.87rem;
-    font-weight :43.75rem;
-    margin-top:3.16rem;
+.be-a-partner .content-heading {
+  color: #2078bf;
+  width: 16.78rem;
+  height: 3.75rem;
+  font-size: 1.5rem;
+  line-height: 4.87rem;
+  font-weight: 43.75rem;
+  margin-top: 3.16rem;
 }
-.be-a-partner .content{
-    width:32.56rem;
-    height: 6.06rem;
-    font-weight: 43.75rem;
-    font-size:1.125rem;
-    line-height: 2.18rem;
-    color : #838383;
-
-
+.be-a-partner .content {
+  width: 32.56rem;
+  height: 6.06rem;
+  font-weight: 43.75rem;
+  font-size: 1.125rem;
+  line-height: 2.18rem;
+  color: #838383;
 }
-.be-a-partner button{
-    width:11.062rem;
-    height:3.75rem;
-    background-color:#06864d;
-    margin-top:2.187rem;
-    color:white;
-    border-radius: 0.312rem;
+.be-a-partner button {
+  width: 11.062rem;
+  height: 3.75rem;
+  background-color: #06864d;
+  margin-top: 2.187rem;
+  color: white;
+  border-radius: 0.312rem;
 }
 
 /* End of Be a Partner */
 
 /* Landing Page Video Start */
-.landingpage-video{
-    margin-top:6.625rem;
-    height: 27.3437rem;
-    background-color: #2078BF;
-    opacity: 69.67%;
+.landingpage-video {
+  margin-top: 6.625rem;
+  height: 27.3437rem;
+  background-color: #2078bf;
+  opacity: 69.67%;
 }
-.play-button{
-    cursor: pointer;
+.play-button {
+  cursor: pointer;
 }
 /* Landing Page Video End */
 
-
 /* Our Blog Start */
-.section-d{
-    height:62.125rem;
+.section-d {
+  height: 62.125rem;
 }
 
-.section-d h1{
-    color:#2078bf;
-    padding-left:8.625rem;
-    font-size:2.25rem;
-    padding-top:6.093rem;
-    font-weight:43.75rem;
+.section-d h1 {
+  color: #2078bf;
+  padding-left: 8.625rem;
+  font-size: 2.25rem;
+  padding-top: 6.093rem;
+  font-weight: 43.75rem;
 }
 
-.sub-title{
-    color:#2078bf;
-    padding-left:8.625rem;
-    font-size:2.25rem;
-    padding-top:6.093rem;
-    font-weight:bold;
+.sub-title {
+  color: #2078bf;
+  padding-left: 8.625rem;
+  font-size: 2.25rem;
+  padding-top: 6.093rem;
+  font-weight: bold;
 }
 
- .card-heading{
-    font-size:1.125rem;
-    font-weight : 700;
-    color:#2078bf;
-    line-height:2rem;
-    padding:0;
-    margin:0;
-    width:100%
+.card-heading {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #2078bf;
+  line-height: 2rem;
+  padding: 0;
+  margin: 0;
+  width: 100%;
 }
-.card-content{
-    font-size:0.875rem;
-    font-weight:400;
-    line-height:1.15rem;
-    color:#838383;
-    padding:0.3125rem;
-    margin:0;
-    width:100%;
-
+.card-content {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.15rem;
+  color: #838383;
+  padding: 0.3125rem;
+  margin: 0;
+  width: 100%;
 }
-.card-img-top{
-    width:100%;
-    height:10.1875rem;
-  }
-
-.row-cols-lg-4{
-    padding-top:4.812rem;
-    padding-left:8.737rem;
-    padding-right: 6.824rem;
-    
-
-}
-.our-blog .card{
-     height: 28.5rem;
-     margin-right: 1.4375rem;
-      
+.card-img-top {
+  width: 100%;
+  height: 10.1875rem;
 }
 
-.cards{
-    margin-bottom: 9.0675rem;
-      
+.row-cols-lg-4 {
+  padding-top: 4.812rem;
+  padding-left: 8.737rem;
+  padding-right: 6.824rem;
+}
+.our-blog .card {
+  height: 28.5rem;
+  margin-right: 1.4375rem;
+}
+
+.cards {
+  margin-bottom: 9.0675rem;
 }
 
 /* Our Blog End */
 
-
-
 /* our partners start */
-.our-partners{
-    margin-left:8.981875rem;
+.our-partners {
+  margin-left: 8.981875rem;
 }
-.our-partners h2, .clients h2{
-        font-family: Ubuntu;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 36px;
-        line-height: 68px;
-        color :#2078BF;
-        
+.our-partners h2,
+.clients h2 {
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 68px;
+  color: #2078bf;
 }
-.our-partners .head-part ,.clients .head-part{
-    margin:30px 0px;
+.our-partners .head-part,
+.clients .head-part {
+  margin: 30px 0px;
 }
-.our-partners .arrows, .clients .arrows{
-    margin-right: 100px;
+.our-partners .arrows,
+.clients .arrows {
+  margin-right: 100px;
 }
 /* our partners end */
 
-
 /*satisfied clients start*/
-.clients{
-    margin-left:8.981875rem;
-    margin-top:140px;
+.clients {
+  margin-left: 8.981875rem;
+  margin-top: 140px;
 }
 
-.clients .card{
-    width: 570px;
-    border-radius:10px;
-    justify-content: space-between;
-
+.clients .card {
+  width: 570px;
+  border-radius: 10px;
+  justify-content: space-between;
 }
-.clients .carousel-description{
-    font-weight:400px;
-    font-size:14px;
-    line-height: 20px;
-    font-family: ubuntu;
-    width:264px;
-    
+.clients .carousel-description {
+  font-weight: 400px;
+  font-size: 14px;
+  line-height: 20px;
+  font-family: ubuntu;
+  width: 264px;
 }
-.clients .carousel-radio{
-    width:35px;
-    height:35px;
-    left: 180.96px;
+.clients .carousel-radio {
+  width: 35px;
+  height: 35px;
+  left: 180.96px;
 }
-.clients .client-details{
-    top: calc(50% - 16px/2 + 2436.27px);
-    font-family: Ubuntu;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 16px;
-    letter-spacing: 0.4px;
+.clients .client-details {
+  top: calc(50% - 16px / 2 + 2436.27px);
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.4px;
 }
-.clients label{
-    color: #06864D;
+.clients label {
+  color: #06864d;
 }
-.clients p{
-    color: #838383;
+.clients p {
+  color: #838383;
 }
 /*satisfied clients end*/
 
-
-
 /* Footer start */
 
-.landing-footer{
-    color: white;
-    background-color: #2078BF;
-    background-image: url("./Img/Illustration.svg") ;
-    background-repeat: no-repeat;
-    width: 100%;
-    position: relative;
-    // margin-top: 15rem;
-} 
-.landing-footer .app-benefits{
- width: 19rem;
- margin-left: 25rem;
- padding-top: 8.6875rem;
- font-family: Ubuntu;
+.landing-footer {
+  color: white;
+  background-color: #2078bf;
+  background-image: url("./Img/Illustration.svg");
+  background-repeat: no-repeat;
+  width: 100%;
+  position: relative;
+  margin-top: 4rem;
 }
-.landing-footer .app-benefits h3{
-    font-weight: 400;
+.landing-footer .app-benefits {
+  width: 19rem;
+  margin-left: 25rem;
+  padding-top: 8.6875rem;
+  font-family: Ubuntu;
 }
-.mobile{
-    left: 50.868rem;
-    bottom: -48rem;
-    position: absolute;
-    z-index: 1;
-  }
-.landing-footer .subscribe-block{
-    margin-top: 13.5rem;
-    padding-left: 12rem;
-    margin-bottom: 8rem;
-    gap: 10rem;
-    align-items: center;
+.landing-footer .app-benefits h3 {
+  font-weight: 400;
 }
-.landing-footer .heading h2{
-    font-size: 48px;
-    font-family: Ubuntu;
+.mobile {
+  left: 50.868rem;
+  bottom: -48rem;
+  position: absolute;
+  z-index: 1;
 }
-.landing-footer .subscribe-block form{
-    width: 540px;
-    height: 60px;
+.landing-footer .subscribe-block {
+  margin-top: 13.5rem;
+  padding-left: 12rem;
+  margin-bottom: 8rem;
+  gap: 10rem;
+  align-items: center;
 }
-.landing-footer .subscribe-block form button{
-    width: 171px;
+.landing-footer .heading h2 {
+  font-size: 48px;
+  font-family: Ubuntu;
 }
-.landing-footer .footer-mid aside{
-    margin-top: 3.8125rem;
-    margin-left: 141px;
-    width: 345px;
-  }
-.landing-footer .footer-mid .navigator{
-    margin-left: 205px;
-    margin-right: 136px;
+.landing-footer .subscribe-block form {
+  width: 540px;
+  height: 60px;
 }
-.landing-footer .footer-mid .contacts .address{
-    margin-left: 40px;
-    max-width: 226px;
+.landing-footer .subscribe-block form button {
+  width: 171px;
 }
-.landing-footer .footer-mid h3{
-    font-weight: 400;
-    font-size: 22px;
-    margin-bottom: 32px;
+.landing-footer .footer-mid aside {
+  margin-top: 3.8125rem;
+  margin-left: 141px;
+  width: 345px;
 }
-.landing-footer .social-icons img{
-    padding: 10px;
+.landing-footer .footer-mid .navigator {
+  margin-left: 205px;
+  margin-right: 136px;
 }
-.landing-footer .bottom-line{
-    margin: 0 156px;
+.landing-footer .footer-mid .contacts .address {
+  margin-left: 40px;
+  max-width: 226px;
 }
-.landing-footer .bottom-line ul{
-    gap: 42px;
+.landing-footer .footer-mid h3 {
+  font-weight: 400;
+  font-size: 22px;
+  margin-bottom: 32px;
 }
-.landing-footer .links-part{
-    background-image: url("./Img/shape.svg");
-    background-repeat: no-repeat;
-    background-position:right;
+.landing-footer .social-icons img {
+  padding: 10px;
+}
+.landing-footer .bottom-line {
+  margin: 0 156px;
+}
+.landing-footer .bottom-line ul {
+  gap: 42px;
+}
+.landing-footer .links-part {
+  background-image: url("./Img/shape.svg");
+  background-repeat: no-repeat;
+  background-position: right;
 }
 /* Footer End */
-
-
-
