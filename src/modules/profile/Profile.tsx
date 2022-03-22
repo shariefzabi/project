@@ -210,9 +210,7 @@ function Profile(props: any) {
     }
     return (
         <div className='row'>
-            <div className='col-lg-1 mt-lg-5 pt-lg-5'><Sidebar></Sidebar></div>
-            
-
+            <div className='col-lg-1'><Sidebar></Sidebar></div>
             {props.redux.user &&
             <div className='profile-container col-lg-11'>
 
