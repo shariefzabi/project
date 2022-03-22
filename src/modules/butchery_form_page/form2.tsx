@@ -102,7 +102,7 @@ class Butcherypopup extends React.Component<any, any> {
     // console.log("userDetails:", userDetails);
 
     axios
-      .post("http://localhost:3005/users/signup", butcheryDetails)
+      .post("http://localhost:3005/users/signup/add-butchery", butcheryDetails)
       .then((res: any) => {
         console.log(res.data);
 

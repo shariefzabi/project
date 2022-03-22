@@ -98,7 +98,7 @@ class BeanAgentPopup extends React.Component<any, any> {
     // console.log("userDetails:", userDetails);
 
     axios
-      .post("http://localhost:3005/users/signup", agentDetails)
+      .post("http://localhost:3005/users/signup/add-agent", agentDetails)
 
       .then((res: any) => {
         console.log(res.data);
