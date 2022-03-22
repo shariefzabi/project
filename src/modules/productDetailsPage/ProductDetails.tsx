@@ -18,7 +18,7 @@ function ProductDetails(props: any) {
     // let [isDisplaying, setIsDisplaying] = useState(true)
     let [cattleFlag, setCattleFlag] = useState(true)
     let [sheepFlag, setSheepFlag] = useState(true)
-    let [showCount, setShowCount] = useState(5)
+    let [showCount, setShowCount] = useState(6)
     let [currentPage, setCurrentPage] = useState(1)
     let [sortValue, setSortValue] = useState('default')
     let [id, setId] = useState('')
@@ -111,35 +111,7 @@ function ProductDetails(props: any) {
     const addToCart = () => {
         alert("Added")
     }
-
-    //post wishlist data
-    let wishlistData = {}
-
-    const addtoWishlist = (product: any) => {
-
-
-        setInWhishlist(true)
-
-
-        product.email = props.state.user.email
-        wishlistData = { product }
-        try {
-            axios.post("http://localhost:3005/orders/wishlists", wishlistData)
-        } catch (err) {
-            console.error(err)
-        }
-    }
-    // wishlist delete
-
-    const deleteFromWishlist = (e: any) => {
-
-        setInWhishlist(false)
-        try {
-            axios.delete("http://localhost:3005/orders/wishlists/" + e._id)
-        } catch (err) {
-            console.error(err)
-        }
-    }
+  
     // whislist//////////////////////////////////////////////////////////////////////////
 
     useEffect (() => {
@@ -219,9 +191,11 @@ function ProductDetails(props: any) {
                                 placeholder="Default"
                                 onChange={showHandler}
                                 required>
-                                <option className="dropdownItem" selected>5</option>
-                                <option className="dropdownItem" >10</option>
-                                <option className="dropdownItem" >50</option>
+                                <option className="dropdownItem" selected>6</option>
+                                <option className="dropdownItem" >9</option>
+                                <option className="dropdownItem" >12</option>
+                                <option className="dropdownItem" >15</option>
+                               
                             </select>
                         </div>
                         <div className="card-deck row row-cols-lg-3 row-cols-md-3 row-cols-sm-2 row-cols-2">
@@ -286,13 +260,13 @@ function ProductDetails(props: any) {
                                                     <div className="card mb-4">
                                                         <div className="card-body" id={e._id}>
                                                             {(wishlistIDS.includes(e._id)) &&
-                                                                <button className="wishListButton" onClick={() => addtoWishlist(e)}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-heart text-danger wishListImg" viewBox="0 0 16 16">
-                                                                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                                                                <button className="wishListButton" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-heart-fill text-danger" viewBox="0 0 16 16">
+                                                                <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
                                                             </svg></button>
                                                             // <img className="wishListImg" src={require("./assets/wishlistimage.png")}></img>
                                                             }
                                                             { !(wishlistIDS.includes(e._id)) &&
-                                                                <button className="wishListButton" onClick={() => deleteFromWishlist(e)}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-heart wishListImg" viewBox="0 0 16 16">
+                                                                <button className="wishListButton"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-heart wishListImg" viewBox="0 0 16 16">
                                                                 <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
                                                             </svg></button>
                                                             //   <img className="wishListImg" src={require("./assets/wishlistimage.png")}></img>
