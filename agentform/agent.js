@@ -14,45 +14,40 @@ mongoClient.connect(dburl, function (err, client) {
   }
 });
 // console.log("agent");
-agentAPI.post(
-  "/add-agents",
-  expressAsyncHandler(async (req, res) => {
-    // let Agent = db.collection("agents");
-    let agent = req.body;
-    // console.log(agent);
-    let agentDb = db.collection("agents");
-    let agentData = await agentDb.findOne({ email: agent.email });
-    if (agentData != null) {
-      res.status(200).send({ message: "Agent already exists!" });
-    } else {
-      agentDb.insertOne(req.body);
-      res.status(200).send("success");
-    }
-  })
-);
-// agentAPI.post("/add-agents", function (req, res) {
-//   let agents = req.body;
-//   console.log(agents);
-//   let agentsDb = db.collection("agents");
-//   console.log(agentsDb);
-//   agentsDb.findOne({ email: agentsDb.email }, function (err, result) {
-//     if (result != null) {
-//       res.send("The agent with this email is already registered");
+// agentAPI.post(
+//   "/add-agents",
+//   expressAsyncHandler(async (req, res) => {
+//     // let Agent = db.collection("agents");
+//     let agent = req.body;
+//     // console.log(agent);
+//     let agentDb = db.collection("agents");
+//     let agentData = await agentDb.findOne({ email: agent.email });
+//     if (agentData != null) {
+//       res.status(200).send({ message: "Agent already exists!" });
 //     } else {
-//       agentsDb.insertOne(req.body);
+//       agentDb.insertOne(req.body);
 //       res.status(200).send("success");
-//       console.log(result);
 //     }
-//   });
+//   })
+// );
 
-//     if (err) console.log(err);
-//     if (result == null) {
-//       agentsDb.insertOne(req.body);
-//       res.status(200).send("success");
-//       console.log(result);
-//     } else res.send("The agent with this email is already registered");
-//   });
-// });
+agentAPI.post("/add-agents", function (req, res) {
+  console.log("log from signup users", req.body);
+  userDb.findOne(
+    { _id: req.body.email },
+    { projection: { _id: 0 } },
+    function (err, result) {
+      if (err) console.log(err);
+      if (result == null) {
+        req.body.token = String(createToken());
+        userDb.insertOne({ ...req.body, _id: req.body.email });
+        // console.log("signup",req.body);
+        res.send(["success", req.body]);
+      } else res.send(["failed", "This email is already registered"]);
+    }
+  );
+});
+
 agentAPI.use((err, req, res, next) => {
   res.send({ message: err.message });
 });

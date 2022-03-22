@@ -4,8 +4,8 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
 app.use(cors());
-app.use(express.static('uploads'));
-app.use(express.json())
+app.use(express.static("uploads"));
+app.use(express.json());
 
 const PORT = 3005;
 var mongoClient = require("mongodb").MongoClient;
@@ -41,24 +41,30 @@ let invoice = require("./invoice/invoiceapi");
 // let invoice = require("./invoice/invoiceapi.js")
 
 app.use("/card", cardDetail);
-app.use("/invoicedetails", invoice)
-
+app.use("/invoicedetails", invoice);
 
 app.post("/paymentstatus", async (req, res) => {
   let { paymentStatus, date, invoiceId } = req.body;
   let ordercollection = db.collection("orders");
-  ordercollection.find().sort({ _id: -1 }).limit(1).toArray(function (err, result) {
-    orderid = result[0]["orderId"]
-    ordercollection.updateOne({ orderId: orderid }, { $set: { date: date, paymentStatus: paymentStatus, invoiceId: invoiceId } })
-    res.send("paymentstatus updated")
-
-  })
+  ordercollection
+    .find()
+    .sort({ _id: -1 })
+    .limit(1)
+    .toArray(function (err, result) {
+      orderid = result[0]["orderId"];
+      ordercollection.updateOne(
+        { orderId: orderid },
+        {
+          $set: {
+            date: date,
+            paymentStatus: paymentStatus,
+            invoiceId: invoiceId,
+          },
+        }
+      );
+      res.send("paymentstatus updated");
+    });
 });
-
-
-
-
-
 
 // end
 
@@ -70,75 +76,84 @@ app.use(
 app.use(bodyParser.json());
 
 //*********** No.1 Team ************* Starting **************************
+
 app.post("/users/signup", function (req, res) {
   console.log("log from signup users", req.body);
-  userDb.findOne({ _id: req.body.email }, { projection: { _id: 0 } }, function (err, result) {
-    if (err) console.log(err);
-    if (result == null) {
-      req.body.token = String(createToken())
-      userDb.insertOne({ ...req.body, _id: req.body.email });
-      // console.log("signup",req.body);
-      res.send(["success", req.body]);
-    } else res.send(["failed", "This email is already registered"]);
-  });
+  userDb.findOne(
+    { _id: req.body.email },
+    { projection: { _id: 0 } },
+    function (err, result) {
+      if (err) console.log(err);
+      if (result == null) {
+        req.body.token = String(createToken());
+        userDb.insertOne({ ...req.body, _id: req.body.email });
+        // console.log("signup",req.body);
+        res.send(["success", req.body]);
+      } else res.send(["failed", "This email is already registered"]);
+    }
+  );
 });
 
 const createToken = () => {
-  return Math.floor(Math.random() * 900000) + 100000
-}
+  return Math.floor(Math.random() * 900000) + 100000;
+};
 app.post("/users/login", function (req, res) {
   console.log("log from login users :", req.body);
   userDb.findOne(
-    { _id: req.body.username, password: req.body.password }, { projection: { _id: 0 } },
+    { _id: req.body.username, password: req.body.password },
+    { projection: { _id: 0 } },
     function (err, result) {
       if (err) console.log(err);
       if (result == null) res.send("Invalid credentials");
       // res.send("No account found with this username, please sign up and then login");
       else {
         result.token = String(createToken());
-        userDb.updateOne({ _id: result.email }, { $set: { token: result.token } });
+        userDb.updateOne(
+          { _id: result.email },
+          { $set: { token: result.token } }
+        );
         // console.log("result from login",result);
-        res.send(result)
-      };
+        res.send(result);
+      }
     }
   );
 });
 app.get("/users/:token", function (req, res) {
   // console.log("get token :",req.params);
-  userDb.findOne(req.params, { projection: { _id: 0 } }, function (err, result) {
-    if (err) throw err;
-    if (result == null) res.send("null")
-    else res.send(result)
-  })
-})
+  userDb.findOne(
+    req.params,
+    { projection: { _id: 0 } },
+    function (err, result) {
+      if (err) throw err;
+      if (result == null) res.send("null");
+      else res.send(result);
+    }
+  );
+});
 app.post("/users/:token", function (req, res) {
   userDb.updateOne(req.params, { $set: req.body }, function (err, result) {
     if (err) throw err;
     // if (result==null) res.send("null")
     // else res.send(result)
-  })
-})
+  });
+});
 app.post("/users/reset/:token", function (req, res) {
   console.log("reset :", req.body, req.params);
   userDb.findOne(req.params, function (err, result) {
-    if (err) throw err
+    if (err) throw err;
     console.log("result", result);
     if (req.body.oldPassword == result.password) {
-      userDb.updateOne(req.params, { $set: { password: req.body.newPassword } })
-      res.send(["success", "Password updated successfully"])
-
-    }
-
-    else
-      res.send(["failed", "Incorrect password"])
-  })
-})
+      userDb.updateOne(req.params, {
+        $set: { password: req.body.newPassword },
+      });
+      res.send(["success", "Password updated successfully"]);
+    } else res.send(["failed", "Incorrect password"]);
+  });
+});
 
 //************ No.1 Team ************* Ending *****************************
 
-
-
-//team-2 
+//team-2
 //getting product filter details
 app.get("/orders/productfilters", async (req, res) => {
   let filterdetails = req.body;
@@ -147,37 +162,45 @@ app.get("/orders/productfilters", async (req, res) => {
 
   filtercollection.find().toArray(function (err, result) {
     // console.log(result);
-    res.send(result)
-  })
+    res.send(result);
+  });
 });
-app.post("/orders/productfilters",async(req,res)=>{
-  let filterdetails= req.body;
+app.post("/orders/productfilters", async (req, res) => {
+  let filterdetails = req.body;
   // console.log("formik",filterdetails);
   let filtercollection = db.collection("productfilters");
-  filtercollection.find().toArray(function (err, result){
+  filtercollection.find().toArray(function (err, result) {
     console.log(result);
-    if(!result[0].Types.includes(filterdetails.type)){
+    if (!result[0].Types.includes(filterdetails.type)) {
       result[0].Types.push(filterdetails.type);
     }
-    if(filterdetails.type==="Cow"){
-      if(!result[0].cowbreed.includes(filterdetails.breed))
-          result[0].cowbreed.push(filterdetails.breed)
+    if (filterdetails.type === "Cow") {
+      if (!result[0].cowbreed.includes(filterdetails.breed))
+        result[0].cowbreed.push(filterdetails.breed);
     }
-    if(filterdetails.type==="Sheep"){
-      if(!result[0].goatbreed.includes(filterdetails.breed))
-          result[0].goatbreed.push(filterdetails.breed)
+    if (filterdetails.type === "Sheep") {
+      if (!result[0].goatbreed.includes(filterdetails.breed))
+        result[0].goatbreed.push(filterdetails.breed);
     }
-    filtercollection.updateOne({},{$set:{Types:result[0].Types,cowbreed:result[0].cowbreed,goatbreed:result[0].goatbreed}})
-  })
+    filtercollection.updateOne(
+      {},
+      {
+        $set: {
+          Types: result[0].Types,
+          cowbreed: result[0].cowbreed,
+          goatbreed: result[0].goatbreed,
+        },
+      }
+    );
+  });
   // if(filterdetails.type)
-
-})
+});
 let products = [];
-let quantityArr=[];
+let quantityArr = [];
 app.post("/orders/products", async (req, res) => {
   let filterdetails = req.body;
   products = [];
-  quantityArr=[];
+  quantityArr = [];
   // console.log("filterdetails:",filterdetails);
   let filtercollection = db.collection("locationdbs");
   filtercollection.find().toArray(function (err, result) {
@@ -186,52 +209,60 @@ app.post("/orders/products", async (req, res) => {
         if (filterdetails.type === "Cow") {
           // let cattle = [];
           ele.cattleMarkets.forEach((item, index) => {
-            if (item.breed.toLowerCase() === filterdetails.breed.toLowerCase() && !products.includes(item)) {
+            if (
+              item.breed.toLowerCase() === filterdetails.breed.toLowerCase() &&
+              !products.includes(item)
+            ) {
               products.push(item);
               quantityArr.push(filterdetails.quantity);
             }
-          })
+          });
           // return cattle;
-        }
-
-        else if (filterdetails.type === "Sheep") {
-
+        } else if (filterdetails.type === "Sheep") {
           // let cattle = [];
           ele.sheepMarkets.forEach((item, index) => {
-            if (item.breed.toLowerCase() === filterdetails.breed.toLowerCase() && !products.includes(item)) {
+            if (
+              item.breed.toLowerCase() === filterdetails.breed.toLowerCase() &&
+              !products.includes(item)
+            ) {
               products.push(item);
               quantityArr.push(filterdetails.quantity);
             }
-          })
+          });
           // return cattle;
-        }
-        else if (filterdetails.type === "Pig") {
-
+        } else if (filterdetails.type === "Pig") {
           // let cattle = [];
           ele.cattleMarkets.forEach((item, index) => {
-            if (item.breed.toLowerCase() === filterdetails.breed.toLowerCase() && !products.includes(item)) {
+            if (
+              item.breed.toLowerCase() === filterdetails.breed.toLowerCase() &&
+              !products.includes(item)
+            ) {
               products.push(item);
               quantityArr.push(filterdetails.quantity);
             }
-          })
+          });
           // return cattle;
         }
-      })
-    })
+      });
+    });
 
     // console.log("result",result);
     // console.log("products",products);
-    res.send([products,quantityArr])
-  })
+    res.send([products, quantityArr]);
+  });
 });
 
 app.get("/orders/orderdetails", async (req, res) => {
   let orderdetails = req.body;
   // console.log(orderdetails);
   let ordercollection = db.collection("orders");
-  ordercollection.find().sort({ "orderId": -1 }).limit(1).toArray(function (err, result) {
-    res.send(result)
-  })
+  ordercollection
+    .find()
+    .sort({ orderId: -1 })
+    .limit(1)
+    .toArray(function (err, result) {
+      res.send(result);
+    });
 });
 //storing order details
 app.post("/orders/orderdetails", function (req, res) {
@@ -252,9 +283,8 @@ app.post("/orders/orderdetails", function (req, res) {
       ordercollection.insertOne(orderdetails);
       res.json(orderdetails);
     }
-  })
+  });
 });
-
 
 app.post("/orders/orderdetails/:orderId", async (req, res) => {
   let { price } = req.body;
@@ -263,26 +293,36 @@ app.post("/orders/orderdetails/:orderId", async (req, res) => {
   console.log("id", req.params.orderId - 0);
   console.log(req.body, req.params);
   let ordercollection = db.collection("orders");
-  ordercollection.find().sort({ orderId: -1 }).limit(1).toArray(function (err, result) {
-    // orderid = result[0]["orderId"]
-    // console.log(orderid)
-    ordercollection.updateOne({ orderId: orderid }, { $set: { totalprice: req.body.totalprice, delliveryprice: req.body.deliveryprice } })
-    res.send(result)
-  })
+  ordercollection
+    .find()
+    .sort({ orderId: -1 })
+    .limit(1)
+    .toArray(function (err, result) {
+      // orderid = result[0]["orderId"]
+      // console.log(orderid)
+      ordercollection.updateOne(
+        { orderId: orderid },
+        {
+          $set: {
+            totalprice: req.body.totalprice,
+            delliveryprice: req.body.deliveryprice,
+          },
+        }
+      );
+      res.send(result);
+    });
 });
 
-
 //fetching order details based on username
-app.get('/orders/orderdetails/:token', async (req, res) => {
-  let { params } = req
+app.get("/orders/orderdetails/:token", async (req, res) => {
+  let { params } = req;
   console.log(params.uname);
   let ordercollection = db.collection("orders");
-  ordercollection.find({ "token": params.token }).toArray(function (err, result) {
+  ordercollection.find({ token: params.token }).toArray(function (err, result) {
     if (err) console.log(err);
-    else res.send(result)
-  })
-
-})
+    else res.send(result);
+  });
+});
 //storing wishlists
 app.post("/orders/wishlists", function (req, res) {
   let wishlistdetails = req.body;
@@ -294,11 +334,10 @@ app.post("/orders/wishlists", function (req, res) {
       wishlistcollection.insertOne(wishlistdetails);
       res.json(wishlistdetails);
     }
-  })
+  });
 });
 
 //deleting whislist from team 4
-
 
 app.delete("/orders/wishlists/:id", function (req, res) {
   let { params } = req;
@@ -306,29 +345,25 @@ app.delete("/orders/wishlists/:id", function (req, res) {
   try {
     let ordercollection = db.collection("wishlists");
     ordercollection.deleteOne({
-      "product._id": (params.id.toString())
-    })
-
+      "product._id": params.id.toString(),
+    });
+  } catch (err) {
+    res.send({ message: err });
   }
-  catch (err) {
-    res.send({ message: err })
-  }
-
-})
+});
 
 //fetching whishlist based on username
-app.get('/orders/wishlists/:token', async (req, res) => {
-  let { params } = req
+app.get("/orders/wishlists/:token", async (req, res) => {
+  let { params } = req;
   // console.log("email",params.uname);
   let ordercollection = db.collection("wishlists");
-  ordercollection.find({token: params.token}).toArray(function (err, result) {
+  ordercollection.find({ token: params.token }).toArray(function (err, result) {
     if (err) console.log(err);
     else {
       res.send(result);
     }
-  })
-
-})
+  });
+});
 
 //team-2 ending
 
@@ -369,33 +404,61 @@ mongoose.connect(
 //team 6 start
 // let animalAPI = require("./cart/cart_details.js");
 // app.use("/animal", animalAPI);
-let butcheryAPI = require("./butchery/butchery.js");
-app.use("/butchery", butcheryAPI);
+// let butcheryAPI = require("./butchery/butchery.js");
+// app.use("/butchery", butcheryAPI);
 
 let router = require("./cart/cart_details.js");
 app.use("/animal", router);
 
-let agentAPI = require("./agentform/agent.js");
-app.use("/agents", agentAPI);
+// let agentAPI = require("./agentform/agent.js");
+// app.use("/agents", agentAPI);
 
+app.post("/users/signup/add-agent", function (req, res) {
+  console.log("logged in as agent user", req.body);
+  userDb.findOne(
+    { _id: req.body.email },
+    { projection: { _id: 0 } },
+    function (err, result) {
+      if (err) console.log(err);
+      if (result == null) {
+        req.body.token = String(createToken());
+        userDb.insertOne({ ...req.body, _id: req.body.email });
+        res.send(["success", req.body]);
+      } else res.send(["failed", "This email is already registered"]);
+    }
+  );
+});
+
+app.post("/users/signup/add-butchery", function (req, res) {
+  console.log("logged in as butchery user", req.body);
+  userDb.findOne(
+    { _id: req.body.email },
+    { projection: { _id: 0 } },
+    function (err, result) {
+      if (err) console.log(err);
+      if (result == null) {
+        req.body.token = String(createToken());
+        userDb.insertOne({ ...req.body, _id: req.body.email });
+        // console.log("signup",req.body);
+        res.send(["success", req.body]);
+      } else res.send(["failed", "This email is already registered"]);
+    }
+  );
+});
 //team 6 end
 
 // team 7
 
 const Comments = require("./comments/comschema.cjs");
-require('dotenv').config();
-const blogRouter = require('./blogs/blogs');
-app.use('/blogs', blogRouter);
-
-
-
-
+require("dotenv").config();
+const blogRouter = require("./blogs/blogs");
+app.use("/blogs", blogRouter);
 
 app.get("/comments/:id", async (req, res) => {
   try {
     let { params } = req;
-    console.log(Comments.find({ "id": params.id }));
-    const data = await Comments.find({ "id": params.id });
+    console.log(Comments.find({ id: params.id }));
+    const data = await Comments.find({ id: params.id });
     res.json(data);
   } catch (err) {
     res.send("Error" + err);

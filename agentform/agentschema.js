@@ -29,9 +29,9 @@ const agentSchema = new mongoose.Schema(
     townOrCity: { type: String, required: [true, "Town/City is required!"] },
   },
   {
-    collection: "agents",
+    collection: "users",
   }
 );
 
-const agentModel = mongoose.model("agent", agentSchema);
+const agentModel = mongoose.model("users", agentSchema);
 module.exports = agentModel;

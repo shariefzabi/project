@@ -10,7 +10,7 @@ router.get(
     console.log(res);
     let locationName = req.params.locationName;
     let animalId = req.params.animalId;
-    //   console.log(animalId);
+    console.log(animalId);
     let locationdbs = await Animal.findOne({ locationName: locationName });
     //   console.log(locationdbs);
     if (locationdbs == null) {
@@ -18,27 +18,6 @@ router.get(
         .status(200)
         .send({ message: "location does not exist with this location name" });
     } else {
-      // data = {
-      //   price: locationdbs.cattleMarket.price,
-      //   //   type: locationdetails.cattleMarket.type,
-      //   // quantity: locationdetails.quantity,
-      //   //   animalId: locationdetails.cattleMarket.animalId,
-      // };
-      //   for (let animalData of locationdbs.cattleMarkets) {
-      //     if (animalData.animalId == animalId) {
-      //       data = {
-      //         price: animalData.price,
-      //       };
-      //       return res.status(200).send({
-      //         message: "Animal data fetched successfully!!",
-      //         payload: data,
-      //       });
-      //     } else {
-      //       res.status(200).send({
-      //         message: "Animal data doesn't exist with this animal Id!!",
-      //       });
-      //     }
-      //   }
       let animalData = locationdbs.cattleMarkets.find(
         (animal) => animal.animalId == animalId
       );
