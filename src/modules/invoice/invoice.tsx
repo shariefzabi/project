@@ -42,7 +42,7 @@ function Invoice(props: any) {
 
     }, [])
     useEffect(() => {
-        axios.get("http://localhost:3005/invoicedetails/" + useremail)
+        axios.get("http://localhost:3005/invoicedetails/", { params: { useremail: useremail } })
             .then((res) => {
                 let res_data = res.data
                 setInvoice(res_data)
@@ -136,7 +136,7 @@ function Invoice(props: any) {
                                                             // setTotalAmmount(totalAmmount)
                                                             // console.log(typeof (item["price"]));
                                                             return (
-                                                                <tr className="bRow">
+                                                                <tr key ={ind} className="bRow">
                                                                     <td>{item["type"]}</td>
                                                                     <td className="dbl">{item["sex"]}</td>
                                                                     <td>{data["date"]}</td>
