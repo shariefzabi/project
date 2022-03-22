@@ -107,7 +107,6 @@ class PaymentMethod extends React.Component<any, any> {
         let { delliveryprice } = result.data[0];
         console.log("del", delliveryprice);
 
-
         console.log("totalprice", totalprice + delliveryprice);
         let { totalcost } = this.state;
         totalcost = totalprice + delliveryprice;
@@ -136,28 +135,21 @@ class PaymentMethod extends React.Component<any, any> {
         .post("http://localhost:3005/paymentstatus", paymentStatus)
         .then((result) => {
           console.log("status", result.data);
+          this.props.updateProductQuantity([]);
         })
         .catch((err) => {
           console.log("error: ", err);
         });
       this.props.setPaymentInformation(payment);
       console.log(paymentStatus);
-    }
-
-  
-
-    else {
-
-      const paymentMethod: any = document.querySelector(".paymentmethod")
+    } else {
+      const paymentMethod: any = document.querySelector(".paymentmethod");
 
       // const ravPayFormWidth: any = document.querySelector(".RavepayForm")
 
-
-
-      paymentMethod.style.width = "320px"
-
+      paymentMethod.style.width = "320px";
     }
-  }
+  };
 
   submitHandler = (e: any) => {
     e.preventDefault();
