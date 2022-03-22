@@ -22,7 +22,8 @@ function ProductDetails(props: any) {
     let [currentPage, setCurrentPage] = useState(1)
     let [sortValue, setSortValue] = useState('default')
     let [id, setId] = useState('')
-    let [productId, setProductId] = useState("")
+    // let [productId, setProductId] = useState("")
+    let [wishlist,setWishlist]=useState([])
     let [inWhishlist, setInWhishlist] = useState(false)
     const navigate = useNavigate();
     // let [isOpened, setIsOpened] = useState('')
@@ -128,7 +129,7 @@ function ProductDetails(props: any) {
             console.error(err)
         }
     }
-    //wishlist delete
+    // wishlist delete
 
     const deleteFromWishlist = (e: any) => {
 
@@ -139,7 +140,27 @@ function ProductDetails(props: any) {
             console.error(err)
         }
     }
+    // whislist//////////////////////////////////////////////////////////////////////////
 
+    useEffect (() => {
+        let getProductUrl =
+            "http://localhost:3005/orders/wishlists/" + props.state.user.token;
+        axios
+            .get(getProductUrl)
+            .then((res) => {
+                console.log("wishlists display get response", res.data);
+                setWishlist(res.data);
+                // console.log(wishlistDB)
+            })
+            .catch((err) => console.log(err));
+    },[]);
+    //whislist post
+
+    let wishlistIDS = wishlist.map((ele: any) => {
+        return (
+            ele.product._id
+        )
+    })
     return (
         <div id="productPage" className="productPage">
             <Breadcrumb id="sub">
@@ -264,12 +285,18 @@ function ProductDetails(props: any) {
 
                                                     <div className="card mb-4">
                                                         <div className="card-body" id={e._id}>
-                                                            {!inWhishlist &&
-                                                                <button className="wishListButton" onClick={() => addtoWishlist(e)}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
-
+                                                            {(wishlistIDS.includes(e._id)) &&
+                                                                <button className="wishListButton" onClick={() => addtoWishlist(e)}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-heart text-danger wishListImg" viewBox="0 0 16 16">
+                                                                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                                                            </svg></button>
+                                                            // <img className="wishListImg" src={require("./assets/wishlistimage.png")}></img>
                                                             }
-                                                            {inWhishlist &&
-                                                                <button className="wishListButton" onClick={() => deleteFromWishlist(e)}><img className="wishListImg" src={require("./assets/wishlistimage.png")}></img></button>
+                                                            { !(wishlistIDS.includes(e._id)) &&
+                                                                <button className="wishListButton" onClick={() => deleteFromWishlist(e)}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-heart wishListImg" viewBox="0 0 16 16">
+                                                                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                                                            </svg></button>
+                                                            //   <img className="wishListImg" src={require("./assets/wishlistimage.png")}></img>
+
                                                             }                                                                    <div onClick={productDataHandler}>
                                                                 <img className="productImage" id={e._id} src={imagePath} />
 
