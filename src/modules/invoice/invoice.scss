@@ -85,8 +85,11 @@
   }
   .invoice-id img{
    float: right;
-   padding: 0.5rem 3rem 0.6rem 50vw;
-    cursor: pointer;
+   margin: 0.5rem 3rem 0.6rem 0px;
+   
+  }
+  .invoice-id{
+      cursor: pointer;
   }
   .hr-line{
     margin-top: 0;
@@ -183,9 +186,7 @@
     .table {
       font-size: 0.8rem;
     }
-    .invoice-id img{ 
-      padding: 0.5rem 3rem 0.6rem 25vw;
-     }
+    
   }
  
   
@@ -215,9 +216,7 @@
     // .invoice-heading, .head h3 {
     //   font-size: 0.803rem;
     // }
-    .invoice-id img{ 
-      padding: 0.5rem 3rem 0.6rem 35vw;
-     }
+    
   
    
   }
@@ -244,17 +243,13 @@
       height:100px;
     }
   
-    .invoice-id img{ 
-      padding: 0.5rem 3rem 0.6rem 40vw;
-     }
+    
   }
   @media (min-width: 993px) and (max-width: 1200px) {
     .table table, th, td {
       padding: 0.1vw;
       font-size: 0.8rem;
     }
-    .invoice-id img{ 
-      padding: 0.5rem 3rem 0.6rem 50vw;
-     }
+    
   }
   

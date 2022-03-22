@@ -52,7 +52,7 @@ function Invoice(props: any) {
             })
     }, [useremail])
     function invoiceToggle(e: any) {
-        console.log(e.target.childNodes[2])
+        console.log(e.target.childNodes)
         
         if (e.target.childNodes[2].src == upArrow) {
             e.target.childNodes[2].src = downArrow;
