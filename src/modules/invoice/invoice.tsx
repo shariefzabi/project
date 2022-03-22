@@ -53,7 +53,7 @@ function Invoice(props: any) {
     }, [useremail])
     function invoiceToggle(e: any) {
         console.log(e.target.childNodes)
-        
+
         if (e.target.childNodes[2].src == upArrow) {
             e.target.childNodes[2].src = downArrow;
         }
@@ -89,11 +89,14 @@ function Invoice(props: any) {
 
 
                                 let cartproducts: any = data["cartproducts"];
+                                console.log("length", cartproducts.length);
+
                                 let index = "#ind" + ind;
                                 let totalAmmount = 0;
+                                let totalProductPrice = 0
                                 return (
                                     <div key={ind} >
-                                        <p data-bs-toggle="collapse" data-bs-target={index} aria-expanded="false" aria-controls="collapseExample" onClick={(e) => invoiceToggle(e)} className="invoice-id invoice-border">ID - {data["invoiceId"]}<img  className="text-end" id={`${ind}`} src={upArrow}></img></p>
+                                        <p data-bs-toggle="collapse" data-bs-target={index} aria-expanded="false" aria-controls="collapseExample" onClick={(e) => invoiceToggle(e)} className="invoice-id invoice-border">ID - {data["invoiceId"]}<img className="text-end" id={`${ind}`} src={upArrow}></img></p>
                                         <div className=" invoice-border table collapse mb-0" id={index.slice(1)}>
                                             <table className="mt-4" key={ind}>
                                                 <thead>
@@ -112,20 +115,27 @@ function Invoice(props: any) {
                                                             <span>Amount</span>
                                                         </th >
                                                         <th className="dbl">
-                                                            <span className="first-line">Total</span>
+                                                            <span className="first-line">Total Product</span>
                                                             <span>Amount</span>
                                                         </th>
                                                     </tr>
                                                 </thead>
-                                                {
-                                                    cartproducts.map((item: any, ind: any) => {
-                                                        // console.log("invoicxe data item", item)
-                                                        // console.log("type", item["type"]);
-                                                        totalAmmount = totalAmmount + parseInt(item["price"]) + data["delliveryprice"];
-                                                        // setTotalAmmount(totalAmmount)
-                                                        // console.log(typeof (item["price"]));
-                                                        return (
-                                                            <tbody key={ind}>
+                                                <tbody key={ind}>
+
+                                                    {
+                                                        cartproducts.map((item: any, ind: any) => {
+                                                            // console.log("invoicxe data item", item)
+                                                            // console.log("type", item["type"]);
+                                                            // totalAmmount = totalAmmount + parseInt(item["price"]) + data["delliveryprice"];
+                                                            totalAmmount = totalAmmount + parseInt(item["price"]);
+
+                                                            totalProductPrice = totalProductPrice + parseInt(item["price"]);
+                                                            console.log("totalProductPrice", totalProductPrice);
+
+
+                                                            // setTotalAmmount(totalAmmount)
+                                                            // console.log(typeof (item["price"]));
+                                                            return (
                                                                 <tr className="bRow">
                                                                     <td>{item["type"]}</td>
                                                                     <td className="dbl">{item["sex"]}</td>
@@ -133,26 +143,32 @@ function Invoice(props: any) {
                                                                     <td>{item["quantity"]}</td>
                                                                     <td>{item["weight"]}</td>
                                                                     <td>
-                                                                        <span className="first-line">&#8377;{parseInt(item["price"])}</span>
-                                                                        <span>0.00</span>
+                                                                        <span className="first-line">&#8377;{parseInt(item["price"])}</span>.00
                                                                     </td>
-                                                                    <td className="dbl ">&#8377; {data["delliveryprice"]}.00</td>
-                                                                    <td>
-                                                                        <span className="first-line">&#8377;{parseInt(item["price"]) + data["delliveryprice"]}</span>
-                                                                        <span>0.00</span>
-                                                                    </td>
+
+                                                                    {/* <td className="dbl " > <span>&#8377; {data["delliveryprice"]}.00</span> </td>
+                                                                    <td >
+                                                                        <span className="first-line">&#8377;{parseInt(item["price"])}.00</span>
+                                                                    </td> */}
+                                                                    {ind == 0 && <td className="dbl " rowSpan={cartproducts.length}> <span>&#8377; {data["delliveryprice"]}.00</span></td>}
+                                                                    {ind == 0 && <td rowSpan={cartproducts.length}>
+
+                                                                        <span className="first-line">&#8377;{data["totalprice"]}.00</span>
+
+                                                                    </td>}
                                                                 </tr>
-                                                            </tbody>
-                                                        )
-                                                    })
-                                                }
+                                                            )
+                                                        })
+                                                    }
+                                                </tbody>
                                                 <tfoot className="tableFooter">
                                                     <tr>
-
-                                                        <td className="right text-end" colSpan={7}>Total Ammount:</td>
-                                                        <td className="right p-0">&#8377;{totalAmmount}</td>
+                                                        <td className="right text-end" colSpan={7}>Total Amount:</td>
+                                                        {/* <td className="right p-0">&#8377; {data["delliveryprice"]}</td> */}
+                                                        <td className="right p-0">&#8377;{totalAmmount + data["delliveryprice"]}</td>
                                                     </tr>
                                                 </tfoot>
+
                                             </table>
                                             <div className="head">
                                                 <h3>

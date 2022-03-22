@@ -142,12 +142,6 @@ class PaymentMethod extends React.Component<any, any> {
         });
       this.props.setPaymentInformation(payment);
       console.log(paymentStatus);
-    } else {
-      const paymentMethod: any = document.querySelector(".paymentmethod");
-
-      // const ravPayFormWidth: any = document.querySelector(".RavepayForm")
-
-      paymentMethod.style.width = "320px";
     }
   };
 
@@ -373,7 +367,7 @@ class PaymentMethod extends React.Component<any, any> {
               </div>
             )}
             {this.state.payment == "Pay_On_Delivery" && (
-              <div className="modal-dialog modal-dialog-centered ">
+              <div className="modal-dialog modal-dialog-centered m-0">
                 <div className="modal-content">
                   <div className="modal-body text-center">
                     <div className="Successfully_Placed_box">

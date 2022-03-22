@@ -115,14 +115,15 @@ input[type=number]::-webkit-outer-spin-button {
     width:94% ;
     // padding: 10px;
     margin: 26% auto;
+    button {
+      margin: 0rem 0 0 0 !important;
+    } 
   }
     .modal-body > section {
       margin: 9% 8% !important;
       padding-left: 7%;
     }
-    button {
-      margin: 0rem 0 0 0 !important;
-    } 
+   
      .Successfully_Placed {
       margin-bottom: 40px !important;
     }
