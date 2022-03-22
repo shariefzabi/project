@@ -3,6 +3,9 @@
     margin: auto;
     flex-wrap: wrap;
 }
+.clients{
+    margin-bottom: 161px;
+}
 .clients .card{
     /* width: 570px; */
     border-radius:0.625rem;
