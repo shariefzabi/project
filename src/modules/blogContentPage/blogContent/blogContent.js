@@ -14,36 +14,52 @@ class Blogcontent extends React.Component {
         }
     }
     componentDidMount() {
-        axios.get("http://localhost:3005/blogs")
+        let params = new URL(document.location).searchParams;
+        const id = params.get('id');
+        const num = + id
+        this.setState({ id: num })
+        axios.get("http://localhost:3005/blogs/"+this.state.blogs)
             .then(res => {
                 // console.log(res.data);
                 this.setState({ blogs: res.data })
                 // console.log(this.state.blogs);
             })
-        let params = (new URL(document.location)).searchParams;
-        // console.log(params.get('id'));
-        const id = params.get('id');
-        const num = + id
-        this.setState({ id: num })
     }
-    carousel(v) {
-        // let params = (new URL(document.location)).searchParams;
+    carousel(e,v) {
+        e.preventDefault();
+        let url = new URL(document.location)
+        let params = url.searchParams;
         if (v) {
             if (this.state.id === this.state.blogs.length ) {
-                this.setState({ id: 1 })
+                params.set("id","1")
+                url.search = params.toString();
+                // let new_Url = url.toString()
+                // console.log(new_Url);
+                document.location=url.toString()
             } else {
-                this.setState({ id: this.state.id + 1 })
+                params.set("id",this.state.id + 1)
+                url.search = params.toString();
+                // console.log(new_Url);
+                document.location=url.toString()
             }
         } else {
             if (this.state.id === 1) {
-                this.setState({ id: this.state.blogs.length})
+                params.set("id",this.state.blogs.length)
+                url.search = params.toString();
+                // console.log(new_Url);
+                document.location=url.toString()
             } else {
-                this.setState({ id: this.state.id - 1 })
+                params.set("id",this.state.id - 1)
+                url.search = params.toString();
+                // console.log(new_Url);
+                document.location=url.toString()
             }
         }
     }
     render() {
         let { blogs, id } = this.state
+        console.log(this.state.id);
+
         // console.log("blog id :" + id);
         return (
 
@@ -58,17 +74,17 @@ class Blogcontent extends React.Component {
                     if (e.id == id)
 
                         return (
-                        <div key={i}>
+                        <div>
                             <div className="main-box">
                                <img className="main-img" src={this.state.url + e.photo} ></img>
                                 <div className="top-buttons">
-                                    <button type="button" className="btn-success left-carousel " onClick={() => { this.carousel(false) }}/>
-                                    <button type="button" className="btn-primary right-carousel " onClick={() => { this.carousel(true) }}/>
+                                    <button type="button" className="btn-success left-carousel " onClick={(e) => { this.carousel(e,false) }}/>
+                                    <button type="button" className="btn-primary right-carousel " onClick={(e) => { this.carousel(e,true) }}/>
                                 </div>
                             </div>
                             <div className="contenttitle">
                                 <p className="title">{e.topic}</p>
-                                <p className="blogdate">{e.date.slice(0, 10)}</p>
+                                <p className="blogdate">{e.date.slice(0, 15)}</p>
                             </div>
                             <div className="discription">
                                 <p className="txt">{e.about}</p>

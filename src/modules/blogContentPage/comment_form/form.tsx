@@ -112,7 +112,7 @@ class Form extends React.Component<any, any> {
     render() {
         let { name, email, comment ,count} = this.state;
         // console.log("comments put id :"+this.props.id);
-        console.log(count);
+        // console.log(count);
         
         return (
 
