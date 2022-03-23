@@ -26,11 +26,10 @@ function Invoice(props: any) {
             .then(res => {
                 if (res.data != "null") {
                     props.setUser(res.data)
-                    let { fullName, email } = res.data
+                    console.log(res.data)
+                    let { email } = res.data
                     setUserDetails({ ...userDetails, email })
-                    if (res.data?.phone != undefined) {
-                        setUserDetails(res.data)
-                    }
+                    
                 }
             })
             .catch(err => console.log("No previous user found")
@@ -49,10 +48,11 @@ function Invoice(props: any) {
             })
             .catch(err => {
                 console.log("error: ", err);
+            
             })
     }, [useremail])
     function invoiceToggle(e: any) {
-        console.log(e.target.childNodes)
+        console.log("child nodes",e.target.childNodes[0])
 
         if (e.target.childNodes[2].src == upArrow) {
             e.target.childNodes[2].src = downArrow;
@@ -96,7 +96,7 @@ function Invoice(props: any) {
                                 let totalProductPrice = 0
                                 return (
                                     <div key={ind} >
-                                        <p data-bs-toggle="collapse" data-bs-target={index} aria-expanded="false" aria-controls="collapseExample" onClick={(e) => invoiceToggle(e)} className="invoice-id invoice-border">ID - {data["invoiceId"]}<img className="text-end" id={`${ind}`} src={upArrow}></img></p>
+                                        <p data-bs-toggle="collapse" data-bs-target={index} aria-expanded="false" aria-controls="collapseExample" onClick={(e) => invoiceToggle(e)} className="invoice-id invoice-border">ID{data["invoiceId"]}<img className="text-end" id={`${ind}`} src={upArrow}></img></p>
                                         <div className=" invoice-border table collapse mb-0" id={index.slice(1)}>
                                             <table className="mt-4" key={ind}>
                                                 <thead>
