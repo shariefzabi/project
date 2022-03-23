@@ -15,21 +15,15 @@ function ProductDetails(props: any) {
     let [products, setProducts] = useState([])
     let [location, setLocation] = useState(props.state.locName)
     let [market, setMarket] = useState(props.state.marketType)
-    // let [isDisplaying, setIsDisplaying] = useState(true)
     let [cattleFlag, setCattleFlag] = useState(true)
     let [sheepFlag, setSheepFlag] = useState(true)
     let [showCount, setShowCount] = useState(6)
     let [currentPage, setCurrentPage] = useState(1)
     let [sortValue, setSortValue] = useState('default')
     let [id, setId] = useState('')
-    // let [productId, setProductId] = useState("")
     let [wishlist,setWishlist]=useState([])
     let [inWhishlist, setInWhishlist] = useState(false)
     const navigate = useNavigate();
-    // let [isOpened, setIsOpened] = useState('')
-    // let [marketType, setMarketType] = useState('cattleMarkets')
-
-
 
     //////pagination starts here/////
     const handleClick = (event: any) => {
@@ -48,9 +42,7 @@ function ProductDetails(props: any) {
     let indexOfFirstItem = indexOfLastItem - showCount;
 
 
-
     //////pagination ends here/////
-
 
 
     console.log(location)
@@ -65,14 +57,7 @@ function ProductDetails(props: any) {
     }, [props.state.locName]);
     const setLocationHandler = (event: any) => {
         setLocation(event.target.value)
-        // setId('opened')
-        // if (event.target.id === "") {
-        //     event.target.id = 'opened'
-        // } else if (event.target.id === "opened") {
-        //     event.target.id = ''
-        // }
-        // class_name = 'opened'
-        // setIsOpened(class_name)
+    
     }
     const productDataHandler = (e: any) => {
         e.preventDefault();
@@ -80,8 +65,6 @@ function ProductDetails(props: any) {
         props.setProductDetails(e.target.id);
         props.setMarketType(market)
         props.setLocationName(location)
-        // setSelectedProduct(e.target.id)
-        // console.log('sdfghj',selectedProduct)
     }
     const cattleMarkettHandler = () => {
         setCattleFlag(true)
@@ -107,11 +90,7 @@ function ProductDetails(props: any) {
         setShowCount(event.target.value)
 
     }
-
-    const addToCart = () => {
-        alert("Added")
-    }
-  
+    
     // whislist//////////////////////////////////////////////////////////////////////////
 
     useEffect (() => {
