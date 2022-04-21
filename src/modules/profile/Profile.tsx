@@ -17,9 +17,6 @@ function Profile(props: any) {
             location: "",
             address: ""
         })
-
-
-
     const [fullNameErrMsg, setfullNameErrMsg] = useState("")
     const [emailErrMsg, setemailErrMsg] = useState("")
     const [phoneErrMsg, setphoneErrMsg] = useState("")
@@ -27,8 +24,6 @@ function Profile(props: any) {
     const [locationErrMsg, setlocationErrMsg] = useState("")
     const [addressErrMsg, setaddressErrMsg] = useState("")
     const [displayReset, setdisplayReset] = useState(false)
-
-
     const getToken = () => localStorage.getItem("token");
 
     useEffect(() => {
@@ -46,7 +41,6 @@ function Profile(props: any) {
             .catch(err => console.log("No previous user found")
             )
     }, [])
-
 
     const changeHandler = (e: any) => {
         if (e.target.name=="zipCode"){
@@ -201,13 +195,6 @@ function Profile(props: any) {
             })
             .catch((err: any) => console.log(" Profile update error ", err));
     }
-
-    function resetPasswordToggler() {
-        // var profileBlock=document.getElementById('profileBlock')
-        // // profileBlock.style.display = "none"
-        // var resetBlock=document.getElementById('resetBlock')
-        // // resetBlock.style.display = "block"
-    }
     return (
         <div className='row'>
             <div className='col-lg-1'><Sidebar></Sidebar></div>
@@ -220,12 +207,8 @@ function Profile(props: any) {
                 </header>
                 {!displayReset &&
                     <main id="mainContent">
-                        <section className="profileSection">
-
-                            
+                        <section className="profileSection">                            
                                 <div className="formContainer  " id='profileBlock'>
-                                    
-                                    
                                     <main className="box">
                                         <section>
                                             <div className='profile row' >
@@ -236,8 +219,6 @@ function Profile(props: any) {
                                                         setdisplayReset(true)
 
                                                     }}> Reset Password</button></div>
-
-
                                             </div>
 
                                             <form onSubmit={submitHandler}>
