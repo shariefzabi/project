@@ -10,7 +10,7 @@ app.use(express.json());
 const PORT = 3005;
 var mongoClient = require("mongodb").MongoClient;
 var dburl =
-  "mongodb://LocationData:1234567890@cluster0-shard-00-00.hn7hc.mongodb.net:27017,cluster0-shard-00-01.hn7hc.mongodb.net:27017,cluster0-shard-00-02.hn7hc.mongodb.net:27017/test?ssl=true&replicaSet=atlas-g18s7s-shard-0&authSource=admin&retryWrites=true&w=majority";
+  "mongodb+srv://shariff:zabi2000@cluster0.pfkv2.mongodb.net/";
 
 let db;
 let userDb;
